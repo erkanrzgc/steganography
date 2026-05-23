@@ -1,0 +1,23 @@
+[project]
+name = "steganography"
+version = "0.1.0"
+description = "Dual-purpose steganography toolkit: embed/extract + steganalysis"
+requires-python = ">=3.11"
+authors = [{ name = "erkanrzgc" }]
+license = { text = "MIT" }
+readme = "README.md"
+
+[project.scripts]
+steganography = "cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --cov=config --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["core", "modules", "ui", "report", "registry", "config"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
