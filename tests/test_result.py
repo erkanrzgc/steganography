@@ -7,7 +7,9 @@ from core.result import AnalysisResult, EmbedResult, Signal
 
 
 def test_embed_result_is_frozen():
-    r = EmbedResult(carrier="image_lsb", out_path=Path("/tmp/x.png"), bytes_written=42, encrypted=True)
+    r = EmbedResult(
+        carrier="image_lsb", out_path=Path("/tmp/x.png"), bytes_written=42, encrypted=True  # noqa: S108
+    )
     with pytest.raises(FrozenInstanceError):
         r.bytes_written = 99
 
