@@ -2,7 +2,9 @@
 """Shared pytest fixtures."""
 from pathlib import Path
 
+import numpy as np
 import pytest
+from PIL import Image
 
 
 @pytest.fixture
@@ -21,3 +23,13 @@ def _reset_config_load_state(monkeypatch):
         monkeypatch.setattr(config, "_ENV_LOADED", False)
     except ImportError:
         pass
+
+
+@pytest.fixture
+def png_64x64(tmp_path: Path) -> Path:
+    """64x64 RGB PNG with deterministic noise."""
+    rng = np.random.default_rng(seed=42)
+    arr = rng.integers(0, 256, size=(64, 64, 3), dtype=np.uint8)
+    p = tmp_path / "cover.png"
+    Image.fromarray(arr, "RGB").save(p, format="PNG")
+    return p
