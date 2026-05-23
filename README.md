@@ -113,9 +113,7 @@ If the key is missing, `--ai` prints a warning and falls back to heuristics. Net
 
 ## Architecture
 
-See the [design spec](docs/superpowers/specs/2026-05-23-steganography-design.md) and [implementation plan](docs/superpowers/plans/2026-05-23-steganography.md).
-
-Key idea: **repo root = import root**; `modules/` is auto-discovered by `registry.py`. Each module is one file implementing either `Carrier` (embed/extract/analyze) or `Analyzer` (analyze-only). Adding a new technique = drop a file into `modules/`; nothing else to edit.
+**Repo root = import root**; `modules/` is auto-discovered by `registry.py`. Each module is one file implementing either `Carrier` (embed/extract/analyze) or `Analyzer` (analyze-only). Adding a new technique = drop a file into `modules/`; nothing else to edit.
 
 ```
 steganography/
