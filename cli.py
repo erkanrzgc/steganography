@@ -24,6 +24,21 @@ def _maybe_password() -> str | None:
     return os.environ.get("STEGANO_PASSWORD") or None
 
 
+def _enable_ai_if_requested(args: argparse.Namespace) -> str | None:
+    """If --ai is set, register the NVIDIA NIM provider. Returns status message."""
+    if not getattr(args, "ai", False):
+        return None
+    # Local imports keep `httpx` out of the critical path when --ai is unused.
+    from modules.ai_provider_nim import make_provider
+    from modules.ai_triage import set_provider
+
+    provider = make_provider()
+    if provider is None:
+        return "warning: --ai requested but NVIDIA_NIM_API_KEY is not set; using heuristics"
+    set_provider(provider)
+    return "ai: NVIDIA NIM provider registered"
+
+
 def cmd_embed(args: argparse.Namespace) -> int:
     reg = _build_registry()
     carrier = reg.select_carrier_for_embed(Path(args.carrier))
@@ -62,16 +77,29 @@ def cmd_extract(args: argparse.Namespace) -> int:
 
 
 def _analyze_file(reg: Registry, path: Path) -> list:
+    """Run all carriers + analyzers; ai_triage runs last with everyone's signals."""
+    from modules.ai_triage import AITriage
+
     results = []
     for c in reg.select_carriers(path):
         results.append(c.analyze(path))
+    ai_triage: AITriage | None = None
     for a in reg.all_analyzers():
+        if isinstance(a, AITriage):
+            ai_triage = a
+            continue
         results.append(a.analyze(path))
+    if ai_triage is not None:
+        prior = tuple(s for r in results for s in r.signals)
+        results.append(ai_triage.analyze_with_context(path, prior))
     return results
 
 
 def cmd_analyze(args: argparse.Namespace) -> int:
     reg = _build_registry()
+    status = _enable_ai_if_requested(args)
+    if status and not args.json:
+        print(status, file=sys.stderr)
     results = _analyze_file(reg, Path(args.input))
     if args.json:
         payload = [
@@ -97,6 +125,9 @@ def cmd_analyze(args: argparse.Namespace) -> int:
 
 def cmd_scan(args: argparse.Namespace) -> int:
     reg = _build_registry()
+    status = _enable_ai_if_requested(args)
+    if status:
+        print(status, file=sys.stderr)
     root = Path(args.dir)
     rows = []
     for p in root.rglob("*"):
@@ -145,12 +176,14 @@ def build_parser() -> argparse.ArgumentParser:
     a = sub.add_parser("analyze")
     a.add_argument("--in", dest="input", required=True)
     a.add_argument("--json", action="store_true")
+    a.add_argument("--ai", action="store_true", help="enable NVIDIA NIM AI triage")
     a.set_defaults(fn=cmd_analyze)
 
     s = sub.add_parser("scan")
     s.add_argument("--dir", required=True)
     s.add_argument("--report", choices=("json", "html"), default="html")
     s.add_argument("--out", required=True)
+    s.add_argument("--ai", action="store_true", help="enable NVIDIA NIM AI triage")
     s.set_defaults(fn=cmd_scan)
 
     lm = sub.add_parser("list-modules")
