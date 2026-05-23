@@ -1,8 +1,40 @@
-# steganography
+<h1 align="center">steganography</h1>
 
-Dual-purpose steganography toolkit — **embed/extract** and **steganalysis**.
+<p align="center">
+  <b>Dual-purpose steganography toolkit — embed/extract & steganalysis.</b><br>
+  AES-256-GCM encryption · NVIDIA NIM vision AI triage · auto-discovered carrier plug-ins.
+</p>
 
-A standalone Python 3.11+ companion to [cyberm4fia-scanner](https://github.com/erkanrzgc/cyberm4fia-scanner). Shares the modular `modules/` plug-in style, `rich` CLI, and the cyberm4fia gradient banner.
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white&style=flat-square" alt="python">
+  <img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="license">
+  <img src="https://img.shields.io/badge/tests-69%20passing-22C55E?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/badge/coverage-94%25-22C55E?style=flat-square" alt="coverage">
+  <img src="https://img.shields.io/badge/lint-ruff-D7FF64?logo=ruff&logoColor=black&style=flat-square" alt="ruff">
+  <img src="https://img.shields.io/badge/AI-NVIDIA%20NIM-76B900?logo=nvidia&logoColor=white&style=flat-square" alt="NVIDIA NIM">
+  <img src="https://img.shields.io/badge/crypto-AES--256--GCM-EF4444?style=flat-square" alt="AES-256-GCM">
+  <img src="https://img.shields.io/badge/modules-9%20plug--ins-8B5CF6?style=flat-square" alt="modules">
+</p>
+
+<p align="center">
+  <a href="#features">Features</a> ·
+  <a href="#install">Install</a> ·
+  <a href="#usage">Usage</a> ·
+  <a href="#configuration">AI / Config</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#testing">Testing</a>
+</p>
+
+---
+
+## About
+
+`steganography` is a standalone Python 3.11+ toolkit that does two things at once:
+
+1. **Hide & recover data** inside images, audio, text, and file-structure carriers — optionally encrypted with a password-derived AES-256-GCM key.
+2. **Detect hidden data** using per-carrier statistical heuristics, known-tool signatures, polyglot/appended-data scanning, and an optional **NVIDIA NIM vision model** that reads the file *plus* all heuristic signals to produce a final suspicion score with a one-sentence rationale.
+
+Built as a sibling to [cyberm4fia-scanner](https://github.com/erkanrzgc/cyberm4fia-scanner); shares the modular `modules/` plug-in style, `rich` CLI, and the cyberm4fia gradient banner.
 
 ## Features
 
