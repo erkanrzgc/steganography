@@ -62,6 +62,23 @@ cp .env.example .env
 
 The toolkit works fully without any AI key — the `ai_triage` analyzer falls back to a heuristic-only score derived from other analyzers' signals when no provider is wired up.
 
+### NVIDIA NIM (vision model) integration
+
+A reference provider is shipped at `modules/ai_provider_nim.py`. It uses NIM's OpenAI-compatible Chat Completions API; for image files it sends the image base64-encoded alongside the heuristic signals, so a vision model can both look at the file and weigh prior findings.
+
+```bash
+# 1. Get an NVIDIA NIM API key from build.nvidia.com → copy to .env
+# NVIDIA_NIM_API_KEY=nvapi-...
+# NVIDIA_NIM_MODEL=meta/llama-3.2-90b-vision-instruct       (default)
+# NVIDIA_NIM_BASE_URL=https://integrate.api.nvidia.com/v1   (default)
+
+# 2. Use --ai on analyze or scan
+python cli.py analyze --in suspect.png --ai --json
+python cli.py scan    --dir ./samples --ai --report html --out report.html
+```
+
+If the key is missing, `--ai` prints a warning and falls back to heuristics. Network/parse errors return suspicion `0` with the error in the explanation — scans never crash on a flaky AI call.
+
 ## Architecture
 
 See the [design spec](docs/superpowers/specs/2026-05-23-steganography-design.md) and [implementation plan](docs/superpowers/plans/2026-05-23-steganography.md).

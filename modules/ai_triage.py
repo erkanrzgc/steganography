@@ -34,8 +34,21 @@ class AITriage(Analyzer):
         return AnalysisResult(self.name, suspicion, signals, explanation)
 
     def analyze(self, src: Path) -> AnalysisResult:
+        """Analyze with no prior context. Use analyze_with_context() to pass
+        signals gathered from other analyzers/carriers."""
+        return self.analyze_with_context(src, ())
+
+    def analyze_with_context(
+        self, src: Path, prior_signals: tuple[Signal, ...]
+    ) -> AnalysisResult:
+        """Analyze with signals already gathered by other modules.
+
+        The caller (typically the CLI) collects signals from carriers and other
+        analyzers first, then hands them to the AI provider so it can reason
+        about the full picture instead of starting from scratch.
+        """
         info = {"path": str(src), "size": src.stat().st_size if src.exists() else 0}
-        signals: list[Signal] = []
+        signals = list(prior_signals)
         if _provider is not None:
             score, explanation = _provider(info, signals)
             return AnalysisResult(self.name, score, tuple(signals), explanation)
