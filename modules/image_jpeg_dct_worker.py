@@ -54,7 +54,13 @@ def capacity(src: Path) -> int:
     return max(0, (len(_eligible(image)) - _BOOTSTRAP_BITS) // 8)
 
 
-def embed(src: Path, out: Path, payload_path: Path, key: str) -> None:
+def embed(
+    src: Path,
+    out: Path,
+    payload_path: Path,
+    key: str,
+    salt: bytes | None = None,
+) -> None:
     if not key:
         raise ValueError("placement key is empty")
     image = _read(src)
@@ -63,7 +69,7 @@ def embed(src: Path, out: Path, payload_path: Path, key: str) -> None:
     payload = payload_path.read_bytes()
     if len(payload) > max(0, (len(eligible) - _BOOTSTRAP_BITS) // 8):
         raise ValueError("payload exceeds JPEG DCT capacity")
-    salt = os.urandom(16)
+    salt = salt or os.urandom(16)
     bootstrap = _BOOTSTRAP.pack(_MAGIC, _VERSION, len(payload), salt)
     bootstrap_bits = np.unpackbits(np.frombuffer(bootstrap, dtype=np.uint8))
     _write_bits(coefficients, eligible[:_BOOTSTRAP_BITS], bootstrap_bits)
@@ -195,9 +201,12 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if operation == "capacity" and len(values) == 1:
             result = {"capacity": capacity(Path(values[0]))}
-        elif operation == "embed" and len(values) == 3:
+        elif operation == "embed" and len(values) in {3, 4}:
             key = sys.stdin.readline().rstrip("\r\n")
-            embed(Path(values[0]), Path(values[1]), Path(values[2]), key)
+            salt = bytes.fromhex(values[3]) if len(values) == 4 else None
+            if salt is not None and len(salt) != 16:
+                raise ValueError("placement salt must be exactly 16 bytes")
+            embed(Path(values[0]), Path(values[1]), Path(values[2]), key, salt)
             result = {"ok": True}
         elif operation == "extract" and len(values) == 2:
             key = sys.stdin.readline().rstrip("\r\n")

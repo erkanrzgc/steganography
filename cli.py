@@ -239,6 +239,63 @@ def cmd_serve(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_corpus(args: argparse.Namespace) -> int:
+    from steganography.benchmarking.corpus import generate_corpus
+
+    manifest = generate_corpus(
+        Path(args.out),
+        seed=args.seed,
+        force=args.force,
+        include_dct=not args.exclude_dct,
+        methods=set(args.method) if args.method else None,
+    )
+    print(
+        f"generated {manifest['sample_count']} samples → {args.out} "
+        f"(digest {manifest['corpus_digest']})"
+    )
+    for skipped in manifest["skipped"]:
+        print(
+            f"warning: skipped {skipped['recipe']}: {skipped['reason']}",
+            file=sys.stderr,
+        )
+    return 0
+
+
+def cmd_benchmark(args: argparse.Namespace) -> int:
+    from steganography.benchmarking.runner import (
+        run_benchmark,
+        write_benchmark_html,
+        write_benchmark_json,
+    )
+
+    report = run_benchmark(
+        Path(args.corpus),
+        profiles=tuple(args.profile or ("sensitive", "balanced", "strict")),
+        threshold=args.threshold,
+        jobs=args.jobs,
+        min_recall=args.min_recall,
+        max_false_positive_rate=args.max_fpr,
+        baseline=Path(args.baseline) if args.baseline else None,
+        max_recall_drop=args.max_recall_drop,
+        max_fpr_increase=args.max_fpr_increase,
+    )
+    write_benchmark_json(report, Path(args.out))
+    if args.html:
+        write_benchmark_html(report, Path(args.html))
+    for profile, values in report["profiles"].items():
+        metrics = values["overall"]
+        print(
+            f"{profile}: precision={metrics['precision']:.3f} "
+            f"recall={metrics['recall']:.3f} f1={metrics['f1']:.3f} "
+            f"fpr={metrics['false_positive_rate']:.3f}"
+        )
+    status = "passed" if report["gates"]["passed"] else "failed"
+    print(f"benchmark gates {status} → {args.out}")
+    for failure in report["gates"]["failures"]:
+        print(f"  - {failure}", file=sys.stderr)
+    return 0 if report["gates"]["passed"] else 1
+
+
 def _failure_exit(scores: Iterable[int], fail_on: str | None) -> int:
     if fail_on is None:
         return 0
@@ -331,10 +388,45 @@ def build_parser() -> argparse.ArgumentParser:
     serve.add_argument("--workers", type=int, default=2)
     serve.add_argument("--retention-days", type=int, default=30)
     serve.set_defaults(fn=cmd_serve)
+
+    corpus = commands.add_parser("corpus", help="generate a labeled benchmark corpus")
+    corpus.add_argument("--out", required=True)
+    corpus.add_argument("--seed", type=int, default=20260813)
+    corpus.add_argument("--force", action="store_true")
+    corpus.add_argument("--exclude-dct", action="store_true")
+    corpus.add_argument(
+        "--method",
+        action="append",
+        help="include only this carrier method or recipe id (repeatable)",
+    )
+    corpus.set_defaults(fn=cmd_corpus)
+
+    benchmark = commands.add_parser(
+        "benchmark", help="measure analysis quality against a labeled corpus"
+    )
+    benchmark.add_argument("--corpus", required=True)
+    benchmark.add_argument("--out", required=True)
+    benchmark.add_argument("--html")
+    benchmark.add_argument(
+        "--profile",
+        action="append",
+        choices=("sensitive", "balanced", "strict"),
+        default=None,
+    )
+    benchmark.add_argument("--threshold", type=int, default=70)
+    benchmark.add_argument("--jobs", type=int, default=min(4, os.cpu_count() or 1))
+    benchmark.add_argument("--min-recall", type=float, default=0.90)
+    benchmark.add_argument("--max-fpr", type=float, default=0.10)
+    benchmark.add_argument("--baseline")
+    benchmark.add_argument("--max-recall-drop", type=float, default=0.02)
+    benchmark.add_argument("--max-fpr-increase", type=float, default=0.02)
+    benchmark.set_defaults(fn=cmd_benchmark)
     return parser
 
 
-_MACHINE_READABLE_CMDS = frozenset({"list-modules", "extract", "serve"})
+_MACHINE_READABLE_CMDS = frozenset(
+    {"list-modules", "extract", "serve", "corpus", "benchmark"}
+)
 
 
 def _should_show_banner(args: argparse.Namespace) -> bool:

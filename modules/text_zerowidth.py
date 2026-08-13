@@ -6,6 +6,7 @@ Appended at the end of the cover text, terminated by ZWJ (U+200D).
 from pathlib import Path
 
 from core.carrier import Carrier
+from core.payload import InvalidPayloadError, unpack
 from core.result import AnalysisResult, EmbedResult, Signal
 
 _ZERO = "​"        # ZWSP
@@ -49,11 +50,28 @@ class TextZeroWidth(Carrier):
         # Zero-width chars almost never appear in legitimate text; any presence
         # is highly suspicious, with score increasing as count grows.
         score = min(100, 70 + count // 2)
-        sig = Signal(
-            name="zero_width_chars",
-            score=score,
-            detail=f"{count} zero-width chars",
-            category="text_unicode",
-            evidence="strong",
-        )
-        return AnalysisResult(self.name, score, (sig,), None)
+        signals = [
+            Signal(
+                name="zero_width_chars",
+                score=score,
+                detail=f"{count} zero-width chars",
+                category="text_unicode",
+                evidence="strong",
+            )
+        ]
+        try:
+            parsed = unpack(self.extract(src))
+        except (InvalidPayloadError, ValueError):
+            pass
+        else:
+            signals.append(
+                Signal(
+                    name="validated_zerowidth_payload",
+                    score=98,
+                    detail=f"valid STEG v{parsed.version} envelope in zero-width text",
+                    category="known_marker",
+                    evidence="verified",
+                )
+            )
+        suspicion = max(signal.score for signal in signals)
+        return AnalysisResult(self.name, suspicion, tuple(signals), None)

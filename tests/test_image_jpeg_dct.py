@@ -82,3 +82,25 @@ def test_dct_worker_crash_is_structured(jpeg_64x64: Path, monkeypatch):
     result = ImageJpegDct().analyze(jpeg_64x64)
     assert result.status == "error"
     assert "boom" in (result.error or "")
+
+
+def test_dct_fixed_salt_is_deterministic(jpeg_256x256: Path, tmp_path: Path):
+    carrier = ImageJpegDct()
+    first = tmp_path / "first.jpg"
+    second = tmp_path / "second.jpg"
+    options = {"placement_salt": b"d" * 16}
+    carrier.embed_with_options(
+        jpeg_256x256, b"deterministic", first, steg_key="key", options=options
+    )
+    carrier.embed_with_options(
+        jpeg_256x256, b"deterministic", second, steg_key="key", options=options
+    )
+    assert first.read_bytes() == second.read_bytes()
+    with pytest.raises(ValueError, match="exactly 16 bytes"):
+        carrier.embed_with_options(
+            jpeg_256x256,
+            b"x",
+            tmp_path / "invalid.jpg",
+            steg_key="key",
+            options={"placement_salt": "not-bytes"},
+        )

@@ -63,7 +63,7 @@ class ImageLsbScatter(Carrier):
                 f"payload {len(payload)} bytes exceeds keyed LSB capacity "
                 f"{len(candidates) // 8} bytes for channels {channels}"
             )
-        salt = os.urandom(16)
+        salt = _placement_salt(options)
         bootstrap = _BOOTSTRAP.pack(_MAGIC, _VERSION, len(payload), mask, salt)
         bootstrap_bits = np.unpackbits(np.frombuffer(bootstrap, dtype=np.uint8))
         flat[:_BOOTSTRAP_BITS] = (
@@ -158,6 +158,15 @@ def _channel_selection(options: dict[str, Any] | None) -> tuple[str, int]:
     for channel in normalized:
         mask |= _CHANNEL_BITS[channel]
     return normalized, mask
+
+
+def _placement_salt(options: dict[str, Any] | None) -> bytes:
+    value = (options or {}).get("placement_salt")
+    if value is None:
+        return os.urandom(16)
+    if not isinstance(value, bytes) or len(value) != 16:
+        raise ValueError("placement_salt must be exactly 16 bytes")
+    return value
 
 
 def _candidate_positions(size: int, mask: int) -> np.ndarray:

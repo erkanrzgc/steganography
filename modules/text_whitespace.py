@@ -6,6 +6,7 @@ Requires cover to have at least 8 * len(payload) lines.
 from pathlib import Path
 
 from core.carrier import Carrier, InsufficientCapacityError
+from core.payload import InvalidPayloadError, unpack
 from core.result import AnalysisResult, EmbedResult, Signal
 
 _ONE = "\t"
@@ -61,10 +62,33 @@ class TextWhitespace(Carrier):
         flagged = sum(1 for ln in lines if ln.endswith((_ONE, _ZERO)) and ln.strip())
         ratio = flagged / len(lines)
         score = int(min(100, ratio * 100))
-        sig = Signal(
-            name="trailing_whitespace_ratio",
-            score=score,
-            detail=f"{flagged}/{len(lines)}",
-            category="text_whitespace",
+        signals = [
+            Signal(
+                name="trailing_whitespace_ratio",
+                score=score,
+                detail=f"{flagged}/{len(lines)}",
+                category="text_whitespace",
+                evidence="heuristic" if score >= 10 else "informational",
+            )
+        ]
+        try:
+            parsed = unpack(self.extract(src))
+        except (InvalidPayloadError, ValueError):
+            pass
+        else:
+            signals.append(
+                Signal(
+                    name="validated_whitespace_payload",
+                    score=98,
+                    detail=(
+                        f"valid STEG v{parsed.version} envelope in trailing whitespace"
+                    ),
+                    category="known_marker",
+                    evidence="verified",
+                )
+            )
+        suspicion = max(
+            (signal.score for signal in signals if signal.evidence != "informational"),
+            default=0,
         )
-        return AnalysisResult(self.name, score, (sig,), None)
+        return AnalysisResult(self.name, suspicion, tuple(signals), None)

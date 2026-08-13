@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "tool_version": "0.5.0",
+  "corpus": {
+    "digest": "1244d120eb11aa20f5741408ef0faa02a0e5660821e7ee71de6441529ef31d75",
+    "sample_count": 66,
+    "seed": 20260813
+  },
+  "profiles": {
+    "balanced": {
+      "overall": {
+        "false_positive_rate": 0.0,
+        "recall": 1.0,
+        "roc_auc": 1.0
+      }
+    },
+    "sensitive": {
+      "overall": {
+        "false_positive_rate": 0.0,
+        "recall": 1.0,
+        "roc_auc": 1.0
+      }
+    },
+    "strict": {
+      "overall": {
+        "false_positive_rate": 0.0,
+        "recall": 1.0,
+        "roc_auc": 1.0
+      }
+    }
+  }
+}
