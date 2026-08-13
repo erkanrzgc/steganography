@@ -8,7 +8,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white&style=flat-square" alt="python">
   <img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="license">
-  <img src="https://img.shields.io/badge/tests-120%20passing-22C55E?style=flat-square" alt="tests">
+  <a href="https://github.com/erkanrzgc/steganography/actions/workflows/ci.yml"><img src="https://github.com/erkanrzgc/steganography/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <img src="https://img.shields.io/badge/coverage-91%25-22C55E?style=flat-square" alt="coverage">
   <img src="https://img.shields.io/badge/lint-ruff-D7FF64?logo=ruff&logoColor=black&style=flat-square" alt="ruff">
 </p>
@@ -20,7 +20,8 @@ optional NVIDIA NIM triage, resilient directory scans and carrier plug-ins.
 ## Install
 
 The distribution is named `cyberm4fia-steganography`; the command and Python
-package remain `steganography`. Install a published release with:
+package remain `steganography`. Version 0.5.0 is on `main` but is not yet tagged
+or published to PyPI. After the first release, installation will be:
 
 ```bash
 pip install cyberm4fia-steganography
@@ -243,11 +244,12 @@ and checks the wheel and source archive, creates GitHub build-provenance
 attestations, publishes to PyPI through OpenID Connect, then creates the GitHub
 Release. Third-party actions are pinned to full commit SHAs.
 
-Before the first release, configure a PyPI Trusted Publisher for project
+The repository's `pypi` environment requires owner approval. Before the first
+release, configure a PyPI Trusted Publisher for project
 `cyberm4fia-steganography`, repository `erkanrzgc/steganography`, workflow
-`release.yml` and GitHub environment `pypi`. Protecting that environment with
-required reviewers is recommended. Once CI is green, a maintainer can publish
-by pushing a version-matching tag; the workflow uses no long-lived PyPI token.
+`release.yml` and environment `pypi`. Once CI is green, a maintainer can
+publish by pushing a version-matching tag; the workflow uses no long-lived
+PyPI token.
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.
 

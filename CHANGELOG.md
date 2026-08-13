@@ -4,7 +4,7 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and releases use
 [Semantic Versioning](https://semver.org/).
 
-## [0.5.0] - 2026-08-13
+## 0.5.0 (pending PyPI/GitHub release) - 2026-08-13
 
 ### Added
 
@@ -16,6 +16,7 @@ All notable changes to this project are documented here. The format follows
 - Pinned benchmark codec/numeric dependencies for reproducible CI baselines.
 - Tag-driven GitHub Release and PyPI Trusted Publishing workflow with build
   provenance attestations.
+- Current Node.js 24 GitHub Actions generations pinned to immutable commits.
 
 ### Changed
 
@@ -25,7 +26,7 @@ All notable changes to this project are documented here. The format follows
 - Tool-produced whitespace and zero-width payloads are validated as complete
   versioned envelopes during analysis.
 
-## [0.4.0] - 2026-08-13
+## 0.4.0 - 2026-08-13
 
 ### Added
 
@@ -34,6 +35,3 @@ All notable changes to this project are documented here. The format follows
 - PDF/GIF trailers, keyed image LSB scattering and isolated JPEG DCT support.
 - Analysis-only FastAPI service with SQLite-backed scan jobs.
 - Installable wheel, public Python API, plug-in entry points and CI checks.
-
-[0.5.0]: https://github.com/erkanrzgc/steganography/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/erkanrzgc/steganography/releases/tag/v0.4.0

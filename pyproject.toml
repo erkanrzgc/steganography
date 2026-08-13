@@ -11,7 +11,15 @@ authors = [{ name = "erkanrzgc" }]
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
-keywords = ["steganography", "steganalysis", "dfir", "security"]
+keywords = [
+    "benchmarking",
+    "dfir",
+    "fastapi",
+    "forensics",
+    "security",
+    "steganalysis",
+    "steganography",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
