@@ -17,11 +17,13 @@ import base64
 import json
 import re
 from pathlib import Path
-
-import httpx
+from typing import TYPE_CHECKING
 
 import config
 from core.result import Signal
+
+if TYPE_CHECKING:
+    import httpx
 
 _DEFAULT_MODEL = "meta/llama-3.2-90b-vision-instruct"
 _DEFAULT_BASE_URL = "https://integrate.api.nvidia.com/v1"
@@ -54,7 +56,9 @@ def _mime_for(ext: str) -> str:
     }.get(ext, "application/octet-stream")
 
 
-def _build_messages(path: Path, signals: list[Signal]) -> list[dict]:
+def _build_messages(
+    path: Path, signals: list[Signal], *, upload_file: bool = True
+) -> list[dict]:
     sig_text = (
         "\n".join(f"- {s.name} (score {s.score}): {s.detail}" for s in signals)
         if signals
@@ -71,7 +75,12 @@ def _build_messages(path: Path, signals: list[Signal]) -> list[dict]:
     content: list[dict] = [text_part]
 
     ext = path.suffix.lower()
-    if ext in _IMAGE_EXTS and path.exists() and path.stat().st_size <= _MAX_IMAGE_BYTES:
+    if (
+        upload_file
+        and ext in _IMAGE_EXTS
+        and path.exists()
+        and path.stat().st_size <= _MAX_IMAGE_BYTES
+    ):
         encoded = base64.b64encode(path.read_bytes()).decode("ascii")
         content.append(
             {
@@ -109,6 +118,7 @@ def make_provider(
     model: str | None = None,
     base_url: str | None = None,
     client: httpx.Client | None = None,
+    upload_file: bool = True,
 ):
     """Return an AIProvider callable bound to the given config.
 
@@ -118,16 +128,20 @@ def make_provider(
     key = api_key or config.get_secret("NVIDIA_NIM_API_KEY")
     if not key:
         return None
+    try:
+        import httpx as httpx_runtime
+    except ModuleNotFoundError:
+        return None
     model_name = model or config.get_secret("NVIDIA_NIM_MODEL") or _DEFAULT_MODEL
     url = (base_url or config.get_secret("NVIDIA_NIM_BASE_URL") or _DEFAULT_BASE_URL).rstrip("/")
     endpoint = f"{url}/chat/completions"
-    http = client or httpx.Client(timeout=_REQUEST_TIMEOUT)
+    http = client or httpx_runtime.Client(timeout=_REQUEST_TIMEOUT)
 
     def provider(file_info: dict, signals: list[Signal]) -> tuple[int, str]:
         path = Path(file_info.get("path", ""))
         body = {
             "model": model_name,
-            "messages": _build_messages(path, signals),
+            "messages": _build_messages(path, signals, upload_file=upload_file),
             "max_tokens": 256,
             "temperature": 0.2,
         }
@@ -142,7 +156,13 @@ def make_provider(
             data = r.json()
             text = data["choices"][0]["message"]["content"]
             return _parse_response(text)
-        except (httpx.HTTPError, KeyError, IndexError, ValueError, NimError) as e:
+        except (
+            httpx_runtime.HTTPError,
+            KeyError,
+            IndexError,
+            ValueError,
+            NimError,
+        ) as e:
             return 0, f"NIM provider error: {type(e).__name__}: {e}"
 
     return provider

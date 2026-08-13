@@ -65,5 +65,6 @@ class TextWhitespace(Carrier):
             name="trailing_whitespace_ratio",
             score=score,
             detail=f"{flagged}/{len(lines)}",
+            category="text_whitespace",
         )
         return AnalysisResult(self.name, score, (sig,), None)

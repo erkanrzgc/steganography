@@ -29,7 +29,13 @@ class Signatures(Analyzer):
     def analyze(self, src: Path) -> AnalysisResult:
         data = src.read_bytes()
         hits = [
-            Signal(name=s.name, score=s.score, detail=s.detail)
+            Signal(
+                name=s.name,
+                score=s.score,
+                detail=s.detail,
+                category="known_marker",
+                evidence="verified" if s.score >= 85 else "strong",
+            )
             for s in _SIGNATURES
             if s.needle in data
         ]

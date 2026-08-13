@@ -21,6 +21,13 @@ def test_signal_is_frozen_and_has_score():
         s.score = 0
 
 
+def test_signal_and_result_reject_out_of_range_scores():
+    with pytest.raises(ValueError):
+        Signal("bad", 101, "")
+    with pytest.raises(ValueError):
+        AnalysisResult("bad", -1, (), None)
+
+
 def test_analysis_result_aggregates_signals():
     sigs = (Signal("a", 10, "x"), Signal("b", 90, "y"))
     r = AnalysisResult(analyzer="image_lsb", suspicion=50, signals=sigs, explanation=None)

@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 
 from core.carrier import Carrier, InsufficientCapacityError
+from core.payload import MAGIC
 from core.result import AnalysisResult, EmbedResult, Signal
 
 _LEN_PREFIX = 4
@@ -52,9 +53,33 @@ class AudioWav(Carrier):
         samples, _ = self._read(src)
         lsb_mean = float(np.mean(samples & 1))
         dev = abs(lsb_mean - 0.5) * 200
-        sig = Signal(
+        signals = [Signal(
             name="wav_lsb_bias",
             score=int(min(100, dev)),
             detail=f"LSB mean={lsb_mean:.3f}",
+            category="audio_lsb",
+            evidence="heuristic" if dev >= 10 else "informational",
+        )]
+        if samples.size >= (_LEN_PREFIX + len(MAGIC)) * 8:
+            length_bits = samples[: _LEN_PREFIX * 8].astype(np.uint8) & 1
+            (length,) = struct.unpack(">I", np.packbits(length_bits).tobytes())
+            start = _LEN_PREFIX * 8
+            marker_end = start + len(MAGIC) * 8
+            marker = np.packbits(
+                samples[start:marker_end].astype(np.uint8) & 1
+            ).tobytes()
+            if marker == MAGIC and length <= self.capacity(src):
+                signals.append(
+                    Signal(
+                        "steg_payload_header",
+                        98,
+                        f"validated STEG envelope prefix; embedded length={length}",
+                        category="known_marker",
+                        evidence="verified",
+                    )
+                )
+        suspicion = max(
+            (signal.score for signal in signals if signal.evidence != "informational"),
+            default=0,
         )
-        return AnalysisResult(self.name, sig.score, (sig,), None)
+        return AnalysisResult(self.name, suspicion, tuple(signals), None)

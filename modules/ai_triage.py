@@ -30,7 +30,9 @@ class AITriage(Analyzer):
         if not signals:
             return AnalysisResult(self.name, 0, (), "no signals")
         suspicion = max(s.score for s in signals)
-        explanation = "; ".join(f"{s.name}:{s.score}" for s in signals)
+        explanation = "heuristic fallback: " + "; ".join(
+            f"{s.name}:{s.score}" for s in signals
+        )
         return AnalysisResult(self.name, suspicion, signals, explanation)
 
     def analyze(self, src: Path) -> AnalysisResult:
