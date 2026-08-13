@@ -55,3 +55,24 @@ def test_register_rejects_wrong_type():
     reg = Registry()
     with pytest.raises(TypeError):
         reg.register("not a carrier")
+
+
+def test_entry_point_rejects_wrong_type(monkeypatch):
+    class FakeEntryPoint:
+        name = "invalid"
+
+        @staticmethod
+        def load():
+            return object()
+
+    class FakeEntryPoints:
+        @staticmethod
+        def select(*, group):
+            assert group == "steganography.carriers"
+            return [FakeEntryPoint()]
+
+    monkeypatch.setattr("registry.metadata.entry_points", FakeEntryPoints)
+    reg = Registry()
+    reg._load_entry_points("steganography.carriers")
+    assert len(reg.load_errors()) == 1
+    assert "unsupported plug-in type" in reg.load_errors()[0].error

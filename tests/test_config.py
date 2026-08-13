@@ -30,3 +30,13 @@ def test_get_secret_loads_dotenv_file(tmp_path, monkeypatch):
     monkeypatch.delenv("STEGO_FROM_FILE", raising=False)
 
     assert config.get_secret("STEGO_FROM_FILE") == "loaded_from_disk"
+
+
+def test_get_secret_loads_dotenv_from_working_directory(tmp_path, monkeypatch):
+    import config
+
+    (tmp_path / ".env").write_text("STEGO_CWD_VALUE=from_cwd\n")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(config, "_ENV_LOADED", False)
+    monkeypatch.delenv("STEGO_CWD_VALUE", raising=False)
+    assert config.get_secret("STEGO_CWD_VALUE") == "from_cwd"

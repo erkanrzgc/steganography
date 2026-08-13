@@ -41,8 +41,24 @@ class FilestructExif(Carrier):
         comment = exif_dict.get("Exif", {}).get(piexif.ExifIFD.UserComment, b"")
         signals = []
         if comment.startswith(_MAGIC):
-            signals.append(Signal("stegexif_marker", 95, "STEGEXIF marker in UserComment"))
+            signals.append(
+                Signal(
+                    "stegexif_marker",
+                    95,
+                    "STEGEXIF marker in UserComment",
+                    category="known_marker",
+                    evidence="verified",
+                )
+            )
         elif len(comment) > 64:
-            signals.append(Signal("large_usercomment", 60, f"UserComment len={len(comment)}"))
+            signals.append(
+                Signal(
+                    "large_usercomment",
+                    60,
+                    f"UserComment len={len(comment)}",
+                    category="metadata",
+                    evidence="strong",
+                )
+            )
         suspicion = max((s.score for s in signals), default=0)
         return AnalysisResult(self.name, suspicion, tuple(signals), None)

@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 
 from core.carrier import Carrier, InsufficientCapacityError
+from core.payload import MAGIC
 from core.result import AnalysisResult, EmbedResult, Signal
 
 _LEN_PREFIX = 4  # bytes used to encode payload length in-image
@@ -56,28 +57,44 @@ class ImageLsb(Carrier):
         return self._bytes_from_bits(arr[start:end] & 1)
 
     def analyze(self, src: Path) -> AnalysisResult:
-        arr = self._load_rgb(src).reshape(-1)
-        even = arr[::2].astype(np.int64)
-        odd = arr[1::2].astype(np.int64)
-        pairs = np.minimum(even, odd)
-        denom = np.maximum(even + odd, 1)
-        ratio = float(np.mean(pairs * 2 / denom))
-        lsb_mean = float(np.mean(arr & 1))
-        lsb_dev = abs(lsb_mean - 0.5) * 200  # 0..100
-        chi_signal = Signal(
-            name="lsb_pair_ratio",
-            score=int(min(100, ratio * 100)),
-            detail=f"adjacent-pair LSB ratio = {ratio:.3f} (~1.0 suggests embedding)",
+        array = self._load_rgb(src)
+        flat = array.reshape(-1)
+        signals: list[Signal] = []
+        channel_means = [float(np.mean(array[:, :, index] & 1)) for index in range(3)]
+        maximum_deviation = max(abs(value - 0.5) for value in channel_means)
+        bias_score = min(60, max(0, round((maximum_deviation - 0.02) * 1000)))
+        signals.append(
+            Signal(
+                name="lsb_channel_bias",
+                score=bias_score,
+                detail="RGB LSB means=" + ",".join(f"{value:.4f}" for value in channel_means),
+                category="image_lsb_statistics",
+                evidence="heuristic" if bias_score >= 10 else "informational",
+            )
         )
-        bias_signal = Signal(
-            name="lsb_bit_bias",
-            score=int(min(100, lsb_dev)),
-            detail=f"LSB mean = {lsb_mean:.3f}",
+        if flat.size >= (_LEN_PREFIX + len(MAGIC)) * 8:
+            length_bits = flat[: _LEN_PREFIX * 8] & 1
+            (length,) = struct.unpack(">I", self._bytes_from_bits(length_bits))
+            start = _LEN_PREFIX * 8
+            marker_end = start + len(MAGIC) * 8
+            marker = self._bytes_from_bits(flat[start:marker_end] & 1)
+            if marker == MAGIC and length <= self.capacity(src):
+                signals.append(
+                    Signal(
+                        "steg_payload_header",
+                        98,
+                        f"validated STEG envelope prefix; embedded length={length}",
+                        category="known_marker",
+                        evidence="verified",
+                    )
+                )
+        suspicion = max(
+            (signal.score for signal in signals if signal.evidence != "informational"),
+            default=0,
         )
-        suspicion = max(chi_signal.score, bias_signal.score)
         return AnalysisResult(
             analyzer=self.name,
             suspicion=suspicion,
-            signals=(chi_signal, bias_signal),
+            signals=tuple(signals),
             explanation=None,
         )

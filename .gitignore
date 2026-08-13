@@ -58,4 +58,5 @@ desktop.ini
 
 # --- Runtime artifacts ------------------------------------------------------
 scans/
+.benchmark/
 *.log

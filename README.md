@@ -1,154 +1,262 @@
 <h1 align="center">steganography</h1>
 
 <p align="center">
-  <b>Dual-purpose steganography toolkit — embed/extract & steganalysis.</b><br>
-  AES-256-GCM encryption · NVIDIA NIM vision AI triage · auto-discovered carrier plug-ins.
+  <b>Embed, extract and analyze hidden data from one defensive Python toolkit.</b><br>
+  Versioned payloads · AES-256-GCM · evidence-oriented reports · reproducible benchmarks.
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white&style=flat-square" alt="python">
   <img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="license">
-  <img src="https://img.shields.io/badge/tests-69%20passing-22C55E?style=flat-square" alt="tests">
-  <img src="https://img.shields.io/badge/coverage-94%25-22C55E?style=flat-square" alt="coverage">
+  <img src="https://img.shields.io/badge/tests-120%20passing-22C55E?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/badge/coverage-91%25-22C55E?style=flat-square" alt="coverage">
   <img src="https://img.shields.io/badge/lint-ruff-D7FF64?logo=ruff&logoColor=black&style=flat-square" alt="ruff">
-  <img src="https://img.shields.io/badge/AI-NVIDIA%20NIM-76B900?logo=nvidia&logoColor=white&style=flat-square" alt="NVIDIA NIM">
-  <img src="https://img.shields.io/badge/crypto-AES--256--GCM-EF4444?style=flat-square" alt="AES-256-GCM">
-  <img src="https://img.shields.io/badge/modules-9%20plug--ins-8B5CF6?style=flat-square" alt="modules">
 </p>
 
-<p align="center">
-  <a href="#features">Features</a> ·
-  <a href="#install">Install</a> ·
-  <a href="#usage">Usage</a> ·
-  <a href="#configuration">AI / Config</a> ·
-  <a href="#architecture">Architecture</a> ·
-  <a href="#testing">Testing</a>
-</p>
-
----
-
-## About
-
-`steganography` is a standalone Python 3.11+ toolkit that does two things at once:
-
-1. **Hide & recover data** inside images, audio, text, and file-structure carriers — optionally encrypted with a password-derived AES-256-GCM key.
-2. **Detect hidden data** using per-carrier statistical heuristics, known-tool signatures, polyglot/appended-data scanning, and an optional **NVIDIA NIM vision model** that reads the file *plus* all heuristic signals to produce a final suspicion score with a one-sentence rationale.
-
-Built as a sibling to [cyberm4fia-scanner](https://github.com/erkanrzgc/cyberm4fia-scanner); shares the modular `modules/` plug-in style, `rich` CLI, and the cyberm4fia gradient banner.
-
-## Features
-
-- **Embed / extract** across image (PNG/BMP LSB, JPEG appended-data), audio (WAV LSB), text (zero-width unicode, trailing whitespace), and file-structure (EXIF UserComment) carriers
-- **AES-256-GCM** encryption layer with scrypt password KDF
-- **Steganalysis**: per-carrier statistical heuristics + known-tool signature detection + polyglot/appended-data detection
-- **Pluggable AI triage** (any callable matching the `AIProvider` protocol)
-- **Batch directory scan** with JSON and HTML reports
-- Auto-discovered `modules/` — drop a new file in to add a technique
+`steganography` is a Python 3.11+ toolkit for authorized DFIR, red-team,
+research and educational work. It supports deterministic local analysis,
+optional NVIDIA NIM triage, resilient directory scans and carrier plug-ins.
 
 ## Install
 
-```bash
-git clone <repo> steganography && cd steganography
-python3.11 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-For development:
+The distribution is named `cyberm4fia-steganography`; the command and Python
+package remain `steganography`. Install a published release with:
 
 ```bash
-pip install -r requirements-dev.txt
+pip install cyberm4fia-steganography
 ```
 
-## Usage
+Or install the base CLI from a checkout:
 
 ```bash
-# Embed
-python cli.py embed --in secret.bin --carrier cover.png --out stego.png [--password pw]
-
-# Extract
-python cli.py extract --in stego.png --out recovered.bin [--password pw]
-
-# Analyze a single file
-python cli.py analyze --in suspect.png [--json]
-
-# Batch scan a directory
-python cli.py scan --dir ./samples --report html --out report.html
-
-# List discovered modules
-python cli.py list-modules
+python -m venv .venv
+source .venv/bin/activate
+pip install .
 ```
 
-Set `STEGANO_PASSWORD` env var to avoid passing `--password` on the command line.
-
-## Configuration
-
-All secrets — including any future AI provider keys (NVIDIA NIM, Anthropic, OpenAI) — are loaded through `config.get_secret(...)`, which reads from `.env` or the process environment. **No literal keys appear in source code.**
-
-To set up locally:
+Install optional capabilities only when needed:
 
 ```bash
-cp .env.example .env
-# edit .env and fill in the values you need
+pip install '.[ai]'          # NVIDIA NIM provider
+pip install '.[api]'         # FastAPI analysis service
+pip install '.[dct]'         # experimental JPEG DCT carrier
+pip install '.[ai,api,dct]'  # everything
+pip install '.[dev]'         # tests, typing, lint and build tools
 ```
 
-The toolkit works fully without any AI key — the `ai_triage` analyzer falls back to a heuristic-only score derived from other analyzers' signals when no provider is wired up.
-
-### NVIDIA NIM (vision model) integration
-
-A reference provider is shipped at `modules/ai_provider_nim.py`. It uses NIM's OpenAI-compatible Chat Completions API; for image files it sends the image base64-encoded alongside the heuristic signals, so a vision model can both look at the file and weigh prior findings.
+The legacy `requirements.txt` and `requirements-dev.txt` workflows remain
+available. Build and installable wheels are supported:
 
 ```bash
-# 1. Get an NVIDIA NIM API key from build.nvidia.com → copy to .env
-# NVIDIA_NIM_API_KEY=nvapi-...
-# NVIDIA_NIM_MODEL=meta/llama-3.2-90b-vision-instruct       (default)
-# NVIDIA_NIM_BASE_URL=https://integrate.api.nvidia.com/v1   (default)
-
-# 2. Use --ai on analyze or scan
-python cli.py analyze --in suspect.png --ai --json
-python cli.py scan    --dir ./samples --ai --report html --out report.html
+python -m build
+pip install dist/cyberm4fia_steganography-*.whl
 ```
 
-If the key is missing, `--ai` prints a warning and falls back to heuristics. Network/parse errors return suspicion `0` with the error in the explanation — scans never crash on a flaky AI call.
-
-## Architecture
-
-**Repo root = import root**; `modules/` is auto-discovered by `registry.py`. Each module is one file implementing either `Carrier` (embed/extract/analyze) or `Analyzer` (analyze-only). Adding a new technique = drop a file into `modules/`; nothing else to edit.
-
-```
-steganography/
-├── cli.py                     # entry point
-├── config.py                  # central secret loader (.env via python-dotenv)
-├── registry.py                # auto-discovery + dispatch
-├── core/                      # Carrier ABC, Analyzer ABC, crypto, payload header, result types
-├── modules/                   # one file = one capability
-│   ├── image_lsb.py
-│   ├── image_jpeg.py
-│   ├── audio_wav.py
-│   ├── text_zerowidth.py
-│   ├── text_whitespace.py
-│   ├── filestruct_exif.py
-│   ├── filestruct_appended.py
-│   ├── signatures.py
-│   └── ai_triage.py
-├── report/                    # JSON + HTML report writers
-├── ui/                        # gradient banner
-└── tests/                     # pytest, ≥80% coverage gate
-```
-
-## Testing
+## CLI
 
 ```bash
-pytest                  # runs full suite + coverage gate
-ruff check .            # lint
+# Existing default methods remain compatible.
+steganography embed --in secret.bin --carrier cover.png --out stego.png
+steganography extract --in stego.png --out recovered.bin
+
+# Passwords can come from the environment, a file or stdin.
+STEGANO_PASSWORD='...' steganography embed \
+  --in secret.bin --carrier cover.wav --out stego.wav --no-clobber
+steganography extract --in stego.wav --out recovered.bin --password-file ./password
+
+# Explicit new methods.
+steganography embed --method filestruct_trailer \
+  --in secret.bin --carrier cover.pdf --out stego.pdf
+steganography embed --method image_lsb_scatter --steg-key placement-key \
+  --channels rgb --in secret.bin --carrier cover.png --out scatter.png
+steganography embed --method image_jpeg_dct --steg-key placement-key \
+  --in secret.bin --carrier cover.jpg --out dct.jpg
+
+# Analysis and reports.
+steganography analyze --in suspect.png --format json-v1 --profile sensitive
+steganography scan --dir ./evidence --report html --out report.html --jobs 4
+steganography scan --dir ./evidence --report json-v1 --out report.json \
+  --fail-on high
+
+steganography list-modules
 ```
 
-Coverage gate: **80%** (enforced via `pyproject.toml`). Current: 94%.
+The default analysis profile is `sensitive`; `balanced` and `strict` are also
+available. Exit status is unchanged unless `--fail-on medium|high` is set.
+Directory scans do not follow symlinks by default, skip their own report file,
+and record per-module failures instead of aborting the scan.
+
+## Reproducible corpus and benchmarks
+
+Generate a labeled clean/stego corpus and evaluate every analysis profile:
+
+```bash
+steganography corpus --out .benchmark/corpus --seed 20260813
+steganography benchmark \
+  --corpus .benchmark/corpus \
+  --out .benchmark/report.json \
+  --html .benchmark/report.html \
+  --baseline benchmarks/baseline.json \
+  --min-recall 0.95 \
+  --max-fpr 0.05 \
+  --jobs 4
+```
+
+With the `dct` extra installed, the default corpus contains 66 paired samples
+over 11 carrier/format recipes and low, medium and high payload densities. Its
+covers, payload bytes and keyed placement salts are derived from the seed;
+identical dependencies therefore produce the same manifest digest and file
+hashes. CI applies `benchmarks/constraints.txt` to pin the codec/numeric
+reproducibility boundary. The generator writes through a staging directory and
+`--force` only replaces directories carrying its own marker.
+
+Reports include confusion matrices, precision, recall, specificity, FPR, F1,
+ROC-AUC and average precision, plus method, density and format breakdowns.
+Absolute gates and baseline-delta gates return a non-zero exit status on a
+regression. The committed 0.5.0 baseline has 66 samples, recall `1.000` and FPR
+`0.000` for all three profiles.
+
+Use repeatable `--method` flags to build a smaller corpus or `--exclude-dct`
+when the optional JPEG dependency is unavailable.
+
+### Payload compatibility
+
+New embeds use payload v2: 64-bit length, validated flags and a SHA-256
+integrity field. The extractor continues to read payload v1 files produced by
+the earlier release. Encrypted data uses scrypt-derived AES-256-GCM keys.
+
+### Methods
+
+| Method | Formats | Embed / extract | Notes |
+|---|---|---:|---|
+| `image_lsb` | PNG, BMP | yes | Compatible sequential RGB LSB default |
+| `image_lsb_scatter` | PNG, BMP | yes | Explicit, keyed ChaCha20 placement |
+| `audio_wav` | WAV PCM16 | yes | Sample LSB |
+| `text_whitespace` | TXT, MD | yes | Compatible default |
+| `text_zerowidth` | TXT, MD | yes | Explicit selection recommended |
+| `filestruct_exif` | JPEG, TIFF | yes | Compatible JPEG/TIFF default |
+| `image_jpeg` | JPEG | yes | Marker-based appended payload |
+| `filestruct_trailer` | PDF, GIF | yes | Explicit, checksummed structural trailer |
+| `image_jpeg_dct` | JPEG | yes | Explicit, keyed and experimental |
+| `filestruct_appended` | PNG/JPEG/GIF/PDF | analysis | Polyglot/trailing-data detector |
+
+JPEG DCT work is executed in a time-limited subprocess so native codec
+failures cannot terminate a directory scan. Unsupported progressive or
+arithmetic-coded JPEGs return a structured `unsupported` result.
+
+## Analysis and reports
+
+The stable `json-v1` schema provides:
+
+- tool/schema versions and UTC timestamps;
+- file name, size, detected type, extension mismatch and SHA-256;
+- one overall score/severity plus every module result;
+- categorized signals with evidence strength;
+- structured `ok`, `error`, `unsupported` and `unavailable` statuses.
+
+Scores combine the strongest signal from each independent category using a
+noisy-OR model. Validated tool/payload markers score at least 95. AI can raise
+the deterministic verdict but never lower it. HTML output is self-contained,
+filterable and escapes every dynamic field.
+
+### AI privacy
+
+AI is off by default. `--ai` sends only locally generated signal text. Sending
+an image requires the separate `--allow-ai-file-upload` flag:
+
+```bash
+export NVIDIA_NIM_API_KEY='nvapi-...'
+steganography analyze --in suspect.png --ai
+steganography analyze --in suspect.png --ai --allow-ai-file-upload
+```
+
+Optional model and endpoint settings are `NVIDIA_NIM_MODEL` and
+`NVIDIA_NIM_BASE_URL`. Provider errors become structured findings; scans keep
+running.
+
+## REST API
+
+The API is analysis-only: it never exposes embed/extract or accepts server
+filesystem paths. Start it on loopback with:
+
+```bash
+pip install '.[api]'
+steganography serve --host 127.0.0.1 --port 8000
+```
+
+Endpoints:
+
+- `GET /healthz`
+- `GET /v1/modules`
+- `POST /v1/analyze` — one multipart upload, synchronous result
+- `POST /v1/scans` — multipart batch, persistent background job
+- `GET /v1/scans/{job_id}`
+- `DELETE /v1/scans/{job_id}`
+
+Jobs and result JSON are stored in SQLite; uploaded files are removed after
+analysis. Defaults are 50 MiB per file, 20 files/200 MiB per batch, two worker
+threads and 30-day result retention. Environment overrides are documented in
+`.env.example`.
+
+Binding outside loopback is refused unless `STEGANO_API_KEY` is set. Clients
+then send `Authorization: Bearer <key>`. CORS is not enabled. Internet-facing
+deployment still requires a hardened reverse proxy, TLS, network controls and
+operational monitoring.
+
+API image upload to AI requires both request opt-in and
+`STEGANO_ALLOW_AI_FILE_UPLOAD=1` on the server.
+
+## Plug-ins
+
+Built-ins are discovered from `modules/`. Installed distributions can publish
+`Carrier` or `Analyzer` classes through the `steganography.carriers` and
+`steganography.analyzers` entry-point groups. Carrier identifiers must be
+unique; load failures appear in `list-modules` rather than preventing startup.
+
+The supported Python surface is available from the distribution package:
+
+```python
+from pathlib import Path
+from steganography import AnalysisService, StegoService
+
+verdict = AnalysisService(profile="balanced").analyze(Path("evidence.png"))
+print(verdict.overall_score, verdict.file.sha256)
+```
+
+## Development
+
+```bash
+ruff check .
+mypy core modules report api steganography registry.py config.py cli.py
+pytest
+python -m build
+```
+
+CI runs Ruff, mypy, a Python 3.11–3.14 test matrix, a 90% coverage gate, wheel
+construction, an installed-CLI smoke test and the full deterministic benchmark.
+
+### Release process
+
+Version tags matching `vX.Y.Z` run the release workflow. It verifies that the
+tag and package versions match, repeats lint/type/test/benchmark gates, builds
+and checks the wheel and source archive, creates GitHub build-provenance
+attestations, publishes to PyPI through OpenID Connect, then creates the GitHub
+Release. Third-party actions are pinned to full commit SHAs.
+
+Before the first release, configure a PyPI Trusted Publisher for project
+`cyberm4fia-steganography`, repository `erkanrzgc/steganography`, workflow
+`release.yml` and GitHub environment `pypi`. Protecting that environment with
+required reviewers is recommended. Once CI is green, a maintainer can publish
+by pushing a version-matching tag; the workflow uses no long-lived PyPI token.
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
 ## Ethical use
 
-This toolkit is for **authorized** red-team operations, blue-team / DFIR analysis, CTF play, security research, and education. Do not use it against systems or data you are not authorized to test. The author assumes no responsibility for misuse.
+Use this project only on data and systems you own or are explicitly authorized
+to test. It is intended for defensive investigation, sanctioned red-team work,
+CTFs, research and education. The author assumes no responsibility for misuse.
 
 ## License
 
-MIT.
+[MIT](LICENSE)

@@ -37,3 +37,45 @@ def test_analyze_returns_json_when_flag(png_64x64: Path):
     r = _run(["analyze", "--in", str(png_64x64), "--json"])
     assert r.returncode == 0
     assert r.stdout.strip().startswith("[")
+
+
+def test_corpus_and_benchmark_commands(tmp_path: Path):
+    corpus = tmp_path / "corpus"
+    report = tmp_path / "report.json"
+    html = tmp_path / "report.html"
+    generated = _run(
+        [
+            "--quiet",
+            "corpus",
+            "--out",
+            str(corpus),
+            "--method",
+            "image_lsb_png",
+            "--exclude-dct",
+        ]
+    )
+    assert generated.returncode == 0, generated.stderr
+    assert "generated 6 samples" in generated.stdout
+
+    benchmarked = _run(
+        [
+            "--quiet",
+            "benchmark",
+            "--corpus",
+            str(corpus),
+            "--out",
+            str(report),
+            "--html",
+            str(html),
+            "--profile",
+            "balanced",
+            "--min-recall",
+            "0.95",
+            "--max-fpr",
+            "0.05",
+        ]
+    )
+    assert benchmarked.returncode == 0, benchmarked.stderr
+    assert "benchmark gates passed" in benchmarked.stdout
+    assert report.is_file()
+    assert "Gates: PASS" in html.read_text(encoding="utf-8")
