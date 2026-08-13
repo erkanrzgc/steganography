@@ -62,6 +62,10 @@ class Registry:
             try:
                 loaded = entry_point.load()
                 obj = loaded() if inspect.isclass(loaded) else loaded
+                if not isinstance(obj, (Carrier, Analyzer)):
+                    raise TypeError(
+                        f"unsupported plug-in type: {type(obj)!r}"
+                    )
                 self.register(obj)
             except Exception as exc:
                 self._load_errors.append(

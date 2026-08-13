@@ -8,7 +8,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white&style=flat-square" alt="python">
   <img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="license">
-  <img src="https://img.shields.io/badge/tests-119%20passing-22C55E?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/badge/tests-120%20passing-22C55E?style=flat-square" alt="tests">
   <img src="https://img.shields.io/badge/coverage-91%25-22C55E?style=flat-square" alt="coverage">
   <img src="https://img.shields.io/badge/lint-ruff-D7FF64?logo=ruff&logoColor=black&style=flat-square" alt="ruff">
 </p>
