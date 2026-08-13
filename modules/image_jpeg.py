@@ -54,11 +54,19 @@ class ImageJpeg(Carrier):
                     name="appended_data",
                     score=min(100, 50 + trailer_len // 32),
                     detail=f"{trailer_len} bytes after JPEG EOI",
+                    category="appended_data",
+                    evidence="strong",
                 )
             )
         if _APP_MAGIC in data:
             signals.append(
-                Signal(name="stegapp_marker", score=95, detail="STEGAPP marker found"),
+                Signal(
+                    name="stegapp_marker",
+                    score=95,
+                    detail="STEGAPP marker found",
+                    category="known_marker",
+                    evidence="verified",
+                ),
             )
         suspicion = max((s.score for s in signals), default=0)
         return AnalysisResult(self.name, suspicion, tuple(signals), None)

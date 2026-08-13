@@ -54,7 +54,13 @@ class FilestructAppended(Carrier):
         if not trailer:
             return AnalysisResult(self.name, 0, (), None)
         signals.append(
-            Signal(name="appended_data", score=70, detail=f"{len(trailer)} bytes after EOF marker")
+            Signal(
+                name="appended_data",
+                score=70,
+                detail=f"{len(trailer)} bytes after EOF marker",
+                category="appended_data",
+                evidence="strong",
+            )
         )
         for sig, label in _APPENDED_SIGNATURES.items():
             if trailer.startswith(sig):
@@ -63,6 +69,8 @@ class FilestructAppended(Carrier):
                         name=f"embedded_{label.replace(' ', '_')}",
                         score=95,
                         detail=label,
+                        category="polyglot",
+                        evidence="verified",
                     )
                 )
                 break

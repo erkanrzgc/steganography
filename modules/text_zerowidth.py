@@ -49,5 +49,11 @@ class TextZeroWidth(Carrier):
         # Zero-width chars almost never appear in legitimate text; any presence
         # is highly suspicious, with score increasing as count grows.
         score = min(100, 70 + count // 2)
-        sig = Signal(name="zero_width_chars", score=score, detail=f"{count} zero-width chars")
+        sig = Signal(
+            name="zero_width_chars",
+            score=score,
+            detail=f"{count} zero-width chars",
+            category="text_unicode",
+            evidence="strong",
+        )
         return AnalysisResult(self.name, score, (sig,), None)
