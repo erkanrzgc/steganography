@@ -1,0 +1,6 @@
+# Reproducibility boundary for benchmarks/baseline.json on Ubuntu x86_64 / Python 3.11.
+# Update these pins deliberately and regenerate the corpus baseline together.
+jpeglib==1.0.2
+numpy==2.4.6
+piexif==1.1.3
+pillow==12.2.0

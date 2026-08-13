@@ -53,7 +53,6 @@ class ImageJpegDct(Carrier):
         steg_key: str | None = None,
         options: dict[str, Any] | None = None,
     ) -> EmbedResult:
-        del options
         self._require_available()
         if not steg_key:
             raise ValueError("image_jpeg_dct requires --steg-key or --password")
@@ -65,7 +64,10 @@ class ImageJpegDct(Carrier):
         with tempfile.NamedTemporaryFile(prefix="steg-dct-", suffix=".bin") as stream:
             stream.write(payload)
             stream.flush()
-            _run_worker("embed", src, out, Path(stream.name), key=steg_key)
+            salt = _placement_salt(options)
+            _run_worker(
+                "embed", src, out, Path(stream.name), key=steg_key, salt=salt
+            )
         return EmbedResult(self.identifier, out, len(payload), encrypted=False)
 
     def extract(self, src: Path) -> bytes:
@@ -131,9 +133,12 @@ def _run_worker(
     operation: str,
     *paths: Path,
     key: str | None = None,
+    salt: bytes | None = None,
 ) -> dict[str, Any]:
     command = [sys.executable, "-m", _WORKER_MODULE, operation]
     command.extend(str(path) for path in paths)
+    if salt is not None:
+        command.append(salt.hex())
     try:
         completed = subprocess.run(  # noqa: S603 - fixed interpreter/module and paths
             command,
@@ -154,3 +159,12 @@ def _run_worker(
         return json.loads(completed.stdout)
     except json.JSONDecodeError as exc:
         raise RuntimeError("JPEG DCT worker returned malformed JSON") from exc
+
+
+def _placement_salt(options: dict[str, Any] | None) -> bytes | None:
+    value = (options or {}).get("placement_salt")
+    if value is None:
+        return None
+    if not isinstance(value, bytes) or len(value) != 16:
+        raise ValueError("placement_salt must be exactly 16 bytes")
+    return value

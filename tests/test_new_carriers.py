@@ -93,3 +93,25 @@ def test_scatter_rejects_missing_key_channels_and_capacity(
             steg_key="k",
             options={"channels": "r"},
         )
+
+
+def test_scatter_fixed_salt_is_deterministic(png_64x64: Path, tmp_path: Path):
+    carrier = ImageLsbScatter()
+    options = {"channels": "rgb", "placement_salt": b"s" * 16}
+    first = tmp_path / "first.png"
+    second = tmp_path / "second.png"
+    carrier.embed_with_options(
+        png_64x64, b"deterministic", first, steg_key="key", options=options
+    )
+    carrier.embed_with_options(
+        png_64x64, b"deterministic", second, steg_key="key", options=options
+    )
+    assert first.read_bytes() == second.read_bytes()
+    with pytest.raises(ValueError, match="exactly 16 bytes"):
+        carrier.embed_with_options(
+            png_64x64,
+            b"x",
+            tmp_path / "invalid.png",
+            steg_key="key",
+            options={"placement_salt": b"short"},
+        )

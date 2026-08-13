@@ -2,13 +2,13 @@
 
 <p align="center">
   <b>Embed, extract and analyze hidden data from one defensive Python toolkit.</b><br>
-  Versioned payloads · AES-256-GCM · evidence-oriented reports · optional local REST API.
+  Versioned payloads · AES-256-GCM · evidence-oriented reports · reproducible benchmarks.
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white&style=flat-square" alt="python">
   <img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="license">
-  <img src="https://img.shields.io/badge/tests-111%20passing-22C55E?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/badge/tests-119%20passing-22C55E?style=flat-square" alt="tests">
   <img src="https://img.shields.io/badge/coverage-91%25-22C55E?style=flat-square" alt="coverage">
   <img src="https://img.shields.io/badge/lint-ruff-D7FF64?logo=ruff&logoColor=black&style=flat-square" alt="ruff">
 </p>
@@ -19,7 +19,14 @@ optional NVIDIA NIM triage, resilient directory scans and carrier plug-ins.
 
 ## Install
 
-Install the base CLI from a checkout:
+The distribution is named `cyberm4fia-steganography`; the command and Python
+package remain `steganography`. Install a published release with:
+
+```bash
+pip install cyberm4fia-steganography
+```
+
+Or install the base CLI from a checkout:
 
 ```bash
 python -m venv .venv
@@ -42,7 +49,7 @@ available. Build and installable wheels are supported:
 
 ```bash
 python -m build
-pip install dist/steganography-*.whl
+pip install dist/cyberm4fia_steganography-*.whl
 ```
 
 ## CLI
@@ -78,6 +85,39 @@ The default analysis profile is `sensitive`; `balanced` and `strict` are also
 available. Exit status is unchanged unless `--fail-on medium|high` is set.
 Directory scans do not follow symlinks by default, skip their own report file,
 and record per-module failures instead of aborting the scan.
+
+## Reproducible corpus and benchmarks
+
+Generate a labeled clean/stego corpus and evaluate every analysis profile:
+
+```bash
+steganography corpus --out .benchmark/corpus --seed 20260813
+steganography benchmark \
+  --corpus .benchmark/corpus \
+  --out .benchmark/report.json \
+  --html .benchmark/report.html \
+  --baseline benchmarks/baseline.json \
+  --min-recall 0.95 \
+  --max-fpr 0.05 \
+  --jobs 4
+```
+
+With the `dct` extra installed, the default corpus contains 66 paired samples
+over 11 carrier/format recipes and low, medium and high payload densities. Its
+covers, payload bytes and keyed placement salts are derived from the seed;
+identical dependencies therefore produce the same manifest digest and file
+hashes. CI applies `benchmarks/constraints.txt` to pin the codec/numeric
+reproducibility boundary. The generator writes through a staging directory and
+`--force` only replaces directories carrying its own marker.
+
+Reports include confusion matrices, precision, recall, specificity, FPR, F1,
+ROC-AUC and average precision, plus method, density and format breakdowns.
+Absolute gates and baseline-delta gates return a non-zero exit status on a
+regression. The committed 0.5.0 baseline has 66 samples, recall `1.000` and FPR
+`0.000` for all three profiles.
+
+Use repeatable `--method` flags to build a smaller corpus or `--exclude-dct`
+when the optional JPEG dependency is unavailable.
 
 ### Payload compatibility
 
@@ -187,13 +227,29 @@ print(verdict.overall_score, verdict.file.sha256)
 
 ```bash
 ruff check .
-mypy core modules report api registry.py config.py cli.py
+mypy core modules report api steganography registry.py config.py cli.py
 pytest
 python -m build
 ```
 
 CI runs Ruff, mypy, a Python 3.11–3.14 test matrix, a 90% coverage gate, wheel
-construction and an installed-CLI smoke test.
+construction, an installed-CLI smoke test and the full deterministic benchmark.
+
+### Release process
+
+Version tags matching `vX.Y.Z` run the release workflow. It verifies that the
+tag and package versions match, repeats lint/type/test/benchmark gates, builds
+and checks the wheel and source archive, creates GitHub build-provenance
+attestations, publishes to PyPI through OpenID Connect, then creates the GitHub
+Release. Third-party actions are pinned to full commit SHAs.
+
+Before the first release, configure a PyPI Trusted Publisher for project
+`cyberm4fia-steganography`, repository `erkanrzgc/steganography`, workflow
+`release.yml` and GitHub environment `pypi`. Protecting that environment with
+required reviewers is recommended. Once CI is green, a maintainer can publish
+by pushing a version-matching tag; the workflow uses no long-lived PyPI token.
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
 ## Ethical use
 
