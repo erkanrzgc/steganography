@@ -38,7 +38,8 @@ jobs:
               raise SystemExit(f"tag {actual!r} does not match {expected!r}")
           PY
       - run: ruff check .
-      - run: mypy core modules report api steganography registry.py config.py cli.py
+      - run: python scripts/check-identity.py
+      - run: mypy core modules report api steganography ui registry.py config.py cli.py
       - run: pytest
       - name: Generate and benchmark release corpus
         run: |
@@ -52,7 +53,10 @@ jobs:
             --max-fpr 0.05 \
             --jobs 4
       - run: python -m build
+      - run: python scripts/check-identity.py dist
       - run: python -m twine check dist/*
+      - name: Generate CycloneDX SBOM
+        run: python scripts/generate-sbom.py --out dist/steganography.cdx.json
       - name: Generate build provenance
         uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
@@ -75,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/cyberm4fia-steganography
+      url: https://pypi.org/p/steganography-dfir
     permissions:
       id-token: write
     steps:

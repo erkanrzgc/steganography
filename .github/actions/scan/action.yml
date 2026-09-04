@@ -1,0 +1,32 @@
+name: steganography repository scan
+description: Scan repository artifacts and produce JSON v2, HTML and SARIF reports
+inputs:
+  path:
+    description: Directory to scan
+    required: false
+    default: .
+  profile:
+    description: sensitive, balanced or strict
+    required: false
+    default: balanced
+outputs:
+  sarif:
+    description: SARIF report path
+    value: ${{ steps.scan.outputs.sarif }}
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: python -m pip install '${{ github.action_path }}/../../..'
+    - id: scan
+      shell: bash
+      env:
+        SCAN_PATH: ${{ inputs.path }}
+        SCAN_PROFILE: ${{ inputs.profile }}
+      run: |
+        mkdir -p steganography-reports
+        steganography --quiet scan --dir "$SCAN_PATH" --profile "$SCAN_PROFILE" \
+          --report sarif --out steganography-reports/results.sarif
+        steganography --quiet scan --dir "$SCAN_PATH" --profile "$SCAN_PROFILE" \
+          --report html --out steganography-reports/report.html
+        echo "sarif=steganography-reports/results.sarif" >> "$GITHUB_OUTPUT"

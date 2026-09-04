@@ -1,0 +1,51 @@
+# syntax=docker/dockerfile:1.7
+# GPL tools remain independent executables; the Python project does not link them.
+ARG STEGSEEK_VERSION=0.6
+ARG ZSTEG_VERSION=0.2.13
+
+FROM debian:bookworm-slim AS stegseek
+ARG STEGSEEK_VERSION
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates cmake g++ git make libmhash-dev libmcrypt-dev libjpeg-dev zlib1g-dev \
+ && git clone --depth 1 --branch v${STEGSEEK_VERSION} \
+      https://github.com/RickdeJager/stegseek.git /src \
+ && cmake -S /src -B /src/build -DCMAKE_BUILD_TYPE=Release \
+ && cmake --build /src/build --parallel 2 \
+ && cmake --install /src/build --prefix /out
+
+FROM node:22.22.1-bookworm-slim AS web
+WORKDIR /src/web
+COPY web/package.json web/package-lock.json* ./
+RUN npm ci --no-audit --no-fund
+COPY web/ ./
+RUN npm run build
+
+FROM python:3.11.13-slim-bookworm
+ARG ZSTEG_VERSION
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 STEGANO_STATE_DIR=/state
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      exiftool ruby ca-certificates libjpeg62-turbo libmcrypt4 libmhash2 \
+ && gem install zsteg --version ${ZSTEG_VERSION} --no-document \
+ && rm -rf /var/lib/apt/lists/* \
+ && groupadd --system --gid 10001 steganography \
+ && useradd --system --uid 10001 --gid 10001 --home /nonexistent steganography
+COPY --from=stegseek /out/bin/stegseek /usr/local/bin/stegseek
+WORKDIR /app
+COPY pyproject.toml README.md LICENSE THIRD_PARTY_NOTICES.md ./
+COPY api ./api
+COPY core ./core
+COPY modules ./modules
+COPY report ./report
+COPY steganography ./steganography
+COPY ui ./ui
+COPY cli.py config.py registry.py ./
+COPY docker-entrypoint.sh /usr/local/bin/steganography-entrypoint
+RUN pip --default-timeout=300 install --retries 10 --no-cache-dir '.[api,dct,ml]'
+COPY --from=web /src/web/dist ./steganography/web
+RUN chmod 0755 /usr/local/bin/steganography-entrypoint \
+ && mkdir -p /state && chown 10001:10001 /state
+USER 10001:10001
+EXPOSE 8000
+VOLUME ["/state"]
+ENTRYPOINT ["/usr/local/bin/steganography-entrypoint"]
+CMD ["steganography", "--quiet", "serve", "--host", "0.0.0.0", "--port", "8000"]

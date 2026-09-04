@@ -60,3 +60,7 @@ desktop.ini
 scans/
 .benchmark/
 *.log
+
+# --- Web -------------------------------------------------------------------
+web/node_modules/
+web/dist/

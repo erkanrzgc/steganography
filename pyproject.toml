@@ -3,11 +3,11 @@ requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cyberm4fia-steganography"
+name = "steganography-dfir"
 version = "0.5.0"
-description = "Dual-purpose steganography toolkit: embed/extract + steganalysis"
+description = "Local-first steganography and DFIR workbench for analysis and evidence handling"
 requires-python = ">=3.11"
-authors = [{ name = "erkanrzgc" }]
+authors = [{ name = "Steganography contributors" }]
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
@@ -32,12 +32,15 @@ classifiers = [
     "Topic :: Security",
 ]
 dependencies = [
-    "cryptography>=41",
+    "cryptography>=44",
     "numpy>=1.26",
     "piexif>=1.1",
     "pillow>=10",
+    "PyNaCl>=1.5",
+    "reedsolo>=1.7",
     "python-dotenv>=1.0",
     "rich>=13",
+    "textual>=8.2,<9",
 ]
 
 [project.urls]
@@ -56,6 +59,8 @@ api = [
     "uvicorn>=0.30",
 ]
 dct = ["jpeglib>=0.14"]
+ml = ["onnxruntime>=1.20"]
+research = ["torch>=2.4", "onnx>=1.17"]
 dev = [
     "build>=1.2",
     "httpx2>=2.10",
@@ -76,6 +81,9 @@ steganography = "steganography.__main__:main"
 
 [tool.setuptools]
 py-modules = ["cli", "config", "registry"]
+
+[tool.setuptools.package-data]
+steganography = ["web/**/*"]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -100,5 +108,5 @@ check_untyped_defs = true
 warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
-module = ["jpeglib", "piexif"]
+module = ["jpeglib", "piexif", "nacl.bindings", "onnxruntime", "reedsolo", "torch"]
 ignore_missing_imports = true

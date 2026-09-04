@@ -1,5 +1,26 @@
 # Changelog
 
+## Unreleased — local-first platform
+
+- Added the versioned case/evidence/analysis/finding/artifact/model/audit SQLite
+  schema, SHA-256 deduplication and retention-aware case lifecycle.
+- Added an Argon2id-unlocked libsodium secretstream evidence vault with
+  authenticated chunking, tamper detection and in-memory key locking.
+- Added authenticated `/v2` cases, evidence, scans, SSE jobs, reports, Studio,
+  artifacts, models and audit endpoints while retaining `/v1` compatibility.
+- Added JSON v2 verdicts, portable HTML, SARIF, correlation-aware ensemble
+  helpers, signed model registry and reproducible dataset manifests.
+- Added integrity-checked held-out research benchmarks with split isolation,
+  source diversity, ROC-AUC and high-confidence false-positive quality gates.
+- Added payload v3 with Argon2id/AES-GCM, metadata, compression and optional
+  Reed–Solomon recovery; v1/v2 extraction remains supported.
+- Added bit-plane, archive and text-anomaly analyzers plus bounded zsteg,
+  Stegseek and ExifTool adapters.
+- Added the React/Vite local workspace, core/full containers, Compose hardening,
+  repository SARIF action, threat model and third-party notices.
+- Added a keyboard-first Textual workbench with guided scan, Studio, evidence
+  custody, persistent scans, report export, and an honest advanced workspace.
+
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and releases use
 [Semantic Versioning](https://semver.org/).
@@ -20,7 +41,7 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
-- Distribution name is now `cyberm4fia-steganography` because the generic
+- Distribution name is now `steganography-dfir` because the generic
   `steganography` name is already owned on PyPI. The CLI and Python import name
   remain `steganography`.
 - Tool-produced whitespace and zero-width payloads are validated as complete

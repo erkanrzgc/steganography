@@ -1,19 +1,26 @@
 """steganography CLI: embed, extract, analyze, scan, serve and list-modules."""
+
 from __future__ import annotations
 
 import argparse
 import concurrent.futures
 import json
 import os
+import shutil
 import sys
 from collections.abc import Iterable
 from pathlib import Path
 
+from core.automation import iter_ndjson
+from core.pipeline import AnalysisPipeline
 from core.result import AnalysisResult, ScanReport
 from core.service import AnalysisService, StegoService
+from core.vault import VaultService
 from core.version import __version__
+from core.workspace import Workspace, create_workspace
 from registry import Registry
 from report.report import write_html, write_json, write_json_v1
+from report.v2 import html_v2, json_v2, sarif_v2
 from ui.banner import print_gradient_banner
 
 
@@ -65,11 +72,11 @@ def cmd_embed(args: argparse.Namespace) -> int:
         steg_key=args.steg_key,
         options={"channels": args.channels},
         no_clobber=args.no_clobber,
+        payload_version=args.payload_version,
+        compress=args.compress,
+        ecc_symbols=args.ecc_symbols,
     )
-    print(
-        f"embedded {result.bytes_written} bytes via {result.carrier} "
-        f"→ {result.out_path}"
-    )
+    print(f"embedded {result.bytes_written} bytes via {result.carrier} → {result.out_path}")
     return 0
 
 
@@ -83,9 +90,7 @@ def cmd_extract(args: argparse.Namespace) -> int:
         steg_key=args.steg_key,
         no_clobber=args.no_clobber,
     )
-    print(
-        f"extracted {size} bytes via {carrier} (payload v{version}) → {args.out}"
-    )
+    print(f"extracted {size} bytes via {carrier} (payload v{version}) → {args.out}")
     return 0
 
 
@@ -109,7 +114,7 @@ def _legacy_result(result: AnalysisResult) -> dict:
 def cmd_analyze(args: argparse.Namespace) -> int:
     registry = _build_registry()
     status = _enable_ai_if_requested(args)
-    machine_output = args.json or args.output_format == "json-v1"
+    machine_output = args.json or args.output_format in {"json-v1", "json-v2"}
     if status and not machine_output:
         print(status, file=sys.stderr)
     maximum = args.max_file_size * 1024 * 1024 if args.max_file_size else None
@@ -128,11 +133,13 @@ def cmd_analyze(args: argparse.Namespace) -> int:
                 ensure_ascii=False,
             )
         )
+    elif args.output_format == "json-v2":
+        report = AnalysisPipeline(
+            AnalysisService(registry, profile=args.profile, max_file_size=maximum)
+        ).analyze(Path(args.input))
+        print(json_v2(report.to_dict()))
     else:
-        print(
-            f"  overall [{analysis.overall_score:3d}] "
-            f"{analysis.severity} ({analysis.profile})"
-        )
+        print(f"  overall [{analysis.overall_score:3d}] {analysis.severity} ({analysis.profile})")
         print(
             f"  sha256 {analysis.file.sha256}  "
             f"type={analysis.file.detected_type} size={analysis.file.size}"
@@ -142,8 +149,7 @@ def cmd_analyze(args: argparse.Namespace) -> int:
             print(f"  [{result.suspicion:3d}] {result.analyzer} [{result.status}]{suffix}")
             for signal in result.signals:
                 print(
-                    f"        - {signal.name}({signal.score}, {signal.evidence}): "
-                    f"{signal.detail}"
+                    f"        - {signal.name}({signal.score}, {signal.evidence}): {signal.detail}"
                 )
     return _failure_exit((analysis.overall_score,), args.fail_on)
 
@@ -183,20 +189,33 @@ def cmd_scan(args: argparse.Namespace) -> int:
         write_json_v1(scan_report, out)
         result_count = len(analyses)
     elif args.report == "json":
-        rows = [
-            (Path(item.file.path), result)
-            for item in analyses
-            for result in item.results
-        ]
+        rows = [(Path(item.file.path), result) for item in analyses for result in item.results]
         write_json(rows, out)
         result_count = len(rows)
+    elif args.report in {"json-v2", "sarif", "ndjson"}:
+        pipeline = AnalysisPipeline(service)
+        v2_files = [pipeline.analyze(path).to_dict() for path in paths]
+        v2_report = {
+            "schema_version": "2.0",
+            "profile": args.profile,
+            "files": v2_files,
+        }
+        out.parent.mkdir(parents=True, exist_ok=True)
+        if args.report == "ndjson":
+            out.write_bytes(b"".join(iter_ndjson(v2_files)))
+        else:
+            content = (
+                json.dumps(sarif_v2(v2_report), indent=2)
+                if args.report == "sarif"
+                else json_v2(v2_report)
+            )
+            out.write_text(content, encoding="utf-8")
+        result_count = len(v2_files)
     else:
         write_html(scan_report, out)
         result_count = len(analyses)
     print(f"scanned {len(paths)} files / {result_count} results → {out}")
-    return _failure_exit(
-        (analysis.overall_score for analysis in analyses), args.fail_on
-    )
+    return _failure_exit((analysis.overall_score for analysis in analyses), args.fail_on)
 
 
 def cmd_list_modules(_: argparse.Namespace) -> int:
@@ -296,6 +315,168 @@ def cmd_benchmark(args: argparse.Namespace) -> int:
     return 0 if report["gates"]["passed"] else 1
 
 
+def _workspace(args: argparse.Namespace) -> Workspace:
+    return create_workspace(args.state_dir)
+
+
+def _unlock_for_command(vault: VaultService, args: argparse.Namespace) -> None:
+    password = _password_from_args(args)
+    if not password:
+        raise ValueError("vault password is required")
+    if vault.initialized:
+        vault.unlock(password)
+    else:
+        vault.initialize(password)
+
+
+def cmd_case_create(args: argparse.Namespace) -> int:
+    workspace = _workspace(args)
+    value = workspace.cases.create_case(
+        args.name,
+        description=args.description,
+        retention_days=args.retention_days,
+    )
+    print(json.dumps(value, indent=2))
+    return 0
+
+
+def cmd_case_add(args: argparse.Namespace) -> int:
+    workspace = _workspace(args)
+    try:
+        _unlock_for_command(workspace.vault, args)
+        value = workspace.cases.add_evidence(args.case_id, Path(args.file))
+    finally:
+        workspace.lock()
+    print(json.dumps(value, indent=2))
+    return 0
+
+
+def cmd_case_scan(args: argparse.Namespace) -> int:
+    workspace = _workspace(args)
+    try:
+        _unlock_for_command(workspace.vault, args)
+        scan = workspace.scans.create(args.case_id, profile=args.profile)
+        result = workspace.scans.run(scan["id"])
+    finally:
+        workspace.lock()
+    print(json.dumps(result, indent=2))
+    return 0 if result["status"] == "completed" else 1
+
+
+def cmd_case_export(args: argparse.Namespace) -> int:
+    workspace = _workspace(args)
+    scan = workspace.scans.get(args.scan_id)
+    if scan["result"] is None:
+        raise ValueError("scan report is not ready")
+    if args.format == "html":
+        content = html_v2(scan["result"])
+    elif args.format == "sarif":
+        content = json.dumps(sarif_v2(scan["result"]), indent=2)
+    else:
+        content = json_v2(scan["result"])
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(content, encoding="utf-8")
+    print(f"exported {args.format} report → {out}")
+    return 0
+
+
+def cmd_models(args: argparse.Namespace) -> int:
+    models = _workspace(args).models
+    if args.models_cmd == "list":
+        print(json.dumps({"items": models.list(), "runtime": models.runtime_status()}, indent=2))
+        return 0
+    if args.models_cmd == "install":
+        value = models.install(Path(args.manifest), public_key=args.public_key)
+        print(json.dumps(value, indent=2))
+        return 0
+    valid = models.verify_installed(args.model_id, args.model_version)
+    print("valid" if valid else "invalid")
+    return 0 if valid else 1
+
+
+def cmd_research_import(args: argparse.Namespace) -> int:
+    from steganography.research import import_dataset
+
+    manifest = import_dataset(Path(args.source), Path(args.out), seed=args.seed)
+    print(f"imported {manifest['sample_count']} samples → {args.out}")
+    return 0
+
+
+def cmd_research_benchmark(args: argparse.Namespace) -> int:
+    from steganography.research import benchmark_predictions
+
+    report = benchmark_predictions(
+        Path(args.manifest),
+        Path(args.predictions),
+        Path(args.out),
+        source=Path(args.source) if args.source else None,
+        threshold=args.threshold,
+        min_samples=args.min_samples,
+        min_source_groups=args.min_source_groups,
+        min_roc_auc=args.min_roc_auc,
+        max_fpr=args.max_fpr,
+    )
+    print(json.dumps(report, indent=2))
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_research_unavailable(args: argparse.Namespace) -> int:
+    try:
+        import torch  # noqa: F401
+    except ImportError as exc:
+        raise RuntimeError("research runtime is unavailable; install '.[research]'") from exc
+    raise RuntimeError(
+        f"research {args.research_cmd} requires an explicit experiment configuration"
+    )
+
+
+def cmd_doctor(args: argparse.Namespace) -> int:
+    workspace = _workspace(args)
+    audit_valid, audit_events, audit_error = workspace.database.verify_audit()
+    tools = {name: shutil.which(name) for name in ("zsteg", "stegseek", "exiftool")}
+    value = {
+        "version": __version__,
+        "state_dir": str(workspace.state_dir),
+        "vault": {
+            "initialized": workspace.vault.initialized,
+            "unlocked": workspace.vault.unlocked,
+        },
+        "audit": {"valid": audit_valid, "events": audit_events, "error": audit_error},
+        "external_tools": {
+            name: {"status": "available" if path else "unavailable", "path": path}
+            for name, path in tools.items()
+        },
+        "models": {
+            "installed": len(workspace.models.list()),
+            "runtime": workspace.models.runtime_status(),
+        },
+        "network_default": "disabled",
+    }
+    print(json.dumps(value, indent=2))
+    return 0 if audit_valid else 1
+
+
+def cmd_ui(args: argparse.Namespace) -> int:
+    state_dir = _workspace(args).state_dir
+    os.environ["STEGANO_STATE_DIR"] = str(state_dir)
+    token_path = state_dir / "v2-api.key"
+    from api.v2 import _local_api_key
+
+    _local_api_key(token_path)
+    print(f"local UI/API: http://{args.host}:{args.port}")
+    print(f"v2 API token file: {token_path}", file=sys.stderr)
+    return cmd_serve(args)
+
+
+def cmd_tui(args: argparse.Namespace) -> int:
+    """Launch the direct, local terminal workspace."""
+    from ui.tui import run_tui
+
+    run_tui(args.state_dir)
+    return 0
+
+
 def _failure_exit(scores: Iterable[int], fail_on: str | None) -> int:
     if fail_on is None:
         return 0
@@ -336,7 +517,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="steganography")
     parser.add_argument("--version", action="version", version=__version__)
     parser.add_argument("--quiet", action="store_true", help="suppress banner")
-    commands = parser.add_subparsers(dest="cmd", required=True)
+    commands = parser.add_subparsers(dest="cmd")
 
     embed = commands.add_parser("embed")
     embed.add_argument("--in", dest="input", required=True)
@@ -345,6 +526,9 @@ def build_parser() -> argparse.ArgumentParser:
     embed.add_argument("--method")
     embed.add_argument("--steg-key")
     embed.add_argument("--channels", default="rgb")
+    embed.add_argument("--payload-version", type=int, choices=(2, 3), default=2)
+    embed.add_argument("--compress", action="store_true")
+    embed.add_argument("--ecc-symbols", type=int, choices=range(0, 256), default=0)
     embed.add_argument("--no-clobber", action="store_true")
     _add_password_options(embed)
     embed.set_defaults(fn=cmd_embed)
@@ -364,7 +548,7 @@ def build_parser() -> argparse.ArgumentParser:
     analyze.add_argument(
         "--format",
         dest="output_format",
-        choices=("text", "json-v1"),
+        choices=("text", "json-v1", "json-v2"),
         default="text",
     )
     _add_analysis_options(analyze)
@@ -372,7 +556,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     scan = commands.add_parser("scan")
     scan.add_argument("--dir", required=True)
-    scan.add_argument("--report", choices=("json", "html", "json-v1"), default="html")
+    scan.add_argument(
+        "--report",
+        choices=("json", "html", "json-v1", "json-v2", "ndjson", "sarif"),
+        default="html",
+    )
     scan.add_argument("--out", required=True)
     scan.add_argument("--jobs", type=int, default=min(4, os.cpu_count() or 1))
     scan.add_argument("--follow-symlinks", action="store_true")
@@ -421,11 +609,101 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark.add_argument("--max-recall-drop", type=float, default=0.02)
     benchmark.add_argument("--max-fpr-increase", type=float, default=0.02)
     benchmark.set_defaults(fn=cmd_benchmark)
+
+    case = commands.add_parser("case", help="manage local DFIR cases")
+    case.add_argument("--state-dir")
+    case_commands = case.add_subparsers(dest="case_cmd", required=True)
+    case_create = case_commands.add_parser("create")
+    case_create.add_argument("--name", required=True)
+    case_create.add_argument("--description", default="")
+    case_create.add_argument("--retention-days", type=int)
+    case_create.set_defaults(fn=cmd_case_create)
+    case_add = case_commands.add_parser("add")
+    case_add.add_argument("case_id")
+    case_add.add_argument("--file", required=True)
+    _add_password_options(case_add)
+    case_add.set_defaults(fn=cmd_case_add)
+    case_scan = case_commands.add_parser("scan")
+    case_scan.add_argument("case_id")
+    case_scan.add_argument(
+        "--profile", choices=("sensitive", "balanced", "strict"), default="sensitive"
+    )
+    _add_password_options(case_scan)
+    case_scan.set_defaults(fn=cmd_case_scan)
+    case_export = case_commands.add_parser("export")
+    case_export.add_argument("scan_id")
+    case_export.add_argument("--format", choices=("json", "html", "sarif"), default="html")
+    case_export.add_argument("--out", required=True)
+    case_export.set_defaults(fn=cmd_case_export)
+
+    models = commands.add_parser("models", help="manage signed local ONNX models")
+    models.add_argument("--state-dir")
+    model_commands = models.add_subparsers(dest="models_cmd", required=True)
+    model_list = model_commands.add_parser("list")
+    model_list.set_defaults(fn=cmd_models)
+    model_install = model_commands.add_parser("install")
+    model_install.add_argument("--manifest", required=True)
+    model_install.add_argument("--public-key", required=True)
+    model_install.set_defaults(fn=cmd_models)
+    model_verify = model_commands.add_parser("verify")
+    model_verify.add_argument("model_id")
+    model_verify.add_argument("model_version")
+    model_verify.set_defaults(fn=cmd_models)
+
+    research = commands.add_parser("research", help="reproducible research workflows")
+    research_commands = research.add_subparsers(dest="research_cmd", required=True)
+    research_import = research_commands.add_parser("import")
+    research_import.add_argument("--source", required=True)
+    research_import.add_argument("--out", required=True)
+    research_import.add_argument("--seed", type=int, default=20260813)
+    research_import.set_defaults(fn=cmd_research_import)
+    research_benchmark = research_commands.add_parser("benchmark")
+    research_benchmark.add_argument("--manifest", required=True)
+    research_benchmark.add_argument("--predictions", required=True)
+    research_benchmark.add_argument("--out", required=True)
+    research_benchmark.add_argument("--source")
+    research_benchmark.add_argument("--threshold", type=float, default=0.9)
+    research_benchmark.add_argument("--min-samples", type=int, default=5_000)
+    research_benchmark.add_argument("--min-source-groups", type=int, default=2)
+    research_benchmark.add_argument("--min-roc-auc", type=float, default=0.8)
+    research_benchmark.add_argument("--max-fpr", type=float, default=0.05)
+    research_benchmark.set_defaults(fn=cmd_research_benchmark)
+    for name in ("train", "export-onnx"):
+        research_command = research_commands.add_parser(name)
+        research_command.set_defaults(fn=cmd_research_unavailable)
+
+    doctor = commands.add_parser("doctor", help="verify local platform dependencies")
+    doctor.add_argument("--state-dir")
+    doctor.set_defaults(fn=cmd_doctor)
+
+    ui = commands.add_parser("ui", help="start the local web panel and API")
+    ui.add_argument("--state-dir")
+    ui.add_argument("--host", default="127.0.0.1")
+    ui.add_argument("--port", type=int, default=8000)
+    ui.add_argument("--workers", type=int, default=2)
+    ui.add_argument("--retention-days", type=int, default=30)
+    ui.set_defaults(fn=cmd_ui)
+
+    tui = commands.add_parser("tui", help="open the guided terminal workbench")
+    tui.add_argument("--state-dir")
+    tui.set_defaults(fn=cmd_tui)
     return parser
 
 
 _MACHINE_READABLE_CMDS = frozenset(
-    {"list-modules", "extract", "serve", "corpus", "benchmark"}
+    {
+        "list-modules",
+        "extract",
+        "serve",
+        "corpus",
+        "benchmark",
+        "case",
+        "models",
+        "research",
+        "doctor",
+        "ui",
+        "tui",
+    }
 )
 
 
@@ -433,12 +711,23 @@ def _should_show_banner(args: argparse.Namespace) -> bool:
     if args.quiet or args.cmd in _MACHINE_READABLE_CMDS:
         return False
     if args.cmd == "analyze":
-        return not (args.json or args.output_format == "json-v1")
+        return not (args.json or args.output_format in {"json-v1", "json-v2"})
     return True
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if args.cmd is None:
+        source = sys.argv[1:] if argv is None else argv
+        interactive = not source and sys.stdin.isatty() and sys.stdout.isatty()
+        if interactive:
+            from ui.tui import run_tui
+
+            run_tui()
+        else:
+            parser.print_help()
+        return 0
     if _should_show_banner(args):
         print_gradient_banner()
     try:

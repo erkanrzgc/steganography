@@ -1,18 +1,28 @@
 """Application services shared by the CLI and REST API."""
+
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 import os
 import tempfile
+import zlib
 from collections.abc import Iterable
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
-from core.crypto import KDF_SALT_LEN, decrypt, encrypt
+from core.crypto import (
+    KDF_SALT_LEN,
+    DecryptionError,
+    decrypt,
+    decrypt_v3,
+    encrypt,
+    encrypt_v3,
+)
 from core.filetype import detect_type, extension_mismatch
-from core.payload import InvalidPayloadError, ParsedPayload, pack, unpack
+from core.payload import VERSION_3, InvalidPayloadError, ParsedPayload, pack, pack_v3, unpack
 from core.result import AnalysisResult, EmbedResult, FileAnalysis, FileInfo, Signal
 from registry import Registry
 
@@ -114,9 +124,7 @@ class AnalysisService:
             raise FileNotFoundError(path)
         size = path.stat().st_size
         if self.max_file_size is not None and size > self.max_file_size:
-            raise ValueError(
-                f"file is {size} bytes; configured maximum is {self.max_file_size}"
-            )
+            raise ValueError(f"file is {size} bytes; configured maximum is {self.max_file_size}")
 
         detected = detect_type(path)
         info = FileInfo(
@@ -130,9 +138,7 @@ class AnalysisService:
             extension_mismatch=extension_mismatch(path, detected),
         )
         results: list[AnalysisResult] = []
-        for carrier in self.registry.select_carriers(
-            path, detected_extension=detected.extension
-        ):
+        for carrier in self.registry.select_carriers(path, detected_extension=detected.extension):
             results.append(_safe_analyze(carrier.identifier, carrier.analyze, path))
 
         ai_triage: Any | None = None
@@ -144,10 +150,7 @@ class AnalysisService:
 
         if ai_triage is not None:
             prior = tuple(
-                signal
-                for result in results
-                if result.status == "ok"
-                for signal in result.signals
+                signal for result in results if result.status == "ok" for signal in result.signals
             )
             if self.ai_provider is _USE_REGISTERED_AI:
                 results.append(_safe_ai_analyze(ai_triage, path, prior))
@@ -233,13 +236,9 @@ def _safe_ai_analyze(analyzer: Any, path: Path, prior: tuple[Signal, ...]) -> An
     return result
 
 
-def _safe_ai_provider(
-    provider: Any, path: Path, prior: tuple[Signal, ...]
-) -> AnalysisResult:
+def _safe_ai_provider(provider: Any, path: Path, prior: tuple[Signal, ...]) -> AnalysisResult:
     try:
-        score, explanation = provider(
-            {"path": str(path), "size": path.stat().st_size}, list(prior)
-        )
+        score, explanation = provider({"path": str(path), "size": path.stat().st_size}, list(prior))
         if explanation.startswith("NIM provider error:"):
             return AnalysisResult(
                 "ai_triage",
@@ -278,6 +277,9 @@ class StegoService:
         steg_key: str | None = None,
         options: dict[str, Any] | None = None,
         no_clobber: bool = False,
+        payload_version: int = 2,
+        compress: bool = False,
+        ecc_symbols: int = 0,
     ) -> EmbedResult:
         input_path = Path(input_path)
         carrier_path = Path(carrier_path)
@@ -291,7 +293,36 @@ class StegoService:
 
         carrier = self.registry.select_carrier_for_embed(carrier_path, method=method)
         raw = input_path.read_bytes()
-        if password:
+        if payload_version == VERSION_3:
+            payload_metadata: dict[str, object] = {
+                "original_name": input_path.name,
+                "original_size": len(raw),
+            }
+            stored = zlib.compress(raw) if compress else raw
+            salt = os.urandom(KDF_SALT_LEN) if password else b"\x00" * 16
+            if password:
+                nonce, stored = encrypt_v3(
+                    stored,
+                    password,
+                    salt,
+                    associated_data=_v3_aad(payload_metadata),
+                )
+            else:
+                nonce = b"\x00" * 12
+            if ecc_symbols:
+                stored = _ecc_encode(stored, ecc_symbols)
+            blob = pack_v3(
+                payload=stored,
+                encrypted=bool(password),
+                salt=salt,
+                nonce=nonce,
+                compressed=compress,
+                ecc_symbols=ecc_symbols,
+                metadata=payload_metadata,
+            )
+        elif payload_version != 2:
+            raise ValueError("payload_version must be 2 or 3")
+        elif password:
             salt = os.urandom(KDF_SALT_LEN)
             nonce, ciphertext = encrypt(raw, password, salt)
             blob = pack(payload=ciphertext, encrypted=True, salt=salt, nonce=nonce)
@@ -369,14 +400,34 @@ class StegoService:
                 f"multiple valid payloads found ({names}); select one with --method"
             )
         carrier_name, parsed = successes[0]
+        stored = parsed.payload
+        if parsed.version == VERSION_3 and parsed.ecc_symbols:
+            stored = _ecc_decode(stored, parsed.ecc_symbols)
         if parsed.encrypted:
             if not password:
                 raise ExtractionError(
                     "payload encrypted; set --password, --password-file, or STEGANO_PASSWORD"
                 )
-            data = decrypt(parsed.payload, password, parsed.salt, parsed.nonce)
+            try:
+                if parsed.version == VERSION_3:
+                    data = decrypt_v3(
+                        stored,
+                        password,
+                        parsed.salt,
+                        parsed.nonce,
+                        associated_data=_v3_aad(parsed.metadata or {}),
+                    )
+                else:
+                    data = decrypt(stored, password, parsed.salt, parsed.nonce)
+            except DecryptionError as exc:
+                raise ExtractionError("payload authentication failed") from exc
         else:
-            data = parsed.payload
+            data = stored
+        if parsed.version == VERSION_3 and parsed.compressed:
+            try:
+                data = zlib.decompress(data)
+            except zlib.error as exc:
+                raise ExtractionError("payload decompression failed") from exc
         return data, carrier_name, parsed.version
 
     def extract_to(
@@ -415,3 +466,31 @@ def _discovered_registry() -> Registry:
     registry = Registry()
     registry.autodiscover()
     return registry
+
+
+def _ecc_encode(payload: bytes, symbols: int) -> bytes:
+    try:
+        from reedsolo import RSCodec
+    except ImportError as exc:
+        raise SteganographyError(
+            "reedsolo is required when Reed-Solomon protection is enabled"
+        ) from exc
+    return bytes(RSCodec(symbols).encode(payload))
+
+
+def _v3_aad(metadata: dict[str, object]) -> bytes:
+    canonical = json.dumps(
+        metadata, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")
+    return b"STEG-payload-v3\x00" + canonical
+
+
+def _ecc_decode(payload: bytes, symbols: int) -> bytes:
+    try:
+        from reedsolo import ReedSolomonError, RSCodec
+    except ImportError as exc:
+        raise ExtractionError("reedsolo is required to decode this protected payload") from exc
+    try:
+        return bytes(RSCodec(symbols).decode(payload)[0])
+    except ReedSolomonError as exc:
+        raise ExtractionError("Reed-Solomon recovery failed") from exc

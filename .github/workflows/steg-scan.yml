@@ -1,0 +1,30 @@
+name: Steganography artifact scan
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+      - id: steganography
+        uses: ./.github/actions/scan
+        with:
+          path: .
+          profile: balanced
+      - uses: github/codeql-action/upload-sarif@e3e7e6e0c6c40a4d48b0d5ac0f585327e4f68d7e # v3
+        with:
+          sarif_file: ${{ steps.steganography.outputs.sarif }}
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: steganography-report
+          path: steganography-reports/

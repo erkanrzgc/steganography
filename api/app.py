@@ -39,9 +39,7 @@ class APISettings:
     retention_days: int = 30
 
     @classmethod
-    def from_environment(
-        cls, *, workers: int = 2, retention_days: int = 30
-    ) -> "APISettings":
+    def from_environment(cls, *, workers: int = 2, retention_days: int = 30) -> "APISettings":
         state_value = os.environ.get("STEGANO_STATE_DIR")
         state_dir = (
             Path(state_value)
@@ -52,13 +50,9 @@ class APISettings:
             state_dir=state_dir,
             api_key=os.environ.get("STEGANO_API_KEY") or None,
             allow_ai_file_upload=os.environ.get("STEGANO_ALLOW_AI_FILE_UPLOAD") == "1",
-            max_file_bytes=int(
-                os.environ.get("STEGANO_MAX_UPLOAD_BYTES", 50 * 1024 * 1024)
-            ),
+            max_file_bytes=int(os.environ.get("STEGANO_MAX_UPLOAD_BYTES", 50 * 1024 * 1024)),
             max_batch_files=int(os.environ.get("STEGANO_MAX_BATCH_FILES", 20)),
-            max_batch_bytes=int(
-                os.environ.get("STEGANO_MAX_BATCH_BYTES", 200 * 1024 * 1024)
-            ),
+            max_batch_bytes=int(os.environ.get("STEGANO_MAX_BATCH_BYTES", 200 * 1024 * 1024)),
             workers=max(1, workers),
             retention_days=max(0, retention_days),
         )
@@ -67,12 +61,8 @@ class APISettings:
 def create_app(settings: APISettings | None = None) -> FastAPI:
     settings = settings or APISettings.from_environment()
     settings.state_dir.mkdir(parents=True, exist_ok=True)
-    store = JobStore(
-        settings.state_dir / "api.sqlite3", retention_days=settings.retention_days
-    )
-    executor = ThreadPoolExecutor(
-        max_workers=settings.workers, thread_name_prefix="steg-analysis"
-    )
+    store = JobStore(settings.state_dir / "api.sqlite3", retention_days=settings.retention_days)
+    executor = ThreadPoolExecutor(max_workers=settings.workers, thread_name_prefix="steg-analysis")
 
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
@@ -88,26 +78,37 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
     app.state.store = store
     app.state.executor = executor
 
+    # The v2 platform is additive: existing /v1 behavior and authentication
+    # remain stable while v2 always enforces its own API-key/session boundary.
+    from api.v2 import install_v2_routes
+
+    install_v2_routes(
+        app,
+        state_dir=settings.state_dir,
+        configured_api_key=settings.api_key,
+        executor=executor,
+        max_file_bytes=settings.max_file_bytes,
+    )
+
     async def authenticate(request: Request) -> None:
         if settings.api_key is None:
             return
         authorization = request.headers.get("authorization", "")
         scheme, _, supplied = authorization.partition(" ")
-        if scheme.lower() != "bearer" or not hmac.compare_digest(
-            supplied, settings.api_key
-        ):
+        if scheme.lower() != "bearer" or not hmac.compare_digest(supplied, settings.api_key):
             raise HTTPException(status_code=401, detail="invalid or missing API key")
 
     auth = Annotated[None, Depends(authenticate)]
-    profile_query = Annotated[
-        Literal["sensitive", "balanced", "strict"], Query()
-    ]
+    profile_query = Annotated[Literal["sensitive", "balanced", "strict"], Query()]
 
     @app.middleware("http")
     async def security_headers(request: Request, call_next):
         response = await call_next(request)
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Cache-Control"] = "no-store"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "no-referrer"
+        response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
         return response
 
     @app.get("/healthz")
@@ -130,8 +131,7 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
             ],
             "analyzers": [analyzer.name for analyzer in registry.all_analyzers()],
             "unavailable": [
-                {"plugin": error.plugin, "error": error.error}
-                for error in registry.load_errors()
+                {"plugin": error.plugin, "error": error.error} for error in registry.load_errors()
             ],
         }
 
@@ -152,12 +152,8 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
                 ai=ai,
                 upload_file=allow_ai_file_upload and settings.allow_ai_file_upload,
             )
-            service = AnalysisService(
-                _registry(), profile=profile, ai_provider=provider
-            )
-            analysis = await run_in_threadpool(
-                _analyze_uploaded, service, path, display_name
-            )
+            service = AnalysisService(_registry(), profile=profile, ai_provider=provider)
+            analysis = await run_in_threadpool(_analyze_uploaded, service, path, display_name)
             return JSONResponse(analysis.to_dict(tool_version=__version__))
         finally:
             await file.close()
@@ -226,6 +222,23 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
             raise HTTPException(status_code=404, detail="scan job not found")
         return Response(status_code=204)
 
+    project_root = Path(__file__).resolve().parents[1]
+    web_dist = next(
+        (
+            candidate
+            for candidate in (
+                project_root / "steganography" / "web",
+                project_root / "web" / "dist",
+            )
+            if candidate.is_dir()
+        ),
+        None,
+    )
+    if web_dist is not None:
+        from fastapi.staticfiles import StaticFiles
+
+        app.mount("/", StaticFiles(directory=web_dist, html=True), name="web")
+
     return app
 
 
@@ -264,8 +277,7 @@ def _run_scan_job(
         provider = _provider_for_request(ai=ai, upload_file=upload_file)
         service = AnalysisService(_registry(), profile=profile, ai_provider=provider)
         analyses = tuple(
-            _analyze_uploaded(service, path, display_name)
-            for path, display_name in uploads
+            _analyze_uploaded(service, path, display_name) for path, display_name in uploads
         )
         report = ScanReport(analyses, profile=profile)
         # A completed job guarantees that its untrusted uploads are already
@@ -278,9 +290,7 @@ def _run_scan_job(
         shutil.rmtree(upload_dir, ignore_errors=True)
 
 
-def _analyze_uploaded(
-    service: AnalysisService, path: Path, display_name: str
-):
+def _analyze_uploaded(service: AnalysisService, path: Path, display_name: str):
     analysis = service.analyze_safe(path)
     file_info = replace(analysis.file, path=display_name, name=display_name)
     return replace(analysis, file=file_info)
@@ -309,16 +319,10 @@ def _is_loopback(host: str) -> bool:
         return False
 
 
-def run_server(
-    *, host: str, port: int, workers: int = 2, retention_days: int = 30
-) -> None:
-    settings = APISettings.from_environment(
-        workers=workers, retention_days=retention_days
-    )
+def run_server(*, host: str, port: int, workers: int = 2, retention_days: int = 30) -> None:
+    settings = APISettings.from_environment(workers=workers, retention_days=retention_days)
     if not _is_loopback(host) and not settings.api_key:
-        raise RuntimeError(
-            "STEGANO_API_KEY is required when binding the API outside loopback"
-        )
+        raise RuntimeError("STEGANO_API_KEY is required when binding the API outside loopback")
     import uvicorn
 
     uvicorn.run(create_app(settings), host=host, port=port, workers=1)
