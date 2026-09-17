@@ -1,6 +1,6 @@
 # Threat model
 
-`steganography` 1.0 is a single-user, local-first DFIR application. Evidence,
+`steganography` 0.6.0 is a single-user, local-first DFIR application. Evidence,
 uploaded files, archives, image parsers, optional models and external-tool
 output are untrusted.
 
@@ -23,3 +23,8 @@ Security boundaries:
 Out of scope for v1: hostile local administrators, memory inspection while the
 vault is unlocked, multi-user authorization, cloud tenancy and protection from
 a fully compromised host kernel.
+
+Current limitation: a subprocess working directory is not filesystem isolation.
+External executables retain the invoking user's filesystem permissions; native
+analysis deadlines are cooperative. Container read-only mounts reduce exposure
+but do not establish the plan's complete per-tool sandbox acceptance gate.

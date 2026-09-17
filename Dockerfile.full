@@ -1,14 +1,28 @@
 # syntax=docker/dockerfile:1.7
 # GPL tools remain independent executables; the Python project does not link them.
 ARG STEGSEEK_VERSION=0.6
-ARG ZSTEG_VERSION=0.2.13
+ARG STEGSEEK_SHA256=66cdd8e4e4b815d7fe368843e7df2f0416af0304df35e4f22db9f16c7ae6c771
+ARG ZSTEG_VERSION=0.2.14
+ARG ZSTEG_SHA256=761ee35a8512630606946187ed1a3150c6ab30dd5e32cefe48ebb2b874190f6f
+ARG IOSTRUCT_VERSION=0.7.0
+ARG IOSTRUCT_SHA256=e93f2ffea3b79a0e1045f0e0bd3f202368d89c53b692878e693cf50603bae49c
+ARG ZPNG_VERSION=0.4.6
+ARG ZPNG_SHA256=40f4629f7dac4864662fa5cdfe7b410cc4bc8e72e271d39551f084291e64246e
+ARG RAINBOW_VERSION=3.1.1
+ARG RAINBOW_SHA256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
+ARG PRIME_VERSION=0.1.4
+ARG PRIME_SHA256=4d755ebf7c2994a6f3a3fee0d072063be3fff2d4042ebff6cd5eebd4747a225e
+ARG OPENSTEGO_VERSION=0.8.6
+ARG OPENSTEGO_SHA256=821c4a1e190e994659b05a6c8142d14568204675b431c9e7278b379934a1d34a
 
 FROM debian:bookworm-slim AS stegseek
 ARG STEGSEEK_VERSION
+ARG STEGSEEK_SHA256
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      ca-certificates cmake g++ git make libmhash-dev libmcrypt-dev libjpeg-dev zlib1g-dev \
- && git clone --depth 1 --branch v${STEGSEEK_VERSION} \
-      https://github.com/RickdeJager/stegseek.git /src \
+      ca-certificates cmake curl g++ make libmhash-dev libmcrypt-dev libjpeg-dev zlib1g-dev \
+ && curl -fsSL "https://github.com/RickdeJager/stegseek/archive/refs/tags/v${STEGSEEK_VERSION}.tar.gz" -o /tmp/stegseek.tar.gz \
+ && echo "${STEGSEEK_SHA256}  /tmp/stegseek.tar.gz" | sha256sum -c - \
+ && mkdir /src && tar -xzf /tmp/stegseek.tar.gz --strip-components=1 -C /src \
  && cmake -S /src -B /src/build -DCMAKE_BUILD_TYPE=Release \
  && cmake --build /src/build --parallel 2 \
  && cmake --install /src/build --prefix /out
@@ -22,14 +36,58 @@ RUN npm run build
 
 FROM python:3.11.13-slim-bookworm
 ARG ZSTEG_VERSION
+ARG ZSTEG_SHA256
+ARG IOSTRUCT_VERSION
+ARG IOSTRUCT_SHA256
+ARG ZPNG_VERSION
+ARG ZPNG_SHA256
+ARG RAINBOW_VERSION
+ARG RAINBOW_SHA256
+ARG PRIME_VERSION
+ARG PRIME_SHA256
+ARG OPENSTEGO_VERSION
+ARG OPENSTEGO_SHA256
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 STEGANO_STATE_DIR=/state
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      exiftool ruby ca-certificates libjpeg62-turbo libmcrypt4 libmhash2 \
- && gem install zsteg --version ${ZSTEG_VERSION} --no-document \
+      binwalk ca-certificates curl default-jre-headless ffmpeg gifsicle \
+      libimage-exiftool-perl libjpeg62-turbo libmcrypt4 libmhash2 outguess \
+      pngcheck ruby sox steghide zbar-tools \
  && rm -rf /var/lib/apt/lists/* \
  && groupadd --system --gid 10001 steganography \
  && useradd --system --uid 10001 --gid 10001 --home /nonexistent steganography
+RUN curl -fsSL "https://rubygems.org/downloads/iostruct-${IOSTRUCT_VERSION}.gem" -o /tmp/iostruct.gem \
+ && curl -fsSL "https://rubygems.org/downloads/rainbow-${RAINBOW_VERSION}.gem" -o /tmp/rainbow.gem \
+ && curl -fsSL "https://rubygems.org/downloads/prime-${PRIME_VERSION}.gem" -o /tmp/prime.gem \
+ && curl -fsSL "https://rubygems.org/downloads/zpng-${ZPNG_VERSION}.gem" -o /tmp/zpng.gem \
+ && curl -fsSL "https://rubygems.org/downloads/zsteg-${ZSTEG_VERSION}.gem" -o /tmp/zsteg.gem \
+ && echo "${IOSTRUCT_SHA256}  /tmp/iostruct.gem" | sha256sum -c - \
+ && echo "${RAINBOW_SHA256}  /tmp/rainbow.gem" | sha256sum -c - \
+ && echo "${PRIME_SHA256}  /tmp/prime.gem" | sha256sum -c - \
+ && echo "${ZPNG_SHA256}  /tmp/zpng.gem" | sha256sum -c - \
+ && echo "${ZSTEG_SHA256}  /tmp/zsteg.gem" | sha256sum -c - \
+ && gem install /tmp/iostruct.gem /tmp/rainbow.gem /tmp/prime.gem /tmp/zpng.gem /tmp/zsteg.gem --local --no-document \
+ && curl -fsSL "https://github.com/syvaidya/openstego/releases/download/openstego-${OPENSTEGO_VERSION}/openstego_${OPENSTEGO_VERSION}-1_all.deb" -o /tmp/openstego.deb \
+ && echo "${OPENSTEGO_SHA256}  /tmp/openstego.deb" | sha256sum -c - \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends file /tmp/openstego.deb \
+ && rm -f /tmp/*.gem /tmp/openstego.deb \
+ && rm -rf /var/lib/apt/lists/*
 COPY --from=stegseek /out/bin/stegseek /usr/local/bin/stegseek
+COPY scripts/openstego-headless.sh /usr/local/bin/openstego
+RUN chmod 0755 /usr/local/bin/openstego
+RUN ruby -e 'puts Gem::Specification.find_by_name("zsteg").version' \
+ && zsteg -h >/dev/null \
+ && stegseek --version \
+ && binwalk --help >/dev/null \
+ && steghide --version \
+ && outguess 2>&1 | grep -q OutGuess \
+ && exiftool -ver \
+ && pngcheck -h 2>&1 | grep -q 'PNGcheck, version' \
+ && ffmpeg -version \
+ && sox --version \
+ && gifsicle --version \
+ && zbarimg --version \
+ && openstego --version
 WORKDIR /app
 COPY pyproject.toml README.md LICENSE THIRD_PARTY_NOTICES.md ./
 COPY api ./api

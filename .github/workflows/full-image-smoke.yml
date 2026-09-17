@@ -1,0 +1,22 @@
+name: Full image smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: docker build -f Dockerfile.full -t steganography-full-smoke .
+      - name: Non-root read-only exact recovery smoke
+        run: >-
+          docker run --rm --read-only --network none --cap-drop ALL
+          --security-opt no-new-privileges --pids-limit 128
+          --tmpfs /tmp:rw,noexec,nosuid,size=128m
+          --mount type=bind,src="${{ github.workspace }}/scripts/docker-ctf-smoke.py",dst=/smoke.py,readonly
+          --entrypoint python steganography-full-smoke /smoke.py

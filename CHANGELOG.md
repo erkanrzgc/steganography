@@ -1,6 +1,20 @@
 # Changelog
 
-## Unreleased — local-first platform
+## 0.6.0 (unreleased)
+
+- Corrected external-tool input paths and bounded stdout collection, including
+  process-group cleanup and remaining-job-budget checks between tools.
+- Fixed full-image zsteg dependency installation and tool smoke commands.
+
+- Added shared lazy analysis contexts, richer PNG/BMP bit-plane statistics, and
+  additive JSON v2 coverage, rationale, calibration, score, and recommendation
+  fields.
+- Added the bounded recursive CTF playbook with decoder graph, carving, safe
+  archive traversal, extraction provenance, centralized external-tool runner,
+  JSON/HTML/SARIF/evidence bundles, CLI, API jobs/SSE/cancel/download, and TUI.
+- Strengthened research catalogs with cover lineage and source metadata, and
+  raised benchmark gates to the documented ROC-AUC, balanced accuracy, recall,
+  FPR, ECE, and bootstrap confidence-interval protocol.
 
 - Added the versioned case/evidence/analysis/finding/artifact/model/audit SQLite
   schema, SHA-256 deduplication and retention-aware case lifecycle.
