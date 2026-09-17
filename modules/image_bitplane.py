@@ -5,9 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
 
 from core.analyzer import Analyzer
+from core.context import AnalysisContext
 from core.payload import MAGIC
 from core.result import AnalysisResult, Signal
 
@@ -16,12 +16,13 @@ class ImageBitplaneAnalyzer(Analyzer):
     name = "image_bitplane"
 
     def analyze(self, src: Path) -> AnalysisResult:
+        return self.analyze_context(AnalysisContext(src))
+
+    def analyze_context(self, context: AnalysisContext) -> AnalysisResult:
+        src = context.path
         if src.suffix.lower() not in {".png", ".bmp"}:
             return AnalysisResult(self.name, 0, (), None, status="unsupported")
-        with Image.open(src) as image:
-            if image.width * image.height > 50_000_000:
-                raise ValueError("image exceeds the 50 megapixel analysis limit")
-            array = np.asarray(image.convert("RGBA"), dtype=np.uint8)
+        array = context.image_rgba
         rgb = array[:, :, :3]
         signals: list[Signal] = []
 
@@ -63,6 +64,47 @@ class ImageBitplaneAnalyzer(Analyzer):
                 f"adjacent LSB agreement={horizontal_agreement:.4f}",
                 category="image_bitplane_statistics",
                 evidence="heuristic" if spa_score >= 45 else "informational",
+            )
+        )
+
+        # Bit-plane entropy makes plane-specific anomalies visible without
+        # treating naturally noisy least-significant planes as proof.
+        for plane in range(4):
+            bits = ((rgb >> plane) & 1).reshape(-1)
+            probability = float(np.mean(bits))
+            if probability in {0.0, 1.0}:
+                entropy = 0.0
+            else:
+                entropy = -probability * np.log2(probability) - (1.0 - probability) * np.log2(
+                    1.0 - probability
+                )
+            signals.append(
+                Signal(
+                    f"bit_plane_{plane}_entropy",
+                    0,
+                    f"RGB plane {plane} entropy={entropy:.5f}; one-ratio={probability:.5f}",
+                    category="image_bitplane_entropy",
+                    evidence="informational",
+                )
+            )
+
+        # Weighted-stego approximation: compare LSB changes with local edge
+        # energy. Embedding concentrated in smooth regions is more unusual.
+        luminance = np.mean(rgb.astype(np.float32), axis=2)
+        edge = np.abs(np.diff(luminance, axis=1))
+        lsb_changes = np.mean(lsb[:, 1:, :] != lsb[:, :-1, :], axis=2)
+        smooth = edge < np.percentile(edge, 35)
+        smooth_flip_rate = float(np.mean(lsb_changes[smooth])) if np.any(smooth) else 0.0
+        textured_flip_rate = float(np.mean(lsb_changes[~smooth])) if np.any(~smooth) else 0.0
+        weighted_delta = smooth_flip_rate - textured_flip_rate
+        weighted_score = max(0, min(55, round((weighted_delta - 0.01) * 900)))
+        signals.append(
+            Signal(
+                "weighted_stego_smooth_region_bias",
+                weighted_score,
+                f"smooth/textured LSB flip rates={smooth_flip_rate:.4f}/{textured_flip_rate:.4f}",
+                category="image_weighted_stego",
+                evidence="heuristic" if weighted_score >= 45 else "informational",
             )
         )
         differences = np.abs(np.diff(rgb.astype(np.int16), axis=1))

@@ -54,6 +54,8 @@ desktop.ini
 
 # --- Tooling state ----------------------------------------------------------
 .claude/
+.codex/
+.agents/
 .python-version
 
 # --- Runtime artifacts ------------------------------------------------------

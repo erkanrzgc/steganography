@@ -2,10 +2,12 @@
 
 Full DCT-coefficient LSB is deferred (see design spec §15).
 """
+
 import struct
 from pathlib import Path
 
 from core.carrier import Carrier
+from core.context import AnalysisContext
 from core.result import AnalysisResult, EmbedResult, Signal
 
 _JPEG_EOI = b"\xff\xd9"
@@ -42,7 +44,10 @@ class ImageJpeg(Carrier):
         return data[cursor : cursor + length]
 
     def analyze(self, src: Path) -> AnalysisResult:
-        data = src.read_bytes()
+        return self.analyze_context(AnalysisContext(src))
+
+    def analyze_context(self, context: AnalysisContext) -> AnalysisResult:
+        data = context.data
         eoi = data.rfind(_JPEG_EOI)
         signals: list[Signal] = []
         if eoi == -1:
@@ -67,6 +72,30 @@ class ImageJpeg(Carrier):
                     category="known_marker",
                     evidence="verified",
                 ),
+            )
+        segments = context.jpeg_segments
+        dqt_segments = [segment for segment in segments if segment["marker"] == 0xDB]
+        if dqt_segments:
+            signals.append(
+                Signal(
+                    name="jpeg_quantization_tables",
+                    score=0,
+                    detail=f"{len(dqt_segments)} DQT segment(s); lengths="
+                    + ",".join(str(item["length"]) for item in dqt_segments),
+                    category="jpeg_structure",
+                    evidence="informational",
+                )
+            )
+        truncated = [segment for segment in segments if segment.get("truncated")]
+        if truncated:
+            signals.append(
+                Signal(
+                    name="truncated_jpeg_segment",
+                    score=65,
+                    detail=f"truncated marker at byte offset {truncated[0]['offset']}",
+                    category="jpeg_structure",
+                    evidence="strong",
+                )
             )
         suspicion = max((s.score for s in signals), default=0)
         return AnalysisResult(self.name, suspicion, tuple(signals), None)

@@ -1,4 +1,5 @@
 """WAV PCM LSB steganography."""
+
 import struct
 import wave
 from pathlib import Path
@@ -6,6 +7,7 @@ from pathlib import Path
 import numpy as np
 
 from core.carrier import Carrier, InsufficientCapacityError
+from core.context import AnalysisContext
 from core.payload import MAGIC
 from core.result import AnalysisResult, EmbedResult, Signal
 
@@ -50,25 +52,78 @@ class AudioWav(Carrier):
         return np.packbits(samples[start:end].astype(np.uint8) & 1).tobytes()
 
     def analyze(self, src: Path) -> AnalysisResult:
-        samples, _ = self._read(src)
+        return self.analyze_context(AnalysisContext(src))
+
+    def analyze_context(self, context: AnalysisContext) -> AnalysisResult:
+        samples, _rate, sample_width = context.wav_samples
+        if sample_width != 2:
+            raise ValueError("only 16-bit PCM WAV is supported")
+        shaped_samples = samples
+        samples = samples.reshape(-1)
         lsb_mean = float(np.mean(samples & 1))
         dev = abs(lsb_mean - 0.5) * 200
-        signals = [Signal(
-            name="wav_lsb_bias",
-            score=int(min(100, dev)),
-            detail=f"LSB mean={lsb_mean:.3f}",
-            category="audio_lsb",
-            evidence="heuristic" if dev >= 10 else "informational",
-        )]
+        signals = [
+            Signal(
+                name="wav_lsb_bias",
+                score=int(min(100, dev)),
+                detail=f"LSB mean={lsb_mean:.3f}",
+                category="audio_lsb",
+                evidence="heuristic" if dev >= 10 else "informational",
+            )
+        ]
+        chunks: list[tuple[str, int]] = []
+        data = context.data
+        offset = 12
+        while offset + 8 <= len(data):
+            chunk_id = data[offset : offset + 4].decode("ascii", errors="replace")
+            chunk_size = int.from_bytes(data[offset + 4 : offset + 8], "little")
+            chunks.append((chunk_id, chunk_size))
+            offset += 8 + chunk_size + (chunk_size & 1)
+        unknown = [name for name, _size in chunks if name not in {"fmt ", "data", "LIST", "fact"}]
+        if unknown:
+            signals.append(
+                Signal(
+                    "unusual_riff_chunks",
+                    min(60, 25 + len(unknown) * 5),
+                    "unusual RIFF chunks: " + ", ".join(unknown[:8]),
+                    category="wav_structure",
+                    evidence="heuristic",
+                )
+            )
+        if shaped_samples.ndim == 2 and shaped_samples.shape[1] >= 2:
+            channel_difference = shaped_samples[:, 0].astype(np.int64) - shaped_samples[
+                :, 1
+            ].astype(np.int64)
+            difference_lsb = float(np.mean(channel_difference & 1))
+            signals.append(
+                Signal(
+                    "channel_difference_lsb",
+                    0,
+                    f"left/right difference LSB mean={difference_lsb:.4f}",
+                    category="audio_channel_difference",
+                    evidence="informational",
+                )
+            )
+        window = samples[: min(samples.size, 65_536)].astype(np.float64)
+        if window.size >= 64:
+            spectrum = np.abs(np.fft.rfft(window * np.hanning(window.size))) + 1e-12
+            flatness = float(np.exp(np.mean(np.log(spectrum))) / np.mean(spectrum))
+            signals.append(
+                Signal(
+                    "spectral_flatness",
+                    0,
+                    f"bounded FFT spectral flatness={flatness:.5f}",
+                    category="audio_spectrogram",
+                    evidence="informational",
+                )
+            )
         if samples.size >= (_LEN_PREFIX + len(MAGIC)) * 8:
             length_bits = samples[: _LEN_PREFIX * 8].astype(np.uint8) & 1
             (length,) = struct.unpack(">I", np.packbits(length_bits).tobytes())
             start = _LEN_PREFIX * 8
             marker_end = start + len(MAGIC) * 8
-            marker = np.packbits(
-                samples[start:marker_end].astype(np.uint8) & 1
-            ).tobytes()
-            if marker == MAGIC and length <= self.capacity(src):
+            marker = np.packbits(samples[start:marker_end].astype(np.uint8) & 1).tobytes()
+            if marker == MAGIC and length <= max(0, samples.size // 8 - _LEN_PREFIX):
                 signals.append(
                     Signal(
                         "steg_payload_header",

@@ -1,0 +1,40 @@
+# Architecture
+
+The project is a local-first steganalysis and CTF workbench. Its interfaces are
+thin adapters around application services:
+
+```text
+CLI / API / TUI
+       |
+       +-- AnalysisService -> Analyzer and Carrier plug-ins
+       +-- CTFService ------> AnalysisContext, ToolRunner, decoder graph
+       +-- Case/Scan/Studio -> encrypted Vault and SQLite audit chain
+       |
+       +-- JSON v2 / HTML / SARIF / evidence bundle
+```
+
+`AnalysisContext` lazily caches file identity, bytes, decoded image arrays,
+entropy, JPEG metadata, and PCM WAV samples for one input. Context-aware native
+components share it; legacy and third-party analyzers retain the compatible
+`analyze(Path)` adapter.
+
+`CTFService` owns the bounded playbook. Artifacts form a parent-child graph and
+carry SHA-256 plus extraction provenance. `ToolRunner` invokes optional upstream
+programs without a shell, with time/resource/output limits and redacted report
+commands. An unavailable tool is coverage metadata and can make a result
+inconclusive; it is not negative evidence.
+
+Managed job artifacts are stored beneath a newly created output directory. Artifacts are
+regular files, names are generated rather than trusted, archive members are
+streamed with count/depth/size/ratio limits, and existing files are not
+overwritten. Extracted content is analyzed, never executed.
+
+The tool working directory and resource limits are not an operating-system
+filesystem sandbox. Native parsers run in-process and the job deadline is
+cooperative between stages. Use a non-root, read-only container with only the
+job's writable mount for hostile inputs; stronger per-tool isolation and hard
+native-stage deadlines remain release work.
+
+JSON v2 remains additive through `schema_revision`. HTML, SARIF, and bundles are
+views of the same normalized report. Host paths and secret-bearing arguments
+are redacted before serialization.

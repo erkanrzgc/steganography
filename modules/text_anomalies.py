@@ -29,6 +29,10 @@ class TextAnomalyAnalyzer(Analyzer):
             ord(character) > 127 and unicodedata.category(character).startswith("L")
             for character in text
         )
+        controls = sum(
+            unicodedata.category(character) == "Cc" and character not in "\t\n\r"
+            for character in text
+        )
         if replacements:
             signals.append(
                 Signal(
@@ -49,6 +53,28 @@ class TextAnomalyAnalyzer(Analyzer):
                     evidence="strong",
                 )
             )
+        if controls:
+            signals.append(
+                Signal(
+                    "embedded_control_characters",
+                    min(75, 35 + controls * 3),
+                    f"{controls} non-whitespace control characters",
+                    category="text_unicode",
+                    evidence="heuristic",
+                )
+            )
+        normalized = unicodedata.normalize("NFC", text)
+        if normalized != text:
+            changes = sum(left != right for left, right in zip(text, normalized, strict=False))
+            signals.append(
+                Signal(
+                    "unicode_normalization_difference",
+                    min(55, 25 + changes),
+                    f"NFC normalization changes at least {changes} code-point positions",
+                    category="text_normalization",
+                    evidence="heuristic",
+                )
+            )
         if trailing >= 8:
             signals.append(
                 Signal(
@@ -67,6 +93,9 @@ class TextAnomalyAnalyzer(Analyzer):
                     if ord(character) > 127 and unicodedata.category(character).startswith("L")
                 }
             )
+            if any(character.isascii() and character.isalpha() for character in text):
+                scripts.append("LATIN")
+                scripts = sorted(set(scripts))
             if len(scripts) > 1:
                 signals.append(
                     Signal(

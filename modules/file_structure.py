@@ -1,4 +1,5 @@
 """Content/extension validation, entropy and embedded-file heuristics."""
+
 from __future__ import annotations
 
 import math
@@ -6,7 +7,8 @@ from collections import Counter
 from pathlib import Path
 
 from core.analyzer import Analyzer
-from core.filetype import detect_type, extension_mismatch
+from core.context import AnalysisContext
+from core.filetype import extension_mismatch
 from core.result import AnalysisResult, Signal
 
 _READ_LIMIT = 8 * 1024 * 1024
@@ -24,7 +26,11 @@ class FileStructure(Analyzer):
     name = "file_structure"
 
     def analyze(self, src: Path) -> AnalysisResult:
-        detected = detect_type(src)
+        return self.analyze_context(AnalysisContext(src))
+
+    def analyze_context(self, context: AnalysisContext) -> AnalysisResult:
+        src = context.path
+        detected = context.detected
         signals: list[Signal] = []
         if extension_mismatch(src, detected):
             signals.append(
@@ -37,8 +43,7 @@ class FileStructure(Analyzer):
                 )
             )
 
-        with src.open("rb") as stream:
-            data = stream.read(_READ_LIMIT)
+        data = context.data[:_READ_LIMIT]
         for magic, label in _EMBEDDED_MAGICS:
             first = data.find(magic)
             if first > 0:

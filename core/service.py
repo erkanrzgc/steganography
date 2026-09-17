@@ -13,6 +13,7 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
+from core.context import AnalysisContext
 from core.crypto import (
     KDF_SALT_LEN,
     DecryptionError,
@@ -127,6 +128,11 @@ class AnalysisService:
             raise ValueError(f"file is {size} bytes; configured maximum is {self.max_file_size}")
 
         detected = detect_type(path)
+        context = AnalysisContext(
+            path,
+            detected=detected,
+            max_bytes=self.max_file_size or 512 * 1024 * 1024,
+        )
         info = FileInfo(
             path=str(path),
             name=path.name,
@@ -139,14 +145,14 @@ class AnalysisService:
         )
         results: list[AnalysisResult] = []
         for carrier in self.registry.select_carriers(path, detected_extension=detected.extension):
-            results.append(_safe_analyze(carrier.identifier, carrier.analyze, path))
+            results.append(_safe_context_analyze(carrier.identifier, carrier, context))
 
         ai_triage: Any | None = None
         for analyzer in self.registry.all_analyzers():
             if analyzer.name == "ai_triage":
                 ai_triage = analyzer
                 continue
-            results.append(_safe_analyze(analyzer.name, analyzer.analyze, path))
+            results.append(_safe_context_analyze(analyzer.name, analyzer, context))
 
         if ai_triage is not None:
             prior = tuple(
@@ -205,9 +211,9 @@ class AnalysisService:
             )
 
 
-def _safe_analyze(name: str, analyze: Any, path: Path) -> AnalysisResult:
+def _safe_analyze(name: str, analyze: Any, source: Any) -> AnalysisResult:
     try:
-        return analyze(path)
+        return analyze(source)
     except Exception as exc:  # plug-ins must not terminate a directory scan
         return AnalysisResult(
             analyzer=name,
@@ -217,6 +223,14 @@ def _safe_analyze(name: str, analyze: Any, path: Path) -> AnalysisResult:
             status="error",
             error=f"{type(exc).__name__}: {exc}",
         )
+
+
+def _safe_context_analyze(name: str, analyzer: Any, context: AnalysisContext) -> AnalysisResult:
+    """Use the optional context contract while preserving legacy plug-ins."""
+    contextual = getattr(analyzer, "analyze_context", None)
+    if contextual is not None:
+        return _safe_analyze(name, contextual, context)
+    return _safe_analyze(name, analyzer.analyze, context.path)
 
 
 def _safe_ai_analyze(analyzer: Any, path: Path, prior: tuple[Signal, ...]) -> AnalysisResult:
