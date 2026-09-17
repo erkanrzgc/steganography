@@ -28,6 +28,7 @@ from textual.widgets import (
 )
 from textual.worker import Worker, get_current_worker
 
+from core.ctf import CTFLimits, CTFMode, CTFReport, CTFService
 from core.pipeline import AnalysisPipeline, PipelineReport
 from core.service import AnalysisService
 from core.workspace import Workspace, create_workspace
@@ -119,6 +120,8 @@ class HomeScreen(WorkbenchScreen):
                 Button("Manage evidence", id="task-cases"),
                 Static("Encrypted vault, cases, persistent scans, and report export."),
                 Button("Advanced workspace", id="task-advanced"),
+                Button("Solve a CTF challenge", id="task-ctf"),
+                Static("Run a bounded recovery playbook and inspect its artifact graph."),
                 id="home-content",
             )
         )
@@ -127,6 +130,7 @@ class HomeScreen(WorkbenchScreen):
     def open_task(self, event: Button.Pressed) -> None:
         screens: dict[str, type[Screen[None]]] = {
             "task-scan": QuickScanScreen,
+            "task-ctf": CTFScreen,
             "task-hide": HideScreen,
             "task-recover": RecoverScreen,
             "task-cases": CasesScreen,
@@ -135,6 +139,115 @@ class HomeScreen(WorkbenchScreen):
         screen = screens.get(event.button.id or "")
         if screen:
             self.app.push_screen(screen())
+
+
+class CTFScreen(WorkbenchScreen):
+    """Guided front end for the same bounded playbook used by CLI and API."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.ctf_worker: Worker[Any] | None = None
+
+    def compose(self) -> ComposeResult:
+        yield from self.compose_chrome(
+            ScrollableContainer(
+                Label("Solve a CTF challenge", classes="title"),
+                Input(placeholder="Challenge file", id="ctf-input"),
+                Input(placeholder="New output directory", id="ctf-output"),
+                Select(
+                    [("Quick", "quick"), ("Balanced", "balanced"), ("Deep", "deep")],
+                    value="balanced",
+                    allow_blank=False,
+                    id="ctf-mode",
+                ),
+                Input(placeholder="Optional wordlist file", id="ctf-wordlist"),
+                Input(placeholder="Optional extraction password", password=True, id="ctf-password"),
+                Horizontal(
+                    Button("Run playbook", id="ctf-run", variant="primary"),
+                    Button("Cancel", id="ctf-cancel", disabled=True),
+                ),
+                ProgressBar(total=7, show_eta=False, id="ctf-progress"),
+                Static(
+                    "Ready. Defaults: depth 3, 256 artifacts, 1 GiB, 180 seconds.", id="ctf-status"
+                ),
+                Static("", id="ctf-result"),
+                id="ctf-content",
+            )
+        )
+
+    @on(Button.Pressed, "#ctf-run")
+    def start(self) -> None:
+        source = Path(self.query_one("#ctf-input", Input).value).expanduser()
+        output = Path(self.query_one("#ctf-output", Input).value).expanduser()
+        if not source.is_file() or output.exists():
+            _set_text(self, "#ctf-status", "Choose an existing file and a new output directory.")
+            return
+        wordlist_value = self.query_one("#ctf-wordlist", Input).value.strip()
+        wordlist = Path(wordlist_value).expanduser() if wordlist_value else None
+        mode = str(self.query_one("#ctf-mode", Select).value)
+        password = self.query_one("#ctf-password", Input).value or None
+        self.query_one("#ctf-password", Input).value = ""
+        self.query_one("#ctf-run", Button).disabled = True
+        self.query_one("#ctf-cancel", Button).disabled = False
+        self.query_one("#ctf-progress", ProgressBar).update(progress=0)
+        self.ctf_worker = self.run_ctf(source, output, mode, wordlist, password)
+
+    @work(thread=True, exclusive=True, group="ctf")
+    def run_ctf(
+        self,
+        source: Path,
+        output: Path,
+        mode: str,
+        wordlist: Path | None,
+        password: str | None,
+    ) -> CTFReport:
+        worker = get_current_worker()
+
+        def event(value: dict[str, Any]) -> None:
+            if value.get("stage"):
+                self.app.call_from_thread(self._ctf_stage, str(value["stage"]))
+
+        report = CTFService().solve(
+            source,
+            output,
+            mode=cast(CTFMode, mode),
+            wordlist=wordlist,
+            password=password,
+            limits=CTFLimits(),
+            should_cancel=lambda: worker.is_cancelled,
+            on_event=event,
+        )
+        (output / "report.json").write_text(json_v2(report.to_dict()), encoding="utf-8")
+        self.app.call_from_thread(self._ctf_finished, report)
+        return report
+
+    def _ctf_stage(self, stage: str) -> None:
+        stages = {
+            "identify": 1,
+            "metadata_structure": 2,
+            "native_detectors": 3,
+            "external_tools": 4,
+            "carving_decoding_extraction": 5,
+            "recursive_analysis": 6,
+        }
+        self.query_one("#ctf-progress", ProgressBar).update(progress=stages.get(stage, 0))
+        _set_text(self, "#ctf-status", f"Playbook stage: {stage}")
+
+    def _ctf_finished(self, report: CTFReport) -> None:
+        self.query_one("#ctf-run", Button).disabled = False
+        self.query_one("#ctf-cancel", Button).disabled = True
+        self.query_one("#ctf-progress", ProgressBar).update(progress=7)
+        _set_text(self, "#ctf-status", f"CTF job {report.status}: {report.verdict}")
+        tree = [
+            f"{'  ' * item.depth}└─ {item.name} [{item.provenance}]" for item in report.artifacts
+        ]
+        tools = [f"{item.tool}: {item.status}" for item in report.tools]
+        _set_text(self, "#ctf-result", "\n".join([*tree, *tools]))
+
+    @on(Button.Pressed, "#ctf-cancel")
+    def cancel(self) -> None:
+        if self.ctf_worker:
+            self.ctf_worker.cancel()
 
 
 class QuickScanScreen(WorkbenchScreen):
@@ -624,7 +737,11 @@ class AdvancedScreen(WorkbenchScreen):
             with TabPane("Cases / Evidence / Scans", id="advanced-cases"):
                 yield Static(
                     "Use Manage cases for custody operations. Persistent records and raw "
-                    "findings remain available in the local SQLite workspace."
+                    "findings remain available in the local SQLite workspace.\n\n"
+                    "CTF playbook stages: identify → metadata/structure → native detectors → "
+                    "external tools → carving/decoder graph → extraction → recursive analysis. "
+                    "The guided CTF screen exposes live stages, tool status, artifact tree, "
+                    "cancellation, and clean-directory reruns."
                 )
             with TabPane("Studio", id="advanced-studio"):
                 yield Static(

@@ -27,6 +27,8 @@ steganography serve --host 127.0.0.1 --port 8000
 - `/v2/studio/capacity|embed|extract`
 - `/v2/artifacts/{id}/download`
 - `/v2/models` and `/v2/audit/verify`
+- `POST /v2/ctf/jobs`, `GET|DELETE /v2/ctf/jobs/{id}`
+- `GET /v2/ctf/jobs/{id}/events` and bounded artifact downloads
 
 On local UI startup, a mode-0600 API token is created at
 `$STEGANO_STATE_DIR/v2-api.key`. Browser login exchanges it for an HttpOnly,

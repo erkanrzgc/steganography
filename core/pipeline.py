@@ -33,6 +33,9 @@ class Finding:
     duration_ms: float = 0.0
     error: str | None = None
     artifacts: tuple[str, ...] = ()
+    method_family: str | None = None
+    raw_score: float | None = None
+    calibrated_score: float | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -52,6 +55,11 @@ class Finding:
             "detail": self.detail,
             "error": self.error,
             "artifacts": list(self.artifacts),
+            "method_family": self.method_family,
+            "scores": {
+                "raw": self.raw_score,
+                "calibrated": self.calibrated_score,
+            },
         }
 
 
@@ -65,20 +73,50 @@ class PipelineReport:
     duration_ms: float
     execution_provider: str = "cpu"
     schema_version: str = "2.0"
+    schema_revision: int = 1
 
     def to_dict(self) -> dict[str, Any]:
+        file_info = self.analysis.file.to_dict()
+        file_info["path"] = file_info["name"]
         return {
             "schema_version": self.schema_version,
+            "schema_revision": self.schema_revision,
             "tool": {"name": "steganography", "version": __version__},
             "id": self.id,
             "generated_at": self.analysis.generated_at,
             "verdict": self.verdict,
             "confidence": self.confidence,
+            "verdict_reason": _verdict_reason(self.verdict),
+            "threshold": {"likely": 0.70, "suspicious": 0.30},
+            "calibration": {"state": "not_calibrated", "scope": "heuristic_triage"},
             "duration_ms": self.duration_ms,
             "execution_provider": self.execution_provider,
-            "file": self.analysis.file.to_dict(),
+            "file": file_info,
             "profile": self.analysis.profile,
             "findings": [item.to_dict() for item in self.findings],
+            "coverage": [
+                {
+                    "component": result.analyzer,
+                    "status": result.status,
+                    "reason": result.error
+                    or (
+                        result.explanation
+                        if result.status in {"unavailable", "unsupported"}
+                        else None
+                    ),
+                }
+                for result in self.analysis.results
+            ],
+            "false_positive_conditions": [
+                "Noise, transcoding, metadata editors, and ordinary application data can "
+                "trigger heuristics."
+            ],
+            "recommendations": [
+                {
+                    "priority": 1,
+                    "action": "Validate findings independently and preserve the original evidence.",
+                }
+            ],
         }
 
 
@@ -148,6 +186,9 @@ def _finding(analyzer: str, status: str, signal: Signal) -> Finding:
         analyzer=analyzer,
         analyzer_version=__version__,
         status=status,
+        method_family=signal.category,
+        raw_score=signal.score / 100.0,
+        calibrated_score=None,
     )
 
 
@@ -171,3 +212,13 @@ def _overall_verdict(
 
 def _slug(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_") or "unknown"
+
+
+def _verdict_reason(verdict: Verdict) -> str:
+    return {
+        "confirmed": "a verified marker or successful extraction was observed",
+        "likely": "the deterministic score met the likely threshold without verified proof",
+        "suspicious": "one or more heuristics met the suspicious threshold",
+        "no_indicators": "usable analyzers completed without threshold-level indicators",
+        "inconclusive": "configured analyzers could not provide sufficient coverage",
+    }[verdict]

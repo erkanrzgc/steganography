@@ -12,6 +12,7 @@ from collections.abc import Iterable
 from pathlib import Path
 
 from core.automation import iter_ndjson
+from core.ctf import CTFLimits, CTFService
 from core.pipeline import AnalysisPipeline
 from core.result import AnalysisResult, ScanReport
 from core.service import AnalysisService, StegoService
@@ -20,7 +21,7 @@ from core.version import __version__
 from core.workspace import Workspace, create_workspace
 from registry import Registry
 from report.report import write_html, write_json, write_json_v1
-from report.v2 import html_v2, json_v2, sarif_v2
+from report.v2 import html_v2, json_v2, sarif_v2, write_evidence_bundle
 from ui.banner import print_gradient_banner
 
 
@@ -315,6 +316,73 @@ def cmd_benchmark(args: argparse.Namespace) -> int:
     return 0 if report["gates"]["passed"] else 1
 
 
+def _parse_size(value: str) -> int:
+    normalized = value.strip().lower().replace(" ", "")
+    suffixes = {
+        "kib": 1024,
+        "kb": 1000,
+        "mib": 1024**2,
+        "mb": 1000**2,
+        "gib": 1024**3,
+        "gb": 1000**3,
+        "b": 1,
+    }
+    for suffix in sorted(suffixes, key=len, reverse=True):
+        if normalized.endswith(suffix):
+            number = normalized[: -len(suffix)]
+            break
+    else:
+        number = normalized
+        suffix = "b"
+    try:
+        result = int(float(number) * suffixes[suffix])
+    except (ValueError, OverflowError) as exc:
+        raise argparse.ArgumentTypeError(f"invalid byte size: {value}") from exc
+    if result < 1:
+        raise argparse.ArgumentTypeError("byte size must be positive")
+    return result
+
+
+def cmd_ctf(args: argparse.Namespace) -> int:
+    password = _password_from_args(args)
+    limits = CTFLimits(
+        max_depth=args.max_depth,
+        max_artifacts=args.max_artifacts,
+        max_bytes=args.max_bytes,
+        tool_timeout=min(30.0, args.timeout),
+        job_timeout=args.timeout,
+    )
+    report = CTFService().solve(
+        Path(args.input),
+        Path(args.out),
+        mode=args.mode,
+        wordlist=Path(args.wordlist) if args.wordlist else None,
+        password=password,
+        limits=limits,
+    )
+    value = report.to_dict()
+    output_dir = Path(args.out)
+    if args.report == "bundle":
+        report_path = output_dir / "evidence-bundle.zip"
+        write_evidence_bundle(
+            value,
+            [(item.name, item.path) for item in report.artifacts if item.path is not None],
+            report_path,
+        )
+    else:
+        report_path = output_dir / f"report.{args.report}"
+        if args.report == "html":
+            content = html_v2(value)
+        elif args.report == "sarif":
+            content = json.dumps(sarif_v2(value), indent=2)
+        else:
+            content = json_v2(value)
+        with report_path.open("x", encoding="utf-8") as output:
+            output.write(content)
+    print(f"CTF {report.status}: {report.verdict} → {report_path}")
+    return 0 if report.status == "completed" else 1
+
+
 def _workspace(args: argparse.Namespace) -> Workspace:
     return create_workspace(args.state_dir)
 
@@ -386,8 +454,27 @@ def cmd_models(args: argparse.Namespace) -> int:
     if args.models_cmd == "list":
         print(json.dumps({"items": models.list(), "runtime": models.runtime_status()}, indent=2))
         return 0
+    if args.models_cmd == "catalog":
+        print(
+            json.dumps(
+                models.catalog(Path(args.catalog) if args.catalog else None),
+                indent=2,
+            )
+        )
+        return 0
     if args.models_cmd == "install":
-        value = models.install(Path(args.manifest), public_key=args.public_key)
+        if args.manifest:
+            if not args.public_key:
+                raise ValueError("--public-key is required with --manifest")
+            value = models.install(Path(args.manifest), public_key=args.public_key)
+        elif args.target:
+            value = models.install_catalog(
+                args.target,
+                accept_license=args.accept_license,
+                catalog_path=Path(args.catalog) if args.catalog else None,
+            )
+        else:
+            raise ValueError("provide MODEL@VERSION or --manifest")
         print(json.dumps(value, indent=2))
         return 0
     valid = models.verify_installed(args.model_id, args.model_version)
@@ -398,7 +485,13 @@ def cmd_models(args: argparse.Namespace) -> int:
 def cmd_research_import(args: argparse.Namespace) -> int:
     from steganography.research import import_dataset
 
-    manifest = import_dataset(Path(args.source), Path(args.out), seed=args.seed)
+    manifest = import_dataset(
+        Path(args.source),
+        Path(args.out),
+        seed=args.seed,
+        license_name=args.license,
+        source_url=args.source_url,
+    )
     print(f"imported {manifest['sample_count']} samples → {args.out}")
     return 0
 
@@ -415,20 +508,44 @@ def cmd_research_benchmark(args: argparse.Namespace) -> int:
         min_samples=args.min_samples,
         min_source_groups=args.min_source_groups,
         min_roc_auc=args.min_roc_auc,
+        min_balanced_accuracy=args.min_balanced_accuracy,
+        min_recall=args.min_recall,
         max_fpr=args.max_fpr,
+        max_ece=args.max_ece,
+        bootstrap_samples=args.bootstrap_samples,
     )
     print(json.dumps(report, indent=2))
     return 0 if report["status"] == "passed" else 1
 
 
-def cmd_research_unavailable(args: argparse.Namespace) -> int:
-    try:
-        import torch  # noqa: F401
-    except ImportError as exc:
-        raise RuntimeError("research runtime is unavailable; install '.[research]'") from exc
-    raise RuntimeError(
-        f"research {args.research_cmd} requires an explicit experiment configuration"
+def cmd_research_train(args: argparse.Namespace) -> int:
+    from steganography.research import train_model
+
+    result = train_model(Path(args.config), Path(args.out))
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+def cmd_research_calibrate(args: argparse.Namespace) -> int:
+    from steganography.research import calibrate_predictions
+
+    result = calibrate_predictions(
+        Path(args.manifest),
+        Path(args.predictions),
+        Path(args.out),
+        source=Path(args.source) if args.source else None,
+        split=args.split,
     )
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+def cmd_research_export(args: argparse.Namespace) -> int:
+    from steganography.research import export_onnx
+
+    result = export_onnx(Path(args.checkpoint), Path(args.out))
+    print(json.dumps(result, indent=2))
+    return 0
 
 
 def cmd_doctor(args: argparse.Namespace) -> int:
@@ -567,6 +684,19 @@ def build_parser() -> argparse.ArgumentParser:
     _add_analysis_options(scan)
     scan.set_defaults(fn=cmd_scan)
 
+    ctf = commands.add_parser("ctf", help="run the bounded CTF recovery playbook")
+    ctf.add_argument("input")
+    ctf.add_argument("--out", required=True)
+    ctf.add_argument("--mode", choices=("quick", "balanced", "deep"), default="balanced")
+    ctf.add_argument("--wordlist")
+    ctf.add_argument("--max-depth", type=int, default=3)
+    ctf.add_argument("--max-artifacts", type=int, default=256)
+    ctf.add_argument("--max-bytes", type=_parse_size, default=1024**3, metavar="SIZE")
+    ctf.add_argument("--timeout", type=float, default=180.0, metavar="SECONDS")
+    ctf.add_argument("--report", choices=("json", "html", "sarif", "bundle"), default="json")
+    _add_password_options(ctf)
+    ctf.set_defaults(fn=cmd_ctf)
+
     list_modules = commands.add_parser("list-modules")
     list_modules.set_defaults(fn=cmd_list_modules)
 
@@ -641,9 +771,15 @@ def build_parser() -> argparse.ArgumentParser:
     model_commands = models.add_subparsers(dest="models_cmd", required=True)
     model_list = model_commands.add_parser("list")
     model_list.set_defaults(fn=cmd_models)
+    model_catalog = model_commands.add_parser("catalog")
+    model_catalog.add_argument("--catalog")
+    model_catalog.set_defaults(fn=cmd_models)
     model_install = model_commands.add_parser("install")
-    model_install.add_argument("--manifest", required=True)
-    model_install.add_argument("--public-key", required=True)
+    model_install.add_argument("target", nargs="?", metavar="MODEL@VERSION")
+    model_install.add_argument("--manifest")
+    model_install.add_argument("--public-key")
+    model_install.add_argument("--catalog")
+    model_install.add_argument("--accept-license", action="store_true")
     model_install.set_defaults(fn=cmd_models)
     model_verify = model_commands.add_parser("verify")
     model_verify.add_argument("model_id")
@@ -656,21 +792,45 @@ def build_parser() -> argparse.ArgumentParser:
     research_import.add_argument("--source", required=True)
     research_import.add_argument("--out", required=True)
     research_import.add_argument("--seed", type=int, default=20260813)
+    research_import.add_argument("--license", default="user-supplied")
+    research_import.add_argument("--source-url")
     research_import.set_defaults(fn=cmd_research_import)
-    research_benchmark = research_commands.add_parser("benchmark")
+    research_benchmark = research_commands.add_parser("benchmark", aliases=["benchmark-suite"])
     research_benchmark.add_argument("--manifest", required=True)
     research_benchmark.add_argument("--predictions", required=True)
     research_benchmark.add_argument("--out", required=True)
     research_benchmark.add_argument("--source")
     research_benchmark.add_argument("--threshold", type=float, default=0.9)
-    research_benchmark.add_argument("--min-samples", type=int, default=5_000)
+    research_benchmark.add_argument("--min-samples", type=int, default=2_000)
     research_benchmark.add_argument("--min-source-groups", type=int, default=2)
-    research_benchmark.add_argument("--min-roc-auc", type=float, default=0.8)
-    research_benchmark.add_argument("--max-fpr", type=float, default=0.05)
+    research_benchmark.add_argument("--min-roc-auc", type=float, default=0.90)
+    research_benchmark.add_argument("--min-balanced-accuracy", type=float, default=0.85)
+    research_benchmark.add_argument("--min-recall", type=float, default=0.80)
+    research_benchmark.add_argument("--max-fpr", type=float, default=0.03)
+    research_benchmark.add_argument("--max-ece", type=float, default=0.05)
+    research_benchmark.add_argument("--bootstrap-samples", type=int, default=200)
     research_benchmark.set_defaults(fn=cmd_research_benchmark)
-    for name in ("train", "export-onnx"):
-        research_command = research_commands.add_parser(name)
-        research_command.set_defaults(fn=cmd_research_unavailable)
+    research_train = research_commands.add_parser("train")
+    research_train.add_argument("--config", required=True)
+    research_train.add_argument("--out", required=True)
+    research_train.set_defaults(fn=cmd_research_train)
+    research_calibrate = research_commands.add_parser("calibrate")
+    research_calibrate.add_argument("--manifest", required=True)
+    research_calibrate.add_argument("--predictions", required=True)
+    research_calibrate.add_argument("--out", required=True)
+    research_calibrate.add_argument("--source")
+    research_calibrate.add_argument(
+        "--split", choices=("train", "validation"), default="validation"
+    )
+    research_calibrate.set_defaults(fn=cmd_research_calibrate)
+    research_export = research_commands.add_parser("export")
+    research_export.add_argument("--checkpoint", required=True)
+    research_export.add_argument("--out", required=True)
+    research_export.set_defaults(fn=cmd_research_export)
+    research_export_compat = research_commands.add_parser("export-onnx")
+    research_export_compat.add_argument("--checkpoint", required=True)
+    research_export_compat.add_argument("--out", required=True)
+    research_export_compat.set_defaults(fn=cmd_research_export)
 
     doctor = commands.add_parser("doctor", help="verify local platform dependencies")
     doctor.add_argument("--state-dir")
@@ -697,6 +857,7 @@ _MACHINE_READABLE_CMDS = frozenset(
         "serve",
         "corpus",
         "benchmark",
+        "ctf",
         "case",
         "models",
         "research",

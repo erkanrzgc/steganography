@@ -48,6 +48,13 @@ remove the plaintext staging file, update progress, and retain normalized
 findings. Cancellation is honored between files. Reports can be exported as
 portable HTML, JSON v2, or SARIF without exposing staging paths.
 
+## Solve a CTF challenge
+
+The guided CTF task runs the same bounded playbook as the CLI and API. It shows
+live stages, optional-tool states, and a parent-child artifact tree. Cancellation
+is checked between recursive stages and by external processes. Use a new output
+directory for each run; extracted artifacts are never executed.
+
 ## Advanced workspace
 
 Advanced tabs expose Cases/Evidence/Scans, raw findings, Studio configuration,

@@ -48,6 +48,21 @@ Directory scan skips its own output and does not follow symlinks unless asked.
 Module failures become structured results. `--fail-on` returns 1 when a result
 meets the threshold; user errors return 2 and interruption returns 130.
 
+## CTF recovery playbook
+
+```text
+steganography ctf INPUT --out NEW_DIRECTORY
+  [--mode quick|balanced|deep] [--wordlist FILE] [--password-stdin]
+  [--max-depth 3] [--max-artifacts 256] [--max-bytes 1GiB]
+  [--timeout 180] [--report json|html|sarif|bundle]
+```
+
+`balanced` is the default. The total job and every optional process are bounded;
+decoder/carving output remains a candidate until a marker or successful
+extraction verifies it. The output directory must not already exist. Reports
+contain sandbox-relative names and redacted commands, never passwords or host
+paths. Wordlists are user-supplied and are not packaged.
+
 ## Cases and reports
 
 ```text
@@ -64,16 +79,26 @@ steganography case --state-dir PATH export SCAN_ID
 
 ```text
 steganography models --state-dir PATH list
+steganography models --state-dir PATH catalog
+steganography models --state-dir PATH install MODEL@VERSION --accept-license
 steganography models --state-dir PATH install --manifest FILE --public-key KEY
 steganography models --state-dir PATH verify MODEL_ID MODEL_VERSION
 steganography research import --source DIR --out FILE [--seed N]
-steganography research benchmark --manifest FILE --predictions FILE --out FILE
+  [--license NAME] [--source-url URL]
+steganography research benchmark-suite --manifest FILE --predictions FILE --out FILE
+  [--min-roc-auc .90] [--min-balanced-accuracy .85] [--min-recall .80]
+  [--max-fpr .03] [--max-ece .05] [--bootstrap-samples 200]
+steganography research calibrate --manifest FILE --predictions FILE --out FILE
+steganography research train --config EXPERIMENT.json --out CHECKPOINT.pt
+steganography research export --checkpoint CHECKPOINT.pt --out MODEL.onnx
 steganography doctor --state-dir PATH
 steganography list-modules
 ```
 
-`research train` and `research export-onnx` fail clearly unless an explicit
-experiment workflow is supplied; no placeholder output is created.
+Training consumes an explicit NumPy-feature experiment configuration and
+requires the `research` extra. Export emits ONNX plus a preprocessing/model-card
+contract. Calibration is dependency-free scalar temperature fitting on the
+declared train or validation split; test data is rejected for calibration.
 
 ## Reproducible synthetic benchmarks
 

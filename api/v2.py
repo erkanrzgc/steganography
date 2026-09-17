@@ -9,17 +9,19 @@ import os
 import secrets
 import shutil
 import tempfile
+import threading
 import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from typing import Annotated, Any
+from typing import Annotated, Any, cast
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse, Response, StreamingResponse
 from pydantic import BaseModel, Field
 
 from core.cases import CaseNotFoundError, EvidenceNotFoundError
+from core.ctf import CTFLimits, CTFMode, CTFService
 from core.database import Database, utc_now
 from core.models import ModelVerificationError
 from core.scans import ScanNotFoundError
@@ -55,8 +57,11 @@ class ScanCreate(BaseModel):
 
 
 class ModelInstall(BaseModel):
-    manifest_path: str
-    public_key: str
+    manifest_path: str | None = None
+    public_key: str | None = None
+    target: str | None = None
+    catalog_path: str | None = None
+    accept_license: bool = False
 
 
 class V2Security:
@@ -116,6 +121,15 @@ def install_v2_routes(
     app.state.models = models
     app.state.scans_v2 = scans
     app.state.v2_api_key_path = state_dir / "v2-api.key"
+
+    ctf_jobs: dict[str, dict[str, Any]] = {}
+    ctf_cancel: dict[str, threading.Event] = {}
+    ctf_lock = threading.Lock()
+    ctf_root = state_dir / "ctf-jobs"
+    ctf_uploads = state_dir / "ctf-uploads"
+    ctf_root.mkdir(parents=True, exist_ok=True)
+    ctf_uploads.mkdir(parents=True, exist_ok=True)
+    app.state.ctf_jobs = ctf_jobs
 
     router = APIRouter(prefix="/v2")
     auth = Annotated[None, Depends(security.authenticate)]
@@ -308,6 +322,182 @@ def install_v2_routes(
             raise HTTPException(status_code=422, detail="format must be json, html or sarif")
         return JSONResponse(scan["result"])
 
+    def run_ctf_job(
+        job_id: str,
+        input_path: Path,
+        output_path: Path,
+        mode: str,
+        wordlist_path: Path | None,
+        password: str | None,
+        limits: CTFLimits,
+    ) -> None:
+        cancel = ctf_cancel[job_id]
+
+        def event(value: dict[str, Any]) -> None:
+            with ctf_lock:
+                job = ctf_jobs[job_id]
+                job["events"].append(value)
+                if value.get("stage"):
+                    job["stage"] = value["stage"]
+
+        with ctf_lock:
+            ctf_jobs[job_id]["status"] = "running"
+        try:
+            report = CTFService().solve(
+                input_path,
+                output_path,
+                mode=cast(CTFMode, mode),
+                wordlist=wordlist_path,
+                password=password,
+                limits=limits,
+                should_cancel=cancel.is_set,
+                on_event=event,
+            )
+            value = report.to_dict()
+            with ctf_lock:
+                job = ctf_jobs[job_id]
+                job["status"] = report.status
+                job["report"] = value
+                job["artifacts"] = {
+                    artifact.id: artifact.path
+                    for artifact in report.artifacts
+                    if artifact.path is not None
+                }
+                job["artifact_metadata"] = {
+                    artifact.id: artifact.to_dict() for artifact in report.artifacts
+                }
+        except Exception as exc:  # worker failures must become observable job state
+            with ctf_lock:
+                ctf_jobs[job_id].update(status="failed", error=f"{type(exc).__name__}: {exc}")
+        finally:
+            shutil.rmtree(input_path.parent, ignore_errors=True)
+
+    @router.post("/ctf/jobs", status_code=202)
+    async def create_ctf_job(
+        _: auth,
+        file: Annotated[UploadFile, File()],
+        mode: Annotated[str, Form()] = "balanced",
+        wordlist: Annotated[UploadFile | None, File()] = None,
+        password: Annotated[str | None, Form()] = None,
+        max_depth: Annotated[int, Form(ge=0, le=20)] = 3,
+        max_artifacts: Annotated[int, Form(ge=1, le=4096)] = 256,
+        max_bytes: Annotated[int, Form(ge=1)] = 1024 * 1024 * 1024,
+        timeout: Annotated[float, Form(gt=0, le=3600)] = 180.0,
+    ) -> dict[str, Any]:
+        if mode not in {"quick", "balanced", "deep"}:
+            raise HTTPException(status_code=422, detail="invalid CTF mode")
+        job_id = uuid.uuid4().hex
+        upload_dir = ctf_uploads / job_id
+        upload_dir.mkdir()
+        try:
+            input_path, _input_size = await _save_upload(file, upload_dir, max_file_bytes)
+            wordlist_path: Path | None = None
+            if wordlist is not None:
+                wordlist_path, _wordlist_size = await _save_upload(
+                    wordlist, upload_dir, max_file_bytes
+                )
+            limits = CTFLimits(
+                max_depth=max_depth,
+                max_artifacts=max_artifacts,
+                max_bytes=min(max_bytes, 8 * 1024 * 1024 * 1024),
+                tool_timeout=min(30.0, timeout),
+                job_timeout=timeout,
+            )
+            public: dict[str, Any] = {
+                "id": job_id,
+                "status": "queued",
+                "stage": "queued",
+                "created_at": utc_now(),
+                "events": [],
+                "report": None,
+                "error": None,
+            }
+            with ctf_lock:
+                ctf_jobs[job_id] = {
+                    **public,
+                    "artifacts": {},
+                    "artifact_metadata": {},
+                }
+                ctf_cancel[job_id] = threading.Event()
+            executor.submit(
+                run_ctf_job,
+                job_id,
+                input_path,
+                ctf_root / job_id,
+                mode,
+                wordlist_path,
+                password,
+                limits,
+            )
+            return public
+        except Exception:
+            shutil.rmtree(upload_dir, ignore_errors=True)
+            raise
+        finally:
+            await file.close()
+            if wordlist is not None:
+                await wordlist.close()
+
+    @router.get("/ctf/jobs/{job_id}")
+    async def get_ctf_job(job_id: str, _: auth) -> dict[str, Any]:
+        with ctf_lock:
+            job = ctf_jobs.get(job_id)
+            if job is None:
+                raise HTTPException(status_code=404, detail="CTF job not found")
+            return _public_ctf_job(job)
+
+    @router.get("/ctf/jobs/{job_id}/events")
+    async def ctf_job_events(job_id: str, _: auth) -> StreamingResponse:
+        with ctf_lock:
+            if job_id not in ctf_jobs:
+                raise HTTPException(status_code=404, detail="CTF job not found")
+
+        async def events():
+            cursor = 0
+            while True:
+                with ctf_lock:
+                    job = ctf_jobs[job_id]
+                    pending = list(job["events"][cursor:])
+                    status = job["status"]
+                for event_value in pending:
+                    name = event_value.get("event", "progress")
+                    yield f"event: {name}\ndata: {json.dumps(event_value)}\n\n"
+                    cursor += 1
+                if status in {"completed", "failed", "cancelled"}:
+                    yield f"event: terminal\ndata: {json.dumps({'status': status})}\n\n"
+                    break
+                await asyncio.sleep(0.1)
+
+        return StreamingResponse(events(), media_type="text/event-stream")
+
+    @router.delete("/ctf/jobs/{job_id}", status_code=202)
+    async def cancel_ctf_job(job_id: str, _: auth) -> dict[str, str]:
+        with ctf_lock:
+            cancel = ctf_cancel.get(job_id)
+            job = ctf_jobs.get(job_id)
+            if cancel is None or job is None:
+                raise HTTPException(status_code=404, detail="CTF job not found")
+            if job["status"] not in {"completed", "failed", "cancelled"}:
+                cancel.set()
+            return {"id": job_id, "status": "cancellation_requested"}
+
+    @router.get("/ctf/jobs/{job_id}/artifacts/{artifact_id}")
+    async def download_ctf_artifact(job_id: str, artifact_id: str, _: auth) -> Response:
+        with ctf_lock:
+            job = ctf_jobs.get(job_id)
+            if job is None:
+                raise HTTPException(status_code=404, detail="CTF job not found")
+            path = job["artifacts"].get(artifact_id)
+            metadata = job["artifact_metadata"].get(artifact_id)
+        if path is None or metadata is None:
+            raise HTTPException(status_code=404, detail="artifact not found")
+        path = Path(path)
+        allowed = (ctf_root / job_id / "artifacts").resolve()
+        if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(allowed):
+            raise HTTPException(status_code=410, detail="artifact is unavailable")
+        headers = {"Content-Disposition": f'attachment; filename="{Path(metadata["name"]).name}"'}
+        return Response(path.read_bytes(), media_type=metadata["media_type"], headers=headers)
+
     @router.post("/studio/capacity")
     async def studio_capacity(
         _: auth,
@@ -400,10 +590,22 @@ def install_v2_routes(
     async def list_models(_: auth) -> dict[str, Any]:
         return {"items": models.list(), "runtime": models.runtime_status()}
 
+    @router.get("/models/catalog")
+    async def model_catalog(_: auth) -> dict[str, Any]:
+        return models.catalog()
+
     @router.post("/models", status_code=201)
     async def install_model(body: ModelInstall, _: auth) -> dict[str, Any]:
         try:
-            return models.install(Path(body.manifest_path), public_key=body.public_key)
+            if body.target:
+                return models.install_catalog(
+                    body.target,
+                    accept_license=body.accept_license,
+                    catalog_path=Path(body.catalog_path) if body.catalog_path else None,
+                )
+            if body.manifest_path and body.public_key:
+                return models.install(Path(body.manifest_path), public_key=body.public_key)
+            raise ValueError("provide target or manifest_path with public_key")
         except (OSError, ValueError, ModelVerificationError) as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from exc
 
@@ -475,3 +677,17 @@ def _store_artifact(database: Database, state_dir: Path, source: Path, kind: str
         "size": size,
         "download_url": f"/v2/artifacts/{artifact_id}/download",
     }
+
+
+def _public_ctf_job(job: dict[str, Any]) -> dict[str, Any]:
+    value = {
+        key: job.get(key) for key in ("id", "status", "stage", "created_at", "report", "error")
+    }
+    value["artifacts"] = [
+        {
+            **metadata,
+            "download_url": f"/v2/ctf/jobs/{job['id']}/artifacts/{artifact_id}",
+        }
+        for artifact_id, metadata in job.get("artifact_metadata", {}).items()
+    ]
+    return value

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import html
 import json
+import zipfile
+from pathlib import Path
 from typing import Any
 
 
@@ -12,7 +14,7 @@ def json_v2(report: dict[str, Any]) -> str:
 
 
 def html_v2(report: dict[str, Any]) -> str:
-    files = report.get("files") or [report]
+    files = report.get("files") or report.get("analyses") or [report]
     rows: list[str] = []
     for item in files:
         file_info = item.get("file", {})
@@ -37,21 +39,40 @@ def html_v2(report: dict[str, Any]) -> str:
                 finding_html,
             )
         )
+    artifact_rows = "".join(
+        "<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>".format(
+            html.escape(str(item.get("name", "artifact"))),
+            html.escape(str(item.get("sha256", ""))),
+            html.escape(str(item.get("parent_id") or "root")),
+            html.escape(str(item.get("provenance", ""))),
+        )
+        for item in report.get("artifacts", [])
+    )
+    artifact_section = (
+        "<h2>Artifact graph</h2><table><thead><tr><th>Name</th><th>SHA-256</th>"
+        "<th>Parent</th><th>Provenance</th></tr></thead><tbody>"
+        + artifact_rows
+        + "</tbody></table>"
+        if artifact_rows
+        else ""
+    )
     return (
         """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width"><title>steganography report</title>
 <style>body{font:15px system-ui;background:#0a1020;color:#e7edf8;max-width:1100px;
 margin:auto;padding:2rem}article{border:1px solid #34415a;border-radius:10px;padding:1rem;
-margin:1rem 0}code{color:#8bd5ff}.confirmed,.likely{color:#ff7b72}.suspicious{color:#e5c07b}
+margin:1rem 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #34415a;
+padding:.5rem;text-align:left;overflow-wrap:anywhere}code{color:#8bd5ff}.confirmed,.likely{color:#ff7b72}.suspicious{color:#e5c07b}
 .no_indicators{color:#7ee787}</style></head><body>
 <h1>steganography DFIR report</h1>"""
         + "".join(rows)
+        + artifact_section
         + "</body></html>"
     )
 
 
 def sarif_v2(report: dict[str, Any]) -> dict[str, Any]:
-    files = report.get("files") or [report]
+    files = report.get("files") or report.get("analyses") or [report]
     rules: dict[str, dict[str, Any]] = {}
     results: list[dict[str, Any]] = []
     for item in files:
@@ -98,3 +119,25 @@ def sarif_v2(report: dict[str, Any]) -> dict[str, Any]:
             }
         ],
     }
+
+
+def write_evidence_bundle(
+    report: dict[str, Any],
+    artifacts: list[tuple[str, Path]],
+    output: Path,
+) -> None:
+    """Write a portable, no-clobber ZIP containing all normalized report views."""
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if output.exists():
+        raise FileExistsError(output)
+    with zipfile.ZipFile(output, "x", compression=zipfile.ZIP_DEFLATED) as bundle:
+        bundle.writestr("report.json", json_v2(report))
+        bundle.writestr("report.html", html_v2(report))
+        bundle.writestr("report.sarif", json.dumps(sarif_v2(report), indent=2))
+        for name, path in artifacts:
+            source = Path(path)
+            if source.is_symlink() or not source.is_file():
+                raise ValueError("bundle artifacts must be regular, non-symlink files")
+            safe_name = Path(name).name
+            bundle.write(source, f"artifacts/{safe_name}")
