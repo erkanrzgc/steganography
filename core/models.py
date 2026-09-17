@@ -9,6 +9,7 @@ import math
 import os
 import shutil
 import tempfile
+import urllib.request
 from pathlib import Path
 from typing import Any
 
@@ -31,6 +32,7 @@ class ModelRegistry:
     """Manage opt-in ONNX files. Installation never performs network access."""
 
     SUPPORTED_DOMAINS = frozenset({"spatial-srnet-v1", "jpeg-srnet-v1"})
+    MAX_DOWNLOAD_BYTES = 2 * 1024 * 1024 * 1024
 
     def __init__(self, database: Database, root: Path) -> None:
         self.database = database
@@ -48,6 +50,63 @@ class ModelRegistry:
             value["manifest"] = json.loads(value.pop("manifest_json"))
             values.append(value)
         return values
+
+    @staticmethod
+    def catalog(path: Path | None = None) -> dict[str, Any]:
+        catalog_path = (
+            path or Path(__file__).resolve().parents[1] / "steganography" / "model_catalog.json"
+        )
+        try:
+            value = json.loads(Path(catalog_path).read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ModelVerificationError(f"cannot read model catalog: {exc}") from exc
+        if value.get("schema_version") != "1.0" or not isinstance(value.get("models"), list):
+            raise ModelVerificationError("unsupported or malformed model catalog")
+        return value
+
+    def install_catalog(
+        self,
+        target: str,
+        *,
+        accept_license: bool,
+        catalog_path: Path | None = None,
+    ) -> dict[str, Any]:
+        """Explicitly download and verify one catalog model; never called automatically."""
+        if not accept_license:
+            raise ModelVerificationError("--accept-license is required for catalog models")
+        catalog = self.catalog(catalog_path)
+        entry = next(
+            (
+                item
+                for item in catalog["models"]
+                if f"{item.get('id')}@{item.get('version')}" == target
+            ),
+            None,
+        )
+        if entry is None:
+            raise ModelVerificationError(f"model is not present in catalog: {target}")
+        manifest = entry.get("manifest")
+        public_key = entry.get("public_key")
+        download_url = str(entry.get("download_url") or "")
+        if (
+            not isinstance(manifest, dict)
+            or not public_key
+            or not download_url.startswith("https://")
+        ):
+            raise ModelVerificationError("catalog entry lacks a signed manifest or HTTPS URL")
+        self.verify_manifest(manifest, public_key=public_key)
+        filename = Path(str(manifest.get("file", "")))
+        if filename.name != str(filename) or not filename.name:
+            raise ModelVerificationError("catalog manifest has an unsafe model filename")
+        with tempfile.TemporaryDirectory(prefix="steganography-model-") as temporary_name:
+            temporary = Path(temporary_name)
+            model_path = temporary / filename.name
+            _download_https(download_url, model_path, maximum=self.MAX_DOWNLOAD_BYTES)
+            if _sha256(model_path) != manifest.get("sha256"):
+                raise ModelVerificationError("downloaded model SHA-256 does not match manifest")
+            manifest_path = temporary / "manifest.json"
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            return self.install(manifest_path, public_key=public_key)
 
     def install(
         self,
@@ -171,9 +230,7 @@ class ModelRegistry:
                 error=f"model domain is {model['domain']}",
             )
         if not self.verify_installed(model_id, version):
-            return ModelScore(
-                model_id, domain, None, "error", error="model integrity check failed"
-            )
+            return ModelScore(model_id, domain, None, "error", error="model integrity check failed")
         try:
             import numpy as np
             import onnxruntime as ort
@@ -288,3 +345,27 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _download_https(url: str, destination: Path, *, maximum: int) -> None:
+    request = urllib.request.Request(  # noqa: S310 - caller requires an HTTPS URL
+        url, headers={"User-Agent": "steganography-model-installer"}
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:  # noqa: S310 - HTTPS checked
+            final_url = response.geturl()
+            if not final_url.startswith("https://"):
+                raise ModelVerificationError("model download redirected outside HTTPS")
+            size = 0
+            with destination.open("xb") as output:
+                while chunk := response.read(1024 * 1024):
+                    size += len(chunk)
+                    if size > maximum:
+                        raise ModelVerificationError("model download exceeds the byte limit")
+                    output.write(chunk)
+    except ModelVerificationError:
+        destination.unlink(missing_ok=True)
+        raise
+    except OSError as exc:
+        destination.unlink(missing_ok=True)
+        raise ModelVerificationError(f"model download failed: {exc}") from exc

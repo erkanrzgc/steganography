@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import random
 from pathlib import Path
 from typing import Any
 
@@ -20,7 +21,14 @@ class ResearchManifestError(ValueError):
     """Raised when a dataset or prediction manifest is unsafe or inconsistent."""
 
 
-def import_dataset(source: Path, out: Path, *, seed: int = 20260813) -> dict[str, Any]:
+def import_dataset(
+    source: Path,
+    out: Path,
+    *,
+    seed: int = 20260813,
+    license_name: str = "user-supplied",
+    source_url: str | None = None,
+) -> dict[str, Any]:
     source = Path(source).resolve()
     if not source.is_dir():
         raise NotADirectoryError(source)
@@ -30,13 +38,23 @@ def import_dataset(source: Path, out: Path, *, seed: int = 20260813) -> dict[str
             continue
         digest = _sha256(path)
         label = _infer_label(path, source)
+        source_group = _infer_source_group(path, source)
+        lineage = _infer_lineage(path, source)
         samples.append(
             {
                 "path": path.relative_to(source).as_posix(),
                 "sha256": digest,
                 "size": path.stat().st_size,
                 "label": label,
-                "source_group": _infer_source_group(path, source),
+                "source_group": source_group,
+                "lineage": lineage,
+                "camera": None,
+                "device": None,
+                "app": None,
+                "method": None if label != "stego" else "unspecified",
+                "payload_rate": None,
+                "format": path.suffix.lower().lstrip("."),
+                "quality_factor": None,
             }
         )
     if not samples:
@@ -45,10 +63,17 @@ def import_dataset(source: Path, out: Path, *, seed: int = 20260813) -> dict[str
     if len(hashes) != len(set(hashes)):
         raise ValueError("dataset contains duplicate file hashes")
     for sample in samples:
-        sample["split"] = _stable_split(sample["sha256"], seed)
+        grouping_key = f"{sample['source_group']}:{sample['lineage']}"
+        sample["split"] = _stable_split(grouping_key, seed)
     manifest = {
         "schema_version": "1.0",
         "source": str(source),
+        "catalog": {
+            "license": license_name,
+            "source_url": source_url,
+            "downloaded": False,
+            "import_mode": "local",
+        },
         "seed": seed,
         "sample_count": len(samples),
         "splits": {
@@ -87,6 +112,7 @@ def verify_dataset_manifest(
     split_hashes: dict[str, set[str]] = {name: set() for name in _SPLITS}
     labels = {name: 0 for name in _LABELS}
     source_groups: set[str] = set()
+    lineage_splits: dict[str, str] = {}
     for index, sample in enumerate(samples):
         if not isinstance(sample, dict):
             raise ResearchManifestError(f"sample {index} must be an object")
@@ -106,6 +132,17 @@ def verify_dataset_manifest(
         split_hashes[split].add(digest)
         labels[label] += 1
         source_groups.add(str(sample.get("source_group") or "unspecified"))
+        lineage_key = ":".join(
+            (
+                str(sample.get("source_group") or "unspecified"),
+                str(sample.get("camera") or ""),
+                str(sample.get("device") or ""),
+                str(sample.get("lineage") or relative.stem),
+            )
+        )
+        previous_split = lineage_splits.setdefault(lineage_key, split)
+        if previous_split != split:
+            raise ResearchManifestError(f"cover-lineage split leakage: {lineage_key}")
         if verify_files:
             path = source_dir / relative
             if not path.is_file():
@@ -133,15 +170,27 @@ def benchmark_predictions(
     *,
     source: Path | None = None,
     threshold: float = 0.9,
-    min_samples: int = 5_000,
+    min_samples: int = 2_000,
     min_source_groups: int = 2,
-    min_roc_auc: float = 0.8,
-    max_fpr: float = 0.05,
+    min_roc_auc: float = 0.90,
+    min_balanced_accuracy: float = 0.85,
+    min_recall: float = 0.80,
+    max_fpr: float = 0.03,
+    max_ece: float = 0.05,
+    bootstrap_samples: int = 200,
 ) -> dict[str, Any]:
     """Evaluate independent test predictions and enforce product-claim gates."""
-    if not 0 <= threshold <= 1 or not 0 <= min_roc_auc <= 1 or not 0 <= max_fpr <= 1:
-        raise ValueError("threshold, minimum ROC-AUC and maximum FPR must be between 0 and 1")
-    if min_samples < 1 or min_source_groups < 1:
+    probability_values = (
+        threshold,
+        min_roc_auc,
+        min_balanced_accuracy,
+        min_recall,
+        max_fpr,
+        max_ece,
+    )
+    if any(not 0 <= value <= 1 for value in probability_values):
+        raise ValueError("threshold and metric gates must be between 0 and 1")
+    if min_samples < 1 or min_source_groups < 1 or bootstrap_samples < 1:
         raise ValueError("minimum sample and source-group counts must be positive")
     manifest_path = Path(manifest_path)
     predictions_path = Path(predictions_path)
@@ -154,6 +203,7 @@ def benchmark_predictions(
         if sample["split"] == "test" and sample["label"] in {"cover", "stego"}
     ]
     observations: list[tuple[bool, int]] = []
+    scored_observations: list[tuple[bool, float]] = []
     missing: list[str] = []
     used_keys: set[str] = set()
     groups: set[str] = set()
@@ -166,9 +216,17 @@ def benchmark_predictions(
         used_keys.add(key)
         groups.add(str(sample.get("source_group") or "unspecified"))
         observations.append((sample["label"] == "stego", round(score * 100)))
+        scored_observations.append((sample["label"] == "stego", score))
     if not observations:
         raise ResearchManifestError("no labeled test predictions are available")
     metrics = classification_metrics(observations, threshold=round(threshold * 100))
+    metrics["expected_calibration_error"] = _expected_calibration_error(scored_observations)
+    intervals = _bootstrap_intervals(
+        scored_observations,
+        threshold=threshold,
+        samples=bootstrap_samples,
+        seed=20260813,
+    )
     reasons = []
     if len(eligible) < min_samples:
         reasons.append(f"held-out sample count {len(eligible)} is below {min_samples}")
@@ -181,9 +239,17 @@ def benchmark_predictions(
     roc_auc = metrics["roc_auc"]
     if roc_auc is None or roc_auc < min_roc_auc:
         reasons.append(f"ROC-AUC {roc_auc} is below {min_roc_auc}")
-    if metrics["false_positive_rate"] > max_fpr:
+    if metrics["balanced_accuracy"] < min_balanced_accuracy:
         reasons.append(
-            f"false-positive rate {metrics['false_positive_rate']} exceeds {max_fpr}"
+            f"balanced accuracy {metrics['balanced_accuracy']} is below {min_balanced_accuracy}"
+        )
+    if metrics["recall"] < min_recall:
+        reasons.append(f"recall {metrics['recall']} is below {min_recall}")
+    if metrics["false_positive_rate"] > max_fpr:
+        reasons.append(f"false-positive rate {metrics['false_positive_rate']} exceeds {max_fpr}")
+    if metrics["expected_calibration_error"] > max_ece:
+        reasons.append(
+            f"expected calibration error {metrics['expected_calibration_error']} exceeds {max_ece}"
         )
     report = {
         "schema_version": "1.0",
@@ -199,13 +265,18 @@ def benchmark_predictions(
             "unused_prediction_count": len(set(predictions) - used_keys),
             "source_groups": sorted(groups),
             "metrics": metrics,
+            "bootstrap_95_percent_confidence_intervals": intervals,
         },
         "gates": {
             "threshold": threshold,
             "min_samples": min_samples,
             "min_source_groups": min_source_groups,
             "min_roc_auc": min_roc_auc,
+            "min_balanced_accuracy": min_balanced_accuracy,
+            "min_recall": min_recall,
             "max_fpr": max_fpr,
+            "max_ece": max_ece,
+            "bootstrap_samples": bootstrap_samples,
             "reasons": reasons,
         },
     }
@@ -215,10 +286,149 @@ def benchmark_predictions(
     return report
 
 
+def calibrate_predictions(
+    manifest_path: Path,
+    predictions_path: Path,
+    out: Path,
+    *,
+    source: Path | None = None,
+    split: str = "validation",
+) -> dict[str, Any]:
+    """Fit scalar temperature calibration on a declared non-test split."""
+    if split not in {"train", "validation"}:
+        raise ValueError("calibration split must be train or validation")
+    manifest = load_dataset_manifest(manifest_path)
+    verify_dataset_manifest(manifest, source=source, verify_files=True)
+    predictions = _load_predictions(predictions_path)
+    observations: list[tuple[bool, float]] = []
+    for sample in manifest["samples"]:
+        if sample["split"] != split or sample["label"] not in {"cover", "stego"}:
+            continue
+        key = sample["sha256"] if sample["sha256"] in predictions else sample["path"]
+        if key not in predictions:
+            raise ResearchManifestError(f"calibration prediction is missing: {sample['path']}")
+        observations.append((sample["label"] == "stego", predictions[key]))
+    if not observations or len({label for label, _score in observations}) != 2:
+        raise ResearchManifestError("calibration requires cover and stego observations")
+    candidates = [0.25 + index * 0.01 for index in range(376)]
+    temperature = min(candidates, key=lambda value: _log_loss(observations, value))
+    calibrated = [(label, _apply_temperature(score, temperature)) for label, score in observations]
+    report = {
+        "schema_version": "1.0",
+        "method": "scalar_temperature",
+        "split": split,
+        "samples": len(observations),
+        "temperature": round(temperature, 6),
+        "before": {"ece": _expected_calibration_error(observations)},
+        "after": {
+            "ece": _expected_calibration_error(calibrated),
+            "log_loss": round(_log_loss(observations, temperature), 6),
+        },
+        "manifest_sha256": _sha256(Path(manifest_path)),
+        "predictions_sha256": _sha256(Path(predictions_path)),
+    }
+    destination = Path(out)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        raise FileExistsError(destination)
+    destination.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return report
+
+
+def train_model(config_path: Path, out: Path) -> dict[str, Any]:
+    """Train a declared binary feature model when the research extra is installed."""
+    try:
+        import numpy as np
+        import torch
+    except ImportError as exc:
+        raise RuntimeError("research training requires the 'research' extra") from exc
+    config = json.loads(Path(config_path).read_text(encoding="utf-8"))
+    features_path = Path(config["features"])
+    with np.load(features_path, allow_pickle=False) as arrays:
+        features = np.asarray(arrays[config.get("input_key", "x")], dtype=np.float32)
+        labels = np.asarray(arrays[config.get("label_key", "y")], dtype=np.float32)
+    if features.ndim < 2 or labels.ndim != 1 or features.shape[0] != labels.shape[0]:
+        raise ResearchManifestError("training features and labels have incompatible shapes")
+    torch.manual_seed(int(config.get("seed", 20260813)))
+    tensor = torch.from_numpy(features.reshape(features.shape[0], -1))
+    targets = torch.from_numpy(labels.reshape(-1, 1))
+    model = torch.nn.Linear(tensor.shape[1], 1)
+    optimizer = torch.optim.Adam(model.parameters(), lr=float(config.get("learning_rate", 1e-3)))
+    loss_function = torch.nn.BCEWithLogitsLoss()
+    epochs = int(config.get("epochs", 10))
+    if not 1 <= epochs <= 100_000:
+        raise ValueError("training epochs must be between 1 and 100000")
+    loss = 0.0
+    for _epoch in range(epochs):
+        optimizer.zero_grad()
+        output = model(tensor)
+        loss_value = loss_function(output, targets)
+        loss_value.backward()
+        optimizer.step()
+        loss = float(loss_value.detach())
+    destination = Path(out)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        raise FileExistsError(destination)
+    checkpoint = {
+        "state_dict": model.state_dict(),
+        "input_shape": list(features.shape[1:]),
+        "features": int(tensor.shape[1]),
+        "domain": config.get("domain", "spatial-srnet-v1"),
+        "preprocessing": config.get("preprocessing", {}),
+    }
+    torch.save(checkpoint, destination)
+    return {"checkpoint": str(destination), "samples": len(labels), "loss": loss, "epochs": epochs}
+
+
+def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
+    """Export a trained checkpoint with its model/preprocessing contract."""
+    try:
+        import torch
+    except ImportError as exc:
+        raise RuntimeError("ONNX export requires the 'research' extra") from exc
+    checkpoint = torch.load(Path(checkpoint_path), map_location="cpu", weights_only=True)
+    model = torch.nn.Linear(int(checkpoint["features"]), 1)
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    destination = Path(out)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        raise FileExistsError(destination)
+    dummy = torch.zeros((1, int(checkpoint["features"])), dtype=torch.float32)
+    torch.onnx.export(
+        model,
+        dummy,
+        destination,
+        input_names=["input"],
+        output_names=["logit"],
+        dynamic_axes={"input": {0: "batch"}, "logit": {0: "batch"}},
+        opset_version=17,
+    )
+    contract = {
+        "schema_version": "1.0",
+        "domain": checkpoint["domain"],
+        "input_shape": checkpoint["input_shape"],
+        "preprocessing": checkpoint["preprocessing"],
+        "onnx_sha256": _sha256(destination),
+        "calibrated": False,
+    }
+    card = destination.with_suffix(destination.suffix + ".model-card.json")
+    card.write_text(json.dumps(contract, indent=2), encoding="utf-8")
+    return contract
+
+
 def verify_split_isolation(manifest: dict[str, Any]) -> bool:
     observed: dict[str, str] = {}
     for sample in manifest.get("samples", []):
-        digest = sample["sha256"]
+        digest = ":".join(
+            (
+                str(sample.get("source_group") or "unspecified"),
+                str(sample.get("camera") or ""),
+                str(sample.get("device") or ""),
+                str(sample.get("lineage") or sample["sha256"]),
+            )
+        )
         split = sample["split"]
         if digest in observed and observed[digest] != split:
             return False
@@ -240,6 +450,20 @@ def _infer_source_group(path: Path, root: Path) -> str:
         part for part in path.relative_to(root).parts[:-1] if part.lower() not in _LABEL_COMPONENTS
     ]
     return "/".join(components) or "unspecified"
+
+
+def _infer_lineage(path: Path, root: Path) -> str:
+    parts = [
+        part
+        for part in path.relative_to(root).with_suffix("").parts
+        if part.lower() not in _LABEL_COMPONENTS
+    ]
+    stem = parts[-1] if parts else path.stem
+    for suffix in ("-stego", "_stego", "-embedded", "_embedded", "-cover", "_cover"):
+        if stem.lower().endswith(suffix):
+            stem = stem[: -len(suffix)]
+            break
+    return "/".join((*parts[:-1], stem)) or stem
 
 
 def _stable_split(digest: str, seed: int) -> str:
@@ -281,3 +505,78 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _expected_calibration_error(observations: list[tuple[bool, float]], bins: int = 10) -> float:
+    if not observations:
+        return 0.0
+    total = len(observations)
+    error = 0.0
+    for index in range(bins):
+        lower = index / bins
+        upper = (index + 1) / bins
+        values = [
+            (label, score)
+            for label, score in observations
+            if lower <= score < upper or (index == bins - 1 and score == 1.0)
+        ]
+        if not values:
+            continue
+        confidence = sum(score for _, score in values) / len(values)
+        frequency = sum(label for label, _ in values) / len(values)
+        error += len(values) / total * abs(confidence - frequency)
+    return round(error, 6)
+
+
+def _apply_temperature(score: float, temperature: float) -> float:
+    bounded = min(1 - 1e-9, max(1e-9, score))
+    logit = math.log(bounded / (1 - bounded)) / temperature
+    return 1 / (1 + math.exp(-logit))
+
+
+def _log_loss(observations: list[tuple[bool, float]], temperature: float) -> float:
+    total = 0.0
+    for label, score in observations:
+        probability = min(1 - 1e-9, max(1e-9, _apply_temperature(score, temperature)))
+        total -= math.log(probability if label else 1 - probability)
+    return total / len(observations)
+
+
+def _bootstrap_intervals(
+    observations: list[tuple[bool, float]],
+    *,
+    threshold: float,
+    samples: int,
+    seed: int,
+) -> dict[str, list[float]]:
+    positives = [score for label, score in observations if label]
+    negatives = [score for label, score in observations if not label]
+    if not positives or not negatives:
+        return {}
+    generator = random.Random(seed)  # noqa: S311 - deterministic statistical resampling
+    values: dict[str, list[float]] = {
+        "roc_auc": [],
+        "balanced_accuracy": [],
+        "recall": [],
+        "false_positive_rate": [],
+        "expected_calibration_error": [],
+    }
+    for _index in range(samples):
+        selected = [
+            *((True, generator.choice(positives)) for _ in positives),
+            *((False, generator.choice(negatives)) for _ in negatives),
+        ]
+        labels_and_ints = [(label, round(score * 100)) for label, score in selected]
+        metrics = classification_metrics(labels_and_ints, threshold=round(threshold * 100))
+        values["roc_auc"].append(float(metrics["roc_auc"]))
+        values["balanced_accuracy"].append(float(metrics["balanced_accuracy"]))
+        values["recall"].append(float(metrics["recall"]))
+        values["false_positive_rate"].append(float(metrics["false_positive_rate"]))
+        values["expected_calibration_error"].append(_expected_calibration_error(selected))
+    intervals: dict[str, list[float]] = {}
+    for name, distribution in values.items():
+        distribution.sort()
+        low = distribution[max(0, round(0.025 * (samples - 1)))]
+        high = distribution[min(samples - 1, round(0.975 * (samples - 1)))]
+        intervals[name] = [round(low, 6), round(high, 6)]
+    return intervals

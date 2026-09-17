@@ -1,4 +1,5 @@
 """Dependency-free binary classification metrics for steganalysis scores."""
+
 from __future__ import annotations
 
 from collections.abc import Iterable
@@ -22,6 +23,7 @@ def classification_metrics(
     specificity = _ratio(tn, tn + fp)
     fpr = _ratio(fp, fp + tn)
     accuracy = _ratio(tp + tn, len(values))
+    balanced_accuracy = (recall + specificity) / 2
     f1 = _ratio(2 * precision * recall, precision + recall)
     return {
         "threshold": threshold,
@@ -34,6 +36,7 @@ def classification_metrics(
         "specificity": _rounded(specificity),
         "false_positive_rate": _rounded(fpr),
         "accuracy": _rounded(accuracy),
+        "balanced_accuracy": _rounded(balanced_accuracy),
         "f1": _rounded(f1),
         "roc_auc": _optional_rounded(_roc_auc(values)),
         "average_precision": _optional_rounded(_average_precision(values)),
@@ -42,18 +45,22 @@ def classification_metrics(
 
 
 def _roc_auc(values: list[tuple[bool, int]]) -> float | None:
-    positive = [score for label, score in values if label]
-    negative = [score for label, score in values if not label]
-    if not positive or not negative:
+    positive_count = sum(label for label, _score in values)
+    negative_count = len(values) - positive_count
+    if not positive_count or not negative_count:
         return None
-    wins = 0.0
-    for positive_score in positive:
-        for negative_score in negative:
-            if positive_score > negative_score:
-                wins += 1.0
-            elif positive_score == negative_score:
-                wins += 0.5
-    return wins / (len(positive) * len(negative))
+    ranked = sorted(values, key=lambda item: item[1])
+    positive_rank_sum = 0.0
+    index = 0
+    while index < len(ranked):
+        end = index + 1
+        while end < len(ranked) and ranked[end][1] == ranked[index][1]:
+            end += 1
+        average_rank = ((index + 1) + end) / 2
+        positive_rank_sum += average_rank * sum(label for label, _score in ranked[index:end])
+        index = end
+    wins = positive_rank_sum - positive_count * (positive_count + 1) / 2
+    return wins / (positive_count * negative_count)
 
 
 def _average_precision(values: list[tuple[bool, int]]) -> float | None:
