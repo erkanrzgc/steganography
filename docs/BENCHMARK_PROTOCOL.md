@@ -17,6 +17,12 @@ All derivatives of a cover stay in the same split. Grouping uses lineage and
 camera/device/source metadata, not just file hashes, to prevent cover–stego
 leakage.
 
+Use `research partition` for subsequent experiments; see `DEVELOPMENT_DATA.md`.
+Reserve published pilot identities, explicitly hold out whole test sources and
+retain camera/device groups. Generated partition metadata is validated again
+by benchmark/calibration manifest checks. Legacy manifests remain readable;
+their acceptance alone is not evidence that training was cross-source isolated.
+
 ## Support-cell gates
 
 A format/method/payload-rate cell needs at least 1,000 covers and 1,000 stegos

@@ -44,3 +44,9 @@ it does not implement a second detector. Independent upstream tools generate
 cover/stego pairs, with hashes and lineage recorded before evaluation. Solver
 job directories exclude expected payloads. Aggregate evidence is versioned,
 while downloaded images and full local runs remain in ignored `.benchmark/`.
+
+`core.dataset` defines shared identity and connected-component rules. Research
+partitioning uses these to keep lineage/camera/device groups together, reserve
+whole test sources and reject overlap with frozen manifests. Partition policy
+is rechecked by research manifest validation. AI triage stays in raw analysis
+results but cannot contribute to aggregate scores or primary pipeline findings.

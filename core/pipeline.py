@@ -133,6 +133,9 @@ class AnalysisPipeline:
         unavailable = 0
         errors = 0
         for result in analysis.results:
+            if result.analyzer == "ai_triage":
+                # Raw triage remains in analysis.results, never primary findings.
+                continue
             if result.status in {"unavailable", "unsupported"}:
                 unavailable += 1
             elif result.status == "error":
@@ -204,7 +207,9 @@ def _overall_verdict(
         return "likely"
     if analysis.overall_score >= 30:
         return "suspicious"
-    usable = sum(result.status == "ok" for result in analysis.results)
+    usable = sum(
+        result.status == "ok" and result.analyzer != "ai_triage" for result in analysis.results
+    )
     if usable == 0 and (unavailable or errors):
         return "inconclusive"
     return "no_indicators"

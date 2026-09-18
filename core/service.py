@@ -70,14 +70,12 @@ def aggregate_score(results: Iterable[AnalysisResult], profile: str) -> int:
         raise ValueError(f"unknown analysis profile: {profile}")
     threshold = _PROFILE_MINIMUMS[profile]
     categories: dict[str, int] = {}
-    ai_score = 0
     verified = False
     for result in results:
         if result.status != "ok":
             continue
         if result.analyzer == "ai_triage":
-            if not (result.explanation or "").startswith("heuristic fallback:"):
-                ai_score = max(ai_score, result.suspicion)
+            # Triage is explanation only, even if a provider claims certainty.
             continue
         for signal in result.signals:
             if signal.evidence == "informational":
@@ -98,7 +96,7 @@ def aggregate_score(results: Iterable[AnalysisResult], profile: str) -> int:
         deterministic = 0
     if verified:
         deterministic = max(95, deterministic)
-    return min(100, max(deterministic, ai_score))
+    return min(100, deterministic)
 
 
 class AnalysisService:

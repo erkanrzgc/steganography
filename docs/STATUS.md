@@ -15,14 +15,19 @@ been delivered or validated by this slice.
   export commands; lineage-aware manifests and benchmark metrics/gates.
 - Full-image upstream tool installation with checksummed Stegseek, zsteg and
   dependencies, and OpenStego; Debian package licenses recorded.
+- Research partitioning with reserved-pilot exclusions, connected lineage/
+  camera/device groups, explicit held-out sources and exclusive output creation.
+- AI triage cannot change primary scores/findings or act as detector coverage.
+  See `DEVELOPMENT_DATA.md` for next-experiment prerequisites and limitations.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 150 tests pass; total coverage 90.77% in the pilot full run.
-- Ruff and mypy (66 source files) pass for the pilot implementation.
+- Python 3.11: 172 tests pass; total coverage 90.99% after partition/AI isolation
+  hardening. New `core.dataset` grouping code has 100% statement coverage.
+- Ruff and mypy (67 source files) pass; diff whitespace checks pass.
 - Version 0.6.0 wheel and sdist build successfully; the wheel contains no models.
 - Web: one test passes; TypeScript/Vite build passes.
 - Full Docker build and non-root/read-only/network-disabled smoke have passed

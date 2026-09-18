@@ -2,6 +2,13 @@
 
 ## 0.6.0 (unreleased)
 
+- Added `research partition` with frozen-manifest overlap rejection, whole-source
+  holdouts, connected lineage/camera/device grouping and revalidated split policy.
+- Closed metadata-based lineage isolation bypasses and rejected research-file
+  symlinks during integrity verification.
+- Removed AI triage from aggregate suspicion, primary findings and usable
+  detector coverage; raw triage output is retained for explanations.
+
 - Added explicit range-bounded BOSSbase pilot acquisition, independent
   Steghide/OpenStego generation, lineage-aware detection metrics and exact CTF
   recovery evaluation. Published the failed single-source detection baseline
