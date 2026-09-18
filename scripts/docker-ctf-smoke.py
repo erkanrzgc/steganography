@@ -88,7 +88,37 @@ def main() -> None:
             "independent steghide payload mismatch",
         )
         require("fixture-password" not in str(external.to_dict()), "password leaked")
-        print("PASS: tool inventory, native and independent Steghide exact recovery, redaction")
+        openstego = shutil.which("openstego")
+        if openstego is None:
+            raise RuntimeError("missing openstego")
+        openstego_file = root / "openstego.png"
+        subprocess.run(  # noqa: S603 - independent known fixture generator
+            [
+                openstego,
+                "embed",
+                "-a",
+                "randomlsb",
+                "-cf",
+                str(cover),
+                "-mf",
+                str(payload),
+                "-sf",
+                str(openstego_file),
+                "-E",
+            ],
+            check=True,
+            capture_output=True,
+            timeout=10,
+        )
+        require(openstego_file.is_file(), "OpenStego exited without producing a file")
+        recovered = CTFService().solve(openstego_file, root / "openstego-job")
+        require(
+            any(
+                a.path and a.path.read_bytes() == payload.read_bytes() for a in recovered.artifacts
+            ),
+            "independent OpenStego payload mismatch",
+        )
+        print("PASS: tool inventory, native, Steghide and OpenStego exact recovery, redaction")
         for execution in external.tools:
             print(f"{execution.tool}: {execution.status}")
             if execution.status == "failed":
