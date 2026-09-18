@@ -83,6 +83,19 @@ _RECIPES: tuple[CorpusRecipe, ...] = (
     ),
 )
 
+EXTENDED_RECIPES: tuple[CorpusRecipe, ...] = (
+    *_RECIPES,
+    CorpusRecipe("image_lsb_gradient_png", "image_lsb", ".png", "gradient_rgb"),
+    CorpusRecipe("image_lsb_gradient_bmp", "image_lsb", ".bmp", "gradient_rgb"),
+    CorpusRecipe(
+        "image_lsb_scatter_gradient_png",
+        "image_lsb_scatter",
+        ".png",
+        "gradient_rgb",
+        {"channels": "rgb"},
+    ),
+)
+
 
 def generate_corpus(
     output: Path,
@@ -92,6 +105,7 @@ def generate_corpus(
     include_dct: bool = True,
     methods: set[str] | None = None,
     densities: tuple[tuple[str, float], ...] = DEFAULT_DENSITIES,
+    recipes: tuple[CorpusRecipe, ...] | None = None,
 ) -> dict[str, Any]:
     """Build a corpus atomically and return its manifest.
 
@@ -112,6 +126,7 @@ def generate_corpus(
             include_dct=include_dct,
             methods=methods,
             densities=densities,
+            recipes=recipes,
         )
         (staging / _MARKER_FILE).write_text(
             f"schema={CORPUS_SCHEMA_VERSION}\nseed={seed}\n", encoding="utf-8"
@@ -164,8 +179,8 @@ def load_manifest(corpus: Path, *, verify_files: bool = True) -> dict[str, Any]:
     return data
 
 
-def available_recipes() -> tuple[CorpusRecipe, ...]:
-    return _RECIPES
+def available_recipes(extended: bool = False) -> tuple[CorpusRecipe, ...]:
+    return EXTENDED_RECIPES if extended else _RECIPES
 
 
 def _generate_into(
@@ -175,15 +190,17 @@ def _generate_into(
     include_dct: bool,
     methods: set[str] | None,
     densities: tuple[tuple[str, float], ...],
+    recipes: tuple[CorpusRecipe, ...] | None = None,
 ) -> dict[str, Any]:
     registry = Registry()
     registry.autodiscover()
     service = StegoService(registry)
     samples: list[CorpusSample] = []
     skipped: list[dict[str, str]] = []
+    source_recipes = recipes if recipes is not None else _RECIPES
     selected = [
         recipe
-        for recipe in _RECIPES
+        for recipe in source_recipes
         if methods is None or recipe.method in methods or recipe.id in methods
     ]
     if not selected:
@@ -325,6 +342,21 @@ def _create_cover(recipe: CorpusRecipe, path: Path, seed: int) -> None:
     if recipe.cover_kind == "noise_rgb":
         array = rng.integers(0, 256, size=(256, 256, 3), dtype=np.uint8)
         image = Image.fromarray(array, "RGB")
+        if recipe.extension == ".jpg":
+            image.save(path, format="JPEG", quality=92, optimize=False, progressive=False)
+        else:
+            image.save(path, format=recipe.extension.lstrip(".").upper())
+        return
+    if recipe.cover_kind == "gradient_rgb":
+        x = np.linspace(0, 0.5 * np.pi, 256)
+        y = np.linspace(0, 0.5 * np.pi, 256)
+        xx, yy = np.meshgrid(x, y)
+        base = ((np.sin(xx) * np.cos(yy) + 1.0) * 110.0 + 15.0).astype(np.uint8)
+        offset = seed % 17
+        r = np.clip(base + offset, 0, 255).astype(np.uint8)
+        g = np.clip(base + offset + 5, 0, 255).astype(np.uint8)
+        b = np.clip(base + offset + 10, 0, 255).astype(np.uint8)
+        image = Image.fromarray(np.stack([r, g, b], axis=2), "RGB")
         if recipe.extension == ".jpg":
             image.save(path, format="JPEG", quality=92, optimize=False, progressive=False)
         else:

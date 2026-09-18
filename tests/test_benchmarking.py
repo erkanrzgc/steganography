@@ -154,3 +154,28 @@ def test_benchmark_failure_and_configuration_validation(
     ):
         with pytest.raises(ValueError):
             run_benchmark(evaluation_corpus, **arguments)
+
+
+def test_extended_recipes_and_gradient_corpus(tmp_path: Path):
+    from steganography.benchmarking.corpus import (
+        EXTENDED_RECIPES,
+        available_recipes,
+        generate_corpus,
+        load_manifest,
+    )
+
+    std = available_recipes(extended=False)
+    ext = available_recipes(extended=True)
+    assert len(ext) > len(std)
+
+    corpus_dir = tmp_path / "extended_corpus"
+    manifest = generate_corpus(
+        corpus_dir,
+        seed=42,
+        methods={"image_lsb_gradient_png"},
+        densities=(("test", 0.15),),
+        recipes=EXTENDED_RECIPES,
+    )
+    assert manifest["sample_count"] == 2
+    loaded = load_manifest(corpus_dir, verify_files=True)
+    assert loaded["corpus_digest"] == manifest["corpus_digest"]

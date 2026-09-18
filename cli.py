@@ -260,14 +260,16 @@ def cmd_serve(args: argparse.Namespace) -> int:
 
 
 def cmd_corpus(args: argparse.Namespace) -> int:
-    from steganography.benchmarking.corpus import generate_corpus
+    from steganography.benchmarking.corpus import EXTENDED_RECIPES, generate_corpus
 
+    recipes = EXTENDED_RECIPES if getattr(args, "extended", False) else None
     manifest = generate_corpus(
         Path(args.out),
         seed=args.seed,
         force=args.force,
         include_dct=not args.exclude_dct,
         methods=set(args.method) if args.method else None,
+        recipes=recipes,
     )
     print(
         f"generated {manifest['sample_count']} samples → {args.out} "
@@ -744,6 +746,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--method",
         action="append",
         help="include only this carrier method or recipe id (repeatable)",
+    )
+    corpus.add_argument(
+        "--extended",
+        action="store_true",
+        help="include extended realistic gradient/spatial recipes",
     )
     corpus.set_defaults(fn=cmd_corpus)
 

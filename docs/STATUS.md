@@ -28,9 +28,10 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 199 tests pass; total coverage 91.91%. Decoupled statistical
-  categories, calibrated SPA/RS detectors, and natural synthetic detection tests
-  pass; these tests are regression evidence, not accuracy evidence.
+- Python 3.11: 200 tests pass; total coverage 91.92%. Decoupled statistical
+  categories, calibrated SPA/RS detectors, extended gradient corpus recipes, and
+  natural synthetic detection tests pass; these tests are regression evidence,
+  not accuracy evidence.
 - Ruff and mypy (69 source files) pass; diff whitespace checks pass.
 - PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
   CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and

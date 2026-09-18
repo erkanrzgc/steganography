@@ -14,6 +14,8 @@
 - Decoupled spatial steganalysis signal categories (`image_chi_square`,
   `image_sample_pair`, `image_rs_analysis`), calibrated SPA and RS thresholds
   against higher bitplane structure, and added markerless natural stego tests.
+- Added smooth gradient cover generation and `EXTENDED_RECIPES` with `--extended`
+  CLI flag to benchmarking corpus generation.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.
