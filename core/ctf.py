@@ -334,6 +334,26 @@ class CTFService:
                     )
                 )
                 state.confirmed = True
+        if not state.confirmed and artifact_path.suffix.lower() in {".wav", ".wave"}:
+            try:
+                from modules.audio_wav import extract_wav_payload
+
+                recovered = extract_wav_payload(artifact_path)
+                if recovered is not None:
+                    payload, desc = recovered
+                    generated.append(
+                        self._store(
+                            state,
+                            payload,
+                            "recovered.bin",
+                            artifact,
+                            artifact.depth + 1,
+                            desc,
+                        )
+                    )
+                    state.confirmed = True
+            except Exception:  # noqa: BLE001, S110
+                pass
         if mode == "deep" and artifact_path.suffix.lower() in {".png", ".bmp"}:
             visualization = _bitplane_visualization(artifact_path)
             if visualization:
@@ -601,6 +621,12 @@ def _bounded_read(path: Path, limit: int) -> bytes:
 
 
 def _trailer(data: bytes, suffix: str) -> bytes:
+    if suffix in {".wav", ".wave"}:
+        if data.startswith(b"RIFF") and len(data) >= 8:
+            riff_size = int.from_bytes(data[4:8], "little")
+            structural_len = 8 + riff_size
+            return data[structural_len:] if len(data) > structural_len else b""
+        return b""
     markers = {
         ".png": b"IEND\xaeB`\x82",
         ".jpg": b"\xff\xd9",

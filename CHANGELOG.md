@@ -19,6 +19,9 @@
 - Added JPEG DQT table analysis (flat unit quantization detection), Westfeld DCT
   Chi-Square PoV steganalysis, JSteg marker detection, native JSteg payload
   extraction, and automated CTF solving for JSteg carriers.
+- Added WAV audio steganalysis (dynamic range-gated LSB bias, 8-bit PCM Pairs of
+  Values Chi-Square, quiet-region LSB noise transition tests), structural RIFF
+  trailer detection and carving, and raw LSB payload extraction in CTF analysis.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.
