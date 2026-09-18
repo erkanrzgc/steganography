@@ -11,6 +11,9 @@
   cards; verified CPU training reproducibility and ONNX parity against ONNX Runtime.
 - Fixed raw 32-byte Ed25519 public key parsing in model verification when keys
   contain leading/trailing whitespace bytes.
+- Decoupled spatial steganalysis signal categories (`image_chi_square`,
+  `image_sample_pair`, `image_rs_analysis`), calibrated SPA and RS thresholds
+  against higher bitplane structure, and added markerless natural stego tests.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.

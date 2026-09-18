@@ -47,23 +47,28 @@ class ImageBitplaneAnalyzer(Analyzer):
                     f"chi_square_{channel_name}_lsb",
                     score,
                     f"pairs-of-values normalized chi-square={normalized:.4f}",
-                    category="image_bitplane_statistics",
+                    category="image_chi_square",
                     evidence="heuristic" if score >= 45 else "informational",
                 )
             )
 
         # Approximate RS/sample-pair indicators, kept independently categorized.
         lsb = rgb & 1
+        plane2 = (rgb >> 2) & 1
+        higher_plane_structured = float(np.mean(plane2[:, 1:, :] == plane2[:, :-1, :])) >= 0.54
         horizontal_agreement = float(np.mean(lsb[:, 1:, :] == lsb[:, :-1, :]))
         spa_delta = abs(horizontal_agreement - 0.5)
-        spa_score = max(0, min(55, round((0.04 - spa_delta) * 900)))
+        if higher_plane_structured:
+            spa_score = max(0, min(70, round((0.10 - spa_delta) / 0.10 * 70)))
+        else:
+            spa_score = 0
         signals.append(
             Signal(
                 "sample_pair_balance",
                 spa_score,
                 f"adjacent LSB agreement={horizontal_agreement:.4f}",
-                category="image_bitplane_statistics",
-                evidence="heuristic" if spa_score >= 45 else "informational",
+                category="image_sample_pair",
+                evidence="heuristic" if spa_score >= 25 else "informational",
             )
         )
 
@@ -109,14 +114,18 @@ class ImageBitplaneAnalyzer(Analyzer):
         )
         differences = np.abs(np.diff(rgb.astype(np.int16), axis=1))
         regular = float(np.mean((differences & 1) == 0))
-        rs_score = max(0, min(55, round((0.03 - abs(regular - 0.5)) * 1100)))
+        rs_delta = abs(regular - 0.5)
+        if higher_plane_structured:
+            rs_score = max(0, min(70, round((0.10 - rs_delta) / 0.10 * 70)))
+        else:
+            rs_score = 0
         signals.append(
             Signal(
                 "rs_regular_singular_balance",
                 rs_score,
                 f"regular/singular parity balance={regular:.4f}",
-                category="image_bitplane_statistics",
-                evidence="heuristic" if rs_score >= 45 else "informational",
+                category="image_rs_analysis",
+                evidence="heuristic" if rs_score >= 25 else "informational",
             )
         )
 
