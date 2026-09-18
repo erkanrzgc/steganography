@@ -2,6 +2,12 @@
 
 ## 0.6.0 (unreleased)
 
+- Added bounded, manifest-bound PNG/BMP spatial-summary feature extraction for
+  train/validation; test image bytes are not accessed by this workflow.
+- Training now rejects unbound NPZ inputs, mismatched feature/manifest hashes,
+  invalid feature values and rows outside the exact train membership. Checkpoints
+  retain provenance and identify the linear baseline accurately (not SRNet).
+
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.
 - Closed metadata-based lineage isolation bypasses and rejected research-file

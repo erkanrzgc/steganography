@@ -19,15 +19,21 @@ been delivered or validated by this slice.
   camera/device groups, explicit held-out sources and exclusive output creation.
 - AI triage cannot change primary scores/findings or act as detector coverage.
   See `DEVELOPMENT_DATA.md` for next-experiment prerequisites and limitations.
+- Manifest-bound, bounded PNG/BMP feature extraction for train/validation;
+  training input validation rejects unbound NPZ and non-train or altered rows.
+  The initial spatial-summary features are experimental, not a validated detector.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 172 tests pass; total coverage 90.99% after partition/AI isolation
-  hardening. New `core.dataset` grouping code has 100% statement coverage.
-- Ruff and mypy (67 source files) pass; diff whitespace checks pass.
+- Python 3.11: 190 tests pass; total coverage 91.16% after feature-provenance
+  hardening. New feature extraction/input-validation modules have 100% statement
+  coverage; these tests are regression evidence, not accuracy evidence.
+- Ruff and mypy (69 source files) pass; diff whitespace checks pass.
+- PyTorch is absent locally. Train-input validation was exercised end to end,
+  but actual optimizer execution and ONNX export were not verified in this slice.
 - Version 0.6.0 wheel and sdist build successfully; the wheel contains no models.
 - Web: one test passes; TypeScript/Vite build passes.
 - Full Docker build and non-root/read-only/network-disabled smoke have passed

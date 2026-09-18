@@ -354,22 +354,24 @@ def calibrate_predictions(
 def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     """Train a declared binary feature model when the research extra is installed."""
     try:
-        import numpy as np
         import torch
     except ImportError as exc:
         raise RuntimeError("research training requires the 'research' extra") from exc
-    config = json.loads(Path(config_path).read_text(encoding="utf-8"))
-    features_path = Path(config["features"])
-    with np.load(features_path, allow_pickle=False) as arrays:
-        features = np.asarray(arrays[config.get("input_key", "x")], dtype=np.float32)
-        labels = np.asarray(arrays[config.get("label_key", "y")], dtype=np.float32)
-    if features.ndim < 2 or labels.ndim != 1 or features.shape[0] != labels.shape[0]:
-        raise ResearchManifestError("training features and labels have incompatible shapes")
+    from steganography.research_features import read_document, training_inputs
+
+    config, _ = read_document(Path(config_path))
+    features, labels, provenance = training_inputs(config)
+    destination = Path(out)
+    if destination.exists() or any(p.is_symlink() for p in (destination, *destination.parents)):
+        raise FileExistsError("checkpoint output already exists or uses a symlink")
+    learning_rate = float(config.get("learning_rate", 1e-3))
+    if not math.isfinite(learning_rate) or not 0 < learning_rate <= 1:
+        raise ValueError("learning rate must be finite and in (0, 1]")
     torch.manual_seed(int(config.get("seed", 20260813)))
     tensor = torch.from_numpy(features.reshape(features.shape[0], -1))
     targets = torch.from_numpy(labels.reshape(-1, 1))
     model = torch.nn.Linear(tensor.shape[1], 1)
-    optimizer = torch.optim.Adam(model.parameters(), lr=float(config.get("learning_rate", 1e-3)))
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     loss_function = torch.nn.BCEWithLogitsLoss()
     epochs = int(config.get("epochs", 10))
     if not 1 <= epochs <= 100_000:
@@ -382,19 +384,27 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         loss_value.backward()
         optimizer.step()
         loss = float(loss_value.detach())
-    destination = Path(out)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    if destination.exists():
-        raise FileExistsError(destination)
     checkpoint = {
         "state_dict": model.state_dict(),
         "input_shape": list(features.shape[1:]),
         "features": int(tensor.shape[1]),
-        "domain": config.get("domain", "spatial-srnet-v1"),
-        "preprocessing": config.get("preprocessing", {}),
+        "domain": "spatial-summary-linear-v1",
+        "preprocessing": {
+            "feature_version": provenance["feature_version"],
+            "feature_names": provenance["feature_names"],
+        },
+        "training_provenance": provenance,
     }
-    torch.save(checkpoint, destination)
-    return {"checkpoint": str(destination), "samples": len(labels), "loss": loss, "epochs": epochs}
+    with destination.open("xb") as stream:
+        torch.save(checkpoint, stream)
+    return {
+        "checkpoint": destination.name,
+        "samples": len(labels),
+        "loss": loss,
+        "epochs": epochs,
+        "training_provenance": provenance,
+    }
 
 
 def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
@@ -428,6 +438,7 @@ def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
         "preprocessing": checkpoint["preprocessing"],
         "onnx_sha256": _sha256(destination),
         "calibrated": False,
+        "training_provenance": checkpoint.get("training_provenance"),
     }
     card = destination.with_suffix(destination.suffix + ".model-card.json")
     card.write_text(json.dumps(contract, indent=2), encoding="utf-8")

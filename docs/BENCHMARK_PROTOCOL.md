@@ -23,6 +23,12 @@ retain camera/device groups. Generated partition metadata is validated again
 by benchmark/calibration manifest checks. Legacy manifests remain readable;
 their acceptance alone is not evidence that training was cross-source isolated.
 
+`research features` extracts train or validation only. The trainer requires a
+matching manifest hash, feature-artifact hash and exact ordered train membership;
+unbound NPZ input is rejected. Preserve the feature version, model/checkpoint,
+seed and training provenance before validation/calibration and final evaluation.
+Feature smoke tests do not establish detection accuracy or cross-source support.
+
 ## Support-cell gates
 
 A format/method/payload-rate cell needs at least 1,000 covers and 1,000 stegos

@@ -55,13 +55,61 @@ IDs are scoped to their source; only SHA-256 lineage IDs link across renamed
 sources. Renaming arbitrary lineage IDs can defeat ancestry checks and must
 never be used to make data appear independent.
 
+## Manifest-bound feature extraction and training
+
+```sh
+steganography research features --manifest next-experiment.json \
+  --split train --out train-features.json
+steganography research features --manifest next-experiment.json \
+  --split validation --out validation-features.json
+```
+
+The command opens image bytes only for the selected split, never test images.
+It checks sizes/hashes, refuses symlinks and existing output, and limits inputs
+to 16 MiB / 4 million pixels and 10,000 rows. Documents are limited to 64 MiB.
+Only PNG/BMP are accepted. It performs RGB conversion without resizing.
+
+`spatial-summary-v1` contains twelve simple exploratory features: per-channel
+mean absolute adjacent difference and difference standard deviation (divided
+by 255), LSB one-ratio and adjacent LSB agreement. Horizontal and vertical
+differences are pooled. This is neither SRM nor SRNet, and no accuracy claim
+is attached to these features. Conversion and replicated grayscale channels
+are potential confounders.
+
+The output records manifest hash, ordered feature contract and each row's
+sample hash, lineage and label. The command prints the artifact SHA-256.
+Use that exact hash in a training configuration:
+
+```json
+{
+  "manifest": "next-experiment.json",
+  "features": "train-features.json",
+  "features_sha256": "COPY_THE_SHA256_PRINTED_BY_FEATURE_EXTRACTION",
+  "seed": 20260918,
+  "epochs": 10,
+  "learning_rate": 0.001
+}
+```
+
+With the optional research dependencies installed, run
+`steganography research train --config train.json --out baseline.pt`.
+Paths in this configuration are relative to the working directory. Training
+rejects legacy unbound NPZ inputs, incomplete/reordered/mislabeled rows,
+validation/test artifacts, changed manifest/artifact hashes, wrong feature
+contracts and nonfinite/out-of-range values. The model is a linear binary
+baseline (`spatial-summary-linear-v1`), not a neural image steganalyzer. Its
+checkpoint and exported model card retain training provenance; it is not
+automatically installed in the analysis service and remains uncalibrated.
+
+These checks detect inconsistency and accidental misuse, not deliberate fraud:
+a caller who rewrites both data and the declared hashes can fabricate provenance.
+Keep the reviewed partition manifest and its reserved corpus records immutable.
+
 ## Remaining work before a new accuracy measurement
 
 - Acquire/document a second source; none has yet been added by this change.
-- Extract versioned features with per-row sample/lineage provenance and bind
-  training inputs to the verified split manifest. The existing raw-NPZ training
-  command does not enforce that binding yet; partitioning alone cannot make an
-  arbitrary training run leakage-free.
+- Measure useful features on the separate development corpus; the simple
+  versioned features are a reproducible baseline, not demonstrated improvement.
 - Train on train only; choose thresholds/calibration on validation only.
 - Freeze preprocessing/model/threshold before accessing the new test source.
 - Publish failures and per-cell results using the release benchmark protocol.

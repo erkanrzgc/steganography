@@ -25,8 +25,10 @@ second source; tuning on this published baseline is not a new held-out result.
 
 Implemented `research partition` with frozen-corpus exclusions and whole-source,
 lineage/camera/device isolation. AI is excluded from primary scores and findings.
-See `DEVELOPMENT_DATA.md`; provenance-bound feature training and a new independent
-source remain the next steps. No detector accuracy improvement is claimed yet.
+Provenance-bound feature extraction/train-input validation is implemented, using
+a simple experimental spatial-summary baseline. See `DEVELOPMENT_DATA.md`;
+new independent data, measured feature/model improvements and held-out inference
+remain the next steps. No detector accuracy improvement is claimed yet.
 
 JPEG segment/DQT and calibrated DCT analyzers, signed spatial/JPEG ONNX model
 packs, and tool-specific JSteg/F5/OutGuess/Steghide recovery.

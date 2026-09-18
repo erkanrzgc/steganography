@@ -533,6 +533,19 @@ def cmd_research_benchmark(args: argparse.Namespace) -> int:
     return 0 if report["status"] == "passed" else 1
 
 
+def cmd_research_features(args: argparse.Namespace) -> int:
+    from steganography.research_features import extract_features
+
+    result = extract_features(
+        Path(args.manifest),
+        Path(args.out),
+        split=args.split,
+        source=Path(args.source) if args.source else None,
+    )
+    print(json.dumps(result, indent=2))
+    return 0
+
+
 def cmd_research_train(args: argparse.Namespace) -> int:
     from steganography.research import train_model
 
@@ -834,6 +847,12 @@ def build_parser() -> argparse.ArgumentParser:
     research_benchmark.add_argument("--bootstrap-samples", type=int, default=200)
     research_benchmark.set_defaults(fn=cmd_research_benchmark)
     research_train = research_commands.add_parser("train")
+    research_features = research_commands.add_parser("features")
+    research_features.add_argument("--manifest", required=True)
+    research_features.add_argument("--out", required=True)
+    research_features.add_argument("--source")
+    research_features.add_argument("--split", choices=("train", "validation"), default="train")
+    research_features.set_defaults(fn=cmd_research_features)
     research_train.add_argument("--config", required=True)
     research_train.add_argument("--out", required=True)
     research_train.set_defaults(fn=cmd_research_train)

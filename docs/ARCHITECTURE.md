@@ -50,3 +50,10 @@ partitioning uses these to keep lineage/camera/device groups together, reserve
 whole test sources and reject overlap with frozen manifests. Partition policy
 is rechecked by research manifest validation. AI triage stays in raw analysis
 results but cannot contribute to aggregate scores or primary pipeline findings.
+
+`core.features` owns the bounded `spatial-summary-v1` preprocessing contract.
+`steganography.research_features` binds feature rows to verified partition
+manifests and validates complete train-only inputs for the research trainer.
+The CLI delegates extraction to that shared workflow. Artifacts and checkpoint
+provenance use hashes, not absolute dataset paths. No feature/model downloads or
+automatic deployment occur.
