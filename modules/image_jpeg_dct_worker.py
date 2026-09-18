@@ -5,6 +5,7 @@ import json
 import os
 import struct
 import sys
+import tempfile
 from pathlib import Path
 
 import numpy as np
@@ -179,6 +180,52 @@ def _compute_westfeld_dct_chi2(values: np.ndarray) -> tuple[float, int]:
     return normalized, deg_freedom
 
 
+def _compute_calibrated_f5_metrics(src: Path, image) -> tuple[float, float] | None:
+    """Perform 4-pixel spatial calibration to detect F5 shrinkage & DCT histogram deformation."""
+    import jpeglib
+
+    try:
+        if getattr(image, "progressive_mode", False):
+            return None
+        spatial = jpeglib.read_spatial(str(src))
+        h, w = spatial.spatial.shape[:2]
+        if h < 16 or w < 16:
+            return None
+        new_h = ((h - 4) // 8) * 8
+        new_w = ((w - 4) // 8) * 8
+        if new_h < 8 or new_w < 8:
+            return None
+        cropped = spatial.spatial[4 : 4 + new_h, 4 : 4 + new_w]
+        with tempfile.NamedTemporaryFile(suffix=".jpg") as tmp:
+            calib_sp = jpeglib.from_spatial(cropped)
+            calib_sp.write_spatial(tmp.name, qt=image.qt)
+            calib_dct = jpeglib.read_dct(tmp.name)
+
+        ac_mask = np.ones((8, 8), dtype=bool)
+        ac_mask[0, 0] = False
+
+        orig_ac = image.Y.reshape(-1, 8, 8)[:, ac_mask].reshape(-1)
+        calib_ac = calib_dct.Y.reshape(-1, 8, 8)[:, ac_mask].reshape(-1)
+
+        orig_blocks = max(1, image.Y.shape[0] * image.Y.shape[1])
+        calib_blocks = max(1, calib_dct.Y.shape[0] * calib_dct.Y.shape[1])
+
+        nz_per_blk = float(np.sum(orig_ac != 0) / orig_blocks)
+        h1_orig = float(np.sum(np.abs(orig_ac) == 1) / orig_blocks)
+        h1_calib = float(np.sum(np.abs(calib_ac) == 1) / calib_blocks)
+        h0_orig = float(np.sum(orig_ac == 0) / orig_blocks)
+        h0_calib = float(np.sum(calib_ac == 0) / calib_blocks)
+
+        if nz_per_blk < 3.0 or h1_orig < 0.8 or h1_calib < 0.8:
+            return None
+
+        delta_zero = h0_orig - h0_calib
+        ratio_ones = h1_orig / h1_calib
+        return delta_zero, ratio_ones
+    except Exception:
+        return None
+
+
 def analyze(src: Path) -> dict:
     try:
         image = _read(src)
@@ -261,6 +308,32 @@ def analyze(src: Path) -> dict:
                         "evidence": "heuristic" if chi_score >= 40 else "informational",
                     }
                 )
+
+    f5_metrics = _compute_calibrated_f5_metrics(src, image)
+    if f5_metrics is not None:
+        delta_zero, ratio_ones = f5_metrics
+        if delta_zero >= 2.0 and ratio_ones <= 0.88:
+            score = min(88, round(75 + (delta_zero - 2.0) * 5))
+            evidence = "strong"
+        elif delta_zero >= 1.4 and ratio_ones <= 0.91:
+            score = 70
+            evidence = "heuristic"
+        elif delta_zero >= 1.0 and ratio_ones <= 0.94:
+            score = 50
+            evidence = "heuristic"
+        else:
+            score = 0
+            evidence = "informational"
+        signals.append(
+            {
+                "name": "f5_shrinkage_anomaly",
+                "score": score,
+                "detail": f"excess zeros/block={delta_zero:+.3f}, ones ratio={ratio_ones:.3f}",
+                "category": "jpeg_dct_f5",
+                "evidence": evidence,
+            }
+        )
+
     suspicion = max(
         (
             item["score"]

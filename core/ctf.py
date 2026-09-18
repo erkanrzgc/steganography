@@ -558,6 +558,9 @@ class CTFService:
                 continue
             data = _bounded_read(path, state.limits.max_bytes - state.output_bytes)
             path.unlink()
+            if not data:
+                continue
+            is_flag = bool(_FLAG_PATTERN.search(data))
             generated.append(
                 self._store(
                     state,
@@ -565,9 +568,11 @@ class CTFService:
                     path.name,
                     artifact,
                     artifact.depth + 1,
-                    "external tool extraction",
+                    "external tool extraction" + (" (flag confirmed)" if is_flag else ""),
                 )
             )
+            if is_flag:
+                state.confirmed = True
         return generated
 
     def _carve_and_decode(

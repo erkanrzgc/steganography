@@ -188,3 +188,59 @@ def test_ctf_solves_jsteg(tmp_path: Path):
     assert (tmp_path / "ctf_out" / "artifacts" / recovered_artifacts[0].name).read_bytes() == flag
 
 
+def test_f5_calibrated_shrinkage_detection(tmp_path: Path):
+    np.random.seed(42)
+    arr = np.clip(np.random.normal(128, 40, (128, 128)), 0, 255).astype(np.uint8)
+    cover_path = tmp_path / "f5_cover.jpg"
+    Image.fromarray(arr, "L").save(cover_path, quality=80)
+
+    # Clean cover analysis
+    cov_res = ImageJpegDct().analyze(cover_path)
+    cov_signals = {s.name: s for s in cov_res.signals}
+    f5_sig = cov_signals.get("f5_shrinkage_anomaly")
+    assert f5_sig is None or f5_sig.score == 0
+
+    # Simulate F5 matrix shrinkage (magnitude decrement)
+    stego_path = tmp_path / "f5_stego.jpg"
+    img = jpeglib.read_dct(str(cover_path))
+    blocks = img.Y.reshape(-1, 8, 8)
+    ac_mask = np.ones((8, 8), dtype=bool)
+    ac_mask[0, 0] = False
+    for b in range(blocks.shape[0]):
+        block = blocks[b]
+        non_zeros = np.where(ac_mask & (block != 0))
+        if len(non_zeros[0]) > 0:
+            n_mod = max(1, len(non_zeros[0]) // 3)
+            chosen = np.random.choice(len(non_zeros[0]), size=n_mod, replace=False)
+            for idx in chosen:
+                r, c = non_zeros[0][idx], non_zeros[1][idx]
+                val = block[r, c]
+                if val > 0:
+                    block[r, c] -= 1
+                elif val < 0:
+                    block[r, c] += 1
+    img.write_dct(str(stego_path))
+
+    steg_res = ImageJpegDct().analyze(stego_path)
+    steg_signals = {s.name: s for s in steg_res.signals}
+    assert "f5_shrinkage_anomaly" in steg_signals
+    assert steg_signals["f5_shrinkage_anomaly"].score >= 70
+    assert steg_signals["f5_shrinkage_anomaly"].evidence in {"strong", "heuristic"}
+
+
+def test_ctf_external_tool_flag_confirmation(tmp_path: Path):
+    from core.ctf import CTFService
+    from core.ctf_types import ToolExecution
+
+    class FakeOutGuessRunner:
+        def run(self, tool, args, **kwargs):
+            if tool == "outguess":
+                (kwargs["cwd"] / "outguess.bin").write_bytes(b"flag{outguess_external_recovered}")
+            return ToolExecution(tool, "v1", "completed", 0.5, 0, (tool, *args), "ok")
+
+    sample_jpg = tmp_path / "sample.jpg"
+    sample_jpg.write_bytes(b"\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00\xff\xd9")
+    service = CTFService(tool_runner=FakeOutGuessRunner())
+    report = service.solve(sample_jpg, output_dir=tmp_path / "outguess_ctf", mode="balanced")
+    assert report.verdict == "confirmed"
+    assert any("outguess" in a.name and "flag confirmed" in a.provenance for a in report.artifacts)

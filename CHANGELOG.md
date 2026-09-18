@@ -26,6 +26,9 @@
   entry analysis, animation frame-delay ASCII/binary steganalysis), exact structural
   GIF trailer carving, native GIF comment/delay extraction, and raw text
   whitespace/zero-width payload recovery in CTF solving.
+- Added 4-pixel spatial calibration for JPEG DCT steganalysis to detect F5 matrix
+  embedding shrinkage (excess zeros and ones depletion), and integrated external
+  tool CTF flag pattern verification.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.
