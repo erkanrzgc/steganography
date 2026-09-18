@@ -38,3 +38,9 @@ native-stage deadlines remain release work.
 JSON v2 remains additive through `schema_revision`. HTML, SARIF, and bundles are
 views of the same normalized report. Host paths and secret-bearing arguments
 are redacted before serialization.
+
+`steganography.benchmarking.pilot` evaluates the same analysis and CTF services;
+it does not implement a second detector. Independent upstream tools generate
+cover/stego pairs, with hashes and lineage recorded before evaluation. Solver
+job directories exclude expected payloads. Aggregate evidence is versioned,
+while downloaded images and full local runs remain in ignored `.benchmark/`.

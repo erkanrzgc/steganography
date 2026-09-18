@@ -1,4 +1,4 @@
-# Implementation status — 2026-09-17
+# Implementation status — 2026-09-18
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
@@ -18,21 +18,28 @@ been delivered or validated by this slice.
 
 ## Verification
 
-- Python 3.11: 145 tests pass; total coverage 90.50% in the final full run.
-- Ruff, mypy (65 source files), diff whitespace and package identity checks pass.
+- Local checks use the provisioned `venv/bin/python` environment. The host's
+  system Python has an older cryptography package without Argon2id and cannot
+  collect the full suite; activate the environment before running check commands.
+- Python 3.11: 150 tests pass; total coverage 90.77% in the pilot full run.
+- Ruff and mypy (66 source files) pass for the pilot implementation.
 - Version 0.6.0 wheel and sdist build successfully; the wheel contains no models.
 - Web: one test passes; TypeScript/Vite build passes.
 - Full Docker build and non-root/read-only/network-disabled smoke have passed
-  for native payload and independently generated Steghide exact recovery.
+  for native payload and independently generated Steghide and OpenStego exact recovery.
   `scripts/docker-ctf-smoke.py` reproduces these limited integration checks.
-  In the final BMP run, zsteg, OpenStego, Stegseek, Steghide and ExifTool
-  completed. Only native and Steghide payload recovery were asserted; tool
-  completion alone is not evidence of a hidden payload.
+  OpenStego's writable-preferences initialization was fixed; tool completion
+  alone is not evidence of a hidden payload or successful extraction.
 - Python 3.12–3.14 are configured in CI but were not executed locally.
 
 ## Open acceptance gates and limitations
 
-- Real BOSSBase/ALASKA2/StegoAppDB evaluation: **unavailable**, no supplied corpus.
+- BOSSbase single-source pilot: 1,000 covers + 1,000 independently embedded
+  stegos, all stegos verified through upstream extraction. Base detection
+  failed: recall 0% at threshold 70, ROC-AUC 0.499021. Controlled CTF recovery
+  passed 30/30, including known-password image cases and simple decoders.
+  See `PILOT_RESULTS.md`; these are different capabilities, not overall accuracy.
+- ALASKA2/StegoAppDB and cross-source evaluation remain **unavailable**.
   No support cell has demonstrated the requested cross-source accuracy gates.
 - Blind 120-challenge recovery, top-three recommendations and latency: **unavailable**.
   The smoke examples are not evidence of 90% CTF recovery.

@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+The initial single-source experiment is specified in `PILOT_PROTOCOL.md` and
+reported in `PILOT_RESULTS.md` / `benchmarks/pilot-20260918.json`. Its failed
+detection baseline and controlled recovery results do not satisfy the gates below.
+
 ## Catalog and provenance
 
 Each sample records source URL/import origin, license, checksum, format,

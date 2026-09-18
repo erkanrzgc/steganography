@@ -2,6 +2,13 @@
 
 ## 0.6.0 (unreleased)
 
+- Added explicit range-bounded BOSSbase pilot acquisition, independent
+  Steghide/OpenStego generation, lineage-aware detection metrics and exact CTF
+  recovery evaluation. Published the failed single-source detection baseline
+  separately from 30/30 controlled recovery; no support gate is claimed.
+- Fixed OpenStego's headless preferences directory and added exact OpenStego
+  recovery to the hardened Docker smoke test.
+
 - Corrected external-tool input paths and bounded stdout collection, including
   process-group cleanup and remaining-job-budget checks between tools.
 - Fixed full-image zsteg dependency installation and tool smoke commands.

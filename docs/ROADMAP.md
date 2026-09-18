@@ -18,6 +18,11 @@ Source version: 0.6.0 (beta classification; not published). See
 
 ## v0.7
 
+The frozen BOSSbase pilot (`PILOT_RESULTS.md`) found chance-level discrimination
+for the tested Steghide/OpenStego families despite 30/30 controlled CTF recovery.
+Next detector work needs separate development/validation data and an untouched
+second source; tuning on this published baseline is not a new held-out result.
+
 JPEG segment/DQT and calibrated DCT analyzers, signed spatial/JPEG ONNX model
 packs, and tool-specific JSteg/F5/OutGuess/Steghide recovery.
 

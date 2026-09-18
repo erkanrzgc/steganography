@@ -60,6 +60,13 @@ do not represent 30 distinct real-world embedding families or a blind suite.
 
 ## Evaluation
 
+Independently verify every generated image payload in the full Docker image
+before interpreting detector failures (source corpus mounted read-only):
+
+```sh
+python scripts/verify-pilot-groundtruth.py /data/pilot-v1
+```
+
 ```sh
 python -m steganography.benchmarking.pilot detect \
   --source .benchmark/pilot-v1 --out .benchmark/pilot-detection --workers 4

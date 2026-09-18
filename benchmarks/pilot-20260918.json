@@ -1,0 +1,93 @@
+{
+  "schema_version": "pilot-summary-1",
+  "date": "2026-09-18",
+  "implementation_commit": "4f3a8b7",
+  "manifest_sha256": "76f96579c19522c7239e3a552fda2ff3de2f2483d15d4a3075a71db7597e0970",
+  "runner_sha256": "b7ef04ce1caff790ffe098f804371c430144f23a818ca6c2df9a5a987f367fe6",
+  "support_status": "experimental",
+  "cross_source_gate": "unavailable",
+  "source": {
+    "name": "BOSSbase 1.01",
+    "url": "https://dde.binghamton.edu/download/ImageDB/BOSSbase_1.01.zip",
+    "originals": 1000,
+    "independent_source_groups": 1,
+    "selection": "first 1000 PGM members in archive order",
+    "transformation": "PGM to RGB, no resize",
+    "camera_metadata": "unavailable",
+    "upstream_sha256_verified": false,
+    "redistribution": false
+  },
+  "ground_truth": {
+    "upstream_exact_extractions": 1000,
+    "requested_extractions": 1000,
+    "failed": 0
+  },
+  "detection": {
+    "profile": "balanced",
+    "threshold": 70,
+    "ai_enabled": false,
+    "cover_count": 1000,
+    "stego_count": 1000,
+    "confusion": {"tp": 0, "tn": 1000, "fp": 0, "fn": 1000},
+    "recall": 0.0,
+    "false_positive_rate": 0.0,
+    "balanced_accuracy": 0.5,
+    "roc_auc": 0.499021,
+    "roc_auc_lineage_bootstrap_95_ci": [0.496142375, 0.501799875],
+    "analysis_errors": 0,
+    "calibration": "not performed; scores are heuristic",
+    "elapsed_seconds": 108.27941891899991,
+    "median_sample_seconds": 0.18324623650005378,
+    "p95_sample_seconds": 0.3322313867000162,
+    "coverage": {
+      "zsteg": {"unavailable": 2000},
+      "stegseek": {"unavailable": 1000, "unsupported": 1000},
+      "exiftool": {"ok": 2000}
+    },
+    "by_method": {
+      "steghide_bmp": {
+        "covers": 500, "stegos": 500, "recall": 0.0, "fpr": 0.0,
+        "balanced_accuracy": 0.5, "roc_auc": 0.496338,
+        "roc_auc_lineage_bootstrap_95_ci": [0.49190280000000003, 0.5012163000000001]
+      },
+      "openstego_png": {
+        "covers": 500, "stegos": 500, "recall": 0.0, "fpr": 0.0,
+        "balanced_accuracy": 0.5, "roc_auc": 0.50175,
+        "roc_auc_lineage_bootstrap_95_ci": [0.49955555, 0.5038971]
+      }
+    }
+  },
+  "ctf": {
+    "requested": 30,
+    "exact_recovery": 30,
+    "completed_exact_recovery": 30,
+    "blind": false,
+    "password_policy": "known public fixture password supplied for Steghide",
+    "elapsed_seconds": 127.75579331199992,
+    "median_seconds": 0.162314,
+    "p95_seconds": 15.73309275,
+    "by_method": {
+      "steghide_bmp": {"requested": 5, "recovered": 5, "median_seconds": 15.581235000000001},
+      "openstego_png": {"requested": 5, "recovered": 5, "median_seconds": 9.440209000000001},
+      "base64": {"requested": 5, "recovered": 5},
+      "gzip": {"requested": 5, "recovered": 5},
+      "zip": {"requested": 5, "recovered": 5},
+      "base64_zip": {"requested": 5, "recovered": 5}
+    }
+  },
+  "environment": {
+    "cpu": "AMD Ryzen 9 8945HX exposed through an 8-vCPU virtual machine",
+    "detection_python": "3.11.14",
+    "detection_workers": 4,
+    "ctf_environment": "full Docker, non-root, read-only root, network disabled",
+    "latency_caveat": "detection and recovery ran concurrently; not a dedicated performance gate"
+  },
+  "limitations": [
+    "Single source with archive-order selection; no cross-camera or cross-source claim",
+    "No JPEG, WAV, GIF or mobile-app corpus was evaluated",
+    "Only 500 cover/stego pairs per embedding family, below per-cell release requirements",
+    "CTF suite has only 10 image challenges and 20 standard decoder/container examples",
+    "No threshold tuning or model training was performed on this test set",
+    "No real-world overall accuracy claim follows from these results"
+  ]
+}
