@@ -9,6 +9,7 @@ import random
 from pathlib import Path
 from typing import Any
 
+from core.dataset import grouped_indices, identity_keys
 from steganography.benchmarking.metrics import classification_metrics
 
 _EXTENSIONS = {".png", ".bmp", ".jpg", ".jpeg", ".tif", ".tiff"}
@@ -112,7 +113,7 @@ def verify_dataset_manifest(
     split_hashes: dict[str, set[str]] = {name: set() for name in _SPLITS}
     labels = {name: 0 for name in _LABELS}
     source_groups: set[str] = set()
-    lineage_splits: dict[str, str] = {}
+    lineage_splits: dict[tuple[str, ...], str] = {}
     for index, sample in enumerate(samples):
         if not isinstance(sample, dict):
             raise ResearchManifestError(f"sample {index} must be an object")
@@ -132,19 +133,14 @@ def verify_dataset_manifest(
         split_hashes[split].add(digest)
         labels[label] += 1
         source_groups.add(str(sample.get("source_group") or "unspecified"))
-        lineage_key = ":".join(
-            (
-                str(sample.get("source_group") or "unspecified"),
-                str(sample.get("camera") or ""),
-                str(sample.get("device") or ""),
-                str(sample.get("lineage") or relative.stem),
-            )
-        )
-        previous_split = lineage_splits.setdefault(lineage_key, split)
-        if previous_split != split:
-            raise ResearchManifestError(f"cover-lineage split leakage: {lineage_key}")
+        for key in identity_keys(sample):
+            previous_split = lineage_splits.setdefault(key, split)
+            if previous_split != split:
+                raise ResearchManifestError("cover-lineage split leakage")
         if verify_files:
             path = source_dir / relative
+            if any(part.is_symlink() for part in (path, *path.parents)):
+                raise ResearchManifestError("dataset symlinks are not accepted")
             if not path.is_file():
                 raise ResearchManifestError(f"dataset file is missing: {relative.as_posix()}")
             if path.stat().st_size != sample.get("size") or _sha256(path) != digest:
@@ -154,6 +150,26 @@ def verify_dataset_manifest(
     )
     if overlap:
         raise ResearchManifestError("train/validation and test hashes overlap")
+    partition = manifest.get("partition")
+    if partition is not None:
+        if (
+            not isinstance(partition, dict)
+            or partition.get("policy") != "identity-camera-device-components-v1"
+        ):
+            raise ResearchManifestError("unsupported partition policy")
+        held_out = partition.get("test_sources")
+        if (
+            not isinstance(held_out, list)
+            or not held_out
+            or any(not isinstance(s, str) for s in held_out)
+        ):
+            raise ResearchManifestError("partition requires test source names")
+        for sample in samples:
+            if (sample.get("source_group") in held_out) != (sample["split"] == "test"):
+                raise ResearchManifestError("partition held-out source isolation violated")
+        for indices in grouped_indices(samples):
+            if len({samples[index]["split"] for index in indices}) != 1:
+                raise ResearchManifestError("partition camera/device split leakage")
     return {
         "sample_count": len(samples),
         "labels": labels,
@@ -419,21 +435,108 @@ def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
 
 
 def verify_split_isolation(manifest: dict[str, Any]) -> bool:
-    observed: dict[str, str] = {}
+    observed: dict[tuple[str, ...], str] = {}
     for sample in manifest.get("samples", []):
-        digest = ":".join(
-            (
-                str(sample.get("source_group") or "unspecified"),
-                str(sample.get("camera") or ""),
-                str(sample.get("device") or ""),
-                str(sample.get("lineage") or sample["sha256"]),
-            )
-        )
         split = sample["split"]
-        if digest in observed and observed[digest] != split:
-            return False
-        observed[digest] = split
+        for key in identity_keys(sample):
+            if key in observed and observed[key] != split:
+                return False
+            observed[key] = split
     return True
+
+
+def partition_dataset(
+    manifest_path: Path,
+    out: Path,
+    *,
+    test_sources: list[str],
+    reserved_manifests: list[Path],
+    source: Path | None = None,
+    seed: int = 20260918,
+) -> dict[str, Any]:
+    """Prepare a new experiment without reusing published/frozen observations.
+
+    Requires explicit ancestry and source labels; never guesses either from a
+    filename. This validates declared provenance, not the truth of that metadata.
+    """
+    manifest = load_dataset_manifest(manifest_path)
+    verify_dataset_manifest(manifest, source=source)
+    samples = manifest["samples"]
+    for sample in samples:
+        if (
+            not isinstance(sample.get("lineage"), str)
+            or not sample["lineage"].strip()
+            or not isinstance(sample.get("source_group"), str)
+            or sample["source_group"] in {"", "unspecified"}
+            or sample["label"] not in {"cover", "stego"}
+        ):
+            raise ResearchManifestError("partition requires explicit lineage, source and labels")
+    sources = {sample["source_group"] for sample in samples}
+    held_out = set(test_sources)
+    if not held_out or not held_out < sources:
+        raise ResearchManifestError("test sources must be a nonempty proper subset of sources")
+    if not reserved_manifests:
+        raise ResearchManifestError("at least one frozen/reserved manifest is required")
+    reserved: set[tuple[str, ...]] = set()
+    reserved_hashes = []
+    for path in reserved_manifests:
+        document = load_dataset_manifest(path)
+        records = document.get("samples")
+        if not isinstance(records, list) or not records:
+            raise ResearchManifestError("reserved manifest must contain samples")
+        for record in records:
+            if not isinstance(record, dict) or not identity_keys(record):
+                raise ResearchManifestError("reserved sample has no identity")
+            reserved.update(identity_keys(record))
+        reserved_hashes.append(_sha256(path))
+    if any(identity_keys(sample) & reserved for sample in samples):
+        raise ResearchManifestError("dataset overlaps frozen/reserved identities")
+    groups = grouped_indices(samples)
+    for indices in groups:
+        group_sources = {samples[index]["source_group"] for index in indices}
+        if group_sources & held_out and group_sources - held_out:
+            raise ResearchManifestError("related samples cross held-out source boundary")
+        keys = sorted({key for index in indices for key in identity_keys(samples[index])})
+        fraction = (
+            int.from_bytes(hashlib.sha256(json.dumps([seed, keys]).encode()).digest()[:8], "big")
+            / 2**64
+        )
+        split = "test" if group_sources <= held_out else "train" if fraction < 0.8 else "validation"
+        for index in indices:
+            samples[index]["split"] = split
+    counts = {
+        split: {
+            label: sum(s["split"] == split and s["label"] == label for s in samples)
+            for label in ("cover", "stego")
+        }
+        for split in sorted(_SPLITS)
+    }
+    if any(not count for values in counts.values() for count in values.values()):
+        raise ResearchManifestError(
+            "each split needs cover and stego; supply more independent groups"
+        )
+    manifest["seed"] = seed
+    manifest["sample_count"] = len(samples)
+    manifest["splits"] = {split: sum(values.values()) for split, values in counts.items()}
+    if source is not None:
+        manifest["source"] = str(source.resolve())
+    manifest["partition"] = {
+        "policy": "identity-camera-device-components-v1",
+        "input_manifest_sha256": _sha256(manifest_path),
+        "reserved_manifest_sha256": sorted(set(reserved_hashes)),
+        "test_sources": sorted(held_out),
+        "group_count": len(groups),
+        "counts": counts,
+        "camera_device_metadata_complete": all(
+            s.get("camera") and s.get("device") for s in samples
+        ),
+        "support_status": "experimental",
+    }
+    verify_dataset_manifest(manifest, source=source, verify_files=False)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with out.open("x", encoding="utf-8") as stream:
+        json.dump(manifest, stream, indent=2)
+    return manifest
 
 
 def _infer_label(path: Path, root: Path) -> str:

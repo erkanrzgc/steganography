@@ -496,6 +496,21 @@ def cmd_research_import(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_research_partition(args: argparse.Namespace) -> int:
+    from steganography.research import partition_dataset
+
+    manifest = partition_dataset(
+        Path(args.manifest),
+        Path(args.out),
+        test_sources=args.test_source,
+        reserved_manifests=[Path(path) for path in args.reserved_manifest],
+        source=Path(args.source) if args.source else None,
+        seed=args.seed,
+    )
+    print(json.dumps(manifest["partition"], indent=2))
+    return 0
+
+
 def cmd_research_benchmark(args: argparse.Namespace) -> int:
     from steganography.research import benchmark_predictions
 
@@ -795,6 +810,14 @@ def build_parser() -> argparse.ArgumentParser:
     research_import.add_argument("--license", default="user-supplied")
     research_import.add_argument("--source-url")
     research_import.set_defaults(fn=cmd_research_import)
+    research_partition = research_commands.add_parser("partition")
+    research_partition.add_argument("--manifest", required=True)
+    research_partition.add_argument("--out", required=True)
+    research_partition.add_argument("--source")
+    research_partition.add_argument("--seed", type=int, default=20260918)
+    research_partition.add_argument("--test-source", action="append", required=True)
+    research_partition.add_argument("--reserved-manifest", action="append", required=True)
+    research_partition.set_defaults(fn=cmd_research_partition)
     research_benchmark = research_commands.add_parser("benchmark", aliases=["benchmark-suite"])
     research_benchmark.add_argument("--manifest", required=True)
     research_benchmark.add_argument("--predictions", required=True)
