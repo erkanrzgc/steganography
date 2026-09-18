@@ -22,6 +22,10 @@
 - Added WAV audio steganalysis (dynamic range-gated LSB bias, 8-bit PCM Pairs of
   Values Chi-Square, quiet-region LSB noise transition tests), structural RIFF
   trailer detection and carving, and raw LSB payload extraction in CTF analysis.
+- Added GIF block-stream parsing (comment/trailer flag detection, palette duplicate
+  entry analysis, animation frame-delay ASCII/binary steganalysis), exact structural
+  GIF trailer carving, native GIF comment/delay extraction, and raw text
+  whitespace/zero-width payload recovery in CTF solving.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.

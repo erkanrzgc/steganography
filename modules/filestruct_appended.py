@@ -27,7 +27,7 @@ _APPENDED_SIGNATURES = {
 
 class FilestructAppended(Carrier):
     name = "filestruct_appended"
-    extensions = tuple(_END_MARKERS.keys())
+    extensions = tuple(_END_MARKERS.keys()) + (".wav", ".wave")
     can_embed = False
     can_extract = False
 
@@ -43,14 +43,33 @@ class FilestructAppended(Carrier):
     def analyze(self, src: Path) -> AnalysisResult:
         ext = src.suffix.lower()
         marker = _END_MARKERS.get(ext)
-        if marker is None:
+        if marker is None and ext not in {".wav", ".wave"}:
             return AnalysisResult(self.name, 0, (), None)
         data = src.read_bytes()
-        idx = data.rfind(marker)
+        if ext == ".gif":
+            from modules.image_gif import gif_structural_end
+
+            idx = gif_structural_end(data)
+            if idx is None or idx >= len(data):
+                return AnalysisResult(self.name, 0, (), None)
+            trailer = data[idx:]
+        elif ext in {".wav", ".wave"}:
+            if data.startswith(b"RIFF") and len(data) >= 8:
+                riff_size = int.from_bytes(data[4:8], "little")
+                structural_len = 8 + riff_size
+                if len(data) <= structural_len:
+                    return AnalysisResult(self.name, 0, (), None)
+                trailer = data[structural_len:]
+            else:
+                return AnalysisResult(self.name, 0, (), None)
+        else:
+            if marker is None:
+                return AnalysisResult(self.name, 0, (), None)
+            idx = data.rfind(marker)
+            if idx == -1:
+                return AnalysisResult(self.name, 0, (), None)
+            trailer = data[idx + len(marker) :]
         signals: list[Signal] = []
-        if idx == -1:
-            return AnalysisResult(self.name, 0, (), None)
-        trailer = data[idx + len(marker) :]
         if not trailer:
             return AnalysisResult(self.name, 0, (), None)
         signals.append(

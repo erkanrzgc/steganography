@@ -8,6 +8,7 @@ import gzip
 import hashlib
 import io
 import mimetypes
+import re
 import shutil
 import tarfile
 import time
@@ -26,6 +27,8 @@ from core.pipeline import AnalysisPipeline
 from core.service import AnalysisService, StegoService
 from core.tools import ToolRunner
 from core.version import __version__
+
+_FLAG_PATTERN = re.compile(rb"([a-zA-Z0-9_]{3,24}\{[ -~]{4,120}\})")
 
 CTFMode = Literal["quick", "balanced", "deep"]
 EventCallback = Callable[[dict[str, Any]], None]
@@ -354,6 +357,99 @@ class CTFService:
                     state.confirmed = True
             except Exception:  # noqa: BLE001, S110
                 pass
+        if not state.confirmed and artifact_path.suffix.lower() == ".gif":
+            try:
+                from modules.image_gif import (
+                    extract_gif_comments,
+                    extract_gif_delays_payload,
+                    parse_gif_stream,
+                )
+
+                raw_data = artifact_path.read_bytes()
+                parsed = parse_gif_stream(raw_data)
+                if parsed:
+                    comments = extract_gif_comments(raw_data)
+                    if comments:
+                        is_flag = bool(_FLAG_PATTERN.search(comments))
+                        generated.append(
+                            self._store(
+                                state,
+                                comments,
+                                "gif-comment.txt",
+                                artifact,
+                                artifact.depth + 1,
+                                "GIF comment payload" + (" (flag confirmed)" if is_flag else ""),
+                            )
+                        )
+                        if is_flag:
+                            state.confirmed = True
+                    delays = parsed.get("delays", [])
+                    delay_res = extract_gif_delays_payload(delays)
+                    if delay_res is not None and not state.confirmed:
+                        payload, desc = delay_res
+                        is_flag = bool(_FLAG_PATTERN.search(payload))
+                        generated.append(
+                            self._store(
+                                state,
+                                payload,
+                                "gif-delays.bin",
+                                artifact,
+                                artifact.depth + 1,
+                                desc,
+                            )
+                        )
+                        if is_flag:
+                            state.confirmed = True
+            except Exception:  # noqa: BLE001, S110
+                pass
+        if not state.confirmed and artifact_path.suffix.lower() in {".txt", ".md"}:
+            try:
+                from modules.text_whitespace import TextWhitespace
+                from modules.text_zerowidth import TextZeroWidth
+
+                raw_ws = TextWhitespace().extract(artifact_path)
+                if raw_ws:
+                    is_flag = bool(_FLAG_PATTERN.search(raw_ws))
+                    printable = (
+                        sum(32 <= b <= 126 or b in (9, 10, 13) for b in raw_ws) / len(raw_ws)
+                    )
+                    if is_flag or (printable >= 0.85 and len(raw_ws) >= 4):
+                        generated.append(
+                            self._store(
+                                state,
+                                raw_ws,
+                                "whitespace-extracted.txt",
+                                artifact,
+                                artifact.depth + 1,
+                                "trailing whitespace payload"
+                                + (" (flag confirmed)" if is_flag else ""),
+                            )
+                        )
+                        if is_flag:
+                            state.confirmed = True
+                if not state.confirmed:
+                    raw_zw = TextZeroWidth().extract(artifact_path)
+                    if raw_zw:
+                        is_flag = bool(_FLAG_PATTERN.search(raw_zw))
+                        printable = (
+                            sum(32 <= b <= 126 or b in (9, 10, 13) for b in raw_zw) / len(raw_zw)
+                        )
+                        if is_flag or (printable >= 0.85 and len(raw_zw) >= 4):
+                            generated.append(
+                                self._store(
+                                    state,
+                                    raw_zw,
+                                    "zerowidth-extracted.txt",
+                                    artifact,
+                                    artifact.depth + 1,
+                                    "zero-width unicode payload"
+                                    + (" (flag confirmed)" if is_flag else ""),
+                                )
+                            )
+                            if is_flag:
+                                state.confirmed = True
+            except Exception:  # noqa: BLE001, S110
+                pass
         if mode == "deep" and artifact_path.suffix.lower() in {".png", ".bmp"}:
             visualization = _bitplane_visualization(artifact_path)
             if visualization:
@@ -407,14 +503,14 @@ class CTFService:
                 )
             else:
                 specs.append(("stegseek", ["--seed", relative], ()))
-            if password:
-                specs.append(
-                    (
-                        "steghide",
-                        ["extract", "-sf", relative, "-p", password, "-xf", "steghide.bin", "-f"],
-                        (password,),
-                    )
+            steghide_pass = password if password is not None else ""
+            specs.append(
+                (
+                    "steghide",
+                    ["extract", "-sf", relative, "-p", steghide_pass, "-xf", "steghide.bin", "-f"],
+                    (steghide_pass,) if steghide_pass else (),
                 )
+            )
             if suffix in {".jpg", ".jpeg"}:
                 outguess_args = ["-r", relative, "outguess.bin"]
                 outguess_secrets: tuple[str, ...] = ()
@@ -627,11 +723,17 @@ def _trailer(data: bytes, suffix: str) -> bytes:
             structural_len = 8 + riff_size
             return data[structural_len:] if len(data) > structural_len else b""
         return b""
+    if suffix == ".gif":
+        from modules.image_gif import gif_structural_end
+
+        end = gif_structural_end(data)
+        if end is not None and len(data) > end:
+            return data[end:]
+        return b""
     markers = {
         ".png": b"IEND\xaeB`\x82",
         ".jpg": b"\xff\xd9",
         ".jpeg": b"\xff\xd9",
-        ".gif": b";",
         ".pdf": b"%%EOF",
     }
     marker = markers.get(suffix)
