@@ -430,7 +430,7 @@ def test_explicit_signed_model_catalog_install(tmp_path: Path, monkeypatch, caps
         _download_https("https://models.example/model", tmp_path / "offline", maximum=10)
 
 
-def test_research_calibration_and_opt_in_training(tmp_path: Path):
+def test_research_calibration_and_opt_in_training(tmp_path: Path, monkeypatch):
     source = tmp_path / "dataset"
     source.mkdir()
     samples = []
@@ -485,6 +485,8 @@ def test_research_calibration_and_opt_in_training(tmp_path: Path):
     invalid_predictions.write_text(json.dumps(["bad"]))
     with pytest.raises(ResearchManifestError, match="object"):
         _load_predictions(invalid_predictions)
+    # Exercise the absent-extra path even in a provisioned research environment.
+    monkeypatch.setitem(__import__("sys").modules, "torch", None)
     with pytest.raises(RuntimeError, match="research"):
         train_model(tmp_path / "config.json", tmp_path / "checkpoint.pt")
     with pytest.raises(RuntimeError, match="research"):

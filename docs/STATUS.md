@@ -28,12 +28,13 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 190 tests pass; total coverage 91.16% after feature-provenance
-  hardening. New feature extraction/input-validation modules have 100% statement
-  coverage; these tests are regression evidence, not accuracy evidence.
+- Python 3.11: 195 tests pass; total coverage 91.88%. Feature extraction,
+  training input validation, and real CPU training/ONNX export smoke tests pass;
+  these tests are regression evidence, not accuracy evidence.
 - Ruff and mypy (69 source files) pass; diff whitespace checks pass.
-- PyTorch is absent locally. Train-input validation was exercised end to end,
-  but actual optimizer execution and ONNX export were not verified in this slice.
+- PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
+  CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and
+  ONNX export parity against onnxruntime were verified end-to-end.
 - Version 0.6.0 wheel and sdist build successfully; the wheel contains no models.
 - Web: one test passes; TypeScript/Vite build passes.
 - Full Docker build and non-root/read-only/network-disabled smoke have passed

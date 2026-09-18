@@ -7,6 +7,10 @@
 - Training now rejects unbound NPZ inputs, mismatched feature/manifest hashes,
   invalid feature values and rows outside the exact train membership. Checkpoints
   retain provenance and identify the linear baseline accurately (not SRNet).
+- Added training provenance, nonfinite loss guards, and safe ONNX export with model
+  cards; verified CPU training reproducibility and ONNX parity against ONNX Runtime.
+- Fixed raw 32-byte Ed25519 public key parsing in model verification when keys
+  contain leading/trailing whitespace bytes.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.

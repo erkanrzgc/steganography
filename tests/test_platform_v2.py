@@ -185,6 +185,7 @@ def test_signed_model_registry_and_research_manifest(tmp_path: Path, monkeypatch
     assert models.score(
         "spatial-test", "1.0.0", np.zeros((1,)), domain="jpeg-srnet-v1"
     ).status == "unsupported"
+    monkeypatch.setitem(sys.modules, "onnxruntime", None)
     assert models.score(
         "spatial-test", "1.0.0", np.zeros((1,)), domain="spatial-srnet-v1"
     ).status == "unavailable"

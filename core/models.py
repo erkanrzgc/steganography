@@ -320,6 +320,8 @@ def _key_bytes(value: bytes | str | Path) -> bytes:
         except OSError:
             is_file = False
         raw = candidate.read_bytes() if is_file else str(value).encode()
+    if len(raw) == 32:
+        return raw
     raw = raw.strip()
     if len(raw) == 32:
         return raw

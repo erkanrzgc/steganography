@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import math
 import random
@@ -376,11 +377,19 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     epochs = int(config.get("epochs", 10))
     if not 1 <= epochs <= 100_000:
         raise ValueError("training epochs must be between 1 and 100000")
+    provenance["training"] = {
+        "seed": int(config.get("seed", 20260813)),
+        "epochs": epochs,
+        "learning_rate": learning_rate,
+        "torch_version": str(torch.__version__),
+    }
     loss = 0.0
     for _epoch in range(epochs):
         optimizer.zero_grad()
         output = model(tensor)
         loss_value = loss_function(output, targets)
+        if not bool(torch.isfinite(loss_value)):
+            raise ResearchManifestError("training produced nonfinite loss")
         loss_value.backward()
         optimizer.step()
         loss = float(loss_value.detach())
@@ -418,30 +427,39 @@ def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
     destination = Path(out)
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    if destination.exists():
-        raise FileExistsError(destination)
+    card = destination.with_suffix(destination.suffix + ".model-card.json")
+    for path in (destination, card):
+        if path.exists() or any(p.is_symlink() for p in (path, *path.parents)):
+            raise FileExistsError("export output/card already exists or uses a symlink")
     dummy = torch.zeros((1, int(checkpoint["features"])), dtype=torch.float32)
+    buffer = io.BytesIO()
     torch.onnx.export(
         model,
-        dummy,
-        destination,
+        (dummy,),
+        buffer,  # type: ignore[arg-type]
         input_names=["input"],
         output_names=["logit"],
         dynamic_axes={"input": {0: "batch"}, "logit": {0: "batch"}},
         opset_version=17,
+        # Preserve the small opset-17 contract across exporter default changes.
+        dynamo=False,
     )
+    data = buffer.getvalue()
     contract = {
         "schema_version": "1.0",
         "domain": checkpoint["domain"],
         "input_shape": checkpoint["input_shape"],
         "preprocessing": checkpoint["preprocessing"],
-        "onnx_sha256": _sha256(destination),
+        "onnx_sha256": hashlib.sha256(data).hexdigest(),
         "calibrated": False,
         "training_provenance": checkpoint.get("training_provenance"),
     }
-    card = destination.with_suffix(destination.suffix + ".model-card.json")
-    card.write_text(json.dumps(contract, indent=2), encoding="utf-8")
+    card_data = json.dumps(contract, indent=2).encode()
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with destination.open("xb") as stream:
+        stream.write(data)
+    with card.open("xb") as stream:
+        stream.write(card_data)
     return contract
 
 
