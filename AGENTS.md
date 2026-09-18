@@ -58,3 +58,19 @@ See `docs/ROADMAP.md` for current status and later milestones.
 4. Record optional dependency/tool absence as coverage, not success.
 5. Run focused tests, the full suite, lint, type checking, and `git diff --check`.
 6. Keep commits small and state any unverified environment-dependent checks.
+
+## Interaction and response rules
+
+* Yanıtlarını kısa, net ve doğrudan ver.
+* Yaptığın rutin işlemleri adım adım anlatma.
+* Açıklama yapmadan önce mümkünse doğrudan işlemi gerçekleştir.
+* Ben istemedikçe bariz veya basit şeyleri açıklama.
+* Terminal komutlarının çıktısını önemli bir hata yoksa tekrar etme.
+* Araç ve terminal kullanımını gereksiz yere anlatma.
+* Kod değişikliklerinden sonra yalnızca önemli değişiklikleri belirt.
+* Bir görev tamamlandığında sonucu en fazla 3 kısa maddeyle özetle.
+* Uzun giriş, sonuç ve gereksiz bağlam yazma.
+* İşlem başarılıysa uzun açıklama yapma.
+* Sorun yoksa final cevabını mümkünse 5 satırdan kısa tut.
+* Bir hata varsa yalnızca hatanın nedenini ve gerekli çözümü açıkla.
+* Kod yazarken veya düzenlerken açıklama yerine uygulamaya öncelik ver.

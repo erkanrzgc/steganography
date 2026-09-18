@@ -315,6 +315,25 @@ class CTFService:
                 )
             )
             state.confirmed = True
+        if not state.confirmed and artifact_path.suffix.lower() in {".jpg", ".jpeg"}:
+            try:
+                from modules.image_jpeg_dct import extract_jsteg
+
+                jsteg_payload = extract_jsteg(artifact_path)
+            except Exception:  # noqa: BLE001, S110
+                pass
+            else:
+                generated.append(
+                    self._store(
+                        state,
+                        jsteg_payload,
+                        "recovered.bin",
+                        artifact,
+                        artifact.depth + 1,
+                        "successful extraction via jsteg",
+                    )
+                )
+                state.confirmed = True
         if mode == "deep" and artifact_path.suffix.lower() in {".png", ".bmp"}:
             visualization = _bitplane_visualization(artifact_path)
             if visualization:
@@ -383,6 +402,7 @@ class CTFService:
                     outguess_args[0:0] = ["-k", password]
                     outguess_secrets = (password,)
                 specs.append(("outguess", outguess_args, outguess_secrets))
+                specs.append(("jsteg", ["reveal", relative, "jsteg.bin"], ()))
         if suffix == ".gif":
             specs.append(("gifsicle", ["--info", relative], ()))
         if suffix == ".wav":

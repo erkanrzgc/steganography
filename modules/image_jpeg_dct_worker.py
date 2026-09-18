@@ -133,6 +133,52 @@ def extract(src: Path, key: str) -> bytes:
     return np.packbits(bits.astype(np.uint8)).tobytes()
 
 
+def extract_jsteg(src: Path) -> bytes:
+    image = _read(src)
+    coefficients = image.Y.reshape(-1)
+    eligible = _eligible(image)
+    if len(eligible) < 72:
+        raise ValueError("insufficient eligible DCT coefficients for JSteg")
+    hdr_bits = np.abs(coefficients[eligible[:72]].astype(np.int32)) & 1
+    hdr_bytes = bytes(
+        sum(int(hdr_bits[c + b]) << b for b in range(8))
+        for c in range(0, 72, 8)
+    )
+    if not hdr_bytes.startswith(b"jsteg"):
+        raise ValueError("no JSteg magic header found")
+    (length,) = struct.unpack("<I", hdr_bytes[5:9])
+    total_bits = (9 + length) * 8
+    if len(eligible) < total_bits:
+        raise ValueError("declared JSteg payload exceeds available coefficients")
+    payload_bits = np.abs(coefficients[eligible[72:total_bits]].astype(np.int32)) & 1
+    return bytes(
+        sum(int(payload_bits[c + b]) << b for b in range(8))
+        for c in range(0, len(payload_bits), 8)
+    )
+
+
+def _compute_westfeld_dct_chi2(values: np.ndarray) -> tuple[float, int]:
+    chi_total = 0.0
+    deg_freedom = 0
+    for k in range(1, 16):
+        c_even = int(np.sum(values == 2 * k))
+        c_odd = int(np.sum(values == 2 * k + 1))
+        total = c_even + c_odd
+        if total >= 6:
+            exp = total / 2.0
+            chi_total += ((c_even - exp) ** 2 + (c_odd - exp) ** 2) / exp
+            deg_freedom += 1
+        c_even_neg = int(np.sum(values == -2 * k))
+        c_odd_neg = int(np.sum(values == -2 * k - 1))
+        total_neg = c_even_neg + c_odd_neg
+        if total_neg >= 6:
+            exp = total_neg / 2.0
+            chi_total += ((c_even_neg - exp) ** 2 + (c_odd_neg - exp) ** 2) / exp
+            deg_freedom += 1
+    normalized = chi_total / max(deg_freedom, 1)
+    return normalized, deg_freedom
+
+
 def analyze(src: Path) -> dict:
     try:
         image = _read(src)
@@ -161,6 +207,25 @@ def analyze(src: Path) -> dict:
             )
     coefficients = image.Y.reshape(-1)
     eligible = _eligible(image)
+    if len(eligible) >= 72:
+        hdr_bits = np.abs(coefficients[eligible[:72]].astype(np.int32)) & 1
+        hdr_bytes = bytes(
+            sum(int(hdr_bits[c + b]) << b for b in range(8))
+            for c in range(0, 72, 8)
+        )
+        if hdr_bytes.startswith(b"jsteg"):
+            (declared_len,) = struct.unpack("<I", hdr_bytes[5:9])
+            max_possible = (len(eligible) - 72) // 8
+            valid_len = declared_len <= max_possible
+            signals.append(
+                {
+                    "name": "jsteg_header",
+                    "score": 98 if valid_len else 80,
+                    "detail": f"JSteg marker found; payload_length={declared_len}",
+                    "category": "known_marker",
+                    "evidence": "verified" if valid_len else "strong",
+                }
+            )
     if len(eligible):
         parity_mean = float(
             np.mean(np.abs(coefficients[eligible].astype(np.int32)) & 1)
@@ -175,6 +240,27 @@ def analyze(src: Path) -> dict:
                 "evidence": "heuristic" if parity_score >= 10 else "informational",
             }
         )
+        if len(eligible) >= 100:
+            values = coefficients[eligible]
+            chi_norm, df = _compute_westfeld_dct_chi2(values)
+            if df >= 4:
+                if chi_norm <= 3.0:
+                    chi_score = min(85, round(75 + (3.0 - chi_norm) / 3.0 * 10))
+                elif chi_norm <= 8.5:
+                    chi_score = min(75, round(50 + (8.5 - chi_norm) / 5.5 * 25))
+                elif chi_norm <= 14.0:
+                    chi_score = min(50, round(20 + (14.0 - chi_norm) / 5.5 * 30))
+                else:
+                    chi_score = 0
+                signals.append(
+                    {
+                        "name": "westfeld_dct_chi_square",
+                        "score": chi_score,
+                        "detail": f"DCT pairs-of-values chi-square={chi_norm:.4f} (df={df})",
+                        "category": "jpeg_dct_chi_square",
+                        "evidence": "heuristic" if chi_score >= 40 else "informational",
+                    }
+                )
     suspicion = max(
         (
             item["score"]
@@ -211,6 +297,9 @@ def main(argv: list[str] | None = None) -> int:
         elif operation == "extract" and len(values) == 2:
             key = sys.stdin.readline().rstrip("\r\n")
             Path(values[1]).write_bytes(extract(Path(values[0]), key))
+            result = {"ok": True}
+        elif operation == "extract_jsteg" and len(values) == 2:
+            Path(values[1]).write_bytes(extract_jsteg(Path(values[0])))
             result = {"ok": True}
         elif operation == "analyze" and len(values) == 1:
             result = analyze(Path(values[0]))

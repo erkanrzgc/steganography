@@ -88,6 +88,12 @@ class ImageJpegDct(Carrier):
             _run_worker("extract", src, Path(stream.name), key=steg_key)
             return Path(stream.name).read_bytes()
 
+    def extract_jsteg(self, src: Path) -> bytes:
+        self._require_available()
+        with tempfile.NamedTemporaryFile(prefix="jsteg-out-", suffix=".bin") as stream:
+            _run_worker("extract_jsteg", src, Path(stream.name))
+            return Path(stream.name).read_bytes()
+
     def analyze(self, src: Path) -> AnalysisResult:
         if not self.available:
             return AnalysisResult(
@@ -168,3 +174,8 @@ def _placement_salt(options: dict[str, Any] | None) -> bytes | None:
     if not isinstance(value, bytes) or len(value) != 16:
         raise ValueError("placement_salt must be exactly 16 bytes")
     return value
+
+
+def extract_jsteg(src: Path) -> bytes:
+    """Extract hidden payload from a JPEG file with a JSteg header."""
+    return ImageJpegDct().extract_jsteg(src)

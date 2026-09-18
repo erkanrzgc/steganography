@@ -16,6 +16,9 @@
   against higher bitplane structure, and added markerless natural stego tests.
 - Added smooth gradient cover generation and `EXTENDED_RECIPES` with `--extended`
   CLI flag to benchmarking corpus generation.
+- Added JPEG DQT table analysis (flat unit quantization detection), Westfeld DCT
+  Chi-Square PoV steganalysis, JSteg marker detection, native JSteg payload
+  extraction, and automated CTF solving for JSteg carriers.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.

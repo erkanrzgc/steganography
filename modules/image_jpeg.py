@@ -76,14 +76,28 @@ class ImageJpeg(Carrier):
         segments = context.jpeg_segments
         dqt_segments = [segment for segment in segments if segment["marker"] == 0xDB]
         if dqt_segments:
+            dqt_details = []
+            all_ones = False
+            for seg in dqt_segments:
+                start = seg["offset"] + 4
+                end = start + seg["length"] - 2
+                table_bytes = data[start:end]
+                if len(table_bytes) >= 65:
+                    table_id = table_bytes[0] & 0x0F
+                    q_vals = table_bytes[1:65]
+                    if all(v == 1 for v in q_vals):
+                        all_ones = True
+                    dqt_details.append(f"T{table_id}:min={min(q_vals)},max={max(q_vals)}")
+            score = 65 if all_ones else 0
             signals.append(
                 Signal(
                     name="jpeg_quantization_tables",
-                    score=0,
-                    detail=f"{len(dqt_segments)} DQT segment(s); lengths="
-                    + ",".join(str(item["length"]) for item in dqt_segments),
+                    score=score,
+                    detail=f"{len(dqt_segments)} DQT segment(s); "
+                    + ("; ".join(dqt_details) if dqt_details else "unparsed")
+                    + ("; flat unit quantization detected" if all_ones else ""),
                     category="jpeg_structure",
-                    evidence="informational",
+                    evidence="heuristic" if all_ones else "informational",
                 )
             )
         truncated = [segment for segment in segments if segment.get("truncated")]
