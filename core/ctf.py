@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import base64
 import binascii
+import bz2
 import gzip
 import hashlib
 import io
+import lzma
 import mimetypes
 import re
 import shutil
@@ -470,6 +472,52 @@ class CTFService:
                         state.confirmed = True
             except Exception:  # noqa: BLE001, S110
                 pass
+        if not state.confirmed and artifact_path.suffix.lower() == ".pdf":
+            try:
+                from modules.file_pdf import extract_pdf_payloads
+
+                raw_data = artifact_path.read_bytes()
+                for name, payload, desc, is_flag in extract_pdf_payloads(raw_data):
+                    generated.append(
+                        self._store(
+                            state,
+                            payload,
+                            name,
+                            artifact,
+                            artifact.depth + 1,
+                            desc + (" (flag confirmed)" if is_flag else ""),
+                        )
+                    )
+                    if is_flag:
+                        state.confirmed = True
+            except Exception:  # noqa: BLE001, S110
+                pass
+        if not state.confirmed and artifact_path.suffix.lower() in {".jpg", ".jpeg", ".tiff"}:
+            try:
+                import piexif
+
+                exif_dict = piexif.load(str(artifact_path))
+                for ifd in ("0th", "Exif", "1st"):
+                    for _tag, val in exif_dict.get(ifd, {}).items():
+                        if isinstance(val, bytes) and len(val) >= 4:
+                            is_flag = bool(_FLAG_PATTERN.search(val))
+                            if is_flag:
+                                generated.append(
+                                    self._store(
+                                        state,
+                                        val,
+                                        "exif-metadata.txt",
+                                        artifact,
+                                        artifact.depth + 1,
+                                        "EXIF metadata payload (flag confirmed)",
+                                    )
+                                )
+                                state.confirmed = True
+                                break
+                    if state.confirmed:
+                        break
+            except Exception:  # noqa: BLE001, S110
+                pass
         if mode == "deep" and artifact_path.suffix.lower() in {".png", ".bmp"}:
             visualization = _bitplane_visualization(artifact_path)
             if visualization:
@@ -762,11 +810,17 @@ def _trailer(data: bytes, suffix: str) -> bytes:
         if end is not None and len(data) > end:
             return data[end:]
         return b""
+    if suffix == ".pdf":
+        from modules.file_pdf import pdf_structural_end
+
+        end = pdf_structural_end(data)
+        if end is not None and len(data) > end:
+            return data[end:]
+        return b""
     markers = {
         ".png": b"IEND\xaeB`\x82",
         ".jpg": b"\xff\xd9",
         ".jpeg": b"\xff\xd9",
-        ".pdf": b"%%EOF",
     }
     marker = markers.get(suffix)
     if not marker:
@@ -778,12 +832,17 @@ def _trailer(data: bytes, suffix: str) -> bytes:
 _MAGICS: tuple[tuple[bytes, str], ...] = (
     (b"PK\x03\x04", "zip"),
     (b"\x1f\x8b\x08", "gzip"),
+    (b"BZh", "bz2"),
+    (b"\xfd7zXZ\x00", "xz"),
+    (b"7z\xbc\xaf\x27\x1c", "7z"),
     (b"\x89PNG\r\n\x1a\n", "png"),
     (b"\xff\xd8\xff", "jpeg"),
     (b"GIF87a", "gif"),
     (b"GIF89a", "gif"),
+    (b"BM", "bmp"),
     (b"%PDF-", "pdf"),
     (b"\x7fELF", "elf"),
+    (b"ID3", "mp3"),
 )
 
 
@@ -814,13 +873,27 @@ def _decoded_candidates(data: bytes, *, deep: bool) -> list[tuple[bytes, str, st
             continue
         if _credible(decoded, data):
             values.append((decoded, f"decoded-{name}.bin", f"bounded {name} decoding candidate"))
+    if (
+        len(compact) >= 8
+        and len(compact) % 2 == 0
+        and re.fullmatch(rb"[0-9a-fA-F]+", compact)
+    ):
+        try:
+            hex_decoded = bytes.fromhex(compact.decode("ascii"))
+            if _credible(hex_decoded, data):
+                values.append((hex_decoded, "decoded-hex.bin", "bounded hex decoding candidate"))
+        except ValueError:
+            pass
+    if b"{galf" in data.lower() or b"}galf" in data.lower():
+        rev = data[::-1]
+        values.append((rev, "decoded-reversed.bin", "byte-reversed candidate (flag confirmed)"))
     if b"%" in data:
         decoded = urllib.parse.unquote_to_bytes(data.decode("ascii", errors="ignore"))
         if _credible(decoded, data):
             values.append((decoded, "decoded-url.bin", "URL percent-decoding candidate"))
     decompressed = _decompress(data)
     if decompressed is not None and _credible(decompressed, data):
-        values.append((decompressed, "decompressed.bin", "bounded gzip/zlib decompression"))
+        values.append((decompressed, "decompressed.bin", "bounded decompression"))
     if deep:
         for key in range(1, 256):
             decoded = bytes(value ^ key for value in data)
@@ -847,18 +920,33 @@ def _credible(candidate: bytes, original: bytes) -> bool:
 
 
 def _decompress(data: bytes, limit: int = 256 * 1024 * 1024) -> bytes | None:
+    value: bytes | None = None
     try:
         if data.startswith(b"\x1f\x8b"):
             with gzip.GzipFile(fileobj=io.BytesIO(data)) as source:
                 value = source.read(limit + 1)
         elif len(data) >= 2 and data[0] == 0x78:
-            decompressor = zlib.decompressobj()
-            value = decompressor.decompress(data, limit + 1)
+            z_dec = zlib.decompressobj()
+            value = z_dec.decompress(data, limit + 1)
+        elif data.startswith(b"BZh"):
+            bz2_dec = bz2.BZ2Decompressor()
+            value = bz2_dec.decompress(data, max_length=limit + 1)
+        elif data.startswith(b"\xfd7zXZ\x00"):
+            lzma_dec = lzma.LZMADecompressor()
+            value = lzma_dec.decompress(data, max_length=limit + 1)
         else:
-            return None
-    except (OSError, EOFError, zlib.error):
+            try:
+                raw_dec = zlib.decompressobj(-zlib.MAX_WBITS)
+                raw_val = raw_dec.decompress(data, limit + 1)
+                if len(raw_val) >= 4:
+                    value = raw_val
+            except Exception:
+                return None
+    except (OSError, EOFError, zlib.error, lzma.LZMAError):
         return None
-    return None if len(value) > limit else value
+    if value is None or len(value) > limit:
+        return None
+    return value
 
 
 def _archive_members(data: bytes, limits: CTFLimits) -> list[tuple[bytes, str, str]]:

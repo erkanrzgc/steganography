@@ -34,6 +34,10 @@
   private bit covert channel detection, exact structural stream end calculation
   with ID3v1 accounting, and automated CTF extraction for ID3 tags, padding,
   embedded APIC album artwork, and appended trailers.
+- Added PDF carrier steganalysis (comment scanning, `/Info` metadata extraction,
+  FlateDecode/ASCIIHex/ASCII85 object stream extraction, embedded file attachments,
+  incremental revision checks, and structural `%%EOF` trailer carving), EXIF metadata
+  flag extraction, and bounded BZ2/LZMA/raw deflate/hex/reversed CTF decoding.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.

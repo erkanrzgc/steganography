@@ -69,6 +69,13 @@ class FilestructAppended(Carrier):
             if idx is None or idx >= len(data):
                 return AnalysisResult(self.name, 0, (), None)
             trailer = data[idx:]
+        elif ext == ".pdf":
+            from modules.file_pdf import pdf_structural_end
+
+            idx = pdf_structural_end(data)
+            if idx is None or idx >= len(data):
+                return AnalysisResult(self.name, 0, (), None)
+            trailer = data[idx:]
         else:
             if marker is None:
                 return AnalysisResult(self.name, 0, (), None)
