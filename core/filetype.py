@@ -44,6 +44,10 @@ def detect_type(path: Path) -> DetectedType:
         )
     if len(head) >= 12 and head[:4] == b"RIFF" and head[8:12] == b"WAVE":
         return DetectedType("wav", "audio/wav", ".wav", frozenset({".wav"}))
+    if head.startswith(b"ID3") or (
+        len(head) >= 2 and head[0] == 0xFF and (head[1] & 0xE0) == 0xE0
+    ):
+        return DetectedType("mp3", "audio/mpeg", ".mp3", frozenset({".mp3"}))
     if _looks_like_text(head):
         suffix = path.suffix.lower()
         canonical = suffix if suffix in {".txt", ".md"} else ".txt"

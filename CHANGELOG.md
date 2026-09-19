@@ -29,6 +29,11 @@
 - Added 4-pixel spatial calibration for JPEG DCT steganalysis to detect F5 matrix
   embedding shrinkage (excess zeros and ones depletion), and integrated external
   tool CTF flag pattern verification.
+- Added MP3 audio carrier detection, ID3v2 metadata frame (`COMM`, `TXXX`, `PRIV`)
+  and synchsafe parsing, ID3v2 padding area stego detection, MPEG audio frame
+  private bit covert channel detection, exact structural stream end calculation
+  with ID3v1 accounting, and automated CTF extraction for ID3 tags, padding,
+  embedded APIC album artwork, and appended trailers.
 
 - Added `research partition` with frozen-manifest overlap rejection, whole-source
   holdouts, connected lineage/camera/device grouping and revalidated split policy.

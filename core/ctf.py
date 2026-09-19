@@ -450,6 +450,26 @@ class CTFService:
                                 state.confirmed = True
             except Exception:  # noqa: BLE001, S110
                 pass
+        if not state.confirmed and artifact_path.suffix.lower() == ".mp3":
+            try:
+                from modules.audio_mp3 import extract_mp3_payloads
+
+                raw_data = artifact_path.read_bytes()
+                for name, payload, desc, is_flag in extract_mp3_payloads(raw_data):
+                    generated.append(
+                        self._store(
+                            state,
+                            payload,
+                            name,
+                            artifact,
+                            artifact.depth + 1,
+                            desc + (" (flag confirmed)" if is_flag else ""),
+                        )
+                    )
+                    if is_flag:
+                        state.confirmed = True
+            except Exception:  # noqa: BLE001, S110
+                pass
         if mode == "deep" and artifact_path.suffix.lower() in {".png", ".bmp"}:
             visualization = _bitplane_visualization(artifact_path)
             if visualization:
@@ -521,7 +541,7 @@ class CTFService:
                 specs.append(("jsteg", ["reveal", relative, "jsteg.bin"], ()))
         if suffix == ".gif":
             specs.append(("gifsicle", ["--info", relative], ()))
-        if suffix == ".wav":
+        if suffix in {".wav", ".mp3"}:
             specs.append(("sox", ["--info", relative], ()))
         specs.append(("exiftool", ["-validate", "-warning", "-error", relative], ()))
         if mode == "deep":
@@ -531,7 +551,7 @@ class CTFService:
                     ("zbarimg", ["--quiet", relative], ()),
                 )
             )
-            if suffix in {".gif", ".wav"}:
+            if suffix in {".gif", ".wav", ".mp3"}:
                 specs.append(("ffmpeg", ["-v", "error", "-i", relative, "-f", "null", "-"], ()))
 
         before = {item.name for item in state.output_dir.iterdir()}
@@ -732,6 +752,13 @@ def _trailer(data: bytes, suffix: str) -> bytes:
         from modules.image_gif import gif_structural_end
 
         end = gif_structural_end(data)
+        if end is not None and len(data) > end:
+            return data[end:]
+        return b""
+    if suffix == ".mp3":
+        from modules.audio_mp3 import mp3_structural_end
+
+        end = mp3_structural_end(data)
         if end is not None and len(data) > end:
             return data[end:]
         return b""

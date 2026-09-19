@@ -27,7 +27,7 @@ _APPENDED_SIGNATURES = {
 
 class FilestructAppended(Carrier):
     name = "filestruct_appended"
-    extensions = tuple(_END_MARKERS.keys()) + (".wav", ".wave")
+    extensions = tuple(_END_MARKERS.keys()) + (".wav", ".wave", ".mp3")
     can_embed = False
     can_extract = False
 
@@ -43,7 +43,7 @@ class FilestructAppended(Carrier):
     def analyze(self, src: Path) -> AnalysisResult:
         ext = src.suffix.lower()
         marker = _END_MARKERS.get(ext)
-        if marker is None and ext not in {".wav", ".wave"}:
+        if marker is None and ext not in {".wav", ".wave", ".mp3"}:
             return AnalysisResult(self.name, 0, (), None)
         data = src.read_bytes()
         if ext == ".gif":
@@ -62,6 +62,13 @@ class FilestructAppended(Carrier):
                 trailer = data[structural_len:]
             else:
                 return AnalysisResult(self.name, 0, (), None)
+        elif ext == ".mp3":
+            from modules.audio_mp3 import mp3_structural_end
+
+            idx = mp3_structural_end(data)
+            if idx is None or idx >= len(data):
+                return AnalysisResult(self.name, 0, (), None)
+            trailer = data[idx:]
         else:
             if marker is None:
                 return AnalysisResult(self.name, 0, (), None)
