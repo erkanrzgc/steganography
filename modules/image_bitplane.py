@@ -52,7 +52,8 @@ class ImageBitplaneAnalyzer(Analyzer):
                 )
             )
 
-        # Approximate RS/sample-pair indicators, kept independently categorized.
+        # Legacy SPA/RS names below are adjacency proxies, not full algorithms.
+        # Equal LSBs iff the pixel difference is even: one correlation group.
         lsb = rgb & 1
         plane2 = (rgb >> 2) & 1
         higher_plane_structured = float(np.mean(plane2[:, 1:, :] == plane2[:, :-1, :])) >= 0.54
@@ -67,7 +68,7 @@ class ImageBitplaneAnalyzer(Analyzer):
                 "sample_pair_balance",
                 spa_score,
                 f"adjacent LSB agreement={horizontal_agreement:.4f}",
-                category="image_sample_pair",
+                category="image_lsb_adjacency",
                 evidence="heuristic" if spa_score >= 25 else "informational",
             )
         )
@@ -112,19 +113,16 @@ class ImageBitplaneAnalyzer(Analyzer):
                 evidence="heuristic" if weighted_score >= 45 else "informational",
             )
         )
-        differences = np.abs(np.diff(rgb.astype(np.int16), axis=1))
-        regular = float(np.mean((differences & 1) == 0))
-        rs_delta = abs(regular - 0.5)
-        if higher_plane_structured:
-            rs_score = max(0, min(70, round((0.10 - rs_delta) / 0.10 * 70)))
-        else:
-            rs_score = 0
+        # Keep the existing signal name for report consumers, without computing
+        # or fusing the identical observation as independent evidence.
+        rs_score = spa_score
         signals.append(
             Signal(
                 "rs_regular_singular_balance",
                 rs_score,
-                f"regular/singular parity balance={regular:.4f}",
-                category="image_rs_analysis",
+                f"adjacency parity proxy={horizontal_agreement:.4f}; "
+                "same observation as sample_pair_balance, not full RS analysis",
+                category="image_lsb_adjacency",
                 evidence="heuristic" if rs_score >= 25 else "informational",
             )
         )
