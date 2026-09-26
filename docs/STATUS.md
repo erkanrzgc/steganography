@@ -1,4 +1,4 @@
-# Implementation status — 2026-09-18
+# Implementation status — 2026-09-26
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
@@ -22,17 +22,21 @@ been delivered or validated by this slice.
 - Manifest-bound, bounded PNG/BMP feature extraction for train/validation;
   training input validation rejects unbound NPZ and non-train or altered rows.
   The initial spatial-summary features are experimental, not a validated detector.
+- Corrected duplicate SPA/RS adjacency evidence fusion; added PDF ASCII decoder
+  preflight limits, complete Flate-stream checks and shared decode budgets.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 200 tests pass; total coverage 91.92%. Decoupled statistical
-  categories, calibrated SPA/RS detectors, extended gradient corpus recipes, and
-  natural synthetic detection tests pass; these tests are regression evidence,
-  not accuracy evidence.
-- Ruff and mypy (69 source files) pass; diff whitespace checks pass.
+- Python 3.11: 286 tests pass; total coverage 92.64%. PDF analyzer coverage is
+  97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
+  deprecated ONNX export APIs, not test failures.
+- Extended gradient corpus and spatial proxy tests are regression evidence,
+  not calibration or real-world accuracy evidence. The two legacy SPA/RS names
+  represent a single adjacency observation and are aggregated only once.
+- Ruff and mypy (71 source files) pass; diff whitespace checks pass.
 - PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
   CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and
   ONNX export parity against onnxruntime were verified end-to-end.

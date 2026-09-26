@@ -477,7 +477,9 @@ class CTFService:
                 from modules.file_pdf import extract_pdf_payloads
 
                 raw_data = artifact_path.read_bytes()
-                for name, payload, desc, is_flag in extract_pdf_payloads(raw_data):
+                for name, payload, desc, is_flag in extract_pdf_payloads(
+                    raw_data, max_decoded_bytes=max(0, state.limits.max_bytes - state.output_bytes)
+                ):
                     generated.append(
                         self._store(
                             state,

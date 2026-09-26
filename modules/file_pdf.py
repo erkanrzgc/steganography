@@ -4,6 +4,7 @@ Detects hidden comments, metadata payloads, decompressable object streams,
 embedded file attachments, incremental revision shadows, and structural trailer
 carving without external dependencies.
 """
+
 from __future__ import annotations
 
 import base64
@@ -21,6 +22,8 @@ _OBJ_PATTERN = re.compile(rb"(\d+)\s+(\d+)\s+obj\b(.*?)endobj", re.DOTALL)
 _STREAM_PATTERN = re.compile(rb"<<(.*?)>>\s*stream[\r\n]+(.*?)[\r\n]+endstream", re.DOTALL)
 _COMMENT_PATTERN = re.compile(rb"(?m)^%([^\r\n]*)")
 _META_KEYS = (b"Title", b"Author", b"Subject", b"Keywords", b"Creator", b"Producer")
+_MAX_STREAM_BYTES = 16 * 1024 * 1024
+_MAX_DECODED_BYTES = 32 * 1024 * 1024
 
 
 def pdf_structural_end(data: bytes) -> int | None:
@@ -48,39 +51,57 @@ def parse_pdf_comments(data: bytes) -> list[bytes]:
 
 
 def decompress_pdf_stream(
-    stream_data: bytes, filter_name: bytes, max_size: int = 16 * 1024 * 1024
+    stream_data: bytes, filter_name: bytes, max_size: int = _MAX_STREAM_BYTES
 ) -> bytes | None:
-    """Decompress a PDF stream with bounded memory usage."""
+    """Decode at most max_size bytes, preflighting ASCII expansion before allocation.
+
+    ASCII input is capped at 2 * max_size + 256 bytes (including whitespace).
+    Excessively padded inputs and incomplete Flate streams are not decoded.
+    """
+    if max_size < 0:
+        raise ValueError("PDF decoded-byte limit must be nonnegative")
     if not stream_data:
         return None
     try:
         if b"FlateDecode" in filter_name:
             decompressor = zlib.decompressobj()
             decompressed = decompressor.decompress(stream_data, max_size + 1)
-            if len(decompressed) <= max_size:
+            if len(decompressed) <= max_size and decompressor.eof and not decompressor.unused_data:
                 return decompressed
             return None
         if b"ASCIIHexDecode" in filter_name:
-            clean = re.sub(rb"\s+", b"", stream_data).rstrip(b">")
+            if len(stream_data) > 2 * max_size + 256:
+                return None
+            clean = re.sub(rb"[\x00\t\n\f\r ]+", b"", stream_data).removesuffix(b">")
+            if (len(clean) + 1) // 2 > max_size:
+                return None
             if len(clean) % 2 != 0:
                 clean += b"0"
-            return bytes.fromhex(clean.decode("ascii", errors="ignore"))
+            return bytes.fromhex(clean.decode("ascii"))
         if b"ASCII85Decode" in filter_name:
-            clean = re.sub(rb"\s+", b"", stream_data)
-            if not clean.startswith(b"<~"):
-                clean = b"<~" + clean
-            if not clean.endswith(b"~>"):
-                clean = clean + b"~>"
-            return base64.a85decode(clean, adobe=True)
-    except Exception:  # noqa: BLE001
+            if len(stream_data) > 2 * max_size + 256:
+                return None
+            clean = re.sub(rb"[\x00\t\n\f\r ]+", b"", stream_data)
+            clean = clean.removeprefix(b"<~").removesuffix(b"~>")
+            zero_groups = clean.count(b"z")  # 'z' expands to four zero bytes.
+            regular = len(clean) - zero_groups
+            groups, tail = divmod(regular, 5)
+            decoded_size = 4 * (zero_groups + groups) + max(0, tail - 1)
+            if tail == 1 or decoded_size > max_size:
+                return None
+            return base64.a85decode(clean, adobe=False, ignorechars=b"")
+    except (ValueError, zlib.error):
         return None
     return None
 
 
 def parse_pdf_streams(
-    data: bytes, max_streams: int = 200
+    data: bytes, max_streams: int = 200, *, max_decoded_bytes: int = _MAX_DECODED_BYTES
 ) -> list[dict[str, Any]]:
-    """Parse object streams from PDF data, extracting metadata and decoded content."""
+    """Parse streams with a shared decoded-byte budget; retain raw fallback on failure."""
+    if max_streams < 0 or max_decoded_bytes < 0:
+        raise ValueError("PDF stream limits must be nonnegative")
+    remaining = min(max_decoded_bytes, _MAX_DECODED_BYTES)
     results: list[dict[str, Any]] = []
     count = 0
     for match in _OBJ_PATTERN.finditer(data):
@@ -108,19 +129,30 @@ def parse_pdf_streams(
 
         decompressed: bytes | None = None
         if filter_name:
-            decompressed = decompress_pdf_stream(raw_stream, filter_name)
+            decompressed = decompress_pdf_stream(
+                raw_stream, filter_name, max_size=min(_MAX_STREAM_BYTES, remaining)
+            )
+            if decompressed is not None:
+                remaining -= len(decompressed)
 
         content = decompressed if decompressed is not None else raw_stream
-        results.append({
-            "obj_id": obj_id,
-            "dict": dict_part,
-            "filter": filter_name.decode("latin1", errors="replace"),
-            "raw_stream": raw_stream,
-            "decompressed": decompressed is not None,
-            "content": content,
-            "is_embedded": is_embedded,
-            "filename": filename,
-        })
+        results.append(
+            {
+                "obj_id": obj_id,
+                "dict": dict_part,
+                "filter": filter_name.decode("latin1", errors="replace"),
+                "raw_stream": raw_stream,
+                "decompressed": decompressed is not None,
+                "decode_status": "decoded"
+                if decompressed is not None
+                else "unavailable"
+                if filter_name
+                else "unfiltered",
+                "content": content,
+                "is_embedded": is_embedded,
+                "filename": filename,
+            }
+        )
         count += 1
     return results
 
@@ -146,7 +178,9 @@ def parse_pdf_metadata(data: bytes) -> dict[str, str]:
     return metadata
 
 
-def extract_pdf_payloads(data: bytes) -> list[tuple[str, bytes, str, bool]]:
+def extract_pdf_payloads(
+    data: bytes, *, max_decoded_bytes: int = _MAX_DECODED_BYTES
+) -> list[tuple[str, bytes, str, bool]]:
     """Extract candidate CTF payloads from PDF comments, streams, metadata, and trailer."""
     candidates: list[tuple[str, bytes, str, bool]] = []
 
@@ -155,12 +189,14 @@ def extract_pdf_payloads(data: bytes) -> list[tuple[str, bytes, str, bool]]:
     for idx, c in enumerate(comments):
         is_flag = bool(_FLAG_PATTERN.search(c))
         if is_flag or (len(c) >= 6 and any(32 <= b <= 126 for b in c)):
-            candidates.append((
-                f"pdf-comment-{idx}.txt",
-                c,
-                "PDF comment line payload",
-                is_flag,
-            ))
+            candidates.append(
+                (
+                    f"pdf-comment-{idx}.txt",
+                    c,
+                    "PDF comment line payload",
+                    is_flag,
+                )
+            )
 
     # 2. Metadata
     meta = parse_pdf_metadata(data)
@@ -168,55 +204,65 @@ def extract_pdf_payloads(data: bytes) -> list[tuple[str, bytes, str, bool]]:
         bval = val.encode("latin1", errors="replace")
         is_flag = bool(_FLAG_PATTERN.search(bval))
         if is_flag or len(bval) >= 6:
-            candidates.append((
-                f"pdf-meta-{k.lower()}.txt",
-                bval,
-                f"PDF metadata /{k} payload",
-                is_flag,
-            ))
+            candidates.append(
+                (
+                    f"pdf-meta-{k.lower()}.txt",
+                    bval,
+                    f"PDF metadata /{k} payload",
+                    is_flag,
+                )
+            )
 
     # 3. Object Streams & Embedded Files
-    streams = parse_pdf_streams(data)
+    streams = parse_pdf_streams(data, max_decoded_bytes=max_decoded_bytes)
     for stream in streams:
         content = stream["content"]
         obj_id = stream["obj_id"]
         is_flag = bool(_FLAG_PATTERN.search(content))
         if stream["is_embedded"]:
             fname = stream["filename"] or f"embedded-{obj_id}.bin"
-            candidates.append((
-                fname,
-                content,
-                f"PDF embedded file attachment (obj {obj_id})",
-                is_flag,
-            ))
+            candidates.append(
+                (
+                    fname,
+                    content,
+                    f"PDF embedded file attachment (obj {obj_id})",
+                    is_flag,
+                )
+            )
         elif is_flag:
-            candidates.append((
-                f"pdf-stream-{obj_id}.txt",
-                content,
-                f"flag recovered in PDF stream obj {obj_id}",
-                True,
-            ))
+            candidates.append(
+                (
+                    f"pdf-stream-{obj_id}.txt",
+                    content,
+                    f"flag recovered in PDF stream obj {obj_id}",
+                    True,
+                )
+            )
         elif stream["decompressed"] and len(content) >= 8:
             printable = sum(32 <= b <= 126 or b in (9, 10, 13) for b in content) / len(content)
             if printable >= 0.85:
-                candidates.append((
-                    f"pdf-stream-{obj_id}.txt",
-                    content,
-                    f"decompressed text stream obj {obj_id}",
-                    False,
-                ))
+                candidates.append(
+                    (
+                        f"pdf-stream-{obj_id}.txt",
+                        content,
+                        f"decompressed text stream obj {obj_id}",
+                        False,
+                    )
+                )
 
     # 4. Appended Trailer
     end = pdf_structural_end(data)
     if end is not None and len(data) > end:
         trailer = data[end:]
         is_flag = bool(_FLAG_PATTERN.search(trailer))
-        candidates.append((
-            "trailer.bin",
-            trailer,
-            "data appended after PDF %%EOF",
-            is_flag,
-        ))
+        candidates.append(
+            (
+                "trailer.bin",
+                trailer,
+                "data appended after PDF %%EOF",
+                is_flag,
+            )
+        )
 
     return candidates
 

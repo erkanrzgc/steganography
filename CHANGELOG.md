@@ -2,6 +2,12 @@
 
 ## 0.6.0 (unreleased)
 
+- Fixed spatial score inflation: legacy SPA/RS adjacency proxies now share one
+  correlation group; their signal names are retained for existing consumers.
+- Bounded PDF ASCIIHex/ASCII85 output before allocation, including ASCII85 zero
+  runs, and rejected truncated Flate streams. Added shared per-parse decode
+  budgets and passed the remaining CTF output allowance to PDF extraction.
+
 - Added bounded, manifest-bound PNG/BMP spatial-summary feature extraction for
   train/validation; test image bytes are not accessed by this workflow.
 - Training now rejects unbound NPZ inputs, mismatched feature/manifest hashes,
@@ -11,9 +17,9 @@
   cards; verified CPU training reproducibility and ONNX parity against ONNX Runtime.
 - Fixed raw 32-byte Ed25519 public key parsing in model verification when keys
   contain leading/trailing whitespace bytes.
-- Decoupled spatial steganalysis signal categories (`image_chi_square`,
-  `image_sample_pair`, `image_rs_analysis`), calibrated SPA and RS thresholds
-  against higher bitplane structure, and added markerless natural stego tests.
+- Added distinct chi-square and higher-plane-gated adjacency heuristics plus
+  markerless synthetic gradient regression tests. These are uncalibrated
+  proxies, not full SPA/RS algorithms or real-world accuracy evidence.
 - Added smooth gradient cover generation and `EXTENDED_RECIPES` with `--extended`
   CLI flag to benchmarking corpus generation.
 - Added JPEG DQT table analysis (flat unit quantization detection), Westfeld DCT

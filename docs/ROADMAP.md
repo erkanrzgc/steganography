@@ -14,6 +14,7 @@ Source version: 0.6.0 (beta classification; not published). See
 - [x] Shared `AnalysisContext` and expanded PNG/BMP native analysis.
 - [x] Bounded CTF service with CLI and common portable reports.
 - [x] CTF API jobs, SSE/cancellation, artifact download, and guided TUI entry.
+- [x] Correct duplicate spatial evidence fusion and bound PDF stream decoding.
 - [ ] Full-image tool inventory, pinned versions/checksums/licenses, and E2E.
 
 ## v0.7
@@ -29,6 +30,10 @@ Provenance-bound feature extraction/train-input validation is implemented, using
 a simple experimental spatial-summary baseline. See `DEVELOPMENT_DATA.md`;
 new independent data, measured feature/model improvements and held-out inference
 remain the next steps. No detector accuracy improvement is claimed yet.
+
+Current priority order: correctness/limit regressions, independent development
+and untouched-source evaluation, then blind CTF recovery/latency measurement.
+No new format expansion is needed to establish those gates.
 
 JPEG segment/DQT and calibrated DCT analyzers, signed spatial/JPEG ONNX model
 packs, and tool-specific JSteg/F5/OutGuess/Steghide recovery.

@@ -57,3 +57,16 @@ manifests and validates complete train-only inputs for the research trainer.
 The CLI delegates extraction to that shared workflow. Artifacts and checkpoint
 provenance use hashes, not absolute dataset paths. No feature/model downloads or
 automatic deployment occur.
+
+The legacy `sample_pair_balance` and `rs_regular_singular_balance` image signals
+are two names for the same adjacent-LSB parity observation, not implementations
+of full SPA/RS algorithms. Both use `image_lsb_adjacency`, so service and hybrid
+ensemble aggregation count them once. Scores remain uncalibrated heuristics.
+
+PDF stream decoding enforces a per-stream 16 MiB output limit and a shared
+32 MiB decoded-output budget per parse. CTF extraction further restricts that
+budget to the remaining job output allowance. ASCII decoder input is bounded
+before whitespace normalization; ASCII85 zero-run expansion is preflighted.
+Truncated/invalid streams remain raw candidates with `decode_status=unavailable`,
+never successful decodes. These limits do not make the regex-based PDF parser a
+complete PDF implementation or provide hard CPU deadlines/native OS isolation.

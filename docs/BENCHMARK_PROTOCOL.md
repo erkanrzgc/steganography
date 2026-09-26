@@ -29,6 +29,13 @@ unbound NPZ input is rejected. Preserve the feature version, model/checkpoint,
 seed and training provenance before validation/calibration and final evaluation.
 Feature smoke tests do not establish detection accuracy or cross-source support.
 
+Correlation regressions check that identical LSB-adjacency proxies cannot
+increase aggregate suspicion through separate category names. PDF decoder
+regressions cover exact byte boundaries, ASCII85 zero runs, malformed/truncated
+streams and shared multi-stream budgets. A lower score after removing duplicate
+evidence is an intended correction, not grounds for tuning thresholds on the
+frozen pilot or relaxing the benchmark gates.
+
 ## Support-cell gates
 
 A format/method/payload-rate cell needs at least 1,000 covers and 1,000 stegos
