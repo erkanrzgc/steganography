@@ -96,7 +96,9 @@ def embed_external(tool: str, cover: Path, payload: Path, output: Path) -> None:
         raise ValueError("invalid generator output")
 
 
-def generate(covers: Path, out: Path, *, pairs: int = 1000, workers: int = 4) -> dict[str, Any]:
+def generate(
+    covers: Path, out: Path, *, pairs: int = 1000, workers: int = 4, both_methods: bool = False
+) -> dict[str, Any]:
     if not 1 <= pairs <= 1000 or not 1 <= workers <= 8:
         raise ValueError("pairs must be 1..1000 and workers 1..8")
     source = json.loads((covers / "source.json").read_text())
@@ -116,34 +118,39 @@ def generate(covers: Path, out: Path, *, pairs: int = 1000, workers: int = 4) ->
         data = original.read_bytes()
         if digest(data) != record["sha256"]:
             raise ValueError("source checksum mismatch")
-        tool, extension = ("steghide", "bmp") if index % 2 == 0 else ("openstego", "png")
-        cover = out / "samples" / f"{index:04d}-cover.{extension}"
-        stego = out / "samples" / f"{index:04d}-stego.{extension}"
-        with Image.open(original) as image:
-            image.convert("RGB").save(cover)
-            pixels = image.width * image.height
         payload = out / "expected" / f"{index:04d}.bin"
         payload_size = (256, 1024, 4096)[index % 3]
         payload.write_bytes(random.Random(SEED + index).randbytes(payload_size))  # noqa: S311
-        embed_external(tool, cover, payload, stego)
-        return [
-            {
-                "path": p.relative_to(out).as_posix(),
-                "sha256": digest(p.read_bytes()),
-                "label": label,
-                "source_group": source["source_group"],
-                "lineage": record["sha256"],
-                "split": "test",
-                "method": tool,
-                "format": extension,
-                "payload_bytes": payload_size if label == "stego" else 0,
-                "requested_bits_per_pixel": payload_size * 8 / pixels,
-                "transformation": "PGM to RGB, no resize",
-                "camera": None,
-                "device": None,
-            }
-            for p, label in ((cover, "cover"), (stego, "stego"))
-        ]
+        methods = (("steghide", "bmp"), ("openstego", "png"))
+        selected = methods if both_methods else (methods[index % 2],)
+        rows: list[dict[str, Any]] = []
+        for tool, extension in selected:
+            cover = out / "samples" / f"{index:04d}-cover.{extension}"
+            stego = out / "samples" / f"{index:04d}-stego.{extension}"
+            with Image.open(original) as image:
+                transformation = f"{image.mode} ({image.format}) to RGB, no resize"
+                image.convert("RGB").save(cover)
+                pixels = image.width * image.height
+            embed_external(tool, cover, payload, stego)
+            rows.extend(
+                {
+                    "path": p.relative_to(out).as_posix(),
+                    "sha256": digest(p.read_bytes()),
+                    "label": label,
+                    "source_group": source["source_group"],
+                    "lineage": record["sha256"],
+                    "split": "test",
+                    "method": tool,
+                    "format": extension,
+                    "payload_bytes": payload_size if label == "stego" else 0,
+                    "requested_bits_per_pixel": payload_size * 8 / pixels,
+                    "transformation": transformation,
+                    "camera": None,
+                    "device": None,
+                }
+                for p, label in ((cover, "cover"), (stego, "stego"))
+            )
+        return rows
 
     samples = []
     with ThreadPoolExecutor(max_workers=workers) as executor:
@@ -165,6 +172,7 @@ def generate(covers: Path, out: Path, *, pairs: int = 1000, workers: int = 4) ->
         "threshold": 70,
         "profile": "balanced",
         "training_performed": False,
+        "both_methods_per_cover": both_methods,
     }
     write_json(out / "manifest.json", manifest)
     return manifest
@@ -372,9 +380,16 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--pairs", type=int, default=1000)
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--both-methods", action="store_true")
     args = parser.parse_args()
     if args.action == "generate":
-        generate(args.source, args.out, pairs=args.pairs, workers=args.workers)
+        generate(
+            args.source,
+            args.out,
+            pairs=args.pairs,
+            workers=args.workers,
+            both_methods=args.both_methods,
+        )
     else:
         evaluate(args.source, args.out, workers=args.workers, ctf=args.action == "ctf")
 

@@ -33,6 +33,15 @@ def test_pilot_generation_integrity_and_exact_decoder_recovery(tmp_path, monkeyp
     manifest = pilot.generate(covers, root, pairs=4, workers=1)
     assert len(manifest["samples"]) == 8
     assert len(manifest["challenges"]) == 30
+    both = pilot.generate(covers, tmp_path / "both", pairs=4, workers=1, both_methods=True)
+    assert len(both["samples"]) == 16
+    assert both["both_methods_per_cover"]
+    for original in originals:
+        group = [s for s in both["samples"] if s["lineage"] == original["sha256"]]
+        assert len(group) == 4
+        assert {s["method"] for s in group} == {"steghide", "openstego"}
+        assert {s["split"] for s in group} == {"test"}
+        assert all("no resize" in s["transformation"] for s in group)
     for index in range(0, 8, 2):
         clean, stego = manifest["samples"][index : index + 2]
         assert clean["lineage"] == stego["lineage"]
