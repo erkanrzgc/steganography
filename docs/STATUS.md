@@ -1,4 +1,4 @@
-# Implementation status — 2026-09-26
+# Implementation status — 2026-10-01
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
@@ -30,7 +30,7 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 286 tests pass; total coverage 92.64%. PDF analyzer coverage is
+- Python 3.11: 293 tests pass; total coverage 92.65%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs, not test failures.
 - Extended gradient corpus and spatial proxy tests are regression evidence,
@@ -58,6 +58,11 @@ been delivered or validated by this slice.
   See `PILOT_RESULTS.md`; these are different capabilities, not overall accuracy.
 - ALASKA2/StegoAppDB and cross-source evaluation remain **unavailable**.
   No support cell has demonstrated the requested cross-source accuracy gates.
+- Small external-source check on all 24 Kodak images: 48 method-specific pairs,
+  all stegos independently recovered. Base detection still failed (0/48 recall,
+  AUC 0.49349). Controlled CTF payload recovery was 30/30, but only 25 jobs
+  completed; five reported cancelled. See `KODAK_RESULTS.md`. This is a second
+  source check, not the adequately sized cross-source release evaluation above.
 - Blind 120-challenge recovery, top-three recommendations and latency: **unavailable**.
   The smoke examples are not evidence of 90% CTF recovery.
 - Published, trained spatial/JPEG model packs: absent; model catalog is empty.

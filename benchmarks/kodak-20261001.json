@@ -1,0 +1,85 @@
+{
+  "schema_version": "external-source-summary-1",
+  "date": "2026-10-01",
+  "detector_commit": "3afcba7",
+  "runner_commit": "6b5a390",
+  "runner_sha256": "ab5f13e51b288aec6e5f2f819a7ad89e829aea87e4c53d586aeab65886ab2e64",
+  "manifest_sha256": "fdf9edf658a323d09b3adf0d783f84183b0ba2e17a41b3dbd86451ec28ca6341",
+  "source_manifest_sha256": "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+  "detection_report_sha256": "3fddea727947803e6c65fba7f54b58fc01de4def2bb73667017a5a72ac7eed0b",
+  "ctf_report_sha256": "f0bbdd18804ce5d4936d386038b4c45a6b1639d079ce1267de8834b94db2893c",
+  "support_status": "experimental",
+  "release_cross_source_gate": "unavailable",
+  "source": {
+    "name": "Kodak PCD0992 (r0k)",
+    "url": "https://r0k.us/graphics/kodak/",
+    "original_lineages": 24,
+    "method_specific_pairs": 48,
+    "cover_files": 48,
+    "stego_files": 48,
+    "reserved_file_hash_overlap": 0,
+    "camera_device_independence": "unverified",
+    "upstream_sha256_verified": false,
+    "redistribution": false
+  },
+  "ground_truth": {"requested": 48, "upstream_exact_extractions": 48, "failed": 0},
+  "detection": {
+    "profile": "balanced",
+    "threshold": 70,
+    "ai_enabled": false,
+    "training_performed": false,
+    "confusion": {"tp": 0, "tn": 48, "fp": 0, "fn": 48},
+    "recall": 0.0,
+    "false_positive_rate": 0.0,
+    "balanced_accuracy": 0.5,
+    "roc_auc": 0.49349,
+    "roc_auc_lineage_bootstrap_95_ci": [0.4678386, 0.51956355],
+    "analysis_errors": 0,
+    "elapsed_seconds": 12.850336458999664,
+    "median_sample_seconds": 0.42396505950091523,
+    "p95_sample_seconds": 0.9193431352487096,
+    "coverage": {"exiftool": {"ok": 96}, "zsteg": {"unavailable": 96}, "stegseek": {"unavailable": 48, "unsupported": 48}},
+    "by_method": {
+      "steghide_bmp": {"covers": 24, "stegos": 24, "recall": 0.0, "fpr": 0.0, "roc_auc": 0.478299, "roc_auc_lineage_bootstrap_95_ci": [0.4322703, 0.5147787]},
+      "openstego_png": {"covers": 24, "stegos": 24, "recall": 0.0, "fpr": 0.0, "roc_auc": 0.508681, "roc_auc_lineage_bootstrap_95_ci": [0.500868, 0.5312717]}
+    }
+  },
+  "ctf": {
+    "requested": 30,
+    "exact_recovery": 30,
+    "completed_exact_recovery": 25,
+    "cancelled_jobs": 5,
+    "blind": false,
+    "password_policy": "known public fixture password supplied for Steghide",
+    "by_method": {
+      "steghide_bmp": {"requested": 5, "recovered": 5, "completed": 0, "cancelled": 5},
+      "openstego_png": {"requested": 5, "recovered": 5, "completed": 5},
+      "base64": {"requested": 5, "recovered": 5, "completed": 5},
+      "gzip": {"requested": 5, "recovered": 5, "completed": 5},
+      "zip": {"requested": 5, "recovered": 5, "completed": 5},
+      "base64_zip": {"requested": 5, "recovered": 5, "completed": 5}
+    },
+    "elapsed_seconds": 51.701639860002615,
+    "median_seconds": 0.1915035,
+    "p95_seconds": 7.3547802,
+    "representative_cancelled_job_rerun": {"status": "cancelled", "error": "artifact byte limit reached", "artifacts": 23},
+    "limits": {"tool_seconds": 5, "job_seconds": 60, "artifacts": 64, "output_bytes": 16777216}
+  },
+  "environment": {
+    "detection_python": "3.11.14",
+    "ctf_python": "3.11.13",
+    "logical_cpus": 8,
+    "docker_image": "sha256:e2c255ae0709058e4a320f278e41d193b61223d6fbabbcaf279a51a0da835575",
+    "source_bind": "current code read-only",
+    "latency_caveat": "tests, ground-truth validation and evaluations overlapped; not a dedicated performance gate"
+  },
+  "limitations": [
+    "24 lineages only; no per-cell support certification or representative population claim",
+    "File hashes do not establish independent cameras or absence of perceptual duplicates",
+    "Only lossless BMP/PNG with two external embedding families and three requested payload sizes",
+    "CTF has 10 image cases and 20 simple decoder/container cases, not a blind challenge suite",
+    "Five recovered CTF payloads came from jobs that did not finish all stages",
+    "No threshold tuning, model fitting, calibration or deployment performed",
+    "Frozen BOSSbase report is preserved; different revisions must not be averaged into overall accuracy"
+  ]
+}

@@ -4,6 +4,11 @@ The initial single-source experiment is specified in `PILOT_PROTOCOL.md` and
 reported in `PILOT_RESULTS.md` / `benchmarks/pilot-20260918.json`. Its failed
 detection baseline and controlled recovery results do not satisfy the gates below.
 
+The subsequent small Kodak source check is frozen in `KODAK_PROTOCOL.md` and
+`KODAK_RESULTS.md` / `benchmarks/kodak-20261001.json`. Both methods use the same
+24 originals; bootstrap sampling retains all variants of a lineage together.
+Report recovered payload counts separately from fully completed CTF jobs.
+
 ## Catalog and provenance
 
 Each sample records source URL/import origin, license, checksum, format,

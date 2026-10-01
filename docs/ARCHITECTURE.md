@@ -44,6 +44,9 @@ it does not implement a second detector. Independent upstream tools generate
 cover/stego pairs, with hashes and lineage recorded before evaluation. Solver
 job directories exclude expected payloads. Aggregate evidence is versioned,
 while downloaded images and full local runs remain in ignored `.benchmark/`.
+Its opt-in `--both-methods` generation mode uses both upstream methods per cover
+without splitting or multiplying original lineages. Explicit Kodak acquisition
+records provenance and rejects exact hash overlap with a reserved manifest.
 
 `core.dataset` defines shared identity and connected-component rules. Research
 partitioning uses these to keep lineage/camera/device groups together, reserve

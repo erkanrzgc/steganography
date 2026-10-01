@@ -35,6 +35,11 @@ Current priority order: correctness/limit regressions, independent development
 and untouched-source evaluation, then blind CTF recovery/latency measurement.
 No new format expansion is needed to establish those gates.
 
+The 2026-10-01 Kodak external-source check (`KODAK_RESULTS.md`) is complete:
+24 original lineages, chance-level detection, 30/30 controlled payload recovery
+but 25/30 completed CTF jobs. Dataset-scale accuracy and blind CTF gates remain
+open; new feature/model work still requires separate development data.
+
 JPEG segment/DQT and calibrated DCT analyzers, signed spatial/JPEG ONNX model
 packs, and tool-specific JSteg/F5/OutGuess/Steghide recovery.
 

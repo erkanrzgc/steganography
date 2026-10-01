@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Added explicit bounded Kodak-suite acquisition and pilot generation with both
+  upstream methods on each original. Published negative external-source detection
+  evidence separately from controlled payload recovery and job completion.
+
 - Fixed spatial score inflation: legacy SPA/RS adjacency proxies now share one
   correlation group; their signal names are retained for existing consumers.
 - Bounded PDF ASCIIHex/ASCII85 output before allocation, including ASCII85 zero
