@@ -271,12 +271,16 @@ def evaluate(root: Path, out: Path, *, workers: int = 4, ctf: bool = False) -> d
                     tool_timeout=5, job_timeout=60, max_artifacts=64, max_bytes=16 * 1024 * 1024
                 ),
             )
+            write_json(out / case["id"] / "report.json", report.to_dict())
             exact = any(a.sha256 == case["expected_sha256"] for a in report.artifacts)
             rows.append(
                 {
                     "id": case["id"],
                     "method": case["method"],
                     "status": report.status,
+                    "error": report.error,
+                    "artifact_count": len(report.artifacts),
+                    "output_bytes": sum(a.size for a in report.artifacts if a.parent_id),
                     "exact_recovery": exact,
                     "seconds": report.duration_ms / 1000,
                     "tools": [{"name": t.tool, "status": t.status} for t in report.tools],

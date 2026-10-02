@@ -171,6 +171,7 @@ class ToolRunner:
             resource.setrlimit(resource.RLIMIT_AS, (memory_bytes, memory_bytes))
             resource.setrlimit(resource.RLIMIT_CPU, (cpu, cpu + 1))
             resource.setrlimit(resource.RLIMIT_FSIZE, (max_output, max_output))
+            resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
             resource.setrlimit(resource.RLIMIT_NOFILE, (64, 64))
 
         return apply

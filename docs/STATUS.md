@@ -1,4 +1,4 @@
-# Implementation status — 2026-10-01
+# Implementation status — 2026-10-02
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
@@ -24,13 +24,16 @@ been delivered or validated by this slice.
   The initial spatial-summary features are experimental, not a validated detector.
 - Corrected duplicate SPA/RS adjacency evidence fusion; added PDF ASCII decoder
   preflight limits, complete Flate-stream checks and shared decode budgets.
+- CTF candidate hygiene now excludes crash dumps and failed/unnamed tool output,
+  validates BMP carving headers, avoids lossy binary URL decoding, and preserves
+  native budget cancellation and recursion depth. Per-job pilot reports are saved.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 293 tests pass; total coverage 92.65%. PDF analyzer coverage is
+- Python 3.11: 331 tests pass; total coverage 92.69%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs, not test failures.
 - Extended gradient corpus and spatial proxy tests are regression evidence,

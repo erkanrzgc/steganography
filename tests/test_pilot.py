@@ -54,6 +54,13 @@ def test_pilot_generation_integrity_and_exact_decoder_recovery(tmp_path, monkeyp
     assert report["exact_recovery_rate"] == 1.0
     assert report["blind"] is False and report["support_status"] == "experimental"
     assert report["cross_source_gate"] == "unavailable"
+    for case in report["cases"]:
+        detail = json.loads((tmp_path / "ctf" / case["id"] / "report.json").read_text())
+        assert case["error"] == detail["error"] is None
+        assert case["artifact_count"] == len(detail["artifacts"])
+        assert case["output_bytes"] == sum(
+            item["size"] for item in detail["artifacts"] if item["parent_id"]
+        )
     monkeypatch.setattr(pilot, "ProcessPoolExecutor", ThreadPoolExecutor)
     # Use the real native analysis engine; no optional executable can run here.
     monkeypatch.setattr(pilot.shutil, "which", lambda tool: None)

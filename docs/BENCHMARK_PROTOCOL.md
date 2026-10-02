@@ -8,6 +8,12 @@ The subsequent small Kodak source check is frozen in `KODAK_PROTOCOL.md` and
 `KODAK_RESULTS.md` / `benchmarks/kodak-20261001.json`. Both methods use the same
 24 originals; bootstrap sampling retains all variants of a lineage together.
 Report recovered payload counts separately from fully completed CTF jobs.
+Published challenges may subsequently be rerun as regression evidence, with the
+same manifest, expected payload hashes, passwords and limits. Preserve prior
+reports and write each new run to an exclusive output directory. Record the
+implementation revision, per-job status/error, artifact counts and output bytes.
+Fixing published failures is not a fresh held-out or blind accuracy result; do
+not tune thresholds or expand limits to turn a cancelled job into a pass.
 
 ## Catalog and provenance
 
@@ -40,6 +46,13 @@ regressions cover exact byte boundaries, ASCII85 zero runs, malformed/truncated
 streams and shared multi-stream budgets. A lower score after removing duplicate
 evidence is an intended correction, not grounds for tuning thresholds on the
 frozen pilot or relaxing the benchmark gates.
+
+CTF candidate-integrity regressions use independent generated fixtures for
+accidental binary signatures, byte-preserving percent decoding, successful vs.
+partial tool output, crash dumps, symlinks/preexisting outputs, and depth/count/
+byte boundaries. External process tests verify that child core dumps are disabled
+without modifying the parent's resource limits. These are correctness/security
+regressions, not evidence that OS sandbox escape or all decoder-bomb gates pass.
 
 ## Support-cell gates
 

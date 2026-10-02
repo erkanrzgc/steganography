@@ -2,6 +2,16 @@
 
 ## 0.6.0 (unreleased)
 
+- Fixed CTF candidate pollution: binary data is no longer lossily URL-decoded,
+  BMP carving checks header consistency and declared extent, and carved files
+  retain format suffixes for recursive native analysis. Boundary artifacts are
+  analyzed without producing children beyond `max_depth`; native extraction
+  limit exceptions propagate as cancellation instead of being swallowed.
+- Disabled POSIX tool core dumps and restricted artifact adoption to a successful
+  extractor's explicitly named, nonempty regular output. Failed/partial output,
+  logs, symlinks and preexisting paths cannot become extraction evidence.
+  Pilot CTF evaluation now preserves per-job reports, errors and output counts.
+
 - Added explicit bounded Kodak-suite acquisition and pilot generation with both
   upstream methods on each original. Published negative external-source detection
   evidence separately from controlled payload recovery and job completion.

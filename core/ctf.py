@@ -182,6 +182,9 @@ class CTFService:
                 current = queue.popleft()
                 self._stage(state, "metadata_structure", on_event)
                 self._analyze(state, current)
+                # Boundary artifacts are analyzed, but cannot create deeper children.
+                if current.depth >= limits.max_depth:
+                    continue
                 self._stage(state, "native_detectors", on_event)
                 generated = self._native_candidates(state, current, password=password, mode=mode)
                 if current.depth == 0 and mode != "quick":
@@ -202,8 +205,6 @@ class CTFService:
                     if artifact.depth <= limits.max_depth and artifact.sha256 not in seen:
                         seen.add(artifact.sha256)
                         queue.append(artifact)
-                if current.depth >= limits.max_depth:
-                    continue
             self._stage(state, "recursive_analysis", on_event)
         except _Cancelled as exc:
             status = "cancelled"
@@ -357,6 +358,8 @@ class CTFService:
                         )
                     )
                     state.confirmed = True
+            except _Cancelled:
+                raise
             except Exception:  # noqa: BLE001, S110
                 pass
         if not state.confirmed and artifact_path.suffix.lower() == ".gif":
@@ -402,6 +405,8 @@ class CTFService:
                         )
                         if is_flag:
                             state.confirmed = True
+            except _Cancelled:
+                raise
             except Exception:  # noqa: BLE001, S110
                 pass
         if not state.confirmed and artifact_path.suffix.lower() in {".txt", ".md"}:
@@ -412,8 +417,8 @@ class CTFService:
                 raw_ws = TextWhitespace().extract(artifact_path)
                 if raw_ws:
                     is_flag = bool(_FLAG_PATTERN.search(raw_ws))
-                    printable = (
-                        sum(32 <= b <= 126 or b in (9, 10, 13) for b in raw_ws) / len(raw_ws)
+                    printable = sum(32 <= b <= 126 or b in (9, 10, 13) for b in raw_ws) / len(
+                        raw_ws
                     )
                     if is_flag or (printable >= 0.85 and len(raw_ws) >= 4):
                         generated.append(
@@ -433,8 +438,8 @@ class CTFService:
                     raw_zw = TextZeroWidth().extract(artifact_path)
                     if raw_zw:
                         is_flag = bool(_FLAG_PATTERN.search(raw_zw))
-                        printable = (
-                            sum(32 <= b <= 126 or b in (9, 10, 13) for b in raw_zw) / len(raw_zw)
+                        printable = sum(32 <= b <= 126 or b in (9, 10, 13) for b in raw_zw) / len(
+                            raw_zw
                         )
                         if is_flag or (printable >= 0.85 and len(raw_zw) >= 4):
                             generated.append(
@@ -450,6 +455,8 @@ class CTFService:
                             )
                             if is_flag:
                                 state.confirmed = True
+            except _Cancelled:
+                raise
             except Exception:  # noqa: BLE001, S110
                 pass
         if not state.confirmed and artifact_path.suffix.lower() == ".mp3":
@@ -470,6 +477,8 @@ class CTFService:
                     )
                     if is_flag:
                         state.confirmed = True
+            except _Cancelled:
+                raise
             except Exception:  # noqa: BLE001, S110
                 pass
         if not state.confirmed and artifact_path.suffix.lower() == ".pdf":
@@ -492,6 +501,8 @@ class CTFService:
                     )
                     if is_flag:
                         state.confirmed = True
+            except _Cancelled:
+                raise
             except Exception:  # noqa: BLE001, S110
                 pass
         if not state.confirmed and artifact_path.suffix.lower() in {".jpg", ".jpeg", ".tiff"}:
@@ -518,6 +529,8 @@ class CTFService:
                                 break
                     if state.confirmed:
                         break
+            except _Cancelled:
+                raise
             except Exception:  # noqa: BLE001, S110
                 pass
         if mode == "deep" and artifact_path.suffix.lower() in {".png", ".bmp"}:
@@ -572,7 +585,7 @@ class CTFService:
                     ("stegseek", [relative, local_wordlist.name, "stegseek.bin", "-f"], ())
                 )
             else:
-                specs.append(("stegseek", ["--seed", relative], ()))
+                specs.append(("stegseek", ["--seed", relative, "stegseek.bin"], ()))
             steghide_pass = password if password is not None else ""
             specs.append(
                 (
@@ -604,9 +617,17 @@ class CTFService:
             if suffix in {".gif", ".wav", ".mp3"}:
                 specs.append(("ffmpeg", ["-v", "error", "-i", relative, "-f", "null", "-"], ()))
 
-        before = {item.name for item in state.output_dir.iterdir()}
+        generated: list[Artifact] = []
+        extractors = {"openstego", "stegseek", "steghide", "outguess", "jsteg"}
         for tool, args, secrets in specs:
             self._checkpoint(state, should_cancel)
+            output_path = state.output_dir / f"{tool}.bin" if tool in extractors else None
+            # Do not let a prior tool supply or overwrite another tool's evidence.
+            if output_path is not None and (output_path.exists() or output_path.is_symlink()):
+                state.coverage.append(
+                    Coverage(tool, "failed", False, "extraction output already exists")
+                )
+                continue
             remaining = state.limits.job_timeout - (time.monotonic() - state.started)
             execution = runner.run(
                 tool,
@@ -620,14 +641,17 @@ class CTFService:
             state.tools.append(execution)
             coverage_status = _tool_coverage_status(execution.status)
             state.coverage.append(Coverage(tool, coverage_status, False, execution.error))
-        generated: list[Artifact] = []
-        for path in sorted(state.output_dir.iterdir()):
-            if path.name in before or path.name in {"artifacts", "wordlist.txt"}:
+            # Logs, crash dumps and partial/failed output are not extraction evidence.
+            # Adopt only this invocation's named, nonempty, successful output.
+            if (
+                output_path is None
+                or execution.status != "completed"
+                or execution.exit_code != 0
+                or output_path.is_symlink()
+                or not output_path.is_file()
+            ):
                 continue
-            if not path.is_file() or path.is_symlink():
-                continue
-            data = _bounded_read(path, state.limits.max_bytes - state.output_bytes)
-            path.unlink()
+            data = _bounded_read(output_path, state.limits.max_bytes - state.output_bytes)
             if not data:
                 continue
             is_flag = bool(_FLAG_PATTERN.search(data))
@@ -635,12 +659,14 @@ class CTFService:
                 self._store(
                     state,
                     data,
-                    path.name,
+                    output_path.name,
                     artifact,
                     artifact.depth + 1,
-                    "external tool extraction" + (" (flag confirmed)" if is_flag else ""),
+                    f"external tool extraction via {tool}"
+                    + (" (flag confirmed)" if is_flag else ""),
                 )
             )
+            output_path.unlink()
             if is_flag:
                 state.confirmed = True
         return generated
@@ -648,23 +674,30 @@ class CTFService:
     def _carve_and_decode(
         self, state: _JobState, artifact: Artifact, *, mode: CTFMode
     ) -> list[Artifact]:
+        if artifact.depth >= state.limits.max_depth:
+            return []
         artifact_path = _artifact_path(artifact)
         data = artifact_path.read_bytes()
         candidates: list[tuple[bytes, str, str]] = []
         trailer = _trailer(data, artifact_path.suffix.lower())
         if trailer:
             candidates.append((trailer, "trailer.bin", "data appended after structural end"))
-        if artifact.depth < state.limits.max_depth:
-            candidates.extend(_archive_members(data, state.limits))
-            candidates.extend(_decoded_candidates(data, deep=mode == "deep"))
-            for offset, label in _signature_offsets(data):
-                candidates.append(
-                    (
-                        data[offset:],
-                        f"carved-{label}.bin",
-                        f"{label} signature at offset {offset}",
-                    )
+        candidates.extend(_archive_members(data, state.limits))
+        candidates.extend(_decoded_candidates(data, deep=mode == "deep"))
+        for offset, label in _signature_offsets(data):
+            end = (
+                offset + int.from_bytes(data[offset + 2 : offset + 6], "little")
+                if label == "bmp"
+                else len(data)
+            )
+            suffix = {"gzip": "gz", "jpeg": "jpg"}.get(label, label)
+            candidates.append(
+                (
+                    data[offset:end],
+                    f"carved-{label}.{suffix}",
+                    f"{label} signature at offset {offset}",
                 )
+            )
         generated: list[Artifact] = []
         for candidate, name, provenance in candidates:
             if not candidate or candidate == data:
@@ -852,9 +885,42 @@ def _signature_offsets(data: bytes) -> Iterable[tuple[int, str]]:
     found: set[tuple[int, str]] = set()
     for magic, label in _MAGICS:
         offset = data.find(magic, 1)
-        if offset > 0:
-            found.add((offset, label))
+        # Two-byte BM occurs naturally in pixel data. Bound the search and require
+        # a coherent header before treating it as a file, including after decoys.
+        for _ in range(64):
+            if offset < 0:
+                break
+            if label != "bmp" or _valid_bmp_header(data, offset):
+                found.add((offset, label))
+                break
+            offset = data.find(magic, offset + 1)
     return sorted(found)
+
+
+def _valid_bmp_header(data: bytes, offset: int) -> bool:
+    remaining = len(data) - offset
+    if remaining < 26:
+        return False
+    size = int.from_bytes(data[offset + 2 : offset + 6], "little")
+    pixels = int.from_bytes(data[offset + 10 : offset + 14], "little")
+    dib = int.from_bytes(data[offset + 14 : offset + 18], "little")
+    if (
+        data[offset + 6 : offset + 10] != b"\0" * 4
+        or dib not in {12, 40, 52, 56, 64, 108, 124}
+        or not 14 + dib <= pixels < size <= remaining
+    ):
+        return False
+    width_bytes = 2 if dib == 12 else 4
+    width = int.from_bytes(
+        data[offset + 18 : offset + 18 + width_bytes], "little", signed=dib != 12
+    )
+    height = int.from_bytes(
+        data[offset + 18 + width_bytes : offset + 18 + 2 * width_bytes], "little", signed=dib != 12
+    )
+    planes_offset = offset + 18 + 2 * width_bytes
+    planes = int.from_bytes(data[planes_offset : planes_offset + 2], "little")
+    bpp = int.from_bytes(data[planes_offset + 2 : planes_offset + 4], "little")
+    return width > 0 and height != 0 and planes == 1 and bpp in {1, 2, 4, 8, 16, 24, 32}
 
 
 def _decoded_candidates(data: bytes, *, deep: bool) -> list[tuple[bytes, str, str]]:
@@ -875,11 +941,7 @@ def _decoded_candidates(data: bytes, *, deep: bool) -> list[tuple[bytes, str, st
             continue
         if _credible(decoded, data):
             values.append((decoded, f"decoded-{name}.bin", f"bounded {name} decoding candidate"))
-    if (
-        len(compact) >= 8
-        and len(compact) % 2 == 0
-        and re.fullmatch(rb"[0-9a-fA-F]+", compact)
-    ):
+    if len(compact) >= 8 and len(compact) % 2 == 0 and re.fullmatch(rb"[0-9a-fA-F]+", compact):
         try:
             hex_decoded = bytes.fromhex(compact.decode("ascii"))
             if _credible(hex_decoded, data):
@@ -889,8 +951,10 @@ def _decoded_candidates(data: bytes, *, deep: bool) -> list[tuple[bytes, str, st
     if b"{galf" in data.lower() or b"}galf" in data.lower():
         rev = data[::-1]
         values.append((rev, "decoded-reversed.bin", "byte-reversed candidate (flag confirmed)"))
-    if b"%" in data:
-        decoded = urllib.parse.unquote_to_bytes(data.decode("ascii", errors="ignore"))
+    if re.search(rb"%[0-9a-fA-F]{2}", data) and re.fullmatch(rb"[\t\n\r\x20-\x7e]+", data):
+        # Decode bytes directly: ignoring non-ASCII corrupts binary carriers and
+        # fabricates large, apparently credible candidates with preserved magic.
+        decoded = urllib.parse.unquote_to_bytes(data)
         if _credible(decoded, data):
             values.append((decoded, "decoded-url.bin", "URL percent-decoding candidate"))
     decompressed = _decompress(data)

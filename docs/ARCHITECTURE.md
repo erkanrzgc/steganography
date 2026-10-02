@@ -24,6 +24,22 @@ programs without a shell, with time/resource/output limits and redacted report
 commands. An unavailable tool is coverage metadata and can make a result
 inconclusive; it is not negative evidence.
 
+External extraction adoption is invocation-specific: only the explicitly named
+output of a zero-exit, completed extractor is eligible. Unnamed files (including
+logs and crash dumps), failed/partial outputs, symlinks, empty outputs and paths
+that existed before invocation are excluded. POSIX children have `RLIMIT_CORE=0`.
+This is evidence hygiene, not per-tool filesystem isolation; rejected incidental
+files can remain in the job directory but are not included in artifact bundles.
+
+The depth limit is checked before any child-producing stage. Boundary artifacts
+still receive analysis; native extraction budget exceptions propagate to an
+inconclusive, cancelled job. URL decoding requires a printable ASCII envelope
+and a valid percent escape, and preserves decoded bytes exactly. BMP signature
+carving checks header/size/dimension/plane consistency, considers at most 64
+header hits, and retains the declared file extent. Other signatures remain
+heuristic candidates. Carved files retain format suffixes for native analysis;
+neither a filename extension nor a carving signature confirms steganography.
+
 Managed job artifacts are stored beneath a newly created output directory. Artifacts are
 regular files, names are generated rather than trusted, archive members are
 streamed with count/depth/size/ratio limits, and existing files are not
@@ -44,6 +60,8 @@ it does not implement a second detector. Independent upstream tools generate
 cover/stego pairs, with hashes and lineage recorded before evaluation. Solver
 job directories exclude expected payloads. Aggregate evidence is versioned,
 while downloaded images and full local runs remain in ignored `.benchmark/`.
+Each CTF job also retains its portable report; aggregates include failure reasons,
+artifact counts and generated-output bytes (excluding the copied input).
 Its opt-in `--both-methods` generation mode uses both upstream methods per cover
 without splitting or multiplying original lineages. Explicit Kodak acquisition
 records provenance and rejects exact hash overlap with a reserved manifest.

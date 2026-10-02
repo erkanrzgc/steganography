@@ -15,6 +15,8 @@ Source version: 0.6.0 (beta classification; not published). See
 - [x] Bounded CTF service with CLI and common portable reports.
 - [x] CTF API jobs, SSE/cancellation, artifact download, and guided TUI entry.
 - [x] Correct duplicate spatial evidence fusion and bound PDF stream decoding.
+- [x] Prevent crash-dump/binary URL/accidental BMP candidate pollution; enforce
+  depth boundaries and propagate native extraction budget cancellation.
 - [ ] Full-image tool inventory, pinned versions/checksums/licenses, and E2E.
 
 ## v0.7
