@@ -1,4 +1,4 @@
-# Implementation status — 2026-10-02
+# Implementation status — 2026-10-03
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
@@ -50,6 +50,12 @@ been delivered or validated by this slice.
   `scripts/docker-ctf-smoke.py` reproduces these limited integration checks.
   OpenStego's writable-preferences initialization was fixed; tool completion
   alone is not evidence of a hidden payload or successful extraction.
+- The 2026-10-02 CTF regression completed and exactly recovered all 30 frozen
+  Kodak challenges in each of two final runs, without increasing budgets.
+  OpenStego's native allocation/thread overhead was bounded; ten cold-start
+  extractions passed the hardened Docker smoke. Failed intermediate runs remain
+  recorded in `CTF_REGRESSION_20261002.md`. This used read-only current-source/
+  launcher mounts on the existing image, not a freshly rebuilt full image.
 - Python 3.12–3.14 are configured in CI but were not executed locally.
 
 ## Open acceptance gates and limitations
@@ -66,6 +72,8 @@ been delivered or validated by this slice.
   AUC 0.49349). Controlled CTF payload recovery was 30/30, but only 25 jobs
   completed; five reported cancelled. See `KODAK_RESULTS.md`. This is a second
   source check, not the adequately sized cross-source release evaluation above.
+  The subsequent published-challenge regression fixed these CTF cancellations
+  (`CTF_REGRESSION_20261002.md`); it does not change the failed detection result.
 - Blind 120-challenge recovery, top-three recommendations and latency: **unavailable**.
   The smoke examples are not evidence of 90% CTF recovery.
 - Published, trained spatial/JPEG model packs: absent; model catalog is empty.

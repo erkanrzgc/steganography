@@ -42,6 +42,13 @@ The 2026-10-01 Kodak external-source check (`KODAK_RESULTS.md`) is complete:
 but 25/30 completed CTF jobs. Dataset-scale accuracy and blind CTF gates remain
 open; new feature/model work still requires separate development data.
 
+The subsequent `CTF_REGRESSION_20261002.md` records candidate-integrity and
+OpenStego native-memory corrections: two final runs completed and recovered all
+30 published challenges under unchanged limits. Failed intermediate runs remain
+visible. This closes the observed cancellation regression, not the blind CTF or
+automatic steganalysis gates; magic-only carving, graph deduplication, tool
+isolation and independent detector development remain work.
+
 JPEG segment/DQT and calibrated DCT analyzers, signed spatial/JPEG ONNX model
 packs, and tool-specific JSteg/F5/OutGuess/Steghide recovery.
 

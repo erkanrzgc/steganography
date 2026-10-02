@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published repeated CTF regression evidence on the frozen Kodak challenges:
+  two final runs achieved 30/30 completed exact recoveries with unchanged limits.
+  Failed intermediate runs are retained; this is not a blind accuracy result or
+  an improvement claim for automatic steganalysis.
+
 - Bounded OpenStego's glibc allocator arenas and CPU-derived JVM thread pools
   within the unchanged 768 MiB process budget; added repeated cold-start exact
   recovery to the Docker smoke check. A failed JVM's output remains excluded.

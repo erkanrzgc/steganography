@@ -14,6 +14,9 @@ reports and write each new run to an exclusive output directory. Record the
 implementation revision, per-job status/error, artifact counts and output bytes.
 Fixing published failures is not a fresh held-out or blind accuracy result; do
 not tune thresholds or expand limits to turn a cancelled job into a pass.
+The first such CTF regression is recorded in `CTF_REGRESSION_20261002.md` and
+`benchmarks/ctf-regression-20261002.json`, including unsuccessful intermediate
+runs and the full-image launcher configuration needed to reproduce the result.
 
 ## Catalog and provenance
 

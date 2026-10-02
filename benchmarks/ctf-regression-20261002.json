@@ -1,0 +1,375 @@
+{
+  "schema_version": "ctf-regression-summary-1",
+  "date": "2026-10-02",
+  "candidate_fix_commit": "bacae39",
+  "launcher_fix_commit": "2cc988a",
+  "manifest_sha256": "fdf9edf658a323d09b3adf0d783f84183b0ba2e17a41b3dbd86451ec28ca6341",
+  "code_sha256": {
+    "core/ctf.py": "d3e9c923357d4fdf78834534e2eacc471f35fe913ae9c5696fd1101546a2ac7a",
+    "core/tools.py": "6aa5410c7903e1868e823e74e61c6cd3733dd0f91b6e7c8cc3f7ceb8df8f77dd",
+    "steganography/benchmarking/pilot.py": "ce721fe3174cffa7450a5582392df7a2a43341fddca293c62feabf1bb6e83b7f",
+    "scripts/openstego-headless.sh": "cb086eabde70e518d89dd8307f498a24261a9f093bc85a05266c9b0eb58a1c68"
+  },
+  "frozen_baseline": {
+    "summary": "kodak-20261001.json",
+    "exact_recovery": 30,
+    "completed_exact_recovery": 25,
+    "cancelled": 5
+  },
+  "requested_challenges": 30,
+  "blind": false,
+  "support_status": "experimental",
+  "detection_rerun": false,
+  "detector_accuracy_improvement_claimed": false,
+  "limits": {
+    "max_depth": 3,
+    "max_artifacts": 64,
+    "max_output_bytes": 16777216,
+    "tool_seconds": 5,
+    "job_seconds": 60,
+    "tool_address_space_bytes": 805306368
+  },
+  "password_policy": "known public fixture password supplied for Steghide",
+  "final_runs": [
+    {
+      "local_run": "kodak-ctf-bounded-jvm-executable-20261002",
+      "report_sha256": "3b30ef2026814a2d83553346748ee43178ff08f53154febbd85af279c9c2cf12",
+      "exact_recovery": 30,
+      "completed_exact_recovery": 30,
+      "job_status_counts": {
+        "completed": 30
+      },
+      "artifact_count": 82,
+      "output_bytes": 9633982,
+      "maximum_job_artifacts": 8,
+      "maximum_job_output_bytes": 5390462,
+      "core_dump_files": 0,
+      "elapsed_seconds": 39.97326337599998,
+      "latency": {
+        "median_seconds": 0.1363475,
+        "p95_seconds": 6.65738855
+      },
+      "tool_status_counts": {
+        "exiftool:completed": 30,
+        "openstego:completed": 10,
+        "pngcheck:completed": 5,
+        "steghide:completed": 5,
+        "stegseek:failed": 5,
+        "zsteg:failed": 10
+      },
+      "by_method": {
+        "base64": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "base64-zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "gzip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "openstego": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "steghide": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        }
+      }
+    },
+    {
+      "local_run": "kodak-ctf-final-repeat-20261002",
+      "report_sha256": "aed63cdfa4bb44af28c0aa938bb41c837fcb02b1674b6ec1b10b34e11fc2573e",
+      "exact_recovery": 30,
+      "completed_exact_recovery": 30,
+      "job_status_counts": {
+        "completed": 30
+      },
+      "artifact_count": 82,
+      "output_bytes": 9633982,
+      "maximum_job_artifacts": 8,
+      "maximum_job_output_bytes": 5390462,
+      "core_dump_files": 0,
+      "elapsed_seconds": 38.19868006599995,
+      "latency": {
+        "median_seconds": 0.1583425,
+        "p95_seconds": 6.468831999999999
+      },
+      "tool_status_counts": {
+        "exiftool:completed": 30,
+        "openstego:completed": 10,
+        "pngcheck:completed": 5,
+        "steghide:completed": 5,
+        "stegseek:failed": 5,
+        "zsteg:failed": 10
+      },
+      "by_method": {
+        "base64": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "base64-zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "gzip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "openstego": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "steghide": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        }
+      }
+    }
+  ],
+  "diagnostic_runs": [
+    {
+      "local_run": "kodak-ctf-candidate-integrity-20261002",
+      "report_sha256": "3155c6e79160e0c736f9e8c6fc4773c80574bac51ef56bccbca6d9d30b9be6bf",
+      "exact_recovery": 30,
+      "completed_exact_recovery": 30,
+      "job_status_counts": {
+        "completed": 30
+      },
+      "artifact_count": 82,
+      "output_bytes": 9633982,
+      "maximum_job_artifacts": 8,
+      "maximum_job_output_bytes": 5390462,
+      "core_dump_files": 0,
+      "elapsed_seconds": 46.203886087,
+      "latency": {
+        "median_seconds": 0.1581855,
+        "p95_seconds": 7.528726549999998
+      },
+      "tool_status_counts": {
+        "exiftool:completed": 30,
+        "openstego:completed": 10,
+        "pngcheck:completed": 5,
+        "steghide:completed": 5,
+        "stegseek:failed": 5,
+        "zsteg:failed": 10
+      },
+      "by_method": {
+        "base64": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "base64-zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "gzip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "openstego": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "steghide": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        }
+      },
+      "interpretation": "Preliminary uncommitted candidate fix; not final code"
+    },
+    {
+      "local_run": "kodak-ctf-candidate-integrity-verified-20261002",
+      "report_sha256": "9a652d0a4cbe0bdb68001d96fd4a5e1a2393546057f5dea46583d237bcf3fddf",
+      "exact_recovery": 29,
+      "completed_exact_recovery": 29,
+      "job_status_counts": {
+        "completed": 30
+      },
+      "artifact_count": 81,
+      "output_bytes": 9633946,
+      "maximum_job_artifacts": 8,
+      "maximum_job_output_bytes": 5390462,
+      "core_dump_files": 0,
+      "elapsed_seconds": 37.11247417300001,
+      "latency": {
+        "median_seconds": 0.136068,
+        "p95_seconds": 6.320533649999999
+      },
+      "tool_status_counts": {
+        "exiftool:completed": 30,
+        "openstego:completed": 9,
+        "openstego:failed": 1,
+        "pngcheck:completed": 5,
+        "steghide:completed": 5,
+        "stegseek:failed": 5,
+        "zsteg:failed": 10
+      },
+      "by_method": {
+        "base64": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "base64-zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "gzip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "openstego": {
+          "requested": 5,
+          "recovered": 4,
+          "completed": 5
+        },
+        "steghide": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        }
+      },
+      "interpretation": "Original launcher: one post-extraction native JVM allocation failure correctly excluded"
+    },
+    {
+      "local_run": "kodak-ctf-bounded-jvm-20261002",
+      "report_sha256": "17783875efca01bb463b619c4a77fdb1c524605e9595c5fbf8b53e711e515bb2",
+      "exact_recovery": 25,
+      "completed_exact_recovery": 25,
+      "job_status_counts": {
+        "completed": 30
+      },
+      "artifact_count": 77,
+      "output_bytes": 9633802,
+      "maximum_job_artifacts": 8,
+      "maximum_job_output_bytes": 5390462,
+      "core_dump_files": 0,
+      "elapsed_seconds": 41.2885109450001,
+      "latency": {
+        "median_seconds": 0.159092,
+        "p95_seconds": 6.95971755
+      },
+      "tool_status_counts": {
+        "exiftool:completed": 30,
+        "openstego:failed": 10,
+        "pngcheck:completed": 5,
+        "steghide:completed": 5,
+        "stegseek:failed": 5,
+        "zsteg:failed": 10
+      },
+      "by_method": {
+        "base64": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "base64-zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "gzip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "openstego": {
+          "requested": 5,
+          "recovered": 0,
+          "completed": 5
+        },
+        "steghide": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        },
+        "zip": {
+          "requested": 5,
+          "recovered": 5,
+          "completed": 5
+        }
+      },
+      "interpretation": "Invalid launcher-bind harness: non-executable script fell back to stock 1 GiB launcher"
+    }
+  ],
+  "smoke": {
+    "status": "passed",
+    "cold_openstego_exact_extractions": 10,
+    "retries": 0,
+    "native_exact": true,
+    "steghide_exact": true,
+    "openstego_exact": true,
+    "password_redaction": true
+  },
+  "environment": {
+    "image": "sha256:e2c255ae0709058e4a320f278e41d193b61223d6fbabbcaf279a51a0da835575",
+    "source_bind": "read-only current source",
+    "launcher_bind": "read-only executable current launcher",
+    "image_rebuilt": false,
+    "uid_gid": "1001:1001",
+    "network": "none",
+    "root_filesystem": "read-only",
+    "capabilities": "all dropped",
+    "pids_limit": 256,
+    "tmpfs_bytes": 268435456,
+    "python": "3.11.13",
+    "logical_cpus": 8,
+    "latency_caveat": "descriptive repeated-regression timings, not a dedicated performance gate"
+  },
+  "verification": {
+    "python": "3.11.14",
+    "tests_passed": 332,
+    "total_coverage_percent": 92.69,
+    "ruff": "passed",
+    "mypy_files": 71,
+    "python_3_12_to_3_14": "not executed locally"
+  },
+  "limitations": [
+    "Published non-blind challenges; repeated runs are not independent new samples",
+    "No trained detector or accuracy improvement demonstrated",
+    "Zsteg and Stegseek failures remain visible under current limits",
+    "Other magic-only carving and graph-wide artifact deduplication remain incomplete",
+    "No complete native deadline or per-tool OS isolation certification"
+  ]
+}
