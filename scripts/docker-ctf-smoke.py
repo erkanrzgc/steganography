@@ -11,6 +11,7 @@ from PIL import Image
 
 from core.ctf import CTFLimits, CTFService
 from core.service import StegoService
+from core.tools import ToolRunner
 
 
 def require(condition: bool, message: str) -> None:
@@ -111,7 +112,24 @@ def main() -> None:
             timeout=10,
         )
         require(openstego_file.is_file(), "OpenStego exited without producing a file")
+        # Repeated cold JVM starts catch native-memory failures hidden by a single
+        # successful extraction. Do not retry, raise budgets or accept crash output.
+        runner = ToolRunner(timeout=5)
+        for attempt in range(10):
+            workdir = root / f"openstego-budget-{attempt}"
+            workdir.mkdir()
+            execution = runner.run(
+                "openstego",
+                ["extract", "-sf", "../openstego.png", "-xd", ".", "-xf", "payload.bin"],
+                cwd=workdir,
+            )
+            require(execution.status == "completed", "OpenStego failed under default budget")
+            require(
+                (workdir / "payload.bin").read_bytes() == payload.read_bytes(),
+                "OpenStego budget-repeat payload mismatch",
+            )
         recovered = CTFService().solve(openstego_file, root / "openstego-job")
+        require(recovered.status == "completed", f"OpenStego job: {recovered.error}")
         require(
             any(
                 a.path and a.path.read_bytes() == payload.read_bytes() for a in recovered.artifacts

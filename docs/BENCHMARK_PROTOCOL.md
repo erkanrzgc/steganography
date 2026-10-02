@@ -53,6 +53,9 @@ partial tool output, crash dumps, symlinks/preexisting outputs, and depth/count/
 byte boundaries. External process tests verify that child core dumps are disabled
 without modifying the parent's resource limits. These are correctness/security
 regressions, not evidence that OS sandbox escape or all decoder-bomb gates pass.
+The Docker smoke check includes ten cold OpenStego extractions under the default
+tool memory limit and a five-second deadline. Every process must complete and
+recover exact bytes; a failed process's output and retries cannot count as passes.
 
 ## Support-cell gates
 

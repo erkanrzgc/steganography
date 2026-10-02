@@ -33,7 +33,7 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 331 tests pass; total coverage 92.69%. PDF analyzer coverage is
+- Python 3.11: 332 tests pass; total coverage 92.69%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs, not test failures.
 - Extended gradient corpus and spatial proxy tests are regression evidence,

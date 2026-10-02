@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Bounded OpenStego's glibc allocator arenas and CPU-derived JVM thread pools
+  within the unchanged 768 MiB process budget; added repeated cold-start exact
+  recovery to the Docker smoke check. A failed JVM's output remains excluded.
+
 - Fixed CTF candidate pollution: binary data is no longer lossily URL-decoded,
   BMP carving checks header consistency and declared extent, and carved files
   retain format suffixes for recursive native analysis. Boundary artifacts are

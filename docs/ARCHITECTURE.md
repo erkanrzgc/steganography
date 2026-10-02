@@ -30,6 +30,9 @@ logs and crash dumps), failed/partial outputs, symlinks, empty outputs and paths
 that existed before invocation are excluded. POSIX children have `RLIMIT_CORE=0`.
 This is evidence hygiene, not per-tool filesystem isolation; rejected incidental
 files can remain in the job directory but are not included in artifact bundles.
+The full-image OpenStego launcher fixes allocator arenas and JVM active processors
+at two, with the existing 128 MiB Java heap, rather than enlarging `ToolRunner`'s
+768 MiB address-space ceiling. Other tools and the base wheel are unchanged.
 
 The depth limit is checked before any child-producing stage. Boundary artifacts
 still receive analysis; native extraction budget exceptions propagate to an
