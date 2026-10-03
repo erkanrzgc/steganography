@@ -67,6 +67,10 @@ been delivered or validated by this slice.
   See `PILOT_RESULTS.md`; these are different capabilities, not overall accuracy.
 - ALASKA2/StegoAppDB and cross-source evaluation remain **unavailable**.
   No support cell has demonstrated the requested cross-source accuracy gates.
+  Read-only checks on 2026-10-03 found an unauthenticated ALASKA2 file-list API
+  response of 401 and a StegoAppDB endpoint response of 404. No new corpus was
+  acquired; authorized local data is the next required input. See
+  `DATA_ACCESS_STATUS.md` for observations, limits and the evaluation sequence.
 - Small external-source check on all 24 Kodak images: 48 method-specific pairs,
   all stegos independently recovered. Base detection still failed (0/48 recall,
   AUC 0.49349). Controlled CTF payload recovery was 30/30, but only 25 jobs

@@ -3,6 +3,9 @@
 The published pilot remains frozen. Its images, covers and derivatives are not
 development or validation data. This workflow prepares a new experiment; it
 does not train a detector or establish an accuracy claim.
+Current acquisition checks and the next required user-supplied input are recorded
+in `DATA_ACCESS_STATUS.md`; an accessible landing page is not dataset access or
+a verified license grant.
 
 ## Required inputs
 
