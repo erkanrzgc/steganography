@@ -30,23 +30,30 @@ been delivered or validated by this slice.
 - Explicit ALASKA2 holdout acquisition: fixed-seed complete lineage selection,
   bounded authenticated ZIP64 range reads, credential isolation, CRC/JPEG/SHA
   checks and exclusive, provenance-bound resume. See `ALASKA2_ACQUISITION.md`.
+- Preregistered ALASKA2 native-score evaluator: unchanged shared service,
+  manifest integrity, complete paired lineages, failure-aware coverage, no
+  held-out threshold search and per-method bootstrap intervals. Its protocol
+  is frozen in `ALASKA2_PROTOCOL.md`; tooling alone is not a benchmark result.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 390 tests pass; total coverage 92.69%. PDF analyzer coverage is
+- Python 3.11: 397 tests pass; total coverage 92.82%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs, not test failures.
 - The standalone ALASKA2 downloader has 58 dedicated tests and 99.05% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,
   overwrite/resume integrity, redacted errors and reserved-corpus overlap.
+- ALASKA2 evaluation has seven new tests (including the real shared-service
+  JPEG path), with 98.34% statement coverage of the evaluator. Missing required
+  native coverage invalidates a cell rather than turning failures into negatives.
 - Extended gradient corpus and spatial proxy tests are regression evidence,
   not calibration or real-world accuracy evidence. The two legacy SPA/RS names
   represent a single adjacency observation and are aggregated only once.
-- Ruff and mypy (71 application files plus the standalone acquisition script)
+- Ruff and mypy (72 application files; the acquisition script was checked separately)
   pass; diff whitespace checks pass.
 - PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
   CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and

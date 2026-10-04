@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added a preregistered ALASKA2 evaluator using the unchanged shared analysis
+  service: fixed-threshold per-method metrics, paired-lineage confidence
+  intervals, explicit coverage failures, persisted score evidence and declared
+  sensitivity to ambiguous upstream labels. No held-out threshold search.
+
 - Added explicit, bounded ALASKA2 subset acquisition with pre-scoring paired
   selection, ZIP64 directory/range limits, credential isolation, CRC/JPEG/SHA
   integrity checks and provenance-bound incomplete-job resume. This reserves

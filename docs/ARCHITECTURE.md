@@ -77,6 +77,14 @@ to the storage redirect target. CRC/JPEG checks, local SHA-256 re-reading,
 exclusive outputs and provenance-bound resume precede a success manifest.
 See `ALASKA2_ACQUISITION.md`; acquisition does not establish detector accuracy.
 
+`steganography.benchmarking.alaska2` evaluates those original JPEGs through the
+unchanged `AnalysisService`. It validates frozen manifest/selection hashes and
+four-way lineages, persists portable per-file JSONL, and reuses the covers in
+each method's paired summary without multiplying independent observations.
+Required-native failures invalidate cell metrics rather than becoming negatives;
+optional coverage remains explicit. Fixed-threshold metrics disable threshold
+search, and uncertainty resamples whole lineages. See `ALASKA2_PROTOCOL.md`.
+
 `core.dataset` defines shared identity and connected-component rules. Research
 partitioning uses these to keep lineage/camera/device groups together, reserve
 whole test sources and reject overlap with frozen manifests. Partition policy

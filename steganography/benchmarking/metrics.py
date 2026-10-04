@@ -7,7 +7,7 @@ from typing import Any
 
 
 def classification_metrics(
-    observations: Iterable[tuple[bool, int]], *, threshold: int
+    observations: Iterable[tuple[bool, int]], *, threshold: int, recommend_threshold: bool = True
 ) -> dict[str, Any]:
     values = list(observations)
     if not values:
@@ -40,7 +40,7 @@ def classification_metrics(
         "f1": _rounded(f1),
         "roc_auc": _optional_rounded(_roc_auc(values)),
         "average_precision": _optional_rounded(_average_precision(values)),
-        "recommended_threshold": _recommended_threshold(values),
+        "recommended_threshold": _recommended_threshold(values) if recommend_threshold else None,
     }
 
 

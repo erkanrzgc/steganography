@@ -33,6 +33,11 @@ retain all selected failures and never use this subset for training/calibration.
 Acquisition provenance and JPEG/CRC/SHA checks are not stego extraction or
 detection evidence. Unknown camera/device/scene metadata must remain unknown;
 method folders cannot be counted as independent data sources.
+The first native-score evaluation is preregistered in `ALASKA2_PROTOCOL.md`:
+balanced/70, no training or threshold search, shared covers per method,
+paired-lineage bootstrap, explicit missing coverage and a declared UERD
+label-ambiguity sensitivity calculation. Score-based metrics are not proof of
+a payload, calibrated probabilities or complete deployed-verdict accuracy.
 
 All derivatives of a cover stay in the same split. Grouping uses lineage and
 camera/device/source metadata, not just file hashes, to prevent cover–stego

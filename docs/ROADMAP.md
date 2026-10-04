@@ -41,6 +41,8 @@ The ALASKA2 evaluation subset now has an explicit range-bounded acquisition
 workflow and frozen selection (`ALASKA2_ACQUISITION.md`). Completion/access
 evidence is tracked in `DATA_ACCESS_STATUS.md`; acquiring this corpus is not
 completion of JPEG inference, training, cross-source validation or model gates.
+The initial native-score evaluator and pre-scoring policy are specified in
+`ALASKA2_PROTOCOL.md`; this measures existing behavior without tuning it.
 
 The 2026-10-01 Kodak external-source check (`KODAK_RESULTS.md`) is complete:
 24 original lineages, chance-level detection, 30/30 controlled payload recovery
