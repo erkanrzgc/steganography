@@ -47,6 +47,10 @@ The completed 4,000-file result (`ALASKA2_RESULTS.md`) fails the detection
 targets: recall 0.4% / 0.1% / 0.1% and AUC 0.526 / 0.505 / 0.507 for
 JMiPOD / JUNIWARD / UERD. Keep these inspected images out of development;
 separate development/validation data and measured JPEG model work remain next.
+The first development slice adds a separately acquired, reserved-lineage-safe
+selection and opt-in 968-feature JPEG CPU baseline. Train-only normalization,
+validation prediction and ONNX parity are tested; this research model is not
+automatically deployed. See `JPEG_DEVELOPMENT_PROTOCOL.md` for the fixed run.
 
 The 2026-10-01 Kodak external-source check (`KODAK_RESULTS.md`) is complete:
 24 original lineages, chance-level detection, 30/30 controlled payload recovery

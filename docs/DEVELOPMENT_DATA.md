@@ -78,6 +78,11 @@ The command opens image bytes only for the selected split, never test images.
 It checks sizes/hashes, refuses symlinks and existing output, and limits inputs
 to 16 MiB / 4 million pixels and 10,000 rows. Documents are limited to 64 MiB.
 Only PNG/BMP are accepted. It performs RGB conversion without resizing.
+This paragraph describes the default spatial contract. JPEG now has a separate
+opt-in `--feature-version jpeg-dct-summary-v1`; it reads original luminance DCT
+coefficients with optional `jpeglib`, not a lossy conversion to PNG. Use
+`--workers 1..4` for bounded parallel extraction. The 968 features and initial
+CPU experiment are specified in `JPEG_DEVELOPMENT_PROTOCOL.md`.
 
 `spatial-summary-v1` contains twelve simple exploratory features: per-channel
 mean absolute adjacent difference and difference standard deviation (divided
@@ -128,3 +133,20 @@ Cloud AI cannot alter the analysis service's aggregate score or the pipeline's
 primary findings/verdict. Its original output remains available as triage only.
 The pilot had AI disabled, so this isolation fix does not improve or invalidate
 its failed detector baseline.
+
+## Explicit JPEG development workflow
+
+`scripts/fetch-alaska2-pilot.py --purpose development --seed 20261005` excludes
+reserved ALASKA2 basenames before selection and all reserved hashes during
+download. Supply every prior manifest with `--reserved-manifest`. Selection
+and resume provenance bind purpose, seed and exclusions; old evaluation
+manifests are refused by the development importer.
+
+`python -m steganography.research_jpeg run-development --source DIR --out NEWDIR
+--source-sha256 HASH --reserved-manifest FILE` runs the fixed protocol:
+verified import, whole-lineage train/validation separation, explicit quarantine
+of contradictory byte-identical labels, features, 300-epoch class-balanced
+linear training, validation-only prediction and ONNX export. It does not
+download data, install a model, access old test images or change verdicts.
+Training statistics are preserved inside the exported graph. An unsuccessful
+experiment is reported, not deployed or retuned using old test results.

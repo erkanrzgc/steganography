@@ -2,6 +2,12 @@
 
 ## 0.6.0 (unreleased)
 
+- Added explicit, reserved-lineage-safe ALASKA2 development acquisition and
+  development-only import, separate from the frozen test subset. Contradictory
+  source labels on identical bytes quarantine whole lineages before training.
+- Added opt-in JPEG DCT summary features, bounded worker parsing, train-only
+  normalization, class-balanced CPU linear training, validation predictions and
+  normalization-preserving ONNX export. No automatic detector/model deployment.
 - Added a preregistered ALASKA2 evaluator using the unchanged shared analysis
   service: fixed-threshold per-method metrics, paired-lineage confidence
   intervals, explicit coverage failures, persisted score evidence and declared

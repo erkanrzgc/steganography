@@ -23,6 +23,35 @@ def downloader():
     return module
 
 
+def test_development_excludes_reserved_lineages_and_binds_resume(tmp_path, monkeypatch):
+    module, credential, reserved, blob, _, _ = setup(tmp_path, monkeypatch)
+    with zipfile.ZipFile(io.BytesIO(blob)) as archive:
+        held = {
+            "samples": [
+                {
+                    "path": "Cover/00001.jpg",
+                    "source_group": "ALASKA2",
+                    "sha256": hashlib.sha256(archive.read("Cover/00001.jpg")).hexdigest(),
+                }
+            ]
+        }
+    reserved.write_text(json.dumps(held))
+    out = tmp_path / "development"
+    report = module.acquire(out, credential, [reserved], count=3, purpose="development", seed=42)
+    assert report["purpose"] == "development"
+    assert all(not r["path"].endswith("00001.jpg") for r in report["samples"])
+    assert {r["split"] for r in report["samples"]} <= {"train", "validation"}
+    for lineage in {r["lineage"] for r in report["samples"]}:
+        assert len({r["split"] for r in report["samples"] if r["lineage"] == lineage}) == 1
+    selection = json.loads((out / "selection.json").read_text())
+    assert selection["seed"] == 42 and selection["excluded_reserved_lineages"] == 1
+    (out / "source.json").unlink()
+    with pytest.raises(module.AcquisitionError, match="provenance"):
+        module.acquire(out, credential, [reserved], count=3, resume=True, seed=42)
+    with pytest.raises(module.AcquisitionError, match="purpose"):
+        module.acquire(tmp_path / "bad", credential, [reserved], purpose="unknown")
+
+
 def jpeg(color, size=(16, 16)):
     data = io.BytesIO()
     Image.new("RGB", size, color).save(data, format="JPEG", quality=95)

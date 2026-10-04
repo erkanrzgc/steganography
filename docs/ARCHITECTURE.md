@@ -103,6 +103,21 @@ are two names for the same adjacent-LSB parity observation, not implementations
 of full SPA/RS algorithms. Both use `image_lsb_adjacency`, so service and hybrid
 ensemble aggregation count them once. Scores remain uncalibrated heuristics.
 
+The opt-in `jpeg-dct-summary-v1` research contract adds 968 luminance DCT
+histogram/co-occurrence/quantization features. Native parsing runs in a
+15-second, resource-limited worker with bounded input/output, not in the CLI.
+Train/validation artifacts use the same manifest binding as spatial features.
+`core.feature_model` preserves train-only normalization as an explicit operation
+in PyTorch/ONNX; folding near-constant features into weights caused numerical
+cancellation and is deliberately avoided. This is a CPU linear research
+baseline, never automatically used by the primary analysis service.
+
+Development-only manifests have a distinct policy and cannot contain test
+samples or claim whole-source holdout. The explicit ALASKA2 development importer
+checks acquisition purpose, original membership, reserved identities and split
+assignment, quarantining entire contradictory-label lineages before features.
+The old test corpus is never converted into training data.
+
 PDF stream decoding enforces a per-stream 16 MiB output limit and a shared
 32 MiB decoded-output budget per parse. CTF extraction further restricts that
 budget to the remaining job output allowance. ASCII decoder input is bounded

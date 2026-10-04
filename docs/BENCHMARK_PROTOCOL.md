@@ -78,6 +78,13 @@ recover exact bytes; a failed process's output and retries cannot count as passe
 
 ## Support-cell gates
 
+`JPEG_DEVELOPMENT_PROTOCOL.md` is a separate development experiment with a
+new lineage-disjoint ALASKA2 selection. Its same-source validation metrics must
+not be relabeled as final-test results or an improvement on the frozen baseline.
+Development-only partition policy refuses test rows; source-label ambiguity
+quarantines entire groups before features. Models remain unpublished/local
+until license, calibration and independently held-out support gates are met.
+
 A format/method/payload-rate cell needs at least 1,000 covers and 1,000 stegos
 from at least two independent source groups. Cross-source held-out evaluation
 must publish bootstrap 95% confidence intervals and meet all of:

@@ -32,6 +32,13 @@ def test_classification_metrics_and_validation():
         classification_metrics([(True, 1)], threshold=101)
 
 
+def test_float_model_scores_are_not_rounded_before_ranking():
+    result = classification_metrics(
+        [(True, 50.0001), (False, 50.0000)], threshold=50, recommend_threshold=False
+    )
+    assert result["roc_auc"] == 1.0
+
+
 def test_corpus_is_deterministic_and_tamper_evident(tmp_path: Path):
     first = tmp_path / "first"
     second = tmp_path / "second"
@@ -92,9 +99,7 @@ def evaluation_corpus(tmp_path: Path) -> Path:
     return corpus
 
 
-def test_benchmark_reports_groups_gates_and_baseline(
-    evaluation_corpus: Path, tmp_path: Path
-):
+def test_benchmark_reports_groups_gates_and_baseline(evaluation_corpus: Path, tmp_path: Path):
     report = run_benchmark(
         evaluation_corpus,
         jobs=2,
@@ -124,9 +129,7 @@ def test_benchmark_reports_groups_gates_and_baseline(
     }
 
 
-def test_benchmark_failure_and_configuration_validation(
-    evaluation_corpus: Path, tmp_path: Path
-):
+def test_benchmark_failure_and_configuration_validation(evaluation_corpus: Path, tmp_path: Path):
     failed = run_benchmark(
         evaluation_corpus,
         profiles=("balanced",),

@@ -155,14 +155,18 @@ def verify_dataset_manifest(
     if partition is not None:
         if (
             not isinstance(partition, dict)
-            or partition.get("policy") != "identity-camera-device-components-v1"
+            or partition.get("policy") not in {
+                "identity-camera-device-components-v1", "identity-camera-device-development-v1"
+            }
         ):
             raise ResearchManifestError("unsupported partition policy")
         held_out = partition.get("test_sources")
+        development = partition.get("policy") == "identity-camera-device-development-v1"
         if (
             not isinstance(held_out, list)
-            or not held_out
+            or (not held_out and not development)
             or any(not isinstance(s, str) for s in held_out)
+            or (development and (held_out or any(s["split"] == "test" for s in samples)))
         ):
             raise ResearchManifestError("partition requires test source names")
         for sample in samples:
@@ -371,9 +375,22 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     torch.manual_seed(int(config.get("seed", 20260813)))
     tensor = torch.from_numpy(features.reshape(features.shape[0], -1))
     targets = torch.from_numpy(labels.reshape(-1, 1))
+    jpeg_model = provenance["feature_version"] == "jpeg-dct-summary-v1"
+    normalization = None
+    if jpeg_model:
+        mean = tensor.mean(dim=0)
+        scale = tensor.std(dim=0, unbiased=False).clamp(min=1e-4)
+        tensor = (tensor - mean) / scale
+        normalization = {
+            "method": "train-only-standardization",
+            "mean": mean.tolist(), "scale": scale.tolist(),
+        }
     model = torch.nn.Linear(tensor.shape[1], 1)
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-    loss_function = torch.nn.BCEWithLogitsLoss()
+    loss_function = torch.nn.BCEWithLogitsLoss(
+        pos_weight=torch.tensor(float((labels == 0).sum() / (labels == 1).sum()))
+        if jpeg_model else None
+    )
     epochs = int(config.get("epochs", 10))
     if not 1 <= epochs <= 100_000:
         raise ValueError("training epochs must be between 1 and 100000")
@@ -382,6 +399,7 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "epochs": epochs,
         "learning_rate": learning_rate,
         "torch_version": str(torch.__version__),
+        "class_balanced": jpeg_model,
     }
     loss = 0.0
     for _epoch in range(epochs):
@@ -398,10 +416,11 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "state_dict": model.state_dict(),
         "input_shape": list(features.shape[1:]),
         "features": int(tensor.shape[1]),
-        "domain": "spatial-summary-linear-v1",
+        "domain": "jpeg-dct-summary-linear-v1" if jpeg_model else "spatial-summary-linear-v1",
         "preprocessing": {
             "feature_version": provenance["feature_version"],
             "feature_names": provenance["feature_names"],
+            "normalization": normalization,
         },
         "training_provenance": provenance,
     }
@@ -423,8 +442,9 @@ def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
     except ImportError as exc:
         raise RuntimeError("ONNX export requires the 'research' extra") from exc
     checkpoint = torch.load(Path(checkpoint_path), map_location="cpu", weights_only=True)
-    model = torch.nn.Linear(int(checkpoint["features"]), 1)
-    model.load_state_dict(checkpoint["state_dict"])
+    from core.feature_model import feature_model
+
+    model = feature_model(checkpoint)
     model.eval()
     destination = Path(out)
     card = destination.with_suffix(destination.suffix + ".model-card.json")

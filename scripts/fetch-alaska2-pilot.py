@@ -216,7 +216,7 @@ def catalog_members(remote):
     return members
 
 
-def select_members(members, count):
+def select_members(members, count, *, seed=SEED, excluded_names=()):
     if not 1 <= count <= 1000 or len(members) > MAX_MEMBERS:
         raise AcquisitionError("sample count or archive member limit exceeded")
     groups: dict[str, dict[str, zipfile.ZipInfo]] = {}
@@ -229,11 +229,15 @@ def select_members(members, count):
         if family in group:
             raise AcquisitionError("duplicate archive member")
         group[family] = member
-    complete = sorted(name for name, group in groups.items() if set(group) == set(FAMILIES))
+    complete = sorted(
+        name
+        for name, group in groups.items()
+        if set(group) == set(FAMILIES) and name not in excluded_names
+    )
     if len(complete) < count:
         raise AcquisitionError("insufficient complete cover/stego groups")
     # Reproducible sampling, not a cryptographic primitive.
-    identities = sorted(random.Random(SEED).sample(complete, count))  # noqa: S311
+    identities = sorted(random.Random(seed).sample(complete, count))  # noqa: S311
     selected = [groups[name][family] for name in identities for family in FAMILIES]
     for member in selected:
         mode = member.external_attr >> 16
@@ -323,16 +327,31 @@ def write_json(path, value):
         stream.write("\n")
 
 
-def acquire(out, credential, reserved_paths, *, count=1000, resume=False):
+def acquire(
+    out,
+    credential,
+    reserved_paths,
+    *,
+    count=1000,
+    resume=False,
+    purpose="evaluation",
+    seed=SEED,
+):
+    if purpose not in {"evaluation", "development"}:
+        raise AcquisitionError("invalid acquisition purpose")
     no_symlinks(out)
     if (out / "source.json").exists():
         raise AcquisitionError("completed acquisition exists; refusing overwrite")
     reserved: set[str] = set()
     reserved_documents = []
+    excluded_names = set()
     for path in reserved_paths:
         raw = bounded_read(path, MAX_METADATA)
         for sample in json.loads(raw)["samples"]:
             reserved.update(sample.get(k, "") for k in ("sha256", "lineage"))
+            match = MEMBER_NAME.fullmatch(str(sample.get("path", "")))
+            if sample.get("source_group") == "ALASKA2" and match:
+                excluded_names.add(match.group(2))
         reserved_documents.append(hashlib.sha256(raw).hexdigest())
     if resume and not out.is_dir():
         raise AcquisitionError("resume requires an existing acquisition directory")
@@ -340,14 +359,18 @@ def acquire(out, credential, reserved_paths, *, count=1000, resume=False):
         out.mkdir(parents=True, mode=0o700, exist_ok=False)
     remote = RemoteZip(archive_url(credential))
     members = catalog_members(remote)
-    selected, eligible = select_members(members, count)
+    selected, eligible = select_members(members, count, seed=seed, excluded_names=excluded_names)
     archive_count = len(members)
     selection = {
         "schema_version": "alaska2-selection-v1",
         "source_url": SOURCE_URL,
-        "seed": SEED,
+        "seed": seed,
         "algorithm": "random.Random(seed).sample(sorted_complete_basenames, count)",
-        "purpose": "frozen evaluation only; never train or calibrate on these samples",
+        "purpose": (
+            "frozen evaluation only; never train or calibrate on these samples"
+            if purpose == "evaluation"
+            else "development only; not an independent test source"
+        ),
         "archive_bytes": remote.size,
         "archive_etag": remote.etag,
         "archive_members": archive_count,
@@ -365,6 +388,11 @@ def acquire(out, credential, reserved_paths, *, count=1000, resume=False):
             for m in selected
         ],
     }
+    if purpose == "development":
+        selection["excluded_reserved_lineages"] = len(excluded_names)
+        selection["split_policy"] = (
+            "whole-lineage SHA256(seed:basename), train < 0.8 else validation"
+        )
     plan_path = out / "selection.json"
     if resume:
         if json.loads(bounded_read(plan_path, MAX_METADATA)) != selection:
@@ -419,6 +447,13 @@ def acquire(out, credential, reserved_paths, *, count=1000, resume=False):
             if (record["width"], record["height"]) != (cover["width"], cover["height"]):
                 raise AcquisitionError("cover/stego dimensions differ")
             record["lineage"] = cover["sha256"]
+            if purpose == "development":
+                name = Path(cover["path"]).name
+                fraction = (
+                    int.from_bytes(hashlib.sha256(f"{seed}:{name}".encode()).digest()[:8], "big")
+                    / 2**64
+                )
+                record["split"] = "train" if fraction < 0.8 else "validation"
             if (
                 hashlib.sha256(bounded_read(out / record["path"], MAX_FILE)).hexdigest()
                 != record["sha256"]
@@ -428,9 +463,10 @@ def acquire(out, credential, reserved_paths, *, count=1000, resume=False):
         "schema_version": "alaska2-acquisition-v1",
         "source_group": "ALASKA2",
         "source_url": SOURCE_URL,
-        "license": "Subject to Competition Rules; local evaluation only; do not redistribute",
+        "license": "Subject to Competition Rules; local research only; do not redistribute",
+        "purpose": purpose,
         "selection_sha256": hashlib.sha256(bounded_read(plan_path, MAX_METADATA)).hexdigest(),
-        "selection_seed": SEED,
+        "selection_seed": seed,
         "upstream_sha256_verified": False,
         "upstream_crc32_verified": True,
         "reserved_sha256_overlap": 0,
@@ -453,6 +489,8 @@ def main(argv=None):
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--credential", type=Path, default=Path.home() / ".kaggle/kaggle.json")
     parser.add_argument("--reserved-manifest", action="append", type=Path, required=True)
+    parser.add_argument("--purpose", choices=("evaluation", "development"), default="evaluation")
+    parser.add_argument("--seed", type=int, default=SEED)
     parser.add_argument(
         "--count", type=int, default=1000, choices=range(1, 1001), metavar="1..1000"
     )
@@ -462,7 +500,13 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         acquire(
-            args.out, args.credential, args.reserved_manifest, count=args.count, resume=args.resume
+            args.out,
+            args.credential,
+            args.reserved_manifest,
+            count=args.count,
+            resume=args.resume,
+            purpose=args.purpose,
+            seed=args.seed,
         )
     except Exception as exc:
         # Library/network exceptions may include secret signed URLs or host paths.

@@ -7,7 +7,7 @@ from typing import Any
 
 
 def classification_metrics(
-    observations: Iterable[tuple[bool, int]], *, threshold: int, recommend_threshold: bool = True
+    observations: Iterable[tuple[bool, float]], *, threshold: int, recommend_threshold: bool = True
 ) -> dict[str, Any]:
     values = list(observations)
     if not values:
@@ -44,7 +44,7 @@ def classification_metrics(
     }
 
 
-def _roc_auc(values: list[tuple[bool, int]]) -> float | None:
+def _roc_auc(values: list[tuple[bool, float]]) -> float | None:
     positive_count = sum(label for label, _score in values)
     negative_count = len(values) - positive_count
     if not positive_count or not negative_count:
@@ -63,7 +63,7 @@ def _roc_auc(values: list[tuple[bool, int]]) -> float | None:
     return wins / (positive_count * negative_count)
 
 
-def _average_precision(values: list[tuple[bool, int]]) -> float | None:
+def _average_precision(values: list[tuple[bool, float]]) -> float | None:
     positive_count = sum(label for label, _ in values)
     if positive_count == 0:
         return None
@@ -77,7 +77,7 @@ def _average_precision(values: list[tuple[bool, int]]) -> float | None:
     return precision_sum / positive_count
 
 
-def _recommended_threshold(values: list[tuple[bool, int]]) -> int:
+def _recommended_threshold(values: list[tuple[bool, float]]) -> int:
     best: tuple[float, float, int] | None = None
     best_threshold = 70
     for threshold in range(101):
