@@ -33,7 +33,7 @@ been delivered or validated by this slice.
 - Preregistered ALASKA2 native-score evaluator: unchanged shared service,
   manifest integrity, complete paired lineages, failure-aware coverage, no
   held-out threshold search and per-method bootstrap intervals. Its protocol
-  is frozen in `ALASKA2_PROTOCOL.md`; tooling alone is not a benchmark result.
+  is frozen in `ALASKA2_PROTOCOL.md`; results are in `ALASKA2_RESULTS.md`.
 
 ## Verification
 
@@ -80,13 +80,15 @@ been delivered or validated by this slice.
   failed: recall 0% at threshold 70, ROC-AUC 0.499021. Controlled CTF recovery
   passed 30/30, including known-password image cases and simple decoders.
   See `PILOT_RESULTS.md`; these are different capabilities, not overall accuracy.
-- ALASKA2/StegoAppDB detector results and cross-source evaluation remain **unavailable**.
+- ALASKA2 baseline completed on all 4,000 files, without analysis errors.
+  At the frozen threshold 70, JMiPOD recall is 0.4% (4/1,000), JUNIWARD and
+  UERD recall 0.1% each (1/1,000); AUC is 0.525617 / 0.505157 / 0.507181.
+  The same 1,000 covers give FPR 0.2%. All three methods fail the detection
+  targets. The preregistered identical-pair sensitivity does not change that
+  conclusion. See `ALASKA2_RESULTS.md`; this is not a trained JPEG model,
+  full-Docker verdict test or cross-source support qualification.
+- StegoAppDB results and adequate cross-source evaluation remain **unavailable**.
   No support cell has demonstrated the requested cross-source accuracy gates.
-  The 4,000-file ALASKA2 subset is now local and integrity-verified (398 MB),
-  including three explicitly flagged byte-identical UERD/cover pairs. Evidence
-  is in `ALASKA2_ACQUISITION.md` and `DATA_ACCESS_STATUS.md`.
-  StegoAppDB access was not established. Acquiring images is not a passed
-  benchmark, a trained JPEG model or a cross-source evaluation.
 - Small external-source check on all 24 Kodak images: 48 method-specific pairs,
   all stegos independently recovered. Base detection still failed (0/48 recall,
   AUC 0.49349). Controlled CTF payload recovery was 30/30, but only 25 jobs
@@ -100,6 +102,10 @@ been delivered or validated by this slice.
   Training/export plumbing is not an independently evaluated detector.
 - Spatial RS/sample-pair/weighted signals are approximations. Full calibrated
   algorithms and JPEG recompression/family discrimination remain research work.
+- The general analysis pipeline lacks declared per-format required-component
+  coverage policy; low-score `no_indicators` is not a coverage-complete clean
+  result. The ALASKA2 evaluator explicitly requires native JPEG components
+  and marks failed/incomplete cells unavailable instead of counting clean files.
 - New CTF code has not yet reached the 95% coverage target across every new file.
 - Per-tool OS filesystem isolation, hard native-stage deadlines, exhaustive
   fuzzing and archive-bomb/process-escape gates are incomplete. A subprocess

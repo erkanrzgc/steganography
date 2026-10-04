@@ -7,6 +7,13 @@ Current acquisition checks and the next required user-supplied input are recorde
 in `DATA_ACCESS_STATUS.md`; an accessible landing page is not dataset access or
 a verified license grant.
 
+The 4,000-file ALASKA2 holdout has now been acquired and scored
+(`ALASKA2_RESULTS.md`), with failed native detection targets. Its manifest
+`.benchmark/alaska2-holdout-20261004/source.json` is another mandatory reserved
+identity/lineage source for future development; do not train, calibrate or
+choose thresholds on it. This baseline run did not create training data or a
+validated JPEG feature/model workflow.
+
 ## Required inputs
 
 Supply a verified research manifest (`schema_version: "1.0"`) for new, locally

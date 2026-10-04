@@ -38,6 +38,10 @@ balanced/70, no training or threshold search, shared covers per method,
 paired-lineage bootstrap, explicit missing coverage and a declared UERD
 label-ambiguity sensitivity calculation. Score-based metrics are not proof of
 a payload, calibrated probabilities or complete deployed-verdict accuracy.
+The completed baseline is published in `ALASKA2_RESULTS.md` and
+`benchmarks/alaska2-baseline-20261004.json`. All three methods fail the numeric
+detection targets. Its inspected holdout must not be reused for tuning or
+represented as a newly untouched evaluation after subsequent changes.
 
 All derivatives of a cover stay in the same split. Grouping uses lineage and
 camera/device/source metadata, not just file hashes, to prevent cover–stego

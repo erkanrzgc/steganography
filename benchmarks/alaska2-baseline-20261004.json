@@ -1,0 +1,451 @@
+{
+  "schema_version": "alaska2-baseline-v1",
+  "reference_detector_revision": "f929429a1603e5819156c8462d124ba1fe84c36a",
+  "detector_code_sha256": "da7a3a47c2d79357c20c721c9c149fa6e83f1b573c08ddaec4c6424a870bd020",
+  "source_sha256": "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+  "selection_sha256": "a83b1924e5cadeb64ec169f87ba80cebb4592f7cf28cfcd675f4c369e8998244",
+  "protocol_sha256": "e60397f72bff32930799586063e30da2fe91414dea926dbff53555e6e5341bfb",
+  "runner_sha256": "57d1a9ea2f94d8f97c834cf65a9f037afe3e255b2ecc3c54cd6a5979f91f119f",
+  "threshold": 70,
+  "profile": "balanced",
+  "ai_enabled": false,
+  "training_performed": false,
+  "threshold_search_performed": false,
+  "support_status": "experimental",
+  "cross_source_gate": "unavailable",
+  "ece": {
+    "status": "unavailable",
+    "reason": "uncalibrated heuristic scores"
+  },
+  "environment": {
+    "python": "3.11.14",
+    "platform": "Linux-6.8.11-amd64-x86_64-with-glibc2.38",
+    "logical_cpus": 8,
+    "workers": 4,
+    "packages": {
+      "numpy": "2.4.6",
+      "Pillow": "12.2.0",
+      "jpeglib": "1.0.2"
+    },
+    "tools_available": {
+      "exiftool": true,
+      "stegseek": false,
+      "zsteg": false
+    },
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics (VMware, 8 exposed vCPUs)",
+    "tool_versions": {
+      "exiftool": "12.76"
+    },
+    "math_threads": {
+      "OPENBLAS_NUM_THREADS": 1,
+      "OMP_NUM_THREADS": 1,
+      "MKL_NUM_THREADS": 1
+    },
+    "latency_scope": "analysis, not CTF recovery; local virtualized host, not a dedicated performance gate"
+  },
+  "samples": 4000,
+  "lineages": 1000,
+  "status": "completed",
+  "by_method": {
+    "JMiPOD": {
+      "samples": 2000,
+      "failed_samples": 0,
+      "analysis_error_samples": 0,
+      "missing_required_samples": 0,
+      "coverage": {
+        "archive_safe": {
+          "unsupported": 2000
+        },
+        "exiftool": {
+          "ok": 2000
+        },
+        "file_structure": {
+          "ok": 2000
+        },
+        "filestruct_appended": {
+          "ok": 2000
+        },
+        "filestruct_exif": {
+          "ok": 2000
+        },
+        "image_bitplane": {
+          "unsupported": 2000
+        },
+        "image_gif": {
+          "unsupported": 2000
+        },
+        "image_jpeg": {
+          "ok": 2000
+        },
+        "image_jpeg_dct": {
+          "ok": 2000
+        },
+        "signatures": {
+          "ok": 2000
+        },
+        "stegseek": {
+          "unavailable": 2000
+        },
+        "text_anomalies": {
+          "unsupported": 2000
+        },
+        "zsteg": {
+          "unsupported": 2000
+        }
+      },
+      "status": "completed",
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 4,
+          "tn": 998,
+          "fp": 2,
+          "fn": 996
+        },
+        "precision": 0.666667,
+        "recall": 0.004,
+        "specificity": 0.998,
+        "false_positive_rate": 0.002,
+        "accuracy": 0.501,
+        "balanced_accuracy": 0.501,
+        "f1": 0.007952,
+        "roc_auc": 0.525617
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.519403975,
+          0.5317581
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5025
+        ],
+        "recall": [
+          0.0009750000000000006,
+          0.009
+        ],
+        "false_positive_rate": [
+          0,
+          0.005
+        ]
+      }
+    },
+    "JUNIWARD": {
+      "samples": 2000,
+      "failed_samples": 0,
+      "analysis_error_samples": 0,
+      "missing_required_samples": 0,
+      "coverage": {
+        "archive_safe": {
+          "unsupported": 2000
+        },
+        "exiftool": {
+          "ok": 2000
+        },
+        "file_structure": {
+          "ok": 2000
+        },
+        "filestruct_appended": {
+          "ok": 2000
+        },
+        "filestruct_exif": {
+          "ok": 2000
+        },
+        "image_bitplane": {
+          "unsupported": 2000
+        },
+        "image_gif": {
+          "unsupported": 2000
+        },
+        "image_jpeg": {
+          "ok": 2000
+        },
+        "image_jpeg_dct": {
+          "ok": 2000
+        },
+        "signatures": {
+          "ok": 2000
+        },
+        "stegseek": {
+          "unavailable": 2000
+        },
+        "text_anomalies": {
+          "unsupported": 2000
+        },
+        "zsteg": {
+          "unsupported": 2000
+        }
+      },
+      "status": "completed",
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 1,
+          "tn": 998,
+          "fp": 2,
+          "fn": 999
+        },
+        "precision": 0.333333,
+        "recall": 0.001,
+        "specificity": 0.998,
+        "false_positive_rate": 0.002,
+        "accuracy": 0.4995,
+        "balanced_accuracy": 0.4995,
+        "f1": 0.001994,
+        "roc_auc": 0.505157
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5015880749999999,
+          0.50927605
+        ],
+        "balanced_accuracy": [
+          0.4985,
+          0.5
+        ],
+        "recall": [
+          0,
+          0.003
+        ],
+        "false_positive_rate": [
+          0,
+          0.005
+        ]
+      }
+    },
+    "UERD": {
+      "samples": 2000,
+      "failed_samples": 0,
+      "analysis_error_samples": 0,
+      "missing_required_samples": 0,
+      "coverage": {
+        "archive_safe": {
+          "unsupported": 2000
+        },
+        "exiftool": {
+          "ok": 2000
+        },
+        "file_structure": {
+          "ok": 2000
+        },
+        "filestruct_appended": {
+          "ok": 2000
+        },
+        "filestruct_exif": {
+          "ok": 2000
+        },
+        "image_bitplane": {
+          "unsupported": 2000
+        },
+        "image_gif": {
+          "unsupported": 2000
+        },
+        "image_jpeg": {
+          "ok": 2000
+        },
+        "image_jpeg_dct": {
+          "ok": 2000
+        },
+        "signatures": {
+          "ok": 2000
+        },
+        "stegseek": {
+          "unavailable": 2000
+        },
+        "text_anomalies": {
+          "unsupported": 2000
+        },
+        "zsteg": {
+          "unsupported": 2000
+        }
+      },
+      "status": "completed",
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 1,
+          "tn": 998,
+          "fp": 2,
+          "fn": 999
+        },
+        "precision": 0.333333,
+        "recall": 0.001,
+        "specificity": 0.998,
+        "false_positive_rate": 0.002,
+        "accuracy": 0.4995,
+        "balanced_accuracy": 0.4995,
+        "f1": 0.001994,
+        "roc_auc": 0.507181
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5035767,
+          0.5116923
+        ],
+        "balanced_accuracy": [
+          0.4985,
+          0.5
+        ],
+        "recall": [
+          0,
+          0.003
+        ],
+        "false_positive_rate": [
+          0,
+          0.005
+        ]
+      }
+    }
+  },
+  "byte_identical_stego_paths": [
+    "UERD/36603.jpg",
+    "UERD/47895.jpg",
+    "UERD/59799.jpg"
+  ],
+  "uerd_sensitivity_excluding_identical_pairs": {
+    "samples": 1994,
+    "failed_samples": 0,
+    "analysis_error_samples": 0,
+    "missing_required_samples": 0,
+    "coverage": {
+      "archive_safe": {
+        "unsupported": 1994
+      },
+      "exiftool": {
+        "ok": 1994
+      },
+      "file_structure": {
+        "ok": 1994
+      },
+      "filestruct_appended": {
+        "ok": 1994
+      },
+      "filestruct_exif": {
+        "ok": 1994
+      },
+      "image_bitplane": {
+        "unsupported": 1994
+      },
+      "image_gif": {
+        "unsupported": 1994
+      },
+      "image_jpeg": {
+        "ok": 1994
+      },
+      "image_jpeg_dct": {
+        "ok": 1994
+      },
+      "signatures": {
+        "ok": 1994
+      },
+      "stegseek": {
+        "unavailable": 1994
+      },
+      "text_anomalies": {
+        "unsupported": 1994
+      },
+      "zsteg": {
+        "unsupported": 1994
+      }
+    },
+    "status": "completed",
+    "metrics": {
+      "threshold": 70,
+      "samples": 1994,
+      "positives": 997,
+      "negatives": 997,
+      "confusion": {
+        "tp": 1,
+        "tn": 995,
+        "fp": 2,
+        "fn": 996
+      },
+      "precision": 0.333333,
+      "recall": 0.001003,
+      "specificity": 0.997994,
+      "false_positive_rate": 0.002006,
+      "accuracy": 0.499498,
+      "balanced_accuracy": 0.499498,
+      "f1": 0.002,
+      "roc_auc": 0.507203
+    },
+    "lineage_bootstrap_95_ci": {
+      "roc_auc": [
+        0.504095175,
+        0.51129645
+      ],
+      "balanced_accuracy": [
+        0.498495,
+        0.5
+      ],
+      "recall": [
+        0,
+        0.004012
+      ],
+      "false_positive_rate": [
+        0,
+        0.005015
+      ]
+    }
+  },
+  "scores_sha256": "4fb057e0b9e5617cc97656ca18874a2f837af094ea6f2166d4c8a5cecf4db328",
+  "elapsed_seconds": 191.1121396439994,
+  "latency": {
+    "median_seconds": 0.18760857000233955,
+    "p95_seconds": 0.21134120114693358
+  },
+  "date": "2026-10-04",
+  "evaluation_commit": "4bf003a61e5fa92a878a1b460c3b47551b2b4ea5",
+  "local_report_sha256": "91e24a425b783df4096f77f1ed1c00aa5ae3ffbdfa6456b7ca03f63f9fa0b513",
+  "independent_audit": {
+    "status": "verified",
+    "sample_membership_and_identity_rows": 4000,
+    "unique_sample_paths": 4000,
+    "metric_sets_recomputed": 4,
+    "auc_method": "score-histogram cross-product, independent of evaluator rank implementation",
+    "bootstrap_intervals_recomputed": 16,
+    "paired_bootstrap_draws": 200,
+    "confidence_interval_method": "explicit linear percentile interpolation",
+    "ambiguous_pairs_have_identical_scores_and_signals": true,
+    "hashes_verified": [
+      "source",
+      "selection",
+      "protocol",
+      "runner",
+      "scores"
+    ]
+  },
+  "detection_assessment": {
+    "status": "failed",
+    "failed_numeric_gates_all_methods": [
+      "roc_auc >= 0.90",
+      "balanced_accuracy >= 0.85",
+      "recall >= 0.80"
+    ],
+    "unavailable_gates": [
+      "calibrated ECE",
+      "independent cross-source support",
+      "payload-rate-specific support"
+    ]
+  },
+  "limitations": [
+    "One ALASKA2 source; unknown camera/device/scene independence and payload rate",
+    "Same 1000 covers reused for each method; not 6000 independent files or three sources",
+    "Original source labels retained; three UERD files identical to their covers",
+    "No extraction ground truth or blind CTF evaluation",
+    "Stegseek absent; zsteg not applicable to JPEG; no full-Docker verdict claim",
+    "Heuristic scores are not probabilities; no calibration, training or threshold search",
+    "Baseline detector source unchanged; no detection improvement claimed",
+    "These scored holdout images remain excluded from training and model/threshold selection",
+    "Preexisting pipeline lacks declared required-component policy; low score is not clean evidence"
+  ]
+}

@@ -43,6 +43,10 @@ evidence is tracked in `DATA_ACCESS_STATUS.md`; acquiring this corpus is not
 completion of JPEG inference, training, cross-source validation or model gates.
 The initial native-score evaluator and pre-scoring policy are specified in
 `ALASKA2_PROTOCOL.md`; this measures existing behavior without tuning it.
+The completed 4,000-file result (`ALASKA2_RESULTS.md`) fails the detection
+targets: recall 0.4% / 0.1% / 0.1% and AUC 0.526 / 0.505 / 0.507 for
+JMiPOD / JUNIWARD / UERD. Keep these inspected images out of development;
+separate development/validation data and measured JPEG model work remain next.
 
 The 2026-10-01 Kodak external-source check (`KODAK_RESULTS.md`) is complete:
 24 original lineages, chance-level detection, 30/30 controlled payload recovery

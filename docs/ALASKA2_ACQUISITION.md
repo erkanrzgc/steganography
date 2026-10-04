@@ -79,7 +79,7 @@ The corpus and manifests remain in ignored `.benchmark/`; source images are not
 redistributed. Kaggle marks the data as subject to competition rules. Successful
 access does not establish unrestricted dataset or derived-model licensing.
 
-## Evaluation still required
+## Acquisition-stage limitations
 
 There are 1,000 distinct original-cover hashes and 3,997 distinct hashes across
 all 4,000 files. Three UERD files (`36603.jpg`, `47895.jpg`, `59799.jpg`) are
@@ -105,3 +105,8 @@ unavailable-coverage treatment. Publish per-method failures as well as successes
 Do not claim a supported JPEG cell, calibration quality or blind CTF recovery
 from having downloaded this single-source corpus. Separate development data and
 a second sufficiently sized independent source remain necessary.
+
+Subsequent evaluation is now complete under the pre-scoring
+`ALASKA2_PROTOCOL.md`. See `ALASKA2_RESULTS.md`: all files completed, but all
+three methods failed the detection targets. Acquisition evidence above remains
+unchanged and must not be confused with an accuracy improvement.

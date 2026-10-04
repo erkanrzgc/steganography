@@ -6,6 +6,10 @@
   service: fixed-threshold per-method metrics, paired-lineage confidence
   intervals, explicit coverage failures, persisted score evidence and declared
   sensitivity to ambiguous upstream labels. No held-out threshold search.
+- Published the independently audited 4,000-file ALASKA2 baseline: JMiPOD /
+  JUNIWARD / UERD recall 0.4% / 0.1% / 0.1% at threshold 70, AUC 0.525617 /
+  0.505157 / 0.507181. All methods fail detection targets; no improvement,
+  calibrated confidence, blind recovery or cross-source support is claimed.
 
 - Added explicit, bounded ALASKA2 subset acquisition with pre-scoring paired
   selection, ZIP64 directory/range limits, credential isolation, CRC/JPEG/SHA

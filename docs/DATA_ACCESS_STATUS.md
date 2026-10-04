@@ -3,7 +3,8 @@
 Existing BOSSbase/Kodak measurements remain frozen in `PILOT_RESULTS.md` and
 `KODAK_RESULTS.md`. They use real photographs with controlled embeddings, not
 unknown field evidence. The latest CTF reruns do not improve the failed native
-detection baseline. A new independent-source or blind benchmark has not run.
+detection baseline. The subsequent ALASKA2 baseline is recorded below;
+adequately sized cross-source qualification and blind CTF evaluation have not run.
 
 ## Read-only checks from this environment
 
@@ -86,7 +87,18 @@ single-file downloads. They remain in the frozen selection and are explicitly
 flagged, not silently removed. See `ALASKA2_ACQUISITION.md` and the portable
 `benchmarks/alaska2-acquisition-20261004.json` for selection/provenance hashes,
 counts, limitations and the quality exception. The earlier account/access
-blockers above are resolved; **no ALASKA2 detector evaluation has run**.
+blockers above were resolved; at acquisition completion no ALASKA2 detector
+evaluation had yet run.
+
+### Completed baseline evaluation — 2026-10-04
+
+The preregistered `ALASKA2_PROTOCOL.md` was committed before first scoring.
+All 4,000 files completed, but native detection failed: JMiPOD 4/1,000,
+JUNIWARD 1/1,000 and UERD 1/1,000 true positives at threshold 70, with two
+false positives among the shared 1,000 covers. Independent recomputation
+confirmed the metrics and paired bootstrap intervals. See `ALASKA2_RESULTS.md`.
+There was no training, threshold tuning or model deployment. This subset is
+now inspected and must remain excluded from development/validation.
 
 ## Next required input and evaluation sequence
 
@@ -96,7 +108,7 @@ Do not request passwords or API tokens in chat, accept terms on the user's
 behalf, automatically fetch another corpus, or silently substitute an unverified
 mirror. Review use/model-distribution conditions separately from URL access.
 
-Before running the next evaluation:
+For subsequent development and a newly untouched evaluation:
 
 1. Inventory size, complete cover/stego pairs, hashes, licenses and available
    camera/device/scene metadata. Exclude the frozen pilots and their derivatives.
