@@ -27,6 +27,13 @@ an explicit command; restricted corpora are imported locally and never placed
 in the repository. Initial references are BOSSBase, ALASKA2, and StegoAppDB;
 Aletheia is an independent parity/reference measurement.
 
+The ALASKA2 holdout selection is specified in `ALASKA2_ACQUISITION.md`: select
+complete cover/three-method groups with a fixed seed before examining scores,
+retain all selected failures and never use this subset for training/calibration.
+Acquisition provenance and JPEG/CRC/SHA checks are not stego extraction or
+detection evidence. Unknown camera/device/scene metadata must remain unknown;
+method folders cannot be counted as independent data sources.
+
 All derivatives of a cover stay in the same split. Grouping uses lineage and
 camera/device/source metadata, not just file hashes, to prevent cover–stego
 leakage.

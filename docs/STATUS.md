@@ -1,4 +1,4 @@
-# Implementation status — 2026-10-03
+# Implementation status — 2026-10-04
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
@@ -27,19 +27,27 @@ been delivered or validated by this slice.
 - CTF candidate hygiene now excludes crash dumps and failed/unnamed tool output,
   validates BMP carving headers, avoids lossy binary URL decoding, and preserves
   native budget cancellation and recursion depth. Per-job pilot reports are saved.
+- Explicit ALASKA2 holdout acquisition: fixed-seed complete lineage selection,
+  bounded authenticated ZIP64 range reads, credential isolation, CRC/JPEG/SHA
+  checks and exclusive, provenance-bound resume. See `ALASKA2_ACQUISITION.md`.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 332 tests pass; total coverage 92.69%. PDF analyzer coverage is
+- Python 3.11: 390 tests pass; total coverage 92.69%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs, not test failures.
+- The standalone ALASKA2 downloader has 58 dedicated tests and 99.05% statement
+  coverage in a separate script-coverage run. Tests cover credential/redirect
+  isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,
+  overwrite/resume integrity, redacted errors and reserved-corpus overlap.
 - Extended gradient corpus and spatial proxy tests are regression evidence,
   not calibration or real-world accuracy evidence. The two legacy SPA/RS names
   represent a single adjacency observation and are aggregated only once.
-- Ruff and mypy (71 source files) pass; diff whitespace checks pass.
+- Ruff and mypy (71 application files plus the standalone acquisition script)
+  pass; diff whitespace checks pass.
 - PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
   CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and
   ONNX export parity against onnxruntime were verified end-to-end.
@@ -65,12 +73,13 @@ been delivered or validated by this slice.
   failed: recall 0% at threshold 70, ROC-AUC 0.499021. Controlled CTF recovery
   passed 30/30, including known-password image cases and simple decoders.
   See `PILOT_RESULTS.md`; these are different capabilities, not overall accuracy.
-- ALASKA2/StegoAppDB and cross-source evaluation remain **unavailable**.
+- ALASKA2/StegoAppDB detector results and cross-source evaluation remain **unavailable**.
   No support cell has demonstrated the requested cross-source accuracy gates.
-  Read-only checks on 2026-10-03 found an unauthenticated ALASKA2 file-list API
-  response of 401 and a StegoAppDB endpoint response of 404. No new corpus was
-  acquired; authorized local data is the next required input. See
-  `DATA_ACCESS_STATUS.md` for observations, limits and the evaluation sequence.
+  The 4,000-file ALASKA2 subset is now local and integrity-verified (398 MB),
+  including three explicitly flagged byte-identical UERD/cover pairs. Evidence
+  is in `ALASKA2_ACQUISITION.md` and `DATA_ACCESS_STATUS.md`.
+  StegoAppDB access was not established. Acquiring images is not a passed
+  benchmark, a trained JPEG model or a cross-source evaluation.
 - Small external-source check on all 24 Kodak images: 48 method-specific pairs,
   all stegos independently recovered. Base detection still failed (0/48 recall,
   AUC 0.49349). Controlled CTF payload recovery was 30/30, but only 25 jobs

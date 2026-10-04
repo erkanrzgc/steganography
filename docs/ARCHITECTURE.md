@@ -69,6 +69,14 @@ Its opt-in `--both-methods` generation mode uses both upstream methods per cover
 without splitting or multiplying original lineages. Explicit Kodak acquisition
 records provenance and rejects exact hash overlap with a reserved manifest.
 
+`scripts/fetch-alaska2-pilot.py` is an explicit, standalone research acquisition
+utility, not an analyzer or automatic application download. It samples complete
+original/stego groups before scoring and obtains only bounded ZIP/ZIP64 ranges
+from an authenticated, fixed-origin archive. Private credentials are never sent
+to the storage redirect target. CRC/JPEG checks, local SHA-256 re-reading,
+exclusive outputs and provenance-bound resume precede a success manifest.
+See `ALASKA2_ACQUISITION.md`; acquisition does not establish detector accuracy.
+
 `core.dataset` defines shared identity and connected-component rules. Research
 partitioning uses these to keep lineage/camera/device groups together, reserve
 whole test sources and reject overlap with frozen manifests. Partition policy

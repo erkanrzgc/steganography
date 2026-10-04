@@ -2,6 +2,14 @@
 
 ## 0.6.0 (unreleased)
 
+- Added explicit, bounded ALASKA2 subset acquisition with pre-scoring paired
+  selection, ZIP64 directory/range limits, credential isolation, CRC/JPEG/SHA
+  integrity checks and provenance-bound incomplete-job resume. This reserves
+  evaluation data; it does not train a detector or establish an accuracy result.
+- Recorded the completed 4,000-file ALASKA2 acquisition and independent integrity
+  audit. Three upstream UERD samples are byte-identical to their covers; separate
+  file downloads confirmed this, and the frozen selection retains the ambiguity.
+
 - Published repeated CTF regression evidence on the frozen Kodak challenges:
   two final runs achieved 30/30 completed exact recoveries with unchanged limits.
   Failed intermediate runs are retained; this is not a blind accuracy result or

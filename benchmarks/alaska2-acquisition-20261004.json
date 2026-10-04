@@ -1,0 +1,67 @@
+{
+  "schema_version": "alaska2-acquisition-summary-v1",
+  "date": "2026-10-04",
+  "status": "acquired_and_integrity_verified",
+  "purpose": "frozen evaluation only; not training or calibration",
+  "source_url": "https://www.kaggle.com/c/alaska2-image-steganalysis/data",
+  "source_group": "ALASKA2",
+  "license": "Subject to Competition Rules; images retained locally, not redistributed",
+  "independent_dataset_sources": 1,
+  "camera_device_scene_independence": "unknown",
+  "seed": 20261004,
+  "eligible_complete_lineages": 75000,
+  "archive_members": 305001,
+  "remote_archive_bytes": 32203919104,
+  "full_archive_downloaded": false,
+  "files": 4000,
+  "counts": {
+    "Cover": 1000,
+    "JMiPOD": 1000,
+    "JUNIWARD": 1000,
+    "UERD": 1000
+  },
+  "total_image_bytes": 398254243,
+  "dimensions": {"width": 512, "height": 512, "count": 4000},
+  "unique_cover_hashes": 1000,
+  "unique_file_hashes": 3997,
+  "range_requested_bytes_upper_bound": 440192893,
+  "range_requests": 4007,
+  "additional_individual_verification_payload_bytes": 107614,
+  "selection_manifest": ".benchmark/alaska2-holdout-20261004/selection.json",
+  "selection_sha256": "a83b1924e5cadeb64ec169f87ba80cebb4592f7cf28cfcd675f4c369e8998244",
+  "source_manifest": ".benchmark/alaska2-holdout-20261004/source.json",
+  "source_manifest_sha256": "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+  "verification": {
+    "all_sizes_crc32_sha256_rechecked": true,
+    "all_jpegs_independently_decoded": true,
+    "all_four_way_lineages_checked": true,
+    "reserved_corpus_hash_overlap": 0,
+    "upstream_zip_crc32_verified": true,
+    "upstream_per_file_sha256_available": false,
+    "detector_evaluation": "not_run",
+    "hidden_payload_recovery": "not_run",
+    "accuracy_support_gate": "unavailable"
+  },
+  "data_quality": {
+    "stego_files_byte_identical_to_own_cover": 3,
+    "individual_kaggle_downloads_confirmed_all_three_pairs": true,
+    "policy": "retain original selection and source labels; disclose ambiguity before evaluation",
+    "pairs": [
+      {
+        "cover": "Cover/36603.jpg",
+        "stego": "UERD/36603.jpg",
+        "sha256": "bdc8fb5cc74424672046ca68a410090073153232547280cbc37a63147cc95f6c"
+      },
+      {
+        "cover": "Cover/47895.jpg",
+        "stego": "UERD/47895.jpg",
+        "sha256": "1d3f5b8b6df58e02f8ab978a87d0132a8aa84c643651a517f9710a7bd0d54a27"
+      },
+      {
+        "cover": "Cover/59799.jpg",
+        "stego": "UERD/59799.jpg",
+        "sha256": "15e8c15b6ea822823e20f6e2e37e759748bf367d57585c3ce3fe94b09e60c4fe"
+      }
+    ]
+  }
+}
