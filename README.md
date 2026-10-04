@@ -13,6 +13,12 @@ It does **not** prove that a file is clean, recover arbitrary unknown stego
 schemes, replace manual forensic validation, or make unencrypted hidden data
 confidential. No default operation makes a network request.
 
+Measured detection is still experimental: the published real-image baselines
+failed, and no cross-source support gate has passed. See the
+[results by method](docs/BENCHMARK_RESULTS.md) and
+[dataset sources/licenses](docs/DATASET_CATALOG.md). Controlled CTF recovery
+and synthetic regression scores are not overall steganalysis accuracy.
+
 ## Choose a task
 
 | Goal | Start here | What happens |
@@ -53,7 +59,7 @@ docker compose exec steganography sh -c 'cat /state/v2-api.key'
 Open `http://127.0.0.1:8000`. See [Getting started](docs/GETTING_STARTED.md)
 for the complete first-run walkthrough.
 
-## Supported formats and analysis
+## Formats and available features
 
 | Format | Hide / recover | Built-in analysis |
 |---|---|---|
@@ -66,8 +72,10 @@ for the complete first-run walkthrough.
 | ZIP and supported archives | — | Bounded member/path/compression anomaly inspection |
 
 Optional `zsteg`, Stegseek, ExifTool, JPEG DCT support, ONNX Runtime, and AI
-triage are reported as `unavailable` when absent. Their absence is never
-silently treated as a clean result. See the full [detection guide](docs/DETECTION_GUIDE.md).
+triage are reported as `unavailable` when absent. A low score is not proof of
+a clean file; the general pipeline's per-format required-coverage policy is
+still incomplete. Feature availability above is not a validated detection
+support claim. See the full [detection guide](docs/DETECTION_GUIDE.md).
 
 ## Steganography is not encryption
 

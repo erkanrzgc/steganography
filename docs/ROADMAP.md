@@ -51,6 +51,10 @@ The first development slice adds a separately acquired, reserved-lineage-safe
 selection and opt-in 968-feature JPEG CPU baseline. Train-only normalization,
 validation prediction and ONNX parity are tested; this research model is not
 automatically deployed. See `JPEG_DEVELOPMENT_PROTOCOL.md` for the fixed run.
+The completed run (`JPEG_DEVELOPMENT_RESULTS.md`) retained 3,156 train and
+820 validation images after predeclared ambiguity quarantine. AUC is
+0.649 / 0.592 / 0.585, with 41.46% FPR: inadequate for deployment and not a
+cross-source or old-test improvement claim. Stronger detector research remains.
 
 The 2026-10-01 Kodak external-source check (`KODAK_RESULTS.md`) is complete:
 24 original lineages, chance-level detection, 30/30 controlled payload recovery
@@ -71,6 +75,12 @@ packs, and tool-specific JSteg/F5/OutGuess/Steghide recovery.
 
 GIF, WAV, text, and generic-container depth; complete API/TUI CTF controls and
 cross-format recursive recovery.
+
+Pinned FSDD acquisition now supplies 3,000 real WAV candidate covers with
+speaker/recording identity and audited PCM hashes. No audio embedding, split,
+training or detection benchmark has run. `DATASET_CATALOG.md` records usage
+conditions; `BENCHMARK_RESULTS.md` tracks the separate format/method work and
+keeps missing evaluations unavailable rather than successful.
 
 ## v1.0 gate
 

@@ -2,6 +2,16 @@
 
 ## 0.6.0 (unreleased)
 
+- Published the first isolated JPEG development result: same-source validation
+  AUC 0.648804 / 0.592481 / 0.585306, but 41.46% FPR. The model is not deployed
+  and this is not a new held-out accuracy claim. Actual-artifact ONNX differences
+  and the failed strict 1e-6 score-parity check are recorded without relaxing it.
+- Added explicit pinned FSDD WAV acquisition with license evidence, ZIP/PCM
+  limits, CRC/SHA verification, exclusive outputs and adversarial tests. Audited
+  3,000 real recordings; audio detection has not yet been evaluated.
+- Added a public dataset/license catalog and method-specific results index,
+  preserving failed baselines and distinguishing validation, CTF and test results.
+
 - Added explicit, reserved-lineage-safe ALASKA2 development acquisition and
   development-only import, separate from the frozen test subset. Contradictory
   source labels on identical bytes quarantine whole lineages before training.

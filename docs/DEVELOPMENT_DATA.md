@@ -7,6 +7,11 @@ Current acquisition checks and the next required user-supplied input are recorde
 in `DATA_ACCESS_STATUS.md`; an accessible landing page is not dataset access or
 a verified license grant.
 
+The first separate JPEG development experiment has now completed; see
+`JPEG_DEVELOPMENT_RESULTS.md`. Its poor validation/FPR result is not deployed.
+The partitioning guidance below still applies to subsequent spatial and audio
+work; `DATASET_CATALOG.md` records newly acquired FSDD covers, not WAV accuracy.
+
 The 4,000-file ALASKA2 holdout has now been acquired and scored
 (`ALASKA2_RESULTS.md`), with failed native detection targets. Its manifest
 `.benchmark/alaska2-holdout-20261004/source.json` is another mandatory reserved

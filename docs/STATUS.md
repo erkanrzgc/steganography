@@ -34,16 +34,24 @@ been delivered or validated by this slice.
   manifest integrity, complete paired lineages, failure-aware coverage, no
   held-out threshold search and per-method bootstrap intervals. Its protocol
   is frozen in `ALASKA2_PROTOCOL.md`; results are in `ALASKA2_RESULTS.md`.
+- Separate ALASKA2 development import, bounded 968-feature JPEG extraction,
+  class-balanced CPU training, train-only normalization, validation and ONNX
+  export. The first fixed experiment completed, but is not deployed; see
+  `JPEG_DEVELOPMENT_RESULTS.md` for inadequate scores and export-parity limits.
+- Explicit pinned FSDD acquisition: 3,000 real WAV covers, audited source/
+  license evidence, SHA/CRC and PCM data. No audio benchmark has run. Public
+  source/usage inventory and method-level evidence are in `DATASET_CATALOG.md`
+  and `BENCHMARK_RESULTS.md`; raw corpora remain local.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 397 tests pass; total coverage 92.82%. PDF analyzer coverage is
+- Python 3.11: 457 tests pass; total coverage 93.04%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
-  deprecated ONNX export APIs, not test failures.
-- The standalone ALASKA2 downloader has 58 dedicated tests and 99.05% statement
+  deprecated ONNX export APIs (six occurrences), not test failures.
+- The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,
   overwrite/resume integrity, redacted errors and reserved-corpus overlap.
@@ -53,11 +61,18 @@ been delivered or validated by this slice.
 - Extended gradient corpus and spatial proxy tests are regression evidence,
   not calibration or real-world accuracy evidence. The two legacy SPA/RS names
   represent a single adjacency observation and are aggregated only once.
-- Ruff and mypy (72 application files; the acquisition script was checked separately)
+- New JPEG feature/model/research-feature/research-JPEG files have 98.82%,
+  100%, 100% and 98.19% statement coverage respectively. Thirty standalone FSDD
+  tests cover archive/PCM bounds, license evidence, symlinks, no overwrite,
+  redirects and redacted failures; separate downloader coverage is 98.18%.
+- Ruff and mypy (77 files including both new acquisition entrypoints)
   pass; diff whitespace checks pass.
 - PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
   CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and
   ONNX export parity against onnxruntime were verified end-to-end.
+  Small-fixture parity passes; the actual JPEG validation artifact exceeds a
+  strict absolute 1e-6 score tolerance by 1.92e-7, with zero threshold-decision
+  changes. That stricter artifact check is recorded as failed, not waived.
 - Version 0.6.0 wheel and sdist build successfully; the wheel contains no models.
 - Web: one test passes; TypeScript/Vite build passes.
 - Full Docker build and non-root/read-only/network-disabled smoke have passed
@@ -89,6 +104,10 @@ been delivered or validated by this slice.
   full-Docker verdict test or cross-source support qualification.
 - StegoAppDB results and adequate cross-source evaluation remain **unavailable**.
   No support cell has demonstrated the requested cross-source accuracy gates.
+- The separately trained JPEG development model has validation AUC
+  0.648804 / 0.592481 / 0.585306 and FPR 41.46% on 205 shared covers. It is
+  experimental, uncalibrated and local; this different subset is not evidence
+  of improved old-test performance. Existing primary verdicts are unchanged.
 - Small external-source check on all 24 Kodak images: 48 method-specific pairs,
   all stegos independently recovered. Base detection still failed (0/48 recall,
   AUC 0.49349). Controlled CTF payload recovery was 30/30, but only 25 jobs

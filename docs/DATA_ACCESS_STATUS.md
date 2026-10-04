@@ -100,10 +100,32 @@ confirmed the metrics and paired bootstrap intervals. See `ALASKA2_RESULTS.md`.
 There was no training, threshold tuning or model deployment. This subset is
 now inspected and must remain excluded from development/validation.
 
+### Authorized development and audio follow-up — 2026-10-04
+
+The user explicitly authorized separate development acquisition and additional
+useful sources. Another 1,000 ALASKA2 lineages (4,000 JPEGs, 421,459,421 bytes)
+were acquired with reserved-basename/hash exclusion and a train/validation
+partition. Six contradictory-label lineages were quarantined before training.
+The first 3,156-train / 820-validation CPU JPEG experiment completed; its poor
+validation scores and 41.46% FPR do not justify deployment. See
+`JPEG_DEVELOPMENT_RESULTS.md`. The earlier native-test evidence remains frozen.
+
+Pinned FSDD v1.0.10 was downloaded and independently audited: 3,000 unique
+mono PCM16/8 kHz recordings from six speakers, 16,624,960 compressed bytes.
+Its pinned README declares CC-BY-SA-4.0; the license/source/hash record is in
+`DATASET_CATALOG.md`. These are candidate covers only, not a passed WAV test.
+No original corpus or trained model was added to Git or uploaded elsewhere.
+
+BOSSbase's archive still responded to HEAD with the same advertised size;
+no additional spatial-development covers were downloaded. BOWS2 remained
+unreachable here and the checked StegoAppDB endpoint returned 404. No mirror
+was substituted, and no new terms were accepted on the user's behalf.
+
 ## Next required input and evaluation sequence
 
-ALASKA2 acquisition is complete. Additional development/training data still
-requires separate authorization, provenance and a leakage-safe partition.
+ALASKA2 test/development and FSDD cover acquisition are complete. New
+development/training data still requires explicit user-authorized acquisition,
+provenance and a leakage-safe partition.
 Do not request passwords or API tokens in chat, accept terms on the user's
 behalf, automatically fetch another corpus, or silently substitute an unverified
 mirror. Review use/model-distribution conditions separately from URL access.
@@ -122,6 +144,7 @@ For subsequent development and a newly untouched evaluation:
    a still-untouched final test source.
 
 No date is promised for completing the detector accuracy gates. Do not represent
-successful acquisition as a passed dataset benchmark. Training is
-not complete, the JPEG training/preprocessing workflow is not yet validated,
-and supplying more data alone does not establish better detection accuracy.
+successful acquisition as a passed dataset benchmark. One experimental JPEG
+training run completed, but it did not meet the quality gates. Audio and new
+spatial development/evaluation remain work; supplying more data alone does not
+establish better detection accuracy.

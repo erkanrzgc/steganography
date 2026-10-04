@@ -1,0 +1,153 @@
+{
+  "source_sha256": "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+  "manifest_sha256": "a3fd898fecbd50135f15a9f36c990d97e9d1779afb58076a35d8a39e1ce5a16d",
+  "checkpoint_sha256": "34c0ae528d02706f1b68546308007e2bc01d1981102f5c28d48b1ceb1ae0f8a5",
+  "onnx_sha256": "6ce292eb0494db90b2a87b25ce2baf971fa4656eefecbdf9cb78ebaacee73f2f",
+  "prediction_sha256": "fcb3def1ea71b3a7c7e8a434fb2ae03cee5b9c3b36c59532d5f535631c4e0821",
+  "quarantined_lineages": [
+    "49e8c18377cc76c52baf9347c6cc2eb258658ae3f6e9c645eed5b9d287ae0a7a",
+    "68f0605d1ef30cd12a85bf2d970d52dc480ffddcb8b96600de5963a92bd6a32f",
+    "69cf60c44044f34ca4e6d4541453959f5c71bfca31c71e06d703b49cafd7659c",
+    "93f595b47fe40c9db7a3abaa1bbf86c1be3e79551bf77d93c0f38fd313f158a1",
+    "cd639c9c5486de753fb53f6f698349d6e9b4588a96f5f414c3f93412f742006f",
+    "e28fbdc022c16b98b56f679e00f518804f2895f07b887a6d9556a51a1088068a"
+  ],
+  "features": {
+    "train": {
+      "sha256": "43d76a3c613a82d2cb021d43183793efad8105e8dcb8fe9bc246750f5b0f29a7",
+      "samples": 3156,
+      "split": "train",
+      "feature_version": "jpeg-dct-summary-v1"
+    },
+    "validation": {
+      "sha256": "28492353142025628a260284d9d622f93eb6df16a2a69b308116ab1fb8a9375b",
+      "samples": 820,
+      "split": "validation",
+      "feature_version": "jpeg-dct-summary-v1"
+    }
+  },
+  "by_method": {
+    "JMiPOD": {
+      "threshold": 50,
+      "samples": 410,
+      "positives": 205,
+      "negatives": 205,
+      "confusion": {
+        "tp": 139,
+        "tn": 120,
+        "fp": 85,
+        "fn": 66
+      },
+      "precision": 0.620536,
+      "recall": 0.678049,
+      "specificity": 0.585366,
+      "false_positive_rate": 0.414634,
+      "accuracy": 0.631707,
+      "balanced_accuracy": 0.631707,
+      "f1": 0.648019,
+      "roc_auc": 0.648804
+    },
+    "JUNIWARD": {
+      "threshold": 50,
+      "samples": 410,
+      "positives": 205,
+      "negatives": 205,
+      "confusion": {
+        "tp": 108,
+        "tn": 120,
+        "fp": 85,
+        "fn": 97
+      },
+      "precision": 0.559585,
+      "recall": 0.526829,
+      "specificity": 0.585366,
+      "false_positive_rate": 0.414634,
+      "accuracy": 0.556098,
+      "balanced_accuracy": 0.556098,
+      "f1": 0.542714,
+      "roc_auc": 0.592481
+    },
+    "UERD": {
+      "threshold": 50,
+      "samples": 410,
+      "positives": 205,
+      "negatives": 205,
+      "confusion": {
+        "tp": 110,
+        "tn": 120,
+        "fp": 85,
+        "fn": 95
+      },
+      "precision": 0.564103,
+      "recall": 0.536585,
+      "specificity": 0.585366,
+      "false_positive_rate": 0.414634,
+      "accuracy": 0.560976,
+      "balanced_accuracy": 0.560976,
+      "f1": 0.55,
+      "roc_auc": 0.585306
+    }
+  },
+  "elapsed_seconds": 129.64901239499886,
+  "schema_version": "jpeg-development-summary-v1",
+  "date": "2026-10-04",
+  "scope": "same-source validation only",
+  "implementation_commit": "b1d60509b1d1781e82b8f54f8302806a73eb207a",
+  "protocol_sha256": "ee0c23b722664b8b266dda6669b048559c89bbdce5914b21e393fc1458a74b09",
+  "report_sha256": "f9e744d4697cb6773d19cd5362ba1a73a49409f56e748feec67b046584d71e97",
+  "model_card_sha256": "4bb417bb874dfc17de9ca6672076c8340956ad71ec3a448424c8a1fb9a633ced",
+  "status": "experimental_not_deployed",
+  "calibrated": false,
+  "deployed": false,
+  "cross_source_gate": "unavailable",
+  "confidence_intervals": "not_computed_for_this_development_run",
+  "frozen_test_images_accessed": false,
+  "acquired_lineages": 1000,
+  "acquired_files": 4000,
+  "quarantined_files": 24,
+  "retained_lineages": 994,
+  "train_lineages": 789,
+  "validation_lineages": 205,
+  "validation_unique_files": 820,
+  "training": {
+    "features": 968,
+    "contract": "jpeg-dct-summary-v1",
+    "model": "class-balanced standardized linear logistic",
+    "seed": 20261005,
+    "epochs": 300,
+    "learning_rate": 0.01,
+    "normalization": "train-only mean and population std; floor 1e-4",
+    "threshold_score": 0.5,
+    "reported_metric_threshold_scale": 100
+  },
+  "hardware": {
+    "cpu": "AMD Ryzen 9 8945HX, VMware guest, 8 exposed vCPUs",
+    "cuda": false,
+    "math_threads": 1,
+    "feature_workers": 4
+  },
+  "versions": {
+    "python": "3.11.14",
+    "jpeglib": "1.0.2",
+    "numpy": "2.4.6",
+    "torch": "2.14.0+cpu",
+    "onnxruntime": "1.30.0"
+  },
+  "independent_audit": {
+    "reserved_identity_overlap": 0,
+    "train_validation_identity_overlap": 0,
+    "train_normalization_recomputed_exactly": true,
+    "torch_predictions_recomputed_exactly": true,
+    "confusion_and_pairwise_auc_recomputed": true,
+    "onnx_max_abs_logit_error": 4.76837158203125e-06,
+    "onnx_max_abs_sigmoid_score_error": 1.1920928955078125e-06,
+    "onnx_strict_score_atol_1e_6_rtol_0_passed": false,
+    "onnx_changed_threshold_decisions": 0
+  },
+  "attempts": {
+    "acquisition": "interrupted at 3456 files; same selection resumed with integrity checks",
+    "initial_experiment": "source-hash typo rejected before any features/training",
+    "complete_training_runs": 1,
+    "local_completed_directory": ".benchmark/jpeg-development-v1-20261004-run2"
+  }
+}

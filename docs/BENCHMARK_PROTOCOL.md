@@ -20,6 +20,14 @@ runs and the full-image launcher configuration needed to reproduce the result.
 
 ## Catalog and provenance
 
+`DATASET_CATALOG.md` inventories actual acquisition, usage conditions and
+publication boundaries. `BENCHMARK_RESULTS.md` indexes results without combining
+development scores, native tests and CTF recovery into one accuracy claim.
+FSDD cover acquisition is not an audio benchmark: freeze speaker/recording
+ancestry, splits, embedding methods/rates and thresholds before scoring; add
+independently verified stegos and another source before claiming support.
+Citation alone does not authorize raw corpus or trained-model redistribution.
+
 Each sample records source URL/import origin, license, checksum, format,
 cover-lineage, camera/device/app group, method family, payload rate, and lossy
 quality factor where relevant. Permissively licensed data is downloaded only by
