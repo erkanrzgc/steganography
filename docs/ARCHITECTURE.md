@@ -118,6 +118,15 @@ checks acquisition purpose, original membership, reserved identities and split
 assignment, quarantining entire contradictory-label lineages before features.
 The old test corpus is never converted into training data.
 
+`scripts/fetch-fsdd-pilot.py` is another explicit research-only acquisition
+entrypoint: pinned public archive, no redirects, bounded ZIP central directory,
+compressed/expanded bytes and PCM frames, verified source license evidence,
+exclusive outputs and per-recording ancestry/speaker metadata. It downloads
+only candidate WAV covers, never models or stegos; upstream Python files are
+not extracted or executed. It assigns no splits or accuracy/support status.
+Public aggregate evidence and license/source links live under `benchmarks/`
+and `docs/`; raw data remains outside Git. See `DATASET_CATALOG.md`.
+
 PDF stream decoding enforces a per-stream 16 MiB output limit and a shared
 32 MiB decoded-output budget per parse. CTF extraction further restricts that
 budget to the remaining job output allowance. ASCII decoder input is bounded
