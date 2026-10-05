@@ -63,7 +63,14 @@ def test_real_cpu_training_and_onnx_parity(tmp_path):
 
 @pytest.mark.parametrize(
     "setting,value",
-    [("learning_rate", 0), ("learning_rate", float("nan")), ("epochs", 0), ("epochs", 100001)],
+    [
+        ("learning_rate", 0),
+        ("learning_rate", float("nan")),
+        ("epochs", 0),
+        ("epochs", 100001),
+        ("inference_arithmetic", "float16"),
+        ("inference_arithmetic", []),
+    ],
 )
 def test_training_rejects_invalid_settings(tmp_path, setting, value):
     config_path, config = training_fixture(tmp_path)

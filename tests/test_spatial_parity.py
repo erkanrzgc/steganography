@@ -104,6 +104,25 @@ def test_comparison_end_to_end_and_reference_integrity(development, tmp_path, mo
     )
     with pytest.raises(FileExistsError):
         rp.run_comparison(corpus, out, **kwargs)
+    with monkeypatch.context() as patch:
+        patch.setattr(
+            rp,
+            "verify_dataset_manifest",
+            lambda *a, **k: {"splits": {"test": 1}, "sample_count": 14},
+        )
+        with pytest.raises(ResearchManifestError, match="development-only"):
+            rp.run_comparison(corpus, tmp_path / "test-data", **kwargs)
+    original_predict = rp.predict_validation
+    with monkeypatch.context() as patch:
+
+        def altered_prediction(*args, **kw):
+            prediction = original_predict(*args, **kw)
+            prediction["predictions"][0]["lineage"] = "different"
+            return prediction
+
+        patch.setattr(rp, "predict_validation", altered_prediction)
+        with pytest.raises(ResearchManifestError, match="reference/new"):
+            rp.run_comparison(corpus, tmp_path / "wrong-new-row", **kwargs)
     with pytest.raises(ResearchManifestError, match="checksum"):
         rp.run_comparison(corpus, tmp_path / "bad", **{**kwargs, "manifest_sha256": "0" * 64})
     altered = json.loads(reference.read_bytes())
@@ -118,6 +137,17 @@ def test_comparison_end_to_end_and_reference_integrity(development, tmp_path, mo
     kwargs["reference_sha256"] = hashlib.sha256(reference.read_bytes()).hexdigest()
     with pytest.raises(ResearchManifestError, match="predictions checksum"):
         rp.run_comparison(corpus, tmp_path / "bad", **kwargs)
+    prediction_path = reference_dir / "spatial-cooccurrence-v1/predictions.json"
+    old_predictions = json.loads(prediction_path.read_bytes())
+    old_predictions["predictions"][0]["score"] = 2.0
+    prediction_path.write_text(json.dumps(old_predictions))
+    altered["experiments"]["spatial-cooccurrence-v1"]["prediction_sha256"] = hashlib.sha256(
+        prediction_path.read_bytes()
+    ).hexdigest()
+    reference.write_text(json.dumps(altered))
+    kwargs["reference_sha256"] = hashlib.sha256(reference.read_bytes()).hexdigest()
+    with pytest.raises(ResearchManifestError, match="identity/score"):
+        rp.run_comparison(corpus, tmp_path / "bad-score", **kwargs)
     link = tmp_path / "link"
     link.symlink_to(tmp_path, target_is_directory=True)
     with pytest.raises(FileExistsError):
