@@ -375,7 +375,7 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     torch.manual_seed(int(config.get("seed", 20260813)))
     tensor = torch.from_numpy(features.reshape(features.shape[0], -1))
     targets = torch.from_numpy(labels.reshape(-1, 1))
-    jpeg_model = provenance["feature_version"] == "jpeg-dct-summary-v1"
+    jpeg_model = provenance["feature_version"] in {"jpeg-dct-summary-v1", "jpeg-context-summary-v1"}
     residual_model = provenance["feature_version"] in {
         "spatial-cooccurrence-v1",
         "spatial-parity-residual-v1",
@@ -422,16 +422,30 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "inference_arithmetic": arithmetic,
     }
     if sample_weights is not None:
-        provenance["training"]["sample_weighting"] = {
+        recipe_metadata = {
             "recipe": config["sample_weighting"],
-            "cover_weight": 1.0,
-            "stego_5_percent_weight": 4.0,
-            "other_stego_weight": 1.0,
             "negative_mass": negative_mass,
             "positive_mass": positive_mass,
             "positive_class_weight": negative_mass / positive_mass if class_balanced else 1.0,
             "reduction": "mean-over-rows",
         }
+        if config["sample_weighting"] == "jpeg-source-class-balanced-v1":
+            recipe_metadata.update(
+                {
+                    "formula": "n / (2 * sources * source_label_count)",
+                    "min_row_weight": float(sample_weights.min()),
+                    "max_row_weight": float(sample_weights.max()),
+                }
+            )
+        else:
+            recipe_metadata.update(
+                {
+                    "cover_weight": 1.0,
+                    "stego_5_percent_weight": 4.0,
+                    "other_stego_weight": 1.0,
+                }
+            )
+        provenance["training"]["sample_weighting"] = recipe_metadata
     loss = 0.0
     for _epoch in range(epochs):
         optimizer.zero_grad()
@@ -447,7 +461,9 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "state_dict": model.state_dict(),
         "input_shape": list(features.shape[1:]),
         "features": int(tensor.shape[1]),
-        "domain": "jpeg-dct-summary-linear-v1"
+        "domain": "jpeg-context-summary-linear-v1"
+        if provenance["feature_version"] == "jpeg-context-summary-v1"
+        else "jpeg-dct-summary-linear-v1"
         if jpeg_model
         else "spatial-parity-residual-linear-v1"
         if provenance["feature_version"] == "spatial-parity-residual-v1"

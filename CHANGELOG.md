@@ -2,6 +2,12 @@
 
 ## 0.6.0 (unreleased)
 
+- Added experimental measured JPEG content/quantization interactions (1,098
+  features), optional pinned BOSS JPEG simulation and checksum-bound two-origin
+  preparation with matched JUNIWARD/UERD families and source/class-balanced
+  training. Fixed protocol precedes real-data scoring; old contracts, primary
+  analysis and installed models remain unchanged. JMiPOD is not substituted.
+
 - Published independently verified 24-cell spatial and 9-cell JPEG context
   diagnostics: no unseen validation sources; missing declared quality/device
   metadata; format-specific low-rate/FPR failures retained. No retraining,

@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+The measured JPEG context development slice follows `JPEG_CONTEXT_PROTOCOL.md`:
+two declared acquisition origins, matched method families, fixed objective and
+measured content/quantization interactions. Previously used BOSS originals and
+ALASKA validation remain development; no independent held-out claim is implied.
+
 Cached-score source/context audits follow `GENERALIZATION_PROTOCOL.md`.
 Pooled or same-source development metrics never count as independent-source
 support; missing quality/device metadata remains explicitly unavailable.

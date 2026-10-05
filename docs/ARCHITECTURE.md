@@ -1,5 +1,13 @@
 # Architecture
 
+`core/jpeg_context.py` defines a versioned 1,098-feature measured DCT/content/
+quantization interaction contract, not a source-ID feature or deployed model.
+Local-only `research_jpeg_corpus` uses bounded optional upstream simulation
+workers; `research_jpeg_multisource` binds cached vectors and two declared
+acquisition origins with matched method families. Train-only source/class
+weighting rejects missing provenance or method-source shortcuts. Legacy feature
+contracts and primary analysis remain unchanged; see `JPEG_CONTEXT_PROTOCOL.md`.
+
 `research_generalization.py` is the shared cached-score domain/context
 diagnostic service; the `research diagnose` CLI only passes declared inputs.
 It binds training/validation contracts, reports source overlap and stratifies

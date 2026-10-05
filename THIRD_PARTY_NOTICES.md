@@ -1,5 +1,10 @@
 # Third-party tools in the `full` image
 
+Optional research extra `jpeg-sim` uses [conseal 2025.11](https://github.com/uibk-uncover/conseal)
+(MPL-2.0) for embedding simulation, not end-to-end message extraction. It is not
+a base-wheel dependency or bundled dataset/model. Respect upstream and original
+dataset usage conditions; source attribution alone does not grant redistribution.
+
 The core image and Python package are MIT licensed and do not bundle the tools
 below. The optional `full` image executes them as separate, resource-limited
 processes and reports their availability explicitly.

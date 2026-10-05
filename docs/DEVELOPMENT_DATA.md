@@ -1,5 +1,11 @@
 # Preparing the next detector experiment
 
+`JPEG_CONTEXT_PROTOCOL.md` freezes the next local two-origin JPEG development
+experiment before generation/training: no new download, original split/lineage
+preservation, optional pinned simulation and measured quantization/content
+features. JMiPOD is explicitly excluded from both-source comparison, not falsely
+claimed as simulated. Raw BOSS data and derivatives remain local research only.
+
 Source/context diagnosis is fixed in `GENERALIZATION_PROTOCOL.md` and exposed
 as `research diagnose`. It detects source overlap and stratifies existing
 scores; it does not learn source-specific rules or fit score corrections.

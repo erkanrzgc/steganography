@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Next measured JPEG slice is frozen in `JPEG_CONTEXT_PROTOCOL.md`: optional local
+BOSS JPEG simulations plus ALASKA2 development, matched JUNIWARD/UERD families,
+byte-derived content/quantization interactions and source/class-balanced training.
+This removes a single declared training origin, not the independent-source
+qualification gap. JMiPOD and installed detector behavior are unchanged.
+
 Generalization diagnostic slice: `research diagnose` audits source overlap
 and method/rate scores by format and declared compression quality. It is not
 a trained context-aware detector; independent-source qualification is pending.
