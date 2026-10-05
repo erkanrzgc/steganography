@@ -16,7 +16,10 @@ JPEG_RECIPE = "jpeg-source-class-balanced-v1"
 
 def training_weights(config: dict[str, Any], provenance: dict[str, Any]) -> np.ndarray | None:
     """Never derive weights from validation scores, features or installed models."""
-    context_model = provenance.get("feature_version") == "jpeg-context-summary-v1"
+    context_model = provenance.get("feature_version") in {
+        "jpeg-context-summary-v1",
+        "jpeg-dct-residual-parity-v1",
+    }
     if context_model and config.get("sample_weighting") != JPEG_RECIPE:
         raise ResearchManifestError(
             "JPEG context training requires explicit multi-source weighting"

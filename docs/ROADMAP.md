@@ -1,5 +1,9 @@
 # Roadmap and status
 
+The next JPEG slice is frozen in `JPEG_RESIDUAL_PROTOCOL.md`: a custom residual/
+parity descriptor with DC support, same-file comparison and unchanged objective.
+Actual scoring is pending; no new supported method or deployed detector implied.
+
 Minimum native coverage policy now closes the low-score/missing-detector gap
 (`COVERAGE_POLICY.md`); this changes conservative pipeline verdict handling,
 not primary scores or the failed detector accuracy gates.

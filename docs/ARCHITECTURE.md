@@ -1,5 +1,11 @@
 # Architecture
 
+`core/jpeg_residual.py` adds a versioned research-only block-DCT residual/parity
+descriptor, retaining the existing measured context prefix. It shares the fixed
+allowlisted native worker and original resource limits; old feature contracts
+are unchanged. Two-origin weighting remains mandatory for the new contract.
+See `JPEG_RESIDUAL_PROTOCOL.md`; this is not DCTR/JRM or deployed model inference.
+
 `core/coverage.py` defines versioned minimum native execution requirements by
 content-detected format. The shared pipeline preserves positive evidence but
 cannot emit a low-score `no_indicators` result when required coverage is missing.

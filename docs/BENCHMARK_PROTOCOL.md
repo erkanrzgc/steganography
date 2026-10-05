@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+The fixed same-file JPEG residual/parity comparison is preregistered in
+`JPEG_RESIDUAL_PROTOCOL.md`; retained DC/neighbor information is experimental,
+not an independent-source or end-to-end payload recovery claim.
+
 `COVERAGE_POLICY.md` defines minimum pipeline execution coverage. Missing required
 components are inconclusive at low scores, never clean negatives. Completion
 alone cannot qualify a method or turn the frozen failed baselines into passes.

@@ -884,6 +884,7 @@ def build_parser() -> argparse.ArgumentParser:
             "spatial-summary-v1",
             "jpeg-dct-summary-v1",
             "jpeg-context-summary-v1",
+            "jpeg-dct-residual-parity-v1",
             "spatial-cooccurrence-v1",
             "spatial-parity-residual-v1",
         ),

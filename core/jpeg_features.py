@@ -9,6 +9,7 @@ import os
 import subprocess
 import sys
 import tempfile
+from collections.abc import Callable
 from pathlib import Path
 
 import numpy as np
@@ -77,6 +78,13 @@ def validate_jpeg(data: bytes) -> None:
 
 
 def jpeg_features(data: bytes) -> list[float]:
+    return run_feature_worker(data, "core.jpeg_features", FEATURE_NAMES)
+
+
+def run_feature_worker(data: bytes, module: str, names: tuple[str, ...]) -> list[float]:
+    """Fixed research worker allowlist; no extracted module or shell execution."""
+    if module not in {"core.jpeg_features", "core.jpeg_residual"}:
+        raise ValueError("unknown JPEG feature worker")
     validate_jpeg(data)
     if importlib.util.find_spec("jpeglib") is None:
         raise RuntimeError("JPEG features require the optional dct extra")
@@ -89,7 +97,7 @@ def jpeg_features(data: bytes) -> list[float]:
     with tempfile.TemporaryFile() as output:
         try:
             result = subprocess.run(  # noqa: S603 - fixed interpreter/module, bytes via stdin
-                [sys.executable, "-m", "core.jpeg_features"],
+                [sys.executable, "-m", module],
                 input=data,
                 stdout=output,
                 stderr=subprocess.DEVNULL,
@@ -107,14 +115,17 @@ def jpeg_features(data: bytes) -> list[float]:
     values = json.loads(raw)
     if (
         not isinstance(values, list)
-        or len(values) != len(FEATURE_NAMES)
+        or len(values) != len(names)
         or any(type(v) not in (float, int) or not np.isfinite(v) or not 0 <= v <= 1 for v in values)
     ):
         raise ValueError("invalid JPEG feature worker output")
     return values
 
 
-def worker(data: bytes) -> list[float]:
+def worker(
+    data: bytes,
+    extractor: Callable[[np.ndarray, np.ndarray], list[float]] = coefficient_features,
+) -> list[float]:
     import jpeglib
 
     validate_jpeg(data)
@@ -126,10 +137,12 @@ def worker(data: bytes) -> list[float]:
         jpeg.load()
         if jpeg.num_components not in (1, 3):
             raise ValueError("unsupported JPEG colorspace")
-        return coefficient_features(jpeg.Y, jpeg.qt[int(jpeg.quant_tbl_no[0])])
+        return extractor(jpeg.Y, jpeg.qt[int(jpeg.quant_tbl_no[0])])
 
 
-def main() -> int:
+def main(
+    extractor: Callable[[np.ndarray, np.ndarray], list[float]] = coefficient_features,
+) -> int:
     import resource
 
     resource.setrlimit(resource.RLIMIT_AS, (1024**3, 1024**3))
@@ -137,7 +150,7 @@ def main() -> int:
     resource.setrlimit(resource.RLIMIT_FSIZE, (MAX_IMAGE_BYTES, MAX_IMAGE_BYTES))
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
     try:
-        values = worker(sys.stdin.buffer.read(MAX_IMAGE_BYTES + 1))
+        values = worker(sys.stdin.buffer.read(MAX_IMAGE_BYTES + 1), extractor)
         print(json.dumps(values, allow_nan=False))
         return 0
     except Exception:

@@ -11,7 +11,7 @@ from typing import Any
 
 import numpy as np
 
-from core import jpeg_context
+from core import jpeg_context, jpeg_residual
 from core import jpeg_features as jpeg
 from core import spatial_cooccurrence as cooccurrence
 from core import spatial_parity as parity
@@ -25,6 +25,7 @@ MODEL_DOMAINS = {
     FEATURE_VERSION: "spatial-summary-linear-v1",
     jpeg.FEATURE_VERSION: "jpeg-dct-summary-linear-v1",
     jpeg_context.FEATURE_VERSION: "jpeg-context-summary-linear-v1",
+    jpeg_residual.FEATURE_VERSION: "jpeg-dct-residual-parity-linear-v1",
     cooccurrence.FEATURE_VERSION: "spatial-cooccurrence-linear-v1",
     parity.FEATURE_VERSION: "spatial-parity-residual-linear-v1",
 }
@@ -171,6 +172,8 @@ def feature_contract(version: str):
         return jpeg.FEATURE_NAMES, jpeg.jpeg_features
     if version == jpeg_context.FEATURE_VERSION:
         return jpeg_context.FEATURE_NAMES, jpeg_context.jpeg_context_features
+    if version == jpeg_residual.FEATURE_VERSION:
+        return jpeg_residual.FEATURE_NAMES, jpeg_residual.jpeg_residual_features
     if version == cooccurrence.FEATURE_VERSION:
         return cooccurrence.FEATURE_NAMES, cooccurrence.spatial_cooccurrence_features
     if version == parity.FEATURE_VERSION:

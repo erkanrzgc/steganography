@@ -2,6 +2,12 @@
 
 ## 0.6.0 (unreleased)
 
+- Added a custom 2,066-feature JPEG block-DCT residual/parity research descriptor,
+  including DC statistics and the unchanged measured-context prefix. Reuse
+  allowlisted bounded JPEG workers and require two-origin objective provenance.
+  Fixed comparison protocol precedes actual feature extraction/training;
+  old contracts, primary detection and model installation remain unchanged.
+
 - Added minimum native format coverage policy: incomplete low-score pipeline
   results are inconclusive, not no-indicators. Preserve positive findings and
   unchanged scores; failed analyzer signals cannot confirm. Additive JSON v2

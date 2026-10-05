@@ -375,7 +375,11 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     torch.manual_seed(int(config.get("seed", 20260813)))
     tensor = torch.from_numpy(features.reshape(features.shape[0], -1))
     targets = torch.from_numpy(labels.reshape(-1, 1))
-    jpeg_model = provenance["feature_version"] in {"jpeg-dct-summary-v1", "jpeg-context-summary-v1"}
+    jpeg_model = provenance["feature_version"] in {
+        "jpeg-dct-summary-v1",
+        "jpeg-context-summary-v1",
+        "jpeg-dct-residual-parity-v1",
+    }
     residual_model = provenance["feature_version"] in {
         "spatial-cooccurrence-v1",
         "spatial-parity-residual-v1",
@@ -461,7 +465,9 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "state_dict": model.state_dict(),
         "input_shape": list(features.shape[1:]),
         "features": int(tensor.shape[1]),
-        "domain": "jpeg-context-summary-linear-v1"
+        "domain": "jpeg-dct-residual-parity-linear-v1"
+        if provenance["feature_version"] == "jpeg-dct-residual-parity-v1"
+        else "jpeg-context-summary-linear-v1"
         if provenance["feature_version"] == "jpeg-context-summary-v1"
         else "jpeg-dct-summary-linear-v1"
         if jpeg_model

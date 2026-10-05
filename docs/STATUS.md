@@ -6,6 +6,10 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Research-only 2,066-feature JPEG block-DCT residual/parity contract and shared
+  bounded worker dispatch. Two-origin weighting and old contracts preserved;
+  fixed comparison is in `JPEG_RESIDUAL_PROTOCOL.md`. Actual results pending.
+
 - Versioned minimum native coverage by content-detected format: missing required
   components force low-score `inconclusive`, while independent positive findings
   stay visible. JSON v2 revision 2, HTML, SARIF and bundle views preserve the
@@ -90,14 +94,15 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 683 tests pass; total coverage 93.83%. Required-coverage assessment,
+- Python 3.11: 692 tests pass; total coverage 93.84%. New JPEG residual descriptor
+  coverage is 96.30%, shared JPEG worker 98.89%. Required-coverage assessment,
   shared pipeline and v2 report renderer coverage are 100%; 52 focused coverage
   cases include a real JPEG without optional DCT and recursive CTF gap handling.
   New JPEG context features
   are 100%, corpus service 95.60%,
   multi-origin preparation 98.10%, train weighting 100%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
-  deprecated ONNX export APIs (twenty-two occurrences), not test failures.
+  deprecated ONNX export APIs (twenty-four occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is
   96.60%; shared feature/checkpoint code is 99.40%, reconstruction is 100%,
   precision audit is 96.39% and operating-point service is 97.40%. Independent scalar filter and
@@ -105,7 +110,7 @@ been delivered or validated by this slice.
   are included. New parity descriptor coverage is 100%, comparison runner
   97.33%. New weighting helper coverage is 100%, cached comparison runner
   98.55%; source/context diagnostic coverage is 100% with 36 dedicated tests.
-  Ruff, mypy (89 application files) and diff checks pass.
+  Ruff, mypy (90 application files) and diff checks pass.
 - The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,
