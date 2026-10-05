@@ -173,6 +173,9 @@ alarms but also loses recall; it remains an undeployed development experiment.
 The latest [nonlinear feature comparison](docs/JPEG_NONLINEAR_RESULTS.md)
 improves ALASKA ranking/FPR, but detection still fails; BOSS/UERD and calibration
 regress. It is research-only, not a deployed CNN or a global accuracy claim.
+The optional [JRM + FLD reference](docs/JRM_REFERENCE_RESULTS.md) raises ALASKA/
+UERD AUC to .698 and lowers FPR to 31.71%, but JUNIWARD recall regresses and
+BOSS remains weak. All cells fail detection targets; research-only, not deployed.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

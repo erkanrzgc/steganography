@@ -286,9 +286,17 @@ def audit(
         },
         "execution": read_document(experiment / "execution-summary.json")[0],
         "artifact_sha256": {
-            str(p.relative_to(experiment)): sha(p)
-            for p in sorted(experiment.rglob("*"))
-            if p.is_file()
+            name: sha(experiment / name)
+            for name in (
+                "execution-summary.json",
+                "model/model-card.json",
+                "model/model.npz",
+                "predictions.json",
+                "train/cache.json",
+                "train/features.f32",
+                "validation/cache.json",
+                "validation/features.f32",
+            )
         },
         "versions": {
             name: importlib.metadata.version(name)

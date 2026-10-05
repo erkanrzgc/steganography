@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+The optional [JRM + FLD reference](JRM_REFERENCE_RESULTS.md) improves ALASKA/
+UERD AUC .603 → .698 and FPR 38.54% → 31.71%. JUNIWARD recall falls to
+47.32%; BOSS ECE worsens and detection fails in all measurable cells. Numeric
+vote parity passes, independent-source evidence is unavailable; not deployed.
+
 The [nonlinear residual-feature comparison](JPEG_NONLINEAR_RESULTS.md) improves
 ALASKA AUC to .609/.603 and FPR to 38.54%, but still fails detection.
 BOSS/UERD and ALASKA calibration regress; no deployment or independent-source

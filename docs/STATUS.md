@@ -12,6 +12,9 @@ been delivered or validated by this slice.
   `JRM_REFERENCE_PROTOCOL.md`. Not deployed, not an installed ONNX model.
   Numeric model headers are checked before allocation, including adversarial
   tiny-archive/giant-array tests; score arithmetic remains unchanged.
+  Full 3,750-file reference completed and independently audited: ALASKA/UERD
+  AUC .698, FPR 31.71%, but JUNIWARD recall and BOSS ECE regress. All measurable
+  numeric detection gates fail; see `JRM_REFERENCE_RESULTS.md`. No deployment.
 
 - Explicit research-only residual-feature MLP64 with a linear skip, bounded
   architecture/domain validation, regularization provenance and shared export/
@@ -107,6 +110,14 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Latest JRM slice: Python 3.11, 757 tests, total coverage 94.03%; new reference
+  services 289/290 statements covered (99.66%). Ruff, mypy (93 application files),
+  diff checks and fresh wheel/sdist build pass. All 3,750 corpus files rehashed;
+  independent scalar FLD votes match all 765 predictions exactly. All 12 metric
+  cells checked independently; numeric batches 1/17/765 exact. Eighteen upstream
+  JRM boundary examples match, not independent algorithm qualification. Earlier
+  counts below are historical; Python 3.12–3.14/fresh Docker remain unverified.
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot

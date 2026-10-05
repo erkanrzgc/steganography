@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Completed full-corpus JRM/FLD reference and replay audit: ALASKA/UERD AUC
+  .603 → .698, FPR 38.54% → 31.71%, but JUNIWARD recall/BOSS ECE regress.
+  All cells and failures published; exact independent scalar votes, unchanged
+  primary detection, no supported methods or independent-source qualification.
+
 - Preflight numeric FLD NPZ headers before allocation: reject gigantic declared
   shapes, invalid dtype/version and truncated payloads even in tiny archives.
   Add adversarial tests proving unsafe inputs never reach NumPy array loading.

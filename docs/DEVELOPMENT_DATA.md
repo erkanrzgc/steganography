@@ -1,8 +1,11 @@
 # Preparing the next detector experiment
 
-`JRM_REFERENCE_PROTOCOL.md` specifies the next optional local research reference
+`JRM_REFERENCE_PROTOCOL.md` specifies the completed optional local research reference
 on exactly the existing JPEG corpus. No new acquisition/held-out scenes/model
 installation; pin component versions and preserve DDE research/non-profit terms.
+`JRM_REFERENCE_RESULTS.md` reports all 3,750 unchanged files, exact scalar vote
+parity and mixed outcomes. Higher UERD AUC is not cross-source qualification;
+raw-residual learning and untouched licensed sources remain prerequisites.
 
 `JPEG_NONLINEAR_PROTOCOL.md` fixes the next comparison on existing bound
 residual-feature caches: one 64-unit nonlinear feature model with a linear skip.

@@ -1,10 +1,14 @@
 # Roadmap and status
 
-Next independent implementation reference: fixed optional JRM + FLD protocol
+Completed implementation reference: fixed optional JRM + FLD protocol
 in `JRM_REFERENCE_PROTOCOL.md`, all original files/splits, numeric-only caches
 and model serialization. This changes several experimental choices together,
 not a causal ablation or independent-source qualification. Raw CNN and untouched
 source gates remain open; upstream research-use terms are recorded.
+`JRM_REFERENCE_RESULTS.md` preserves improved ALASKA/UERD ranking (.698 AUC),
+lower FPR (31.71% / 30%), JUNIWARD recall and BOSS ECE regressions. Every
+measurable detection cell fails; no deployment. Next: fixed raw-residual learning
+and licensed untouched-source qualification, not further validation tuning.
 
 The next fixed development experiment (`JPEG_NONLINEAR_PROTOCOL.md`) tests a
 64-unit nonlinear residual-feature network with a linear skip, not a CNN.

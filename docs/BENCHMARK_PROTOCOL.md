@@ -4,6 +4,9 @@ The upstream JRM/FLD comparison is preregistered in `JRM_REFERENCE_PROTOCOL.md`:
 fixed full paired development data, explicit source imbalance and changed
 objective, all regressions retained. Upstream parity is not independent JRM
 correctness or cross-source accuracy; vote fractions are not probabilities.
+Completed `JRM_REFERENCE_RESULTS.md` publishes all cells and paired intervals,
+independent scalar vote/metric audits and failure gates. No unseen-source evidence
+or primary-score change; keep both gains and regressions in future comparisons.
 
 The nonlinear residual-feature comparison is fixed in
 `JPEG_NONLINEAR_PROTOCOL.md`: same cached rows, one preregistered run, no
