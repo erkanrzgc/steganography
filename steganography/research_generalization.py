@@ -95,13 +95,19 @@ def diagnose_validation(
     ):
         raise ResearchManifestError("diagnostic training/validation contract mismatch")
     rows = predictions.get("predictions")
-    identity = ("sha256", "lineage", "label", "method", "rate_percent", "format")
+    identity = ("sha256", "lineage", "label", "method")
+    optional = ("rate_percent", "format")
+    legacy = predictions.get("schema_version") == "jpeg-development-predictions-v1" and (
+        version == "jpeg-dct-summary-v1"
+    )
     if (
         not isinstance(rows, list)
         or len(rows) != len(validation)
         or any(
             not isinstance(row, dict)
-            or any(row.get(k) != sample.get(k) for k in identity)
+            or any(k not in row or row.get(k) != sample.get(k) for k in identity)
+            or any(k in row and row[k] != sample.get(k) for k in optional)
+            or (not legacy and any(k not in row for k in optional))
             or type(row.get("score")) not in (int, float)
             or not math.isfinite(row["score"])
             or not 0 <= row["score"] <= 1
@@ -109,6 +115,11 @@ def diagnose_validation(
         )
     ):
         raise ResearchManifestError("diagnostic validation identity/score mismatch")
+    augmented_fields = sum(k not in row for row in rows for k in optional)
+    rows = [
+        {**row, **{k: sample.get(k) for k in optional if k not in row}}
+        for row, sample in zip(rows, validation, strict=True)
+    ]
     for row in rows:
         rate = row.get("rate_percent")
         if rate is not None and (
@@ -195,6 +206,7 @@ def diagnose_validation(
         "model_card_sha256": card_hash,
         "feature_version": version,
         "threshold": threshold,
+        "legacy_fields_from_bound_manifest": augmented_fields,
         "source_separation": {
             "training_source_groups": len(train_sources),
             "validation_source_groups": len(validation_sources),

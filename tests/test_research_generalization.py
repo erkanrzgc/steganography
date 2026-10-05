@@ -248,3 +248,34 @@ def test_metadata_changes_do_not_change_pooled_scores(diagnostic_inputs, tmp_pat
     old_pooled = [c["metrics"] for c in original["cells"] if c["dimension"] == "pooled"]
     new_pooled = [c["metrics"] for c in changed["cells"] if c["dimension"] == "pooled"]
     assert old_pooled == new_pooled
+
+
+def test_legacy_jpeg_adapter_never_changes_score_or_source_documents(diagnostic_inputs, tmp_path):
+    from core.jpeg_features import FEATURE_NAMES as JPEG_NAMES
+
+    names = list(JPEG_NAMES)
+    manifest, predictions, card = diagnostic_inputs
+    document = json.loads(predictions.read_bytes())
+    document["schema_version"] = "jpeg-development-predictions-v1"
+    document["provenance"].update(feature_version="jpeg-dct-summary-v1", feature_names=names)
+    for row in document["predictions"]:
+        row.pop("format")
+        row.pop("rate_percent")
+    predictions.write_text(json.dumps(document))
+    model = json.loads(card.read_bytes())
+    model["domain"] = "jpeg-dct-summary-linear-v1"
+    for field in ("training_provenance", "preprocessing"):
+        model[field].update(feature_version="jpeg-dct-summary-v1", feature_names=names)
+    card.write_text(json.dumps(model))
+    rebind_manifest(diagnostic_inputs, lambda m: [s.update(format="JPEG") for s in m["samples"]])
+    before = {p: p.read_bytes() for p in diagnostic_inputs}
+    result = diagnose(diagnostic_inputs, tmp_path / "legacy.json")
+    assert result["legacy_fields_from_bound_manifest"] == 4
+    assert any(c["context"] == "jpeg" for c in result["cells"])
+    assert all(c["metrics"]["roc_auc"] == 1 for c in result["cells"])
+    assert all(p.read_bytes() == data for p, data in before.items())
+    document = json.loads(predictions.read_bytes())
+    document["schema_version"] = "unknown"
+    predictions.write_text(json.dumps(document))
+    with pytest.raises(ResearchManifestError, match="identity"):
+        diagnose(diagnostic_inputs, tmp_path / "unsupported-legacy.json")

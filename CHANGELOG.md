@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Preserve historical JPEG v1 prediction documents in source/context audits:
+  missing additive format/rate fields come only from the already checksum-bound
+  manifest after full identity validation; stored scores/documents stay unchanged.
+
 - Added provenance-bound `research diagnose` source/context audits: source
   overlap, per-method/rate format and declared-quality strata, paired intervals,
   explicit missing metadata and unavailable single-label cells. These diagnostics
