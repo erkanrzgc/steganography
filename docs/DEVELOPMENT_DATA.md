@@ -13,6 +13,12 @@ The partitioning guidance below still applies to subsequent spatial and audio
 work; `WAV_RESULTS.md` now records the failed fixed-threshold FSDD baseline,
 with training/validation speakers reserved separately from the inspected test.
 
+The first spatial comparison also completed on the new BOSSbase development
+data; see `SPATIAL_DEVELOPMENT_RESULTS.md`. Its richer descriptor improves
+same-source validation discrimination, but does not pass support/export gates
+and is not installed. These validation results may inform development, never
+be relabeled a fresh blind or independent-source test.
+
 The 4,000-file ALASKA2 holdout has now been acquired and scored
 (`ALASKA2_RESULTS.md`), with failed native detection targets. Its manifest
 `.benchmark/alaska2-holdout-20261004/source.json` is another mandatory reserved

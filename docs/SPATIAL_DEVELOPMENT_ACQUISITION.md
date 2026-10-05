@@ -66,7 +66,8 @@ No acquired content hash or upstream member name overlaps reserved data.
 See the [portable record](../benchmarks/boss-development-acquisition-20261005.json)
 for source/selection/script/helper hashes and counts.
 
-These are still PGM originals. PNG/BMP conversions, independent stego generation,
-new spatial features/models and validation remain subsequent work; every such
-derivative must retain original lineage and split. No new spatial accuracy
-or model improvement is claimed by this acquisition.
+The immutable PGM acquisition remains unchanged. The subsequent
+[controlled PNG/BMP development comparison](SPATIAL_DEVELOPMENT_RESULTS.md)
+preserved every original lineage/split and completed generation, richer
+feature/model validation and independent audit. Its results are development
+evidence, not independent-source qualification or an installed-detector upgrade.

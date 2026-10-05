@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published the audited 7,000-file PNG/BMP development comparison: richer
+  features improve same-source AUC to 0.717–0.997, but 4.89% FPR, weak low-rate
+  scattered recall, calibration and strict ONNX logit parity remain failed.
+  Both models stay local and undeployed; frozen native baselines are unchanged.
+
 - Added preregistered reserved-safe PNG/BMP controlled development comparison:
   independent grayscale LSB pairs, bounded 468-feature residual co-occurrences,
   shared validation inference, fair train-only normalization/class balancing,

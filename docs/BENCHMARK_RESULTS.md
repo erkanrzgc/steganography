@@ -11,6 +11,7 @@ do not imply better detection.
 | PNG/BMP small second-source check | [Kodak](KODAK_RESULTS.md): both methods on 24 originals | AUC 0.49349; recall 0%; insufficient independent sample size and failed detection |
 | JPEG JMiPOD / JUNIWARD / UERD native detection | [Frozen ALASKA2 baseline](ALASKA2_RESULTS.md): 1,000 pairs per family, shared covers | AUC 0.525617 / 0.505157 / 0.507181; recall 0.4% / 0.1% / 0.1%; failed |
 | Experimental trained JPEG model | [Separate development validation](JPEG_DEVELOPMENT_RESULTS.md): 205 pairs per family, shared covers | AUC 0.648804 / 0.592481 / 0.585306; FPR 41.46%; not deployed; not an independent test |
+| Experimental trained spatial model | [Controlled LSB development](SPATIAL_DEVELOPMENT_RESULTS.md): 184 pairs/cell, six method/rate cells | AUC 0.716801–0.997460 versus same-data reference 0.516422–0.648423; FPR 4.89%, low-rate scattered recall 19.57%; not deployed; support/export gates failed |
 | WAV sample-LSB replacement | [FSDD baseline](WAV_RESULTS.md): 1,000 test covers, 6,000 stegos; sequential/scattered at three rates | All six cells: AUC 0.50, recall 0%, FPR 0%; failed. Generation oracle verified every payload; native CTF recovery unmeasured |
 | GIF, text, PDF, containers, MP3/TIFF-specific claims | Unit/integration and generated examples | Representative labeled corpus evaluation **unavailable**; no real-world score |
 | Controlled CTF extraction | [Kodak regression](CTF_REGRESSION_20261002.md): two final 30/30 completed exact recoveries | Published-challenge regression, not blind recovery or automatic detector accuracy |
@@ -23,10 +24,11 @@ coverage and limitations. Scores are not calibrated probabilities.
 
 ## Next measured development slices
 
-1. PNG/BMP: convert the [new 1,000 disjoint BOSSbase originals](SPATIAL_DEVELOPMENT_ACQUISITION.md),
-   then independently embed/extract declared methods and payload rates. Replace
-   simple summary/proxy features with independently checked richer spatial
-   features; do not train on the published pilot.
+1. PNG/BMP: the [first richer-feature comparison](SPATIAL_DEVELOPMENT_RESULTS.md)
+   completed on 7,000 controlled files. Next improve low-rate scattered recall,
+   false positives and calibration, resolve export parity and evaluate a newly
+   untouched independent source. Named upstream methods require separate tests;
+   do not train on the published pilot or claim this generic LSB result for them.
 2. JPEG: use the new development split for stronger residual/co-occurrence
    features or a suitable trained architecture. Freeze calibration and model
    before a newly untouched source; keep this failed linear baseline visible.
@@ -37,7 +39,7 @@ coverage and limitations. Scores are not calibrated probabilities.
    and representative benign corpora, then method-specific exact recovery and
    false-positive measurements. A decoder solving base64 is not generic detection.
 
-These are remaining tasks, not completed improvements. The same rules apply
+These are remaining gates, not deployed improvements. The same rules apply
 to each new method: publish failures, preserve frozen tests, and promote support
 only after the [acceptance gates](BENCHMARK_PROTOCOL.md) actually pass.
 

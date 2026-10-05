@@ -91,9 +91,11 @@ cross-source qualification remain necessary for measured improvement.
 
 ## v1.0 gate
 
-The next spatial comparison is frozen in `SPATIAL_DEVELOPMENT_PROTOCOL.md`.
-Richer descriptors and a fair simple-feature reference will be scored on the
-new BOSSbase train/validation corpus; no automatic deployment is permitted.
+The spatial comparison frozen in `SPATIAL_DEVELOPMENT_PROTOCOL.md` completed;
+see `SPATIAL_DEVELOPMENT_RESULTS.md`. Custom co-occurrences improve same-source
+controlled LSB AUC over the same-data reference, but low-rate recall, false
+alarms, calibration, cross-source evidence and strict ONNX parity remain open.
+No model is automatically deployed; installed native results remain unchanged.
 
 Release only when every advertised support cell passes the real-dataset gates,
 the blind CTF suite meets recovery/latency targets, and all sandbox/limit tests
