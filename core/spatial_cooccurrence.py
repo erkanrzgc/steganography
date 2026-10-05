@@ -63,6 +63,11 @@ def spatial_cooccurrence_features(data: bytes) -> list[float]:
         if min(image.size) < 8 or image.width * image.height > MAX_PIXELS:
             raise ValueError("feature image dimensions outside limits")
         pixels = np.asarray(image.convert("RGB"), dtype=np.int16)
+    return cooccurrence_from_pixels(pixels)
+
+
+def cooccurrence_from_pixels(pixels: np.ndarray) -> list[float]:
+    """Shared internal descriptor for already bounded decoded signed pixels."""
     result = []
     for region in (pixels, pixels[: max(6, pixels.shape[0] // 4)]):
         for filter_name in FILTERS:

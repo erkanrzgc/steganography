@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added a versioned 684-feature spatial parity/residual descriptor and fixed
+  same-corpus development comparison. Only the new descriptor uses 1e-8
+  quantization; legacy extraction and deployed primary detection are unchanged.
+  Training can explicitly request stable double-accumulation inference.
+
 - Published CPU numerical repair audits: all three explicit precision derivatives
   pass unchanged strict 1e-6 gates with original threshold decisions preserved.
   Cover-only operating-point assessment changes 3/90 false alarms to 2/90 but

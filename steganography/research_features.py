@@ -13,6 +13,7 @@ import numpy as np
 
 from core import jpeg_features as jpeg
 from core import spatial_cooccurrence as cooccurrence
+from core import spatial_parity as parity
 from core.feature_model import feature_model
 from core.features import FEATURE_NAMES, FEATURE_VERSION, MAX_IMAGE_BYTES, spatial_features
 from steganography.research import ResearchManifestError, verify_dataset_manifest
@@ -23,6 +24,7 @@ MODEL_DOMAINS = {
     FEATURE_VERSION: "spatial-summary-linear-v1",
     jpeg.FEATURE_VERSION: "jpeg-dct-summary-linear-v1",
     cooccurrence.FEATURE_VERSION: "spatial-cooccurrence-linear-v1",
+    parity.FEATURE_VERSION: "spatial-parity-residual-linear-v1",
 }
 
 
@@ -167,6 +169,8 @@ def feature_contract(version: str):
         return jpeg.FEATURE_NAMES, jpeg.jpeg_features
     if version == cooccurrence.FEATURE_VERSION:
         return cooccurrence.FEATURE_NAMES, cooccurrence.spatial_cooccurrence_features
+    if version == parity.FEATURE_VERSION:
+        return parity.FEATURE_NAMES, parity.spatial_parity_features
     raise ResearchManifestError("unknown feature contract")
 
 

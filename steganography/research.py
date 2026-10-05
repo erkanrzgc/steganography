@@ -374,7 +374,13 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     tensor = torch.from_numpy(features.reshape(features.shape[0], -1))
     targets = torch.from_numpy(labels.reshape(-1, 1))
     jpeg_model = provenance["feature_version"] == "jpeg-dct-summary-v1"
-    residual_model = provenance["feature_version"] == "spatial-cooccurrence-v1"
+    residual_model = provenance["feature_version"] in {
+        "spatial-cooccurrence-v1",
+        "spatial-parity-residual-v1",
+    }
+    arithmetic = config.get("inference_arithmetic", "float32")
+    if not isinstance(arithmetic, str) or arithmetic not in {"float32", "float64"}:
+        raise ResearchManifestError("inference arithmetic must be float32 or float64")
     standardize = config.get("standardize", jpeg_model or residual_model)
     class_balanced = config.get("class_balanced", jpeg_model or residual_model)
     if type(standardize) is not bool or type(class_balanced) is not bool:
@@ -406,6 +412,7 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "torch_version": str(torch.__version__),
         "class_balanced": class_balanced,
         "standardize": standardize,
+        "inference_arithmetic": arithmetic,
     }
     loss = 0.0
     for _epoch in range(epochs):
@@ -424,6 +431,8 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "features": int(tensor.shape[1]),
         "domain": "jpeg-dct-summary-linear-v1"
         if jpeg_model
+        else "spatial-parity-residual-linear-v1"
+        if provenance["feature_version"] == "spatial-parity-residual-v1"
         else "spatial-cooccurrence-linear-v1"
         if residual_model
         else "spatial-summary-linear-v1",
@@ -431,6 +440,7 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
             "feature_version": provenance["feature_version"],
             "feature_names": provenance["feature_names"],
             "normalization": normalization,
+            "inference_arithmetic": arithmetic,
         },
         "training_provenance": provenance,
     }

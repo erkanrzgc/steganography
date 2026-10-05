@@ -1,5 +1,11 @@
 # Architecture
 
+`core/spatial_parity.py` extends the shared spatial histogram descriptor with
+joint center-bit/neighbor-residual statistics. Its new version declares 1e-8
+feature quantization; old feature versions are unchanged. The explicit
+`research_parity` service binds an audited development corpus and previous
+predictions for same-row comparison; CLI is only an adapter to shared research.
+
 `research_operating_point` is an explicit research service, not deployed
 threshold logic. It uses manifest-bound validation features and independent
 whole-lineage fitting/assessment roles. Fractional research cutoffs compare

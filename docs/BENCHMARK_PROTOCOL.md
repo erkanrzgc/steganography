@@ -114,6 +114,11 @@ into a single global “accuracy” claim. Cloud AI output is excluded.
 
 ## CTF and performance gates
 
+The fixed `SPATIAL_PARITY_PROTOCOL.md` comparison is iterative development on
+the already inspected corpus, not an untouched test. New feature/model choices
+must report every method/rate cell and false positives, with original reports
+retained and no automatic deployment even if selected-cell scores improve.
+
 `OPERATING_POINT_PROTOCOL.md` specifies an exploratory spatial threshold
 development assessment, with cover-only fitting and separate lineage roles.
 Already inspected validation remains inspected; lower empirical FPR cannot be
