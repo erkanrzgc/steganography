@@ -19,6 +19,21 @@ def html_v2(report: dict[str, Any]) -> str:
     for item in files:
         file_info = item.get("file", {})
         findings = item.get("findings", [])
+        policy = item.get("coverage_policy")
+        coverage_html = ""
+        if isinstance(policy, dict):
+            requirements = "".join(
+                "<li>{}: {}</li>".format(
+                    html.escape(str(entry.get("component", "unknown"))),
+                    html.escape(str(entry.get("status", "unavailable"))),
+                )
+                for entry in policy.get("required", [])
+            )
+            coverage_html = "<p>Required native coverage: {}. {}</p><ul>{}</ul>".format(
+                "complete" if policy.get("complete") else "incomplete",
+                html.escape(str(policy.get("scope", ""))),
+                requirements,
+            )
         finding_html = (
             "".join(
                 "<li><code>{}</code> — {}: {}</li>".format(
@@ -31,12 +46,13 @@ def html_v2(report: dict[str, Any]) -> str:
             or "<li>No findings.</li>"
         )
         rows.append(
-            "<article><h2>{}</h2><p class='{}'>{} ({:.0%})</p><ul>{}</ul></article>".format(
+            "<article><h2>{}</h2><p class='{}'>{} ({:.0%})</p><ul>{}</ul>{}</article>".format(
                 html.escape(str(file_info.get("name", "evidence"))),
                 html.escape(str(item.get("verdict", "inconclusive"))),
                 html.escape(str(item.get("verdict", "inconclusive"))),
                 float(item.get("confidence", 0)),
                 finding_html,
+                coverage_html,
             )
         )
     artifact_rows = "".join(
@@ -116,6 +132,16 @@ def sarif_v2(report: dict[str, Any]) -> dict[str, Any]:
                     }
                 },
                 "results": results,
+                "properties": {
+                    "analyses": [
+                        {
+                            "file": item.get("file", {}).get("name", "evidence"),
+                            "verdict": item.get("verdict", "inconclusive"),
+                            "coverage_policy": item.get("coverage_policy"),
+                        }
+                        for item in files
+                    ]
+                },
             }
         ],
     }

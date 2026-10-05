@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 from typing import Any, Literal
 
+from core.coverage import assess_coverage
 from core.ctf_types import Artifact, Coverage, Recommendation, ToolExecution
 from core.pipeline import AnalysisPipeline
 from core.service import AnalysisService, StegoService
@@ -272,28 +273,7 @@ class CTFService:
             mapped = _analyzer_coverage_status(str(status))
             state.coverage.append(Coverage(analyzer, mapped, False, result.get("error")))
 
-        extension = artifact_path.suffix.lower()
-        required = "image_bitplane" if extension in {".png", ".bmp"} else "file_structure"
-        matching = [
-            finding
-            for finding in report.get("findings", [])
-            if finding.get("analyzer", {}).get("name") == required
-        ]
-        available = any(item.get("status") == "ok" for item in matching)
-        # An analyzer with no signals creates no finding, so inspect compatible v1 results.
-        if not matching:
-            available = any(
-                item.analyzer == required and item.status == "ok"
-                for item in pipeline_report.analysis.results
-            )
-        state.coverage.append(
-            Coverage(
-                required,
-                "available" if available else "unavailable",
-                True,
-                None if available else "mandatory native detector did not complete",
-            )
-        )
+        state.coverage.extend(assess_coverage(pipeline_report.analysis).requirements)
 
     def _native_candidates(
         self,
@@ -1097,10 +1077,12 @@ def _bitplane_visualization(path: Path) -> bytes | None:
 def _deduplicate_coverage(values: Iterable[Coverage]) -> list[Coverage]:
     chosen: dict[tuple[str, bool], Coverage] = {}
     priority = {"available": 3, "failed": 2, "unavailable": 1, "unsupported": 0}
+    required_priority = {"available": 0, "unsupported": 1, "unavailable": 2, "failed": 3}
     for value in values:
         key = (value.component, value.required)
         current = chosen.get(key)
-        if current is None or priority[value.status] > priority[current.status]:
+        order = required_priority if value.required else priority
+        if current is None or order[value.status] > order[current.status]:
             chosen[key] = value
     return sorted(chosen.values(), key=lambda item: (not item.required, item.component))
 

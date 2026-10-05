@@ -1,5 +1,9 @@
 # Roadmap and status
 
+Minimum native coverage policy now closes the low-score/missing-detector gap
+(`COVERAGE_POLICY.md`); this changes conservative pipeline verdict handling,
+not primary scores or the failed detector accuracy gates.
+
 Next measured JPEG slice is frozen in `JPEG_CONTEXT_PROTOCOL.md`: optional local
 BOSS JPEG simulations plus ALASKA2 development, matched JUNIWARD/UERD families,
 byte-derived content/quantization interactions and source/class-balanced training.

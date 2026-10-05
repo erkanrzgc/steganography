@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
 
+from core.coverage import assess_coverage
 from core.result import FileAnalysis, Signal
 from core.service import AnalysisService
 from core.version import __version__
@@ -73,11 +74,12 @@ class PipelineReport:
     duration_ms: float
     execution_provider: str = "cpu"
     schema_version: str = "2.0"
-    schema_revision: int = 1
+    schema_revision: int = 2
 
     def to_dict(self) -> dict[str, Any]:
         file_info = self.analysis.file.to_dict()
         file_info["path"] = file_info["name"]
+        assessment = assess_coverage(self.analysis)
         return {
             "schema_version": self.schema_version,
             "schema_revision": self.schema_revision,
@@ -107,15 +109,27 @@ class PipelineReport:
                 }
                 for result in self.analysis.results
             ],
+            "coverage_policy": assessment.to_dict(),
             "false_positive_conditions": [
                 "Noise, transcoding, metadata editors, and ordinary application data can "
                 "trigger heuristics."
             ],
             "recommendations": [
+                *(
+                    [
+                        {
+                            "priority": 1,
+                            "action": "Restore required native coverage and rerun; "
+                            "preserve current findings.",
+                        }
+                    ]
+                    if not assessment.complete
+                    else []
+                ),
                 {
-                    "priority": 1,
+                    "priority": 2 if not assessment.complete else 1,
                     "action": "Validate findings independently and preserve the original evidence.",
-                }
+                },
             ],
         }
 
@@ -130,16 +144,10 @@ class AnalysisPipeline:
         started = time.perf_counter()
         analysis = self.service.analyze_safe(path)
         findings: list[Finding] = []
-        unavailable = 0
-        errors = 0
         for result in analysis.results:
             if result.analyzer == "ai_triage":
                 # Raw triage remains in analysis.results, never primary findings.
                 continue
-            if result.status in {"unavailable", "unsupported"}:
-                unavailable += 1
-            elif result.status == "error":
-                errors += 1
             for signal in result.signals:
                 findings.append(_finding(result.analyzer, result.status, signal))
             if result.status not in {"ok", "unsupported"} and not result.signals:
@@ -157,7 +165,22 @@ class AnalysisPipeline:
                         error=result.error,
                     )
                 )
-        verdict = _overall_verdict(analysis, findings, unavailable, errors)
+        for requirement in assess_coverage(analysis).requirements:
+            if requirement.status != "available":
+                findings.append(
+                    Finding(
+                        id=uuid.uuid4().hex,
+                        rule_id=f"{requirement.component}.required_coverage",
+                        verdict="inconclusive",
+                        confidence=0.0,
+                        evidence_strength="informational",
+                        detail=requirement.reason or "Required native coverage incomplete",
+                        analyzer=requirement.component,
+                        analyzer_version=__version__,
+                        status="error" if requirement.status == "failed" else requirement.status,
+                    )
+                )
+        verdict = _overall_verdict(analysis, findings)
         duration = round((time.perf_counter() - started) * 1000, 3)
         return PipelineReport(
             id=uuid.uuid4().hex,
@@ -171,7 +194,9 @@ class AnalysisPipeline:
 
 def _finding(analyzer: str, status: str, signal: Signal) -> Finding:
     verdict: Verdict
-    if signal.evidence == "verified" and signal.category == "known_marker":
+    if status != "ok":
+        verdict = "inconclusive"
+    elif signal.evidence == "verified" and signal.category == "known_marker":
         verdict = "confirmed"
     elif signal.score >= 70:
         verdict = "likely"
@@ -198,8 +223,6 @@ def _finding(analyzer: str, status: str, signal: Signal) -> Finding:
 def _overall_verdict(
     analysis: FileAnalysis,
     findings: list[Finding],
-    unavailable: int,
-    errors: int,
 ) -> Verdict:
     if any(item.verdict == "confirmed" for item in findings):
         return "confirmed"
@@ -207,10 +230,7 @@ def _overall_verdict(
         return "likely"
     if analysis.overall_score >= 30:
         return "suspicious"
-    usable = sum(
-        result.status == "ok" and result.analyzer != "ai_triage" for result in analysis.results
-    )
-    if usable == 0 and (unavailable or errors):
+    if not assess_coverage(analysis).complete:
         return "inconclusive"
     return "no_indicators"
 
@@ -224,6 +244,7 @@ def _verdict_reason(verdict: Verdict) -> str:
         "confirmed": "a verified marker or successful extraction was observed",
         "likely": "the deterministic score met the likely threshold without verified proof",
         "suspicious": "one or more heuristics met the suspicious threshold",
-        "no_indicators": "usable analyzers completed without threshold-level indicators",
+        "no_indicators": "required native analyzers completed without threshold-level indicators; "
+        "this is not a clean-file certificate",
         "inconclusive": "configured analyzers could not provide sufficient coverage",
     }[verdict]

@@ -1,5 +1,11 @@
 # Architecture
 
+`core/coverage.py` defines versioned minimum native execution requirements by
+content-detected format. The shared pipeline preserves positive evidence but
+cannot emit a low-score `no_indicators` result when required coverage is missing.
+JSON/HTML/SARIF carry the same assessment; see `COVERAGE_POLICY.md`. Execution
+completion is not a method-support or accuracy qualification.
+
 `core/jpeg_context.py` defines a versioned 1,098-feature measured DCT/content/
 quantization interaction contract, not a source-ID feature or deployed model.
 Local-only `research_jpeg_corpus` uses bounded optional upstream simulation

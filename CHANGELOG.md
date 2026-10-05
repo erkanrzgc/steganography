@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added minimum native format coverage policy: incomplete low-score pipeline
+  results are inconclusive, not no-indicators. Preserve positive findings and
+  unchanged scores; failed analyzer signals cannot confirm. Additive JSON v2
+  revision 2, HTML and SARIF retain required-component execution assessment.
+
 - Published the fixed two-origin JPEG context experiment and independent audits:
   3,750 files, ALASKA FPR 50.24% and BOSS-simulation FPR 48%; AUC/BA failures and
   all source/quality intervals retained. Strict CPU ONNX parity passes; detection

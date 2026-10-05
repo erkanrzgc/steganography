@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Versioned minimum native coverage by content-detected format: missing required
+  components force low-score `inconclusive`, while independent positive findings
+  stay visible. JSON v2 revision 2, HTML, SARIF and bundle views preserve the
+  assessment. Failed analyzer signals cannot confirm. See `COVERAGE_POLICY.md`.
+
 - Versioned measured JPEG context features, bounded local BOSS JPEG simulation,
   provenance-bound matched-family multi-origin preparation and train-only
   source/class-balanced objective. Fixed next experiment: `JPEG_CONTEXT_PROTOCOL.md`.
@@ -85,19 +90,22 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 631 tests pass; total coverage 93.73%. New JPEG context features
+- Python 3.11: 683 tests pass; total coverage 93.83%. Required-coverage assessment,
+  shared pipeline and v2 report renderer coverage are 100%; 52 focused coverage
+  cases include a real JPEG without optional DCT and recursive CTF gap handling.
+  New JPEG context features
   are 100%, corpus service 95.60%,
   multi-origin preparation 98.10%, train weighting 100%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs (twenty-two occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is
-  96.60%; shared feature/checkpoint code is 99.38%, reconstruction is 100%,
+  96.60%; shared feature/checkpoint code is 99.40%, reconstruction is 100%,
   precision audit is 96.39% and operating-point service is 97.40%. Independent scalar filter and
   extraction oracles, source mutations, symlinks, overwrite and budget tests
   are included. New parity descriptor coverage is 100%, comparison runner
   97.33%. New weighting helper coverage is 100%, cached comparison runner
   98.55%; source/context diagnostic coverage is 100% with 36 dedicated tests.
-  Ruff, mypy (88 application files) and diff checks pass.
+  Ruff, mypy (89 application files) and diff checks pass.
 - The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,
@@ -116,15 +124,17 @@ been delivered or validated by this slice.
   bounds, speaker reservations, immutable inputs, coverage failures and fixed
   scoring. New benchmark code has 97.67% statement coverage. Twelve BOSSbase
   development acquisition tests pass; standalone code coverage is 95.54%.
-- Ruff and mypy (78 files including the current acquisition entrypoints)
-  pass; diff whitespace checks pass.
+- The earlier acquisition slice passed Ruff, mypy (78 then-current files) and
+  diff whitespace checks; current full application verification is recorded above.
 - PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
   CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and
   ONNX export parity against onnxruntime were verified end-to-end.
   Small-fixture parity passes; the actual JPEG validation artifact exceeds a
   strict absolute 1e-6 score tolerance by 1.92e-7, with zero threshold-decision
   changes. That stricter artifact check is recorded as failed, not waived.
-- Version 0.6.0 wheel and sdist build successfully; the wheel contains no models.
+- Version 0.6.0 wheel and sdist build successfully; the current build was verified
+  to include new context/coverage modules, no models or datasets, and simulation/
+  DCT dependencies only behind optional extras. No package publication occurred.
 - Web: one test passes; TypeScript/Vite build passes.
 - Full Docker build and non-root/read-only/network-disabled smoke have passed
   for native payload and independently generated Steghide and OpenStego exact recovery.
@@ -177,9 +187,10 @@ been delivered or validated by this slice.
   Training/export plumbing is not an independently evaluated detector.
 - Spatial RS/sample-pair/weighted signals are approximations. Full calibrated
   algorithms and JPEG recompression/family discrimination remain research work.
-- The general analysis pipeline lacks declared per-format required-component
-  coverage policy; low-score `no_indicators` is not a coverage-complete clean
-  result. The ALASKA2 evaluator explicitly requires native JPEG components
+- The shared pipeline now requires minimum native per-format execution; even
+  coverage-complete `no_indicators` is not a clean-file certificate or qualified
+  method support. Unknown/TIFF/generic formats lack complete format coverage.
+  The historical ALASKA2 evaluator explicitly requires native JPEG components
   and marks failed/incomplete cells unavailable instead of counting clean files.
 - New CTF code has not yet reached the 95% coverage target across every new file.
 - Per-tool OS filesystem isolation, hard native-stage deadlines, exhaustive

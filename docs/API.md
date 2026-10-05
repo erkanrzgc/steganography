@@ -1,5 +1,10 @@
 # API guide
 
+Pipeline reports keep JSON `schema_version: "2.0"` with additive revision 2:
+`coverage_policy` records required native execution. Missing components make
+low-score results inconclusive, not clean negatives; positive findings remain
+visible. See [coverage policy](COVERAGE_POLICY.md). Existing v1 routes are unchanged.
+
 Install and start the loopback service:
 
 ```bash

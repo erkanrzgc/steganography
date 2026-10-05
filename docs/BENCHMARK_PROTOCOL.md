@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+`COVERAGE_POLICY.md` defines minimum pipeline execution coverage. Missing required
+components are inconclusive at low scores, never clean negatives. Completion
+alone cannot qualify a method or turn the frozen failed baselines into passes.
+
 The measured JPEG context development slice follows `JPEG_CONTEXT_PROTOCOL.md`:
 two declared acquisition origins, matched method families, fixed objective and
 measured content/quantization interactions. Previously used BOSS originals and

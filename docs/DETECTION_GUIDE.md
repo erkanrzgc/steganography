@@ -11,7 +11,11 @@
 Independent evidence categories are combined with a noisy-OR score so several
 correlated signals from one detector do not count as independent proof.
 Verified evidence raises the deterministic score to at least 95. Optional AI
-may raise but never lower that score.
+is explanation/triage only and cannot change that score or satisfy native coverage.
+
+The [minimum native coverage policy](COVERAGE_POLICY.md) is independent of profile:
+absent/failed required format components make low-score results inconclusive.
+Complete execution and `no_indicators` are not proof that a file is clean.
 
 ## Verdicts and evidence
 
