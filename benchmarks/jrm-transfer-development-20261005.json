@@ -1,0 +1,1100 @@
+{
+  "schema_version": "jrm-source-transfer-development-v1",
+  "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+  "reference_predictions_sha256": "62b0b34b2386f2f34a0d0bb346b613ee6f65fad7980f480737ac7b22bbfe870e",
+  "cache_sha256": {
+    "train": "bf60c5ee18a9c759039370897b08b38c6c2c2b80c357689dccd494014e794ca1",
+    "validation": "90e616cb6098d903024951f1d91b8eac31725d9954350df1cf4c50a70cc404eb"
+  },
+  "models": {
+    "source-6a23b26e6f51f8cc": {
+      "training": {
+        "schema_version": "jrm-fld-reference-v1",
+        "feature_version": "sealwatch-jrm-2024.12-v1",
+        "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+        "train_cache_sha256": "bf60c5ee18a9c759039370897b08b38c6c2c2b80c357689dccd494014e794ca1",
+        "model_sha256": "405c5488d537f9ed8699e1086e2d34a555e3ef6ac074aa709d9706e66f7d5d13",
+        "seed": 20261008,
+        "learners": 31,
+        "subspace": 256,
+        "paired_training_rows": 412,
+        "training_records": [
+          {
+            "d_sub": 256,
+            "oob_error": 0.36771844660194175,
+            "num_base_learners": 31
+          }
+        ],
+        "weighting": "unweighted complete paired rows; covers repeated for both families",
+        "source_validation": {
+          "declared_sources": 2,
+          "common_method_families": 2,
+          "origin_manifest_sha256": [
+            "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+            "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+          ],
+          "independence": "declared origins, not verified camera/perceptual independence"
+        },
+        "training_scope": {
+          "recipe": "single-declared-source-v1",
+          "source_ids": [
+            "source-6a23b26e6f51f8cc"
+          ],
+          "excluded_source_ids": [
+            "source-d2a1dfbee30c5891"
+          ],
+          "rows": 618,
+          "ordered_rows_sha256": "454d8a0f2d36fb5065872bac2bd1d9376330230196e13daa00cd043063d01e1b",
+          "independence": "training exclusion only; reused development validation is not blind"
+        },
+        "score": "(mean sign(FLD margin) + 1) / 2; vote fraction, not calibrated probability",
+        "threshold": 0.5,
+        "ties": "score >= threshold; no upstream randomized tie decisions",
+        "upstream_training_vote_parity": true,
+        "support_status": "experimental",
+        "calibrated": false,
+        "deployed": false,
+        "sealwatch_version": "2024.12"
+      },
+      "model_card_sha256": "2565ef3e988299f5a03de583b2257d44f509f0212fcc17df8c6e759096508d4e",
+      "predictions_sha256": "11f3a2f1a262777e1222fa8650c3eff63b76f90a2d28045040f0d4fefc5428eb"
+    },
+    "source-d2a1dfbee30c5891": {
+      "training": {
+        "schema_version": "jrm-fld-reference-v1",
+        "feature_version": "sealwatch-jrm-2024.12-v1",
+        "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+        "train_cache_sha256": "bf60c5ee18a9c759039370897b08b38c6c2c2b80c357689dccd494014e794ca1",
+        "model_sha256": "d38cdb20cf0f4e6bd0d0184096d98eb18db76f61f9262650dd94822d57614b1d",
+        "seed": 20261008,
+        "learners": 31,
+        "subspace": 256,
+        "paired_training_rows": 1578,
+        "training_records": [
+          {
+            "d_sub": 256,
+            "oob_error": 0.3799112801013942,
+            "num_base_learners": 31
+          }
+        ],
+        "weighting": "unweighted complete paired rows; covers repeated for both families",
+        "source_validation": {
+          "declared_sources": 2,
+          "common_method_families": 2,
+          "origin_manifest_sha256": [
+            "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+            "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+          ],
+          "independence": "declared origins, not verified camera/perceptual independence"
+        },
+        "training_scope": {
+          "recipe": "single-declared-source-v1",
+          "source_ids": [
+            "source-d2a1dfbee30c5891"
+          ],
+          "excluded_source_ids": [
+            "source-6a23b26e6f51f8cc"
+          ],
+          "rows": 2367,
+          "ordered_rows_sha256": "761afc865cce6534455ce751afca65e1c4d8bb80e6d02bb2ce429418fbb2b03d",
+          "independence": "training exclusion only; reused development validation is not blind"
+        },
+        "score": "(mean sign(FLD margin) + 1) / 2; vote fraction, not calibrated probability",
+        "threshold": 0.5,
+        "ties": "score >= threshold; no upstream randomized tie decisions",
+        "upstream_training_vote_parity": true,
+        "support_status": "experimental",
+        "calibrated": false,
+        "deployed": false,
+        "sealwatch_version": "2024.12"
+      },
+      "model_card_sha256": "96c41d914a455810aa362c9c6eb8eed03d1615c091721fc586acc408a04e3fbe",
+      "predictions_sha256": "df2ae2d45f802f58f6f68cc5d60bb5ee0fbefb62fa4ed717203c2bc2b15ff6ed"
+    }
+  },
+  "comparison_cells": [
+    {
+      "training_source_id": "source-6a23b26e6f51f8cc",
+      "validation_source_id": "source-6a23b26e6f51f8cc",
+      "training_excluded_target": false,
+      "method_family": "JUNIWARD",
+      "original_lineages": 25,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 19,
+          "tn": 35,
+          "fp": 15,
+          "fn": 31
+        },
+        "precision": 0.558824,
+        "recall": 0.38,
+        "specificity": 0.7,
+        "false_positive_rate": 0.3,
+        "accuracy": 0.54,
+        "balanced_accuracy": 0.54,
+        "f1": 0.452381,
+        "roc_auc": 0.524,
+        "expected_calibration_error": 0.107097
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 22,
+          "tn": 29,
+          "fp": 21,
+          "fn": 28
+        },
+        "precision": 0.511628,
+        "recall": 0.44,
+        "specificity": 0.58,
+        "false_positive_rate": 0.42,
+        "accuracy": 0.51,
+        "balanced_accuracy": 0.51,
+        "f1": 0.473118,
+        "roc_auc": 0.5286,
+        "expected_calibration_error": 0.085806
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.498775,
+          0.552625
+        ],
+        "balanced_accuracy": [
+          0.46,
+          0.5502500000000001
+        ],
+        "recall": [
+          0.3395,
+          0.56
+        ],
+        "false_positive_rate": [
+          0.3195,
+          0.54
+        ],
+        "expected_calibration_error": [
+          0.061613,
+          0.14670200000000005
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": 0.0045999999999999375,
+        "balanced_accuracy": -0.030000000000000027,
+        "recall": 0.06,
+        "false_positive_rate": 0.12,
+        "expected_calibration_error": -0.021291000000000004
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.036444999999999984,
+          0.048214999999999966
+        ],
+        "balanced_accuracy": [
+          -0.09999999999999998,
+          0.040000000000000036
+        ],
+        "recall": [
+          -0.09999999999999998,
+          0.21999999999999997
+        ],
+        "false_positive_rate": [
+          -0.060499999999999984,
+          0.2605000000000001
+        ],
+        "expected_calibration_error": [
+          -0.10776612903225812,
+          0.05048387096774195
+        ]
+      }
+    },
+    {
+      "training_source_id": "source-6a23b26e6f51f8cc",
+      "validation_source_id": "source-6a23b26e6f51f8cc",
+      "training_excluded_target": false,
+      "method_family": "UERD",
+      "original_lineages": 25,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 19,
+          "tn": 35,
+          "fp": 15,
+          "fn": 31
+        },
+        "precision": 0.558824,
+        "recall": 0.38,
+        "specificity": 0.7,
+        "false_positive_rate": 0.3,
+        "accuracy": 0.54,
+        "balanced_accuracy": 0.54,
+        "f1": 0.452381,
+        "roc_auc": 0.5594,
+        "expected_calibration_error": 0.100968
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 19,
+          "tn": 29,
+          "fp": 21,
+          "fn": 31
+        },
+        "precision": 0.475,
+        "recall": 0.38,
+        "specificity": 0.58,
+        "false_positive_rate": 0.42,
+        "accuracy": 0.48,
+        "balanced_accuracy": 0.48,
+        "f1": 0.422222,
+        "roc_auc": 0.504,
+        "expected_calibration_error": 0.12
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.45905,
+          0.54262
+        ],
+        "balanced_accuracy": [
+          0.42,
+          0.53
+        ],
+        "recall": [
+          0.28,
+          0.5
+        ],
+        "false_positive_rate": [
+          0.3195,
+          0.54
+        ],
+        "expected_calibration_error": [
+          0.08445955,
+          0.18178235000000004
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": -0.055400000000000005,
+        "balanced_accuracy": -0.06000000000000005,
+        "recall": 0,
+        "false_positive_rate": 0.12,
+        "expected_calibration_error": 0.019031999999999993
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.100235,
+          -0.01348499999999992
+        ],
+        "balanced_accuracy": [
+          -0.11999999999999994,
+          -1.0824674490095213e-16
+        ],
+        "recall": [
+          -0.1805,
+          0.15999999999999998
+        ],
+        "false_positive_rate": [
+          -0.060499999999999984,
+          0.2605000000000001
+        ],
+        "expected_calibration_error": [
+          -0.07587903225806451,
+          0.08067741935483873
+        ]
+      }
+    },
+    {
+      "training_source_id": "source-6a23b26e6f51f8cc",
+      "validation_source_id": "source-d2a1dfbee30c5891",
+      "training_excluded_target": true,
+      "method_family": "JUNIWARD",
+      "original_lineages": 205,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 97,
+          "tn": 140,
+          "fp": 65,
+          "fn": 108
+        },
+        "precision": 0.598765,
+        "recall": 0.473171,
+        "specificity": 0.682927,
+        "false_positive_rate": 0.317073,
+        "accuracy": 0.578049,
+        "balanced_accuracy": 0.578049,
+        "f1": 0.52861,
+        "roc_auc": 0.630208,
+        "expected_calibration_error": 0.077419
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 81,
+          "tn": 137,
+          "fp": 68,
+          "fn": 124
+        },
+        "precision": 0.543624,
+        "recall": 0.395122,
+        "specificity": 0.668293,
+        "false_positive_rate": 0.331707,
+        "accuracy": 0.531707,
+        "balanced_accuracy": 0.531707,
+        "f1": 0.457627,
+        "roc_auc": 0.54796,
+        "expected_calibration_error": 0.054131
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.5268780000000001,
+          0.5700037
+        ],
+        "balanced_accuracy": [
+          0.507317,
+          0.556158975
+        ],
+        "recall": [
+          0.33646305000000004,
+          0.46353695000000006
+        ],
+        "false_positive_rate": [
+          0.27304905,
+          0.404878
+        ],
+        "expected_calibration_error": [
+          0.03948815000000001,
+          0.08073972500000001
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": -0.08224799999999999,
+        "balanced_accuracy": -0.046341999999999994,
+        "recall": -0.07804900000000004,
+        "false_positive_rate": 0.01463399999999998,
+        "expected_calibration_error": -0.023288000000000003
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.1097465794170136,
+          -0.05699107674003573
+        ],
+        "balanced_accuracy": [
+          -0.07810975609756093,
+          -0.012134146341463415
+        ],
+        "recall": [
+          -0.1610975609756098,
+          0.004878048780487809
+        ],
+        "false_positive_rate": [
+          -0.06841463414634147,
+          0.0976829268292683
+        ],
+        "expected_calibration_error": [
+          -0.06563729346970891,
+          0.004647915027537378
+        ]
+      }
+    },
+    {
+      "training_source_id": "source-6a23b26e6f51f8cc",
+      "validation_source_id": "source-d2a1dfbee30c5891",
+      "training_excluded_target": true,
+      "method_family": "UERD",
+      "original_lineages": 205,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 116,
+          "tn": 140,
+          "fp": 65,
+          "fn": 89
+        },
+        "precision": 0.640884,
+        "recall": 0.565854,
+        "specificity": 0.682927,
+        "false_positive_rate": 0.317073,
+        "accuracy": 0.62439,
+        "balanced_accuracy": 0.62439,
+        "f1": 0.601036,
+        "roc_auc": 0.698251,
+        "expected_calibration_error": 0.05295
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 81,
+          "tn": 137,
+          "fp": 68,
+          "fn": 124
+        },
+        "precision": 0.543624,
+        "recall": 0.395122,
+        "specificity": 0.668293,
+        "false_positive_rate": 0.331707,
+        "accuracy": 0.531707,
+        "balanced_accuracy": 0.531707,
+        "f1": 0.457627,
+        "roc_auc": 0.554182,
+        "expected_calibration_error": 0.057671
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.53581725,
+          0.5721917
+        ],
+        "balanced_accuracy": [
+          0.509695025,
+          0.553659
+        ],
+        "recall": [
+          0.326829,
+          0.46353695000000006
+        ],
+        "false_positive_rate": [
+          0.27304905,
+          0.404878
+        ],
+        "expected_calibration_error": [
+          0.0386864,
+          0.0846026
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": -0.144069,
+        "balanced_accuracy": -0.09268299999999996,
+        "recall": -0.170732,
+        "false_positive_rate": 0.01463399999999998,
+        "expected_calibration_error": 0.004721000000000003
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.18133105294467589,
+          -0.11068114217727536
+        ],
+        "balanced_accuracy": [
+          -0.12926829268292694,
+          -0.05353658536585368
+        ],
+        "recall": [
+          -0.25878048780487806,
+          -0.08280487804878048
+        ],
+        "false_positive_rate": [
+          -0.06841463414634147,
+          0.0976829268292683
+        ],
+        "expected_calibration_error": [
+          -0.04420535011801731,
+          0.028752950432730125
+        ]
+      }
+    },
+    {
+      "training_source_id": "source-d2a1dfbee30c5891",
+      "validation_source_id": "source-6a23b26e6f51f8cc",
+      "training_excluded_target": true,
+      "method_family": "JUNIWARD",
+      "original_lineages": 25,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 19,
+          "tn": 35,
+          "fp": 15,
+          "fn": 31
+        },
+        "precision": 0.558824,
+        "recall": 0.38,
+        "specificity": 0.7,
+        "false_positive_rate": 0.3,
+        "accuracy": 0.54,
+        "balanced_accuracy": 0.54,
+        "f1": 0.452381,
+        "roc_auc": 0.524,
+        "expected_calibration_error": 0.107097
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 21,
+          "tn": 30,
+          "fp": 20,
+          "fn": 29
+        },
+        "precision": 0.512195,
+        "recall": 0.42,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.51,
+        "balanced_accuracy": 0.51,
+        "f1": 0.461538,
+        "roc_auc": 0.5338,
+        "expected_calibration_error": 0.161613
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.504775,
+          0.577005
+        ],
+        "balanced_accuracy": [
+          0.47975,
+          0.54
+        ],
+        "recall": [
+          0.28,
+          0.54
+        ],
+        "false_positive_rate": [
+          0.28,
+          0.54
+        ],
+        "expected_calibration_error": [
+          0.113854875,
+          0.251943075
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": 0.009800000000000031,
+        "balanced_accuracy": -0.030000000000000027,
+        "recall": 0.03999999999999998,
+        "false_positive_rate": 0.10000000000000003,
+        "expected_calibration_error": 0.05451600000000001
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.027840000000000045,
+          0.058030000000000054
+        ],
+        "balanced_accuracy": [
+          -0.09999999999999998,
+          0.030000000000000027
+        ],
+        "recall": [
+          -0.040000000000000036,
+          0.14050000000000012
+        ],
+        "false_positive_rate": [
+          0.019999999999999962,
+          0.19999999999999998
+        ],
+        "expected_calibration_error": [
+          -0.039693548387096746,
+          0.13430645161290322
+        ]
+      }
+    },
+    {
+      "training_source_id": "source-d2a1dfbee30c5891",
+      "validation_source_id": "source-6a23b26e6f51f8cc",
+      "training_excluded_target": true,
+      "method_family": "UERD",
+      "original_lineages": 25,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 19,
+          "tn": 35,
+          "fp": 15,
+          "fn": 31
+        },
+        "precision": 0.558824,
+        "recall": 0.38,
+        "specificity": 0.7,
+        "false_positive_rate": 0.3,
+        "accuracy": 0.54,
+        "balanced_accuracy": 0.54,
+        "f1": 0.452381,
+        "roc_auc": 0.5594,
+        "expected_calibration_error": 0.100968
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 21,
+          "tn": 30,
+          "fp": 20,
+          "fn": 29
+        },
+        "precision": 0.512195,
+        "recall": 0.42,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.51,
+        "balanced_accuracy": 0.51,
+        "f1": 0.461538,
+        "roc_auc": 0.5222,
+        "expected_calibration_error": 0.132903
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.47035499999999997,
+          0.562855
+        ],
+        "balanced_accuracy": [
+          0.46,
+          0.5602500000000001
+        ],
+        "recall": [
+          0.3,
+          0.5805000000000001
+        ],
+        "false_positive_rate": [
+          0.28,
+          0.54
+        ],
+        "expected_calibration_error": [
+          0.100524025,
+          0.1993792
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": -0.03720000000000001,
+        "balanced_accuracy": -0.030000000000000027,
+        "recall": 0.03999999999999998,
+        "false_positive_rate": 0.10000000000000003,
+        "expected_calibration_error": 0.03193499999999999
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.07341500000000002,
+          -0.0035950000000000443
+        ],
+        "balanced_accuracy": [
+          -0.09999999999999998,
+          0.040000000000000036
+        ],
+        "recall": [
+          -0.08000000000000002,
+          0.18
+        ],
+        "false_positive_rate": [
+          0.019999999999999962,
+          0.19999999999999998
+        ],
+        "expected_calibration_error": [
+          -0.05104032258064513,
+          0.07850806451612909
+        ]
+      }
+    },
+    {
+      "training_source_id": "source-d2a1dfbee30c5891",
+      "validation_source_id": "source-d2a1dfbee30c5891",
+      "training_excluded_target": false,
+      "method_family": "JUNIWARD",
+      "original_lineages": 205,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 97,
+          "tn": 140,
+          "fp": 65,
+          "fn": 108
+        },
+        "precision": 0.598765,
+        "recall": 0.473171,
+        "specificity": 0.682927,
+        "false_positive_rate": 0.317073,
+        "accuracy": 0.578049,
+        "balanced_accuracy": 0.578049,
+        "f1": 0.52861,
+        "roc_auc": 0.630208,
+        "expected_calibration_error": 0.077419
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 98,
+          "tn": 146,
+          "fp": 59,
+          "fn": 107
+        },
+        "precision": 0.624204,
+        "recall": 0.478049,
+        "specificity": 0.712195,
+        "false_positive_rate": 0.287805,
+        "accuracy": 0.595122,
+        "balanced_accuracy": 0.595122,
+        "f1": 0.541436,
+        "roc_auc": 0.624485,
+        "expected_calibration_error": 0.071518
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.601753675,
+          0.6501482000000001
+        ],
+        "balanced_accuracy": [
+          0.570671025,
+          0.619512
+        ],
+        "recall": [
+          0.41451205,
+          0.5513419500000001
+        ],
+        "false_positive_rate": [
+          0.21939005,
+          0.35134195
+        ],
+        "expected_calibration_error": [
+          0.05379075,
+          0.11254312500000004
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": -0.005723000000000034,
+        "balanced_accuracy": 0.017073000000000005,
+        "recall": 0.0048779999999999935,
+        "false_positive_rate": -0.029268000000000016,
+        "expected_calibration_error": -0.0059010000000000035
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.022940214158239165,
+          0.010371505056514007
+        ],
+        "balanced_accuracy": [
+          -0.004878048780487812,
+          0.04146341463414627
+        ],
+        "recall": [
+          -0.04402439024390247,
+          0.06841463414634155
+        ],
+        "false_positive_rate": [
+          -0.07804878048780484,
+          0.0292682926829268
+        ],
+        "expected_calibration_error": [
+          -0.03582612116443745,
+          0.033001573564122776
+        ]
+      }
+    },
+    {
+      "training_source_id": "source-d2a1dfbee30c5891",
+      "validation_source_id": "source-d2a1dfbee30c5891",
+      "training_excluded_target": false,
+      "method_family": "UERD",
+      "original_lineages": 205,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 116,
+          "tn": 140,
+          "fp": 65,
+          "fn": 89
+        },
+        "precision": 0.640884,
+        "recall": 0.565854,
+        "specificity": 0.682927,
+        "false_positive_rate": 0.317073,
+        "accuracy": 0.62439,
+        "balanced_accuracy": 0.62439,
+        "f1": 0.601036,
+        "roc_auc": 0.698251,
+        "expected_calibration_error": 0.05295
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 119,
+          "tn": 146,
+          "fp": 59,
+          "fn": 86
+        },
+        "precision": 0.668539,
+        "recall": 0.580488,
+        "specificity": 0.712195,
+        "false_positive_rate": 0.287805,
+        "accuracy": 0.646341,
+        "balanced_accuracy": 0.646341,
+        "f1": 0.62141,
+        "roc_auc": 0.690553,
+        "expected_calibration_error": 0.067427
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.663725775,
+          0.72353885
+        ],
+        "balanced_accuracy": [
+          0.624329025,
+          0.67561
+        ],
+        "recall": [
+          0.5120730499999999,
+          0.648901975
+        ],
+        "false_positive_rate": [
+          0.21939005,
+          0.35134195
+        ],
+        "expected_calibration_error": [
+          0.0456212,
+          0.103822225
+        ]
+      },
+      "delta_new_minus_reference": {
+        "roc_auc": -0.007697999999999983,
+        "balanced_accuracy": 0.021951000000000054,
+        "recall": 0.014634000000000036,
+        "false_positive_rate": -0.029268000000000016,
+        "expected_calibration_error": 0.014477000000000004
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.022555026769779923,
+          0.006866448542534218
+        ],
+        "balanced_accuracy": [
+          -0.004878048780487809,
+          0.0464024390243903
+        ],
+        "recall": [
+          -0.04390243902439028,
+          0.07317073170731703
+        ],
+        "false_positive_rate": [
+          -0.07804878048780484,
+          0.0292682926829268
+        ],
+        "expected_calibration_error": [
+          -0.03306648308418567,
+          0.04329661683713612
+        ]
+      }
+    }
+  ],
+  "support_status": "experimental",
+  "deployed": false,
+  "calibrated": false,
+  "primary_detection_changed": false,
+  "qualification": "unavailable",
+  "scope": "Training-origin exclusion; reused inspected development validation, not blind or new-source qualification.",
+  "bootstrap": {
+    "resamples": 200,
+    "seed": 20261005,
+    "unit": "original lineage; correlated qualities together"
+  },
+  "seconds": 2.9060764749992813,
+  "reference_record_sha256": "eb7b69e97c8e43d7c46a6deeb29d04b82bfd9972f5cb61bffb1187fa09f8a9cc",
+  "artifact_sha256": {
+    "report.json": "b02abc611101704af10b1dfe618a324815f52ec19dc98696c6faaeba33ee3d78",
+    "source-6a23b26e6f51f8cc/model-card.json": "2565ef3e988299f5a03de583b2257d44f509f0212fcc17df8c6e759096508d4e",
+    "source-6a23b26e6f51f8cc/model.npz": "405c5488d537f9ed8699e1086e2d34a555e3ef6ac074aa709d9706e66f7d5d13",
+    "source-6a23b26e6f51f8cc/predictions.json": "11f3a2f1a262777e1222fa8650c3eff63b76f90a2d28045040f0d4fefc5428eb",
+    "source-d2a1dfbee30c5891/model-card.json": "96c41d914a455810aa362c9c6eb8eed03d1615c091721fc586acc408a04e3fbe",
+    "source-d2a1dfbee30c5891/model.npz": "d38cdb20cf0f4e6bd0d0184096d98eb18db76f61f9262650dd94822d57614b1d",
+    "source-d2a1dfbee30c5891/predictions.json": "df2ae2d45f802f58f6f68cc5d60bb5ee0fbefb62fa4ed717203c2bc2b15ff6ed"
+  },
+  "independent_audit": {
+    "passed": true,
+    "files_rehashed": 3750,
+    "metric_cells_checked": 8,
+    "scalar_vote_rows_per_model": 765,
+    "models_checked": 2,
+    "numeric_reload_batches": {
+      "source-6a23b26e6f51f8cc": {
+        "1": {
+          "passed": true,
+          "max_score_difference": 0,
+          "decisions_equal": true
+        },
+        "17": {
+          "passed": true,
+          "max_score_difference": 0,
+          "decisions_equal": true
+        },
+        "765": {
+          "passed": true,
+          "max_score_difference": 0,
+          "decisions_equal": true
+        }
+      },
+      "source-d2a1dfbee30c5891": {
+        "1": {
+          "passed": true,
+          "max_score_difference": 0,
+          "decisions_equal": true
+        },
+        "17": {
+          "passed": true,
+          "max_score_difference": 0,
+          "decisions_equal": true
+        },
+        "765": {
+          "passed": true,
+          "max_score_difference": 0,
+          "decisions_equal": true
+        }
+      }
+    },
+    "independent_jrm_algorithm_oracle": false
+  },
+  "source_records": {
+    "ALASKA2": {
+      "origin_manifest_sha256": "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+      "license": "Subject to Competition Rules; local research only; do not redistribute",
+      "source_url": "https://www.kaggle.com/c/alaska2-image-steganalysis/data"
+    },
+    "BOSSbase-1.01": {
+      "origin_manifest_sha256": "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+      "license": "unspecified on download page; local research only; do not redistribute",
+      "source_url": "https://dde.binghamton.edu/download/ImageDB/BOSSbase_1.01.zip"
+    }
+  },
+  "hardware": {
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics",
+    "virtual_cpu_count": 8,
+    "environment": "Linux x86_64 VMware guest",
+    "extraction_workers": 4,
+    "native_threads_per_worker": 1
+  },
+  "versions": {
+    "sealwatch": "2024.12",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "jpeglib": "1.0.2",
+    "pandas": "3.0.6",
+    "h5py": "3.16.0",
+    "setuptools": "79.0.1"
+  },
+  "date": "2026-10-05",
+  "protocol_sha256": "a9a13f3706cdbdb9f508d60af37287898acec93ee4d0c02ab09ce7f30f51c997",
+  "preregistered_implementation_protocol_commit": "f8a4660",
+  "numeric_gate_status": "failed in all 8 cells",
+  "source_id_map": {
+    "source-6a23b26e6f51f8cc": "BOSSbase-derived local JPEG simulations",
+    "source-d2a1dfbee30c5891": "ALASKA2 development"
+  },
+  "verification": {
+    "python": "3.11.14",
+    "tests": 779,
+    "total_coverage_percent": 94.08,
+    "jrm_services_statement_coverage": {
+      "statements": 255,
+      "misses": 0
+    },
+    "ruff": "passed",
+    "mypy_application_files": 94,
+    "git_diff_check": "passed",
+    "wheel_sdist": "passed; opt-in upstream dependency; no weights/corpus bundled",
+    "unverified": [
+      "Python 3.12-3.14",
+      "fresh full Docker E2E"
+    ]
+  },
+  "limitations": [
+    "Reused inspected development validation; not blind or untouched-source qualification.",
+    "Unequal training sizes: 789 ALASKA covers vs 206 BOSS quality variants / 103 original scenes; no causal attribution to source identity.",
+    "BOSS validation has 25 original scenes / 50 correlated quality variants; simulated stegos, not payload recovery.",
+    "Camera/device/app and ALASKA quality/payload metadata unknown; JMiPOD excluded.",
+    "Upstream research/non-profit terms apply; no code/weights/raw dataset redistribution.",
+    "Vote fractions are not calibrated probabilities; no ONNX/deployment or primary detector change."
+  ]
+}

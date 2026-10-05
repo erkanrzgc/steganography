@@ -3,6 +3,8 @@
 `JRM_TRANSFER_PROTOCOL.md` fixes two train-origin exclusion fits and all eight
 origin/family cells before scoring. Reused validation, unequal training sizes
 and unknown provenance prevent causal source/independent qualification claims.
+Completed `JRM_TRANSFER_RESULTS.md` retains all eight failed cells with paired
+intervals, source-scope provenance and independent scalar/metric replay audits.
 
 The upstream JRM/FLD comparison is preregistered in `JRM_REFERENCE_PROTOCOL.md`:
 fixed full paired development data, explicit source imbalance and changed

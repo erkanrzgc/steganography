@@ -176,6 +176,8 @@ regress. It is research-only, not a deployed CNN or a global accuracy claim.
 The optional [JRM + FLD reference](docs/JRM_REFERENCE_RESULTS.md) raises ALASKA/
 UERD AUC to .698 and lowers FPR to 31.71%, but JUNIWARD recall regresses and
 BOSS remains weak. All cells fail detection targets; research-only, not deployed.
+The [two-way training-source exclusion test](docs/JRM_TRANSFER_RESULTS.md)
+finds near-chance cross-origin AUC (.52–.55); source generalization remains unproven.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

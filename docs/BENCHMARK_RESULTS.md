@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+The [two-way JRM training-source exclusion diagnostic](JRM_TRANSFER_RESULTS.md)
+finds ALASKA → BOSS AUC .534/.522 and BOSS → ALASKA .548/.554. All eight
+cells, including within-origin controls, fail. Source transfer remains weak;
+inspected development data are not blind/untouched-source qualification.
+
 The optional [JRM + FLD reference](JRM_REFERENCE_RESULTS.md) improves ALASKA/
 UERD AUC .603 → .698 and FPR 38.54% → 31.71%. JUNIWARD recall falls to
 47.32%; BOSS ECE worsens and detection fails in all measurable cells. Numeric

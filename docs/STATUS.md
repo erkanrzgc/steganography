@@ -10,6 +10,8 @@ been delivered or validated by this slice.
   diagnostic through the existing research CLI. Cache/split identities and both
   complete families validated before fitting; protocol in `JRM_TRANSFER_PROTOCOL.md`.
   Legacy all-source cards remain compatible; no deployed detector change.
+  Completed `JRM_TRANSFER_RESULTS.md`: all eight cells fail, cross-origin AUC
+  .52–.55; exact independent scalar votes for both models and all metric cells.
 
 - Optional pinned sealwatch JRM/FLD research reference, bounded framed workers,
   separate checksum-bound float32 caches and immutable numeric inference without
@@ -115,6 +117,12 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Latest source-transfer slice: Python 3.11, 779 tests, 94.08% total coverage,
+  JRM services 255/255 statements covered. Ruff, mypy (94 files), diff checks
+  and fresh wheel/sdist build pass. Corpus rehashed; both 765-row scalar vote
+  audits exact, numeric batches 1/17/765 exact. Other Python versions/full Docker
+  unverified. Earlier test counts below remain historical slice evidence.
 
 - Latest JRM slice: Python 3.11, 757 tests, total coverage 94.03%; new reference
   services 289/290 statements covered (99.66%). Ruff, mypy (93 application files),

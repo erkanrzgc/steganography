@@ -3,6 +3,8 @@
 Before raw-residual learning, `JRM_TRANSFER_PROTOCOL.md` freezes a two-way
 training-source exclusion diagnostic on existing bound caches. This measures
 transfer versus within-source controls, not new untouched-source qualification.
+Completed `JRM_TRANSFER_RESULTS.md`: cross-origin AUC .52–.55, all eight cells
+fail; source-exclusion controls must accompany the next raw-residual experiment.
 
 Completed implementation reference: fixed optional JRM + FLD protocol
 in `JRM_REFERENCE_PROTOCOL.md`, all original files/splits, numeric-only caches

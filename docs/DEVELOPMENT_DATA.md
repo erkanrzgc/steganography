@@ -1,5 +1,10 @@
 # Preparing the next detector experiment
 
+Completed `JRM_TRANSFER_RESULTS.md` excludes each origin from fitting in turn:
+cross-origin AUC .52–.55, no qualified detection. Training sizes differ and
+validation was already inspected. Preserve this diagnostic when preregistering
+raw-residual learning; untouched licensed source acquisition remains separate.
+
 `JRM_REFERENCE_PROTOCOL.md` specifies the completed optional local research reference
 on exactly the existing JPEG corpus. No new acquisition/held-out scenes/model
 installation; pin component versions and preserve DDE research/non-profit terms.

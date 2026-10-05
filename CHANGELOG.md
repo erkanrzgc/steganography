@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Publish independently audited two-way JRM training-source exclusion: weak
+  cross-origin AUC .52–.55, all eight detection cells fail. Keep within-origin
+  controls, paired uncertainty and source-scope hashes; no detector deployment.
+
 - Add explicit JRM train-origin exclusion, manifest-bound additive scope cards
   and shared two-way source-transfer diagnostic. Preserve legacy cards and
   detector behavior; freeze the eight-cell comparison before real cached fitting.
