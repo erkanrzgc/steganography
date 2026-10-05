@@ -107,7 +107,12 @@ def test_residual_worker_rejects_malformed_output_and_deadlines(monkeypatch):
         jr.jpeg_residual_features(data.getvalue())
 
 
-def test_residual_training_requires_multi_origin_and_exports_contract(multi_source, tmp_path):  # noqa: F811
+@pytest.mark.parametrize("architecture", ["linear-v1", "residual-mlp64-v1"])
+def test_residual_training_requires_multi_origin_and_exports_contract(
+    multi_source,  # noqa: F811
+    tmp_path,
+    architecture,
+):  # noqa: F811
     torch = pytest.importorskip("torch")
     pytest.importorskip("onnx")
     config, _ = multi_source
@@ -123,12 +128,28 @@ def test_residual_training_requires_multi_origin_and_exports_contract(multi_sour
     with pytest.raises(ResearchManifestError, match="explicit multi-source"):
         training_weights({k: v for k, v in config.items() if k != "sample_weighting"}, provenance)
     settings = tmp_path / "train.json"
+    config.update(architecture=architecture, weight_decay=0.001, inference_arithmetic="float64")
     settings.write_text(json.dumps(config))
     checkpoint = tmp_path / "residual.pt"
     train_model(settings, checkpoint)
-    assert (
-        torch.load(checkpoint, weights_only=True)["domain"] == "jpeg-dct-residual-parity-linear-v1"
+    assert torch.load(checkpoint, weights_only=True)["domain"] == (
+        "jpeg-dct-residual-parity-linear-v1"
+        if architecture == "linear-v1"
+        else "jpeg-dct-residual-parity-mlp64-v1"
     )
     card = export_onnx(checkpoint, tmp_path / "residual.onnx")
     assert card["preprocessing"]["feature_version"] == jr.FEATURE_VERSION
     assert card["training_provenance"]["source_balance"]["declared_sources"] == 2
+    replay = tmp_path / "replay.pt"
+    train_model(settings, replay)
+    first = torch.load(checkpoint, weights_only=True)
+    second = torch.load(replay, weights_only=True)
+    assert first["training_provenance"] == second["training_provenance"]
+    assert all(
+        torch.equal(value, second["state_dict"][key]) for key, value in first["state_dict"].items()
+    )
+    config["standardize"] = False
+    if architecture != "linear-v1":
+        settings.write_text(json.dumps(config))
+        with pytest.raises(ResearchManifestError, match="standardization"):
+            train_model(settings, tmp_path / "invalid.pt")

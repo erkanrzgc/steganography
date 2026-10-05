@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+The nonlinear residual-feature comparison is fixed in
+`JPEG_NONLINEAR_PROTOCOL.md`: same cached rows, one preregistered run, no
+threshold selection or independent-source claim. Architecture interactions
+alone do not qualify context awareness, calibration or detection support.
+
 The fixed same-file JPEG residual/parity comparison is preregistered in
 `JPEG_RESIDUAL_PROTOCOL.md`; retained DC/neighbor information is experimental,
 not an independent-source or end-to-end payload recovery claim.

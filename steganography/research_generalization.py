@@ -11,8 +11,8 @@ from typing import Any
 from steganography.research import ResearchManifestError
 from steganography.research_features import (
     MAX_ROWS,
-    MODEL_DOMAINS,
     feature_contract,
+    model_domain,
     read_document,
     selected_samples,
 )
@@ -80,7 +80,7 @@ def diagnose_validation(
         raise ResearchManifestError("diagnostic feature contract missing")
     names, _ = feature_contract(version)
     if (
-        card.get("domain") != MODEL_DOMAINS[version]
+        card.get("domain") != model_domain(version, preprocessing.get("architecture", "linear-v1"))
         or provenance.get("manifest_sha256") != manifest_hash
         or provenance.get("split") != "validation"
         or provenance.get("samples") != len(validation)

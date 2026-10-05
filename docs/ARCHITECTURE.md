@@ -1,5 +1,11 @@
 # Architecture
 
+`core/feature_model.py` reconstructs fixed bounded linear and opt-in residual
+MLP64 feature networks. Research contracts bind architecture to domain across
+training, prediction, export and diagnostics; unknown combinations fail closed.
+Legacy checkpoints default to linear. This is not raw-residual CNN inference;
+see `JPEG_NONLINEAR_PROTOCOL.md`.
+
 `core/jpeg_residual.py` adds a versioned research-only block-DCT residual/parity
 descriptor, retaining the existing measured context prefix. It shares the fixed
 allowlisted native worker and original resource limits; old feature contracts

@@ -12,8 +12,8 @@ import numpy as np
 from core.feature_model import feature_model
 from steganography.research import ResearchManifestError, export_onnx
 from steganography.research_features import (
-    MODEL_DOMAINS,
     feature_inputs,
+    model_domain,
     read_document,
     read_feature_checkpoint,
 )
@@ -50,7 +50,11 @@ def audit_export(config_path: Path, source: Path, out: Path, *, source_sha256: s
     x, _, provenance = feature_inputs(config, split="validation")
     original = read_feature_checkpoint(source, expected_sha256=source_sha256)
     if (
-        original["domain"] != MODEL_DOMAINS[provenance["feature_version"]]
+        original["domain"]
+        != model_domain(
+            provenance["feature_version"],
+            original["preprocessing"].get("architecture", "linear-v1"),
+        )
         or original["preprocessing"]["feature_version"] != provenance["feature_version"]
         or original["preprocessing"]["feature_names"] != provenance["feature_names"]
         or original["training_provenance"]["manifest_sha256"] != provenance["manifest_sha256"]

@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Explicit research-only residual-feature MLP64 with a linear skip, bounded
+  architecture/domain validation, regularization provenance and shared export/
+  inference. Legacy linear models remain compatible. The fixed comparison is
+  preregistered in `JPEG_NONLINEAR_PROTOCOL.md`; not a deployed CNN.
+
 - Research-only 2,066-feature JPEG block-DCT residual/parity contract and shared
   bounded worker dispatch. Two-origin weighting and old contracts preserved;
   fixed comparison is in `JPEG_RESIDUAL_PROTOCOL.md`. The actual 3,750-file run

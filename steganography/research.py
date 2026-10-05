@@ -360,7 +360,8 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         import torch
     except ImportError as exc:
         raise RuntimeError("research training requires the 'research' extra") from exc
-    from steganography.research_features import read_document, training_inputs
+    from core.feature_model import LINEAR, feature_network
+    from steganography.research_features import model_domain, read_document, training_inputs
     from steganography.research_weighting import training_weights
 
     config, _ = read_document(Path(config_path))
@@ -391,6 +392,17 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     class_balanced = config.get("class_balanced", jpeg_model or residual_model)
     if type(standardize) is not bool or type(class_balanced) is not bool:
         raise ResearchManifestError("standardize/class_balanced must be booleans")
+    architecture = config.get("architecture", LINEAR)
+    domain = model_domain(provenance["feature_version"], architecture)
+    if architecture != LINEAR and not standardize:
+        raise ResearchManifestError("nonlinear features require train-only standardization")
+    weight_decay = config.get("weight_decay", 0.0)
+    if (
+        type(weight_decay) not in (int, float)
+        or not math.isfinite(weight_decay)
+        or not 0 <= weight_decay <= 1
+    ):
+        raise ResearchManifestError("weight decay must be finite and in [0, 1]")
     normalization = None
     if standardize:
         mean = tensor.mean(dim=0)
@@ -401,8 +413,8 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
             "mean": mean.tolist(),
             "scale": scale.tolist(),
         }
-    model = torch.nn.Linear(tensor.shape[1], 1)
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    model = feature_network(int(tensor.shape[1]), architecture)
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
     weights = None if sample_weights is None else torch.from_numpy(sample_weights[:, None])
     negative_mass = float((labels == 0).sum())
     positive_mass = float((labels == 1).sum())
@@ -424,6 +436,8 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "class_balanced": class_balanced,
         "standardize": standardize,
         "inference_arithmetic": arithmetic,
+        "architecture": architecture,
+        "weight_decay": weight_decay,
     }
     if sample_weights is not None:
         recipe_metadata = {
@@ -465,22 +479,13 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "state_dict": model.state_dict(),
         "input_shape": list(features.shape[1:]),
         "features": int(tensor.shape[1]),
-        "domain": "jpeg-dct-residual-parity-linear-v1"
-        if provenance["feature_version"] == "jpeg-dct-residual-parity-v1"
-        else "jpeg-context-summary-linear-v1"
-        if provenance["feature_version"] == "jpeg-context-summary-v1"
-        else "jpeg-dct-summary-linear-v1"
-        if jpeg_model
-        else "spatial-parity-residual-linear-v1"
-        if provenance["feature_version"] == "spatial-parity-residual-v1"
-        else "spatial-cooccurrence-linear-v1"
-        if residual_model
-        else "spatial-summary-linear-v1",
+        "domain": domain,
         "preprocessing": {
             "feature_version": provenance["feature_version"],
             "feature_names": provenance["feature_names"],
             "normalization": normalization,
             "inference_arithmetic": arithmetic,
+            "architecture": architecture,
         },
         "training_provenance": provenance,
     }

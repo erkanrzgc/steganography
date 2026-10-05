@@ -15,7 +15,7 @@ from core import jpeg_context, jpeg_residual
 from core import jpeg_features as jpeg
 from core import spatial_cooccurrence as cooccurrence
 from core import spatial_parity as parity
-from core.feature_model import feature_model
+from core.feature_model import LINEAR, RESIDUAL_MLP, feature_model
 from core.features import FEATURE_NAMES, FEATURE_VERSION, MAX_IMAGE_BYTES, spatial_features
 from steganography.research import ResearchManifestError, verify_dataset_manifest
 
@@ -29,6 +29,14 @@ MODEL_DOMAINS = {
     cooccurrence.FEATURE_VERSION: "spatial-cooccurrence-linear-v1",
     parity.FEATURE_VERSION: "spatial-parity-residual-linear-v1",
 }
+
+
+def model_domain(version: str, architecture: str = LINEAR) -> str:
+    if architecture == LINEAR:
+        return MODEL_DOMAINS[version]
+    if architecture == RESIDUAL_MLP and version == jpeg_residual.FEATURE_VERSION:
+        return "jpeg-dct-residual-parity-mlp64-v1"
+    raise ResearchManifestError("unsupported feature/architecture contract")
 
 
 def read_feature_checkpoint(path: Path, *, expected_sha256: str | None = None) -> dict[str, Any]:
@@ -64,6 +72,12 @@ def read_feature_checkpoint(path: Path, *, expected_sha256: str | None = None) -
         or not 1 <= checkpoint["features"] <= 4096
     ):
         raise ResearchManifestError("invalid checkpoint feature dimensions")
+    state = checkpoint.get("state_dict")
+    if not isinstance(state, dict) or not state or any(
+        not isinstance(value, torch.Tensor) or not bool(torch.isfinite(value).all())
+        for value in state.values()
+    ):
+        raise ResearchManifestError("nonfinite or invalid checkpoint parameters")
     return checkpoint
 
 
@@ -256,7 +270,9 @@ def predict_validation(
     config, _ = read_document(config_path)
     features, _, provenance = feature_inputs(config, split="validation")
     checkpoint = read_feature_checkpoint(checkpoint_path)
-    domain = MODEL_DOMAINS[provenance["feature_version"]]
+    domain = model_domain(
+        provenance["feature_version"], checkpoint["preprocessing"].get("architecture", LINEAR)
+    )
     if (
         checkpoint.get("domain") != domain
         or (required_domain is not None and domain != required_domain)

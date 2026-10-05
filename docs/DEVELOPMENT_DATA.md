@@ -1,5 +1,10 @@
 # Preparing the next detector experiment
 
+`JPEG_NONLINEAR_PROTOCOL.md` fixes the next comparison on existing bound
+residual-feature caches: one 64-unit nonlinear feature model with a linear skip.
+No data acquisition, new scenes or independent-source evidence are added;
+raw-residual CNN learning and untouched-source qualification remain open.
+
 `JPEG_RESIDUAL_RESULTS.md` now records the fixed same-file residual/parity
 follow-up. Prefix integrity and numerical export pass, detection does not;
 retain this failure when moving beyond coarse linear summaries. No acquisition,

@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added opt-in fixed residual-feature MLP64 with linear skip, architecture-bound
+  research domains, train-only normalization and explicit weight-decay
+  provenance. Legacy linear checkpoints and deployed detection unchanged.
+  Freeze nonlinear comparison protocol before actual training/scoring.
+
 - Published the independently audited same-file JPEG residual/parity experiment:
   FPR 50.24% → 46.34% on ALASKA and 48% → 40% on BOSS simulations, but several
   recall/ECE regressions and failed detection gates. All source/quality cells and
