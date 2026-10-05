@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added explicit controlled-lineage low-payload training weights, weighted
+  class balancing, persisted recipe provenance and a cached-vector comparison
+  runner. Defaults and deployed detection are unchanged; the experiment is
+  preregistered before training in `SPATIAL_WEIGHTING_PROTOCOL.md`.
+
 - Published audited parity/residual results: scattered-5% development AUC
   0.716801 → 0.906486 and same-cohort FPR 4.89% → 1.63%, but low-rate fixed-.5
   recall and ECE regress. All six cells stay visible; strict stable ONNX parity

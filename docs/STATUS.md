@@ -6,6 +6,10 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Explicit train-only controlled-lineage low-payload weighting and a
+  checksum-bound cached-vector comparison runner. The experiment is fixed in
+  `SPATIAL_WEIGHTING_PROTOCOL.md`; results are pending, with no deployment.
+
 - Shared analysis context with legacy analyzer compatibility; additional
   spatial-image, JPEG structure, GIF, WAV and text signals.
 - Recursive CTF service, bounded decoder/archive candidates, artifact hashes
@@ -65,15 +69,16 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 529 tests pass; total coverage 93.45%. PDF analyzer coverage is
+- Python 3.11: 545 tests pass; total coverage 93.52%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
-  deprecated ONNX export APIs (eighteen occurrences), not test failures.
+  deprecated ONNX export APIs (twenty occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is
   96.60%; shared feature/checkpoint code is 99.38%, reconstruction is 100%,
   precision audit is 96.39% and operating-point service is 97.40%. Independent scalar filter and
   extraction oracles, source mutations, symlinks, overwrite and budget tests
   are included. New parity descriptor coverage is 100%, comparison runner
-  97.33%. Ruff, mypy (82 application files) and diff checks pass.
+  97.33%. New weighting helper coverage is 100%, cached comparison runner
+  98.55%. Ruff, mypy (84 application files) and diff checks pass.
 - The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,

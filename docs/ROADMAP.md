@@ -1,5 +1,9 @@
 # Roadmap and status
 
+Current research slice: explicit low-payload training weights and cached-vector
+comparison, preregistered in `SPATIAL_WEIGHTING_PROTOCOL.md`. No deployed
+detector changes or newly qualified methods are implied by this experiment.
+
 Synthetic corpus results are smoke/regression evidence only. They are not a
 real-world accuracy claim. A cell is `supported` only after the gates in
 `BENCHMARK_PROTOCOL.md` pass; otherwise it is `experimental` or `unsupported`.

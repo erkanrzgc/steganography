@@ -361,9 +361,11 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     except ImportError as exc:
         raise RuntimeError("research training requires the 'research' extra") from exc
     from steganography.research_features import read_document, training_inputs
+    from steganography.research_weighting import training_weights
 
     config, _ = read_document(Path(config_path))
     features, labels, provenance = training_inputs(config)
+    sample_weights = training_weights(config, provenance)
     destination = Path(out)
     if destination.exists() or any(p.is_symlink() for p in (destination, *destination.parents)):
         raise FileExistsError("checkpoint output already exists or uses a symlink")
@@ -397,10 +399,15 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         }
     model = torch.nn.Linear(tensor.shape[1], 1)
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    weights = None if sample_weights is None else torch.from_numpy(sample_weights[:, None])
+    negative_mass = float((labels == 0).sum())
+    positive_mass = float((labels == 1).sum())
+    if sample_weights is not None:
+        negative_mass = float(sample_weights[labels == 0].sum())
+        positive_mass = float(sample_weights[labels == 1].sum())
     loss_function = torch.nn.BCEWithLogitsLoss(
-        pos_weight=torch.tensor(float((labels == 0).sum() / (labels == 1).sum()))
-        if class_balanced
-        else None
+        weight=weights,
+        pos_weight=torch.tensor(negative_mass / positive_mass) if class_balanced else None,
     )
     epochs = int(config.get("epochs", 10))
     if not 1 <= epochs <= 100_000:
@@ -414,6 +421,17 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "standardize": standardize,
         "inference_arithmetic": arithmetic,
     }
+    if sample_weights is not None:
+        provenance["training"]["sample_weighting"] = {
+            "recipe": config["sample_weighting"],
+            "cover_weight": 1.0,
+            "stego_5_percent_weight": 4.0,
+            "other_stego_weight": 1.0,
+            "negative_mass": negative_mass,
+            "positive_mass": positive_mass,
+            "positive_class_weight": negative_mass / positive_mass if class_balanced else 1.0,
+            "reduction": "mean-over-rows",
+        }
     loss = 0.0
     for _epoch in range(epochs):
         optimizer.zero_grad()

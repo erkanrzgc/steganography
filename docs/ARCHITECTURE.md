@@ -1,5 +1,11 @@
 # Architecture
 
+Research-only low-payload weighting is an explicit versioned training recipe
+in `research_weighting.py`; it accepts complete controlled training lineages,
+not validation-derived weights. Weighted class masses and reduction semantics
+are persisted in checkpoint provenance. `research_weighted_comparison.py`
+reuses checksum-bound parity vectors; deployed shared analysis is unchanged.
+
 `core/spatial_parity.py` extends the shared spatial histogram descriptor with
 joint center-bit/neighbor-residual statistics. Its new version declares 1e-8
 feature quantization; old feature versions are unchanged. The explicit

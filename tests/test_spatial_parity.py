@@ -102,6 +102,73 @@ def test_comparison_end_to_end_and_reference_integrity(development, tmp_path, mo
     np.testing.assert_allclose(
         saved["preprocessing"]["normalization"]["mean"], x.mean(axis=0), atol=1e-7
     )
+    from steganography import research_weighted_comparison as rw
+
+    weighted = tmp_path / "weighted"
+    weighted_kwargs = {
+        "reference_sha256": hashlib.sha256((out / "report.json").read_bytes()).hexdigest()
+    }
+    weighted_result = rw.run_comparison(out, weighted, **weighted_kwargs)
+    assert weighted_result["onnx_parity"]["passed"] and not weighted_result["deployed"]
+    assert len(weighted_result["by_method_rate"]) == 6
+    assert str(tmp_path) not in json.dumps(weighted_result)
+    with pytest.raises(FileExistsError):
+        rw.run_comparison(out, weighted, **weighted_kwargs)
+    with pytest.raises(ResearchManifestError, match="report checksum"):
+        rw.run_comparison(out, tmp_path / "bad-weighted", reference_sha256="0" * 64)
+    original_read = rw.read_document
+    for target, mutation, message in (
+        ("predictions.json", lambda d: d["predictions"][0].update(score=2), "predictions checksum"),
+        ("report.json", lambda d: d.update(manifest_sha256="0" * 64), "contract"),
+    ):
+        with monkeypatch.context() as patch:
+
+            def altered_read(path, target=target, mutation=mutation):
+                document, digest = original_read(path)
+                if path.name == target:
+                    mutation(document)
+                    if target == "predictions.json":
+                        digest = "0" * 64
+                return document, digest
+
+            patch.setattr(rw, "read_document", altered_read)
+            with pytest.raises(ResearchManifestError, match=message):
+                rw.run_comparison(out, tmp_path / "bad-weighted", **weighted_kwargs)
+    with monkeypatch.context() as patch:
+
+        def bad_old_identity(path):
+            document, digest = original_read(path)
+            if path.name == "predictions.json":
+                document["predictions"][0]["lineage"] = "wrong"
+            return document, digest
+
+        patch.setattr(rw, "read_document", bad_old_identity)
+        with pytest.raises(ResearchManifestError, match="reference validation identity"):
+            rw.run_comparison(out, tmp_path / "bad-weighted", **weighted_kwargs)
+    with monkeypatch.context() as patch:
+        original_weighted_predict = rw.predict_validation
+
+        def bad_new_identity(*args, **kwargs):
+            document = original_weighted_predict(*args, **kwargs)
+            document["predictions"][0]["lineage"] = "wrong"
+            return document
+
+        patch.setattr(rw, "predict_validation", bad_new_identity)
+        with pytest.raises(ResearchManifestError, match="new validation identity"):
+            rw.run_comparison(out, tmp_path / "bad-weighted-new", **weighted_kwargs)
+    with monkeypatch.context() as patch:
+        patch.setattr(rw, "run_comparison", lambda *a, **k: weighted_result)
+        patch.setattr(
+            "sys.argv",
+            [
+                "weighted",
+                str(out),
+                str(weighted),
+                "--reference-sha256",
+                weighted_kwargs["reference_sha256"],
+            ],
+        )
+        rw.main()
     with pytest.raises(FileExistsError):
         rp.run_comparison(corpus, out, **kwargs)
     with monkeypatch.context() as patch:
