@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published CPU numerical repair audits: all three explicit precision derivatives
+  pass unchanged strict 1e-6 gates with original threshold decisions preserved.
+  Cover-only operating-point assessment changes 3/90 false alarms to 2/90 but
+  lowers low-rate recall; no calibration/deployment or cross-source claim.
+
 - Added preregistered development-only spatial operating-point selection:
   whole-lineage fitting/assessment roles, cover-only empirical FPR threshold,
   exact tie handling, and per-cell recall/false-alarm uncertainty. Scores are

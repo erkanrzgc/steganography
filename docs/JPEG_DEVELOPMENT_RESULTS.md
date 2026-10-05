@@ -92,3 +92,8 @@ python -m steganography.research_jpeg run-development \
 Keep raw images, feature matrices and checkpoints local pending their separate
 license/distribution review. A stronger feature/model experiment needs a new
 documented development decision, not another threshold on the inspected test.
+
+The subsequent [opt-in numerical repair](INFERENCE_PRECISION_RESULTS.md) passes
+the unchanged strict gate on all 820 validation rows for a derived checkpoint.
+Original weights/training data remain unchanged; this does not improve detection
+accuracy or overwrite the original failed export and published report.

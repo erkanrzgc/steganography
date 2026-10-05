@@ -37,7 +37,7 @@ been delivered or validated by this slice.
 - Separate ALASKA2 development import, bounded 968-feature JPEG extraction,
   class-balanced CPU training, train-only normalization, validation and ONNX
   export. The first fixed experiment completed, but is not deployed; see
-  `JPEG_DEVELOPMENT_RESULTS.md` for inadequate scores and export-parity limits.
+  `JPEG_DEVELOPMENT_RESULTS.md` for inadequate scores and the original export failure.
 - Explicit pinned FSDD acquisition: 3,000 real WAV covers, audited source/
   license evidence, SHA/CRC and PCM data. The preregistered 7,000-file baseline
   completed with failed native detection; see `WAV_RESULTS.md`. Public
@@ -47,21 +47,28 @@ been delivered or validated by this slice.
   (816 train / 184 validation), all independently rehashed/CRC/decode checked,
   with no reserved hash/member overlap. The fixed 7,000-file controlled PNG/BMP
   development comparison now completed: richer spatial features improve AUC
-  but low-rate scattered recall/FPR/calibration and strict ONNX parity still
-  fail. Neither model is deployed; see `SPATIAL_DEVELOPMENT_RESULTS.md`.
+  but low-rate scattered recall/FPR/calibration fail. The original export
+  failure remains recorded; derived stable inference now passes numerical
+  gates. Neither model is deployed; see `SPATIAL_DEVELOPMENT_RESULTS.md`.
+- Explicit numerical precision repair now passes for both spatial models and
+  the JPEG model at unchanged 1e-6 tolerance and unchanged decision outputs.
+  A separated-role threshold experiment reduces assessment false alarms by
+  one cover but worsens low-payload recall; it is not installed/calibrated.
+  See `INFERENCE_PRECISION_RESULTS.md` for numerical and statistical boundaries.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 515 tests pass; total coverage 93.30%. PDF analyzer coverage is
+- Python 3.11: 524 tests pass; total coverage 93.38%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
-  deprecated ONNX export APIs (ten occurrences), not test failures.
+  deprecated ONNX export APIs (twelve occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is
-  96.60%; shared feature/inference code is 100%. Independent scalar filter and
+  96.60%; shared feature/checkpoint code is 99.38%, reconstruction is 100%,
+  precision audit is 96.39% and operating-point service is 97.40%. Independent scalar filter and
   extraction oracles, source mutations, symlinks, overwrite and budget tests
-  are included. Ruff, mypy (78 application files) and diff checks pass.
+  are included. Ruff, mypy (80 application files) and diff checks pass.
 - The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,

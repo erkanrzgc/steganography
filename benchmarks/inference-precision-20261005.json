@@ -1,0 +1,155 @@
+{
+  "schema_version": "inference-precision-summary-v1",
+  "code_commit": "6dcf4fc",
+  "protocol_sha256": "9cd1dec3f3b49666f8d40f4b02fb5c8750acf9b86f70373fd15159123ce3223d",
+  "environment": {
+    "python": "3.11.14",
+    "numpy": "2.4.6",
+    "torch": "2.14.0+cpu",
+    "onnxruntime": "1.30.0",
+    "onnx_intra_threads": 1,
+    "onnx_inter_threads": 1
+  },
+  "models": {
+    "spatial-summary-v1": {
+      "schema_version": "inference-precision-audit-v1",
+      "split": "validation",
+      "samples": 1288,
+      "source_checkpoint_sha256": "aab4d8cf6e143a37b3079817e1349de456550e9cfe06048fb29f78bbc39d4072",
+      "derived_checkpoint_sha256": "cfe0bfddfb7938867ffdc2a232b66c08e284e5c7fd8de9d0a9385e82c3f52cf1",
+      "onnx_sha256": "8ed0de13db3b7fad89d787b87c1ede5b010a3bc1947319a373dca67269460dbe",
+      "provenance": {
+        "manifest_sha256": "707db7debce75b2a241e1ea3b1a5e3cb9b89c287d7396f95abad5c3364e5eda7",
+        "features_sha256": "9c1ba65475c0a76231495b6993e538075924405e5c5dce58797001c1eec0efe3",
+        "feature_version": "spatial-summary-v1",
+        "split": "validation",
+        "samples": 1288,
+        "calibrated": false,
+        "feature_count": 12
+      },
+      "absolute_tolerance": 0.000001,
+      "relative_tolerance": 0,
+      "batches": {
+        "1": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        },
+        "17": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        },
+        "1288": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        }
+      },
+      "original_probability_drift": 5.960464477539063e-8,
+      "original_threshold_decisions_equal": true,
+      "passed": true,
+      "deployed": false,
+      "retrained": false,
+      "cross_source_gate": "unavailable",
+      "audit_sha256": "b37b2f9b04664ca46145bbe9f1b9603a9e12684ecc875435839f203e866a7acd"
+    },
+    "spatial-cooccurrence-v1": {
+      "schema_version": "inference-precision-audit-v1",
+      "split": "validation",
+      "samples": 1288,
+      "source_checkpoint_sha256": "ed106f9886df36151795876fa49bf4008ea20a574d63d03a5f262bf65e146cc2",
+      "derived_checkpoint_sha256": "d7bc90f018f82e300b064d2454ff8cb90a775af6dfb9799aedffcd11112f6f75",
+      "onnx_sha256": "1e028af482ecfe7c8e06229a8c19d3cc1c9f6f23ffcbde819842a08abb98e7a3",
+      "provenance": {
+        "manifest_sha256": "707db7debce75b2a241e1ea3b1a5e3cb9b89c287d7396f95abad5c3364e5eda7",
+        "features_sha256": "450ccb8d61ebc2be4d86b89916bab1ef73ed7f04740eea6696427398d003131b",
+        "feature_version": "spatial-cooccurrence-v1",
+        "split": "validation",
+        "samples": 1288,
+        "calibrated": false,
+        "feature_count": 468
+      },
+      "absolute_tolerance": 0.000001,
+      "relative_tolerance": 0,
+      "batches": {
+        "1": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        },
+        "17": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        },
+        "1288": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        }
+      },
+      "original_probability_drift": 4.470348358154297e-7,
+      "original_threshold_decisions_equal": true,
+      "passed": true,
+      "deployed": false,
+      "retrained": false,
+      "cross_source_gate": "unavailable",
+      "audit_sha256": "af25a14d6e364cf552fe5d02def42121c82ce346ef4ac423a99d76039f01ba70"
+    },
+    "jpeg-dct-summary-v1": {
+      "schema_version": "inference-precision-audit-v1",
+      "split": "validation",
+      "samples": 820,
+      "source_checkpoint_sha256": "34c0ae528d02706f1b68546308007e2bc01d1981102f5c28d48b1ceb1ae0f8a5",
+      "derived_checkpoint_sha256": "006eeffcb7a305b59cb4ece516723a819114cdd0f63337d31ef63c1d4dc39a4d",
+      "onnx_sha256": "52545b889abd069bd18688b54b5a81dcbd7d5024fc0f7f5f4ff0b61ebfad0b8d",
+      "provenance": {
+        "manifest_sha256": "a3fd898fecbd50135f15a9f36c990d97e9d1779afb58076a35d8a39e1ce5a16d",
+        "features_sha256": "28492353142025628a260284d9d622f93eb6df16a2a69b308116ab1fb8a9375b",
+        "feature_version": "jpeg-dct-summary-v1",
+        "split": "validation",
+        "samples": 820,
+        "calibrated": false,
+        "feature_count": 968
+      },
+      "absolute_tolerance": 0.000001,
+      "relative_tolerance": 0,
+      "batches": {
+        "1": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        },
+        "17": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        },
+        "820": {
+          "max_logit_difference": 0,
+          "max_probability_difference": 0,
+          "threshold_decisions_equal": true,
+          "passed": true
+        }
+      },
+      "original_probability_drift": 7.748603820800781e-7,
+      "original_threshold_decisions_equal": true,
+      "passed": true,
+      "deployed": false,
+      "retrained": false,
+      "cross_source_gate": "unavailable",
+      "audit_sha256": "100008404373224c2670e67ba999d75ecbc636ee65f1a6ae5646b0e7d6aa9607"
+    }
+  },
+  "deployed": false,
+  "cross_source_gate": "unavailable"
+}

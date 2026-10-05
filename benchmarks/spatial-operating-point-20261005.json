@@ -1,0 +1,611 @@
+{
+  "schema_version": "spatial-operating-point-development-v1",
+  "provenance": {
+    "manifest_sha256": "707db7debce75b2a241e1ea3b1a5e3cb9b89c287d7396f95abad5c3364e5eda7",
+    "features_sha256": "450ccb8d61ebc2be4d86b89916bab1ef73ed7f04740eea6696427398d003131b",
+    "feature_version": "spatial-cooccurrence-v1",
+    "split": "validation",
+    "samples": 1288,
+    "calibrated": false,
+    "feature_count": 468
+  },
+  "checkpoint_sha256": "d7bc90f018f82e300b064d2454ff8cb90a775af6dfb9799aedffcd11112f6f75",
+  "threshold": 0.5585215699254572,
+  "threshold_scale": "probability",
+  "fit_cover_count": 94,
+  "fit_false_positives": 2,
+  "fit_allowed_false_positives": 2,
+  "assessment_lineages": 90,
+  "by_method_rate": {
+    "sequential-5": {
+      "before": {
+        "threshold": 0.5,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 62,
+          "tn": 87,
+          "fp": 3,
+          "fn": 28
+        },
+        "precision": 0.953846,
+        "recall": 0.688889,
+        "specificity": 0.966667,
+        "false_positive_rate": 0.033333,
+        "accuracy": 0.827778,
+        "balanced_accuracy": 0.827778,
+        "f1": 0.8,
+        "roc_auc": 0.932346,
+        "expected_calibration_error": 0.152859
+      },
+      "after": {
+        "threshold": 0.5585215699254572,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 50,
+          "tn": 88,
+          "fp": 2,
+          "fn": 40
+        },
+        "precision": 0.961538,
+        "recall": 0.555556,
+        "specificity": 0.977778,
+        "false_positive_rate": 0.022222,
+        "accuracy": 0.766667,
+        "balanced_accuracy": 0.766667,
+        "f1": 0.704225,
+        "roc_auc": 0.932346,
+        "expected_calibration_error": 0.152859
+      },
+      "after_bootstrap_95_percent": {
+        "roc_auc": [
+          0.9033145,
+          0.9573087
+        ],
+        "balanced_accuracy": [
+          0.722222,
+          0.822222
+        ],
+        "recall": [
+          0.466667,
+          0.655556
+        ],
+        "false_positive_rate": [
+          0,
+          0.055556
+        ],
+        "expected_calibration_error": [
+          0.1313485,
+          0.201549475
+        ]
+      }
+    },
+    "sequential-20": {
+      "before": {
+        "threshold": 0.5,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 88,
+          "tn": 87,
+          "fp": 3,
+          "fn": 2
+        },
+        "precision": 0.967033,
+        "recall": 0.977778,
+        "specificity": 0.966667,
+        "false_positive_rate": 0.033333,
+        "accuracy": 0.972222,
+        "balanced_accuracy": 0.972222,
+        "f1": 0.972376,
+        "roc_auc": 0.997531,
+        "expected_calibration_error": 0.11766
+      },
+      "after": {
+        "threshold": 0.5585215699254572,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 87,
+          "tn": 88,
+          "fp": 2,
+          "fn": 3
+        },
+        "precision": 0.977528,
+        "recall": 0.966667,
+        "specificity": 0.977778,
+        "false_positive_rate": 0.022222,
+        "accuracy": 0.972222,
+        "balanced_accuracy": 0.972222,
+        "f1": 0.972067,
+        "roc_auc": 0.997531,
+        "expected_calibration_error": 0.11766
+      },
+      "after_bootstrap_95_percent": {
+        "roc_auc": [
+          0.9936762250000001,
+          1
+        ],
+        "balanced_accuracy": [
+          0.95,
+          0.994444
+        ],
+        "recall": [
+          0.933333,
+          1
+        ],
+        "false_positive_rate": [
+          0,
+          0.055556
+        ],
+        "expected_calibration_error": [
+          0.100052125,
+          0.140607125
+        ]
+      }
+    },
+    "sequential-40": {
+      "before": {
+        "threshold": 0.5,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 89,
+          "tn": 87,
+          "fp": 3,
+          "fn": 1
+        },
+        "precision": 0.967391,
+        "recall": 0.988889,
+        "specificity": 0.966667,
+        "false_positive_rate": 0.033333,
+        "accuracy": 0.977778,
+        "balanced_accuracy": 0.977778,
+        "f1": 0.978022,
+        "roc_auc": 0.998642,
+        "expected_calibration_error": 0.117607
+      },
+      "after": {
+        "threshold": 0.5585215699254572,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 88,
+          "tn": 88,
+          "fp": 2,
+          "fn": 2
+        },
+        "precision": 0.977778,
+        "recall": 0.977778,
+        "specificity": 0.977778,
+        "false_positive_rate": 0.022222,
+        "accuracy": 0.977778,
+        "balanced_accuracy": 0.977778,
+        "f1": 0.977778,
+        "roc_auc": 0.998642,
+        "expected_calibration_error": 0.117607
+      },
+      "after_bootstrap_95_percent": {
+        "roc_auc": [
+          0.995556,
+          1
+        ],
+        "balanced_accuracy": [
+          0.955556,
+          0.994444
+        ],
+        "recall": [
+          0.944444,
+          1
+        ],
+        "false_positive_rate": [
+          0,
+          0.055556
+        ],
+        "expected_calibration_error": [
+          0.10458845,
+          0.137902375
+        ]
+      }
+    },
+    "scattered-5": {
+      "before": {
+        "threshold": 0.5,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 15,
+          "tn": 87,
+          "fp": 3,
+          "fn": 75
+        },
+        "precision": 0.833333,
+        "recall": 0.166667,
+        "specificity": 0.966667,
+        "false_positive_rate": 0.033333,
+        "accuracy": 0.566667,
+        "balanced_accuracy": 0.566667,
+        "f1": 0.277778,
+        "roc_auc": 0.735309,
+        "expected_calibration_error": 0.210337
+      },
+      "after": {
+        "threshold": 0.5585215699254572,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 11,
+          "tn": 88,
+          "fp": 2,
+          "fn": 79
+        },
+        "precision": 0.846154,
+        "recall": 0.122222,
+        "specificity": 0.977778,
+        "false_positive_rate": 0.022222,
+        "accuracy": 0.55,
+        "balanced_accuracy": 0.55,
+        "f1": 0.213592,
+        "roc_auc": 0.735309,
+        "expected_calibration_error": 0.210337
+      },
+      "after_bootstrap_95_percent": {
+        "roc_auc": [
+          0.694922575,
+          0.7879257
+        ],
+        "balanced_accuracy": [
+          0.5276391,
+          0.5834719
+        ],
+        "recall": [
+          0.066667,
+          0.2
+        ],
+        "false_positive_rate": [
+          0,
+          0.055556
+        ],
+        "expected_calibration_error": [
+          0.1865777,
+          0.24181595
+        ]
+      }
+    },
+    "scattered-20": {
+      "before": {
+        "threshold": 0.5,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 69,
+          "tn": 87,
+          "fp": 3,
+          "fn": 21
+        },
+        "precision": 0.958333,
+        "recall": 0.766667,
+        "specificity": 0.966667,
+        "false_positive_rate": 0.033333,
+        "accuracy": 0.866667,
+        "balanced_accuracy": 0.866667,
+        "f1": 0.851852,
+        "roc_auc": 0.966049,
+        "expected_calibration_error": 0.161393
+      },
+      "after": {
+        "threshold": 0.5585215699254572,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 62,
+          "tn": 88,
+          "fp": 2,
+          "fn": 28
+        },
+        "precision": 0.96875,
+        "recall": 0.688889,
+        "specificity": 0.977778,
+        "false_positive_rate": 0.022222,
+        "accuracy": 0.833333,
+        "balanced_accuracy": 0.833333,
+        "f1": 0.805195,
+        "roc_auc": 0.966049,
+        "expected_calibration_error": 0.161393
+      },
+      "after_bootstrap_95_percent": {
+        "roc_auc": [
+          0.94504965,
+          0.983978775
+        ],
+        "balanced_accuracy": [
+          0.788889,
+          0.8834719000000001
+        ],
+        "recall": [
+          0.6108332249999999,
+          0.778055775
+        ],
+        "false_positive_rate": [
+          0,
+          0.055556
+        ],
+        "expected_calibration_error": [
+          0.12128765,
+          0.199451975
+        ]
+      }
+    },
+    "scattered-40": {
+      "before": {
+        "threshold": 0.5,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 86,
+          "tn": 87,
+          "fp": 3,
+          "fn": 4
+        },
+        "precision": 0.966292,
+        "recall": 0.955556,
+        "specificity": 0.966667,
+        "false_positive_rate": 0.033333,
+        "accuracy": 0.961111,
+        "balanced_accuracy": 0.961111,
+        "f1": 0.960894,
+        "roc_auc": 0.994321,
+        "expected_calibration_error": 0.143083
+      },
+      "after": {
+        "threshold": 0.5585215699254572,
+        "samples": 180,
+        "positives": 90,
+        "negatives": 90,
+        "confusion": {
+          "tp": 78,
+          "tn": 88,
+          "fp": 2,
+          "fn": 12
+        },
+        "precision": 0.975,
+        "recall": 0.866667,
+        "specificity": 0.977778,
+        "false_positive_rate": 0.022222,
+        "accuracy": 0.922222,
+        "balanced_accuracy": 0.922222,
+        "f1": 0.917647,
+        "roc_auc": 0.994321,
+        "expected_calibration_error": 0.143083
+      },
+      "after_bootstrap_95_percent": {
+        "roc_auc": [
+          0.9878917500000001,
+          0.998889
+        ],
+        "balanced_accuracy": [
+          0.883333,
+          0.955556
+        ],
+        "recall": [
+          0.788889,
+          0.922222
+        ],
+        "false_positive_rate": [
+          0,
+          0.055556
+        ],
+        "expected_calibration_error": [
+          0.1185191,
+          0.17621055
+        ]
+      }
+    }
+  },
+  "roles": {
+    "cdc84333e842106d2e5568235aa2c6d1dfe373b0f6fb84029c8004eed5fbe19f": "fit",
+    "ce1ff48215ce50d870c42272a607e490ebd40f02c308b00520959efe8db678ed": "fit",
+    "ce23586c973adb70c9002d2c7525f9f8e519d247aceb84d6598fa114dda0d863": "fit",
+    "ce81f4a2eacfb7d62a767d13026d9a538e92b268a86e130451b2c6ac1a63b553": "assessment",
+    "ce8d30979ed9e3bf0a4443388a19acc53b49b23e2deae8c053dd6cc26a1e507b": "fit",
+    "ce9ba2be80c732cd5fa0824d58db5c706a2e927cc910bfa303c6ea5ea5736eda": "assessment",
+    "cef88fbf2243b2e12439dc6bd4bbe7bff77723aee0597ca57cf5fbadd02a156d": "fit",
+    "cf1f9634c11a42a1f9018c6821a52e54b3fa7a98b72b949f1508ea7b89b324c5": "assessment",
+    "cf3edf021556a3ed50e48ca42b2d4e5bac7caf7c38bf0e4ab059a9169dcc36c1": "assessment",
+    "cf9e6b61d23140ffeb2fc7f0c90c702089539ea97c06cc81fb4de43bec33993d": "assessment",
+    "cfcae1c51f777c9880b015b1ec3189ce0c28695db960e165581b113b747dc8af": "assessment",
+    "d027f12a92f76d07d407aef48cc425fc86309bb5d6c7800044b636b1cf8fc987": "fit",
+    "d170589e9c84159dee1ed22f55438fd89ea2f99799bf93bf3cebb5c338063056": "fit",
+    "d1dca6f89e71c834895235bb2423b03fb860eb0791b27142057610cf50988bef": "fit",
+    "d1f57a881699cf8ea6836ba32df28a274e31285bf753181a946369096aa82bc9": "fit",
+    "d23225ffa169b9f1efb9fee37ca2d00be4865e033da64915d19920c45df8d256": "fit",
+    "d292d13f7cd4b5bfb09b867349c7e5e4b6da4000808a7aafec25b45ccf1e7b51": "fit",
+    "d293b83f5a8b3ce1d137924c922d0c27ef889fdb52f925394586362bd458db6b": "fit",
+    "d2be0fce2b295c4f786a6bbd84b5a3bf264a2e29f2d3096afa8be50d8f8abe18": "assessment",
+    "d303614eefcb99cf196f9ebc68d52a67f0007c747e121b730710eab9d7e4087f": "assessment",
+    "d346573038116c76eb885f1eff43ea26478724b692cc044b9108b3498ea40842": "assessment",
+    "d386e03c59793c700ed40c3fb540b4d9f1e2fc47fe10e498e456865521c98e9d": "fit",
+    "d3edc939a242e0080bedfdec00323816e15d7c41684dfdf11b1af9b19b08edf3": "fit",
+    "d3f522045f616f3c95c881452c84fe346fa52f2f3080e1afa176666772f743d7": "assessment",
+    "d4501739f652baa82284a6528ea5a914fc28bcf721b8af37c859f9966562b2d5": "fit",
+    "d454da259112a6270eaf10a7d654cfd4add27d92cea696e615fe1b850dc451a9": "assessment",
+    "d4550c0ef50b9490e6744edb881a19cf4ded2c0e65633db95780f432fbd3f830": "fit",
+    "d46ad013dab7af14538860f82afb09b9b464a0832f8bc01cd7417cde25752c15": "assessment",
+    "d4837a83a7826ab788e68c67e3990158601e1967263c95d5b4da3286ffc53f10": "assessment",
+    "d4f6b99c0328130e6ada342340e7db9dd1d899d3ce10e0d12c2c71c9ea00bef0": "fit",
+    "d518224652d735bc0aebeeb4660fcb35dfcb7e0f8bf05dcedea4b2bb40f5556c": "assessment",
+    "d5981301496b28fafaea2975df4db52493b32caab5fffe3c3053c5cae61df283": "assessment",
+    "d5beded827b050d0fda9ea90e29acb2c53c1a6d4c35ece7b347f4c7d526c590a": "fit",
+    "d5ccf468bdf90c71aa5af293b11d4d396811dc13a655ccc172af006c81fdb095": "assessment",
+    "d5de162f45a6d11702e2cd7c7a3abf10a7d88bcde81080eb8b715ed3c95a5297": "assessment",
+    "d5fa3a673e83fd70139d2782bf8abe3c408e88a90fba4d19cece4a348f9cfd67": "fit",
+    "d66ea56730430b879c4b0e5921ba4018aa1546d1eedac2d941dfffdeb9721d7c": "fit",
+    "d698430837c72642a2f52053173423c41084cfeb79f5c279355fc751e48776ba": "assessment",
+    "d6b877427db292697b10ec4e5f61b852162dec11a505f3a6e7eab51989cfbe22": "fit",
+    "d74b755cc6d8742af66e37226d72290b60c70471decf26d5cf0f6aa876279dfb": "fit",
+    "d753ef5816ad6ced36a7555d808970dc418fc8763bda11a9f7cb590e4c67ce12": "fit",
+    "d771b05db66b7f5a28e7632517bbc864aafaaae793a452a29f0a214fbbbace9a": "assessment",
+    "d7ca51b0a80868e6ecf3c8d42d3c02cee6a465b3e3d4e0b448221a41668fb0af": "fit",
+    "d7fa945aa7bdcd13cb42063c8299996fc5c23e2acc8a916e5e297ab7648a1b94": "fit",
+    "d82ec056a9b9b4c03a56b31a147dc901690c39a7226a8cb689ebb9735ab3d816": "fit",
+    "d876ba5ffc15528096f244bade21ea30f31a61829ce36ce3f30ebb03c6fc79ff": "fit",
+    "d87a185352843fb92fb355fd6c85ef90a2a72332995a9772c0a24208d42eb053": "assessment",
+    "d9821b76360eaf1a29efadd8ee38472f5334646a64b9ad40a7f8abe29e3fc4da": "fit",
+    "d9ae5903d760fa14a5279fa1df1449d9eb2dd2cf4e44c623f75f87cb0669f14b": "assessment",
+    "da3578022df346f8e87ab69017d9a4b73a310fd210f130d580832dd7d150eb15": "assessment",
+    "da410b5e6c142454fbaa71e3a8e569a6532f9b50140d01fc847f44c90ac8f78a": "assessment",
+    "da49b00fe14b82cd30281dcca697519b02aaf647745989bf2aeeda26fce0db66": "assessment",
+    "da4a39760fe16d8f5ce2f8f2e561ec2df275e5f3f382bebbf9817e90846bac20": "fit",
+    "da90422df426a16cdfdab836f9b6aab42e903e01900ee99c31e6f8a63beb79da": "fit",
+    "dad543f4d742d6a29e746f64a9e52275e7d4738a645574c8a2136f8f1a05ea40": "assessment",
+    "dba6e33cbec02e4cf010858306d42397c4f62d5c27e2baefe75d2d219d4e6e47": "fit",
+    "dbea87095aa0483e6a5648bc6074cd1437474bb742bb39ef9ef5399d703b6dc6": "fit",
+    "dc1e8cc27b67d5a5d582ac0e8cad991ed5f9e0fb0aab0e1325a7fd1062eb5f9c": "fit",
+    "dc8d31edf564458d253bf0cc09986ae4731f68459d793df1e142df96da5f1da0": "assessment",
+    "dc8e93a1754e3fcf6ee84623dfbfae937c5f536cfefb77c14710e49a34a17ddd": "fit",
+    "dd059a9f95f318ccfd9a4680cefc62fd00a61801e5068f32416bcf42a3a8b1dd": "fit",
+    "dd5cb3775395d16188a5073ae97a27b6170a2f39734e1f933b6db8fe0a285bb1": "assessment",
+    "dd72d1b9872b37945517362e70ea1bc36f0133cc1fd3376e0b56e5fc02a5784d": "fit",
+    "de0d08399df1a6f742d514fa264230814e93700d3551424e1cb34f3ec0db0f97": "assessment",
+    "de48116cc998d751c52343da5d6c3c60dfb7f9bcf92c17fe5fd85623b32065e2": "assessment",
+    "ded24382430287bc9f8f911f3cc362790352bb41c5dff003c50862b655715234": "fit",
+    "df19380901214968f8d7d938c5211adecfd1c553d723da3ee7d02f6bee11491b": "fit",
+    "df6b04d64822856065173420f8fb40343c6c455add6f02f24f2a5e4f36037f58": "fit",
+    "df756a13f5c97145aaf8183791ff2bdb45adabca8c7d6beb05627339d446b6c4": "fit",
+    "df7fbfc59f386fdf4dab2560e9cfd5482afc950d84a0b14543de2fda6ef34f36": "fit",
+    "dfcac80d1657333e75274bffc82e77d22440b8ba74937832b810d1d8409f5745": "fit",
+    "e049130c0f0836b98cba02dcf159952f6abfff751f9b65b19dda3a7ef2f4e308": "assessment",
+    "e050b106657f0a640591e79de0b87887cffa59855eca40270978cf3b12aba24c": "fit",
+    "e0fa32f1bf183f04275a929aa33e2a2132c258944a9103c82aadd64675e4a5a5": "fit",
+    "e1243def06113ba033ee5c758becea6ab0db1c62445d56cf71b72eb9c7f05416": "assessment",
+    "e12d019c8f6f4b08660c527329c496a5fcd36ca9eb8bd846e3c8c0cb05bbe8bb": "assessment",
+    "e15605b904a30d4a2c35f191721ed7cd33ec35c39e5bb4e0ebdd636b3cfe3bc7": "fit",
+    "e174920fbe9c7da918c2dcde22ce43a26e62350682b1fa4e7aa8b09f544508e8": "assessment",
+    "e1dba19fcef147927758f10b9ceac7ef20b48178a13e6a366fc5de8daffc22a9": "assessment",
+    "e26ac01540ef47c004a63520d26c60aa1032699c024e2761835d8712dfb9fd7c": "fit",
+    "e2e7223b10792ac33d32e5f4085573f0b11f4f38e2016f77eba19f6cd6a9ced4": "assessment",
+    "e2e9c048626dfc3f95021d731e0e95c4e45a352e0ac0aa57beeb9ccdffb296aa": "assessment",
+    "e328b4e72f848e7c55bafde393cdfbd09517de5186f3c3eca6827ba5da1ae47a": "assessment",
+    "e37e545c306809cf5e8bb17093e44fda623d46df052855a65a336e8774ec71c7": "assessment",
+    "e3980b26025f0562e9f61310ea4ed7f54aee67676d4fc7a681b3780f0ff70a87": "fit",
+    "e41f48f4b132215f8b45aba87580cb35b8a5852ad4c85e748d0d6efb5797f6da": "assessment",
+    "e5006eacc31a8bdee190ba7d8ad1af8c36041ebf76c13646635fed17b6eb38d7": "assessment",
+    "e54b61bf62c9a388a578f1f04cc938639c0104841683e89eee000f41ba45ecdc": "assessment",
+    "e6b3ee3d16a4830b3feb91e17196033d8e7ba033f77dbf5eb9f13965937ab7c1": "fit",
+    "e6bbbbcbdc31c5af4845923d3d6fadca412f8d79a5862a85db2a099e751a3b2b": "fit",
+    "e74256a10ee8cf985aeab83b462dd2d7b267ebfe018ad20c5141489b71d9def4": "fit",
+    "e771321e550ef516b14b5c705e0c9bfb72564e07615ef765ed0562ea77b9dd64": "assessment",
+    "e78ea30aeaeee913e8af7ec67c78aa3ab71e843d254faadfd976e5183505ae44": "assessment",
+    "e7cc17e6c5bdfb2b1950c08447c228eae2993100d096d90dfae1837a8fc39232": "assessment",
+    "e7dc60cfc87b278a456d9780c263bffd310ca191dc03d7c78c9387f2b20f2c7f": "fit",
+    "e8deaa0d26803a07dfa6296fd7059a734f55f2e139b6d7e79ad7a55368c1b608": "assessment",
+    "e93f993c2427db4f3baf4aab10a57360cc93db37bb95b5593eb39aa67185c4b0": "fit",
+    "e942ecc308b00b1b173e7d147a71e072bacdcdf07595d5b705f06b199f64375c": "fit",
+    "e9565cb07d57aea2eefa6f33d9cc4c7b893d57d85b36b208e0a03013a9542d8b": "fit",
+    "e9871bcbd0406efc99d4ed0ad7eca70b5e59267904aa673e7812f1227cc577a4": "fit",
+    "e9962874670b84fc6d1d990ca4fa9d43d3f46e2421be9a80069216645d7f2cff": "assessment",
+    "ea515f0c183cba6d4552de35aa8aac3d6cf783b4086e45d0a529fe1b6cd5e314": "fit",
+    "ea86d4e27c1e0bce35020c5c317af886259f46d00560f3a4325bdd4c334170fe": "assessment",
+    "eaaafda5b005a7e1fc165a9c3920fe64de3b4c15705c1e7b8969aff1be9bfa44": "fit",
+    "eaba8600b80e8f34927f45d5574ce7bac2777813e114b0451e33604baf62aaee": "fit",
+    "ead75a65920ae1cbeab107c6d2c9c811a4485c53f246c864f35b7d683c57d97d": "fit",
+    "eb233f8edcc112f5019684368f0b692e3b52504fe2cef3fbf2d43bb71c9bf8dd": "assessment",
+    "eb8589e4c4c3732e4e2c1fad9d931d9b87c389b1648a9821cd94cb1095d33a7d": "assessment",
+    "ebe2942adc5eff6ef64bb057c82de6651c51439949bf6769b40524369088fa91": "assessment",
+    "ec3caeaf11eb40271a3b1d40a40b0c674d5d39e73998d623229b135d912ddd70": "assessment",
+    "ec51da4d5f8e4da72f6df91e2c5d90f4fa3711fd904f462622b17f9d3c80765f": "fit",
+    "ec8c702df8d942fcba625286bea85e36cab4b6c24886494e24c9dc110e074222": "assessment",
+    "ecc607f588ec9b1b602b950d42ac05356321bb8385954d851a9c826d2aacc2c8": "fit",
+    "ecc74ce01287e76c67104a6f14035bd1529090a49e8d5858da125bee05541ec9": "fit",
+    "eccf8c19b42fd944e123e07c5e2971094ff92aee6c4df59435fedd952e8a6f07": "assessment",
+    "ece0bf4219b57d989cffb6a30419616160902e1c1a0060ef15c745a84e254df0": "assessment",
+    "ecf641d2d8a3439886c34c15f0aea6bb17a3666660841f3c76711fef117fa293": "assessment",
+    "ed08afda9b73e7179a3f61ffa71df60bc8b81e54855adc6668949e07bb1baf17": "fit",
+    "ed18bd218017e9bca4b941c13558f992b3097f6849bfab4335f58cd0e8d7f14c": "fit",
+    "ed1c65ce277976090d07335df292d0203c9c781f41aee1c9cecee40dae8b647e": "fit",
+    "ed6a8d6795f07ef35195de893364cdd01ec55dd48b8c7299724144947cd54770": "fit",
+    "eedba5b33cba7903c3d79c93ffeec5c6a26f8d69a5fa24e4fb6bcf7cb3c27901": "fit",
+    "ef06bab51ad9c8b19b2d792e404b127f1e4bdf8a0e2bab8fcdc4fe7dd52fea68": "fit",
+    "ef34a2768f17fbc2298a25903a69e73248ba5c1e56f978ae771b0ee0de49d18e": "fit",
+    "ef3ede9415e9db234a122d19c7eb0dc3a9db42fa8368af478bfd61b2bb369790": "assessment",
+    "ef4ceebc904b438eb373c572a98b416b510fdfe550fe9986219c4f00ce1fe176": "assessment",
+    "ef7271b3ac46ecf6d29fc0459eb2957900d4b10b5722c1d4630445411bcb46c1": "assessment",
+    "efb04fff862fed18edaea484db5a5c5c9d5d9b9908ea980ba20df65154990c2a": "assessment",
+    "efbc0ec5ea2d7cf9d8e672341ddba4b1ac22488a2cd1649e3252b6f6b1f4b6c0": "assessment",
+    "f02abd2cbe8ea624ac812ed0e4e6a4f985f65670104ef78454651f11f2ed716f": "assessment",
+    "f02ea28b682f9e753b500f3aacaf0f730e5f9aba0f86548096993277251e1a38": "assessment",
+    "f0379e5fa8ac52a9baa58dcac4dc33bd03f317ca0df0569c304c480e244c2980": "fit",
+    "f041ee049ced4d184233e7a199a61fb946f8012583d18c048747b06d738e63a3": "assessment",
+    "f0a372f36eb223ed884be9d99bdd3b7aec8f958bc136f72cbfd066424724292a": "assessment",
+    "f0dc00c22e39513396664539be3b041ed6fdaf6164eb27af1e9c74d97cba1513": "fit",
+    "f0fc6dae720cc14ad627864f95e0d292239fdb98d2dc7563e5766d1d324a2233": "fit",
+    "f116660098680220a76d3a55f0ef030931a564105017aa4c2c91897ec5ce7a5d": "assessment",
+    "f120712eb5b7efd341681714cdbe216861250d0f741b83c7550790a357061607": "assessment",
+    "f16481f419c04a34b7deefd33e5e7019f320520834bd71a21a3ed8020ddc06d6": "fit",
+    "f1ae00bb320d0ac1994ebbcc77c87398fee5c21b4a26f487a37e9e6da4975495": "fit",
+    "f2abb5ddce09d40f3d68ba0ddd060899049dced31536392641bc85e119516124": "assessment",
+    "f3130a3dde7b30c7d161f72521564d02cac557359abec051ddde161798b5a999": "assessment",
+    "f331bc82899cd6596d648df5061035def2abae60f53e6b936761be551470445b": "fit",
+    "f376f8983ee7550cb16244722ac6f583d834f733ec217acb93794de014cdbedd": "fit",
+    "f39441e845bb0839de605024f36b3a59c292271d7117a7e6bf8374325b467253": "fit",
+    "f3b13dcb70ccb1e37d3f15426ace419cc239f08f82660a050ca9778bbdd10941": "assessment",
+    "f409245389618d130639b32dc728e9a5ffa28199d5399bdc124c8fd4156805ad": "assessment",
+    "f44e69b460c1395c003431d21dade70eb5747201b156d05cfc0f6f2b6b94a073": "assessment",
+    "f54f3a1a7bd7de168c4e300d6bcde921ce8144a82e10261b1e15ba140241a336": "assessment",
+    "f59955f3d6f0f516bf26e8b87910312ad991a8690f461ea80d80a5738e37cee4": "assessment",
+    "f5a8280c89c71c1c2266ed2f7ad9c5f6cb8ab30aba555da41b0aafd2d7afa0a7": "fit",
+    "f5b521cc182f118f0ffcea6720695456e2502d0b1863c8d9c34e0c861343139c": "fit",
+    "f5c6345792705f3d1469369e3a8653343acc7cc0ada32ddef711859870f2895e": "fit",
+    "f5c8b7dfccb5b5ab0240ef2bd87230ca633228a99a8e84d0827a8ae9e81dc9b3": "fit",
+    "f5d956894c81a05ad111055a1bead47c6b485a6a01ff138c1b8877e6d91f6b76": "assessment",
+    "f5edcb51807b93df670570e35312bd86cc43ee8dada30f469a0feb329c7e3cd6": "fit",
+    "f641fbc62983ec528a2f407556d15ef20a447cf2d19ae6f9e7d090cd04ad559b": "assessment",
+    "f669dfece287973235b07f16f9a89330322c3e89df7fe4b1e7ccf4c640157706": "assessment",
+    "f6de07a4af88cbc3f2ba5b32f6f12a294f9589e84e860a62f6b0eba94bb3819f": "assessment",
+    "f710fc922139cfb8b0141bf0f98c8ef4592def0892db2ab84dd5c3987a7258a9": "fit",
+    "f763c0054e685deaacacfc0e0cc87a6588da98801228532ae5f9e794bc446a18": "assessment",
+    "f7a2dc6d930bc8d178046705a1eb403ebd5bac927a6d1b8177e65b761f400886": "assessment",
+    "f7bb05affa2403feb3d83cab485b5697f4dc92e9acea5b734571682081661659": "assessment",
+    "f87bde35834da18a8cb4a5bc66a500e7dc99af6180e8803ab3440b2c9fa56ca7": "fit",
+    "f8d5f63dc4319fc8888911cd7b42441b45032bf454464ece87e69ca684454f83": "fit",
+    "f9103c565bfe8a5b1cf409f7576f4251a8529ccdcf5ba9a34e74fa8e4cb74ef9": "fit",
+    "f971e504626ebc9128a8cf38b6b7238703f18491bf6153498df7876ea54d828b": "fit",
+    "f974f77ec82ac7a78cfa4d8941f94d88451bd54b7e878c648451a634afad2b29": "assessment",
+    "f9804380bda1cff08ff3471e040895edbe47fa1018cf96bc973b291c948e51f4": "fit",
+    "f990d79b1e24f43d636540666615002c760606ec4f76b386ac309b1c87b89108": "assessment",
+    "f9b26969d40eca97ce0b2a18caaa669df7a06aa4cd871433dbcb40ea621acfea": "fit",
+    "f9b33261d9c79e9c7116b281abfa732e4a23bd20009e037c3dc88472f47b81c8": "assessment",
+    "fa95ec05d9a086c73d1d574b7b610da4a77abf725a02f5fcb7b5469487f0452d": "assessment",
+    "fac87386a46964f0050c03e1e9843ed60ed85ce001378da9a694676ef86d13f5": "assessment",
+    "fb89835e746fa63212f7dde1212521bf4a83285601241bf042c5c0dc4879e793": "assessment",
+    "fc64de1e8a022bb2b4d7b1a33ef314828c9455a821de98064a143bf6196367e9": "fit",
+    "fc9fdfb851ee88bb281e9f2d55ed5bf8e0694f2c64fe3b431343281e7d6f115a": "assessment",
+    "fd0b38cb28636a9c53c3fff800e2d512788424118c09a21a251b770ea1443805": "fit",
+    "fd319321b7542bdd2eb2eba47f3f1ac3a53fcc9c9ea4b4d243ab98bfedb8231f": "assessment",
+    "fd56accb51eaa5da1463901a00ae0457ffb1dd630072c093d867fd5913bf41cd": "assessment",
+    "fdbfa55d8828e324cbea5692a2042d470a45681b39b11353a590cd3d548b2558": "fit",
+    "fde6a3598f2b61a9ce74a31988d151a9f1247e12a7f697a50f91deafcedfc5be": "fit",
+    "fdedc2cd7f1054ee0977ceed14c79bbcc5fdf73e2f0e588e5f853e9edd5888d3": "fit",
+    "fe4229f8d3d7f0ff73bb2e356bcdfd68267946a7c22d74208428aa9c02c6e4b7": "assessment"
+  },
+  "deployed": false,
+  "probability_calibrated": false,
+  "cross_source_gate": "unavailable",
+  "scope": "previously inspected same-source validation; development assessment only",
+  "scores_sha256": "da258eea942c34f6979f47c45be86bb6b63c06d4df65d71db6a1da8c96bcef4e",
+  "report_sha256": "3421de30145649742a14fe35d18f72bb97aa36f5896735cd453751b89b9a3daa",
+  "protocol_sha256": "9795c7747fedcc6b48ae0af9b6e04880215d81bf133f5c7f28e33e34d4cdb247",
+  "code_commit": "b1e5916"
+}

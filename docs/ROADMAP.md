@@ -102,7 +102,10 @@ reports. Passing numerical gates cannot promote a method to supported.
 The spatial comparison frozen in `SPATIAL_DEVELOPMENT_PROTOCOL.md` completed;
 see `SPATIAL_DEVELOPMENT_RESULTS.md`. Custom co-occurrences improve same-source
 controlled LSB AUC over the same-data reference, but low-rate recall, false
-alarms, calibration, cross-source evidence and strict ONNX parity remain open.
+alarms, calibration and cross-source evidence remain open. Opt-in precise
+inference now passes strict CPU ONNX parity for all three development models;
+cover-only threshold fitting exposes a sensitivity/false-alarm tradeoff, not a
+model improvement. See `INFERENCE_PRECISION_RESULTS.md`.
 No model is automatically deployed; installed native results remain unchanged.
 
 Release only when every advertised support cell passes the real-dataset gates,

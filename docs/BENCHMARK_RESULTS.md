@@ -24,9 +24,16 @@ coverage and limitations. Scores are not calibrated probabilities.
 
 ## Next measured development slices
 
+The [numerical repair and operating-point follow-up](INFERENCE_PRECISION_RESULTS.md)
+passes export gates for opt-in derived checkpoints; historical failures above
+remain accurate for the originals. Threshold fitting on 94 covers and separate
+assessment on 90 previously inspected lineages changes FPR from 3/90 to 2/90,
+but lowers weak-cell recall. It is not probability calibration or deployed
+detection improvement; old primary detector results are unchanged.
+
 1. PNG/BMP: the [first richer-feature comparison](SPATIAL_DEVELOPMENT_RESULTS.md)
    completed on 7,000 controlled files. Next improve low-rate scattered recall,
-   false positives and calibration, resolve export parity and evaluate a newly
+   false positives and calibration, qualify stable exports on target runtimes and evaluate a newly
    untouched independent source. Named upstream methods require separate tests;
    do not train on the published pilot or claim this generic LSB result for them.
 2. JPEG: use the new development split for stronger residual/co-occurrence

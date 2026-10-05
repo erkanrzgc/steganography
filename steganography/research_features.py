@@ -27,7 +27,7 @@ MODEL_DOMAINS = {
 
 
 def read_feature_checkpoint(path: Path, *, expected_sha256: str | None = None) -> dict[str, Any]:
-    """Bound file/archive/tensor metadata before optional weights-only loading."""
+    """Bound file/archive input, then validate loaded feature dimensions."""
     import torch
 
     limit = 16 * 1024 * 1024

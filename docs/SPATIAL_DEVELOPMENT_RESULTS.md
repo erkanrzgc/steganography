@@ -87,9 +87,14 @@ definitions or regenerate/select the reported experiment.
 
 ## Next gates
 
+Subsequent [numerical repair and operating-point work](INFERENCE_PRECISION_RESULTS.md)
+passes the strict gate for explicitly derived checkpoints without rewriting
+this experiment's failed original export. The assessment threshold tradeoff is
+on a subset of inspected validation, not a replacement blind accuracy result.
+
 Improve low-payload scattered sensitivity and false alarms using development
 data; freeze a model and calibration before scoring a newly untouched source.
-Resolve numerical export parity without relaxing the published tolerance.
+Qualify stable numerical exports on target environments without relaxing tolerance.
 Separately evaluate named upstream embedding tools: generic LSB replacement
 is not evidence of recovery/detection of every spatial algorithm.
 
