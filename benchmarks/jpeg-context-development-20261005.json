@@ -1,0 +1,1101 @@
+{
+  "schema_version": "jpeg-context-development-v1",
+  "date": "2026-10-05",
+  "implementation_protocol_commit": "6bef8c0",
+  "protocol_sha256": "6b2da7277e1295d9620ceae3e2af62377042a9fdec1f9957e58ec86ba5400d95",
+  "feature_version": "jpeg-context-summary-v1",
+  "feature_dimensions": 1098,
+  "domain": "jpeg-context-summary-linear-v1",
+  "support_status": "experimental",
+  "deployed": false,
+  "independent_source_gate": "unavailable",
+  "source_id_map": {
+    "source-d2a1dfbee30c5891": "ALASKA2",
+    "source-6a23b26e6f51f8cc": "BOSSbase-1.01"
+  },
+  "inputs": {
+    "input_manifest_sha256": [
+      "a3fd898fecbd50135f15a9f36c990d97e9d1779afb58076a35d8a39e1ce5a16d",
+      "c5fb7f4c017c0410261536e1973c04b8df17d974816fa874e62b23de53be505c"
+    ],
+    "input_features_sha256": [
+      "43d76a3c613a82d2cb021d43183793efad8105e8dcb8fe9bc246750f5b0f29a7",
+      "28492353142025628a260284d9d622f93eb6df16a2a69b308116ab1fb8a9375b",
+      "fbacbe8ceb57a447fd5b99b4cd8b9ff72058af1b49946227bb5ea47107b9f3c0"
+    ],
+    "matched_methods": [
+      "JUNIWARD",
+      "UERD"
+    ],
+    "excluded_method": "JMiPOD: no matching simulator in conseal 2025.11",
+    "scope": "declared multi-origin development, not independent blind qualification"
+  },
+  "generation": {
+    "versions": {
+      "conseal": "2025.11",
+      "jpeglib": "1.0.2",
+      "numpy": "2.4.6",
+      "pillow": "12.2.0",
+      "scipy": "1.17.1",
+      "numba": "0.68.0"
+    },
+    "seed": 20261006,
+    "qualities": [
+      75,
+      95
+    ],
+    "alpha": 0.2,
+    "methods": [
+      "JUNIWARD",
+      "UERD"
+    ],
+    "reserved_manifest_sha256": [
+      "6e13432805a23145571463e1319ae941c3b19a875d8bebe8c8eb16f3556a483c",
+      "76f96579c19522c7239e3a552fda2ff3de2f2483d15d4a3075a71db7597e0970",
+      "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+      "d25e61bc037aa19489c5b91a6080e2637ff6a20ab4c8c4164fb0969b7785c692",
+      "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+      "fdf9edf658a323d09b3adf0d783f84183b0ba2e17a41b3dbd86451ec28ca6341",
+      "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+      "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844"
+    ],
+    "feature_version": "jpeg-context-summary-v1",
+    "limitations": "simulated embedding, no encoded payload/exact recovery claim"
+  },
+  "source_records": {
+    "ALASKA2": {
+      "origin_manifest_sha256": "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+      "license": "Subject to Competition Rules; local research only; do not redistribute",
+      "source_url": "https://www.kaggle.com/c/alaska2-image-steganalysis/data"
+    },
+    "BOSSbase-1.01": {
+      "origin_manifest_sha256": "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+      "license": "unspecified on download page; local research only; do not redistribute",
+      "source_url": "https://dde.binghamton.edu/download/ImageDB/BOSSbase_1.01.zip"
+    }
+  },
+  "counts": [
+    {
+      "source": "ALASKA2",
+      "split": "train",
+      "label": "cover",
+      "files": 789
+    },
+    {
+      "source": "ALASKA2",
+      "split": "train",
+      "label": "stego",
+      "files": 1578
+    },
+    {
+      "source": "ALASKA2",
+      "split": "validation",
+      "label": "cover",
+      "files": 205
+    },
+    {
+      "source": "ALASKA2",
+      "split": "validation",
+      "label": "stego",
+      "files": 410
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "train",
+      "label": "cover",
+      "files": 206
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "train",
+      "label": "stego",
+      "files": 412
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "validation",
+      "label": "cover",
+      "files": 50
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "validation",
+      "label": "stego",
+      "files": 100
+    }
+  ],
+  "preparation": {
+    "schema_version": "jpeg-multisource-preparation-v1",
+    "sources": 2,
+    "jpeg_files": 3750,
+    "feature_version": "jpeg-context-summary-v1",
+    "feature_artifacts": {
+      "train": {
+        "sha256": "bcdc6254f8821cda4b337f88eab1c35e3eb1a52f834372c79f209117f4ce1f91",
+        "samples": 2985,
+        "bytes": 31283323
+      },
+      "validation": {
+        "sha256": "ed126653ad0f69a5138aebb34ac6e0a9e99a3a76640295170a4ed56d6e1adc30",
+        "samples": 765,
+        "bytes": 8081184
+      }
+    },
+    "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+    "deployed": false,
+    "support_status": "experimental"
+  },
+  "training": {
+    "samples": 2985,
+    "loss": 0.6866254806518555,
+    "seed": 20261006,
+    "epochs": 300,
+    "learning_rate": 0.01,
+    "torch_version": "2.14.0+cpu",
+    "class_balanced": true,
+    "standardize": true,
+    "inference_arithmetic": "float64",
+    "sample_weighting": {
+      "recipe": "jpeg-source-class-balanced-v1",
+      "negative_mass": 1492.500244140625,
+      "positive_mass": 1492.5003662109375,
+      "positive_class_weight": 0.999999918210866,
+      "reduction": "mean-over-rows",
+      "formula": "n / (2 * sources * source_label_count)",
+      "min_row_weight": 0.47290873527526855,
+      "max_row_weight": 3.622572898864746
+    },
+    "source_balance": {
+      "declared_sources": 2,
+      "common_method_families": 2,
+      "origin_manifest_sha256": [
+        "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+        "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+      ],
+      "independence": "declared origins, not verified camera/perceptual independence"
+    }
+  },
+  "artifact_sha256": {
+    "train-config.json": "c8e05393db0a8186552583d8661b7701a46e4428197095d190e999e2d44bab58",
+    "validation-config.json": "15295090934251c2a1bba1254e116caa0e57e323588300c85f71a2e0af5cfc10",
+    "context.pt": "84efddc5d376b15582243b8bf0e6d4743992ca12f9129ac5b4cd35190c2afcc5",
+    "context.onnx": "055271599c8ed158760acae1f603a686758ba3a2171030b8cea4e9d1922f8d63",
+    "context.onnx.model-card.json": "0834aaf7ad56bc542be115982d6af09b57803673f0c1f177cc10015637aa2eb7",
+    "predictions.json": "fcb7af1f419cb33982de276dbc9ff883a45be35b42face147e74ebdce82d0c21",
+    "diagnostics.json": "26e0933f074333ec32e5fd91480332083014ac50ea18811ce33560af1fd11c99",
+    "independent-model-audit.json": "92e040de30de178409ea10edf1436d2b3eef1cbf6b0b485e6acac4d01df92fc1",
+    "independent-audit.json": "8a059e7aa569d16e372e32e8cee6ee7e50a5dcda97e13dfe8ad134af2ed74fa5"
+  },
+  "generation_audit": {
+    "schema_version": "jpeg-context-generation-audit-v1",
+    "originals_rehashed_unchanged": 1000,
+    "JPEG_hash_decode_DCT_checked": 768,
+    "stego_coefficient_deltas_checked": 512,
+    "DC_coefficient_changes": 115211,
+    "independent_feature_rows": 12,
+    "max_independent_feature_difference": 0.0,
+    "feature_absolute_tolerance": 1e-08,
+    "simulation_not_payload_recovery": true,
+    "passed": true
+  },
+  "model_audit": {
+    "schema_version": "jpeg-context-model-audit-v1",
+    "combined_files_rehashed": 3750,
+    "independent_confusion_pairwise_auc_ECE_cells_verified": 12,
+    "train_only_mean_max_difference": 7.143259750375108e-08,
+    "train_only_scale_max_difference": 1.4711935114597452e-08,
+    "normalization_absolute_tolerance": 1e-06,
+    "numpy64_vs_native_logit_max_difference": 0.0,
+    "numpy64_vs_saved_probability_max_difference": 7.713692362631974e-08,
+    "onnx_batches": {
+      "1": {
+        "samples": 765,
+        "max_logit_difference": 0.0,
+        "threshold_decisions_equal": true
+      },
+      "17": {
+        "samples": 765,
+        "max_logit_difference": 0.0,
+        "threshold_decisions_equal": true
+      },
+      "765": {
+        "samples": 765,
+        "max_logit_difference": 0.0,
+        "threshold_decisions_equal": true
+      }
+    },
+    "absolute_tolerance": 1e-06,
+    "relative_tolerance": 0,
+    "passed": true
+  },
+  "diagnostic": {
+    "schema_version": "research-generalization-diagnostics-v1",
+    "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+    "predictions_sha256": "fcb7af1f419cb33982de276dbc9ff883a45be35b42face147e74ebdce82d0c21",
+    "model_card_sha256": "0834aaf7ad56bc542be115982d6af09b57803673f0c1f177cc10015637aa2eb7",
+    "feature_version": "jpeg-context-summary-v1",
+    "threshold": 0.5,
+    "legacy_fields_from_bound_manifest": 0,
+    "source_separation": {
+      "training_source_groups": 2,
+      "validation_source_groups": 2,
+      "shared_source_groups": 2,
+      "unseen_validation_source_groups": 0,
+      "metadata_complete": true,
+      "independent_source_evidence": "unavailable"
+    },
+    "metadata_coverage": {
+      "quality_factor": {
+        "known_rows": 150,
+        "unknown_rows": 615
+      },
+      "camera": {
+        "known_rows": 0,
+        "unknown_rows": 765
+      },
+      "device": {
+        "known_rows": 0,
+        "unknown_rows": 765
+      },
+      "app": {
+        "known_rows": 0,
+        "unknown_rows": 765
+      }
+    },
+    "cells": [
+      {
+        "dimension": "format",
+        "context": "jpeg",
+        "method_id": "method-5503e44c87d40a18",
+        "method_family": "JUNIWARD",
+        "rate_percent": null,
+        "covers": 255,
+        "stego": 255,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 510,
+          "positives": 255,
+          "negatives": 255,
+          "confusion": {
+            "tp": 146,
+            "tn": 128,
+            "fp": 127,
+            "fn": 109
+          },
+          "precision": 0.534799,
+          "recall": 0.572549,
+          "specificity": 0.501961,
+          "false_positive_rate": 0.498039,
+          "accuracy": 0.537255,
+          "balanced_accuracy": 0.537255,
+          "f1": 0.55303,
+          "roc_auc": 0.556078,
+          "expected_calibration_error": 0.01073
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.5407521750000001,
+            0.575236825
+          ],
+          "balanced_accuracy": [
+            0.515990625,
+            0.556
+          ],
+          "recall": [
+            0.5136369749999999,
+            0.629946775
+          ],
+          "false_positive_rate": [
+            0.436280625,
+            0.5494413499999999
+          ],
+          "expected_calibration_error": [
+            0.007455725,
+            0.032180525
+          ]
+        }
+      },
+      {
+        "dimension": "format",
+        "context": "jpeg",
+        "method_id": "method-d4aec40e5a80fa2e",
+        "method_family": "UERD",
+        "rate_percent": null,
+        "covers": 255,
+        "stego": 255,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 510,
+          "positives": 255,
+          "negatives": 255,
+          "confusion": {
+            "tp": 137,
+            "tn": 128,
+            "fp": 127,
+            "fn": 118
+          },
+          "precision": 0.518939,
+          "recall": 0.537255,
+          "specificity": 0.501961,
+          "false_positive_rate": 0.498039,
+          "accuracy": 0.519608,
+          "balanced_accuracy": 0.519608,
+          "f1": 0.527938,
+          "roc_auc": 0.550796,
+          "expected_calibration_error": 0.020551
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.53540235,
+            0.5654062
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5368328250000001
+          ],
+          "recall": [
+            0.47254595000000005,
+            0.5976752249999999
+          ],
+          "false_positive_rate": [
+            0.436280625,
+            0.5494413499999999
+          ],
+          "expected_calibration_error": [
+            0.007644225,
+            0.042243475
+          ]
+        }
+      },
+      {
+        "dimension": "pooled",
+        "context": "all",
+        "method_id": "method-5503e44c87d40a18",
+        "method_family": "JUNIWARD",
+        "rate_percent": null,
+        "covers": 255,
+        "stego": 255,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 510,
+          "positives": 255,
+          "negatives": 255,
+          "confusion": {
+            "tp": 146,
+            "tn": 128,
+            "fp": 127,
+            "fn": 109
+          },
+          "precision": 0.534799,
+          "recall": 0.572549,
+          "specificity": 0.501961,
+          "false_positive_rate": 0.498039,
+          "accuracy": 0.537255,
+          "balanced_accuracy": 0.537255,
+          "f1": 0.55303,
+          "roc_auc": 0.556078,
+          "expected_calibration_error": 0.01073
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.5407521750000001,
+            0.575236825
+          ],
+          "balanced_accuracy": [
+            0.515990625,
+            0.556
+          ],
+          "recall": [
+            0.5136369749999999,
+            0.629946775
+          ],
+          "false_positive_rate": [
+            0.436280625,
+            0.5494413499999999
+          ],
+          "expected_calibration_error": [
+            0.007455725,
+            0.032180525
+          ]
+        }
+      },
+      {
+        "dimension": "pooled",
+        "context": "all",
+        "method_id": "method-d4aec40e5a80fa2e",
+        "method_family": "UERD",
+        "rate_percent": null,
+        "covers": 255,
+        "stego": 255,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 510,
+          "positives": 255,
+          "negatives": 255,
+          "confusion": {
+            "tp": 137,
+            "tn": 128,
+            "fp": 127,
+            "fn": 118
+          },
+          "precision": 0.518939,
+          "recall": 0.537255,
+          "specificity": 0.501961,
+          "false_positive_rate": 0.498039,
+          "accuracy": 0.519608,
+          "balanced_accuracy": 0.519608,
+          "f1": 0.527938,
+          "roc_auc": 0.550796,
+          "expected_calibration_error": 0.020551
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.53540235,
+            0.5654062
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5368328250000001
+          ],
+          "recall": [
+            0.47254595000000005,
+            0.5976752249999999
+          ],
+          "false_positive_rate": [
+            0.436280625,
+            0.5494413499999999
+          ],
+          "expected_calibration_error": [
+            0.007644225,
+            0.042243475
+          ]
+        }
+      },
+      {
+        "dimension": "quality_factor",
+        "context": "qf-75",
+        "method_id": "method-5503e44c87d40a18",
+        "method_family": "JUNIWARD",
+        "rate_percent": null,
+        "covers": 25,
+        "stego": 25,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 12,
+            "tn": 13,
+            "fp": 12,
+            "fn": 13
+          },
+          "precision": 0.5,
+          "recall": 0.48,
+          "specificity": 0.52,
+          "false_positive_rate": 0.48,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.489796,
+          "roc_auc": 0.5024,
+          "expected_calibration_error": 0.037619
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.47036,
+            0.54884
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.28,
+            0.68
+          ],
+          "false_positive_rate": [
+            0.28,
+            0.68
+          ],
+          "expected_calibration_error": [
+            0.022303225,
+            0.059675975000000006
+          ]
+        }
+      },
+      {
+        "dimension": "quality_factor",
+        "context": "qf-75",
+        "method_id": "method-d4aec40e5a80fa2e",
+        "method_family": "UERD",
+        "rate_percent": null,
+        "covers": 25,
+        "stego": 25,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 11,
+            "tn": 13,
+            "fp": 12,
+            "fn": 14
+          },
+          "precision": 0.478261,
+          "recall": 0.44,
+          "specificity": 0.52,
+          "false_positive_rate": 0.48,
+          "accuracy": 0.48,
+          "balanced_accuracy": 0.48,
+          "f1": 0.458333,
+          "roc_auc": 0.5072,
+          "expected_calibration_error": 0.057992
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.4784,
+            0.552
+          ],
+          "balanced_accuracy": [
+            0.42,
+            0.5
+          ],
+          "recall": [
+            0.24,
+            0.64
+          ],
+          "false_positive_rate": [
+            0.28,
+            0.68
+          ],
+          "expected_calibration_error": [
+            0.032092449999999995,
+            0.10868150000000001
+          ]
+        }
+      },
+      {
+        "dimension": "quality_factor",
+        "context": "qf-95",
+        "method_id": "method-5503e44c87d40a18",
+        "method_family": "JUNIWARD",
+        "rate_percent": null,
+        "covers": 25,
+        "stego": 25,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 15,
+            "tn": 13,
+            "fp": 12,
+            "fn": 10
+          },
+          "precision": 0.555556,
+          "recall": 0.6,
+          "specificity": 0.52,
+          "false_positive_rate": 0.48,
+          "accuracy": 0.56,
+          "balanced_accuracy": 0.56,
+          "f1": 0.576923,
+          "roc_auc": 0.5328,
+          "expected_calibration_error": 0.062104
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.4976,
+            0.58404
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.62
+          ],
+          "recall": [
+            0.44,
+            0.8
+          ],
+          "false_positive_rate": [
+            0.32,
+            0.68
+          ],
+          "expected_calibration_error": [
+            0.016851225,
+            0.13195802500000003
+          ]
+        }
+      },
+      {
+        "dimension": "quality_factor",
+        "context": "qf-95",
+        "method_id": "method-d4aec40e5a80fa2e",
+        "method_family": "UERD",
+        "rate_percent": null,
+        "covers": 25,
+        "stego": 25,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 14,
+            "tn": 13,
+            "fp": 12,
+            "fn": 11
+          },
+          "precision": 0.538462,
+          "recall": 0.56,
+          "specificity": 0.52,
+          "false_positive_rate": 0.48,
+          "accuracy": 0.54,
+          "balanced_accuracy": 0.54,
+          "f1": 0.54902,
+          "roc_auc": 0.512,
+          "expected_calibration_error": 0.041037
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.472,
+            0.5520400000000001
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.6
+          ],
+          "recall": [
+            0.4,
+            0.76
+          ],
+          "false_positive_rate": [
+            0.32,
+            0.68
+          ],
+          "expected_calibration_error": [
+            0.013346125,
+            0.110697
+          ]
+        }
+      },
+      {
+        "dimension": "quality_factor",
+        "context": "unknown",
+        "method_id": "method-5503e44c87d40a18",
+        "method_family": "JUNIWARD",
+        "rate_percent": null,
+        "covers": 205,
+        "stego": 205,
+        "status": "unavailable",
+        "reason": "unknown context metadata",
+        "metrics": null,
+        "bootstrap_95_percent": null
+      },
+      {
+        "dimension": "quality_factor",
+        "context": "unknown",
+        "method_id": "method-d4aec40e5a80fa2e",
+        "method_family": "UERD",
+        "rate_percent": null,
+        "covers": 205,
+        "stego": 205,
+        "status": "unavailable",
+        "reason": "unknown context metadata",
+        "metrics": null,
+        "bootstrap_95_percent": null
+      },
+      {
+        "dimension": "source",
+        "context": "source-6a23b26e6f51f8cc",
+        "method_id": "method-5503e44c87d40a18",
+        "method_family": "JUNIWARD",
+        "rate_percent": null,
+        "covers": 50,
+        "stego": 50,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 100,
+          "positives": 50,
+          "negatives": 50,
+          "confusion": {
+            "tp": 27,
+            "tn": 26,
+            "fp": 24,
+            "fn": 23
+          },
+          "precision": 0.529412,
+          "recall": 0.54,
+          "specificity": 0.52,
+          "false_positive_rate": 0.48,
+          "accuracy": 0.53,
+          "balanced_accuracy": 0.53,
+          "f1": 0.534653,
+          "roc_auc": 0.5164,
+          "expected_calibration_error": 0.025444
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.49956,
+            0.5376
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.56
+          ],
+          "recall": [
+            0.4195,
+            0.68
+          ],
+          "false_positive_rate": [
+            0.36,
+            0.62
+          ],
+          "expected_calibration_error": [
+            0.0097243,
+            0.061689850000000004
+          ]
+        }
+      },
+      {
+        "dimension": "source",
+        "context": "source-6a23b26e6f51f8cc",
+        "method_id": "method-d4aec40e5a80fa2e",
+        "method_family": "UERD",
+        "rate_percent": null,
+        "covers": 50,
+        "stego": 50,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 100,
+          "positives": 50,
+          "negatives": 50,
+          "confusion": {
+            "tp": 25,
+            "tn": 26,
+            "fp": 24,
+            "fn": 25
+          },
+          "precision": 0.510204,
+          "recall": 0.5,
+          "specificity": 0.52,
+          "false_positive_rate": 0.48,
+          "accuracy": 0.51,
+          "balanced_accuracy": 0.51,
+          "f1": 0.505051,
+          "roc_auc": 0.5128,
+          "expected_calibration_error": 0.032962
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.49717,
+            0.5452
+          ],
+          "balanced_accuracy": [
+            0.47,
+            0.5402500000000001
+          ],
+          "recall": [
+            0.38,
+            0.64
+          ],
+          "false_positive_rate": [
+            0.36,
+            0.62
+          ],
+          "expected_calibration_error": [
+            0.0153661,
+            0.07456117500000001
+          ]
+        }
+      },
+      {
+        "dimension": "source",
+        "context": "source-d2a1dfbee30c5891",
+        "method_id": "method-5503e44c87d40a18",
+        "method_family": "JUNIWARD",
+        "rate_percent": null,
+        "covers": 205,
+        "stego": 205,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 410,
+          "positives": 205,
+          "negatives": 205,
+          "confusion": {
+            "tp": 119,
+            "tn": 102,
+            "fp": 103,
+            "fn": 86
+          },
+          "precision": 0.536036,
+          "recall": 0.580488,
+          "specificity": 0.497561,
+          "false_positive_rate": 0.502439,
+          "accuracy": 0.539024,
+          "balanced_accuracy": 0.539024,
+          "f1": 0.557377,
+          "roc_auc": 0.566234,
+          "expected_calibration_error": 0.010574
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.5475815749999999,
+            0.5879812
+          ],
+          "balanced_accuracy": [
+            0.512195,
+            0.561036975
+          ],
+          "recall": [
+            0.5120730499999999,
+            0.634146
+          ],
+          "false_positive_rate": [
+            0.43402405,
+            0.560976
+          ],
+          "expected_calibration_error": [
+            0.006969550000000001,
+            0.038898575000000005
+          ]
+        }
+      },
+      {
+        "dimension": "source",
+        "context": "source-d2a1dfbee30c5891",
+        "method_id": "method-d4aec40e5a80fa2e",
+        "method_family": "UERD",
+        "rate_percent": null,
+        "covers": 205,
+        "stego": 205,
+        "status": "experimental",
+        "reason": null,
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 410,
+          "positives": 205,
+          "negatives": 205,
+          "confusion": {
+            "tp": 112,
+            "tn": 102,
+            "fp": 103,
+            "fn": 93
+          },
+          "precision": 0.52093,
+          "recall": 0.546341,
+          "specificity": 0.497561,
+          "false_positive_rate": 0.502439,
+          "accuracy": 0.521951,
+          "balanced_accuracy": 0.521951,
+          "f1": 0.533333,
+          "roc_auc": 0.56044,
+          "expected_calibration_error": 0.018915
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.5442578250000001,
+            0.577021225
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.541463
+          ],
+          "recall": [
+            0.46817105000000003,
+            0.6049999500000001
+          ],
+          "false_positive_rate": [
+            0.43402405,
+            0.560976
+          ],
+          "expected_calibration_error": [
+            0.0071280250000000005,
+            0.04326370000000001
+          ]
+        }
+      }
+    ],
+    "support_status": "experimental",
+    "deployed": false,
+    "limitations": [
+      "Cached validation diagnostics, not a blind test or support qualification.",
+      "Source identity declarations cannot prove independence or camera provenance.",
+      "Format and declared quality are measured context, not learned score corrections.",
+      "Small/single-label cells and unknown metadata cannot demonstrate generalization.",
+      "No training, calibration, threshold search, image access or detector changes."
+    ]
+  },
+  "gates": [
+    {
+      "dimension": "quality_factor",
+      "context": "qf-75",
+      "method": "JUNIWARD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "qf-75",
+      "method": "UERD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "qf-95",
+      "method": "JUNIWARD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "qf-95",
+      "method": "UERD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "unknown",
+      "method": "JUNIWARD",
+      "numeric_failures": null,
+      "qualification": "unavailable",
+      "reason": "Unknown quality"
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "unknown",
+      "method": "UERD",
+      "numeric_failures": null,
+      "qualification": "unavailable",
+      "reason": "Unknown quality"
+    },
+    {
+      "dimension": "source",
+      "context": "source-6a23b26e6f51f8cc",
+      "method": "JUNIWARD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    },
+    {
+      "dimension": "source",
+      "context": "source-6a23b26e6f51f8cc",
+      "method": "UERD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    },
+    {
+      "dimension": "source",
+      "context": "source-d2a1dfbee30c5891",
+      "method": "JUNIWARD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    },
+    {
+      "dimension": "source",
+      "context": "source-d2a1dfbee30c5891",
+      "method": "UERD",
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ],
+      "qualification": "unavailable",
+      "reason": "Development reuse; no untouched sources and insufficient per-source pairs"
+    }
+  ],
+  "environment": {
+    "python": "3.11.14",
+    "cpu_threads": 2,
+    "versions": {
+      "numpy": "2.4.6",
+      "torch": "2.14.0+cpu",
+      "onnx": "1.22.0",
+      "onnxruntime": "1.30.0",
+      "pillow": "12.2.0",
+      "jpeglib": "1.0.2",
+      "conseal": "2025.11",
+      "scipy": "1.17.1",
+      "numba": "0.68.0"
+    }
+  },
+  "limitations": [
+    "Two shared development source groups, zero unseen validation sources.",
+    "BOSS source originals reused from spatial development; camera/device/scene independence unknown.",
+    "BOSS JPEG stegos are fixed upstream simulations, not encoded payload/exact recovery evidence.",
+    "JMiPOD excluded from both-origin training because conseal 2025.11 has no matching simulator.",
+    "ALASKA original payload rates/quality remain unknown; grayscale BOSS and color ALASKA processing differ.",
+    "Source/class balance and context features do not prove robustness; all support cells unqualified.",
+    "ALASKA same-row AUC regresses versus previous linear baseline; FPR rises from 41.46% to 50.24%.",
+    "Low ECE around near-chance scores does not rescue poor recall/FPR; no temperature or threshold fitting.",
+    "No model weights/corpus redistribution, model installation or primary verdict changes."
+  ]
+}

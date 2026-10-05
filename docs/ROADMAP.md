@@ -3,8 +3,10 @@
 Next measured JPEG slice is frozen in `JPEG_CONTEXT_PROTOCOL.md`: optional local
 BOSS JPEG simulations plus ALASKA2 development, matched JUNIWARD/UERD families,
 byte-derived content/quantization interactions and source/class-balanced training.
-This removes a single declared training origin, not the independent-source
-qualification gap. JMiPOD and installed detector behavior are unchanged.
+The completed run (`JPEG_CONTEXT_RESULTS.md`) removes a single declared training
+origin, not the qualification gap: FPR worsens and detection fails. Richer
+residual/architecture work and untouched-source evaluation remain next.
+JMiPOD and installed detector behavior are unchanged.
 
 Generalization diagnostic slice: `research diagnose` audits source overlap
 and method/rate scores by format and declared compression quality. It is not

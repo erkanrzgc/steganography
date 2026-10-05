@@ -18,6 +18,14 @@ Counts refer to unique original lineages, not to separately counted copies in
 each method comparison. Exact-hash exclusion cannot discover undocumented
 transforms or camera/scene overlap. Unknown metadata remains unknown.
 
+The [JPEG context experiment](JPEG_CONTEXT_RESULTS.md) reuses 128 of the existing
+BOSS development originals, creating 768 grayscale JPEGs at Q75/Q95 with upstream
+JUNIWARD/UERD simulations (0.2 bpnzAC). It combines them with ALASKA development,
+not a new original source or blind corpus. Simulations are not encoded message
+recovery; conseal 2025.11 lacks JMiPOD. All derivatives/weights remain local under
+the original source usage limits; [conseal](https://github.com/uibk-uncover/conseal)
+and inherited notices are recorded in `../THIRD_PARTY_NOTICES.md`.
+
 The BOSSbase development corpus also underlies the fixed
 [parity/residual model comparison](SPATIAL_PARITY_RESULTS.md); this adds no
 new source or original lineages. Its improved ranking and FPR, low-rate recall

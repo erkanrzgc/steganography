@@ -9,7 +9,9 @@ been delivered or validated by this slice.
 - Versioned measured JPEG context features, bounded local BOSS JPEG simulation,
   provenance-bound matched-family multi-origin preparation and train-only
   source/class-balanced objective. Fixed next experiment: `JPEG_CONTEXT_PROTOCOL.md`.
-  No new real-data scores or deployment are claimed before its completed audit.
+  The completed 3,750-file experiment and independent audit are published in
+  `JPEG_CONTEXT_RESULTS.md`: source-specific FPR 50.24% / 48%, ALASKA AUC
+  regression, stable ONNX parity, zero unseen validation sources. Not deployed.
 
 - Shared cached-score source/context diagnostics with a `research diagnose`
   CLI: contract binding, source overlap, method/rate × format/declared-quality
@@ -83,12 +85,11 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 630 tests pass; total coverage 93.73%; the subsequent selection/
-  reserved-provenance hardening passes all 21 focused corpus tests (full rerun
-  pending). New JPEG context features are 100%, corpus service 95.40%,
+- Python 3.11: 631 tests pass; total coverage 93.73%. New JPEG context features
+  are 100%, corpus service 95.60%,
   multi-origin preparation 98.10%, train weighting 100%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
-  deprecated ONNX export APIs (twenty occurrences), not test failures.
+  deprecated ONNX export APIs (twenty-two occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is
   96.60%; shared feature/checkpoint code is 99.38%, reconstruction is 100%,
   precision audit is 96.39% and operating-point service is 97.40%. Independent scalar filter and

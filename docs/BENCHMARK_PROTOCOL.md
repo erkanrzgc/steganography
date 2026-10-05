@@ -4,6 +4,8 @@ The measured JPEG context development slice follows `JPEG_CONTEXT_PROTOCOL.md`:
 two declared acquisition origins, matched method families, fixed objective and
 measured content/quantization interactions. Previously used BOSS originals and
 ALASKA validation remain development; no independent held-out claim is implied.
+Completed failures and unchanged numerical tolerances are retained in
+`JPEG_CONTEXT_RESULTS.md`, with all source/quality cells and paired intervals.
 
 Cached-score source/context audits follow `GENERALIZATION_PROTOCOL.md`.
 Pooled or same-source development metrics never count as independent-source

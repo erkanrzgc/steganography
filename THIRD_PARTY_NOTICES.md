@@ -1,7 +1,8 @@
 # Third-party tools in the `full` image
 
 Optional research extra `jpeg-sim` uses [conseal 2025.11](https://github.com/uibk-uncover/conseal)
-(MPL-2.0) for embedding simulation, not end-to-end message extraction. It is not
+(MPL-2.0 project license; J-UNIWARD implementation also retains the DDE Lab
+educational/research/non-profit notice) for simulation, not message extraction. It is not
 a base-wheel dependency or bundled dataset/model. Respect upstream and original
 dataset usage conditions; source attribution alone does not grant redistribution.
 

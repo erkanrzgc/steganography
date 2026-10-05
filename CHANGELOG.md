@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published the fixed two-origin JPEG context experiment and independent audits:
+  3,750 files, ALASKA FPR 50.24% and BOSS-simulation FPR 48%; AUC/BA failures and
+  all source/quality intervals retained. Strict CPU ONNX parity passes; detection
+  regresses, no model installed and no cross-source qualification claim.
+
 - Added experimental measured JPEG content/quantization interactions (1,098
   features), optional pinned BOSS JPEG simulation and checksum-bound two-origin
   preparation with matched JUNIWARD/UERD families and source/class-balanced

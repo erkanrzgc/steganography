@@ -5,6 +5,12 @@ The application is an exploratory inspection/extraction tool, not a reliable
 certificate that a file is clean. More formats, datasets or passing unit tests
 do not imply better detection.
 
+The [two-origin measured JPEG context experiment](JPEG_CONTEXT_RESULTS.md) is
+complete: 3,750 development JPEGs, 1,098 features, matched JUNIWARD/UERD methods.
+It **regresses** ALASKA AUC and raises FPR to 50.24%; BOSS simulations have 48%
+FPR and near-chance AUC. Numerical export passes, detection does not. Both sources
+are shared with training; JMiPOD is excluded and no model is deployed.
+
 [Source/context audit](GENERALIZATION_RESULTS.md): both current model
 validation sets contain zero unseen source groups. PNG/BMP low-rate failures
 remain visible by format; JPEG reproduces its previous weak ALASKA2-only

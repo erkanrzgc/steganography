@@ -1,4 +1,4 @@
-"""Explicit train-only weighting for the controlled spatial research corpus."""
+"""Explicit train-only weighting for controlled spatial and multi-origin JPEG research."""
 
 from __future__ import annotations
 

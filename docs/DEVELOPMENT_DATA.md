@@ -5,6 +5,8 @@ experiment before generation/training: no new download, original split/lineage
 preservation, optional pinned simulation and measured quantization/content
 features. JMiPOD is explicitly excluded from both-source comparison, not falsely
 claimed as simulated. Raw BOSS data and derivatives remain local research only.
+The completed run (`JPEG_CONTEXT_RESULTS.md`) fails detection and is not installed;
+both validation source groups remain shared with training, not independent tests.
 
 Source/context diagnosis is fixed in `GENERALIZATION_PROTOCOL.md` and exposed
 as `research diagnose`. It detects source overlap and stratifies existing

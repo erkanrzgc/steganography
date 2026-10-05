@@ -164,6 +164,11 @@ artifact, report, and audit APIs are documented in [API.md](docs/API.md).
 
 ## Development and release evidence
 
+Real-data baselines, development experiments and controlled CTF recovery are
+reported separately in [measured results](docs/BENCHMARK_RESULTS.md). The latest
+[two-origin JPEG context experiment](docs/JPEG_CONTEXT_RESULTS.md) failed its
+detection targets and is not deployed; no method has qualified cross-source support.
+
 ```bash
 python -m pip install '.[dev,dct]'
 ruff check .
