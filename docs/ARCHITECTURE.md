@@ -127,6 +127,15 @@ not extracted or executed. It assigns no splits or accuracy/support status.
 Public aggregate evidence and license/source links live under `benchmarks/`
 and `docs/`; raw data remains outside Git. See `DATASET_CATALOG.md`.
 
+`steganography.benchmarking.wav` prepares marker-free research LSB replacements
+with exact scalar-oracle recovery, retaining original RIFF bytes outside PCM.
+Whole-speaker roles precede generation; only frozen test speakers are scored
+through `AnalysisService`. Native coverage failures invalidate method/rate cells.
+Shared bounded-file/fingerprint utilities are reused from the earlier benchmark;
+the application has no separate detection or extraction implementation here.
+The generator/oracle are experiment ground truth, not a native CTF recovery claim.
+See `WAV_PROTOCOL.md`; artifacts and their provenance remain bounded and local.
+
 PDF stream decoding enforces a per-stream 16 MiB output limit and a shared
 32 MiB decoded-output budget per parse. CTF extraction further restricts that
 budget to the remaining job output allowance. ASCII decoder input is bounded

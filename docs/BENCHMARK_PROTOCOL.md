@@ -28,6 +28,12 @@ ancestry, splits, embedding methods/rates and thresholds before scoring; add
 independently verified stegos and another source before claiming support.
 Citation alone does not authorize raw corpus or trained-model redistribution.
 
+The first controlled WAV evaluation is preregistered in `WAV_PROTOCOL.md`:
+whole-speaker roles, marker-free sequential/scattered replacement, three payload
+rates, independent scalar extraction verification, unchanged shared-service
+balanced/70 scoring, required-native coverage and paired bootstrap intervals.
+Generation ground truth uses known ordering; it does not measure native recovery.
+
 Each sample records source URL/import origin, license, checksum, format,
 cover-lineage, camera/device/app group, method family, payload rate, and lossy
 quality factor where relevant. Permissively licensed data is downloaded only by

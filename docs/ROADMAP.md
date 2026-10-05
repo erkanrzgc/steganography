@@ -81,6 +81,9 @@ speaker/recording identity and audited PCM hashes. No audio embedding, split,
 training or detection benchmark has run. `DATASET_CATALOG.md` records usage
 conditions; `BENCHMARK_RESULTS.md` tracks the separate format/method work and
 keeps missing evaluations unavailable rather than successful.
+The next preregistered WAV baseline (`WAV_PROTOCOL.md`) adds independent
+sequential/scattered PCM LSB pairs and fixed-threshold method/rate evaluation,
+with speaker-level reservations and coverage-aware shared-service scoring.
 
 ## v1.0 gate
 

@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added preregistered, bounded FSDD WAV LSB baseline preparation/evaluation:
+  whole-speaker reservations, six method/rate cells, exact independent scalar
+  payload verification, original RIFF metadata preservation and shared-service
+  scoring. Required coverage failures invalidate metrics; no threshold tuning.
+
 - Published the first isolated JPEG development result: same-source validation
   AUC 0.648804 / 0.592481 / 0.585306, but 41.46% FPR. The model is not deployed
   and this is not a new held-out accuracy claim. Actual-artifact ONNX differences
