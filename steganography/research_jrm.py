@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import math
 import time
 import zipfile
 from concurrent.futures import ThreadPoolExecutor
@@ -172,6 +173,39 @@ def load_model(path: Path, *, checksum: str) -> FLDReference:
             or sum(m.file_size for m in members) > MAX_MODEL_BYTES
         ):
             raise ResearchManifestError("reference model archive contract mismatch")
+        shapes = {
+            "subspaces.npy": (LEARNERS, SUBSPACE),
+            "weights.npy": (LEARNERS, SUBSPACE),
+            "biases.npy": (LEARNERS,),
+        }
+        # A tiny ZIP member may declare a gigantic NPY allocation. Check headers
+        # before np.load, not after it has already allocated the declared array.
+        for member in members:
+            with archive.open(member) as stream:
+                version = np.lib.format.read_magic(stream)
+                if version == (1, 0):
+                    shape, _, dtype = np.lib.format.read_array_header_1_0(
+                        stream, max_header_size=4096
+                    )
+                elif version == (2, 0):
+                    shape, _, dtype = np.lib.format.read_array_header_2_0(
+                        stream, max_header_size=4096
+                    )
+                else:
+                    raise ResearchManifestError("unsupported reference NPY header")
+                if dtype.hasobject:
+                    raise ResearchManifestError("Object arrays are forbidden in reference models")
+                valid_dtype = (
+                    dtype.kind in "iu" and dtype.itemsize <= 8
+                    if member.filename == "subspaces.npy"
+                    else dtype.kind == "f" and dtype.itemsize in (4, 8)
+                )
+                if (
+                    shape != shapes[member.filename]
+                    or not valid_dtype
+                    or stream.tell() + math.prod(shape) * dtype.itemsize != member.file_size
+                ):
+                    raise ResearchManifestError("reference NPY dimensions/dtype/size mismatch")
     with np.load(io.BytesIO(data), allow_pickle=False, max_header_size=4096) as model:
         return FLDReference(model["subspaces"], model["weights"], model["biases"])
 

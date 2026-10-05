@@ -6,6 +6,8 @@ inference; `research_jrm` binds explicit raw caches, training/card provenance
 and validation. The CLI is a thin adapter. No upstream pickle/code/model is
 bundled; generic feature/checkpoint limits and deployed detection are unchanged.
 See `JRM_REFERENCE_PROTOCOL.md` and upstream component usage restrictions.
+Numeric NPZ loading checks exact NPY shapes, dtypes, header versions and payload
+lengths before allocation; a small archive cannot advertise an enormous array.
 
 `core/feature_model.py` reconstructs fixed bounded linear and opt-in residual
 MLP64 feature networks. Research contracts bind architecture to domain across

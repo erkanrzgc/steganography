@@ -10,6 +10,8 @@ been delivered or validated by this slice.
   separate checksum-bound float32 caches and immutable numeric inference without
   pickle. Explicit `research jrm-reference` CLI; protocol frozen in
   `JRM_REFERENCE_PROTOCOL.md`. Not deployed, not an installed ONNX model.
+  Numeric model headers are checked before allocation, including adversarial
+  tiny-archive/giant-array tests; score arithmetic remains unchanged.
 
 - Explicit research-only residual-feature MLP64 with a linear skip, bounded
   architecture/domain validation, regularization provenance and shared export/

@@ -468,3 +468,48 @@ def test_model_rejects_object_arrays(tmp_path):
     )
     with pytest.raises(ValueError, match="Object arrays"):
         rj.load_model(path, checksum=sha(path))
+
+
+@pytest.mark.parametrize(
+    "fault", ["giant-shape", "wrong-dtype", "truncated", "unknown-version", "version-two"]
+)
+def test_npy_headers_checked_before_allocation(tmp_path, monkeypatch, fault):
+    model = numeric_model()
+    path = tmp_path / "header.npz"
+    arrays = {
+        "subspaces.npy": model.subspaces,
+        "weights.npy": model.weights,
+        "biases.npy": model.biases,
+    }
+    with zipfile.ZipFile(path, "w") as archive:
+        for name, values in arrays.items():
+            stream = io.BytesIO()
+            dtype = values.dtype
+            shape = values.shape
+            if name == "weights.npy" and fault == "giant-shape":
+                shape = (10**12, SUBSPACE)
+            if name == "weights.npy" and fault == "wrong-dtype":
+                dtype = np.dtype("<i8")
+            writer = (
+                np.lib.format.write_array_header_2_0
+                if fault == "version-two"
+                else np.lib.format.write_array_header_1_0
+            )
+            writer(stream, {"descr": dtype.str, "fortran_order": False, "shape": shape})
+            stream.write(
+                values.tobytes()[:-1]
+                if name == "weights.npy" and fault == "truncated"
+                else values.tobytes()
+            )
+            raw = stream.getvalue()
+            if name == "weights.npy" and fault == "unknown-version":
+                raw = raw[:6] + b"\x03\x00" + raw[8:]
+            archive.writestr(name, raw)
+    if fault == "version-two":
+        assert np.array_equal(rj.load_model(path, checksum=sha(path)).weights, model.weights)
+    else:
+        monkeypatch.setattr(
+            np, "load", lambda *a, **k: pytest.fail("allocation attempted before header validation")
+        )
+        with pytest.raises(ValueError, match="NPY"):
+            rj.load_model(path, checksum=sha(path))

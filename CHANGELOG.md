@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Preflight numeric FLD NPZ headers before allocation: reject gigantic declared
+  shapes, invalid dtype/version and truncated payloads even in tiny archives.
+  Add adversarial tests proving unsafe inputs never reach NumPy array loading.
+
 - Added optional pinned upstream JRM/FLD local research reference: bounded batch
   workers, provenance-bound raw caches, numeric-only immutable ensemble weights
   and explicit CLI stages. Component research-use notices preserved; freeze
