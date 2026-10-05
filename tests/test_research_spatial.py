@@ -110,7 +110,7 @@ def options(root, reserved):
 
 
 def test_corpus_and_fixed_training_pipeline(development, tmp_path):
-    pytest.importorskip("torch")
+    torch = pytest.importorskip("torch")
     pytest.importorskip("onnxruntime")
     root, reserved, _ = development
     out = tmp_path / "run"
@@ -121,6 +121,29 @@ def test_corpus_and_fixed_training_pipeline(development, tmp_path):
     for experiment in report["experiments"].values():
         assert len(experiment["by_method_rate"]) == 6
         assert experiment["onnx_parity"]["samples"] == 7
+    from steganography.research import train_model
+    from steganography.research_features import feature_inputs
+
+    for version in ("spatial-summary-v1", "spatial-cooccurrence-v1"):
+        directory = out / version
+        config = json.loads((directory / "train-config.json").read_text())
+        x, _, _ = feature_inputs(config, split="train")
+        saved = torch.load(directory / "baseline.pt", weights_only=True)
+        np.testing.assert_allclose(
+            saved["preprocessing"]["normalization"]["mean"], x.mean(axis=0), rtol=1e-5, atol=1e-7
+        )
+        np.testing.assert_allclose(
+            saved["preprocessing"]["normalization"]["scale"],
+            np.maximum(x.std(axis=0), 1e-4),
+            rtol=1e-5,
+            atol=1e-7,
+        )
+        assert saved["training_provenance"]["training"]["standardize"]
+        for key in ("standardize", "class_balanced"):
+            bad = tmp_path / f"{version}-{key}.json"
+            bad.write_text(json.dumps({**config, key: "yes"}))
+            with pytest.raises(ResearchManifestError, match="booleans"):
+                train_model(bad, tmp_path / "invalid.pt")
     manifest = json.loads((out / "corpus/manifest.json").read_text())
     for row in manifest["samples"]:
         assert row["split"] != "test"
@@ -175,3 +198,88 @@ def test_limits_symlinks_and_invalid_recipe(development, tmp_path, monkeypatch):
     path.symlink_to(original)
     with pytest.raises(ResearchManifestError, match="nonsymlink"):
         rs.generate_corpus(root, tmp_path / "unsafe", **opts)
+
+
+def test_geometry_selection_reserved_and_cli_failures(development, tmp_path, monkeypatch):
+    root, reserved, source = development
+    options_before = options(root, reserved)
+    for content, match in (({"samples": []}, "empty"), ({"samples": [{}]}, "identity")):
+        reserved.write_text(json.dumps(content))
+        with pytest.raises(ResearchManifestError, match=match):
+            rs.generate_corpus(root, tmp_path / "invalid", **options_before)
+    reserved.write_text(json.dumps({"samples": [{"sha256": "a" * 64}]}))
+    selection = json.loads((root / "selection.json").read_text())
+    selection["members"][0]["crc32"] = 0
+    (root / "selection.json").write_text(json.dumps(selection))
+    source["selection_sha256"] = hashlib.sha256((root / "selection.json").read_bytes()).hexdigest()
+    (root / "source.json").write_text(json.dumps(source))
+    with pytest.raises(ResearchManifestError, match="member integrity"):
+        rs.generate_corpus(root, tmp_path / "crc", **options(root, reserved))
+    monkeypatch.setattr(rs, "run_development", lambda *args, **kwargs: {})
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "spatial",
+            str(root),
+            str(tmp_path / "cli"),
+            "--source-sha256",
+            "a" * 64,
+            "--reserved-manifest",
+            str(reserved),
+        ],
+    )
+    rs.main()
+
+
+def test_all_residual_filters_independent_scalar():
+    pixels = np.random.default_rng(2).integers(0, 256, (9, 10, 1), dtype=np.int16)
+    for name in sc.FILTERS:
+        residual = []
+        h, w = pixels.shape[:2]
+        for y in range(h - (2 if name == "v2" else 1 if name in ("v1", "d1", "a1") else 0)):
+            line = []
+            for x in range(w - (2 if name == "h2" else 1 if name in ("h1", "d1", "a1") else 0)):
+                a = int(pixels[y, x, 0])
+                if name == "h1":
+                    value = int(pixels[y, x + 1, 0]) - a
+                elif name == "v1":
+                    value = int(pixels[y + 1, x, 0]) - a
+                elif name == "h2":
+                    value = int(pixels[y, x + 2, 0]) - 2 * int(pixels[y, x + 1, 0]) + a
+                elif name == "v2":
+                    value = int(pixels[y + 2, x, 0]) - 2 * int(pixels[y + 1, x, 0]) + a
+                elif name == "d1":
+                    value = int(pixels[y + 1, x + 1, 0]) - a
+                else:
+                    value = int(pixels[y + 1, x, 0]) - int(pixels[y, x + 1, 0])
+                line.append(max(-2, min(2, value)))
+            residual.append(line)
+        if name in ("v1", "v2"):
+            residual = list(zip(*residual, strict=True))
+        counts = dict.fromkeys(sc.BINS, 0)
+        for line in residual:
+            for x in range(len(line) - 2):
+                counts[sc.canonical(tuple(line[x : x + 3]))] += 1
+        np.testing.assert_allclose(
+            sc.residual_histogram(pixels, name),
+            np.array(list(counts.values())) / sum(counts.values()),
+        )
+
+
+def test_oracle_fault_and_input_change_are_not_success(development, tmp_path, monkeypatch):
+    root, reserved, source = development
+    pixels = np.zeros((16, 16), dtype=np.uint8)
+    with monkeypatch.context() as patch:
+        patch.setattr(rs.np, "unpackbits", lambda values: np.zeros(values.size * 8, dtype=np.uint8))
+        with pytest.raises(ResearchManifestError, match="oracle"):
+            rs.replacement(pixels, "fixture", "sequential", 40)
+    opts = options(root, reserved)
+    mkdir = rs.Path.mkdir
+
+    def changing_mkdir(path, *args, **kwargs):
+        mkdir(path, *args, **kwargs)
+        (root / source["samples"][0]["path"]).write_bytes(b"changed after input preflight")
+
+    monkeypatch.setattr(rs.Path, "mkdir", changing_mkdir)
+    with pytest.raises(ResearchManifestError, match="changed after preflight"):
+        rs.generate_corpus(root, tmp_path / "changed", **opts)

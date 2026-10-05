@@ -41,7 +41,14 @@ MAX_CORPUS_BYTES = 2 * 1024**3
 
 def replacement(pixels: np.ndarray, lineage: str, method: str, rate: int):
     """Independent grayscale recipe plus scalar extraction oracle (no Carrier)."""
-    if method not in METHODS or rate not in RATES or pixels.dtype != np.uint8:
+    if (
+        method not in METHODS
+        or rate not in RATES
+        or pixels.dtype != np.uint8
+        or pixels.ndim != 2
+        or min(pixels.shape) < 8
+        or pixels.size > MAX_PIXELS
+    ):
         raise ResearchManifestError("invalid replacement recipe")
     count = pixels.size * rate // 100 // 8 * 8
     context = f"{SEED}:{lineage}:{method}:{rate}".encode()
@@ -152,7 +159,17 @@ def generate_corpus(
     artifacts = []
     total = 0
     for index, row in enumerate(rows):
-        with Image.open(root / row["path"]) as image:
+        path = root / row["path"]
+        if any(p.is_symlink() for p in (path, *path.parents)) or not path.is_file():
+            raise ResearchManifestError("generation input changed to nonregular file")
+        with path.open("rb") as stream:
+            original_data = stream.read(MAX_IMAGE_BYTES + 1)
+        if (
+            len(original_data) != row["size"]
+            or hashlib.sha256(original_data).hexdigest() != row["sha256"]
+        ):
+            raise ResearchManifestError("generation input changed after preflight")
+        with Image.open(io.BytesIO(original_data)) as image:
             pixels = np.asarray(image, dtype=np.uint8)
         if pixels.size > MAX_PIXELS:
             raise ResearchManifestError("pixel limit exceeded")
