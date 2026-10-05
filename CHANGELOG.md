@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published independently verified 24-cell spatial and 9-cell JPEG context
+  diagnostics: no unseen validation sources; missing declared quality/device
+  metadata; format-specific low-rate/FPR failures retained. No retraining,
+  score improvements, context-aware deployment or generalization claims.
+
 - Preserve historical JPEG v1 prediction documents in source/context audits:
   missing additive format/rate fields come only from the already checksum-bound
   manifest after full identity validation; stored scores/documents stay unchanged.

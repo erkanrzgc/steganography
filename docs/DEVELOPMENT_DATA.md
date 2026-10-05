@@ -5,6 +5,8 @@ as `research diagnose`. It detects source overlap and stratifies existing
 scores; it does not learn source-specific rules or fit score corrections.
 Byte-derived descriptors can still encode dataset shortcuts, so unchanged
 source-free model inputs are not evidence of cross-source generalization.
+The actual audits (`GENERALIZATION_RESULTS.md`) confirm zero unseen validation
+sources in both current models and missing declared quality/device metadata.
 
 The completed spatial objective experiment reuses existing audited parity vectors;
 no new download or test-image access is needed. Complete controlled training

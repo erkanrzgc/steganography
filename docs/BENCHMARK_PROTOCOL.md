@@ -3,6 +3,8 @@
 Cached-score source/context audits follow `GENERALIZATION_PROTOCOL.md`.
 Pooled or same-source development metrics never count as independent-source
 support; missing quality/device metadata remains explicitly unavailable.
+Initial actual-artifact audits and legacy JPEG compatibility handling are
+recorded in `GENERALIZATION_RESULTS.md` without modifying the frozen protocol.
 
 The fixed train-objective comparison is preregistered in
 `SPATIAL_WEIGHTING_PROTOCOL.md`: cached checksum-bound parity features, train-only

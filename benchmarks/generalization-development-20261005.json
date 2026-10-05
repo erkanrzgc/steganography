@@ -1,0 +1,1905 @@
+{
+  "schema_version": "generalization-development-audit-v1",
+  "protocol_sha256": "c371467e2aedb8e47573dca5aa7116ca09793b66840616f2ab8579b30ad2c2c7",
+  "grouping_code_commit": "55a1889",
+  "legacy_adapter_commit": "2886997",
+  "scope": "Already inspected cached development validation; no retraining or blind test",
+  "support_status": "experimental",
+  "independent_source_gate": "unavailable",
+  "source_and_license_inventory": "docs/DATASET_CATALOG.md",
+  "experiments": {
+    "spatial": {
+      "source_label": "BOSSbase-1.01 controlled LSB",
+      "audit_code_commit": "55a1889",
+      "raw_report_sha256": "04826285ad2c589174ea64c6d2cedfe0598f63fe5adda49962d1833e23d1ffdb",
+      "independent_confusion_and_pairwise_auc_cells_verified": 24,
+      "diagnostic": {
+        "schema_version": "research-generalization-diagnostics-v1",
+        "manifest_sha256": "707db7debce75b2a241e1ea3b1a5e3cb9b89c287d7396f95abad5c3364e5eda7",
+        "predictions_sha256": "f31ef36e6f7a76eefa3cf7266f3ccbe79e06f184f2e8abf7952c83beb98ff4bc",
+        "model_card_sha256": "69fe67bf5188452aa7710d850ed81cdea214396f0cd3f9f945f22e2e464c35b7",
+        "feature_version": "spatial-parity-residual-v1",
+        "threshold": 0.5,
+        "source_separation": {
+          "training_source_groups": 1,
+          "validation_source_groups": 1,
+          "shared_source_groups": 1,
+          "unseen_validation_source_groups": 0,
+          "metadata_complete": true,
+          "independent_source_evidence": "unavailable"
+        },
+        "metadata_coverage": {
+          "quality_factor": {
+            "known_rows": 0,
+            "unknown_rows": 1288
+          },
+          "camera": {
+            "known_rows": 0,
+            "unknown_rows": 1288
+          },
+          "device": {
+            "known_rows": 0,
+            "unknown_rows": 1288
+          },
+          "app": {
+            "known_rows": 0,
+            "unknown_rows": 1288
+          }
+        },
+        "cells": [
+          {
+            "dimension": "format",
+            "context": "bmp",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 20,
+            "covers": 97,
+            "stego": 97,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 194,
+              "positives": 97,
+              "negatives": 97,
+              "confusion": {
+                "tp": 92,
+                "tn": 93,
+                "fp": 4,
+                "fn": 5
+              },
+              "precision": 0.958333,
+              "recall": 0.948454,
+              "specificity": 0.958763,
+              "false_positive_rate": 0.041237,
+              "accuracy": 0.953608,
+              "balanced_accuracy": 0.953608,
+              "f1": 0.953368,
+              "roc_auc": 0.995642,
+              "expected_calibration_error": 0.138169
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.9901981000000001,
+                0.9988416250000001
+              ],
+              "balanced_accuracy": [
+                0.927835,
+                0.979381
+              ],
+              "recall": [
+                0.907216,
+                0.989691
+              ],
+              "false_positive_rate": [
+                0.010309,
+                0.08273175000000006
+              ],
+              "expected_calibration_error": [
+                0.12819005,
+                0.167251825
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "bmp",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 40,
+            "covers": 97,
+            "stego": 97,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 194,
+              "positives": 97,
+              "negatives": 97,
+              "confusion": {
+                "tp": 94,
+                "tn": 93,
+                "fp": 4,
+                "fn": 3
+              },
+              "precision": 0.959184,
+              "recall": 0.969072,
+              "specificity": 0.958763,
+              "false_positive_rate": 0.041237,
+              "accuracy": 0.963918,
+              "balanced_accuracy": 0.963918,
+              "f1": 0.964103,
+              "roc_auc": 0.997343,
+              "expected_calibration_error": 0.132622
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.994034725,
+                0.99968365
+              ],
+              "balanced_accuracy": [
+                0.943299,
+                0.984664875
+              ],
+              "recall": [
+                0.927835,
+                1
+              ],
+              "false_positive_rate": [
+                0.010309,
+                0.08273175000000006
+              ],
+              "expected_calibration_error": [
+                0.12556195,
+                0.158580625
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "bmp",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 5,
+            "covers": 97,
+            "stego": 97,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 194,
+              "positives": 97,
+              "negatives": 97,
+              "confusion": {
+                "tp": 65,
+                "tn": 93,
+                "fp": 4,
+                "fn": 32
+              },
+              "precision": 0.942029,
+              "recall": 0.670103,
+              "specificity": 0.958763,
+              "false_positive_rate": 0.041237,
+              "accuracy": 0.814433,
+              "balanced_accuracy": 0.814433,
+              "f1": 0.783133,
+              "roc_auc": 0.954724,
+              "expected_calibration_error": 0.261974
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.9239983749999999,
+                0.9804626
+              ],
+              "balanced_accuracy": [
+                0.778222125,
+                0.860825
+              ],
+              "recall": [
+                0.587629,
+                0.762887
+              ],
+              "false_positive_rate": [
+                0.010309,
+                0.08273175000000006
+              ],
+              "expected_calibration_error": [
+                0.22695597499999998,
+                0.295089225
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "bmp",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 20,
+            "covers": 97,
+            "stego": 97,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 194,
+              "positives": 97,
+              "negatives": 97,
+              "confusion": {
+                "tp": 93,
+                "tn": 93,
+                "fp": 4,
+                "fn": 4
+              },
+              "precision": 0.958763,
+              "recall": 0.958763,
+              "specificity": 0.958763,
+              "false_positive_rate": 0.041237,
+              "accuracy": 0.958763,
+              "balanced_accuracy": 0.958763,
+              "f1": 0.958763,
+              "roc_auc": 0.993198,
+              "expected_calibration_error": 0.176744
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.98458635,
+                0.999045675
+              ],
+              "balanced_accuracy": [
+                0.93299,
+                0.984536
+              ],
+              "recall": [
+                0.917526,
+                1
+              ],
+              "false_positive_rate": [
+                0.010309,
+                0.08273175000000006
+              ],
+              "expected_calibration_error": [
+                0.158796825,
+                0.2127736
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "bmp",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 40,
+            "covers": 97,
+            "stego": 97,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 194,
+              "positives": 97,
+              "negatives": 97,
+              "confusion": {
+                "tp": 96,
+                "tn": 93,
+                "fp": 4,
+                "fn": 1
+              },
+              "precision": 0.96,
+              "recall": 0.989691,
+              "specificity": 0.958763,
+              "false_positive_rate": 0.041237,
+              "accuracy": 0.974227,
+              "balanced_accuracy": 0.974227,
+              "f1": 0.974619,
+              "roc_auc": 0.998087,
+              "expected_calibration_error": 0.136715
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.995321325,
+                1
+              ],
+              "balanced_accuracy": [
+                0.953608,
+                0.994845
+              ],
+              "recall": [
+                0.969072,
+                1
+              ],
+              "false_positive_rate": [
+                0.010309,
+                0.08273175000000006
+              ],
+              "expected_calibration_error": [
+                0.131800975,
+                0.16657044999999998
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "bmp",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 5,
+            "covers": 97,
+            "stego": 97,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 194,
+              "positives": 97,
+              "negatives": 97,
+              "confusion": {
+                "tp": 30,
+                "tn": 93,
+                "fp": 4,
+                "fn": 67
+              },
+              "precision": 0.882353,
+              "recall": 0.309278,
+              "specificity": 0.958763,
+              "false_positive_rate": 0.041237,
+              "accuracy": 0.634021,
+              "balanced_accuracy": 0.634021,
+              "f1": 0.458015,
+              "roc_auc": 0.928792,
+              "expected_calibration_error": 0.239771
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.892842425,
+                0.96098995
+              ],
+              "balanced_accuracy": [
+                0.592784,
+                0.6753868500000001
+              ],
+              "recall": [
+                0.216495,
+                0.402062
+              ],
+              "false_positive_rate": [
+                0.010309,
+                0.08273175000000006
+              ],
+              "expected_calibration_error": [
+                0.220708975,
+                0.28345905
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "png",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 20,
+            "covers": 87,
+            "stego": 87,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 174,
+              "positives": 87,
+              "negatives": 87,
+              "confusion": {
+                "tp": 85,
+                "tn": 85,
+                "fp": 2,
+                "fn": 2
+              },
+              "precision": 0.977011,
+              "recall": 0.977011,
+              "specificity": 0.977011,
+              "false_positive_rate": 0.022989,
+              "accuracy": 0.977011,
+              "balanced_accuracy": 0.977011,
+              "f1": 0.977011,
+              "roc_auc": 0.99564,
+              "expected_calibration_error": 0.159254
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.9902097999999999,
+                0.9996073000000001
+              ],
+              "balanced_accuracy": [
+                0.953879325,
+                0.994253
+              ],
+              "recall": [
+                0.931034,
+                1
+              ],
+              "false_positive_rate": [
+                0,
+                0.057471
+              ],
+              "expected_calibration_error": [
+                0.13890845000000002,
+                0.18367477499999998
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "png",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 40,
+            "covers": 87,
+            "stego": 87,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 174,
+              "positives": 87,
+              "negatives": 87,
+              "confusion": {
+                "tp": 86,
+                "tn": 85,
+                "fp": 2,
+                "fn": 1
+              },
+              "precision": 0.977273,
+              "recall": 0.988506,
+              "specificity": 0.977011,
+              "false_positive_rate": 0.022989,
+              "accuracy": 0.982759,
+              "balanced_accuracy": 0.982759,
+              "f1": 0.982857,
+              "roc_auc": 0.99749,
+              "expected_calibration_error": 0.15186
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.9936382,
+                1
+              ],
+              "balanced_accuracy": [
+                0.965517,
+                0.9943966750000001
+              ],
+              "recall": [
+                0.965517,
+                1
+              ],
+              "false_positive_rate": [
+                0,
+                0.057471
+              ],
+              "expected_calibration_error": [
+                0.1333215,
+                0.17130177500000002
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "png",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 5,
+            "covers": 87,
+            "stego": 87,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 174,
+              "positives": 87,
+              "negatives": 87,
+              "confusion": {
+                "tp": 60,
+                "tn": 85,
+                "fp": 2,
+                "fn": 27
+              },
+              "precision": 0.967742,
+              "recall": 0.689655,
+              "specificity": 0.977011,
+              "false_positive_rate": 0.022989,
+              "accuracy": 0.833333,
+              "balanced_accuracy": 0.833333,
+              "f1": 0.805369,
+              "roc_auc": 0.943718,
+              "expected_calibration_error": 0.264054
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.90482545,
+                0.975994625
+              ],
+              "balanced_accuracy": [
+                0.787356,
+                0.885057
+              ],
+              "recall": [
+                0.609195,
+                0.793103
+              ],
+              "false_positive_rate": [
+                0,
+                0.057471
+              ],
+              "expected_calibration_error": [
+                0.2360123,
+                0.29770297500000004
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "png",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 20,
+            "covers": 87,
+            "stego": 87,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 174,
+              "positives": 87,
+              "negatives": 87,
+              "confusion": {
+                "tp": 85,
+                "tn": 85,
+                "fp": 2,
+                "fn": 2
+              },
+              "precision": 0.977011,
+              "recall": 0.977011,
+              "specificity": 0.977011,
+              "false_positive_rate": 0.022989,
+              "accuracy": 0.977011,
+              "balanced_accuracy": 0.977011,
+              "f1": 0.977011,
+              "roc_auc": 0.989298,
+              "expected_calibration_error": 0.183402
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.9747584,
+                0.9996106
+              ],
+              "balanced_accuracy": [
+                0.953879325,
+                0.994253
+              ],
+              "recall": [
+                0.931034,
+                1
+              ],
+              "false_positive_rate": [
+                0,
+                0.057471
+              ],
+              "expected_calibration_error": [
+                0.159741075,
+                0.21091900000000002
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "png",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 40,
+            "covers": 87,
+            "stego": 87,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 174,
+              "positives": 87,
+              "negatives": 87,
+              "confusion": {
+                "tp": 85,
+                "tn": 85,
+                "fp": 2,
+                "fn": 2
+              },
+              "precision": 0.977011,
+              "recall": 0.977011,
+              "specificity": 0.977011,
+              "false_positive_rate": 0.022989,
+              "accuracy": 0.977011,
+              "balanced_accuracy": 0.977011,
+              "f1": 0.977011,
+              "roc_auc": 0.997358,
+              "expected_calibration_error": 0.144733
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.9931266999999999,
+                1
+              ],
+              "balanced_accuracy": [
+                0.953879325,
+                0.994253
+              ],
+              "recall": [
+                0.931034,
+                1
+              ],
+              "false_positive_rate": [
+                0,
+                0.057471
+              ],
+              "expected_calibration_error": [
+                0.127587525,
+                0.164489425
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "png",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 5,
+            "covers": 87,
+            "stego": 87,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 174,
+              "positives": 87,
+              "negatives": 87,
+              "confusion": {
+                "tp": 25,
+                "tn": 85,
+                "fp": 2,
+                "fn": 62
+              },
+              "precision": 0.925926,
+              "recall": 0.287356,
+              "specificity": 0.977011,
+              "false_positive_rate": 0.022989,
+              "accuracy": 0.632184,
+              "balanced_accuracy": 0.632184,
+              "f1": 0.438596,
+              "roc_auc": 0.92139,
+              "expected_calibration_error": 0.260144
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.8809223500000001,
+                0.958402825
+              ],
+              "balanced_accuracy": [
+                0.591954,
+                0.683908
+              ],
+              "recall": [
+                0.206609625,
+                0.390805
+              ],
+              "false_positive_rate": [
+                0,
+                0.057471
+              ],
+              "expected_calibration_error": [
+                0.224753,
+                0.29916465
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 20,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 177,
+                "tn": 178,
+                "fp": 6,
+                "fn": 7
+              },
+              "precision": 0.967213,
+              "recall": 0.961957,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.964674,
+              "balanced_accuracy": 0.964674,
+              "f1": 0.964578,
+              "roc_auc": 0.995304,
+              "expected_calibration_error": 0.13533
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.990578,
+                0.998200225
+              ],
+              "balanced_accuracy": [
+                0.942935,
+                0.980978
+              ],
+              "recall": [
+                0.929348,
+                0.983696
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.12607870000000002,
+                0.156580775
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 40,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 180,
+                "tn": 178,
+                "fp": 6,
+                "fn": 4
+              },
+              "precision": 0.967742,
+              "recall": 0.978261,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.972826,
+              "balanced_accuracy": 0.972826,
+              "f1": 0.972973,
+              "roc_auc": 0.997342,
+              "expected_calibration_error": 0.137552
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.994612925,
+                0.99917375
+              ],
+              "balanced_accuracy": [
+                0.953804,
+                0.986413
+              ],
+              "recall": [
+                0.951087,
+                0.994565
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.128598925,
+                0.153204125
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 5,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 125,
+                "tn": 178,
+                "fp": 6,
+                "fn": 59
+              },
+              "precision": 0.954198,
+              "recall": 0.679348,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.82337,
+              "balanced_accuracy": 0.82337,
+              "f1": 0.793651,
+              "roc_auc": 0.949817,
+              "expected_calibration_error": 0.262958
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.92505465,
+                0.9716605
+              ],
+              "balanced_accuracy": [
+                0.782609,
+                0.85604595
+              ],
+              "recall": [
+                0.597690125,
+                0.75
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.23726105,
+                0.29451595
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 20,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 178,
+                "tn": 178,
+                "fp": 6,
+                "fn": 6
+              },
+              "precision": 0.967391,
+              "recall": 0.967391,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.967391,
+              "balanced_accuracy": 0.967391,
+              "f1": 0.967391,
+              "roc_auc": 0.9917,
+              "expected_calibration_error": 0.175375
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.98141215,
+                0.9984677000000001
+              ],
+              "balanced_accuracy": [
+                0.945652,
+                0.983696
+              ],
+              "recall": [
+                0.940217,
+                0.98913
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.15548845,
+                0.19781072500000002
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 40,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 181,
+                "tn": 178,
+                "fp": 6,
+                "fn": 3
+              },
+              "precision": 0.967914,
+              "recall": 0.983696,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.975543,
+              "balanced_accuracy": 0.975543,
+              "f1": 0.975741,
+              "roc_auc": 0.997785,
+              "expected_calibration_error": 0.138469
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.99504855,
+                0.9995875
+              ],
+              "balanced_accuracy": [
+                0.959171075,
+                0.991848
+              ],
+              "recall": [
+                0.961957,
+                1
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.13087827500000002,
+                0.15359765
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 5,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 55,
+                "tn": 178,
+                "fp": 6,
+                "fn": 129
+              },
+              "precision": 0.901639,
+              "recall": 0.298913,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.633152,
+              "balanced_accuracy": 0.633152,
+              "f1": 0.44898,
+              "roc_auc": 0.924917,
+              "expected_calibration_error": 0.249404
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.8972616,
+                0.953106825
+              ],
+              "balanced_accuracy": [
+                0.603261,
+                0.665761
+              ],
+              "recall": [
+                0.23356012499999998,
+                0.369700875
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.22576062500000002,
+                0.27913705000000005
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-6a23b26e6f51f8cc",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 20,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 177,
+                "tn": 178,
+                "fp": 6,
+                "fn": 7
+              },
+              "precision": 0.967213,
+              "recall": 0.961957,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.964674,
+              "balanced_accuracy": 0.964674,
+              "f1": 0.964578,
+              "roc_auc": 0.995304,
+              "expected_calibration_error": 0.13533
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.990578,
+                0.998200225
+              ],
+              "balanced_accuracy": [
+                0.942935,
+                0.980978
+              ],
+              "recall": [
+                0.929348,
+                0.983696
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.12607870000000002,
+                0.156580775
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-6a23b26e6f51f8cc",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 40,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 180,
+                "tn": 178,
+                "fp": 6,
+                "fn": 4
+              },
+              "precision": 0.967742,
+              "recall": 0.978261,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.972826,
+              "balanced_accuracy": 0.972826,
+              "f1": 0.972973,
+              "roc_auc": 0.997342,
+              "expected_calibration_error": 0.137552
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.994612925,
+                0.99917375
+              ],
+              "balanced_accuracy": [
+                0.953804,
+                0.986413
+              ],
+              "recall": [
+                0.951087,
+                0.994565
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.128598925,
+                0.153204125
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-6a23b26e6f51f8cc",
+            "method_id": "method-3ee15b8a77ecd8a7",
+            "method_family": "sequential",
+            "rate_percent": 5,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 125,
+                "tn": 178,
+                "fp": 6,
+                "fn": 59
+              },
+              "precision": 0.954198,
+              "recall": 0.679348,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.82337,
+              "balanced_accuracy": 0.82337,
+              "f1": 0.793651,
+              "roc_auc": 0.949817,
+              "expected_calibration_error": 0.262958
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.92505465,
+                0.9716605
+              ],
+              "balanced_accuracy": [
+                0.782609,
+                0.85604595
+              ],
+              "recall": [
+                0.597690125,
+                0.75
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.23726105,
+                0.29451595
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-6a23b26e6f51f8cc",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 20,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 178,
+                "tn": 178,
+                "fp": 6,
+                "fn": 6
+              },
+              "precision": 0.967391,
+              "recall": 0.967391,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.967391,
+              "balanced_accuracy": 0.967391,
+              "f1": 0.967391,
+              "roc_auc": 0.9917,
+              "expected_calibration_error": 0.175375
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.98141215,
+                0.9984677000000001
+              ],
+              "balanced_accuracy": [
+                0.945652,
+                0.983696
+              ],
+              "recall": [
+                0.940217,
+                0.98913
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.15548845,
+                0.19781072500000002
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-6a23b26e6f51f8cc",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 40,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 181,
+                "tn": 178,
+                "fp": 6,
+                "fn": 3
+              },
+              "precision": 0.967914,
+              "recall": 0.983696,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.975543,
+              "balanced_accuracy": 0.975543,
+              "f1": 0.975741,
+              "roc_auc": 0.997785,
+              "expected_calibration_error": 0.138469
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.99504855,
+                0.9995875
+              ],
+              "balanced_accuracy": [
+                0.959171075,
+                0.991848
+              ],
+              "recall": [
+                0.961957,
+                1
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.13087827500000002,
+                0.15359765
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-6a23b26e6f51f8cc",
+            "method_id": "method-4775e2615140c36b",
+            "method_family": "scattered",
+            "rate_percent": 5,
+            "covers": 184,
+            "stego": 184,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 368,
+              "positives": 184,
+              "negatives": 184,
+              "confusion": {
+                "tp": 55,
+                "tn": 178,
+                "fp": 6,
+                "fn": 129
+              },
+              "precision": 0.901639,
+              "recall": 0.298913,
+              "specificity": 0.967391,
+              "false_positive_rate": 0.032609,
+              "accuracy": 0.633152,
+              "balanced_accuracy": 0.633152,
+              "f1": 0.44898,
+              "roc_auc": 0.924917,
+              "expected_calibration_error": 0.249404
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.8972616,
+                0.953106825
+              ],
+              "balanced_accuracy": [
+                0.603261,
+                0.665761
+              ],
+              "recall": [
+                0.23356012499999998,
+                0.369700875
+              ],
+              "false_positive_rate": [
+                0.01087,
+                0.065217
+              ],
+              "expected_calibration_error": [
+                0.22576062500000002,
+                0.27913705000000005
+              ]
+            }
+          }
+        ],
+        "support_status": "experimental",
+        "deployed": false,
+        "limitations": [
+          "Cached validation diagnostics, not a blind test or support qualification.",
+          "Source identity declarations cannot prove independence or camera provenance.",
+          "Format and declared quality are measured context, not learned score corrections.",
+          "Small/single-label cells and unknown metadata cannot demonstrate generalization.",
+          "No training, calibration, threshold search, image access or detector changes."
+        ]
+      }
+    },
+    "jpeg": {
+      "source_label": "ALASKA2 JPEG development",
+      "audit_code_commit": "2886997",
+      "raw_report_sha256": "d85674e501a9c3d4e7de24a53328d4f79544c21964c9a8a6580e0d0ea5ea197b",
+      "independent_confusion_and_pairwise_auc_cells_verified": 9,
+      "diagnostic": {
+        "schema_version": "research-generalization-diagnostics-v1",
+        "manifest_sha256": "a3fd898fecbd50135f15a9f36c990d97e9d1779afb58076a35d8a39e1ce5a16d",
+        "predictions_sha256": "fcb3def1ea71b3a7c7e8a434fb2ae03cee5b9c3b36c59532d5f535631c4e0821",
+        "model_card_sha256": "4bb417bb874dfc17de9ca6672076c8340956ad71ec3a448424c8a1fb9a633ced",
+        "feature_version": "jpeg-dct-summary-v1",
+        "threshold": 0.5,
+        "legacy_fields_from_bound_manifest": 1640,
+        "source_separation": {
+          "training_source_groups": 1,
+          "validation_source_groups": 1,
+          "shared_source_groups": 1,
+          "unseen_validation_source_groups": 0,
+          "metadata_complete": true,
+          "independent_source_evidence": "unavailable"
+        },
+        "metadata_coverage": {
+          "quality_factor": {
+            "known_rows": 0,
+            "unknown_rows": 820
+          },
+          "camera": {
+            "known_rows": 0,
+            "unknown_rows": 820
+          },
+          "device": {
+            "known_rows": 0,
+            "unknown_rows": 820
+          },
+          "app": {
+            "known_rows": 0,
+            "unknown_rows": 820
+          }
+        },
+        "cells": [
+          {
+            "dimension": "format",
+            "context": "jpeg",
+            "method_id": "method-5503e44c87d40a18",
+            "method_family": "JUNIWARD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 108,
+                "tn": 120,
+                "fp": 85,
+                "fn": 97
+              },
+              "precision": 0.559585,
+              "recall": 0.526829,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.556098,
+              "balanced_accuracy": 0.556098,
+              "f1": 0.542714,
+              "roc_auc": 0.592481,
+              "expected_calibration_error": 0.02971
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.5692808,
+                0.62093145
+              ],
+              "balanced_accuracy": [
+                0.5292070249999999,
+                0.5854879500000001
+              ],
+              "recall": [
+                0.458537,
+                0.5904879000000001
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.015728875000000003,
+                0.065990075
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "jpeg",
+            "method_id": "method-a10f99f293a94d51",
+            "method_family": "JMiPOD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 139,
+                "tn": 120,
+                "fp": 85,
+                "fn": 66
+              },
+              "precision": 0.620536,
+              "recall": 0.678049,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.631707,
+              "balanced_accuracy": 0.631707,
+              "f1": 0.648019,
+              "roc_auc": 0.648804,
+              "expected_calibration_error": 0.068514
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.6225395499999999,
+                0.6773673250000001
+              ],
+              "balanced_accuracy": [
+                0.6023780249999999,
+                0.6585979750000001
+              ],
+              "recall": [
+                0.61451205,
+                0.731707
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.0381676,
+                0.10243250000000001
+              ]
+            }
+          },
+          {
+            "dimension": "format",
+            "context": "jpeg",
+            "method_id": "method-d4aec40e5a80fa2e",
+            "method_family": "UERD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 110,
+                "tn": 120,
+                "fp": 85,
+                "fn": 95
+              },
+              "precision": 0.564103,
+              "recall": 0.536585,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.560976,
+              "balanced_accuracy": 0.560976,
+              "f1": 0.55,
+              "roc_auc": 0.585306,
+              "expected_calibration_error": 0.019399
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.5643547000000001,
+                0.60845355
+              ],
+              "balanced_accuracy": [
+                0.539024,
+                0.5854269750000001
+              ],
+              "recall": [
+                0.468293,
+                0.6
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.014539675,
+                0.05252895
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-5503e44c87d40a18",
+            "method_family": "JUNIWARD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 108,
+                "tn": 120,
+                "fp": 85,
+                "fn": 97
+              },
+              "precision": 0.559585,
+              "recall": 0.526829,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.556098,
+              "balanced_accuracy": 0.556098,
+              "f1": 0.542714,
+              "roc_auc": 0.592481,
+              "expected_calibration_error": 0.02971
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.5692808,
+                0.62093145
+              ],
+              "balanced_accuracy": [
+                0.5292070249999999,
+                0.5854879500000001
+              ],
+              "recall": [
+                0.458537,
+                0.5904879000000001
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.015728875000000003,
+                0.065990075
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-a10f99f293a94d51",
+            "method_family": "JMiPOD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 139,
+                "tn": 120,
+                "fp": 85,
+                "fn": 66
+              },
+              "precision": 0.620536,
+              "recall": 0.678049,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.631707,
+              "balanced_accuracy": 0.631707,
+              "f1": 0.648019,
+              "roc_auc": 0.648804,
+              "expected_calibration_error": 0.068514
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.6225395499999999,
+                0.6773673250000001
+              ],
+              "balanced_accuracy": [
+                0.6023780249999999,
+                0.6585979750000001
+              ],
+              "recall": [
+                0.61451205,
+                0.731707
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.0381676,
+                0.10243250000000001
+              ]
+            }
+          },
+          {
+            "dimension": "pooled",
+            "context": "all",
+            "method_id": "method-d4aec40e5a80fa2e",
+            "method_family": "UERD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 110,
+                "tn": 120,
+                "fp": 85,
+                "fn": 95
+              },
+              "precision": 0.564103,
+              "recall": 0.536585,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.560976,
+              "balanced_accuracy": 0.560976,
+              "f1": 0.55,
+              "roc_auc": 0.585306,
+              "expected_calibration_error": 0.019399
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.5643547000000001,
+                0.60845355
+              ],
+              "balanced_accuracy": [
+                0.539024,
+                0.5854269750000001
+              ],
+              "recall": [
+                0.468293,
+                0.6
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.014539675,
+                0.05252895
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-d2a1dfbee30c5891",
+            "method_id": "method-5503e44c87d40a18",
+            "method_family": "JUNIWARD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 108,
+                "tn": 120,
+                "fp": 85,
+                "fn": 97
+              },
+              "precision": 0.559585,
+              "recall": 0.526829,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.556098,
+              "balanced_accuracy": 0.556098,
+              "f1": 0.542714,
+              "roc_auc": 0.592481,
+              "expected_calibration_error": 0.02971
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.5692808,
+                0.62093145
+              ],
+              "balanced_accuracy": [
+                0.5292070249999999,
+                0.5854879500000001
+              ],
+              "recall": [
+                0.458537,
+                0.5904879000000001
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.015728875000000003,
+                0.065990075
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-d2a1dfbee30c5891",
+            "method_id": "method-a10f99f293a94d51",
+            "method_family": "JMiPOD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 139,
+                "tn": 120,
+                "fp": 85,
+                "fn": 66
+              },
+              "precision": 0.620536,
+              "recall": 0.678049,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.631707,
+              "balanced_accuracy": 0.631707,
+              "f1": 0.648019,
+              "roc_auc": 0.648804,
+              "expected_calibration_error": 0.068514
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.6225395499999999,
+                0.6773673250000001
+              ],
+              "balanced_accuracy": [
+                0.6023780249999999,
+                0.6585979750000001
+              ],
+              "recall": [
+                0.61451205,
+                0.731707
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.0381676,
+                0.10243250000000001
+              ]
+            }
+          },
+          {
+            "dimension": "source",
+            "context": "source-d2a1dfbee30c5891",
+            "method_id": "method-d4aec40e5a80fa2e",
+            "method_family": "UERD",
+            "rate_percent": null,
+            "covers": 205,
+            "stego": 205,
+            "status": "experimental",
+            "reason": null,
+            "metrics": {
+              "threshold": 0.5,
+              "samples": 410,
+              "positives": 205,
+              "negatives": 205,
+              "confusion": {
+                "tp": 110,
+                "tn": 120,
+                "fp": 85,
+                "fn": 95
+              },
+              "precision": 0.564103,
+              "recall": 0.536585,
+              "specificity": 0.585366,
+              "false_positive_rate": 0.414634,
+              "accuracy": 0.560976,
+              "balanced_accuracy": 0.560976,
+              "f1": 0.55,
+              "roc_auc": 0.585306,
+              "expected_calibration_error": 0.019399
+            },
+            "bootstrap_95_percent": {
+              "roc_auc": [
+                0.5643547000000001,
+                0.60845355
+              ],
+              "balanced_accuracy": [
+                0.539024,
+                0.5854269750000001
+              ],
+              "recall": [
+                0.468293,
+                0.6
+              ],
+              "false_positive_rate": [
+                0.35122,
+                0.482927
+              ],
+              "expected_calibration_error": [
+                0.014539675,
+                0.05252895
+              ]
+            }
+          }
+        ],
+        "support_status": "experimental",
+        "deployed": false,
+        "limitations": [
+          "Cached validation diagnostics, not a blind test or support qualification.",
+          "Source identity declarations cannot prove independence or camera provenance.",
+          "Format and declared quality are measured context, not learned score corrections.",
+          "Small/single-label cells and unknown metadata cannot demonstrate generalization.",
+          "No training, calibration, threshold search, image access or detector changes."
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "Different carrier formats/models do not qualify as two independent sources for either model.",
+    "JPEG first preflight refused the legacy prediction document lacking additive format/rate fields; the explicit v1 adapter reads them only from its bound manifest. No stored scores/documents were altered.",
+    "No image access, new acquisition, training, threshold search or installed detector changes.",
+    "Quality-factor, camera, device and app metadata are missing in both audited validation cohorts; no quality-specific capability is demonstrated.",
+    "All available context metrics remain small-cohort inspected development evidence, not qualified real-world accuracy.",
+    "Original JPEG export numerical failure remains recorded separately; this cached-score audit is not an ONNX numerical gate."
+  ]
+}

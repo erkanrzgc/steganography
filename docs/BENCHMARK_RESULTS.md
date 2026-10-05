@@ -5,6 +5,12 @@ The application is an exploratory inspection/extraction tool, not a reliable
 certificate that a file is clean. More formats, datasets or passing unit tests
 do not imply better detection.
 
+[Source/context audit](GENERALIZATION_RESULTS.md): both current model
+validation sets contain zero unseen source groups. PNG/BMP low-rate failures
+remain visible by format; JPEG reproduces its previous weak ALASKA2-only
+development scores. Missing quality/camera/device metadata cannot demonstrate
+context awareness. This adds diagnostic controls, not detection improvement.
+
 The fixed low-payload training-weight comparison raises same-source 5% recall
 from 38.04% to 67.93% (sequential) and 14.67% to 29.89% (scattered), while
 shared false alarms rise from 1.63% to 3.26%. Higher-rate ranking and most ECE

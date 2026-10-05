@@ -23,6 +23,8 @@ Research models use byte-derived spatial/DCT signals, not filenames or dataset
 identity as inputs. That does not prove generalization: compression/content
 can still encode source bias. [Source/context diagnostics](docs/GENERALIZATION_PROTOCOL.md)
 keep same-source development scores separate from independent-source evidence.
+The [current audit](docs/GENERALIZATION_RESULTS.md) finds no unseen validation
+sources for either research model; cross-source generalization is unproven.
 
 ## Choose a task
 
