@@ -168,6 +168,8 @@ Real-data baselines, development experiments and controlled CTF recovery are
 reported separately in [measured results](docs/BENCHMARK_RESULTS.md). The latest
 [two-origin JPEG context experiment](docs/JPEG_CONTEXT_RESULTS.md) failed its
 detection targets and is not deployed; no method has qualified cross-source support.
+Its [residual/parity follow-up](docs/JPEG_RESIDUAL_RESULTS.md) lowers some false
+alarms but also loses recall; it remains an undeployed development experiment.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

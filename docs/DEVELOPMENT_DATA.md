@@ -1,5 +1,10 @@
 # Preparing the next detector experiment
 
+`JPEG_RESIDUAL_RESULTS.md` now records the fixed same-file residual/parity
+follow-up. Prefix integrity and numerical export pass, detection does not;
+retain this failure when moving beyond coarse linear summaries. No acquisition,
+new original lineage, calibration or untouched-source evidence was added.
+
 `JPEG_CONTEXT_PROTOCOL.md` freezes the next local two-origin JPEG development
 experiment before generation/training: no new download, original split/lineage
 preservation, optional pinned simulation and measured quantization/content

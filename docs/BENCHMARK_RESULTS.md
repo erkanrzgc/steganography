@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+The [same-file JPEG residual/parity comparison](JPEG_RESIDUAL_RESULTS.md) adds
+DC/neighbor statistics, but still fails: ALASKA FPR 46.34%, BOSS simulations
+40%, AUC .503–.573. Recall regresses in several cells; all intervals and failures
+are published. Numeric export passes; no deployment or independent-source support.
+
 As of 2026-10-05, **no method has passed the cross-source support gates**.
 The application is an exploratory inspection/extraction tool, not a reliable
 certificate that a file is clean. More formats, datasets or passing unit tests

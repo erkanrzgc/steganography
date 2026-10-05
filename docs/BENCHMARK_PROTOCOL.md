@@ -3,6 +3,8 @@
 The fixed same-file JPEG residual/parity comparison is preregistered in
 `JPEG_RESIDUAL_PROTOCOL.md`; retained DC/neighbor information is experimental,
 not an independent-source or end-to-end payload recovery claim.
+Completed source/quality scores, paired change intervals and regressions remain
+visible in `JPEG_RESIDUAL_RESULTS.md`; numerical parity does not pass detection.
 
 `COVERAGE_POLICY.md` defines minimum pipeline execution coverage. Missing required
 components are inconclusive at low scores, never clean negatives. Completion

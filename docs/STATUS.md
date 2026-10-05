@@ -8,7 +8,9 @@ been delivered or validated by this slice.
 
 - Research-only 2,066-feature JPEG block-DCT residual/parity contract and shared
   bounded worker dispatch. Two-origin weighting and old contracts preserved;
-  fixed comparison is in `JPEG_RESIDUAL_PROTOCOL.md`. Actual results pending.
+  fixed comparison is in `JPEG_RESIDUAL_PROTOCOL.md`. The actual 3,750-file run
+  is complete: FPR 46.34% ALASKA / 40% BOSS, recall regressions retained,
+  numerical export passes but detection fails. See `JPEG_RESIDUAL_RESULTS.md`.
 
 - Versioned minimum native coverage by content-detected format: missing required
   components force low-score `inconclusive`, while independent positive findings
@@ -138,7 +140,7 @@ been delivered or validated by this slice.
   strict absolute 1e-6 score tolerance by 1.92e-7, with zero threshold-decision
   changes. That stricter artifact check is recorded as failed, not waived.
 - Version 0.6.0 wheel and sdist build successfully; the current build was verified
-  to include new context/coverage modules, no models or datasets, and simulation/
+  to include new residual/context/coverage modules, no models or datasets, and simulation/
   DCT dependencies only behind optional extras. No package publication occurred.
 - Web: one test passes; TypeScript/Vite build passes.
 - Full Docker build and non-root/read-only/network-disabled smoke have passed

@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published the independently audited same-file JPEG residual/parity experiment:
+  FPR 50.24% → 46.34% on ALASKA and 48% → 40% on BOSS simulations, but several
+  recall/ECE regressions and failed detection gates. All source/quality cells and
+  paired change intervals retained; exact CPU ONNX parity, no model deployment.
+
 - Added a custom 2,066-feature JPEG block-DCT residual/parity research descriptor,
   including DC statistics and the unchanged measured-context prefix. Reuse
   allowlisted bounded JPEG workers and require two-origin objective provenance.
