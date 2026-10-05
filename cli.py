@@ -550,6 +550,29 @@ def cmd_research_features(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_research_pixels(args: argparse.Namespace) -> int:
+    from steganography.research_pixels import extract_pixels
+
+    result = extract_pixels(
+        Path(args.manifest),
+        Path(args.out),
+        source=Path(args.source),
+        split=args.split,
+        workers=args.workers,
+    )
+    print(
+        json.dumps(
+            {
+                "rows": len(result["rows"]),
+                "split": result["split"],
+                "feature_version": result["feature_version"],
+                "deployed": False,
+            }
+        )
+    )
+    return 0
+
+
 def cmd_research_train(args: argparse.Namespace) -> int:
     from steganography.research import train_model
 
@@ -879,6 +902,13 @@ def build_parser() -> argparse.ArgumentParser:
     research_benchmark.add_argument("--bootstrap-samples", type=int, default=200)
     research_benchmark.set_defaults(fn=cmd_research_benchmark)
     research_train = research_commands.add_parser("train")
+    research_pixels = research_commands.add_parser("pixel-cache")
+    research_pixels.add_argument("--manifest", required=True)
+    research_pixels.add_argument("--source", required=True)
+    research_pixels.add_argument("--out", required=True)
+    research_pixels.add_argument("--split", choices=("train", "validation"), required=True)
+    research_pixels.add_argument("--workers", type=int, choices=range(1, 5), default=1)
+    research_pixels.set_defaults(fn=cmd_research_pixels)
     research_jrm = research_commands.add_parser("jrm-reference")
     research_jrm.add_argument("--config", required=True)
     research_jrm.add_argument("--out", required=True)

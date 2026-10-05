@@ -1,5 +1,12 @@
 # Architecture
 
+Explicit pixel research owns a separate bounded uint8 JPEG cache and versioned
+center-crop/decoder contract (`research_pixels`, `core/jpeg_pixels`). It does not
+weaken generic feature/model limits or change analyzer inputs. `core/jpeg_cnn`
+provides an optional custom residual network and bounded in-memory inference;
+no model loader, installed detector or full-image coverage claim. CLI delegates
+cache preparation; no independent extraction logic in presentation layers.
+
 JRM research has optional train-source selection with additive scope provenance:
 opaque included/excluded IDs, row count and ordered identity hash. Validate scope
 against train-only manifest rows before model loading; legacy cards remain valid.

@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add bounded decoded JPEG center-crop research caches and a custom opt-in
+  pixel-residual CNN building block. Pin crop/codec contracts, keep generic limits
+  and detector behavior unchanged; preparation is not training/accuracy evidence.
+
 - Publish independently audited two-way JRM training-source exclusion: weak
   cross-origin AUC .52–.55, all eight detection cells fail. Keep within-origin
   controls, paired uncertainty and source-scope hashes; no detector deployment.

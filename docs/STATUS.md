@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Explicit bounded JPEG uint8 center-crop caches, pinned decoder/crop provenance,
+  framed isolated worker and shared `research pixel-cache` CLI. Custom optional
+  residual CNN building block has independent filter/gradient smoke tests, but
+  no real trained model, persistence or deployed detector integration yet.
+
 - Additive JRM training-scope provenance and a shared two-way source-exclusion
   diagnostic through the existing research CLI. Cache/split identities and both
   complete families validated before fitting; protocol in `JRM_TRANSFER_PROTOCOL.md`.

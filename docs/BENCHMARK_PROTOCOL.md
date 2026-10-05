@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+`PIXEL_RESIDUAL_PREPARATION_PROTOCOL.md` freezes JPEG tensor preparation, not
+training or accuracy. Codec/crop parity and a gradient smoke test cannot pass
+detection gates; source-control and untouched-source experiments remain pending.
+
 `JRM_TRANSFER_PROTOCOL.md` fixes two train-origin exclusion fits and all eight
 origin/family cells before scoring. Reused validation, unequal training sizes
 and unknown provenance prevent causal source/independent qualification claims.
