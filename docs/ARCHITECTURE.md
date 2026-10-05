@@ -1,5 +1,10 @@
 # Architecture
 
+`research_generalization.py` is the shared cached-score domain/context
+diagnostic service; the `research diagnose` CLI only passes declared inputs.
+It binds training/validation contracts, reports source overlap and stratifies
+scores without changing them. Source/identity metadata is not a model feature.
+
 Research-only low-payload weighting is an explicit versioned training recipe
 in `research_weighting.py`; it accepts complete controlled training lineages,
 not validation-derived weights. Weighted class masses and reduction semantics

@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added provenance-bound `research diagnose` source/context audits: source
+  overlap, per-method/rate format and declared-quality strata, paired intervals,
+  explicit missing metadata and unavailable single-label cells. These diagnostics
+  do not change scores, train context-aware models or qualify generalization.
+
 - Published the fixed weighted-objective comparison: low-rate sequential/
   scattered recall 38.04%/14.67% → 67.93%/29.89%, but shared FPR 1.63% → 3.26%
   and higher-rate/ECE regressions. All cells, paired intervals and independent

@@ -1,5 +1,9 @@
 # Roadmap and status
 
+Generalization diagnostic slice: `research diagnose` audits source overlap
+and method/rate scores by format and declared compression quality. It is not
+a trained context-aware detector; independent-source qualification is pending.
+
 Current research slice: explicit low-payload training weights and cached-vector
 comparison completed. Low-rate sensitivity gains trade off against higher
 false alarms and regressions; see `SPATIAL_WEIGHTING_RESULTS.md`. No deployed

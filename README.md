@@ -19,6 +19,11 @@ failed, and no cross-source support gate has passed. See the
 [dataset sources/licenses](docs/DATASET_CATALOG.md). Controlled CTF recovery
 and synthetic regression scores are not overall steganalysis accuracy.
 
+Research models use byte-derived spatial/DCT signals, not filenames or dataset
+identity as inputs. That does not prove generalization: compression/content
+can still encode source bias. [Source/context diagnostics](docs/GENERALIZATION_PROTOCOL.md)
+keep same-source development scores separate from independent-source evidence.
+
 ## Choose a task
 
 | Goal | Start here | What happens |

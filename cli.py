@@ -558,6 +558,22 @@ def cmd_research_train(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_research_diagnose(args: argparse.Namespace) -> int:
+    from steganography.research_generalization import diagnose_validation
+
+    result = diagnose_validation(
+        Path(args.manifest),
+        Path(args.predictions),
+        Path(args.model_card),
+        Path(args.out),
+        predictions_sha256=args.predictions_sha256,
+        model_card_sha256=args.model_card_sha256,
+        threshold=args.threshold,
+    )
+    print(json.dumps(result, indent=2))
+    return 0
+
+
 def cmd_research_calibrate(args: argparse.Namespace) -> int:
     from steganography.research import calibrate_predictions
 
@@ -876,6 +892,15 @@ def build_parser() -> argparse.ArgumentParser:
     research_train.add_argument("--config", required=True)
     research_train.add_argument("--out", required=True)
     research_train.set_defaults(fn=cmd_research_train)
+    research_diagnose = research_commands.add_parser("diagnose")
+    research_diagnose.add_argument("--manifest", required=True)
+    research_diagnose.add_argument("--predictions", required=True)
+    research_diagnose.add_argument("--predictions-sha256", required=True)
+    research_diagnose.add_argument("--model-card", required=True)
+    research_diagnose.add_argument("--model-card-sha256", required=True)
+    research_diagnose.add_argument("--out", required=True)
+    research_diagnose.add_argument("--threshold", type=float, default=0.5)
+    research_diagnose.set_defaults(fn=cmd_research_diagnose)
     research_calibrate = research_commands.add_parser("calibrate")
     research_calibrate.add_argument("--manifest", required=True)
     research_calibrate.add_argument("--predictions", required=True)

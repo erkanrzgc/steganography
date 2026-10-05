@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+Cached-score source/context audits follow `GENERALIZATION_PROTOCOL.md`.
+Pooled or same-source development metrics never count as independent-source
+support; missing quality/device metadata remains explicitly unavailable.
+
 The fixed train-objective comparison is preregistered in
 `SPATIAL_WEIGHTING_PROTOCOL.md`: cached checksum-bound parity features, train-only
 5% payload weighting, fixed threshold, all six cells and paired uncertainty.

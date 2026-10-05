@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Shared cached-score source/context diagnostics with a `research diagnose`
+  CLI: contract binding, source overlap, method/rate × format/declared-quality
+  metrics, paired uncertainty, unknown metadata and single-label cell handling.
+  Actual-artifact audit results are pending; no score or model deployment changes.
+
 - Explicit train-only controlled-lineage low-payload weighting and a
   checksum-bound cached-vector comparison runner. The fixed experiment is
   complete: sequential/scattered-5% recall rises to 67.93%/29.89%, but shared
@@ -71,7 +76,7 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 546 tests pass; total coverage 93.52%. PDF analyzer coverage is
+- Python 3.11: 581 tests pass; total coverage 93.59%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs (twenty occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is
@@ -80,7 +85,8 @@ been delivered or validated by this slice.
   extraction oracles, source mutations, symlinks, overwrite and budget tests
   are included. New parity descriptor coverage is 100%, comparison runner
   97.33%. New weighting helper coverage is 100%, cached comparison runner
-  98.55%. Ruff, mypy (84 application files) and diff checks pass.
+  98.55%; source/context diagnostic coverage is 100% with 35 dedicated tests.
+  Ruff, mypy (85 application files) and diff checks pass.
 - The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,

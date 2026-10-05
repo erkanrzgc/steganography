@@ -1,5 +1,11 @@
 # CLI reference
 
+Research source/context audit: `steganography research diagnose --manifest FILE
+--predictions FILE --predictions-sha256 HASH --model-card FILE
+--model-card-sha256 HASH --out NEW_FILE [--threshold 0.5]` evaluates bound cached
+validation scores without retraining or opening images. See
+`GENERALIZATION_PROTOCOL.md`; this never qualifies a model for deployment.
+
 All commands support `--help`; `steganography --version` prints the version.
 The banner is suppressed by `--quiet` and for machine-oriented commands.
 
