@@ -18,6 +18,11 @@ Counts refer to unique original lineages, not to separately counted copies in
 each method comparison. Exact-hash exclusion cannot discover undocumented
 transforms or camera/scene overlap. Unknown metadata remains unknown.
 
+The BOSSbase development corpus also underlies the fixed
+[parity/residual model comparison](SPATIAL_PARITY_RESULTS.md); this adds no
+new source or original lineages. Its improved ranking and FPR, low-rate recall
+regressions and calibration failures are reported together, not as qualification.
+
 ## FSDD acquisition
 
 Explicit user-requested command; no installation or analysis implicitly downloads:

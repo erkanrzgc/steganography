@@ -19,6 +19,11 @@ same-source validation discrimination, but does not pass support/export gates
 and is not installed. These validation results may inform development, never
 be relabeled a fresh blind or independent-source test.
 
+The fixed parity/residual follow-up (`SPATIAL_PARITY_RESULTS.md`) improves
+same-row ranking/FPR but loses low-rate recall at the fixed threshold and is
+not calibrated. All future validation reuse remains iterative development,
+including calibration fitting; qualification needs genuinely untouched sources.
+
 The 4,000-file ALASKA2 holdout has now been acquired and scored
 (`ALASKA2_RESULTS.md`), with failed native detection targets. Its manifest
 `.benchmark/alaska2-holdout-20261004/source.json` is another mandatory reserved

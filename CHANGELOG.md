@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published audited parity/residual results: scattered-5% development AUC
+  0.716801 → 0.906486 and same-cohort FPR 4.89% → 1.63%, but low-rate fixed-.5
+  recall and ECE regress. All six cells stay visible; strict stable ONNX parity
+  passes and neither model nor threshold is deployed.
+
 - Added a versioned 684-feature spatial parity/residual descriptor and fixed
   same-corpus development comparison. Only the new descriptor uses 1e-8
   quantization; legacy extraction and deployed primary detection are unchanged.

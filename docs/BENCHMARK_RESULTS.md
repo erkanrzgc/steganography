@@ -12,6 +12,7 @@ do not imply better detection.
 | JPEG JMiPOD / JUNIWARD / UERD native detection | [Frozen ALASKA2 baseline](ALASKA2_RESULTS.md): 1,000 pairs per family, shared covers | AUC 0.525617 / 0.505157 / 0.507181; recall 0.4% / 0.1% / 0.1%; failed |
 | Experimental trained JPEG model | [Separate development validation](JPEG_DEVELOPMENT_RESULTS.md): 205 pairs per family, shared covers | AUC 0.648804 / 0.592481 / 0.585306; FPR 41.46%; not deployed; not an independent test |
 | Experimental trained spatial model | [Controlled LSB development](SPATIAL_DEVELOPMENT_RESULTS.md): 184 pairs/cell, six method/rate cells | AUC 0.716801–0.997460 versus same-data reference 0.516422–0.648423; FPR 4.89%, low-rate scattered recall 19.57%; not deployed; support/export gates failed |
+| Experimental spatial parity/residual model | [Same-row iterative comparison](SPATIAL_PARITY_RESULTS.md): all six cells, 184 pairs each | Scattered-5% AUC 0.906486, FPR 1.63%; low-rate recall regresses to 14.67%, calibration fails; stable export passes; not deployed or qualified |
 | WAV sample-LSB replacement | [FSDD baseline](WAV_RESULTS.md): 1,000 test covers, 6,000 stegos; sequential/scattered at three rates | All six cells: AUC 0.50, recall 0%, FPR 0%; failed. Generation oracle verified every payload; native CTF recovery unmeasured |
 | GIF, text, PDF, containers, MP3/TIFF-specific claims | Unit/integration and generated examples | Representative labeled corpus evaluation **unavailable**; no real-world score |
 | Controlled CTF extraction | [Kodak regression](CTF_REGRESSION_20261002.md): two final 30/30 completed exact recoveries | Published-challenge regression, not blind recovery or automatic detector accuracy |
@@ -31,8 +32,9 @@ assessment on 90 previously inspected lineages changes FPR from 3/90 to 2/90,
 but lowers weak-cell recall. It is not probability calibration or deployed
 detection improvement; old primary detector results are unchanged.
 
-1. PNG/BMP: the [first richer-feature comparison](SPATIAL_DEVELOPMENT_RESULTS.md)
-   completed on 7,000 controlled files. Next improve low-rate scattered recall,
+1. PNG/BMP: the [parity/residual comparison](SPATIAL_PARITY_RESULTS.md)
+   improves ranking and false alarms on the same 7,000 controlled files but
+   loses fixed-threshold low-rate recall. Next improve low-rate sensitivity,
    false positives and calibration, qualify stable exports on target runtimes and evaluate a newly
    untouched independent source. Named upstream methods require separate tests;
    do not train on the published pilot or claim this generic LSB result for them.

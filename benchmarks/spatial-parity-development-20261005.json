@@ -1,0 +1,546 @@
+{
+  "schema_version": "spatial-parity-development-v1",
+  "manifest_sha256": "707db7debce75b2a241e1ea3b1a5e3cb9b89c287d7396f95abad5c3364e5eda7",
+  "reference_report_sha256": "1e8f51c9576b39cee00b5554ee33c7a8969495f222965090f8970476b3c35b75",
+  "reference_predictions_sha256": "06da8858df50191585327ff6b8f954118ab4809d4f5796b706f43295240e23df",
+  "counts": {
+    "sample_count": 7000,
+    "labels": {
+      "stego": 6000,
+      "cover": 1000,
+      "unknown": 0
+    },
+    "splits": {
+      "test": 0,
+      "validation": 1288,
+      "train": 5712
+    },
+    "source_groups": [
+      "BOSSbase-1.01"
+    ],
+    "split_isolation": true
+  },
+  "feature_artifacts": {
+    "train": {
+      "sha256": "370bae54bde822104af64e4fc16142bdff3e0a1476440d2ea717afd145c7069d",
+      "samples": 5712,
+      "split": "train",
+      "feature_version": "spatial-parity-residual-v1",
+      "bytes": 43464354
+    },
+    "validation": {
+      "sha256": "dc58c420733bed3cd5250c7169513432c975f13f6ff6ed5544a6e8385d96fbf0",
+      "samples": 1288,
+      "split": "validation",
+      "feature_version": "spatial-parity-residual-v1",
+      "bytes": 9809697
+    }
+  },
+  "training": {
+    "samples": 5712,
+    "loss": 0.08635365217924118,
+    "seed": 20261005,
+    "epochs": 300,
+    "learning_rate": 0.01,
+    "torch_version": "2.14.0+cpu",
+    "class_balanced": true,
+    "standardize": true,
+    "inference_arithmetic": "float64"
+  },
+  "checkpoint_sha256": "4d584539124030b5bcf5d0ee86041d36e6ae51e550712ce8cd13b1b8fb1e97c0",
+  "onnx_sha256": "16582fa33564dace8cb8dbade8857afc1c8a28c2e89dde5adae2009e9df006e1",
+  "predictions_sha256": "0adfd81c6284ba723f48f166dea474451505e0c7c3e33a440fd596e93f9f501a",
+  "onnx_parity": {
+    "samples": 1288,
+    "absolute_tolerance": 0.000001,
+    "relative_tolerance": 0,
+    "max_logit_difference": 0,
+    "max_probability_difference": 0,
+    "passed": true,
+    "threshold_decisions_equal": true
+  },
+  "by_method_rate": {
+    "sequential-5": {
+      "reference": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 122,
+          "tn": 175,
+          "fp": 9,
+          "fn": 62
+        },
+        "precision": 0.931298,
+        "recall": 0.663043,
+        "specificity": 0.951087,
+        "false_positive_rate": 0.048913,
+        "accuracy": 0.807065,
+        "balanced_accuracy": 0.807065,
+        "f1": 0.774603,
+        "roc_auc": 0.918449,
+        "expected_calibration_error": 0.133499
+      },
+      "new": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 70,
+          "tn": 181,
+          "fp": 3,
+          "fn": 114
+        },
+        "precision": 0.958904,
+        "recall": 0.380435,
+        "specificity": 0.983696,
+        "false_positive_rate": 0.016304,
+        "accuracy": 0.682065,
+        "balanced_accuracy": 0.682065,
+        "f1": 0.544747,
+        "roc_auc": 0.935078,
+        "expected_calibration_error": 0.255661
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.91047495,
+          0.9583918499999999
+        ],
+        "balanced_accuracy": [
+          0.646739,
+          0.71745895
+        ],
+        "recall": [
+          0.31508115000000003,
+          0.451087
+        ],
+        "false_positive_rate": [
+          0,
+          0.038043
+        ],
+        "expected_calibration_error": [
+          0.230578825,
+          0.288644
+        ]
+      },
+      "delta": {
+        "roc_auc": 0.016629000000000005,
+        "balanced_accuracy": -0.125,
+        "recall": -0.282608,
+        "false_positive_rate": -0.032609,
+        "expected_calibration_error": 0.12216200000000002
+      }
+    },
+    "sequential-20": {
+      "reference": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 179,
+          "tn": 175,
+          "fp": 9,
+          "fn": 5
+        },
+        "precision": 0.952128,
+        "recall": 0.972826,
+        "specificity": 0.951087,
+        "false_positive_rate": 0.048913,
+        "accuracy": 0.961957,
+        "balanced_accuracy": 0.961957,
+        "f1": 0.962366,
+        "roc_auc": 0.995776,
+        "expected_calibration_error": 0.109806
+      },
+      "new": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 177,
+          "tn": 181,
+          "fp": 3,
+          "fn": 7
+        },
+        "precision": 0.983333,
+        "recall": 0.961957,
+        "specificity": 0.983696,
+        "false_positive_rate": 0.016304,
+        "accuracy": 0.972826,
+        "balanced_accuracy": 0.972826,
+        "f1": 0.972527,
+        "roc_auc": 0.996987,
+        "expected_calibration_error": 0.104844
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.9936463,
+          0.999143
+        ],
+        "balanced_accuracy": [
+          0.956522,
+          0.986413
+        ],
+        "recall": [
+          0.929348,
+          0.983696
+        ],
+        "false_positive_rate": [
+          0,
+          0.038043
+        ],
+        "expected_calibration_error": [
+          0.0954083,
+          0.1246469
+        ]
+      },
+      "delta": {
+        "roc_auc": 0.001210999999999962,
+        "balanced_accuracy": 0.010869000000000018,
+        "recall": -0.010869000000000018,
+        "false_positive_rate": -0.032609,
+        "expected_calibration_error": -0.004961999999999994
+      }
+    },
+    "sequential-40": {
+      "reference": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 180,
+          "tn": 175,
+          "fp": 9,
+          "fn": 4
+        },
+        "precision": 0.952381,
+        "recall": 0.978261,
+        "specificity": 0.951087,
+        "false_positive_rate": 0.048913,
+        "accuracy": 0.964674,
+        "balanced_accuracy": 0.964674,
+        "f1": 0.965147,
+        "roc_auc": 0.99746,
+        "expected_calibration_error": 0.113256
+      },
+      "new": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 180,
+          "tn": 181,
+          "fp": 3,
+          "fn": 4
+        },
+        "precision": 0.983607,
+        "recall": 0.978261,
+        "specificity": 0.983696,
+        "false_positive_rate": 0.016304,
+        "accuracy": 0.980978,
+        "balanced_accuracy": 0.980978,
+        "f1": 0.980926,
+        "roc_auc": 0.998789,
+        "expected_calibration_error": 0.094376
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.9970438,
+          0.999823
+        ],
+        "balanced_accuracy": [
+          0.967391,
+          0.991848
+        ],
+        "recall": [
+          0.951087,
+          0.994565
+        ],
+        "false_positive_rate": [
+          0,
+          0.038043
+        ],
+        "expected_calibration_error": [
+          0.09003299999999999,
+          0.110141075
+        ]
+      },
+      "delta": {
+        "roc_auc": 0.0013290000000000246,
+        "balanced_accuracy": 0.016303999999999985,
+        "recall": 0,
+        "false_positive_rate": -0.032609,
+        "expected_calibration_error": -0.018879999999999994
+      }
+    },
+    "scattered-5": {
+      "reference": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 36,
+          "tn": 175,
+          "fp": 9,
+          "fn": 148
+        },
+        "precision": 0.8,
+        "recall": 0.195652,
+        "specificity": 0.951087,
+        "false_positive_rate": 0.048913,
+        "accuracy": 0.57337,
+        "balanced_accuracy": 0.57337,
+        "f1": 0.31441,
+        "roc_auc": 0.716801,
+        "expected_calibration_error": 0.205829
+      },
+      "new": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 27,
+          "tn": 181,
+          "fp": 3,
+          "fn": 157
+        },
+        "precision": 0.9,
+        "recall": 0.146739,
+        "specificity": 0.983696,
+        "false_positive_rate": 0.016304,
+        "accuracy": 0.565217,
+        "balanced_accuracy": 0.565217,
+        "f1": 0.252336,
+        "roc_auc": 0.906486,
+        "expected_calibration_error": 0.275259
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.876154425,
+          0.9341927250000001
+        ],
+        "balanced_accuracy": [
+          0.535326,
+          0.589741925
+        ],
+        "recall": [
+          0.092391,
+          0.201087
+        ],
+        "false_positive_rate": [
+          0,
+          0.038043
+        ],
+        "expected_calibration_error": [
+          0.2508882,
+          0.30087857500000004
+        ]
+      },
+      "delta": {
+        "roc_auc": 0.189685,
+        "balanced_accuracy": -0.008153000000000077,
+        "recall": -0.048912999999999984,
+        "false_positive_rate": -0.032609,
+        "expected_calibration_error": 0.06942999999999996
+      }
+    },
+    "scattered-20": {
+      "reference": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 140,
+          "tn": 175,
+          "fp": 9,
+          "fn": 44
+        },
+        "precision": 0.939597,
+        "recall": 0.76087,
+        "specificity": 0.951087,
+        "false_positive_rate": 0.048913,
+        "accuracy": 0.855978,
+        "balanced_accuracy": 0.855978,
+        "f1": 0.840841,
+        "roc_auc": 0.956965,
+        "expected_calibration_error": 0.154079
+      },
+      "new": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 179,
+          "tn": 181,
+          "fp": 3,
+          "fn": 5
+        },
+        "precision": 0.983516,
+        "recall": 0.972826,
+        "specificity": 0.983696,
+        "false_positive_rate": 0.016304,
+        "accuracy": 0.978261,
+        "balanced_accuracy": 0.978261,
+        "f1": 0.978142,
+        "roc_auc": 0.995894,
+        "expected_calibration_error": 0.148128
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.988328575,
+          0.999705
+        ],
+        "balanced_accuracy": [
+          0.961957,
+          0.991848
+        ],
+        "recall": [
+          0.945652,
+          0.994565
+        ],
+        "false_positive_rate": [
+          0,
+          0.038043
+        ],
+        "expected_calibration_error": [
+          0.132442175,
+          0.1663678
+        ]
+      },
+      "delta": {
+        "roc_auc": 0.03892899999999999,
+        "balanced_accuracy": 0.12228300000000003,
+        "recall": 0.21195599999999992,
+        "false_positive_rate": -0.032609,
+        "expected_calibration_error": -0.005950999999999984
+      }
+    },
+    "scattered-40": {
+      "reference": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 175,
+          "tn": 175,
+          "fp": 9,
+          "fn": 9
+        },
+        "precision": 0.951087,
+        "recall": 0.951087,
+        "specificity": 0.951087,
+        "false_positive_rate": 0.048913,
+        "accuracy": 0.951087,
+        "balanced_accuracy": 0.951087,
+        "f1": 0.951087,
+        "roc_auc": 0.99232,
+        "expected_calibration_error": 0.136058
+      },
+      "new": {
+        "threshold": 50,
+        "samples": 368,
+        "positives": 184,
+        "negatives": 184,
+        "confusion": {
+          "tp": 183,
+          "tn": 181,
+          "fp": 3,
+          "fn": 1
+        },
+        "precision": 0.983871,
+        "recall": 0.994565,
+        "specificity": 0.983696,
+        "false_positive_rate": 0.016304,
+        "accuracy": 0.98913,
+        "balanced_accuracy": 0.98913,
+        "f1": 0.989189,
+        "roc_auc": 0.999114,
+        "expected_calibration_error": 0.103911
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.9974875249999999,
+          0.999941725
+        ],
+        "balanced_accuracy": [
+          0.978261,
+          0.997283
+        ],
+        "recall": [
+          0.983560125,
+          1
+        ],
+        "false_positive_rate": [
+          0,
+          0.038043
+        ],
+        "expected_calibration_error": [
+          0.096759725,
+          0.11952075
+        ]
+      },
+      "delta": {
+        "roc_auc": 0.006793999999999967,
+        "balanced_accuracy": 0.03804299999999994,
+        "recall": 0.04347800000000002,
+        "false_positive_rate": -0.032609,
+        "expected_calibration_error": -0.03214700000000001
+      }
+    }
+  },
+  "deployed": false,
+  "calibrated": false,
+  "cross_source_gate": "unavailable",
+  "scope": "iterative same-source inspected validation",
+  "elapsed_seconds": 120.73513797000123,
+  "report_sha256": "0381ae94413e7c9050859aadc08d67208f43f3ce577ea090237301b10f6cd0bf",
+  "protocol_sha256": "e0d2600aab71ac2b324b4794a6cffec7aba20138c82cd5411625f91875bcd6e1",
+  "code_commit": "86d1ed0",
+  "feature_contract": {
+    "version": "spatial-parity-residual-v1",
+    "features": 684,
+    "base_cooccurrence_features": 468,
+    "joint_parity_features": 216,
+    "quantization": 1e-8
+  },
+  "environment": {
+    "python": "3.11.14",
+    "numpy": "2.4.6",
+    "torch": "2.14.0+cpu",
+    "onnxruntime": "1.30.0",
+    "pillow": "12.2.0",
+    "workers": 4,
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "MKL_NUM_THREADS": 1,
+    "device": "cpu"
+  },
+  "independent_audit": {
+    "status": "passed",
+    "full_image_scalar_feature_cases": 4,
+    "feature_case_formats": [
+      "PNG",
+      "BMP"
+    ],
+    "feature_case_labels": [
+      "cover",
+      "scattered-5"
+    ],
+    "train_only_scaling_verified": true,
+    "validation_rows": 1288,
+    "numpy_onnx_max_logit_difference": 0,
+    "exact_prediction_replay": true,
+    "pairwise_auc_confusions_verified_cells": 6
+  }
+}

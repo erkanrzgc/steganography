@@ -92,8 +92,10 @@ cross-source qualification remain necessary for measured improvement.
 ## v1.0 gate
 
 `SPATIAL_PARITY_PROTOCOL.md` fixes the next low-payload feature comparison on
-existing development rows. Parity-conditioned histograms are experimental;
-cross-source and named upstream-method gates remain necessary.
+existing development rows. The completed `SPATIAL_PARITY_RESULTS.md` records
+better ranking/FPR but low-rate recall/calibration regressions. Parity-conditioned
+histograms remain experimental; cross-source and named upstream-method gates
+are still necessary. No automatic deployment or global accuracy claim.
 
 The separated-role operating-point comparison is frozen in
 `OPERATING_POINT_PROTOCOL.md`; it cannot change the installed verdict threshold

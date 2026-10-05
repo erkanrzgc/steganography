@@ -55,20 +55,25 @@ been delivered or validated by this slice.
   A separated-role threshold experiment reduces assessment false alarms by
   one cover but worsens low-payload recall; it is not installed/calibrated.
   See `INFERENCE_PRECISION_RESULTS.md` for numerical and statistical boundaries.
+- Fixed 684-feature parity/residual comparison completed on the same corpus:
+  scattered-5% AUC 0.716801 → 0.906486, shared FPR 4.89% → 1.63%, but fixed-.5
+  low-rate recall/ECE regress. Stable export passes; no model is deployed.
+  All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 524 tests pass; total coverage 93.38%. PDF analyzer coverage is
+- Python 3.11: 529 tests pass; total coverage 93.45%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
-  deprecated ONNX export APIs (twelve occurrences), not test failures.
+  deprecated ONNX export APIs (eighteen occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is
   96.60%; shared feature/checkpoint code is 99.38%, reconstruction is 100%,
   precision audit is 96.39% and operating-point service is 97.40%. Independent scalar filter and
   extraction oracles, source mutations, symlinks, overwrite and budget tests
-  are included. Ruff, mypy (80 application files) and diff checks pass.
+  are included. New parity descriptor coverage is 100%, comparison runner
+  97.33%. Ruff, mypy (82 application files) and diff checks pass.
 - The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
   coverage in a separate script-coverage run. Tests cover credential/redirect
   isolation, ignored HTTP ranges, ZIP64 bounds, decompression limits, symlinks,
