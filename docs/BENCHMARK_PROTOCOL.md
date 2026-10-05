@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+`JRM_TRANSFER_PROTOCOL.md` fixes two train-origin exclusion fits and all eight
+origin/family cells before scoring. Reused validation, unequal training sizes
+and unknown provenance prevent causal source/independent qualification claims.
+
 The upstream JRM/FLD comparison is preregistered in `JRM_REFERENCE_PROTOCOL.md`:
 fixed full paired development data, explicit source imbalance and changed
 objective, all regressions retained. Upstream parity is not independent JRM

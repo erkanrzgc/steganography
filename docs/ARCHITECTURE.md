@@ -1,5 +1,11 @@
 # Architecture
 
+JRM research has optional train-source selection with additive scope provenance:
+opaque included/excluded IDs, row count and ordered identity hash. Validate scope
+against train-only manifest rows before model loading; legacy cards remain valid.
+Shared `research_jrm_transfer` runs two fixed single-source fits on complete bound
+caches. CLI dispatch only; inspected validation is diagnostic, not blind evidence.
+
 `core/jpeg_jrm.py` isolates optional pinned upstream JRM extraction with framed
 bounded workers. `core/fld_reference.py` owns immutable numeric-only FLD
 inference; `research_jrm` binds explicit raw caches, training/card provenance

@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Additive JRM training-scope provenance and a shared two-way source-exclusion
+  diagnostic through the existing research CLI. Cache/split identities and both
+  complete families validated before fitting; protocol in `JRM_TRANSFER_PROTOCOL.md`.
+  Legacy all-source cards remain compatible; no deployed detector change.
+
 - Optional pinned sealwatch JRM/FLD research reference, bounded framed workers,
   separate checksum-bound float32 caches and immutable numeric inference without
   pickle. Explicit `research jrm-reference` CLI; protocol frozen in

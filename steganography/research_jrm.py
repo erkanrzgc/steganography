@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import json
 import math
 import time
 import zipfile
@@ -210,16 +211,52 @@ def load_model(path: Path, *, checksum: str) -> FLDReference:
         return FLDReference(model["subspaces"], model["weights"], model["biases"])
 
 
-def train_reference(manifest: Path, cache: Path, out: Path, *, cache_sha256: str) -> dict[str, Any]:
+def training_scope(samples, source_id: str | None = None):
+    """Select complete train rows only; hashed source IDs never become features."""
+    if not samples or any(
+        not isinstance(s.get("source_group"), str) or not s["source_group"].strip()
+        for s in samples
+    ):
+        raise ResearchManifestError("reference scope requires named source groups")
+    ids = ["source-" + hashlib.sha256(s["source_group"].encode()).hexdigest()[:16] for s in samples]
+    available = set(ids)
+    if source_id is not None and (not isinstance(source_id, str) or source_id not in available):
+        raise ResearchManifestError("unknown reference training source ID")
+    indices = [i for i, value in enumerate(ids) if source_id is None or value == source_id]
+    chosen = {ids[i] for i in indices}
+    identity = [{k: samples[i][k] for k in ("sha256", "lineage", "label")} for i in indices]
+    return np.asarray(indices, dtype=int), {
+        "recipe": "all-declared-sources-v1" if source_id is None else "single-declared-source-v1",
+        "source_ids": sorted(chosen),
+        "excluded_source_ids": sorted(available - chosen),
+        "rows": len(indices),
+        "ordered_rows_sha256": hashlib.sha256(
+            json.dumps(identity, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest(),
+        "independence": "training exclusion only; reused development validation is not blind",
+    }
+
+
+def train_reference(
+    manifest: Path,
+    cache: Path,
+    out: Path,
+    *,
+    cache_sha256: str,
+    training_source_id: str | None = None,
+) -> dict[str, Any]:
     _fresh(out)
     jrm.require_version()
     features, samples, descriptor = load_cache(
         manifest, cache, checksum=cache_sha256, split="train"
     )
-    covers, stegos = paired_indices(samples)
+    paired_indices(samples)  # Never hide incomplete excluded-source rows.
     document, _ = read_document(manifest)
     origin_provenance: dict[str, Any] = {}
     _jpeg_source_weights(document, samples, origin_provenance)
+    indices, scope = training_scope(samples, training_source_id)
+    features = features[indices]
+    covers, stegos = paired_indices([samples[i] for i in indices])
     import sealwatch as sw
 
     trainer = sw.ensemble_classifier.FldEnsembleTrainer(
@@ -264,6 +301,7 @@ def train_reference(manifest: Path, cache: Path, out: Path, *, cache_sha256: str
         "training_records": records,
         "weighting": "unweighted complete paired rows; covers repeated for both families",
         "source_validation": origin_provenance["source_balance"],
+        "training_scope": scope,
         "score": "(mean sign(FLD margin) + 1) / 2; vote fraction, not calibrated probability",
         "threshold": 0.5,
         "ties": "score >= threshold; no upstream randomized tie decisions",
@@ -298,6 +336,25 @@ def predict_reference(
         or card.get("deployed") is not False
     ):
         raise ResearchManifestError("reference model/validation contract mismatch")
+    if "training_scope" in card:
+        scope = card["training_scope"]
+        document, _ = read_document(manifest)
+        training = selected_samples(document, "train")
+        if not isinstance(scope, dict):
+            raise ResearchManifestError("invalid reference training scope")
+        if scope.get("recipe") == "all-declared-sources-v1":
+            source_id = None
+        elif (
+            scope.get("recipe") == "single-declared-source-v1"
+            and isinstance(scope.get("source_ids"), list)
+            and len(scope["source_ids"]) == 1
+        ):
+            source_id = scope["source_ids"][0]
+        else:
+            raise ResearchManifestError("invalid reference training scope")
+        _, expected_scope = training_scope(training, source_id)
+        if scope != expected_scope:
+            raise ResearchManifestError("reference training scope/manifest mismatch")
     reference = load_model(model_dir / "model.npz", checksum=card["model_sha256"])
     scores = reference.predict(features)
     report = {
@@ -321,6 +378,10 @@ def run_reference(config_path: Path, out: Path) -> dict[str, Any]:
     """CLI adapter's declared stage; no automatic acquisition or installation."""
     config, _ = read_document(config_path)
     stage = config.get("stage")
+    if stage == "source-transfer":
+        from steganography.research_jrm_transfer import run_transfer
+
+        return run_transfer(config, out)
     if stage == "features":
         result = extract_cache(
             Path(config["manifest"]),
@@ -336,6 +397,7 @@ def run_reference(config_path: Path, out: Path) -> dict[str, Any]:
             Path(config["cache"]),
             out,
             cache_sha256=config["cache_sha256"],
+            training_source_id=config.get("training_source_id"),
         )
     if stage == "predict":
         return predict_reference(

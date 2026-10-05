@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add explicit JRM train-origin exclusion, manifest-bound additive scope cards
+  and shared two-way source-transfer diagnostic. Preserve legacy cards and
+  detector behavior; freeze the eight-cell comparison before real cached fitting.
+
 - Completed full-corpus JRM/FLD reference and replay audit: ALASKA/UERD AUC
   .603 → .698, FPR 38.54% → 31.71%, but JUNIWARD recall/BOSS ECE regress.
   All cells and failures published; exact independent scalar votes, unchanged
