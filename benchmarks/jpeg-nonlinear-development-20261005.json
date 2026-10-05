@@ -1,0 +1,1573 @@
+{
+  "schema_version": "jpeg-nonlinear-development-v1",
+  "date": "2026-10-05",
+  "seconds": 6.589142374999938,
+  "implementation_protocol_commit": "1c9a407b3644b615dd3c795e79064a8371750a2d",
+  "protocol_sha256": "07b2662a7b50fd4d4c1d464f658aa6b2d72cda457fdbc6a999843df74d7d5ebf",
+  "training_loss": 0.6836585998535156,
+  "deployed": false,
+  "reference_record_sha256": "3a71709fb031761309af11bcdae73425c43f7cfacfd3bd23b20dbc3bffcf14cd",
+  "reference_predictions_sha256": "c88f9a4e99c0af446f1873690990025293aefd1eae2a9e81fa702fa5801a9853",
+  "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+  "feature_version": "jpeg-dct-residual-parity-v1",
+  "feature_dimensions": 2066,
+  "feature_artifacts": {
+    "train": {
+      "sha256": "0ae34f4761587fd03e5074361ed8d2bb355048f454fa1a27fadd555ae592d996",
+      "samples": 2985,
+      "split": "train",
+      "feature_version": "jpeg-dct-residual-parity-v1"
+    },
+    "validation": {
+      "sha256": "25409e9e36bde0ef806d74906f01de3ea5f08bc53e63d21768e306f3fce8b446",
+      "samples": 765,
+      "split": "validation",
+      "feature_version": "jpeg-dct-residual-parity-v1"
+    }
+  },
+  "source_id_map": {
+    "source-d2a1dfbee30c5891": "ALASKA2",
+    "source-6a23b26e6f51f8cc": "BOSSbase-1.01"
+  },
+  "source_records": {
+    "ALASKA2": {
+      "origin_manifest_sha256": "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+      "license": "Subject to Competition Rules; local research only; do not redistribute",
+      "source_url": "https://www.kaggle.com/c/alaska2-image-steganalysis/data"
+    },
+    "BOSSbase-1.01": {
+      "origin_manifest_sha256": "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+      "license": "unspecified on download page; local research only; do not redistribute",
+      "source_url": "https://dde.binghamton.edu/download/ImageDB/BOSSbase_1.01.zip"
+    }
+  },
+  "counts": [
+    {
+      "source": "ALASKA2",
+      "split": "train",
+      "label": "cover",
+      "files": 789
+    },
+    {
+      "source": "ALASKA2",
+      "split": "train",
+      "label": "stego",
+      "files": 1578
+    },
+    {
+      "source": "ALASKA2",
+      "split": "validation",
+      "label": "cover",
+      "files": 205
+    },
+    {
+      "source": "ALASKA2",
+      "split": "validation",
+      "label": "stego",
+      "files": 410
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "train",
+      "label": "cover",
+      "files": 206
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "train",
+      "label": "stego",
+      "files": 412
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "validation",
+      "label": "cover",
+      "files": 50
+    },
+    {
+      "source": "BOSSbase-1.01",
+      "split": "validation",
+      "label": "stego",
+      "files": 100
+    }
+  ],
+  "architecture": "residual-mlp64-v1",
+  "model_domain": "jpeg-dct-residual-parity-mlp64-v1",
+  "training": {
+    "seed": 20261007,
+    "epochs": 300,
+    "learning_rate": 0.001,
+    "torch_version": "2.14.0+cpu",
+    "class_balanced": true,
+    "standardize": true,
+    "inference_arithmetic": "float64",
+    "architecture": "residual-mlp64-v1",
+    "weight_decay": 0.001,
+    "sample_weighting": {
+      "recipe": "jpeg-source-class-balanced-v1",
+      "negative_mass": 1492.500244140625,
+      "positive_mass": 1492.5003662109375,
+      "positive_class_weight": 0.999999918210866,
+      "reduction": "mean-over-rows",
+      "formula": "n / (2 * sources * source_label_count)",
+      "min_row_weight": 0.47290873527526855,
+      "max_row_weight": 3.622572898864746
+    }
+  },
+  "source_balance": {
+    "declared_sources": 2,
+    "common_method_families": 2,
+    "origin_manifest_sha256": [
+      "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+      "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+    ],
+    "independence": "declared origins, not verified camera/perceptual independence"
+  },
+  "artifact_sha256": {
+    "comparison.json": "e711a57cf621183a0a3dc10df8082129e33c9b39db7e7455f2a929b251ad01c1",
+    "diagnostics.json": "d018770e1db5984f73bd69317384b2709eb044f7ce963f2c5f9256e3731bc11b",
+    "execution-summary.json": "4151470a37d1632e3185ed74b066f9635601b4eea9d30bccaa43373b86b54aa3",
+    "independent-audit.json": "a3a2a3126f33461c3bbab8a09c99266f4884baf79cae85b7271f34b00210f02e",
+    "model.onnx": "1b764ccb1b57ad91567900020b3c1c6ddc16b0fd2cc967cff56fc5edfd9ae507",
+    "model.onnx.model-card.json": "a72455ee3779b231ab9b097a8769f4c35984a4c73ff4167396add77a8148deea",
+    "model.pt": "b24d3807e876c2b1def6bdf2b2d0b93c4f24ff7bcce1342ce016a5d704d06bd9",
+    "predictions.json": "6da890249cd863173a4eb641da6028abce48b098dd789d5c51397420f909afcb",
+    "train-config.json": "aa3141ef223c14646734d3056aa4b79143cd26f344f5616cf5d3edda87384168",
+    "training-report.json": "088613049dae5afc96da1537e41e4674604f7f128fc01b2a15d00ee2e6e17eee",
+    "validation-config.json": "8d5dc963db32a9680e92e4a4f9d52772eb5b85cc1dab81e44131b04b32ff65bb"
+  },
+  "source_separation": {
+    "training_source_groups": 2,
+    "validation_source_groups": 2,
+    "shared_source_groups": 2,
+    "unseen_validation_source_groups": 0,
+    "metadata_complete": true,
+    "independent_source_evidence": "unavailable"
+  },
+  "metadata_coverage": {
+    "quality_factor": {
+      "known_rows": 150,
+      "unknown_rows": 615
+    },
+    "camera": {
+      "known_rows": 0,
+      "unknown_rows": 765
+    },
+    "device": {
+      "known_rows": 0,
+      "unknown_rows": 765
+    },
+    "app": {
+      "known_rows": 0,
+      "unknown_rows": 765
+    }
+  },
+  "comparison_cells": [
+    {
+      "dimension": "format",
+      "context": "jpeg",
+      "method_family": "JUNIWARD",
+      "covers": 255,
+      "stego": 255,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 135,
+          "tn": 140,
+          "fp": 115,
+          "fn": 120
+        },
+        "precision": 0.54,
+        "recall": 0.529412,
+        "specificity": 0.54902,
+        "false_positive_rate": 0.45098,
+        "accuracy": 0.539216,
+        "balanced_accuracy": 0.539216,
+        "f1": 0.534653,
+        "roc_auc": 0.562922,
+        "expected_calibration_error": 0.019896
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 144,
+          "tn": 156,
+          "fp": 99,
+          "fn": 111
+        },
+        "precision": 0.592593,
+        "recall": 0.564706,
+        "specificity": 0.611765,
+        "false_positive_rate": 0.388235,
+        "accuracy": 0.588235,
+        "balanced_accuracy": 0.588235,
+        "f1": 0.578313,
+        "roc_auc": 0.597632,
+        "expected_calibration_error": 0.060528
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.5771263999999999,
+          0.625921525
+        ],
+        "balanced_accuracy": [
+          0.563222475,
+          0.617793175
+        ],
+        "recall": [
+          0.5038688,
+          0.624104825
+        ],
+        "false_positive_rate": [
+          0.31743855000000004,
+          0.4440363
+        ],
+        "expected_calibration_error": [
+          0.0347658,
+          0.091288075
+        ]
+      },
+      "original_lineages": 230,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.03471000000000002,
+        "balanced_accuracy": 0.049018999999999924,
+        "recall": 0.03529400000000005,
+        "false_positive_rate": -0.062745,
+        "expected_calibration_error": 0.040632
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          0.020667259031985113,
+          0.05414311209734183
+        ],
+        "balanced_accuracy": [
+          0.025143104067522612,
+          0.07693050193050188
+        ],
+        "recall": [
+          -0.01960977304307543,
+          0.09400687984784092
+        ],
+        "false_positive_rate": [
+          -0.1220512939862223,
+          0.004007006448412721
+        ],
+        "expected_calibration_error": [
+          0.012117890321061938,
+          0.0645949794132706
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ]
+    },
+    {
+      "dimension": "format",
+      "context": "jpeg",
+      "method_family": "UERD",
+      "covers": 255,
+      "stego": 255,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 136,
+          "tn": 140,
+          "fp": 115,
+          "fn": 119
+        },
+        "precision": 0.541833,
+        "recall": 0.533333,
+        "specificity": 0.54902,
+        "false_positive_rate": 0.45098,
+        "accuracy": 0.541176,
+        "balanced_accuracy": 0.541176,
+        "f1": 0.537549,
+        "roc_auc": 0.560261,
+        "expected_calibration_error": 0.021747
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 133,
+          "tn": 156,
+          "fp": 99,
+          "fn": 122
+        },
+        "precision": 0.573276,
+        "recall": 0.521569,
+        "specificity": 0.611765,
+        "false_positive_rate": 0.388235,
+        "accuracy": 0.566667,
+        "balanced_accuracy": 0.566667,
+        "f1": 0.546201,
+        "roc_auc": 0.586298,
+        "expected_calibration_error": 0.042575
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.56846455,
+          0.61084225
+        ],
+        "balanced_accuracy": [
+          0.54632755,
+          0.589668125
+        ],
+        "recall": [
+          0.454982775,
+          0.573762375
+        ],
+        "false_positive_rate": [
+          0.31743855000000004,
+          0.4440363
+        ],
+        "expected_calibration_error": [
+          0.019954725,
+          0.06616972500000001
+        ]
+      },
+      "original_lineages": 230,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.026036999999999977,
+        "balanced_accuracy": 0.02549100000000004,
+        "recall": -0.011763999999999997,
+        "false_positive_rate": -0.062745,
+        "expected_calibration_error": 0.020828000000000003
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          0.013138108621085642,
+          0.042268229154933654
+        ],
+        "balanced_accuracy": [
+          0.0039029333726415096,
+          0.05166480654761899
+        ],
+        "recall": [
+          -0.07450980392156858,
+          0.051648970398970394
+        ],
+        "false_positive_rate": [
+          -0.1220512939862223,
+          0.004007006448412721
+        ],
+        "expected_calibration_error": [
+          -0.0026542207083058386,
+          0.04575504946743856
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ]
+    },
+    {
+      "dimension": "pooled",
+      "context": "all",
+      "method_family": "JUNIWARD",
+      "covers": 255,
+      "stego": 255,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 135,
+          "tn": 140,
+          "fp": 115,
+          "fn": 120
+        },
+        "precision": 0.54,
+        "recall": 0.529412,
+        "specificity": 0.54902,
+        "false_positive_rate": 0.45098,
+        "accuracy": 0.539216,
+        "balanced_accuracy": 0.539216,
+        "f1": 0.534653,
+        "roc_auc": 0.562922,
+        "expected_calibration_error": 0.019896
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 144,
+          "tn": 156,
+          "fp": 99,
+          "fn": 111
+        },
+        "precision": 0.592593,
+        "recall": 0.564706,
+        "specificity": 0.611765,
+        "false_positive_rate": 0.388235,
+        "accuracy": 0.588235,
+        "balanced_accuracy": 0.588235,
+        "f1": 0.578313,
+        "roc_auc": 0.597632,
+        "expected_calibration_error": 0.060528
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.5771263999999999,
+          0.625921525
+        ],
+        "balanced_accuracy": [
+          0.563222475,
+          0.617793175
+        ],
+        "recall": [
+          0.5038688,
+          0.624104825
+        ],
+        "false_positive_rate": [
+          0.31743855000000004,
+          0.4440363
+        ],
+        "expected_calibration_error": [
+          0.0347658,
+          0.091288075
+        ]
+      },
+      "original_lineages": 230,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.03471000000000002,
+        "balanced_accuracy": 0.049018999999999924,
+        "recall": 0.03529400000000005,
+        "false_positive_rate": -0.062745,
+        "expected_calibration_error": 0.040632
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          0.020667259031985113,
+          0.05414311209734183
+        ],
+        "balanced_accuracy": [
+          0.025143104067522612,
+          0.07693050193050188
+        ],
+        "recall": [
+          -0.01960977304307543,
+          0.09400687984784092
+        ],
+        "false_positive_rate": [
+          -0.1220512939862223,
+          0.004007006448412721
+        ],
+        "expected_calibration_error": [
+          0.012117890321061938,
+          0.0645949794132706
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ]
+    },
+    {
+      "dimension": "pooled",
+      "context": "all",
+      "method_family": "UERD",
+      "covers": 255,
+      "stego": 255,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 136,
+          "tn": 140,
+          "fp": 115,
+          "fn": 119
+        },
+        "precision": 0.541833,
+        "recall": 0.533333,
+        "specificity": 0.54902,
+        "false_positive_rate": 0.45098,
+        "accuracy": 0.541176,
+        "balanced_accuracy": 0.541176,
+        "f1": 0.537549,
+        "roc_auc": 0.560261,
+        "expected_calibration_error": 0.021747
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 510,
+        "positives": 255,
+        "negatives": 255,
+        "confusion": {
+          "tp": 133,
+          "tn": 156,
+          "fp": 99,
+          "fn": 122
+        },
+        "precision": 0.573276,
+        "recall": 0.521569,
+        "specificity": 0.611765,
+        "false_positive_rate": 0.388235,
+        "accuracy": 0.566667,
+        "balanced_accuracy": 0.566667,
+        "f1": 0.546201,
+        "roc_auc": 0.586298,
+        "expected_calibration_error": 0.042575
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.56846455,
+          0.61084225
+        ],
+        "balanced_accuracy": [
+          0.54632755,
+          0.589668125
+        ],
+        "recall": [
+          0.454982775,
+          0.573762375
+        ],
+        "false_positive_rate": [
+          0.31743855000000004,
+          0.4440363
+        ],
+        "expected_calibration_error": [
+          0.019954725,
+          0.06616972500000001
+        ]
+      },
+      "original_lineages": 230,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.026036999999999977,
+        "balanced_accuracy": 0.02549100000000004,
+        "recall": -0.011763999999999997,
+        "false_positive_rate": -0.062745,
+        "expected_calibration_error": 0.020828000000000003
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          0.013138108621085642,
+          0.042268229154933654
+        ],
+        "balanced_accuracy": [
+          0.0039029333726415096,
+          0.05166480654761899
+        ],
+        "recall": [
+          -0.07450980392156858,
+          0.051648970398970394
+        ],
+        "false_positive_rate": [
+          -0.1220512939862223,
+          0.004007006448412721
+        ],
+        "expected_calibration_error": [
+          -0.0026542207083058386,
+          0.04575504946743856
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ]
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "qf-75",
+      "method_family": "JUNIWARD",
+      "covers": 25,
+      "stego": 25,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 10,
+          "tn": 16,
+          "fp": 9,
+          "fn": 15
+        },
+        "precision": 0.526316,
+        "recall": 0.4,
+        "specificity": 0.64,
+        "false_positive_rate": 0.36,
+        "accuracy": 0.52,
+        "balanced_accuracy": 0.52,
+        "f1": 0.454545,
+        "roc_auc": 0.5024,
+        "expected_calibration_error": 0.021936
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 10,
+          "tn": 15,
+          "fp": 10,
+          "fn": 15
+        },
+        "precision": 0.5,
+        "recall": 0.4,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.444444,
+        "roc_auc": 0.5056,
+        "expected_calibration_error": 0.034127
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.4688,
+          0.5408
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5
+        ],
+        "recall": [
+          0.2,
+          0.6
+        ],
+        "false_positive_rate": [
+          0.2,
+          0.6
+        ],
+        "expected_calibration_error": [
+          0.023076275,
+          0.044936025000000004
+        ]
+      },
+      "original_lineages": 25,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.0032000000000000917,
+        "balanced_accuracy": -0.020000000000000018,
+        "recall": 0,
+        "false_positive_rate": 0.040000000000000036,
+        "expected_calibration_error": 0.012190999999999997
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.04812000000000004,
+          0.03212000000000005
+        ],
+        "balanced_accuracy": [
+          -0.06000000000000011,
+          5.551115123125783e-17
+        ],
+        "recall": [
+          -0.2,
+          0.2
+        ],
+        "false_positive_rate": [
+          -0.12100000000000002,
+          0.24
+        ],
+        "expected_calibration_error": [
+          -0.02378730677068233,
+          0.02524782997369767
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ]
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "qf-75",
+      "method_family": "UERD",
+      "covers": 25,
+      "stego": 25,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 11,
+          "tn": 16,
+          "fp": 9,
+          "fn": 14
+        },
+        "precision": 0.55,
+        "recall": 0.44,
+        "specificity": 0.64,
+        "false_positive_rate": 0.36,
+        "accuracy": 0.54,
+        "balanced_accuracy": 0.54,
+        "f1": 0.488889,
+        "roc_auc": 0.5232,
+        "expected_calibration_error": 0.025418
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 11,
+          "tn": 15,
+          "fp": 10,
+          "fn": 14
+        },
+        "precision": 0.52381,
+        "recall": 0.44,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.52,
+        "balanced_accuracy": 0.52,
+        "f1": 0.478261,
+        "roc_auc": 0.512,
+        "expected_calibration_error": 0.012546
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.48636,
+          0.5552400000000001
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.58
+        ],
+        "recall": [
+          0.279,
+          0.64
+        ],
+        "false_positive_rate": [
+          0.2,
+          0.6
+        ],
+        "expected_calibration_error": [
+          0.0062436,
+          0.060659225000000025
+        ]
+      },
+      "original_lineages": 25,
+      "delta_new_minus_reference": {
+        "roc_auc": -0.011199999999999988,
+        "balanced_accuracy": -0.020000000000000018,
+        "recall": 0,
+        "false_positive_rate": 0.040000000000000036,
+        "expected_calibration_error": -0.012872
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.04492000000000006,
+          0.028840000000000057
+        ],
+        "balanced_accuracy": [
+          -0.09999999999999998,
+          0.04000000000000009
+        ],
+        "recall": [
+          -0.2,
+          0.2010000000000003
+        ],
+        "false_positive_rate": [
+          -0.12100000000000002,
+          0.24
+        ],
+        "expected_calibration_error": [
+          -0.08316683666408062,
+          0.0250376605540514
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ]
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "qf-95",
+      "method_family": "JUNIWARD",
+      "covers": 25,
+      "stego": 25,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 12,
+          "tn": 14,
+          "fp": 11,
+          "fn": 13
+        },
+        "precision": 0.521739,
+        "recall": 0.48,
+        "specificity": 0.56,
+        "false_positive_rate": 0.44,
+        "accuracy": 0.52,
+        "balanced_accuracy": 0.52,
+        "f1": 0.5,
+        "roc_auc": 0.5504,
+        "expected_calibration_error": 0.027126
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 13,
+          "tn": 15,
+          "fp": 10,
+          "fn": 12
+        },
+        "precision": 0.565217,
+        "recall": 0.52,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.56,
+        "balanced_accuracy": 0.56,
+        "f1": 0.541667,
+        "roc_auc": 0.6112,
+        "expected_calibration_error": 0.033967
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.53584,
+          0.69764
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.64
+        ],
+        "recall": [
+          0.32,
+          0.72
+        ],
+        "false_positive_rate": [
+          0.23900000000000002,
+          0.6
+        ],
+        "expected_calibration_error": [
+          0.00394715,
+          0.10551000000000003
+        ]
+      },
+      "original_lineages": 25,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.060799999999999965,
+        "balanced_accuracy": 0.040000000000000036,
+        "recall": 0.040000000000000036,
+        "false_positive_rate": -0.03999999999999998,
+        "expected_calibration_error": 0.006840999999999996
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.0016800000000000437,
+          0.11684000000000003
+        ],
+        "balanced_accuracy": [
+          -0.04050000000000002,
+          0.1200000000000001
+        ],
+        "recall": [
+          -0.161,
+          0.24
+        ],
+        "false_positive_rate": [
+          -0.27999999999999997,
+          0.2
+        ],
+        "expected_calibration_error": [
+          -0.0752556665688753,
+          0.06748261846601968
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ]
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "qf-95",
+      "method_family": "UERD",
+      "covers": 25,
+      "stego": 25,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 11,
+          "tn": 14,
+          "fp": 11,
+          "fn": 14
+        },
+        "precision": 0.5,
+        "recall": 0.44,
+        "specificity": 0.56,
+        "false_positive_rate": 0.44,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.468085,
+        "roc_auc": 0.5328,
+        "expected_calibration_error": 0.036862
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 50,
+        "positives": 25,
+        "negatives": 25,
+        "confusion": {
+          "tp": 9,
+          "tn": 15,
+          "fp": 10,
+          "fn": 16
+        },
+        "precision": 0.473684,
+        "recall": 0.36,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.48,
+        "balanced_accuracy": 0.48,
+        "f1": 0.409091,
+        "roc_auc": 0.5152,
+        "expected_calibration_error": 0.063136
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.44956,
+          0.5952
+        ],
+        "balanced_accuracy": [
+          0.44,
+          0.5
+        ],
+        "recall": [
+          0.2,
+          0.5210000000000002
+        ],
+        "false_positive_rate": [
+          0.23900000000000002,
+          0.6
+        ],
+        "expected_calibration_error": [
+          0.02173795,
+          0.1060651500000001
+        ]
+      },
+      "original_lineages": 25,
+      "delta_new_minus_reference": {
+        "roc_auc": -0.01760000000000006,
+        "balanced_accuracy": -0.020000000000000018,
+        "recall": -0.08000000000000002,
+        "false_positive_rate": -0.03999999999999998,
+        "expected_calibration_error": 0.026274
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.07199999999999995,
+          0.04180000000000002
+        ],
+        "balanced_accuracy": [
+          -0.10000000000000003,
+          0.040000000000000036
+        ],
+        "recall": [
+          -0.28,
+          0.12
+        ],
+        "false_positive_rate": [
+          -0.27999999999999997,
+          0.2
+        ],
+        "expected_calibration_error": [
+          -0.04943042276799678,
+          0.07488224449753762
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ]
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "unknown",
+      "method_family": "JUNIWARD",
+      "covers": 205,
+      "stego": 205,
+      "status": "unavailable",
+      "reason": "unknown context metadata",
+      "reference": null,
+      "new": null,
+      "new_bootstrap_95_percent": null
+    },
+    {
+      "dimension": "quality_factor",
+      "context": "unknown",
+      "method_family": "UERD",
+      "covers": 205,
+      "stego": 205,
+      "status": "unavailable",
+      "reason": "unknown context metadata",
+      "reference": null,
+      "new": null,
+      "new_bootstrap_95_percent": null
+    },
+    {
+      "dimension": "source",
+      "context": "source-6a23b26e6f51f8cc",
+      "method_family": "JUNIWARD",
+      "covers": 50,
+      "stego": 50,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 22,
+          "tn": 30,
+          "fp": 20,
+          "fn": 28
+        },
+        "precision": 0.52381,
+        "recall": 0.44,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.52,
+        "balanced_accuracy": 0.52,
+        "f1": 0.478261,
+        "roc_auc": 0.5256,
+        "expected_calibration_error": 0.024531
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 23,
+          "tn": 30,
+          "fp": 20,
+          "fn": 27
+        },
+        "precision": 0.534884,
+        "recall": 0.46,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.53,
+        "balanced_accuracy": 0.53,
+        "f1": 0.494624,
+        "roc_auc": 0.5544,
+        "expected_calibration_error": 0.006748
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.52276,
+          0.5873
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.57
+        ],
+        "recall": [
+          0.32,
+          0.62
+        ],
+        "false_positive_rate": [
+          0.26,
+          0.56
+        ],
+        "expected_calibration_error": [
+          0.0027792500000000005,
+          0.040641975000000004
+        ]
+      },
+      "original_lineages": 25,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.028800000000000048,
+        "balanced_accuracy": 0.010000000000000009,
+        "recall": 0.020000000000000018,
+        "false_positive_rate": 0,
+        "expected_calibration_error": -0.017783
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.008410000000000072,
+          0.054810000000000074
+        ],
+        "balanced_accuracy": [
+          -0.030000000000000027,
+          0.04999999999999993
+        ],
+        "recall": [
+          -0.10000000000000003,
+          0.16000000000000003
+        ],
+        "false_positive_rate": [
+          -0.12049999999999998,
+          0.13999999999999996
+        ],
+        "expected_calibration_error": [
+          -0.05572635941207409,
+          0.015548225335776808
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ]
+    },
+    {
+      "dimension": "source",
+      "context": "source-6a23b26e6f51f8cc",
+      "method_family": "UERD",
+      "covers": 50,
+      "stego": 50,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 22,
+          "tn": 30,
+          "fp": 20,
+          "fn": 28
+        },
+        "precision": 0.52381,
+        "recall": 0.44,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.52,
+        "balanced_accuracy": 0.52,
+        "f1": 0.478261,
+        "roc_auc": 0.5216,
+        "expected_calibration_error": 0.016406
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 100,
+        "positives": 50,
+        "negatives": 50,
+        "confusion": {
+          "tp": 20,
+          "tn": 30,
+          "fp": 20,
+          "fn": 30
+        },
+        "precision": 0.5,
+        "recall": 0.4,
+        "specificity": 0.6,
+        "false_positive_rate": 0.4,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.444444,
+        "roc_auc": 0.5104,
+        "expected_calibration_error": 0.032597
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.4796,
+          0.54363
+        ],
+        "balanced_accuracy": [
+          0.48,
+          0.53
+        ],
+        "recall": [
+          0.2795,
+          0.5405000000000002
+        ],
+        "false_positive_rate": [
+          0.26,
+          0.56
+        ],
+        "expected_calibration_error": [
+          0.0086527,
+          0.06223680000000001
+        ]
+      },
+      "original_lineages": 25,
+      "delta_new_minus_reference": {
+        "roc_auc": -0.011199999999999988,
+        "balanced_accuracy": -0.020000000000000018,
+        "recall": -0.03999999999999998,
+        "false_positive_rate": 0,
+        "expected_calibration_error": 0.016191
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          -0.039210000000000016,
+          0.01894000000000007
+        ],
+        "balanced_accuracy": [
+          -0.06000000000000005,
+          0.020250000000000073
+        ],
+        "recall": [
+          -0.18,
+          0.08050000000000013
+        ],
+        "false_positive_rate": [
+          -0.12049999999999998,
+          0.13999999999999996
+        ],
+        "expected_calibration_error": [
+          -0.035036029301583775,
+          0.04520303558558227
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate"
+      ]
+    },
+    {
+      "dimension": "source",
+      "context": "source-d2a1dfbee30c5891",
+      "method_family": "JUNIWARD",
+      "covers": 205,
+      "stego": 205,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 113,
+          "tn": 110,
+          "fp": 95,
+          "fn": 92
+        },
+        "precision": 0.543269,
+        "recall": 0.55122,
+        "specificity": 0.536585,
+        "false_positive_rate": 0.463415,
+        "accuracy": 0.543902,
+        "balanced_accuracy": 0.543902,
+        "f1": 0.547215,
+        "roc_auc": 0.572945,
+        "expected_calibration_error": 0.021644
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 121,
+          "tn": 126,
+          "fp": 79,
+          "fn": 84
+        },
+        "precision": 0.605,
+        "recall": 0.590244,
+        "specificity": 0.614634,
+        "false_positive_rate": 0.385366,
+        "accuracy": 0.602439,
+        "balanced_accuracy": 0.602439,
+        "f1": 0.597531,
+        "roc_auc": 0.608923,
+        "expected_calibration_error": 0.075311
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.5832589,
+          0.636148575
+        ],
+        "balanced_accuracy": [
+          0.577988025,
+          0.6293289750000001
+        ],
+        "recall": [
+          0.53158505,
+          0.663415
+        ],
+        "false_positive_rate": [
+          0.326829,
+          0.44878
+        ],
+        "expected_calibration_error": [
+          0.048228400000000005,
+          0.10541467500000001
+        ]
+      },
+      "original_lineages": 205,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.035977999999999954,
+        "balanced_accuracy": 0.05853699999999995,
+        "recall": 0.03902399999999995,
+        "false_positive_rate": -0.07804900000000004,
+        "expected_calibration_error": 0.053667000000000006
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          0.020318857822724568,
+          0.05309756097560974
+        ],
+        "balanced_accuracy": [
+          0.02432926829268295,
+          0.08780487804878057
+        ],
+        "recall": [
+          -0.024512195121951234,
+          0.12195121951219512
+        ],
+        "false_positive_rate": [
+          -0.15609756097560978,
+          -0.009512195121951119
+        ],
+        "expected_calibration_error": [
+          0.016693967110136654,
+          0.08270818260929932
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ]
+    },
+    {
+      "dimension": "source",
+      "context": "source-d2a1dfbee30c5891",
+      "method_family": "UERD",
+      "covers": 205,
+      "stego": 205,
+      "status": "experimental",
+      "reason": null,
+      "reference": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 114,
+          "tn": 110,
+          "fp": 95,
+          "fn": 91
+        },
+        "precision": 0.545455,
+        "recall": 0.556098,
+        "specificity": 0.536585,
+        "false_positive_rate": 0.463415,
+        "accuracy": 0.546341,
+        "balanced_accuracy": 0.546341,
+        "f1": 0.550725,
+        "roc_auc": 0.570137,
+        "expected_calibration_error": 0.02598
+      },
+      "new": {
+        "threshold": 0.5,
+        "samples": 410,
+        "positives": 205,
+        "negatives": 205,
+        "confusion": {
+          "tp": 113,
+          "tn": 126,
+          "fp": 79,
+          "fn": 92
+        },
+        "precision": 0.588542,
+        "recall": 0.55122,
+        "specificity": 0.614634,
+        "false_positive_rate": 0.385366,
+        "accuracy": 0.582927,
+        "balanced_accuracy": 0.582927,
+        "f1": 0.56927,
+        "roc_auc": 0.602546,
+        "expected_calibration_error": 0.0603
+      },
+      "new_bootstrap_95_percent": {
+        "roc_auc": [
+          0.5798101,
+          0.628754325
+        ],
+        "balanced_accuracy": [
+          0.558537,
+          0.609756
+        ],
+        "recall": [
+          0.478049,
+          0.614634
+        ],
+        "false_positive_rate": [
+          0.326829,
+          0.44878
+        ],
+        "expected_calibration_error": [
+          0.036272125,
+          0.0862701
+        ]
+      },
+      "original_lineages": 205,
+      "delta_new_minus_reference": {
+        "roc_auc": 0.03240900000000002,
+        "balanced_accuracy": 0.03658600000000001,
+        "recall": -0.004877999999999938,
+        "false_positive_rate": -0.07804900000000004,
+        "expected_calibration_error": 0.03432
+      },
+      "paired_delta_bootstrap_95_percent": {
+        "roc_auc": [
+          0.015176085663295622,
+          0.04814991076740033
+        ],
+        "balanced_accuracy": [
+          0.007317073170731714,
+          0.06591463414634154
+        ],
+        "recall": [
+          -0.07317073170731703,
+          0.06853658536585377
+        ],
+        "false_positive_rate": [
+          -0.15609756097560978,
+          -0.009512195121951119
+        ],
+        "expected_calibration_error": [
+          0.002905638014397965,
+          0.06355161535303769
+        ]
+      },
+      "numeric_failures": [
+        "roc_auc",
+        "balanced_accuracy",
+        "recall",
+        "false_positive_rate",
+        "expected_calibration_error"
+      ]
+    }
+  ],
+  "bootstrap": {
+    "resamples": 200,
+    "seed": 20261005,
+    "unit": "original lineage; keep both quality derivatives together",
+    "uncorrected_development_intervals": true
+  },
+  "independent_audit": {
+    "files_rehashed": 3750,
+    "prediction_rows_identity_checked": 765,
+    "metric_cells_independently_checked": 12,
+    "normalization_mean_max_difference": 1.2088660616971225e-7,
+    "normalization_scale_max_difference": 1.4711935114597452e-8,
+    "numpy_native_max_logit_difference": 0,
+    "numpy_saved_probability_max_difference": 5.4140736671648426e-8,
+    "onnx_batches": {
+      "1": {
+        "max_logit_difference": 0,
+        "threshold_decisions_equal": true,
+        "passed": true
+      },
+      "17": {
+        "max_logit_difference": 0,
+        "threshold_decisions_equal": true,
+        "passed": true
+      },
+      "765": {
+        "max_logit_difference": 0,
+        "threshold_decisions_equal": true,
+        "passed": true
+      }
+    },
+    "absolute_tolerance": 0.000001,
+    "relative_tolerance": 0,
+    "passed": true
+  },
+  "verification": {
+    "python": "3.11.14",
+    "tests_passed": 710,
+    "total_coverage_percent": 93.85,
+    "feature_model_coverage_percent": 100,
+    "ruff": "passed",
+    "mypy_source_files": 90,
+    "diff_check": "passed",
+    "warnings": 28,
+    "wheel_sdist_build": "passed; nonlinear module included, no model/corpus bundled, torch opt-in",
+    "other_python_versions": "unverified",
+    "fresh_docker_e2e": "unverified"
+  },
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "numpy": "2.4.6",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.30.0"
+  },
+  "support_status": "experimental",
+  "qualification": "failed",
+  "calibrated": false,
+  "primary_detection_changed": false,
+  "limitations": [
+    "Pooled handcrafted features with learned interactions, not raw-residual CNN or context invariance.",
+    "Both sources shared with training; repeatedly inspected validation is development, not blind.",
+    "BOSS has 25 validation original scenes with two correlated qualities; simulations are not payload recovery.",
+    "ALASKA quality/payload and all camera/device/app metadata unavailable. JMiPOD excluded.",
+    "Architecture, learning rate and regularization differ together; this is not a causal architecture ablation.",
+    "All measurable cells fail detection targets. No supported methods or model installation.",
+    "Bootstrap intervals are uncorrected exploratory development uncertainty; not confirmatory.",
+    "Timing excludes cache creation and independent audits; not CTF or inference latency.",
+    "Raw data, feature caches, checkpoints and cards remain local under source usage restrictions."
+  ]
+}

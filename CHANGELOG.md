@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Published the fixed nonlinear JPEG residual-feature experiment and independent
+  audits: ALASKA AUC .609/.603 and FPR 38.54%, but BOSS/UERD and calibration
+  regressions. All detection cells still fail; exact ONNX parity, no deployment.
+
 - Added opt-in fixed residual-feature MLP64 with linear skip, architecture-bound
   research domains, train-only normalization and explicit weight-decay
   provenance. Legacy linear checkpoints and deployed detection unchanged.

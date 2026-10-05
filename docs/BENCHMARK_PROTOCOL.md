@@ -4,6 +4,8 @@ The nonlinear residual-feature comparison is fixed in
 `JPEG_NONLINEAR_PROTOCOL.md`: same cached rows, one preregistered run, no
 threshold selection or independent-source claim. Architecture interactions
 alone do not qualify context awareness, calibration or detection support.
+Completed results and all paired cell comparisons remain in
+`JPEG_NONLINEAR_RESULTS.md`; numerical export passes, detection does not.
 
 The fixed same-file JPEG residual/parity comparison is preregistered in
 `JPEG_RESIDUAL_PROTOCOL.md`; retained DC/neighbor information is experimental,

@@ -80,8 +80,8 @@ for the complete first-run walkthrough.
 
 Optional `zsteg`, Stegseek, ExifTool, JPEG DCT support, ONNX Runtime, and AI
 triage are reported as `unavailable` when absent. A low score is not proof of
-a clean file; the general pipeline's per-format required-coverage policy is
-still incomplete. Feature availability above is not a validated detection
+a clean file; the pipeline's [minimum coverage policy](docs/COVERAGE_POLICY.md)
+makes incomplete low-score scans inconclusive. Feature availability is not a validated detection
 support claim. See the full [detection guide](docs/DETECTION_GUIDE.md).
 
 ## Steganography is not encryption
@@ -165,11 +165,14 @@ artifact, report, and audit APIs are documented in [API.md](docs/API.md).
 ## Development and release evidence
 
 Real-data baselines, development experiments and controlled CTF recovery are
-reported separately in [measured results](docs/BENCHMARK_RESULTS.md). The latest
+reported separately in [measured results](docs/BENCHMARK_RESULTS.md). The
 [two-origin JPEG context experiment](docs/JPEG_CONTEXT_RESULTS.md) failed its
 detection targets and is not deployed; no method has qualified cross-source support.
 Its [residual/parity follow-up](docs/JPEG_RESIDUAL_RESULTS.md) lowers some false
 alarms but also loses recall; it remains an undeployed development experiment.
+The latest [nonlinear feature comparison](docs/JPEG_NONLINEAR_RESULTS.md)
+improves ALASKA ranking/FPR, but detection still fails; BOSS/UERD and calibration
+regress. It is research-only, not a deployed CNN or a global accuracy claim.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

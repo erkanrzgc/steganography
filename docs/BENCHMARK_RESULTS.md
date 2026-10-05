@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+The [nonlinear residual-feature comparison](JPEG_NONLINEAR_RESULTS.md) improves
+ALASKA AUC to .609/.603 and FPR to 38.54%, but still fails detection.
+BOSS/UERD and ALASKA calibration regress; no deployment or independent-source
+qualification. All cells and paired changes remain published, not cherry-picked.
+
 The [same-file JPEG residual/parity comparison](JPEG_RESIDUAL_RESULTS.md) adds
 DC/neighbor statistics, but still fails: ALASKA FPR 46.34%, BOSS simulations
 40%, AUC .503–.573. Recall regresses in several cells; all intervals and failures

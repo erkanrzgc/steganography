@@ -4,6 +4,8 @@ The next fixed development experiment (`JPEG_NONLINEAR_PROTOCOL.md`) tests a
 64-unit nonlinear residual-feature network with a linear skip, not a CNN.
 Untouched-source acquisition/evaluation and raw residual learning remain open;
 no automatic model deployment or new supported methods are implied.
+Completed `JPEG_NONLINEAR_RESULTS.md` retains modest ALASKA ranking gains,
+BOSS/UERD and calibration regressions; every measurable detection cell fails.
 
 The next JPEG slice is frozen in `JPEG_RESIDUAL_PROTOCOL.md`: a custom residual/
 parity descriptor with DC support, same-file comparison and unchanged objective.

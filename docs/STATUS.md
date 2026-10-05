@@ -10,6 +10,9 @@ been delivered or validated by this slice.
   architecture/domain validation, regularization provenance and shared export/
   inference. Legacy linear models remain compatible. The fixed comparison is
   preregistered in `JPEG_NONLINEAR_PROTOCOL.md`; not a deployed CNN.
+  The completed run improves ALASKA AUC to .609/.603 and FPR to 38.54%, but
+  BOSS/UERD and ALASKA calibration regress. Detection still fails; all cells
+  and independent numerical audits are in `JPEG_NONLINEAR_RESULTS.md`.
 
 - Research-only 2,066-feature JPEG block-DCT residual/parity contract and shared
   bounded worker dispatch. Two-origin weighting and old contracts preserved;
