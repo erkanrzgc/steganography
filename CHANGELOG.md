@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added preregistered development-only spatial operating-point selection:
+  whole-lineage fitting/assessment roles, cover-only empirical FPR threshold,
+  exact tie handling, and per-cell recall/false-alarm uncertainty. Scores are
+  not probability-calibrated, and no installed detector threshold is changed.
+
 - Added explicit double-accumulation research inference with float32 I/O,
   preserving legacy arithmetic. Derived checkpoints retain original weights
   and provenance; bounded ZIP/weights-only loading protects research exports.

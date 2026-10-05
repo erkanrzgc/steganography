@@ -1,5 +1,10 @@
 # Architecture
 
+`research_operating_point` is an explicit research service, not deployed
+threshold logic. It uses manifest-bound validation features and independent
+whole-lineage fitting/assessment roles. Fractional research cutoffs compare
+unrounded probabilities directly; CLI/primary integer thresholds are unchanged.
+
 Feature checkpoint inference defaults to legacy float32. Explicit research
 derivatives may declare `inference_arithmetic: float64` for normalization and
 accumulation while preserving float32 input/output; no automatic conversion

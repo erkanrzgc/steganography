@@ -114,6 +114,11 @@ into a single global “accuracy” claim. Cloud AI output is excluded.
 
 ## CTF and performance gates
 
+`OPERATING_POINT_PROTOCOL.md` specifies an exploratory spatial threshold
+development assessment, with cover-only fitting and separate lineage roles.
+Already inspected validation remains inspected; lower empirical FPR cannot be
+reported without its recall tradeoff or relabeled independent-source evidence.
+
 The separate `INFERENCE_PRECISION_PROTOCOL.md` freezes numerical repair tests
 on inspected development artifacts. Such export audits are not fresh blind
 tests, threshold/calibration changes or cross-source detector qualification.

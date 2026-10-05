@@ -7,7 +7,10 @@ from typing import Any
 
 
 def classification_metrics(
-    observations: Iterable[tuple[bool, float]], *, threshold: int, recommend_threshold: bool = True
+    observations: Iterable[tuple[bool, float]],
+    *,
+    threshold: int | float,
+    recommend_threshold: bool = True,
 ) -> dict[str, Any]:
     values = list(observations)
     if not values:

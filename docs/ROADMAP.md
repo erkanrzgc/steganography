@@ -91,6 +91,10 @@ cross-source qualification remain necessary for measured improvement.
 
 ## v1.0 gate
 
+The separated-role operating-point comparison is frozen in
+`OPERATING_POINT_PROTOCOL.md`; it cannot change the installed verdict threshold
+or claim fresh blind evidence from previously inspected validation images.
+
 Opt-in double-accumulation inference repair is specified in
 `INFERENCE_PRECISION_PROTOCOL.md`; it preserves original weights and old
 reports. Passing numerical gates cannot promote a method to supported.

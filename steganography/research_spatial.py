@@ -233,10 +233,12 @@ def generate_corpus(
     return manifest
 
 
-def cell_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
+def cell_metrics(
+    rows: list[dict[str, Any]], *, threshold: int | float = 50, score_scale: float = 100
+) -> dict[str, Any]:
     metrics = classification_metrics(
-        [(r["label"] == "stego", r["score"] * 100) for r in rows],
-        threshold=50,
+        [(r["label"] == "stego", r["score"] * score_scale) for r in rows],
+        threshold=threshold,
         recommend_threshold=False,
     )
     metrics.pop("recommended_threshold")
@@ -247,7 +249,9 @@ def cell_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return metrics
 
 
-def paired_intervals(rows: list[dict[str, Any]]) -> dict[str, list[float]]:
+def paired_intervals(
+    rows: list[dict[str, Any]], *, threshold: int | float = 50, score_scale: float = 100
+) -> dict[str, list[float]]:
     groups: dict[str, list[dict[str, Any]]] = {}
     for row in rows:
         groups.setdefault(row["lineage"], []).append(row)
@@ -265,7 +269,7 @@ def paired_intervals(rows: list[dict[str, Any]]) -> dict[str, list[float]]:
     }
     for _ in range(200):
         sample = [r for _ in lineages for r in groups[generator.choice(lineages)]]
-        metrics = cell_metrics(sample)
+        metrics = cell_metrics(sample, threshold=threshold, score_scale=score_scale)
         for key in values:
             values[key].append(metrics[key])
     return {
