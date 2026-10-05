@@ -101,8 +101,10 @@ def archive_url(credential_path):
 class RemoteZip(io.RawIOBase):
     """Seekable metadata reader plus thread-safe, globally bounded range requests."""
 
-    def __init__(self, url):
-        validate_archive_url(url)
+    def __init__(self, url, *, validate_origin=None):
+        # Anonymous research acquisitions can explicitly supply their fixed-origin
+        # validator; the authenticated ALASKA2 default stays storage-only.
+        (validate_archive_url if validate_origin is None else validate_origin)(url)
         self._url = url
         self.deadline = time.monotonic() + MAX_SECONDS
         self.lock = threading.Lock()

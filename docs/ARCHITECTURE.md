@@ -136,6 +136,14 @@ the application has no separate detection or extraction implementation here.
 The generator/oracle are experiment ground truth, not a native CTF recovery claim.
 See `WAV_PROTOCOL.md`; artifacts and their provenance remain bounded and local.
 
+The separate BOSSbase development downloader reuses the tested standalone
+range/catalog/member helpers with an explicit anonymous fixed-origin validator.
+No credentials or Kaggle requests occur. Reserved archive names are excluded
+before random selection, content/lineage hashes checked on download, and
+resume bound to selection/archive/reserved provenance. See
+`SPATIAL_DEVELOPMENT_ACQUISITION.md`; PGM originals are development covers,
+not a scored detector corpus or a new independent source.
+
 PDF stream decoding enforces a per-stream 16 MiB output limit and a shared
 32 MiB decoded-output budget per parse. CTF extraction further restricts that
 budget to the remaining job output allowance. ASCII decoder input is bounded
