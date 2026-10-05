@@ -11,11 +11,18 @@ from typing import Any
 import numpy as np
 
 from core import jpeg_features as jpeg
+from core import spatial_cooccurrence as cooccurrence
+from core.feature_model import feature_model
 from core.features import FEATURE_NAMES, FEATURE_VERSION, MAX_IMAGE_BYTES, spatial_features
 from steganography.research import ResearchManifestError, verify_dataset_manifest
 
 MAX_DOCUMENT_BYTES = 64 * 1024 * 1024
 MAX_ROWS = 10_000
+MODEL_DOMAINS = {
+    FEATURE_VERSION: "spatial-summary-linear-v1",
+    jpeg.FEATURE_VERSION: "jpeg-dct-summary-linear-v1",
+    cooccurrence.FEATURE_VERSION: "spatial-cooccurrence-linear-v1",
+}
 
 
 def read_document(path: Path) -> tuple[dict[str, Any], str]:
@@ -121,6 +128,8 @@ def feature_contract(version: str):
         return FEATURE_NAMES, spatial_features
     if version == jpeg.FEATURE_VERSION:
         return jpeg.FEATURE_NAMES, jpeg.jpeg_features
+    if version == cooccurrence.FEATURE_VERSION:
+        return cooccurrence.FEATURE_NAMES, cooccurrence.spatial_cooccurrence_features
     raise ResearchManifestError("unknown feature contract")
 
 
@@ -181,3 +190,68 @@ def feature_inputs(
         np.asarray([s["label"] == "stego" for s in selected], dtype=np.float32),
         provenance,
     )
+
+
+def predict_validation(
+    config_path: Path,
+    checkpoint_path: Path,
+    out: Path,
+    *,
+    required_domain: str | None = None,
+    schema_version: str = "research-feature-predictions-v1",
+) -> dict[str, Any]:
+    """Shared validation-only inference; test image access is not an option."""
+    import torch
+
+    if out.exists() or any(p.is_symlink() for p in (out, *out.parents)):
+        raise FileExistsError("prediction output exists or uses a symlink")
+    config, _ = read_document(config_path)
+    features, _, provenance = feature_inputs(config, split="validation")
+    if (
+        any(p.is_symlink() for p in (checkpoint_path, *checkpoint_path.parents))
+        or not checkpoint_path.is_file()
+        or checkpoint_path.stat().st_size > 16 * 1024 * 1024
+    ):
+        raise ResearchManifestError("invalid bounded checkpoint")
+    checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+    domain = MODEL_DOMAINS[provenance["feature_version"]]
+    if (
+        checkpoint.get("domain") != domain
+        or (required_domain is not None and domain != required_domain)
+        or checkpoint["preprocessing"]["feature_version"] != provenance["feature_version"]
+        or checkpoint["preprocessing"]["feature_names"] != provenance["feature_names"]
+        or checkpoint["training_provenance"]["manifest_sha256"] != provenance["manifest_sha256"]
+    ):
+        raise ResearchManifestError("checkpoint/validation contract mismatch")
+    model = feature_model(checkpoint).eval()
+    with torch.no_grad():
+        scores = torch.sigmoid(model(torch.from_numpy(features))).numpy().reshape(-1)
+    if not np.isfinite(scores).all():
+        raise ResearchManifestError("nonfinite validation predictions")
+    manifest, _ = read_document(Path(config["manifest"]))
+    samples = [s for s in manifest["samples"] if s["split"] == "validation"]
+    report = {
+        "schema_version": schema_version,
+        "split": "validation",
+        "checkpoint_sha256": hashlib.sha256(checkpoint_path.read_bytes()).hexdigest(),
+        "provenance": provenance,
+        "calibrated": False,
+        "support_status": "experimental",
+        "predictions": [
+            {
+                "sha256": s["sha256"],
+                "lineage": s["lineage"],
+                "label": s["label"],
+                "method": s["method"],
+                "rate_percent": s.get("rate_percent"),
+                "format": s.get("format"),
+                "score": float(score),
+            }
+            for s, score in zip(samples, scores, strict=True)
+        ],
+    }
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with out.open("x") as stream:
+        json.dump(report, stream, indent=2, allow_nan=False)
+        stream.write("\n")
+    return report

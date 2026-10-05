@@ -153,12 +153,10 @@ def verify_dataset_manifest(
         raise ResearchManifestError("train/validation and test hashes overlap")
     partition = manifest.get("partition")
     if partition is not None:
-        if (
-            not isinstance(partition, dict)
-            or partition.get("policy") not in {
-                "identity-camera-device-components-v1", "identity-camera-device-development-v1"
-            }
-        ):
+        if not isinstance(partition, dict) or partition.get("policy") not in {
+            "identity-camera-device-components-v1",
+            "identity-camera-device-development-v1",
+        }:
             raise ResearchManifestError("unsupported partition policy")
         held_out = partition.get("test_sources")
         development = partition.get("policy") == "identity-camera-device-development-v1"
@@ -376,20 +374,27 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
     tensor = torch.from_numpy(features.reshape(features.shape[0], -1))
     targets = torch.from_numpy(labels.reshape(-1, 1))
     jpeg_model = provenance["feature_version"] == "jpeg-dct-summary-v1"
+    residual_model = provenance["feature_version"] == "spatial-cooccurrence-v1"
+    standardize = config.get("standardize", jpeg_model or residual_model)
+    class_balanced = config.get("class_balanced", jpeg_model or residual_model)
+    if type(standardize) is not bool or type(class_balanced) is not bool:
+        raise ResearchManifestError("standardize/class_balanced must be booleans")
     normalization = None
-    if jpeg_model:
+    if standardize:
         mean = tensor.mean(dim=0)
         scale = tensor.std(dim=0, unbiased=False).clamp(min=1e-4)
         tensor = (tensor - mean) / scale
         normalization = {
             "method": "train-only-standardization",
-            "mean": mean.tolist(), "scale": scale.tolist(),
+            "mean": mean.tolist(),
+            "scale": scale.tolist(),
         }
     model = torch.nn.Linear(tensor.shape[1], 1)
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     loss_function = torch.nn.BCEWithLogitsLoss(
         pos_weight=torch.tensor(float((labels == 0).sum() / (labels == 1).sum()))
-        if jpeg_model else None
+        if class_balanced
+        else None
     )
     epochs = int(config.get("epochs", 10))
     if not 1 <= epochs <= 100_000:
@@ -399,7 +404,8 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "epochs": epochs,
         "learning_rate": learning_rate,
         "torch_version": str(torch.__version__),
-        "class_balanced": jpeg_model,
+        "class_balanced": class_balanced,
+        "standardize": standardize,
     }
     loss = 0.0
     for _epoch in range(epochs):
@@ -416,7 +422,11 @@ def train_model(config_path: Path, out: Path) -> dict[str, Any]:
         "state_dict": model.state_dict(),
         "input_shape": list(features.shape[1:]),
         "features": int(tensor.shape[1]),
-        "domain": "jpeg-dct-summary-linear-v1" if jpeg_model else "spatial-summary-linear-v1",
+        "domain": "jpeg-dct-summary-linear-v1"
+        if jpeg_model
+        else "spatial-cooccurrence-linear-v1"
+        if residual_model
+        else "spatial-summary-linear-v1",
         "preprocessing": {
             "feature_version": provenance["feature_version"],
             "feature_names": provenance["feature_names"],

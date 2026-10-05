@@ -863,7 +863,8 @@ def build_parser() -> argparse.ArgumentParser:
     research_features.add_argument("--split", choices=("train", "validation"), default="train")
     research_features.add_argument("--workers", type=int, choices=range(1, 5), default=1)
     research_features.add_argument(
-        "--feature-version", choices=("spatial-summary-v1", "jpeg-dct-summary-v1"),
+        "--feature-version",
+        choices=("spatial-summary-v1", "jpeg-dct-summary-v1", "spatial-cooccurrence-v1"),
         default="spatial-summary-v1",
     )
     research_features.set_defaults(fn=cmd_research_features)

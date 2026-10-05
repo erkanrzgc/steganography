@@ -114,6 +114,13 @@ into a single global “accuracy” claim. Cloud AI output is excluded.
 
 ## CTF and performance gates
 
+Spatial development uses the preregistered `SPATIAL_DEVELOPMENT_PROTOCOL.md`:
+same-source validation only, reserved original lineage exclusions, independent
+marker-free gray-plane pairs and fixed normalized/class-balanced baselines.
+Actual validation-artifact ONNX parity is separate from small fixture parity.
+Neither a good development score nor perfect generator-oracle recovery passes
+the cross-source detector or blind CTF gates.
+
 The blind suite contains 120 supported challenges. At least 90% require exact
 payload/flag recovery; remaining challenges must place the correct method in
 the first three recommendations. For typical inputs below 10 MiB, publish the

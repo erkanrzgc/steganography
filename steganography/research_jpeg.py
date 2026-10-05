@@ -10,10 +10,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-
 from core.dataset import identity_keys
-from core.feature_model import feature_model
 from core.jpeg_features import FEATURE_VERSION, MAX_IMAGE_BYTES
 from steganography.benchmarking.metrics import classification_metrics
 from steganography.research import (
@@ -22,7 +19,8 @@ from steganography.research import (
     train_model,
     verify_dataset_manifest,
 )
-from steganography.research_features import extract_features, feature_inputs, read_document
+from steganography.research_features import extract_features, read_document
+from steganography.research_features import predict_validation as predict_feature_validation
 
 
 def write_json(path: Path, document: dict[str, Any]) -> None:
@@ -152,52 +150,14 @@ def import_development(
 
 
 def predict_validation(config_path: Path, checkpoint_path: Path, out: Path) -> dict[str, Any]:
-    import torch
-
-    config, _ = read_document(config_path)
-    features, _, provenance = feature_inputs(config, split="validation")
-    if (
-        any(p.is_symlink() for p in (checkpoint_path, *checkpoint_path.parents))
-        or not checkpoint_path.is_file()
-        or checkpoint_path.stat().st_size > 16 * 1024 * 1024
-    ):
-        raise ResearchManifestError("invalid bounded checkpoint")
-    checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
-    if (
-        checkpoint.get("domain") != "jpeg-dct-summary-linear-v1"
-        or checkpoint["preprocessing"]["feature_version"] != provenance["feature_version"]
-        or checkpoint["preprocessing"]["feature_names"] != provenance["feature_names"]
-        or checkpoint["training_provenance"]["manifest_sha256"] != provenance["manifest_sha256"]
-    ):
-        raise ResearchManifestError("checkpoint/validation contract mismatch")
-    model = feature_model(checkpoint)
-    model.eval()
-    with torch.no_grad():
-        scores = torch.sigmoid(model(torch.from_numpy(features))).numpy().reshape(-1)
-    if not np.isfinite(scores).all():
-        raise ResearchManifestError("nonfinite validation predictions")
-    manifest, _ = read_document(Path(config["manifest"]))
-    samples = [s for s in manifest["samples"] if s["split"] == "validation"]
-    report = {
-        "schema_version": "jpeg-development-predictions-v1",
-        "split": "validation",
-        "checkpoint_sha256": hashlib.sha256(checkpoint_path.read_bytes()).hexdigest(),
-        "provenance": provenance,
-        "calibrated": False,
-        "support_status": "experimental",
-        "predictions": [
-            {
-                "sha256": s["sha256"],
-                "lineage": s["lineage"],
-                "label": s["label"],
-                "method": s["method"],
-                "score": float(score),
-            }
-            for s, score in zip(samples, scores, strict=True)
-        ],
-    }
-    write_json(out, report)
-    return report
+    """Preserve the JPEG interface/schema through shared feature inference."""
+    return predict_feature_validation(
+        config_path,
+        checkpoint_path,
+        out,
+        required_domain="jpeg-dct-summary-linear-v1",
+        schema_version="jpeg-development-predictions-v1",
+    )
 
 
 def run_development(

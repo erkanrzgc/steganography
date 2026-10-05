@@ -91,6 +91,10 @@ cross-source qualification remain necessary for measured improvement.
 
 ## v1.0 gate
 
+The next spatial comparison is frozen in `SPATIAL_DEVELOPMENT_PROTOCOL.md`.
+Richer descriptors and a fair simple-feature reference will be scored on the
+new BOSSbase train/validation corpus; no automatic deployment is permitted.
+
 Release only when every advertised support cell passes the real-dataset gates,
 the blind CTF suite meets recovery/latency targets, and all sandbox/limit tests
 pass. Until then the package remains beta and claims are per-cell.

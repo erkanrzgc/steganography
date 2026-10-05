@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added preregistered reserved-safe PNG/BMP controlled development comparison:
+  independent grayscale LSB pairs, bounded 468-feature residual co-occurrences,
+  shared validation inference, fair train-only normalization/class balancing,
+  paired uncertainty and actual-artifact ONNX parity. Not deployed or qualified.
+
 - Added separate BOSSbase development acquisition: reserved-member selection
   exclusion, SHA/lineage overlap checks, bounded shared ZIP/range helpers,
   CRC/PGM validation, exclusive outputs and provenance-bound resume. Originals
