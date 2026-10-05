@@ -1,5 +1,12 @@
 # Architecture
 
+`core/jpeg_jrm.py` isolates optional pinned upstream JRM extraction with framed
+bounded workers. `core/fld_reference.py` owns immutable numeric-only FLD
+inference; `research_jrm` binds explicit raw caches, training/card provenance
+and validation. The CLI is a thin adapter. No upstream pickle/code/model is
+bundled; generic feature/checkpoint limits and deployed detection are unchanged.
+See `JRM_REFERENCE_PROTOCOL.md` and upstream component usage restrictions.
+
 `core/feature_model.py` reconstructs fixed bounded linear and opt-in residual
 MLP64 feature networks. Research contracts bind architecture to domain across
 training, prediction, export and diagnostics; unknown combinations fail closed.

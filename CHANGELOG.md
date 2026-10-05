@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added optional pinned upstream JRM/FLD local research reference: bounded batch
+  workers, provenance-bound raw caches, numeric-only immutable ensemble weights
+  and explicit CLI stages. Component research-use notices preserved; freeze
+  comparison protocol before real-data processing. Deployed detection unchanged.
+
 - Published the fixed nonlinear JPEG residual-feature experiment and independent
   audits: ALASKA AUC .609/.603 and FPR 38.54%, but BOSS/UERD and calibration
   regressions. All detection cells still fail; exact ONNX parity, no deployment.

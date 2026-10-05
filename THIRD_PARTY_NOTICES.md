@@ -36,3 +36,15 @@ Downloaded release artifacts are verified with the SHA-256 values pinned in
 `Dockerfile.full`. Debian packages are verified by APT's signed Release and
 package checksum chain and their installed versions are checked during full
 image E2E.
+
+## Optional JRM research reference
+
+The `jrm-reference` extra uses sealwatch **2024.12** only when explicitly
+installed: [upstream](https://github.com/uibk-uncover/sealwatch),
+[MPL-2.0](https://github.com/uibk-uncover/sealwatch/blob/main/LICENSE).
+The wheel's `sealwatch/jrm/jrm.py` also contains DDE Lab's educational,
+research and non-profit use notice (copyright 2011 DDE Lab, Binghamton).
+Repository-level MPL labeling does not remove this component notice.
+The reference workflow is local research-only; no upstream source/models are
+vendored, relicensed or advertised for commercial use. Review component and
+dataset terms separately before redistribution. See `docs/JRM_REFERENCE_PROTOCOL.md`.

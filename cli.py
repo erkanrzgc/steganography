@@ -558,6 +558,13 @@ def cmd_research_train(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_research_jrm(args: argparse.Namespace) -> int:
+    from steganography.research_jrm import run_reference
+
+    print(json.dumps(run_reference(Path(args.config), Path(args.out)), indent=2))
+    return 0
+
+
 def cmd_research_diagnose(args: argparse.Namespace) -> int:
     from steganography.research_generalization import diagnose_validation
 
@@ -872,6 +879,10 @@ def build_parser() -> argparse.ArgumentParser:
     research_benchmark.add_argument("--bootstrap-samples", type=int, default=200)
     research_benchmark.set_defaults(fn=cmd_research_benchmark)
     research_train = research_commands.add_parser("train")
+    research_jrm = research_commands.add_parser("jrm-reference")
+    research_jrm.add_argument("--config", required=True)
+    research_jrm.add_argument("--out", required=True)
+    research_jrm.set_defaults(fn=cmd_research_jrm)
     research_features = research_commands.add_parser("features")
     research_features.add_argument("--manifest", required=True)
     research_features.add_argument("--out", required=True)

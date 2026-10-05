@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Next independent implementation reference: fixed optional JRM + FLD protocol
+in `JRM_REFERENCE_PROTOCOL.md`, all original files/splits, numeric-only caches
+and model serialization. This changes several experimental choices together,
+not a causal ablation or independent-source qualification. Raw CNN and untouched
+source gates remain open; upstream research-use terms are recorded.
+
 The next fixed development experiment (`JPEG_NONLINEAR_PROTOCOL.md`) tests a
 64-unit nonlinear residual-feature network with a linear skip, not a CNN.
 Untouched-source acquisition/evaluation and raw residual learning remain open;

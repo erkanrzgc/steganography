@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Optional pinned sealwatch JRM/FLD research reference, bounded framed workers,
+  separate checksum-bound float32 caches and immutable numeric inference without
+  pickle. Explicit `research jrm-reference` CLI; protocol frozen in
+  `JRM_REFERENCE_PROTOCOL.md`. Not deployed, not an installed ONNX model.
+
 - Explicit research-only residual-feature MLP64 with a linear skip, bounded
   architecture/domain validation, regularization provenance and shared export/
   inference. Legacy linear models remain compatible. The fixed comparison is

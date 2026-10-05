@@ -1,5 +1,9 @@
 # Preparing the next detector experiment
 
+`JRM_REFERENCE_PROTOCOL.md` specifies the next optional local research reference
+on exactly the existing JPEG corpus. No new acquisition/held-out scenes/model
+installation; pin component versions and preserve DDE research/non-profit terms.
+
 `JPEG_NONLINEAR_PROTOCOL.md` fixes the next comparison on existing bound
 residual-feature caches: one 64-unit nonlinear feature model with a linear skip.
 No data acquisition, new scenes or independent-source evidence are added;
