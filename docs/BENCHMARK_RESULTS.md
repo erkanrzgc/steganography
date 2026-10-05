@@ -5,6 +5,13 @@ The application is an exploratory inspection/extraction tool, not a reliable
 certificate that a file is clean. More formats, datasets or passing unit tests
 do not imply better detection.
 
+The fixed low-payload training-weight comparison raises same-source 5% recall
+from 38.04% to 67.93% (sequential) and 14.67% to 29.89% (scattered), while
+shared false alarms rise from 1.63% to 3.26%. Higher-rate ranking and most ECE
+values regress. All six cells remain experimental and undeployed; see
+[full results](SPATIAL_WEIGHTING_RESULTS.md) and
+[portable evidence](../benchmarks/spatial-weighted-development-20261005.json).
+
 | Scope | Evidence | Outcome |
 | --- | --- | --- |
 | PNG/OpenStego and BMP/Steghide native detection | [Frozen BOSSbase pilot](PILOT_RESULTS.md): 1,000 pairs, 500 per family | Combined AUC 0.499021; recall 0%, FPR 0% at threshold 70; failed |

@@ -1,9 +1,10 @@
 # Preparing the next detector experiment
 
-The next spatial objective experiment reuses existing audited parity vectors;
+The completed spatial objective experiment reuses existing audited parity vectors;
 no new download or test-image access is needed. Complete controlled training
 lineages receive fixed weights, never validation-derived weights. See
-`SPATIAL_WEIGHTING_PROTOCOL.md`; comparison results are pending.
+`SPATIAL_WEIGHTING_PROTOCOL.md` / `SPATIAL_WEIGHTING_RESULTS.md`: low-rate
+recall improves, but false alarms increase and no model is qualified/deployed.
 
 The published pilot remains frozen. Its images, covers and derivatives are not
 development or validation data. This workflow prepares a new experiment; it

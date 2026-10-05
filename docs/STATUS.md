@@ -7,8 +7,10 @@ been delivered or validated by this slice.
 ## Implemented
 
 - Explicit train-only controlled-lineage low-payload weighting and a
-  checksum-bound cached-vector comparison runner. The experiment is fixed in
-  `SPATIAL_WEIGHTING_PROTOCOL.md`; results are pending, with no deployment.
+  checksum-bound cached-vector comparison runner. The fixed experiment is
+  complete: sequential/scattered-5% recall rises to 67.93%/29.89%, but shared
+  FPR doubles to 3.26%, higher-rate ranking regresses and calibration fails.
+  No deployment; see `SPATIAL_WEIGHTING_RESULTS.md` for all cells and gates.
 
 - Shared analysis context with legacy analyzer compatibility; additional
   spatial-image, JPEG structure, GIF, WAV and text signals.
@@ -69,7 +71,7 @@ been delivered or validated by this slice.
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 545 tests pass; total coverage 93.52%. PDF analyzer coverage is
+- Python 3.11: 546 tests pass; total coverage 93.52%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs (twenty occurrences), not test failures.
 - New spatial descriptor coverage is 100%; the explicit development runner is

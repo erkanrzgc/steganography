@@ -1,9 +1,10 @@
 # Benchmark protocol
 
-The next fixed train-objective comparison is preregistered in
+The fixed train-objective comparison is preregistered in
 `SPATIAL_WEIGHTING_PROTOCOL.md`: cached checksum-bound parity features, train-only
 5% payload weighting, fixed threshold, all six cells and paired uncertainty.
-Already inspected validation remains development evidence, never blind evidence.
+Results are in `SPATIAL_WEIGHTING_RESULTS.md`. Already inspected validation
+remains development evidence, never blind evidence.
 
 The initial single-source experiment is specified in `PILOT_PROTOCOL.md` and
 reported in `PILOT_RESULTS.md` / `benchmarks/pilot-20260918.json`. Its failed

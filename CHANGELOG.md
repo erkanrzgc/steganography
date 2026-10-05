@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Published the fixed weighted-objective comparison: low-rate sequential/
+  scattered recall 38.04%/14.67% → 67.93%/29.89%, but shared FPR 1.63% → 3.26%
+  and higher-rate/ECE regressions. All cells, paired intervals and independent
+  numerical audits are retained; no deployment or cross-source support claim.
+
 - Added explicit controlled-lineage low-payload training weights, weighted
   class balancing, persisted recipe provenance and a cached-vector comparison
   runner. Defaults and deployed detection are unchanged; the experiment is

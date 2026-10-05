@@ -1,7 +1,8 @@
 # Roadmap and status
 
 Current research slice: explicit low-payload training weights and cached-vector
-comparison, preregistered in `SPATIAL_WEIGHTING_PROTOCOL.md`. No deployed
+comparison completed. Low-rate sensitivity gains trade off against higher
+false alarms and regressions; see `SPATIAL_WEIGHTING_RESULTS.md`. No deployed
 detector changes or newly qualified methods are implied by this experiment.
 
 Synthetic corpus results are smoke/regression evidence only. They are not a
