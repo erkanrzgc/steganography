@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Added explicit double-accumulation research inference with float32 I/O,
+  preserving legacy arithmetic. Derived checkpoints retain original weights
+  and provenance; bounded ZIP/weights-only loading protects research exports.
+  Numerical repair audit is preregistered separately from detection accuracy.
+
 - Published the audited 7,000-file PNG/BMP development comparison: richer
   features improve same-source AUC to 0.717–0.997, but 4.89% FPR, weak low-rate
   scattered recall, calibration and strict ONNX logit parity remain failed.

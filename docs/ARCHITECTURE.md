@@ -1,5 +1,11 @@
 # Architecture
 
+Feature checkpoint inference defaults to legacy float32. Explicit research
+derivatives may declare `inference_arithmetic: float64` for normalization and
+accumulation while preserving float32 input/output; no automatic conversion
+or installation occurs. Shared research loading bounds modern ZIP checkpoint
+bytes, member count, expanded bytes and feature dimensions before reconstruction.
+
 Spatial development shares manifest-bound feature extraction/training/inference
 with JPEG. `core/spatial_cooccurrence.py` defines a custom experimental 468-bin
 descriptor (not SRM/SPAM); `steganography/research_spatial.py` orchestrates explicit,

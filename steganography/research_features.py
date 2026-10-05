@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import zipfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,42 @@ MODEL_DOMAINS = {
     jpeg.FEATURE_VERSION: "jpeg-dct-summary-linear-v1",
     cooccurrence.FEATURE_VERSION: "spatial-cooccurrence-linear-v1",
 }
+
+
+def read_feature_checkpoint(path: Path, *, expected_sha256: str | None = None) -> dict[str, Any]:
+    """Bound file/archive/tensor metadata before optional weights-only loading."""
+    import torch
+
+    limit = 16 * 1024 * 1024
+    if (
+        any(p.is_symlink() for p in (path, *path.parents))
+        or not path.is_file()
+        or path.stat().st_size > limit
+    ):
+        raise ResearchManifestError("invalid bounded checkpoint")
+    with path.open("rb") as stream:
+        data = stream.read(limit + 1)
+    if len(data) > limit:
+        raise ResearchManifestError("invalid bounded checkpoint")
+    if expected_sha256 is not None and hashlib.sha256(data).hexdigest() != expected_sha256:
+        raise ResearchManifestError("checkpoint checksum mismatch")
+    import io
+
+    try:
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            members = archive.infolist()
+            if not 1 <= len(members) <= 256 or sum(m.file_size for m in members) > limit:
+                raise ResearchManifestError("checkpoint archive exceeds limits")
+    except zipfile.BadZipFile as exc:
+        raise ResearchManifestError("checkpoint must use bounded ZIP serialization") from exc
+    checkpoint = torch.load(io.BytesIO(data), map_location="cpu", weights_only=True)
+    if (
+        not isinstance(checkpoint, dict)
+        or type(checkpoint.get("features")) is not int
+        or not 1 <= checkpoint["features"] <= 4096
+    ):
+        raise ResearchManifestError("invalid checkpoint feature dimensions")
+    return checkpoint
 
 
 def read_document(path: Path) -> tuple[dict[str, Any], str]:
@@ -207,13 +244,7 @@ def predict_validation(
         raise FileExistsError("prediction output exists or uses a symlink")
     config, _ = read_document(config_path)
     features, _, provenance = feature_inputs(config, split="validation")
-    if (
-        any(p.is_symlink() for p in (checkpoint_path, *checkpoint_path.parents))
-        or not checkpoint_path.is_file()
-        or checkpoint_path.stat().st_size > 16 * 1024 * 1024
-    ):
-        raise ResearchManifestError("invalid bounded checkpoint")
-    checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+    checkpoint = read_feature_checkpoint(checkpoint_path)
     domain = MODEL_DOMAINS[provenance["feature_version"]]
     if (
         checkpoint.get("domain") != domain

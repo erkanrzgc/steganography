@@ -114,6 +114,10 @@ into a single global “accuracy” claim. Cloud AI output is excluded.
 
 ## CTF and performance gates
 
+The separate `INFERENCE_PRECISION_PROTOCOL.md` freezes numerical repair tests
+on inspected development artifacts. Such export audits are not fresh blind
+tests, threshold/calibration changes or cross-source detector qualification.
+
 Spatial development uses the preregistered `SPATIAL_DEVELOPMENT_PROTOCOL.md`:
 same-source validation only, reserved original lineage exclusions, independent
 marker-free gray-plane pairs and fixed normalized/class-balanced baselines.

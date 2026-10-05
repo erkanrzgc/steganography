@@ -451,7 +451,9 @@ def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
         import torch
     except ImportError as exc:
         raise RuntimeError("ONNX export requires the 'research' extra") from exc
-    checkpoint = torch.load(Path(checkpoint_path), map_location="cpu", weights_only=True)
+    from steganography.research_features import read_feature_checkpoint
+
+    checkpoint = read_feature_checkpoint(Path(checkpoint_path))
     from core.feature_model import feature_model
 
     model = feature_model(checkpoint)
@@ -484,6 +486,8 @@ def export_onnx(checkpoint_path: Path, out: Path) -> dict[str, Any]:
         "calibrated": False,
         "training_provenance": checkpoint.get("training_provenance"),
     }
+    if "inference_derivation" in checkpoint:
+        contract["inference_derivation"] = checkpoint["inference_derivation"]
     card_data = json.dumps(contract, indent=2).encode()
     destination.parent.mkdir(parents=True, exist_ok=True)
     with destination.open("xb") as stream:

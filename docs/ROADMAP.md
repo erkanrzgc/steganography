@@ -91,6 +91,10 @@ cross-source qualification remain necessary for measured improvement.
 
 ## v1.0 gate
 
+Opt-in double-accumulation inference repair is specified in
+`INFERENCE_PRECISION_PROTOCOL.md`; it preserves original weights and old
+reports. Passing numerical gates cannot promote a method to supported.
+
 The spatial comparison frozen in `SPATIAL_DEVELOPMENT_PROTOCOL.md` completed;
 see `SPATIAL_DEVELOPMENT_RESULTS.md`. Custom co-occurrences improve same-source
 controlled LSB AUC over the same-data reference, but low-rate recall, false
