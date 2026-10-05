@@ -77,13 +77,17 @@ GIF, WAV, text, and generic-container depth; complete API/TUI CTF controls and
 cross-format recursive recovery.
 
 Pinned FSDD acquisition now supplies 3,000 real WAV candidate covers with
-speaker/recording identity and audited PCM hashes. No audio embedding, split,
-training or detection benchmark has run. `DATASET_CATALOG.md` records usage
+speaker/recording identity and audited PCM hashes. `DATASET_CATALOG.md` records usage
 conditions; `BENCHMARK_RESULTS.md` tracks the separate format/method work and
 keeps missing evaluations unavailable rather than successful.
-The next preregistered WAV baseline (`WAV_PROTOCOL.md`) adds independent
+The preregistered WAV baseline (`WAV_PROTOCOL.md`) adds independent
 sequential/scattered PCM LSB pairs and fixed-threshold method/rate evaluation,
 with speaker-level reservations and coverage-aware shared-service scoring.
+The completed `WAV_RESULTS.md` baseline fails all six cells (AUC 0.50,
+recall 0%). All generated payloads were independently oracle-verified;
+native CTF recovery was not measured. Separate spatial cover acquisition is
+available in `SPATIAL_DEVELOPMENT_ACQUISITION.md`; models/features and fresh
+cross-source qualification remain necessary for measured improvement.
 
 ## v1.0 gate
 

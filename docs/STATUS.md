@@ -1,4 +1,4 @@
-# Implementation status — 2026-10-04
+# Implementation status — 2026-10-05
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
@@ -39,16 +39,22 @@ been delivered or validated by this slice.
   export. The first fixed experiment completed, but is not deployed; see
   `JPEG_DEVELOPMENT_RESULTS.md` for inadequate scores and export-parity limits.
 - Explicit pinned FSDD acquisition: 3,000 real WAV covers, audited source/
-  license evidence, SHA/CRC and PCM data. No audio benchmark has run. Public
+  license evidence, SHA/CRC and PCM data. The preregistered 7,000-file baseline
+  completed with failed native detection; see `WAV_RESULTS.md`. Public
   source/usage inventory and method-level evidence are in `DATASET_CATALOG.md`
   and `BENCHMARK_RESULTS.md`; raw corpora remain local.
+- Separate spatial development acquisition completed: 1,000 BOSSbase originals
+  (816 train / 184 validation), all independently rehashed/CRC/decode checked,
+  with no reserved hash/member overlap. PNG/BMP conversion, stego generation
+  and improved spatial model validation remain work; see
+  `SPATIAL_DEVELOPMENT_ACQUISITION.md`.
 
 ## Verification
 
 - Local checks use the provisioned `venv/bin/python` environment. The host's
   system Python has an older cryptography package without Argon2id and cannot
   collect the full suite; activate the environment before running check commands.
-- Python 3.11: 457 tests pass; total coverage 93.04%. PDF analyzer coverage is
+- Python 3.11: 501 tests pass; total coverage 93.17%. PDF analyzer coverage is
   97.69% and image-bitplane analyzer coverage is 98.68%. The two warnings concern
   deprecated ONNX export APIs (six occurrences), not test failures.
 - The standalone ALASKA2 downloader has 59 dedicated tests and 99.09% statement
@@ -65,7 +71,11 @@ been delivered or validated by this slice.
   100%, 100% and 98.19% statement coverage respectively. Thirty standalone FSDD
   tests cover archive/PCM bounds, license evidence, symlinks, no overwrite,
   redirects and redacted failures; separate downloader coverage is 98.18%.
-- Ruff and mypy (77 files including both new acquisition entrypoints)
+- Thirty-two WAV benchmark tests verify independent payload recovery, RIFF/PCM
+  bounds, speaker reservations, immutable inputs, coverage failures and fixed
+  scoring. New benchmark code has 97.67% statement coverage. Twelve BOSSbase
+  development acquisition tests pass; standalone code coverage is 95.54%.
+- Ruff and mypy (78 files including the current acquisition entrypoints)
   pass; diff whitespace checks pass.
 - PyTorch, ONNX, and ONNX Runtime are provisioned in the research environment.
   CPU optimizer execution, determinism/repeatability, nonfinite loss guards, and
@@ -108,6 +118,11 @@ been delivered or validated by this slice.
   0.648804 / 0.592481 / 0.585306 and FPR 41.46% on 205 shared covers. It is
   experimental, uncalibrated and local; this different subset is not evidence
   of improved old-test performance. Existing primary verdicts are unchanged.
+- FSDD native WAV baseline: all six sequential/scattered LSB cells at 0.05,
+  0.20 and 0.40 bits/sample have AUC 0.50, balanced accuracy 50%, recall/FPR 0%.
+  All 7,000 files completed with required native coverage. Independent oracle
+  extraction passed for all 6,000 generated payloads; this is ground truth,
+  not a native recovery score. Training/validation speakers remain separate.
 - Small external-source check on all 24 Kodak images: 48 method-specific pairs,
   all stegos independently recovered. Base detection still failed (0/48 recall,
   AUC 0.49349). Controlled CTF payload recovery was 30/30, but only 25 jobs

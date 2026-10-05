@@ -1,0 +1,356 @@
+{
+  "schema_version": "fsdd-lsb-baseline-v1",
+  "source_sha256": "f4199c1e58b4f8be1ffbcb1924cdcdb980daa46b52a537f6f7c845273fbf8b4d",
+  "manifest_sha256": "3ccaab18173a0128035f8c9fce11b33c500c45fc52b1618edfea88db4b549fca",
+  "protocol_sha256": "44c35a925cfeabcc90ecf7264f953acb768d0df8bc7ccc568411b3992562df68",
+  "runner_sha256": "b93e43968743793c8589503eabc615378cc94839193eaf50fd7d997f60a8c6b3",
+  "detector_code_sha256": "1f855176d6375f3b1fc6c42472c5b49893afb52075eab27c0a071a1bdb2319fd",
+  "threshold": 70,
+  "profile": "balanced",
+  "ai_enabled": false,
+  "training_performed": false,
+  "threshold_search_performed": false,
+  "cross_source_gate": "unavailable",
+  "support_status": "experimental",
+  "calibrated": false,
+  "ece": {
+    "status": "unavailable",
+    "reason": "uncalibrated heuristic scores"
+  },
+  "environment": {
+    "python": "3.11.14",
+    "numpy": "2.4.6",
+    "workers": 4,
+    "tools_available": {
+      "exiftool": true,
+      "stegseek": false,
+      "zsteg": false
+    }
+  },
+  "samples": 7000,
+  "lineages": 1000,
+  "by_method_rate": {
+    "sequential-5": {
+      "status": "completed",
+      "samples": 2000,
+      "invalid_samples": 0,
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 0,
+          "tn": 1000,
+          "fp": 0,
+          "fn": 1000
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "roc_auc": 0.5
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5,
+          0.5
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5
+        ],
+        "recall": [
+          0.0,
+          0.0
+        ],
+        "false_positive_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sequential-20": {
+      "status": "completed",
+      "samples": 2000,
+      "invalid_samples": 0,
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 0,
+          "tn": 1000,
+          "fp": 0,
+          "fn": 1000
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "roc_auc": 0.5
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5,
+          0.5
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5
+        ],
+        "recall": [
+          0.0,
+          0.0
+        ],
+        "false_positive_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sequential-40": {
+      "status": "completed",
+      "samples": 2000,
+      "invalid_samples": 0,
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 0,
+          "tn": 1000,
+          "fp": 0,
+          "fn": 1000
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "roc_auc": 0.5
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5,
+          0.5
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5
+        ],
+        "recall": [
+          0.0,
+          0.0
+        ],
+        "false_positive_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "scattered-5": {
+      "status": "completed",
+      "samples": 2000,
+      "invalid_samples": 0,
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 0,
+          "tn": 1000,
+          "fp": 0,
+          "fn": 1000
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "roc_auc": 0.5
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5,
+          0.5
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5
+        ],
+        "recall": [
+          0.0,
+          0.0
+        ],
+        "false_positive_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "scattered-20": {
+      "status": "completed",
+      "samples": 2000,
+      "invalid_samples": 0,
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 0,
+          "tn": 1000,
+          "fp": 0,
+          "fn": 1000
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "roc_auc": 0.5
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5,
+          0.5
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5
+        ],
+        "recall": [
+          0.0,
+          0.0
+        ],
+        "false_positive_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "scattered-40": {
+      "status": "completed",
+      "samples": 2000,
+      "invalid_samples": 0,
+      "metrics": {
+        "threshold": 70,
+        "samples": 2000,
+        "positives": 1000,
+        "negatives": 1000,
+        "confusion": {
+          "tp": 0,
+          "tn": 1000,
+          "fp": 0,
+          "fn": 1000
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "roc_auc": 0.5
+      },
+      "lineage_bootstrap_95_ci": {
+        "roc_auc": [
+          0.5,
+          0.5
+        ],
+        "balanced_accuracy": [
+          0.5,
+          0.5
+        ],
+        "recall": [
+          0.0,
+          0.0
+        ],
+        "false_positive_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "status": "completed",
+  "total_bytes": 53965940,
+  "elapsed_seconds": 142.8961237179999,
+  "scores_sha256": "066dae8590ea134a212aa4b2a429688a8467f03f8273674730a00ca22fd69ef3",
+  "latency": {
+    "median_seconds": 0.07411515350003128,
+    "p95_seconds": 0.12495570100001029
+  },
+  "date": "2026-10-05",
+  "reference_implementation_commit": "28f4d9282bf9e2630b38044bf7104c8d29b074c6",
+  "source_url": "https://github.com/Jakobovski/free-spoken-digit-dataset",
+  "source_commit": "d6938f9bf1545aa66d8489fc9f1385a7abd64282",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "FSDD contributors (Jakobovski/free-spoken-digit-dataset)",
+  "measurement": "real speech covers with controlled marker-free LSB replacement",
+  "independent_dataset_sources": 1,
+  "training_originals_reserved": 1000,
+  "validation_originals_reserved": 1000,
+  "evaluation_speakers": [
+    "george",
+    "jackson"
+  ],
+  "ground_truth": {
+    "generated_stegos": 6000,
+    "independent_scalar_exact_payload_recoveries": 6000,
+    "native_ctf_recovery": "not_run"
+  },
+  "independent_audit": {
+    "files_rehashed": 7000,
+    "unique_file_hashes": 7000,
+    "original_roles_verified": 3000,
+    "test_development_lineage_overlap": 0,
+    "pcm_structure_distortion_order_payloads_rechecked": true,
+    "confusion_pairwise_auc_and_degenerate_bootstrap_recomputed": true,
+    "all_scores_zero": true
+  },
+  "hardware": "VMware guest exposing 8 vCPUs, AMD Ryzen 9 8945HX; CPU math threads 1",
+  "attempts": {
+    "complete_evaluations": 1,
+    "failed_real_data_attempts": 0
+  },
+  "local_directory": ".benchmark/fsdd-lsb-baseline-20261005",
+  "local_report_sha256": "2b1042298a0df852a57eedf462ea74b1f87582f7d0c8c44cd398ee7378bcda4a",
+  "coverage": {
+    "audio_wav": {
+      "ok": 7000
+    },
+    "filestruct_appended": {
+      "ok": 7000
+    },
+    "file_structure": {
+      "ok": 7000
+    },
+    "signatures": {
+      "ok": 7000
+    },
+    "exiftool": {
+      "ok": 7000
+    },
+    "stegseek": {
+      "unavailable": 7000
+    }
+  }
+}

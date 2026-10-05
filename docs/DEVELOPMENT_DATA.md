@@ -10,7 +10,8 @@ a verified license grant.
 The first separate JPEG development experiment has now completed; see
 `JPEG_DEVELOPMENT_RESULTS.md`. Its poor validation/FPR result is not deployed.
 The partitioning guidance below still applies to subsequent spatial and audio
-work; `DATASET_CATALOG.md` records newly acquired FSDD covers, not WAV accuracy.
+work; `WAV_RESULTS.md` now records the failed fixed-threshold FSDD baseline,
+with training/validation speakers reserved separately from the inspected test.
 
 The 4,000-file ALASKA2 holdout has now been acquired and scored
 (`ALASKA2_RESULTS.md`), with failed native detection targets. Its manifest

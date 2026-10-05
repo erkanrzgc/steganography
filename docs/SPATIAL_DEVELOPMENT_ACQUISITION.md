@@ -51,3 +51,22 @@ Source: [official Binghamton DDE download section](https://dde.binghamton.edu/do
 No explicit redistribution license was verified on that page; data stays local
 for the user's research. The repository publishes acquisition instructions,
 source links, hashes and eventual measurements, not originals or derivatives.
+
+## Completed acquisition and independent audit
+
+The authorized command completed with 1,000 unique originals: **816 train,
+184 validation**, 262,159,000 expanded bytes. It requested 173,694,028 bounded
+range bytes in 1,008 requests; the full 1,671,626,159-byte archive was not
+downloaded. There was one complete acquisition, with no failed real attempts.
+
+A separate read-only audit reread every file, verified sizes/CRC/SHA-256 and
+512×512 grayscale decode, independently recomputed split assignments, and
+checked exact selection membership and all eight reserved-manifest hashes.
+No acquired content hash or upstream member name overlaps reserved data.
+See the [portable record](../benchmarks/boss-development-acquisition-20261005.json)
+for source/selection/script/helper hashes and counts.
+
+These are still PGM originals. PNG/BMP conversions, independent stego generation,
+new spatial features/models and validation remain subsequent work; every such
+derivative must retain original lineage and split. No new spatial accuracy
+or model improvement is claimed by this acquisition.

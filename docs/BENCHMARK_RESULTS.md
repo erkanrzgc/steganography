@@ -1,6 +1,6 @@
 # Measured results, not a global accuracy score
 
-As of 2026-10-04, **no method has passed the cross-source support gates**.
+As of 2026-10-05, **no method has passed the cross-source support gates**.
 The application is an exploratory inspection/extraction tool, not a reliable
 certificate that a file is clean. More formats, datasets or passing unit tests
 do not imply better detection.
@@ -11,7 +11,7 @@ do not imply better detection.
 | PNG/BMP small second-source check | [Kodak](KODAK_RESULTS.md): both methods on 24 originals | AUC 0.49349; recall 0%; insufficient independent sample size and failed detection |
 | JPEG JMiPOD / JUNIWARD / UERD native detection | [Frozen ALASKA2 baseline](ALASKA2_RESULTS.md): 1,000 pairs per family, shared covers | AUC 0.525617 / 0.505157 / 0.507181; recall 0.4% / 0.1% / 0.1%; failed |
 | Experimental trained JPEG model | [Separate development validation](JPEG_DEVELOPMENT_RESULTS.md): 205 pairs per family, shared covers | AUC 0.648804 / 0.592481 / 0.585306; FPR 41.46%; not deployed; not an independent test |
-| WAV | [FSDD acquisition](DATASET_CATALOG.md): 3,000 real recordings | Covers only; detection/recovery score **unavailable**, not passed |
+| WAV sample-LSB replacement | [FSDD baseline](WAV_RESULTS.md): 1,000 test covers, 6,000 stegos; sequential/scattered at three rates | All six cells: AUC 0.50, recall 0%, FPR 0%; failed. Generation oracle verified every payload; native CTF recovery unmeasured |
 | GIF, text, PDF, containers, MP3/TIFF-specific claims | Unit/integration and generated examples | Representative labeled corpus evaluation **unavailable**; no real-world score |
 | Controlled CTF extraction | [Kodak regression](CTF_REGRESSION_20261002.md): two final 30/30 completed exact recoveries | Published-challenge regression, not blind recovery or automatic detector accuracy |
 | Blind CTF and release qualification | Planned 120 challenges and independent-source gates | **Unavailable** |
@@ -23,16 +23,16 @@ coverage and limitations. Scores are not calibrated probabilities.
 
 ## Next measured development slices
 
-1. PNG/BMP: acquire development covers disjoint from frozen BOSSbase/Kodak,
+1. PNG/BMP: convert the [new 1,000 disjoint BOSSbase originals](SPATIAL_DEVELOPMENT_ACQUISITION.md),
    then independently embed/extract declared methods and payload rates. Replace
    simple summary/proxy features with independently checked richer spatial
    features; do not train on the published pilot.
 2. JPEG: use the new development split for stronger residual/co-occurrence
    features or a suitable trained architecture. Freeze calibration and model
    before a newly untouched source; keep this failed linear baseline visible.
-3. WAV: preregister speaker/recording-separated development and evaluation,
-   independently generated/extraction-verified stegos at multiple payload rates,
-   and false-positive checks. Acquire another audio source for cross-source work.
+3. WAV: use the separately reserved training/validation speakers for richer
+   features/models; preserve the failed six-cell baseline and inspect false
+   positives on validation. Acquire another untouched audio source for testing.
 4. GIF/text/container: first establish reproducible independent method fixtures
    and representative benign corpora, then method-specific exact recovery and
    false-positive measurements. A decoder solving base64 is not generic detection.

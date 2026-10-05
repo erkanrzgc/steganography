@@ -123,7 +123,23 @@ was substituted, and no new terms were accepted on the user's behalf.
 
 ## Next required input and evaluation sequence
 
-ALASKA2 test/development and FSDD cover acquisition are complete. New
+### Completed subsequent slice — 2026-10-05
+
+The preregistered FSDD baseline completed on 1,000 actual covers and 6,000
+independently verified marker-free sequential/scattered LSB stegos. All six
+method/rate cells fail native detection (AUC 0.50, recall 0%); no model was
+trained and the other 2,000 speaker-separated originals remain development
+reservations. Full measurements are in `WAV_RESULTS.md`.
+
+The authorized separate BOSSbase development acquisition completed with 1,000
+additional PGM originals, 816 train / 184 validation. All were independently
+size/CRC/hash/decode checked and have no reserved content/member-name overlap.
+Only 173,694,028 ZIP range bytes were requested; no full archive download or
+new terms occurred. `SPATIAL_DEVELOPMENT_ACQUISITION.md` records provenance
+and remaining conversion/embedding/model work. Raw recordings/images remain
+local; neither acquisition establishes improved detector performance.
+
+ALASKA2 test/development, FSDD cover and BOSSbase development acquisition are complete. New
 development/training data still requires explicit user-authorized acquisition,
 provenance and a leakage-safe partition.
 Do not request passwords or API tokens in chat, accept terms on the user's

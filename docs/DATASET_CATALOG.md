@@ -7,9 +7,10 @@ Use [benchmark results](BENCHMARK_RESULTS.md) for scores and limitations.
 | Source and origin | Local material | Provenance / grouping | Usage and publication status |
 | --- | --- | --- | --- |
 | [BOSSbase 1.01, DDE](https://dde.binghamton.edu/download/) | Frozen 1,000-cover PGM pilot; 500 BMP/Steghide and 500 PNG/OpenStego pairs | Original cover hashes; camera metadata unassigned; archive-order selection | No explicit redistribution license verified on download page; originals/derivatives stay local |
+| BOSSbase 1.01 separate development | Additional 1,000 PGM originals: 816 train, 184 validation; no new stegos yet | Reserved names/identities excluded; fixed seed 20261005, complete original ancestry | Same usage limits; [acquisition/audit record](SPATIAL_DEVELOPMENT_ACQUISITION.md); this is not another independent source |
 | [Kodak suite](https://r0k.us/graphics/kodak/) | Frozen 24 originals; both upstream methods on each | Same original ancestry across conversions and methods; camera metadata unknown | Curator usage statement is not an independently verified license; originals/derivatives stay local |
 | [ALASKA2 competition](https://www.kaggle.com/c/alaska2-image-steganalysis/data) | Frozen 4,000-file baseline, plus disjoint 4,000-file development acquisition | Complete cover/JMiPOD/JUNIWARD/UERD lineages, explicit split, SHA-256 and ZIP CRC; per-file camera/device/payload/QF metadata unassigned | Subject to competition rules; local research only in this workflow; no raw corpus or model redistribution authorized by this inventory |
-| [FSDD v1.0.10](https://github.com/Jakobovski/free-spoken-digit-dataset/tree/d6938f9bf1545aa66d8489fc9f1385a7abd64282) | 3,000 actual spoken-digit WAV recordings, six speakers; no stegos yet | Pinned commit; per-file SHA-256, CRC, speaker and PCM metadata; no split assigned | Upstream CC-BY-SA-4.0; attribution, license link and applicable ShareAlike/change notices required for redistribution; no audio committed |
+| [FSDD v1.0.10](https://github.com/Jakobovski/free-spoken-digit-dataset/tree/d6938f9bf1545aa66d8489fc9f1385a7abd64282) | 3,000 actual spoken-digit WAV recordings, six speakers; 6,000 controlled LSB stegos from 1,000 test originals | Pinned commit; per-file SHA-256, CRC, speaker and PCM metadata; whole-speaker train/validation/test roles in separate experiment manifest | Upstream CC-BY-SA-4.0; attribution, license link and applicable ShareAlike/change notices required for redistribution; no audio committed |
 | [StegoAppDB paper](https://arxiv.org/abs/1904.09360) | Not acquired | Intended mobile-app evaluation; no verified local camera/app mapping | Checked database endpoint inaccessible here; access and usage conditions still required |
 | [BOWS2](https://bows2.ec-lille.fr/) | Not acquired | Potential additional image source, independence must be reviewed | Endpoint was unreachable from this environment; no replacement mirror or license assumed |
 
@@ -39,6 +40,12 @@ sizes and PCM frames, and found 3,000 unique hashes. The portable
 [acquisition record](../benchmarks/fsdd-acquisition-20261004.json) binds the
 source commit, archive, manifest, license evidence and downloader hashes.
 The recorded SHA-256 is locally computed, not a separately signed upstream hash.
+
+The subsequent preregistered [WAV baseline](WAV_RESULTS.md) prepared and audited
+6,000 marker-free sequential/scattered LSB examples at three rates. Exact
+oracle recovery passed; automatic detection failed (AUC 0.50, recall 0%).
+Whole-speaker roles are in the separate experiment manifest; the original
+acquisition's unassigned split fields remain unchanged for provenance.
 
 Future audio experiments must freeze speaker/original-recording groups and
 payload rates **before** embedding or scoring. The upstream spoken-digit task's

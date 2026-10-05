@@ -2,6 +2,16 @@
 
 ## 0.6.0 (unreleased)
 
+- Added separate BOSSbase development acquisition: reserved-member selection
+  exclusion, SHA/lineage overlap checks, bounded shared ZIP/range helpers,
+  CRC/PGM validation, exclusive outputs and provenance-bound resume. Originals
+  remain local and this does not claim spatial detector accuracy improvement.
+
+- Published the independently audited 7,000-file FSDD baseline: all six WAV
+  sequential/scattered LSB method/rate cells have AUC 0.50 and recall 0%.
+  All 6,000 generated payloads were exactly oracle-verified; native recovery
+  was not measured. Test speakers remain reserved; detector support is unproven.
+
 - Added preregistered, bounded FSDD WAV LSB baseline preparation/evaluation:
   whole-speaker reservations, six method/rate cells, exact independent scalar
   payload verification, original RIFF metadata preservation and shared-service

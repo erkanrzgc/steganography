@@ -1,0 +1,56 @@
+{
+  "schema_version": "boss-development-acquisition-summary-v1",
+  "purpose": "development covers only",
+  "source_url": "https://dde.binghamton.edu/download/ImageDB/BOSSbase_1.01.zip",
+  "source_group": "BOSSbase-1.01",
+  "license": "unspecified on download page; local research only; do not redistribute",
+  "selection_sha256": "0e69b7c0fedfb3965a4d992e1f764f753fe18d59055257434d28130edecfafed",
+  "reserved_manifest_sha256": [
+    "6e13432805a23145571463e1319ae941c3b19a875d8bebe8c8eb16f3556a483c",
+    "76f96579c19522c7239e3a552fda2ff3de2f2483d15d4a3075a71db7597e0970",
+    "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+    "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+    "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    "d25e61bc037aa19489c5b91a6080e2637ff6a20ab4c8c4164fb0969b7785c692",
+    "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+    "fdf9edf658a323d09b3adf0d783f84183b0ba2e17a41b3dbd86451ec28ca6341"
+  ],
+  "seed": 20261005,
+  "total_bytes": 262159000,
+  "requested_range_bytes": 173694028,
+  "range_requests": 1008,
+  "upstream_sha256_verified": false,
+  "date": "2026-10-05",
+  "status": "acquired_and_integrity_verified",
+  "implementation_commit": "5e034f7",
+  "source_manifest_sha256": "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+  "acquisition_script_sha256": "b15edb8262b15a7ac4e3e77e0b7623d72c32c520907ada04a743f0f96a1bf40b",
+  "range_helper_sha256": "4e12208235d3e47ed373f45b6609de11768eed90f6f02ed351cb11e1584f0a1b",
+  "archive_bytes": 1671626159,
+  "full_archive_downloaded": false,
+  "files": 1000,
+  "unique_cover_hashes": 1000,
+  "split_counts": {
+    "train": 816,
+    "validation": 184
+  },
+  "format": {
+    "container": "PGM",
+    "mode": "L",
+    "width": 512,
+    "height": 512
+  },
+  "verification": {
+    "all_sizes_crc32_sha256_decode_rechecked": true,
+    "reserved_content_and_archive_name_overlap": 0,
+    "all_split_assignments_recomputed": true,
+    "selection_membership_verified": true,
+    "stego_generation": "not_run",
+    "detector_evaluation": "not_run",
+    "accuracy_support_gate": "unavailable"
+  },
+  "independent_dataset_sources": 1,
+  "camera_device_metadata": "unknown",
+  "local_directory": ".benchmark/boss-development-20261005",
+  "raw_images_committed": false
+}
