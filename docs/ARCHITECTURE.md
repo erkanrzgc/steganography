@@ -5,6 +5,11 @@ then calls shared complete evaluation/context diagnostics. Its prior-pilot
 comparison is descriptive, with source/batch/update confounding explicitly
 recorded; failed numerical gates retain evidence without metrics. Local configs
 may contain paths, portable evidence never does. No detector/model installation.
+The prior portable pilot record is pinned by SHA-256; complete comparison
+requires exactly six unique cells on both sides, never duplicate weighting.
+`scripts/verify-srnet-multipair-results.py` independently replays scalar AUC,
+confusion and calibration-bin arithmetic on checksum-bound complete scores;
+its audit pass never qualifies a detector or loads model/artifact executables.
 
 `core/srnet_multibatch` groups the unchanged deterministic paired schedule into
 explicit two-source/four-row batches. Plan/card v2 bind exact grouping hashes

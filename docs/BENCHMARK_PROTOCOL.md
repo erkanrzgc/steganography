@@ -5,6 +5,11 @@ and uses shared complete eval plus fixed cell/lineage diagnostics. Descriptive
 changes against the earlier BOSS-only pilot cannot establish causal BatchNorm
 improvement or blind generalization. Numerical failures produce no accuracy
 comparison. See `SRNET_MULTIPAIR_REAL_RUN.md`.
+The prior pilot's portable evidence is checksum-pinned. Both comparison sides
+must contain exactly six distinct context cells; repeated cells are rejected.
+The completed run is in `SRNET_MULTIPAIR_REAL_RESULTS.md`: numerical and
+independent scalar audits pass, all six detection gates fail. Reduced ECE
+cannot hide increased false alarms or near-chance ranking.
 
 `SRNET_MULTIPAIR_PROTOCOL.md` freezes the explicit two-source/four-row training
 control; full real schedule accounting is in `SRNET_MULTIPAIR_RESULTS.md`.

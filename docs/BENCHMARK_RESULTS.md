@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+[Two-source SRNet control](SRNET_MULTIPAIR_REAL_RESULTS.md): complete four-row
+real fit/eval and independent numerical/scalar audits pass, but all six detector
+cells fail. AUC .501–.507, balanced accuracy 50–52%, FPR 40.49–72%; reduced
+overconfidence is not useful discrimination or qualification. No model deployed.
+
 [SRNet paired-schedule audit](SRNET_SAMPLING_RESULTS.md): all 30 real scope/epoch
 checks pass, complete train-pair coverage, 765 validation hashes excluded.
 Not real fitting, forward/export parity or detection accuracy evidence.

@@ -2,6 +2,14 @@
 
 ## 0.6.0 (unreleased)
 
+- Complete frozen two-source SRNet fitting and full evaluation: 1,580 updates,
+  nine numerical replays and six independent metric audits. Publish every failed
+  cell and prior-pilot regression; reduced overconfidence does not hide increased
+  false positives or near-chance AUC. No model installed or deployed.
+
+- Pin prior SRNet pilot evidence in the two-source comparison and reject extra
+  duplicate cells; changed baselines cannot silently become a new comparator.
+
 - Add frozen two-source real-run evaluation/publication audit and descriptive
   prior-pilot context comparison. Reject changed recipes/optimizer/counts and
   retain failed numerical gates without accuracy claims. Start the bounded

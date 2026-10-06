@@ -67,6 +67,10 @@ def test_comparison_has_complete_cells_and_no_qualification(audit_script):
         audit_script.comparison({"cells": cells[:-1]}, {"cells": cells})
     with pytest.raises(ValueError, match="complete"):
         audit_script.comparison({"cells": [*cells[:-1], cells[0]]}, {"cells": cells})
+    with pytest.raises(ValueError, match="complete"):
+        audit_script.comparison({"cells": [*cells, cells[0]]}, {"cells": cells})
+    with pytest.raises(ValueError, match="complete"):
+        audit_script.comparison({"cells": cells}, {"cells": [*cells, cells[0]]})
     changed[0]["source_id"] = "other"
     with pytest.raises(ValueError, match="complete"):
         audit_script.comparison({"cells": changed}, {"cells": cells})
@@ -141,6 +145,12 @@ def test_audit_retains_failed_numerical_gates_and_local_paths_only(
     assert "batch_recipe" not in captured[0]  # Recovered from the bound plan.
     assert str(tmp_path) not in json.dumps(record)
     assert str(tmp_path) in (out / "evaluation-config.json").read_text()
+    # A rehashed/replaced old baseline must not silently become the comparator.
+    original = audit_script.PRIOR_SHA
+    monkeypatch.setattr(audit_script, "PRIOR_SHA", "0" * 64)
+    with pytest.raises(ValueError, match="prior-pilot"):
+        audit_script.audit(job, tmp_path / "changed-prior")
+    monkeypatch.setattr(audit_script, "PRIOR_SHA", original)
 
 
 def test_entrypoint_failed_status_is_nonzero(audit_script, tmp_path, monkeypatch):

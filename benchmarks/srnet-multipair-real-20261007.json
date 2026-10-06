@@ -1,0 +1,713 @@
+{
+  "schema_version": "srnet-multipair-real-evidence-v1",
+  "protocol_sha256": "c84a1357195fdc59650679ed9878eef66d1f3c89784a69addd90beec894b031b",
+  "protocol_commit": "837cb79",
+  "fit_evaluation_base_commit": "1b0c80c",
+  "execution_source_sha256": {
+    "core/srnet_multibatch.py": "0e9be4c41b8a24753f32da841f8a4356bfe9017b602485802e05d5a50cbebc6d",
+    "core/srnet_training.py": "4d33776132fdecf5f377734304d806e698848ee27c5eaf984692a83406f8c44f",
+    "steganography/research_srnet_plan.py": "73e145c8edc5d49a2f46f229243aec35ad4ab2b0596c82eb946b84ecd9f1f67d",
+    "steganography/research_srnet_fit.py": "985f65cebed2bab12b3e4adf202fb876d8d3d0cf2b313892a0e14421d2b1fe93",
+    "steganography/research_srnet_evaluate.py": "3cc2f12c9cc5201e601d1e21f944002a7ea34a16c9a0a4014361aac656449029",
+    "steganography/research_srnet_results.py": "50a18b313f3be94dc4d415e513860bf7fd79d7fab66cb9255ed95add0d0db8c2",
+    "scripts/audit-srnet-multipair-real.py": "7c71d711317d403182c82915cd1d01ef16e8c9a13312ed3438ce4ef19c7256ed"
+  },
+  "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+  "training_plan_sha256": "1fc01723c4f10d717bf7350e7c982d22f6adf58d32bcbda8be1fd5860a3ecea9",
+  "model_card_sha256": "ce80dfd154aa7b57513db04500b6d2afdb2aa0a6b63b5fa36721a520f536d5ad",
+  "model_sha256": "b2c412155db0d12edcf7177fb74126196e6ef0cb0cbc4a73ef79dbc4dc5bb1d1",
+  "evaluation_seconds": 77.1586193539988,
+  "fit_card": {
+    "schema_version": "srnet-fit-v2",
+    "architecture": "srnet-gray12-cpu-v1",
+    "feature_version": "jpeg-y-idct-center256-phase0-f32-v1",
+    "decoder": {
+      "jpeglib": "1.0.2",
+      "libjpeg": "6b",
+      "numpy": "2.4.6",
+      "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+      "rounding": "none",
+      "clipping": "none"
+    },
+    "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+    "train_cache_sha256": "828158342b8937844e76f8f879bb41177a32e7ebcb85eef1eef59f2e67692028",
+    "train_data_sha256": "fd27c6da9869f4bea8bf7b97edeffd8ebae519824cd23d15b029aba25ceaf392",
+    "training_scope": {
+      "recipe": "all-declared-sources-v1",
+      "source_ids": [
+        "source-6a23b26e6f51f8cc",
+        "source-d2a1dfbee30c5891"
+      ],
+      "excluded_source_ids": [],
+      "rows": 2985,
+      "ordered_rows_sha256": "a35e7b04162b4b0b1db62dfed482beffd330581ae45b45ec67280cd42c7000d2",
+      "independence": "training exclusion only; reused development validation is not blind"
+    },
+    "source_validation": {
+      "declared_sources": 2,
+      "common_method_families": 2,
+      "origin_manifest_sha256": [
+        "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+        "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+      ],
+      "independence": "declared origins, not verified camera/perceptual independence"
+    },
+    "sampling_settings": {
+      "epochs": 1,
+      "seed": 20261012,
+      "batch_recipe": "two-source-two-lineage-pairs-v1"
+    },
+    "epoch_schedule": [
+      {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 0,
+        "pairs": 3160,
+        "rows": 6320,
+        "pairs_per_source": 1580,
+        "ordered_pair_sha256": "7c6c5c86c5696d274a06778db5f5f2f1b22d75c02f8465987b7a8b9aa77141b6",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 103,
+            "sampled_pairs": 395
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 103,
+            "sampled_pairs": 395
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 103,
+            "sampled_pairs": 395
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 103,
+            "sampled_pairs": 395
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 789,
+            "sampled_pairs": 790
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 789,
+            "sampled_pairs": 790
+          }
+        ]
+      }
+    ],
+    "optimizer": {
+      "name": "Adamax",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "epsilon": 1e-8,
+      "foreach": false,
+      "lr_schedule": "constant",
+      "threads": 2,
+      "max_seconds": 1800,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    },
+    "validation_used": false,
+    "batch_size": 4,
+    "input_units": "unrounded float32 Y pixels; no normalization",
+    "batchnorm": "two-source multi-lineage training; persisted running statistics for single-file eval",
+    "training": "completed",
+    "qualification": "unavailable",
+    "accuracy_metrics": "unavailable",
+    "independent_forward_audit": "unavailable",
+    "support_status": "experimental",
+    "calibrated": false,
+    "deployed": false,
+    "epoch_batch_schedule": [
+      {
+        "recipe": "two-source-two-lineage-pairs-v1",
+        "epoch": 0,
+        "batch_size": 4,
+        "pairs": 3160,
+        "optimizer_updates": 1580,
+        "rows": 6320,
+        "ordered_batch_sha256": "5e5cf224073c3c77e31cc0161a3fe5896faceee8a60113f165cb7e694ad23c2a",
+        "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+      }
+    ],
+    "training_plan_sha256": "1fc01723c4f10d717bf7350e7c982d22f6adf58d32bcbda8be1fd5860a3ecea9",
+    "epoch_training": [
+      {
+        "epoch": 0,
+        "updates": 1580,
+        "mean_pair_loss": 0.6942306992373889
+      }
+    ],
+    "model_sha256": "b2c412155db0d12edcf7177fb74126196e6ef0cb0cbc4a73ef79dbc4dc5bb1d1",
+    "seconds": 1787.126650592003,
+    "torch_version": "2.14.0+cpu"
+  },
+  "diagnostics": {
+    "schema_version": "srnet-context-diagnostics-v1",
+    "status": "completed",
+    "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+    "predictions_sha256": "c5c51c0b459770d457100e09c486f2e104a88e4abbd83ef8a13b7422754adbaa",
+    "model_card_sha256": "ce80dfd154aa7b57513db04500b6d2afdb2aa0a6b63b5fa36721a520f536d5ad",
+    "model_sha256": "b2c412155db0d12edcf7177fb74126196e6ef0cb0cbc4a73ef79dbc4dc5bb1d1",
+    "training_plan_sha256": "1fc01723c4f10d717bf7350e7c982d22f6adf58d32bcbda8be1fd5860a3ecea9",
+    "training_scope": {
+      "recipe": "all-declared-sources-v1",
+      "source_ids": [
+        "source-6a23b26e6f51f8cc",
+        "source-d2a1dfbee30c5891"
+      ],
+      "excluded_source_ids": [],
+      "rows": 2985,
+      "ordered_rows_sha256": "a35e7b04162b4b0b1db62dfed482beffd330581ae45b45ec67280cd42c7000d2",
+      "independence": "training exclusion only; reused development validation is not blind"
+    },
+    "independent_forward_audit": [
+      {
+        "sha256": "f9f98944ebae898fbf032b4c0956f468919eb84fc594f4df1fd98b304b327c84",
+        "maximum_logit_difference": 7.428634113404442e-8,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.4778204160403874e-8,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "7a37e4437242374ae9d0ce72ae5f5832219df3f4f0bbefa7e215b43daa35a545",
+        "maximum_logit_difference": 8.629101999613198e-8,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.7228715842865228e-8,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "fbb5e81e4459c10a94fe731918d8ec849ffbb521cfd30fcb2922e86c65c4344a",
+        "maximum_logit_difference": 1.2183908726370873e-7,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 3.0800641703798703e-8,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "e1b7f1d49a065729e1e402f50af48caf944d477544f162a4c85f50e0b9534c3f",
+        "maximum_logit_difference": 2.941356560814956e-7,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.0670268024703944e-7,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "e9525cdb9229a8b71cd3ecf0f7c5b77fa60202635d056883a44aeae75fcac719",
+        "maximum_logit_difference": 2.1759182355918227e-7,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 9.904845232888704e-8,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "ec2323ea972d47c6f22dca4fc1302d13ff1d6c804508eab5447a71a20c603bfa",
+        "maximum_logit_difference": 2.4178581126133025e-7,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.0552802054419885e-7,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "27dc50407eaefcd2e6dd24290268e9fe67d5935128a1eed7b566fda2f50431ed",
+        "maximum_logit_difference": 9.898225561411067e-8,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 4.4945964061682275e-8,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "dd3931ef6a31dcdc86d82044cbd90de2c178ea5a354c967c8f039257e981925e",
+        "maximum_logit_difference": 1.1349658501913495e-7,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 4.5852380892164035e-8,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "0eb76f7f48d6780ac581746539a99ab8af66e1622c28e9ad8b193f3f8a6ab33e",
+        "maximum_logit_difference": 2.1928902471657352e-7,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 6.486500392366423e-8,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      }
+    ],
+    "validation_rows": 765,
+    "cells": [
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 75,
+        "method": "JUNIWARD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 19,
+            "tn": 7,
+            "fp": 18,
+            "fn": 6
+          },
+          "precision": 0.513514,
+          "recall": 0.76,
+          "specificity": 0.28,
+          "false_positive_rate": 0.72,
+          "accuracy": 0.52,
+          "balanced_accuracy": 0.52,
+          "f1": 0.612903,
+          "roc_auc": 0.5072,
+          "expected_calibration_error": 0.060205
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.48151999999999995,
+            0.5408
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5605000000000001
+          ],
+          "recall": [
+            0.56,
+            0.9210000000000003
+          ],
+          "false_positive_rate": [
+            0.52,
+            0.8810000000000002
+          ],
+          "expected_calibration_error": [
+            0.034994075,
+            0.09835785000000001
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 75,
+        "method": "UERD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 19,
+            "tn": 7,
+            "fp": 18,
+            "fn": 6
+          },
+          "precision": 0.513514,
+          "recall": 0.76,
+          "specificity": 0.28,
+          "false_positive_rate": 0.72,
+          "accuracy": 0.52,
+          "balanced_accuracy": 0.52,
+          "f1": 0.612903,
+          "roc_auc": 0.5056,
+          "expected_calibration_error": 0.060348
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.48156,
+            0.536
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5605000000000001
+          ],
+          "recall": [
+            0.56,
+            0.9210000000000003
+          ],
+          "false_positive_rate": [
+            0.52,
+            0.8810000000000002
+          ],
+          "expected_calibration_error": [
+            0.035088724999999994,
+            0.098163225
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 95,
+        "method": "JUNIWARD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 19,
+            "tn": 7,
+            "fp": 18,
+            "fn": 6
+          },
+          "precision": 0.513514,
+          "recall": 0.76,
+          "specificity": 0.28,
+          "false_positive_rate": 0.72,
+          "accuracy": 0.52,
+          "balanced_accuracy": 0.52,
+          "f1": 0.612903,
+          "roc_auc": 0.5008,
+          "expected_calibration_error": 0.054325
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.4752,
+            0.52324
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5605000000000001
+          ],
+          "recall": [
+            0.56,
+            0.92
+          ],
+          "false_positive_rate": [
+            0.52,
+            0.8810000000000002
+          ],
+          "expected_calibration_error": [
+            0.033091625,
+            0.09512772500000001
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 95,
+        "method": "UERD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 18,
+            "tn": 7,
+            "fp": 18,
+            "fn": 7
+          },
+          "precision": 0.5,
+          "recall": 0.72,
+          "specificity": 0.28,
+          "false_positive_rate": 0.72,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.590164,
+          "roc_auc": 0.5008,
+          "expected_calibration_error": 0.063662
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.4752,
+            0.52324
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.52,
+            0.8810000000000002
+          ],
+          "false_positive_rate": [
+            0.52,
+            0.8810000000000002
+          ],
+          "expected_calibration_error": [
+            0.0395393,
+            0.087765175
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-d2a1dfbee30c5891",
+        "quality_factor": null,
+        "method": "JUNIWARD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 410,
+          "positives": 205,
+          "negatives": 205,
+          "confusion": {
+            "tp": 84,
+            "tn": 122,
+            "fp": 83,
+            "fn": 121
+          },
+          "precision": 0.502994,
+          "recall": 0.409756,
+          "specificity": 0.595122,
+          "false_positive_rate": 0.404878,
+          "accuracy": 0.502439,
+          "balanced_accuracy": 0.502439,
+          "f1": 0.451613,
+          "roc_auc": 0.503343,
+          "expected_calibration_error": 0.067736
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.50275405,
+            0.506034975
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.507317
+          ],
+          "recall": [
+            0.351098025,
+            0.478049
+          ],
+          "false_positive_rate": [
+            0.34621905000000003,
+            0.473171
+          ],
+          "expected_calibration_error": [
+            0.053324775,
+            0.085356125
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 205,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-d2a1dfbee30c5891",
+        "quality_factor": null,
+        "method": "UERD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 410,
+          "positives": 205,
+          "negatives": 205,
+          "confusion": {
+            "tp": 84,
+            "tn": 122,
+            "fp": 83,
+            "fn": 121
+          },
+          "precision": 0.502994,
+          "recall": 0.409756,
+          "specificity": 0.595122,
+          "false_positive_rate": 0.404878,
+          "accuracy": 0.502439,
+          "balanced_accuracy": 0.502439,
+          "f1": 0.451613,
+          "roc_auc": 0.502391,
+          "expected_calibration_error": 0.067855
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.5012487,
+            0.50525295
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.507317
+          ],
+          "recall": [
+            0.351098025,
+            0.478049
+          ],
+          "false_positive_rate": [
+            0.34621905000000003,
+            0.473171
+          ],
+          "expected_calibration_error": [
+            0.0534578,
+            0.08544045
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 205,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      }
+    ],
+    "bootstrap_replicates": 200,
+    "bootstrap_seed": 20261005,
+    "threshold": 0.5,
+    "calibrated": false,
+    "deployed": false,
+    "qualified": false,
+    "validation_independence": "reused development validation; not blind or untouched",
+    "source_independence": "declared origins; camera/device independence unavailable",
+    "onnx_replay": "unavailable"
+  },
+  "prior_evidence_sha256": "e6beba78222094972a9eef216b0a728c35b8dca16278afc0f7c19761ddc3ed0d",
+  "comparison": [
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "point_change": {
+        "roc_auc": -0.0024000000000000687,
+        "balanced_accuracy": 0.020000000000000018,
+        "recall": 0.52,
+        "false_positive_rate": 0.48,
+        "expected_calibration_error": -0.439677
+      }
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 75,
+      "method": "UERD",
+      "point_change": {
+        "roc_auc": -0.0023999999999999577,
+        "balanced_accuracy": 0.020000000000000018,
+        "recall": 0.52,
+        "false_positive_rate": 0.48,
+        "expected_calibration_error": -0.439552
+      }
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "point_change": {
+        "roc_auc": -0.0040000000000000036,
+        "balanced_accuracy": 0.020000000000000018,
+        "recall": 0.52,
+        "false_positive_rate": 0.48,
+        "expected_calibration_error": -0.445615
+      }
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 95,
+      "method": "UERD",
+      "point_change": {
+        "roc_auc": -0.0023999999999999577,
+        "balanced_accuracy": 0,
+        "recall": 0.48,
+        "false_positive_rate": 0.48,
+        "expected_calibration_error": -0.43627900000000003
+      }
+    },
+    {
+      "source_id": "source-d2a1dfbee30c5891",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "point_change": {
+        "roc_auc": 0.0014159999999999728,
+        "balanced_accuracy": 0.002438999999999969,
+        "recall": 0.12195100000000003,
+        "false_positive_rate": 0.11707300000000004,
+        "expected_calibration_error": -0.42361899999999997
+      }
+    },
+    {
+      "source_id": "source-d2a1dfbee30c5891",
+      "quality_factor": null,
+      "method": "UERD",
+      "point_change": {
+        "roc_auc": 0.00035600000000002296,
+        "balanced_accuracy": 0.002438999999999969,
+        "recall": 0.12195100000000003,
+        "false_positive_rate": 0.11707300000000004,
+        "expected_calibration_error": -0.423558
+      }
+    }
+  ],
+  "comparison_interpretation": "descriptive reused-development points; source scope, BN context and update counts changed; not causal or blind qualification",
+  "hardware": {
+    "os": "Linux",
+    "architecture": "x86_64",
+    "python": "3.11.14",
+    "logical_cpus": 8,
+    "fit_math_threads": 2
+  },
+  "qualification": "unavailable",
+  "deployed": false,
+  "raw_data_and_model_published": false,
+  "onnx_replay": "unavailable; separate full replay remains pending",
+  "runtime_observation": {
+    "schema_version": "srnet-runtime-observation-v1",
+    "phase": "fitting",
+    "method": "read-only Linux process resource limits while worker was active",
+    "cpu_seconds_soft": 3660,
+    "cpu_seconds_hard": 3661,
+    "address_bytes_soft": 8589934592,
+    "address_bytes_hard": 8589934592,
+    "file_bytes_soft": 33554432,
+    "file_bytes_hard": 33554432,
+    "core_bytes_soft": 0,
+    "core_bytes_hard": 0,
+    "filesystem_or_network_sandbox": false,
+    "primary_detection_changed": false
+  }
+}

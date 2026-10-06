@@ -1,0 +1,20 @@
+{
+  "schema_version": "srnet-multipair-metric-audit-v1",
+  "evidence_sha256": "b21ae93d2793645286f70165452231dabb54107d46a09c473179a5efa3c2c9c4",
+  "predictions_sha256": "c5c51c0b459770d457100e09c486f2e104a88e4abbd83ef8a13b7422754adbaa",
+  "cells_audited": 6,
+  "metric_names": [
+    "roc_auc",
+    "balanced_accuracy",
+    "recall",
+    "false_positive_rate",
+    "expected_calibration_error"
+  ],
+  "maximum_metric_difference": 4.697737208611552e-7,
+  "absolute_tolerance": 0.000001,
+  "confusion_counts_exact": true,
+  "passed": true,
+  "accuracy_qualification": "unavailable",
+  "model_weights_loaded": false,
+  "primary_detection_changed": false
+}

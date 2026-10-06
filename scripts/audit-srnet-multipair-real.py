@@ -23,6 +23,7 @@ MANIFEST_SHA = "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14
 PLAN_SHA = "1fc01723c4f10d717bf7350e7c982d22f6adf58d32bcbda8be1fd5860a3ecea9"
 TRAIN_CACHE_SHA = "828158342b8937844e76f8f879bb41177a32e7ebcb85eef1eef59f2e67692028"
 VALIDATION_CACHE_SHA = "1c8c25244f204aaa0cad981d032241c06f7535b31bd03d7c547818dc046ae3a6"
+PRIOR_SHA = "e6beba78222094972a9eef216b0a728c35b8dca16278afc0f7c19761ddc3ed0d"
 RECIPE = "two-source-two-lineage-pairs-v1"
 FIXED_OPTIMIZER = {
     "name": "Adamax",
@@ -58,7 +59,13 @@ def comparison(current, previous):
 
     before = {key(c): c for c in previous["cells"]}
     after = {key(c): c for c in current["cells"]}
-    if len(before) != 6 or len(after) != 6 or before.keys() != after.keys():
+    if (
+        len(previous["cells"]) != 6
+        or len(current["cells"]) != 6
+        or len(before) != 6
+        or len(after) != 6
+        or before.keys() != after.keys()
+    ):
         raise ValueError("complete same-context comparison required")
     metrics = (
         "roc_auc",
@@ -112,6 +119,8 @@ def audit(job: Path, out: Path):
         config, predictions, out / "diagnostics.json", predictions_sha256=prediction_sha
     )
     prior, prior_sha = read_document(ROOT / "benchmarks/srnet-real-pilot-20261006.json")
+    if prior_sha != PRIOR_SHA:
+        raise ValueError("frozen prior-pilot evidence checksum mismatch")
     result = {
         "schema_version": "srnet-multipair-real-evidence-v1",
         "protocol_sha256": PROTOCOL_SHA,
