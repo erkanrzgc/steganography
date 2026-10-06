@@ -1,5 +1,11 @@
 # Architecture
 
+`core/srnet_model` stores an exact 183-array numeric state, including float BN
+running means/variances and scalar int64 counters. Fixed shape/header/expanded
+size checks precede NumPy allocation; no pickle. All-stage eval snapshots,
+32MiB limit, checksum, symlink/overwrite protection and CPU RNG-safe reload.
+This is not a model card, installed model or training qualification.
+
 `core/jpeg_float256` provides isolated component-Y float64 IDCT to unrounded
 phase-aligned float32/256 crops. Shared pixel cache service explicitly selects
 the new schema/1GiB research limit; legacy uint8/64MiB defaults are unchanged.

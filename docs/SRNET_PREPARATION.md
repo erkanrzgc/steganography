@@ -73,6 +73,14 @@ schedule/data/source protocol. Eval must use persisted running statistics, not
 the current input batch or validation labels. CPU cost measured here is a tiny
 readiness check, not a realistic full-training runtime forecast.
 
+The first two preparation gates are now implemented: complete audited
+`JPEG_FLOAT256_RESULTS.md` and exact 183-array `core/srnet_model.py` numeric
+persistence. Float32 weights/BN statistics, int64 nonnegative counters,
+32MiB total; negative variance, unsafe headers/shapes/object arrays and
+cross-architecture snapshots rejected. Snapshots require all-stage eval;
+no pickle, symlink or overwrite. Reload preserves CPU RNG. Training cards,
+independent forward/export parity and real fitting remain separate pending gates.
+
 Untouched licensed external-source acquisition remains unavailable. All previous
 failed CNN/JRM results stay published; a larger architecture alone supplies no
 accuracy evidence. Wheel remains model-free and optional research dependencies
