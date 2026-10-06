@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add checksum-bound SRNet training-plan preparation with deterministic matched
+  pairs, hierarchical source/quality/method balance, bounded oversampling and
+  per-epoch provenance. Reject non-train/incomplete rows; no real fit implied.
+
 - Complete unchanged-corpus unrounded JPEG preparation: 3,750 source hashes,
   18 independent real IDCT examples exact. Add BN-safe bounded SRNet numeric
   weights/statistics persistence with hostile-header tests; no real model fit.

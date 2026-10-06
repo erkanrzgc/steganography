@@ -1,5 +1,11 @@
 # Architecture
 
+`core/srnet_sampling` creates deterministic train-only matched JPEG pairs with
+hierarchical source/quality/method balance and bounded oversampling. The shared
+`research_srnet_plan` service binds manifest, complete float-cache integrity,
+scope and per-epoch order hashes; `research srnet-plan` is a thin CLI adapter.
+No validation cache, optimizer, trained model or detector behavior is involved.
+
 `core/srnet_model` stores an exact 183-array numeric state, including float BN
 running means/variances and scalar int64 counters. Fixed shape/header/expanded
 size checks precede NumPy allocation; no pickle. All-stage eval snapshots,

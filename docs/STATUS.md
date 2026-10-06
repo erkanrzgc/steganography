@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- SRNet train-only paired schedule service and shared `research srnet-plan` CLI:
+  source-first quality/method balance, complete original pair coverage, bounded
+  oversampling, independent RNG, per-epoch order hashes and source exclusions.
+  Frozen `SRNET_SAMPLING_PROTOCOL.md`; no fitting or detector score changes.
+
 - Full unrounded float256 preparation completed: 3,750 original hashes verified,
   18 preregistered independent mathematical examples exact; no accuracy claim.
   Separate SRNet numeric persistence validates all 183 weights/BN arrays and
@@ -160,6 +165,12 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- SRNet schedule implementation freeze: Python 3.11.14, 993 tests pass,
+  94.55% total coverage; sampler/plan service 116/116 statements covered.
+  Ruff, mypy (105 source files), whitespace and model-free wheel/sdist checks
+  pass. Independent real schedule accounting remains pending at this freeze;
+  no real fitting or accuracy evidence. Other Python versions not rerun here.
 
 - Float256 evidence and numeric persistence: Python 3.11.14, 955 tests pass,
   94.48% total coverage; decoder/network/cache/persistence 336/337 statements

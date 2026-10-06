@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+`SRNET_SAMPLING_PROTOCOL.md` freezes a train-only balanced-pair preparation
+audit. Oversampled pairs do not increase independent corpus or scene counts;
+schedule integrity is not training, detection or untouched-source evidence.
+
 `JPEG_FLOAT256_PROTOCOL.md` freezes the full unchanged-corpus float preparation
 and 18 independent real IDCT examples. Native coefficient parsing is shared;
 only mathematical reconstruction is independently checked. Never score

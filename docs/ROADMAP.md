@@ -1,5 +1,10 @@
 # Roadmap and status
 
+`SRNET_SAMPLING_PROTOCOL.md` freezes checksum-bound train-only paired schedules,
+balancing sources then quality/method contexts without dropping original pairs.
+Explicit `research srnet-plan` and bounded sampler implemented; independent
+real schedule accounting is next. No real fitting or accuracy qualification.
+
 `JPEG_FLOAT256_PROTOCOL.md` freezes versioned unrounded Y/256 preprocessing,
 isolated framed workers, separate bounded float cache and independent IDCT
 oracles before real preparation; no accuracy claim.

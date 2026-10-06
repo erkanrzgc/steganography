@@ -596,6 +596,13 @@ def cmd_research_srnet(args: argparse.Namespace) -> int:
     return 0 if report["status"] == "completed" else 2
 
 
+def cmd_research_srnet_plan(args: argparse.Namespace) -> int:
+    from steganography.research_srnet_plan import run_plan
+
+    print(json.dumps(run_plan(Path(args.config), Path(args.out)), indent=2))
+    return 0
+
+
 def cmd_research_srnet_cache(args: argparse.Namespace) -> int:
     from steganography.research_pixels import extract_pixels
 
@@ -946,6 +953,10 @@ def build_parser() -> argparse.ArgumentParser:
     research_srnet = research_commands.add_parser("srnet-preflight")
     research_srnet.add_argument("--out", required=True)
     research_srnet.set_defaults(fn=cmd_research_srnet)
+    research_srnet_plan = research_commands.add_parser("srnet-plan")
+    research_srnet_plan.add_argument("--config", required=True)
+    research_srnet_plan.add_argument("--out", required=True)
+    research_srnet_plan.set_defaults(fn=cmd_research_srnet_plan)
     research_srnet_cache = research_commands.add_parser("srnet-cache")
     research_srnet_cache.add_argument("--manifest", required=True)
     research_srnet_cache.add_argument("--source", required=True)
