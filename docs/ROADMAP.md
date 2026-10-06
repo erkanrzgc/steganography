@@ -1,10 +1,17 @@
 # Roadmap and status
 
+SRNet isolated-job and independent numerical readiness are implemented
+(`SRNET_NUMERICAL_READINESS.md`): hard CPU/wall/memory/file bounds, complete
+artifact verification, separate NumPy math and optional dynamic-batch ONNX
+with allocation preflight. Generated checks only; next bind actual evaluation
+and freeze real compute/data/source fitting controls. No new accuracy score.
+
 SRNet paired CPU fitting and provenance cards are implemented and generated-test
 verified (`SRNET_TRAINING_ENGINE.md`). Exact shared plan reconstruction, finite
 learning/BN state and caller RNG/thread restoration; no real-corpus fit yet.
-Next: isolated hard-limit jobs and independent forward/export, then a frozen
-real optimizer/compute/data schedule. No deployed model or new accuracy score.
+Hard-limit jobs and independent forward/export now have generated readiness.
+Next: bound evaluation and a frozen real optimizer/compute/data schedule.
+No deployed model or new accuracy score.
 
 `SRNET_SAMPLING_PROTOCOL.md` freezes checksum-bound train-only paired schedules,
 balancing sources then quality/method contexts without dropping original pairs.

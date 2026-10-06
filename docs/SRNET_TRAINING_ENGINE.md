@@ -34,10 +34,11 @@ decay 0–.1. Plan supplies seed and 1–50 epochs; sampler caps 40,000 pairs/ep
 These are explicit implementation defaults, **not a frozen real experiment**.
 No early stopping, best-validation checkpoint, augmentation, resume or scheduler.
 
-Deadlines are cooperative checks before/after bounded two-row updates, not an
-OS-enforced wall/CPU/memory sandbox. Cache validation/IO is outside that clock.
-An isolated hard-limit job runner remains a separate prerequisite before a long
-real benchmark. Interrupted/expired/invalid fits publish no completed card.
+Direct Python fitting has cooperative checks before/after bounded two-row
+updates; cache validation/IO is outside that clock. CLI fitting now also uses
+the hard-limit isolated runner in `SRNET_NUMERICAL_READINESS.md`, including
+startup/cache IO in its wall deadline. Interrupted/expired/invalid fits cannot
+return a completed model; incomplete outputs must not be used.
 
 Every update checks finite two-class logits, loss, all gradients and exact
 weights/BN buffers including nonnegative variance/counters. CPU Torch RNG and
@@ -66,7 +67,8 @@ Independent forged-plan/config checks and injected NaN logits/loss/gradients/
 weights/timeouts must fail without publishing a model, while restoring RNG and
 threads. This is engineering regression, not real detection evidence.
 
-Next: isolated long-job limits, independent numerical forward/export parity,
-then freeze optimizer/compute/data/source controls before actual real fitting.
+Isolated long-job limits and independent numerical forward/export now have
+generated readiness checks in `SRNET_NUMERICAL_READINESS.md`. Next: bind actual
+model evaluation and freeze optimizer/compute/data/source controls before real fitting.
 Untouched licensed external-source evaluation is still unavailable. All prior
 failed results stay published, and no primary analyzer or installed model changes.

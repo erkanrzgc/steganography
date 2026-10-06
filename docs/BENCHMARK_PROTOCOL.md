@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+`SRNET_NUMERICAL_READINESS.md` fixes a distinct SRNet logit comparison contract
+before real-model replay. Generated NumPy/ONNX agreement and job limits are
+engineering gates only; do not substitute them for accuracy or source gates.
+
 `SRNET_TRAINING_ENGINE.md` specifies the plan-bound fitting implementation,
 not a preregistered optimizer schedule or real benchmark. Generated fitting,
 finite-state checks and model cards cannot qualify accuracy. Isolated long-job

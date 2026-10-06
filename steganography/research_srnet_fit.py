@@ -125,5 +125,6 @@ def train_srnet(config: dict, out: Path):
 
 
 def run_fit(config_path: Path, out: Path):
-    config, _ = read_document(config_path)
-    return train_srnet(config, out)
+    from steganography.research_srnet_job import run_job
+
+    return run_job(config_path, out)

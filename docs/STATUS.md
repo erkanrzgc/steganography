@@ -6,10 +6,16 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- SRNet fitting CLI now uses hard-limit isolated jobs and artifact verification;
+  independent NumPy forward and optional dynamic-batch ONNX have generated
+  readiness checks. ONNX preflight rejects unsafe allocation/topology before
+  runtime. No trained-real-model replay or new detector accuracy evidence.
+
 - Shared SRNet paired CPU training engine and `research srnet-fit`, bound to
   complete float-cache/plan provenance with finite learning/BN checks and
   pickle-free model cards. Generated fitting tests only; no real-corpus fit,
-  independent forward/export or hard-limit long-job runner completed yet.
+  trained-real-model forward/export evidence. Hard-limit jobs and generated
+  numerical readiness are implemented as described above.
 
 - SRNet train-only paired schedule service and shared `research srnet-plan` CLI:
   source-first quality/method balance, complete original pair coverage, bounded
@@ -172,6 +178,14 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- SRNet isolated-job/numerical readiness: Python 3.11.14, 1,068 tests pass,
+  94.72% total coverage; new runner/reference/ONNX/preflight 241/242 statements
+  covered (99.59%). Ruff, mypy (111 files), whitespace and model/data-free
+  wheel/sdist checks pass. Actual limited child fits generated fractional data;
+  independent NumPy and dynamic batches 1/2/4 pass fixed logit/score/decision
+  guards. No real-corpus training/replay or accuracy qualification. Python
+  3.12–3.14 and fresh full Docker remain unverified here.
 
 - SRNet fitting implementation: Python 3.11.14, 1,034 tests pass, 94.62%
   total coverage; training/fit/plan services 172/172 statements covered.

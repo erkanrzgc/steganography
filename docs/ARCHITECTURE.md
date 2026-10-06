@@ -1,11 +1,19 @@
 # Architecture
 
+`research_srnet_job` executes fitting in a fixed hard-limit child, checks config
+identity, bounded stdout and complete numeric model/card hashes. `run_fit`/CLI
+use it; direct fitting retains cooperative checks. Missing limits are unavailable.
+`core/srnet_reference` independently evaluates float64 NumPy math from weights.
+`srnet_onnx` exports/replays bounded optional CPU graphs; `srnet_onnx_guard`
+rejects unsafe topology/weights/operators and propagates bounded activation shapes.
+Generated numeric readiness is separate from trained-model/accuracy qualification.
+
 `core/srnet_training` owns optional CPU matched-pair learning and finite-state/
 cooperative deadline guards. Shared `research_srnet_fit` verifies the complete
 plan via `research_srnet_plan.schedule_record` before any update, then writes
 numeric state and provenance card. `research srnet-fit` is a thin adapter.
-No validation inputs or primary analyzer changes; hard-limit long-job execution
-and independent numerical forward/export remain separate unimplemented gates.
+No validation inputs or primary analyzer changes; hard-limit jobs and independent
+numerical forward/export now have generated readiness, not real accuracy evidence.
 
 `core/srnet_sampling` creates deterministic train-only matched JPEG pairs with
 hierarchical source/quality/method balance and bounded oversampling. The shared

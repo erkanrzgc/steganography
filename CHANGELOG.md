@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Isolate explicit SRNet fitting under hard wall/CPU/memory/file limits and
+  verify complete artifacts. Add independent NumPy math and optional bounded
+  ONNX export/replay with allocation preflight; generated checks, no accuracy claim.
+
 - Add explicit plan-bound paired SRNet CPU fitting, finite loss/gradient/BN-state
   guards and numeric provenance cards. Preserve RNG/threads on failure, reject
   validation/forged plans; generated regression only, no real fit or deployment.

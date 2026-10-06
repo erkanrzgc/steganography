@@ -193,6 +193,8 @@ readiness only, not a trained detector or a reproduced published score.
 scope/epoch integrity checks; no real SRNet fitting or accuracy gain yet.
 [Paired CPU fitting](docs/SRNET_TRAINING_ENGINE.md) is now available explicitly
 through `research srnet-fit`; generated tests do not establish real accuracy.
+[Isolated jobs and numerical readiness](docs/SRNET_NUMERICAL_READINESS.md)
+add hard fitting limits and independent NumPy/ONNX checks, not a detection score.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

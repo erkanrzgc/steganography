@@ -55,7 +55,16 @@ def inputs(config):
     return values, samples, np.arange(len(samples)), plan["epochs"]
 
 
-def test_actual_paired_fit_cli_card_bn_and_no_rng_or_thread_leak(config, tmp_path, capsys):
+def test_actual_paired_fit_cli_card_bn_and_no_rng_or_thread_leak(
+    config, tmp_path, capsys, monkeypatch
+):
+    # Generated cache contract is injected here; the actual isolated runner is
+    # exercised separately against a native decoder contract.
+    monkeypatch.setattr(
+        service,
+        "run_fit",
+        lambda path, out: service.train_srnet(json.loads(path.read_bytes()), out),
+    )
     path = tmp_path / "fit.json"
     path.write_text(json.dumps(config))
     out = tmp_path / "fit"
