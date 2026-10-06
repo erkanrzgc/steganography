@@ -26,19 +26,21 @@ def network():
         def __init__(self):
             super().__init__()
             self.filters: torch.Tensor
-            self.register_buffer("filters", torch.tensor(FILTERS, dtype=torch.float32)[:, None])
+            self.register_buffer(
+                "filters", torch.tensor(FILTERS, dtype=torch.float32, device="cpu")[:, None]
+            )
             self.layers = torch.nn.Sequential(
-                torch.nn.Conv2d(3, 8, 3, padding=1),
+                torch.nn.Conv2d(3, 8, 3, padding=1, dtype=torch.float32, device="cpu"),
                 torch.nn.ReLU(),
                 torch.nn.AvgPool2d(2),
-                torch.nn.Conv2d(8, 16, 3, padding=1),
+                torch.nn.Conv2d(8, 16, 3, padding=1, dtype=torch.float32, device="cpu"),
                 torch.nn.ReLU(),
                 torch.nn.AvgPool2d(2),
-                torch.nn.Conv2d(16, 16, 3, padding=1),
+                torch.nn.Conv2d(16, 16, 3, padding=1, dtype=torch.float32, device="cpu"),
                 torch.nn.ReLU(),
                 torch.nn.AdaptiveAvgPool2d(1),
                 torch.nn.Flatten(),
-                torch.nn.Linear(16, 1),
+                torch.nn.Linear(16, 1, dtype=torch.float32, device="cpu"),
             )
 
         def residuals(self, values):

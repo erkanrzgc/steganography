@@ -6,6 +6,12 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Explicit CPU minibatch pixel-CNN train/predict services and shared CLI;
+  source/class weighting on selected train rows only, fixed-scope provenance,
+  bounded numeric-only model storage with array-header/finite/filter guards.
+  First real fitting protocol frozen in `PIXEL_CNN_TRAINING_PROTOCOL.md`;
+  no automatic model installation or primary verdict change.
+
 - Explicit bounded JPEG uint8 center-crop caches, pinned decoder/crop provenance,
   framed isolated worker and shared `research pixel-cache` CLI. Custom optional
   residual CNN building block has independent filter/gradient smoke tests, but
@@ -124,6 +130,11 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Pixel-CNN training implementation: Python 3.11, 861 tests at freeze verification,
+  94.29% total coverage; network/numeric model/training code 227/228 statements
+  covered. Ruff, mypy (99 files) and diff checks pass. No real trial results or
+  ONNX qualification implied; other Python versions/full Docker remain unverified.
 
 - Latest pixel-preparation slice: Python 3.11, 824 tests, 94.19% total coverage;
   new pixel/CNN/cache code 190/191 statements covered. Ruff, mypy (97 files),

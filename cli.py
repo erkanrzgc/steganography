@@ -581,6 +581,13 @@ def cmd_research_train(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_research_pixel_cnn(args: argparse.Namespace) -> int:
+    from steganography.research_pixel_cnn import run_pixel_cnn
+
+    print(json.dumps(run_pixel_cnn(Path(args.config), Path(args.out)), indent=2))
+    return 0
+
+
 def cmd_research_jrm(args: argparse.Namespace) -> int:
     from steganography.research_jrm import run_reference
 
@@ -909,6 +916,10 @@ def build_parser() -> argparse.ArgumentParser:
     research_pixels.add_argument("--split", choices=("train", "validation"), required=True)
     research_pixels.add_argument("--workers", type=int, choices=range(1, 5), default=1)
     research_pixels.set_defaults(fn=cmd_research_pixels)
+    research_pixel_cnn = research_commands.add_parser("pixel-cnn")
+    research_pixel_cnn.add_argument("--config", required=True)
+    research_pixel_cnn.add_argument("--out", required=True)
+    research_pixel_cnn.set_defaults(fn=cmd_research_pixel_cnn)
     research_jrm = research_commands.add_parser("jrm-reference")
     research_jrm.add_argument("--config", required=True)
     research_jrm.add_argument("--out", required=True)

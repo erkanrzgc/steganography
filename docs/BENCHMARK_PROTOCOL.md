@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+First custom pixel-CNN fits are fixed in `PIXEL_CNN_TRAINING_PROTOCOL.md`:
+three source scopes, unchanged rows, all 12 source/family cells, no best-run or
+threshold selection. Training completion is not numeric/accuracy qualification.
+
 `PIXEL_RESIDUAL_PREPARATION_PROTOCOL.md` freezes JPEG tensor preparation, not
 training or accuracy. Codec/crop parity and a gradient smoke test cannot pass
 detection gates; source-control and untouched-source experiments remain pending.

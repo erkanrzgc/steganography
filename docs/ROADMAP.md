@@ -1,5 +1,10 @@
 # Roadmap and status
 
+`PIXEL_CNN_TRAINING_PROTOCOL.md` freezes the first three small raw-pixel fits
+(all-source plus both source exclusions); bounded train/predict/numeric persistence
+is implemented. Independent score/export audits and untouched-source gates stay
+separate; no deployment or detector improvement inferred from training completion.
+
 Pixel-residual preparation: `PIXEL_RESIDUAL_PREPARATION_PROTOCOL.md` fixes raw
 center-crop caches and a custom small optional CNN before real-corpus extraction.
 Training/persistence, fixed source-control comparisons and untouched-source

@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add bounded CPU pixel-CNN minibatch learning/prediction and numeric-only
+  model persistence. Restore thread/RNG state, reject unsafe array headers and
+  provenance/settings, preserve fixed filters; freeze three-source-scope trial.
+
 - Publish complete real-corpus pixel preparation audit: 3,750 file hashes,
   decoder-bound uint8 caches and 18 isolated crop oracles. CNN filter/gradient
   smoke passes, but no actual trained model or accuracy/deployment claim.

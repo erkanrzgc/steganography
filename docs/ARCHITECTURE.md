@@ -1,5 +1,11 @@
 # Architecture
 
+`research_pixel_cnn` adds explicit CPU minibatch train/predict stages, using the
+unchanged pixel cache/architecture and train-only source/class weighting. Numeric
+`jpeg_cnn_model` persistence preflights nine fixed float32 array headers before
+allocation; no pickle/symlink/overwrite. Scope/settings bind before inference,
+thread/RNG state restore after training. No API trainer or installed model change.
+
 Explicit pixel research owns a separate bounded uint8 JPEG cache and versioned
 center-crop/decoder contract (`research_pixels`, `core/jpeg_pixels`). It does not
 weaken generic feature/model limits or change analyzer inputs. `core/jpeg_cnn`
