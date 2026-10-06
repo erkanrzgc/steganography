@@ -1,0 +1,214 @@
+{
+  "schema_version": "pixel-residual-preparation-v1",
+  "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+  "protocol_sha256": "fee14770bbf03d348877556d3589b7ece227d055704de7f50e92c59bba38b3a7",
+  "caches": {
+    "train": {
+      "rows": 2985,
+      "shape": [
+        2985,
+        1,
+        128,
+        128
+      ],
+      "decoder": {
+        "pillow": "12.2.0",
+        "jpeg_codec": "6.2"
+      },
+      "bytes": 48906240,
+      "descriptor_sha256": "7fa5ab60df47483eedb4e1306dff5a0586b9b8cc2cba431d2d38ec0eb5ad011f",
+      "data_sha256": "c83c6d19650951b9ad36e21bb787b8f04702730c4295552bbe8763ddc8d7e98f"
+    },
+    "validation": {
+      "rows": 765,
+      "shape": [
+        765,
+        1,
+        128,
+        128
+      ],
+      "decoder": {
+        "pillow": "12.2.0",
+        "jpeg_codec": "6.2"
+      },
+      "bytes": 12533760,
+      "descriptor_sha256": "a333104b64139f385f1d1a35a034593917ef5613ba9ed1b29a4f1a21b4b07a21",
+      "data_sha256": "98af47d49209c991213f4fe279a86eed5313a1e78ac845431dc60f9559e7c0fb"
+    }
+  },
+  "artifact_sha256": {
+    "train/cache.json": "7fa5ab60df47483eedb4e1306dff5a0586b9b8cc2cba431d2d38ec0eb5ad011f",
+    "train/pixels.u8": "c83c6d19650951b9ad36e21bb787b8f04702730c4295552bbe8763ddc8d7e98f",
+    "validation/cache.json": "a333104b64139f385f1d1a35a034593917ef5613ba9ed1b29a4f1a21b4b07a21",
+    "validation/pixels.u8": "98af47d49209c991213f4fe279a86eed5313a1e78ac845431dc60f9559e7c0fb",
+    "extraction-summary.json": "0b7c62fe52cd4b1469e894fac49db1778c1178cddbfca7cf26a04d102f284b71"
+  },
+  "execution": {
+    "implementation_protocol_commit": "a6d0f2be83acc59977fc74cb62674a7ae98c7ad4",
+    "protocol_sha256": "fee14770bbf03d348877556d3589b7ece227d055704de7f50e92c59bba38b3a7",
+    "seconds": 16.175571462001244,
+    "split_seconds": {
+      "train": 12.894885519999661,
+      "validation": 3.280540710002242
+    },
+    "workers": 4,
+    "trained": false,
+    "deployed": false
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "pillow": "12.2.0"
+  },
+  "independent_audit": {
+    "passed": true,
+    "files_rehashed": 3750,
+    "crop_examples": [
+      {
+        "split": "train",
+        "sha256": "39ff12c6a94ce64ef4d147183fbecfbb278f1c1b9bdbdfcb2ef3939528b46280",
+        "method": null,
+        "quality_factor": null
+      },
+      {
+        "split": "train",
+        "sha256": "d4e61d9ef47802185a3dd0b265c57bc9847e24f3a5f42ee6506e013b49bc7d7b",
+        "method": "JUNIWARD",
+        "quality_factor": null
+      },
+      {
+        "split": "train",
+        "sha256": "1f8b5604528c35ba4e975ecb9d468a04e3289832ca6265737812e3316ae642de",
+        "method": "UERD",
+        "quality_factor": null
+      },
+      {
+        "split": "train",
+        "sha256": "004d3c027d51f82f2d76f6d1e0408d371e7576af8d15c4164e22eea24b21b422",
+        "method": null,
+        "quality_factor": 75
+      },
+      {
+        "split": "train",
+        "sha256": "7bea1a5eb211e7ea88d06b548650ed19058040c1bb7823bddcbfb8c7165e69a3",
+        "method": "JUNIWARD",
+        "quality_factor": 75
+      },
+      {
+        "split": "train",
+        "sha256": "21aa29db3763bee860496e3fcd7c15eff27926c635c61a6c11297bf6127e3189",
+        "method": "UERD",
+        "quality_factor": 75
+      },
+      {
+        "split": "train",
+        "sha256": "4547e3cbb0f671132442630d39bed5005ce9e7a103afe2cf3b742a413bad329d",
+        "method": null,
+        "quality_factor": 95
+      },
+      {
+        "split": "train",
+        "sha256": "2d54f89df7c336adc89b65557335f3b2cfe194bfbc060f40f13e22f567c2f0d7",
+        "method": "JUNIWARD",
+        "quality_factor": 95
+      },
+      {
+        "split": "train",
+        "sha256": "71ed94798b9f21cce0b1ffde293f1533331fb9855befba19db632a377de60a95",
+        "method": "UERD",
+        "quality_factor": 95
+      },
+      {
+        "split": "validation",
+        "sha256": "f9f98944ebae898fbf032b4c0956f468919eb84fc594f4df1fd98b304b327c84",
+        "method": null,
+        "quality_factor": null
+      },
+      {
+        "split": "validation",
+        "sha256": "7a37e4437242374ae9d0ce72ae5f5832219df3f4f0bbefa7e215b43daa35a545",
+        "method": "JUNIWARD",
+        "quality_factor": null
+      },
+      {
+        "split": "validation",
+        "sha256": "fbb5e81e4459c10a94fe731918d8ec849ffbb521cfd30fcb2922e86c65c4344a",
+        "method": "UERD",
+        "quality_factor": null
+      },
+      {
+        "split": "validation",
+        "sha256": "e1b7f1d49a065729e1e402f50af48caf944d477544f162a4c85f50e0b9534c3f",
+        "method": null,
+        "quality_factor": 75
+      },
+      {
+        "split": "validation",
+        "sha256": "e9525cdb9229a8b71cd3ecf0f7c5b77fa60202635d056883a44aeae75fcac719",
+        "method": "JUNIWARD",
+        "quality_factor": 75
+      },
+      {
+        "split": "validation",
+        "sha256": "ec2323ea972d47c6f22dca4fc1302d13ff1d6c804508eab5447a71a20c603bfa",
+        "method": "UERD",
+        "quality_factor": 75
+      },
+      {
+        "split": "validation",
+        "sha256": "27dc50407eaefcd2e6dd24290268e9fe67d5935128a1eed7b566fda2f50431ed",
+        "method": null,
+        "quality_factor": 95
+      },
+      {
+        "split": "validation",
+        "sha256": "dd3931ef6a31dcdc86d82044cbd90de2c178ea5a354c967c8f039257e981925e",
+        "method": "JUNIWARD",
+        "quality_factor": 95
+      },
+      {
+        "split": "validation",
+        "sha256": "0eb76f7f48d6780ac581746539a99ab8af66e1622c28e9ad8b193f3f8a6ab33e",
+        "method": "UERD",
+        "quality_factor": 95
+      }
+    ],
+    "crop_examples_checked": 18,
+    "independent_jpeg_decoder": false
+  },
+  "trained": false,
+  "deployed": false,
+  "calibrated": false,
+  "primary_detection_changed": false,
+  "support_status": "experimental",
+  "qualification": "unavailable",
+  "accuracy": "unavailable",
+  "date": "2026-10-05",
+  "preregistered_implementation_protocol_commit": "a6d0f2b",
+  "architecture": "jpeg-center128-residual-cnn8-v1",
+  "verification": {
+    "python": "3.11.14",
+    "tests": 824,
+    "total_coverage_percent": 94.19,
+    "new_pixel_statement_coverage": {
+      "statements": 191,
+      "misses": 1
+    },
+    "ruff": "passed",
+    "mypy_application_files": 97,
+    "git_diff_check": "passed",
+    "wheel_sdist": "passed; pixel modules present; Torch optional; no models/raw cache/corpus bundled",
+    "unverified": [
+      "Python 3.12-3.14",
+      "fresh full Docker E2E",
+      "real-corpus CNN training and inference qualification"
+    ]
+  },
+  "limitations": [
+    "Central 128x128 only: noncentral payloads can be missed; not full-image native detector coverage.",
+    "Pillow RGB/grayscale-to-L conversion, not raw JPEG luminance DCT coefficients; exact decoder versions required.",
+    "Crop oracle shares Pillow native JPEG decoder; independent geometry/indexing, not independent JPEG algorithm proof.",
+    "Only preprocessing and a generated-fixture gradient/filter smoke test; no fitted real-corpus CNN/model serialization/export/calibration or accuracy.",
+    "Existing inspected development sources reused; no new scenes, untouched origin, camera/device independence or blind CTF test.",
+    "All earlier failed JRM/source-transfer benchmarks retained; generic feature/model contracts and primary verdicts unchanged."
+  ]
+}

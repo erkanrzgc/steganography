@@ -4,6 +4,9 @@ Pixel-residual preparation: `PIXEL_RESIDUAL_PREPARATION_PROTOCOL.md` fixes raw
 center-crop caches and a custom small optional CNN before real-corpus extraction.
 Training/persistence, fixed source-control comparisons and untouched-source
 qualification remain separate pending gates; no detector score claim.
+Completed `PIXEL_RESIDUAL_PREPARATION_RESULTS.md`: all 3,750 files rehashed,
+18 bounded crop oracles exact, custom filter/gradient smoke passes. Next is
+bounded minibatch training/persistence and fixed all-source/source-exclusion runs.
 
 Before raw-residual learning, `JRM_TRANSFER_PROTOCOL.md` freezes a two-way
 training-source exclusion diagnostic on existing bound caches. This measures

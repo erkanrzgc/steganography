@@ -10,6 +10,8 @@ been delivered or validated by this slice.
   framed isolated worker and shared `research pixel-cache` CLI. Custom optional
   residual CNN building block has independent filter/gradient smoke tests, but
   no real trained model, persistence or deployed detector integration yet.
+  Actual preparation completed: all 3,750 original files rehashed, 18 bounded
+  independent crop examples exact; see `PIXEL_RESIDUAL_PREPARATION_RESULTS.md`.
 
 - Additive JRM training-scope provenance and a shared two-way source-exclusion
   diagnostic through the existing research CLI. Cache/split identities and both
@@ -122,6 +124,12 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Latest pixel-preparation slice: Python 3.11, 824 tests, 94.19% total coverage;
+  new pixel/CNN/cache code 190/191 statements covered. Ruff, mypy (97 files),
+  diff checks and fresh wheel/sdist pass; Torch optional, no raw cache/models
+  bundled. Real-corpus CNN training/inference, Python 3.12–3.14 and fresh Docker
+  remain unverified. Earlier counts below are historical slice evidence.
 
 - Latest source-transfer slice: Python 3.11, 779 tests, 94.08% total coverage,
   JRM services 255/255 statements covered. Ruff, mypy (94 files), diff checks

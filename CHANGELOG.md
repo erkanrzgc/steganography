@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Publish complete real-corpus pixel preparation audit: 3,750 file hashes,
+  decoder-bound uint8 caches and 18 isolated crop oracles. CNN filter/gradient
+  smoke passes, but no actual trained model or accuracy/deployment claim.
+
 - Add bounded decoded JPEG center-crop research caches and a custom opt-in
   pixel-residual CNN building block. Pin crop/codec contracts, keep generic limits
   and detector behavior unchanged; preparation is not training/accuracy evidence.

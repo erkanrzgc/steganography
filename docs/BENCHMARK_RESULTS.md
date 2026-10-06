@@ -1,5 +1,9 @@
 # Measured results, not a global accuracy score
 
+[Pixel-residual preparation](PIXEL_RESIDUAL_PREPARATION_RESULTS.md): all 3,750
+unchanged files rehashed, 18 isolated crop oracles exact and custom CNN gradient
+smoke passes. No real CNN fit or accuracy result; qualification unavailable.
+
 The [two-way JRM training-source exclusion diagnostic](JRM_TRANSFER_RESULTS.md)
 finds ALASKA → BOSS AUC .534/.522 and BOSS → ALASKA .548/.554. All eight
 cells, including within-origin controls, fail. Source transfer remains weak;

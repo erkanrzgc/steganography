@@ -3,6 +3,8 @@
 `PIXEL_RESIDUAL_PREPARATION_PROTOCOL.md` freezes JPEG tensor preparation, not
 training or accuracy. Codec/crop parity and a gradient smoke test cannot pass
 detection gates; source-control and untouched-source experiments remain pending.
+Completed `PIXEL_RESIDUAL_PREPARATION_RESULTS.md` publishes integrity/parity only;
+accuracy stays unavailable and the prior failed detector benchmarks stay intact.
 
 `JRM_TRANSFER_PROTOCOL.md` fixes two train-origin exclusion fits and all eight
 origin/family cells before scoring. Reused validation, unequal training sizes

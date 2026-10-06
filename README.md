@@ -178,6 +178,9 @@ UERD AUC to .698 and lowers FPR to 31.71%, but JUNIWARD recall regresses and
 BOSS remains weak. All cells fail detection targets; research-only, not deployed.
 The [two-way training-source exclusion test](docs/JRM_TRANSFER_RESULTS.md)
 finds near-chance cross-origin AUC (.52–.55); source generalization remains unproven.
+The [pixel-residual preparation](docs/PIXEL_RESIDUAL_PREPARATION_RESULTS.md)
+verifies all 3,750 raw inputs and bounded CNN building blocks; it is not yet
+real-corpus CNN training or an accuracy improvement.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

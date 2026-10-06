@@ -1,5 +1,10 @@
 # Preparing the next detector experiment
 
+`PIXEL_RESIDUAL_PREPARATION_RESULTS.md` now binds raw uint8 center-crop caches
+on the same corpus. This adds no scenes or independent sources. Next training
+must use bounded minibatches/numeric serialization, a frozen objective and both
+source-exclusion controls; crop parity is not model or full-image qualification.
+
 Completed `JRM_TRANSFER_RESULTS.md` excludes each origin from fitting in turn:
 cross-origin AUC .52–.55, no qualified detection. Training sizes differ and
 validation was already inspected. Preserve this diagnostic when preregistering
