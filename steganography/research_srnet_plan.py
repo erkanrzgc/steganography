@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from core import jpeg_float256, srnet
+from core import jpeg_float256, srnet, srnet_multibatch
 from core.srnet_sampling import epoch_pairs
 from steganography.research import ResearchManifestError
 from steganography.research_features import read_document
@@ -20,7 +20,7 @@ def settings(config):
     if (
         not isinstance(config, dict)
         or not required <= config.keys()
-        or config.keys() - required - {"epochs", "seed", "training_source_id"}
+        or config.keys() - required - {"epochs", "seed", "training_source_id", "batch_recipe"}
         or any(not isinstance(config[k], str) or not config[k] for k in required)
     ):
         raise ResearchManifestError("SRNet plan requires explicit training-only configuration")
@@ -28,6 +28,9 @@ def settings(config):
         if len(config[key]) != 64 or any(c not in "0123456789abcdef" for c in config[key]):
             raise ResearchManifestError("SRNet plan requires SHA-256 identities")
     values = {"epochs": config.get("epochs", 10), "seed": config.get("seed", 20261012)}
+    batch_recipe = srnet_multibatch.recipe(config)
+    if batch_recipe is not None:
+        values["batch_recipe"] = batch_recipe
     for key, high in (("epochs", 50), ("seed", 2**32 - 1)):
         if type(values[key]) is not int or not (1 if key == "epochs" else 0) <= values[key] <= high:
             raise ResearchManifestError("SRNet plan setting outside limits")
@@ -94,6 +97,18 @@ def schedule_record(manifest, digest, samples, descriptor, cache_sha256, params,
         "support_status": "experimental",
         "deployed": False,
     }
+    if srnet_multibatch.recipe(params) is not None:
+        record.update(
+            schema_version="srnet-training-plan-v2",
+            batch_contract=(
+                "two distinct declared-source cover/stego pairs; "
+                "labels [0,1,0,1]; float32 pixel units"
+            ),
+            epoch_batch_schedule=[
+                srnet_multibatch.epoch_batches(selected, seed=params["seed"], epoch=e)[1]
+                for e in range(params["epochs"])
+            ],
+        )
     return record
 
 

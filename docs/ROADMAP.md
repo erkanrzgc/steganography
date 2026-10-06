@@ -1,5 +1,11 @@
 # Roadmap and status
 
+The opt-in four-row control is implemented and generated-fit/isolated-worker/
+complete-eval tested. All 1,580 real batch groups pass full accounting
+(`SRNET_MULTIPAIR_RESULTS.md`); all original stegos are covered, no validation
+rows enter training. Next execute the frozen bounded one-epoch real fit and
+standard eval/independent numerical replay. Accuracy remains unavailable.
+
 `SRNET_MULTIPAIR_PROTOCOL.md` freezes the opt-in two-source/four-row control
 before real accounting/fitting. Legacy v1 behavior remains unchanged; a new
 plan/card v2 binds exact grouping and BN optimizer-update counts. No real
@@ -7,8 +13,8 @@ multi-pair fit or improved detector score is implied by plan verification.
 
 The train-only diagnostic completed (`SRNET_TRAIN_DIAGNOSTIC_RESULTS.md`):
 normalization-mode sensitivity and in-sample train/eval mismatch confirmed,
-without model changes or validation loading. Next freeze a combined-source,
-multi-lineage minibatch control rather than deploy paired BN inference.
+without model changes or validation loading. The separately frozen combined-source,
+multi-lineage minibatch control is now implemented; paired BN is not deployed.
 
 `SRNET_TRAIN_DIAGNOSTIC_PROTOCOL.md` freezes a train-only paired BN contrast
 following the failed pilot. No model mutation, validation tuning or qualification;

@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Add explicit two-source/four-row SRNet training with exact v2 plan/card batch
+  hashes and optimizer/BN accounting; preserve legacy v1 behavior and standard
+  eval inference. Audit all 1,580 real batches and complete original coverage;
+  actual multi-pair fitting/accuracy remain unavailable, no detector deployed.
+
 - Add state-preserving, train-only SRNet BN diagnostics with provenance/cell/
   finite/deadline guards and a shared CLI. Publish real paired mode contrast;
   never promote in-sample scores or paired BN to deployed detector behavior.

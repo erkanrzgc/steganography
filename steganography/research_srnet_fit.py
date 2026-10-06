@@ -5,7 +5,7 @@ from __future__ import annotations
 import time
 from pathlib import Path
 
-from core import srnet_model, srnet_training
+from core import srnet_model, srnet_multibatch, srnet_training
 from steganography.research import ResearchManifestError
 from steganography.research_features import read_document
 from steganography.research_jpeg import write_json
@@ -20,7 +20,9 @@ def configuration(config):
     if (
         not isinstance(config, dict)
         or not required <= config.keys()
-        or config.keys() - required - {"threads", "max_seconds", "learning_rate", "weight_decay"}
+        or config.keys()
+        - required
+        - {"threads", "max_seconds", "learning_rate", "weight_decay", "batch_recipe"}
         or any(not isinstance(config[k], str) or not config[k] for k in required)
     ):
         raise ResearchManifestError("SRNet fit requires explicit plan-bound configuration")
@@ -29,6 +31,7 @@ def configuration(config):
     ):
         raise ResearchManifestError("SRNet fit requires plan SHA-256")
     plan_settings({k: config[k] for k in ("manifest", "manifest_sha256", "cache", "cache_sha256")})
+    srnet_multibatch.recipe(config)
     return srnet_training.settings(config)
 
 
@@ -38,8 +41,14 @@ def train_srnet(config: dict, out: Path):
     params = configuration(config)
     started = time.monotonic()
     values, samples, descriptor, plan, checked, indices = bound_training(config)
+    batch_recipe = srnet_multibatch.recipe(checked)
     model, records = srnet_training.fit(
-        values, samples, indices, seed=checked["seed"], schedule=plan["epochs"], config=params
+        values,
+        samples,
+        indices,
+        seed=checked["seed"],
+        schedule=plan["epochs"],
+        config={**params, **({"batch_recipe": batch_recipe} if batch_recipe is not None else {})},
     )
     out.mkdir(parents=True, exist_ok=False)
     checksum = srnet_model.save_model(model, out / "model.npz")
@@ -93,6 +102,8 @@ def bound_training(config):
             "training_source_id": source_id,
         }
     )
+    if srnet_multibatch.recipe(config) != srnet_multibatch.recipe(checked):
+        raise ResearchManifestError("SRNet fit explicit batch recipe/plan mismatch")
     expected = schedule_record(
         manifest, digest, samples, descriptor, config["cache_sha256"], checked, source_id
     )
@@ -104,7 +115,7 @@ def bound_training(config):
 
 def card_contract(plan, checked, params):
     """Static fit-card fields; shared verification must not trust edited claims."""
-    return {
+    card = {
         "schema_version": "srnet-fit-v1",
         "architecture": plan["architecture"],
         "feature_version": plan["feature_version"],
@@ -136,6 +147,17 @@ def card_contract(plan, checked, params):
         "calibrated": False,
         "deployed": False,
     }
+    if srnet_multibatch.recipe(checked) is not None:
+        card.update(
+            schema_version="srnet-fit-v2",
+            batch_size=4,
+            batchnorm=(
+                "two-source multi-lineage training; persisted running statistics "
+                "for single-file eval"
+            ),
+            epoch_batch_schedule=plan["epoch_batch_schedule"],
+        )
+    return card
 
 
 def run_fit(config_path: Path, out: Path):

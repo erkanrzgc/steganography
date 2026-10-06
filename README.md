@@ -27,6 +27,10 @@ balanced accuracy 50%), despite passing numerical replay. See the
 normalization-mode sensitivity. Its in-sample paired results are not accuracy;
 single-file detection remains unqualified and original failures remain published.
 
+[Two-source/four-row training](docs/SRNET_MULTIPAIR_RESULTS.md) is now opt-in:
+all 1,580 real batch groups pass complete accounting. Real fitting and accuracy
+for this recipe remain unavailable; it is not a detector score improvement.
+
 Research models use byte-derived spatial/DCT signals, not filenames or dataset
 identity as inputs. That does not prove generalization: compression/content
 can still encode source bias. [Source/context diagnostics](docs/GENERALIZATION_PROTOCOL.md)

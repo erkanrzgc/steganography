@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-from core import srnet, srnet_model, srnet_reference, srnet_training
+from core import srnet, srnet_model, srnet_multibatch, srnet_reference, srnet_training
 from core.srnet_sampling import source_id
 from steganography.research import ResearchManifestError
 from steganography.research_features import read_document
@@ -42,10 +42,18 @@ def configuration(config):
         )
     ):
         raise ResearchManifestError("SRNet evaluation requires explicit checksum-bound inputs")
-    return {
+    result = {
         k: config[k]
         for k in ("manifest", "manifest_sha256", "cache", "cache_sha256", "plan", "plan_sha256")
     }
+    # The explicit recipe is recovered from the checksum-bound plan, never
+    # inferred from a card or silently substituted for an old training plan.
+    plan, digest = read_document(Path(config["plan"]))
+    if digest != config["plan_sha256"]:
+        raise ResearchManifestError("SRNet evaluation plan checksum mismatch")
+    if srnet_multibatch.recipe(plan.get("settings", {})) is not None:
+        result["batch_recipe"] = srnet_multibatch.RECIPE
+    return result
 
 
 def checked_card(card, plan, settings, plan_sha):
@@ -80,7 +88,7 @@ def checked_card(card, plan, settings, plan_sha):
             or type(record["epoch"]) is not int
             or record["epoch"] != epoch
             or type(record["updates"]) is not int
-            or record["updates"] != plan["epochs"][epoch]["pairs"]
+            or record["updates"] != srnet_multibatch.updates(plan)[epoch]
             or type(record["mean_pair_loss"]) not in (int, float)
             or not math.isfinite(record["mean_pair_loss"])
             or record["mean_pair_loss"] < 0
@@ -130,7 +138,7 @@ def evaluate(config: dict, out: Path):
         Path(config["model_dir"]) / "model.npz", checksum=card["model_sha256"]
     )
     arrays = {k: v.detach().cpu().numpy() for k, v in model.state_dict().items()}
-    updates = sum(e["pairs"] for e in plan["epochs"])
+    updates = sum(srnet_multibatch.updates(plan))
     if any(int(v) != updates for k, v in arrays.items() if k.endswith("num_batches_tracked")):
         raise ResearchManifestError("SRNet fit BN update accounting mismatch")
     import torch

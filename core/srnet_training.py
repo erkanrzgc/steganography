@@ -7,7 +7,7 @@ import time
 
 import numpy as np
 
-from core import srnet, srnet_model
+from core import srnet, srnet_model, srnet_multibatch
 from core.srnet_sampling import epoch_pairs
 
 
@@ -33,6 +33,7 @@ def settings(config):
 
 def fit(pixels, samples, indices, *, seed, schedule, config):
     params = settings(config)
+    batch_recipe = srnet_multibatch.recipe(config)
     if (
         not isinstance(samples, list)
         or not isinstance(pixels, np.ndarray)
@@ -59,6 +60,8 @@ def fit(pixels, samples, indices, *, seed, schedule, config):
     for epoch, record in enumerate(schedule):
         if epoch_pairs(selected, seed=seed, epoch=epoch)[1] != record:
             raise ValueError("SRNet training schedule mismatch")
+        if batch_recipe is not None:
+            srnet_multibatch.epoch_batches(selected, seed=seed, epoch=epoch)
     import torch
 
     started = time.monotonic()
@@ -82,16 +85,20 @@ def fit(pixels, samples, indices, *, seed, schedule, config):
                 eps=1e-8,
                 foreach=False,
             )
-            targets = torch.tensor([0, 1], dtype=torch.int64, device="cpu")
+            targets = torch.tensor(
+                [0, 1] * (2 if batch_recipe is not None else 1), dtype=torch.int64, device="cpu"
+            )
             for epoch in range(len(schedule)):
                 pairs, _ = epoch_pairs(selected, seed=seed, epoch=epoch)
+                if batch_recipe is not None:
+                    pairs, _ = srnet_multibatch.epoch_batches(selected, seed=seed, epoch=epoch)
                 total = 0.0
                 for pair in pairs:
                     deadline()
                     inputs = torch.from_numpy(pixels[indices[pair]].copy())
                     optimizer.zero_grad(set_to_none=True)
                     logits = model(inputs)
-                    if logits.shape != (2, 2) or not bool(torch.isfinite(logits).all()):
+                    if logits.shape != (len(targets), 2) or not bool(torch.isfinite(logits).all()):
                         raise ValueError("SRNet training produced invalid logits")
                     loss = torch.nn.functional.cross_entropy(logits, targets)
                     if not bool(torch.isfinite(loss)):

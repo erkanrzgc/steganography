@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`SRNET_MULTIPAIR_PROTOCOL.md` freezes the explicit two-source/four-row training
+control; full real schedule accounting is in `SRNET_MULTIPAIR_RESULTS.md`.
+Grouping preserves every original train pair through bounded oversampling.
+Passing schedule/generated-fit tests is not training completion or accuracy.
+Evaluation remains standard stored-BN single-file inference with unchanged
+numerical gates; the reused development split cannot qualify unseen sources.
+
 `SRNET_TRAIN_DIAGNOSTIC_PROTOCOL.md` freezes a post-hoc, train-only normalization
 contrast; results in `SRNET_TRAIN_DIAGNOSTIC_RESULTS.md`. Batch-stat paired
 training-subset figures are not accuracy evidence, independent validation or

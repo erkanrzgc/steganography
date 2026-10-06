@@ -9,6 +9,7 @@ import pytest
 
 import cli
 from core import jpeg_float256 as fp
+from core.srnet_multibatch import RECIPE
 from steganography import research_srnet_job as job
 from steganography import research_srnet_plan as planner
 from tests.test_jrm_reference import sha
@@ -26,7 +27,8 @@ def config_path(fit_config, tmp_path):  # noqa: F811 — injected fixture
     return path
 
 
-def test_actual_hard_limited_worker_fit(config_path, tmp_path, monkeypatch, capsys):
+@pytest.mark.parametrize("batch_recipe", [None, RECIPE])
+def test_actual_hard_limited_worker_fit(config_path, tmp_path, monkeypatch, capsys, batch_recipe):
     pytest.importorskip("jpeglib")
     config = json.loads(config_path.read_bytes())
     monkeypatch.setattr(fp, "decoder_contract", REAL_DECODER)
@@ -35,21 +37,26 @@ def test_actual_hard_limited_worker_fit(config_path, tmp_path, monkeypatch, caps
     descriptor["decoder"] = REAL_DECODER()
     cache.write_text(json.dumps(descriptor))
     config["cache_sha256"] = sha(cache)
+    extra = {"batch_recipe": batch_recipe} if batch_recipe is not None else {}
     plan = tmp_path / "native-contract-plan.json"
     planner.plan_training(
         {
             **{k: config[k] for k in ("manifest", "manifest_sha256", "cache", "cache_sha256")},
             "epochs": 1,
             "seed": 91,
+            **extra,
         },
         plan,
     )
     config.update(plan=str(plan), plan_sha256=sha(plan), max_seconds=60)
+    config.update(extra)
     config_path.write_text(json.dumps(config))
     out = tmp_path / "isolated"
     assert cli.main(["research", "srnet-fit", "--config", str(config_path), "--out", str(out)]) == 0
     card = json.loads(capsys.readouterr().out)
-    assert card["training"] == "completed" and card["epoch_training"][0]["updates"] == 4
+    assert card["training"] == "completed"
+    assert card["epoch_training"][0]["updates"] == (4 if batch_recipe is None else 2)
+    assert card["batch_size"] == (2 if batch_recipe is None else 4)
     assert card["model_sha256"] == sha(out / "model.npz")
     assert not card["deployed"] and card["accuracy_metrics"] == "unavailable"
     with pytest.raises(FileExistsError):

@@ -1,5 +1,12 @@
 # Architecture
 
+`core/srnet_multibatch` groups the unchanged deterministic paired schedule into
+explicit two-source/four-row batches. Plan/card v2 bind exact grouping hashes
+and optimizer-update counts; fit and complete eval reconstruct this contract.
+Absent `batch_recipe` preserves v1 two-row behavior. No inference BN-mode change
+or detector integration. See `SRNET_MULTIPAIR_RESULTS.md` for real accounting,
+which is not real fitting or accuracy evidence.
+
 `core/srnet_diagnostics` owns bounded read-only BN-mode contrasts and restores
 numeric state/flags/hooks on failure. `research_srnet_diagnose` binds training
 cache/scope/card/plan, selects metadata-only train probes and restores threads;
