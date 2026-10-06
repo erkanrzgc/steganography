@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+`SRNET_TRAINING_ENGINE.md` specifies the plan-bound fitting implementation,
+not a preregistered optimizer schedule or real benchmark. Generated fitting,
+finite-state checks and model cards cannot qualify accuracy. Isolated long-job
+limits and independent forward/export gates precede a frozen real experiment.
+
 `SRNET_SAMPLING_PROTOCOL.md` freezes a train-only balanced-pair preparation
 audit. Oversampled pairs do not increase independent corpus or scene counts;
 schedule integrity is not training, detection or untouched-source evidence.

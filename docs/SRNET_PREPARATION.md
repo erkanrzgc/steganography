@@ -82,6 +82,8 @@ no pickle, symlink or overwrite. Reload preserves CPU RNG. Training cards,
 independent forward/export parity and real fitting remain separate pending gates.
 Train-only balanced matched schedules now pass all 30 real scope/epoch accounting
 checks (`SRNET_SAMPLING_RESULTS.md`); they do not fit a model or use validation.
+The plan-bound paired CPU trainer/card is now generated-test verified in
+`SRNET_TRAINING_ENGINE.md`; no real fit, forward/export audit or qualification.
 
 Untouched licensed external-source acquisition remains unavailable. All previous
 failed CNN/JRM results stay published; a larger architecture alone supplies no

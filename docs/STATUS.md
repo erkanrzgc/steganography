@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Shared SRNet paired CPU training engine and `research srnet-fit`, bound to
+  complete float-cache/plan provenance with finite learning/BN checks and
+  pickle-free model cards. Generated fitting tests only; no real-corpus fit,
+  independent forward/export or hard-limit long-job runner completed yet.
+
 - SRNet train-only paired schedule service and shared `research srnet-plan` CLI:
   source-first quality/method balance, complete original pair coverage, bounded
   oversampling, independent RNG, per-epoch order hashes and source exclusions.
@@ -167,6 +172,14 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- SRNet fitting implementation: Python 3.11.14, 1,034 tests pass, 94.62%
+  total coverage; training/fit/plan services 172/172 statements covered.
+  Final strengthened source-index tests: 39 focused tests pass. Ruff, mypy
+  (107 source files), whitespace and model/data-free wheel/sdist checks pass.
+  Fitting uses generated fractional fixtures; forged plans, invalid gradients/
+  weights and cooperative timeout cannot publish completed models. No actual
+  real-corpus fit or accuracy audit. Other Python versions/full Docker unverified.
 
 - Published SRNet schedule evidence: Python 3.11.14, 995 tests pass, 94.55%
   total coverage; sampler/plan service 116/116 statements covered. Ruff, mypy

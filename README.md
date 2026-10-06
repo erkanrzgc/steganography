@@ -191,6 +191,8 @@ readiness only, not a trained detector or a reproduced published score.
 3,750 originals and 18 independent mathematical examples; accuracy still unavailable.
 [Paired training schedules](docs/SRNET_SAMPLING_RESULTS.md) also pass all 30
 scope/epoch integrity checks; no real SRNet fitting or accuracy gain yet.
+[Paired CPU fitting](docs/SRNET_TRAINING_ENGINE.md) is now available explicitly
+through `research srnet-fit`; generated tests do not establish real accuracy.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

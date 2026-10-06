@@ -50,10 +50,25 @@ def plan_training(config: dict, out: Path):
         _float=True,
     )
     del pixels  # Full cache integrity checked, never retain multiple corpus copies.
+    record = schedule_record(
+        manifest,
+        digest,
+        samples,
+        descriptor,
+        config["cache_sha256"],
+        params,
+        config.get("training_source_id"),
+    )
+    write_json(out, record)
+    return record
+
+
+def schedule_record(manifest, digest, samples, descriptor, cache_sha256, params, source_id):
+    """One provenance contract for explicit plans and training plan verification."""
     provenance: dict[str, Any] = {}
     _jpeg_source_weights(manifest, samples, provenance)
     epoch_pairs(samples, seed=params["seed"], epoch=0)  # Validate excluded rows too.
-    indices, scope = training_scope(samples, config.get("training_source_id"))
+    indices, scope = training_scope(samples, source_id)
     selected = [samples[i] for i in indices]
     epochs = [
         epoch_pairs(selected, seed=params["seed"], epoch=e)[1] for e in range(params["epochs"])
@@ -63,7 +78,7 @@ def plan_training(config: dict, out: Path):
         "architecture": srnet.ARCHITECTURE,
         "feature_version": jpeg_float256.FEATURE_VERSION,
         "manifest_sha256": digest,
-        "train_cache_sha256": config["cache_sha256"],
+        "train_cache_sha256": cache_sha256,
         "train_data_sha256": descriptor["data_sha256"],
         "decoder": descriptor["decoder"],
         "training_scope": scope,
@@ -79,7 +94,6 @@ def plan_training(config: dict, out: Path):
         "support_status": "experimental",
         "deployed": False,
     }
-    write_json(out, record)
     return record
 
 

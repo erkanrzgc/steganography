@@ -1,10 +1,16 @@
 # Roadmap and status
 
+SRNet paired CPU fitting and provenance cards are implemented and generated-test
+verified (`SRNET_TRAINING_ENGINE.md`). Exact shared plan reconstruction, finite
+learning/BN state and caller RNG/thread restoration; no real-corpus fit yet.
+Next: isolated hard-limit jobs and independent forward/export, then a frozen
+real optimizer/compute/data schedule. No deployed model or new accuracy score.
+
 `SRNET_SAMPLING_PROTOCOL.md` freezes checksum-bound train-only paired schedules,
 balancing sources then quality/method contexts without dropping original pairs.
 Explicit `research srnet-plan` and bounded sampler implemented; all 30 real
-scope/epoch audits pass (`SRNET_SAMPLING_RESULTS.md`). Next: provenance-bound
-trainer/card, fixed optimizer/compute schedule and independent forward/export
+scope/epoch audits pass (`SRNET_SAMPLING_RESULTS.md`). Provenance-bound trainer/
+card is now implemented; next: fixed optimizer/compute schedule and independent forward/export
 parity. No real fitting or accuracy qualification.
 
 `JPEG_FLOAT256_PROTOCOL.md` freezes versioned unrounded Y/256 preprocessing,
@@ -13,8 +19,8 @@ oracles before real preparation; no accuracy claim.
 Preparation completed (`JPEG_FLOAT256_RESULTS.md`): all 3,750 original hashes,
 18 independent real IDCT examples exact. BN-safe 183-array numeric persistence
 also implemented and tested. Paired sampler accounting is complete as linked
-above. Next: training provenance, independent
-export parity and a frozen real schedule; untouched-source gates stay open.
+above. Training provenance is implemented; independent export parity and a
+frozen real schedule remain pending; untouched-source gates stay open.
 
 SRNet-style structural preparation (`SRNET_PREPARATION.md`) replaces tiny-model
 tweaks as the next research direction. Explicit resource-limited readiness,

@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add explicit plan-bound paired SRNet CPU fitting, finite loss/gradient/BN-state
+  guards and numeric provenance cards. Preserve RNG/threads on failure, reject
+  validation/forged plans; generated regression only, no real fit or deployment.
+
 - Complete 30 real SRNet schedule accounting checks across all-source and both
   source exclusions; retain exact oversampling counts/order hashes, exclude all
   validation rows. Fix audit entrypoint to use checkout modules, not stale wheels.

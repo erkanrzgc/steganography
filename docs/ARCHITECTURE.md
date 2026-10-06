@@ -1,5 +1,12 @@
 # Architecture
 
+`core/srnet_training` owns optional CPU matched-pair learning and finite-state/
+cooperative deadline guards. Shared `research_srnet_fit` verifies the complete
+plan via `research_srnet_plan.schedule_record` before any update, then writes
+numeric state and provenance card. `research srnet-fit` is a thin adapter.
+No validation inputs or primary analyzer changes; hard-limit long-job execution
+and independent numerical forward/export remain separate unimplemented gates.
+
 `core/srnet_sampling` creates deterministic train-only matched JPEG pairs with
 hierarchical source/quality/method balance and bounded oversampling. The shared
 `research_srnet_plan` service binds manifest, complete float-cache integrity,
