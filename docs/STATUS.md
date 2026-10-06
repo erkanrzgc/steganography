@@ -1,10 +1,16 @@
-# Implementation status — 2026-10-06
+# Implementation status — 2026-10-07
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
 been delivered or validated by this slice.
 
 ## Implemented
+
+- Frozen train-only SRNet BN diagnosis completed: 32 selected training pairs,
+  26 layers, original model unchanged. Native scores saturate in 56/64 inputs;
+  the batch-stat contrast in 0/64. This reveals normalization-mode sensitivity,
+  not held-out accuracy; diagnostic BN inference is never enabled for primary
+  verdicts. See `SRNET_TRAIN_DIAGNOSTIC_RESULTS.md`; previous failures stand.
 
 - First frozen real-data SRNet pilot completed: one BOSS-only epoch, 412
   updates, 229.29 seconds, all 765 validation rows evaluated and nine independent
@@ -191,6 +197,13 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Train-only SRNet diagnosis: Python 3.11.14, 1,139 tests pass, 94.86%
+  total coverage; new core/service 125/125 statements covered. Ruff, mypy
+  (115 files), whitespace and model/data-free wheel/sdist checks pass. Real
+  32-pair probes verify unchanged model state/disk hash and no validation pixel
+  loading. This is diagnosis, not better held-out accuracy. Python 3.12–3.14
+  and fresh full Docker remain unverified locally.
 
 - Frozen real SRNet pilot/results service: Python 3.11.14, 1,120 tests pass,
   94.80% total coverage; new diagnostic service 67/67 statements covered.

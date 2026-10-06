@@ -23,6 +23,10 @@ The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.51
 balanced accuracy 50%), despite passing numerical replay. See the
 [complete pilot results](docs/SRNET_REAL_PILOT_RESULTS.md); no weights are deployed.
 
+[Train-only BN diagnosis](docs/SRNET_TRAIN_DIAGNOSTIC_RESULTS.md) now exposes
+normalization-mode sensitivity. Its in-sample paired results are not accuracy;
+single-file detection remains unqualified and original failures remain published.
+
 Research models use byte-derived spatial/DCT signals, not filenames or dataset
 identity as inputs. That does not prove generalization: compression/content
 can still encode source bias. [Source/context diagnostics](docs/GENERALIZATION_PROTOCOL.md)

@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add state-preserving, train-only SRNet BN diagnostics with provenance/cell/
+  finite/deadline guards and a shared CLI. Publish real paired mode contrast;
+  never promote in-sample scores or paired BN to deployed detector behavior.
+
 - Complete the frozen real-data SRNet pilot: 412 paired updates, all 765
   validation rows and nine independent numerical replays. Publish all six
   failed detection cells and lineage intervals; no model installed/deployed.

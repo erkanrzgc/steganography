@@ -1,5 +1,12 @@
 # Architecture
 
+`core/srnet_diagnostics` owns bounded read-only BN-mode contrasts and restores
+numeric state/flags/hooks on failure. `research_srnet_diagnose` binds training
+cache/scope/card/plan, selects metadata-only train probes and restores threads;
+`research srnet-diagnose` is a thin CLI adapter. This batch-dependent diagnostic
+cannot feed primary verdicts or change saved models. Portable aggregation lives
+in the fixed train-diagnostic audit script, not in UI/API detector code.
+
 `research_srnet_results` verifies prediction/card/plan/cache provenance,
 complete validation identities and fixed independent numerical audit fields
 before calculating same-source/quality/method diagnostics. It reuses paired

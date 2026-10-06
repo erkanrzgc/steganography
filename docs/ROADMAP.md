@@ -1,5 +1,10 @@
 # Roadmap and status
 
+The train-only diagnostic completed (`SRNET_TRAIN_DIAGNOSTIC_RESULTS.md`):
+normalization-mode sensitivity and in-sample train/eval mismatch confirmed,
+without model changes or validation loading. Next freeze a combined-source,
+multi-lineage minibatch control rather than deploy paired BN inference.
+
 `SRNET_TRAIN_DIAGNOSTIC_PROTOCOL.md` freezes a train-only paired BN contrast
 following the failed pilot. No model mutation, validation tuning or qualification;
 then preregister a separate balanced learning experiment based on diagnosis.

@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+`SRNET_TRAIN_DIAGNOSTIC_PROTOCOL.md` freezes a post-hoc, train-only normalization
+contrast; results in `SRNET_TRAIN_DIAGNOSTIC_RESULTS.md`. Batch-stat paired
+training-subset figures are not accuracy evidence, independent validation or
+deployable inference. Saved state is unchanged and validation pixels are never
+loaded. Subsequent multi-lineage learning controls require a separate protocol.
+
 The first frozen real SRNet pilot is now completed, with failed detector cells
 retained in `SRNET_REAL_PILOT_RESULTS.md`. The diagnostic service requires
 complete validation identity/context and paired cover lineages, reuses fixed
