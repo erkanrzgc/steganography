@@ -88,17 +88,23 @@ def network():
     return SRNet()
 
 
-def logits(model, pixels: np.ndarray) -> np.ndarray:
+def float_logits(model, pixels: np.ndarray) -> np.ndarray:
+    return logits(model, pixels, _float=True)
+
+
+def logits(model, pixels: np.ndarray, *, _float: bool = False) -> np.ndarray:
     if (
         not isinstance(pixels, np.ndarray)
-        or pixels.dtype != np.uint8
+        or pixels.dtype != (np.dtype("<f4") if _float else np.dtype("u1"))
         or pixels.ndim != 4
         or pixels.shape[1] != 1
-        or pixels.shape[2] not in SIDES
+        or pixels.shape[2] not in ((256,) if _float else SIDES)
         or pixels.shape[3] != pixels.shape[2]
         or not 1 <= len(pixels) <= MAX_BATCH
     ):
         raise ValueError("invalid bounded SRNet uint8 tensor")
+    if _float and (not np.isfinite(pixels).all() or np.any(np.abs(pixels) > 2**36)):
+        raise ValueError("invalid bounded SRNet float tensor")
     if any(module.training for module in model.modules()):
         raise ValueError("SRNet inference requires every module in eval mode")
     import torch

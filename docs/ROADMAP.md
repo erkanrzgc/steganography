@@ -1,5 +1,10 @@
 # Roadmap and status
 
+`JPEG_FLOAT256_PROTOCOL.md` freezes versioned unrounded Y/256 preprocessing,
+isolated framed workers, separate bounded float cache and independent IDCT
+oracles before real preparation. Next gates: actual complete preparation audit,
+BN-safe numeric persistence and fixed real training; no accuracy claim.
+
 SRNet-style structural preparation (`SRNET_PREPARATION.md`) replaces tiny-model
 tweaks as the next research direction. Explicit resource-limited readiness,
 learned front convolutions, no early pooling and eval-only BN implemented.

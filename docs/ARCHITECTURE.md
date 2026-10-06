@@ -1,5 +1,10 @@
 # Architecture
 
+`core/jpeg_float256` provides isolated component-Y float64 IDCT to unrounded
+phase-aligned float32/256 crops. Shared pixel cache service explicitly selects
+the new schema/1GiB research limit; legacy uint8/64MiB defaults are unchanged.
+SRNet float inference preserves fractions and requires all-stage eval.
+
 `core/srnet.py` is a separate optional SRNet-style structural research block,
 not an extension of the tiny CNN's nine-array model contract. All-stage eval
 is mandatory for bounded inference to prohibit batch-dependent BN predictions.

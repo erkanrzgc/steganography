@@ -6,6 +6,10 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Explicit unrounded phase-aligned component-Y/256 float research caches and
+  bounded SRNet fractional inference; all legacy pixel/cache defaults preserved.
+  `JPEG_FLOAT256_PROTOCOL.md` freezes preparation/audit, not accuracy/training.
+
 - Separate optional 4.78M-parameter SRNet-style structural block and explicit
   `research srnet-preflight` fixed resource-limited worker. Finite gradient/
   parameter-update and singleton/batch eval readiness, nested BN eval guards.
@@ -151,6 +155,11 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Float256 implementation freeze: Python 3.11.14, 938 tests pass, 94.44%
+  total coverage; decoder/SRNet/cache code 247/248 statements covered. Ruff,
+  mypy (102 files) and diff check pass. Fixed real preparation/audit is still
+  pending at freeze; no accuracy or actual SRNet training implied.
 
 - SRNet-style preparation: Python 3.11.14, 907 tests pass, 94.38% total
   coverage; new architecture/readiness code 132/133 statements covered.

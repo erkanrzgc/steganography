@@ -596,6 +596,21 @@ def cmd_research_srnet(args: argparse.Namespace) -> int:
     return 0 if report["status"] == "completed" else 2
 
 
+def cmd_research_srnet_cache(args: argparse.Namespace) -> int:
+    from steganography.research_pixels import extract_pixels
+
+    report = extract_pixels(
+        Path(args.manifest),
+        Path(args.out),
+        source=Path(args.source),
+        split=args.split,
+        workers=args.workers,
+        _float=True,
+    )
+    print(json.dumps(report, indent=2))
+    return 0
+
+
 def cmd_research_jrm(args: argparse.Namespace) -> int:
     from steganography.research_jrm import run_reference
 
@@ -931,6 +946,13 @@ def build_parser() -> argparse.ArgumentParser:
     research_srnet = research_commands.add_parser("srnet-preflight")
     research_srnet.add_argument("--out", required=True)
     research_srnet.set_defaults(fn=cmd_research_srnet)
+    research_srnet_cache = research_commands.add_parser("srnet-cache")
+    research_srnet_cache.add_argument("--manifest", required=True)
+    research_srnet_cache.add_argument("--source", required=True)
+    research_srnet_cache.add_argument("--out", required=True)
+    research_srnet_cache.add_argument("--split", choices=("train", "validation"), required=True)
+    research_srnet_cache.add_argument("--workers", type=int, choices=range(1, 5), default=1)
+    research_srnet_cache.set_defaults(fn=cmd_research_srnet_cache)
     research_jrm = research_commands.add_parser("jrm-reference")
     research_jrm.add_argument("--config", required=True)
     research_jrm.add_argument("--out", required=True)

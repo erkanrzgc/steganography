@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add explicit bounded unrounded JPEG Y/256 float preparation and shared
+  phase-aligned cache/inference contracts. Respect actual component-table
+  assignment and color-space names; preserve old uint8 cache/limits/verdicts.
+
 - Add separate opt-in SRNet-style architectural preparation and explicit
   resource-limited synthetic readiness command; enforce all-stage eval BN and
   bounded uint8 inference. No real training, installed model or accuracy claim.

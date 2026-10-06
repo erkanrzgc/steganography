@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+`JPEG_FLOAT256_PROTOCOL.md` freezes the full unchanged-corpus float preparation
+and 18 independent real IDCT examples. Native coefficient parsing is shared;
+only mathematical reconstruction is independently checked. Never score
+preprocessing parity as detection or untouched-source qualification.
+
 `SRNET_PREPARATION.md` describes structural/synthetic readiness only. Never
 count its finite-gradient or batch-consistency check as real accuracy. Proper
 JPEG decoding, persistence/parity, frozen real training and untouched-source
