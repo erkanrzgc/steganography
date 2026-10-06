@@ -1,5 +1,13 @@
 # Benchmark protocol
 
+`SRNET_TINY_SANITY_PROTOCOL.md` freezes a 24-row/50-epoch train-only learning
+control before selection. Its loss and in-sample stored-BN objectives are not
+accuracy/support gates, even if passed. No validation pixels, threshold search,
+resume, BN repair or primary detector changes are allowed.
+Completed `SRNET_TINY_SANITY_RESULTS.md` retains failed learning objectives
+alongside passed numerical replay. In-sample loss reduction from a high initial
+loss cannot hide chance-level selected-row balanced accuracy.
+
 The two-source real-run audit binds the preregistered recipe/optimizer/counts
 and uses shared complete eval plus fixed cell/lineage diagnostics. Descriptive
 changes against the earlier BOSS-only pilot cannot establish causal BatchNorm

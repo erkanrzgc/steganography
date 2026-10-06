@@ -2,6 +2,16 @@
 
 ## 0.6.0 (unreleased)
 
+- Publish complete tiny train-only SRNet sanity: 50 epochs/400 updates, two
+  learning objectives fail despite saved-model/NumPy replay and nonzero paired
+  input differences. Keep loss decrease separate from actual discrimination;
+  no model deployed and no validation-driven tuning.
+
+- Add frozen, bounded 24-row train-only SRNet learning sanity: metadata-only
+  complete lineage/quality selection, 50-epoch/BN accounting, singleton stored-BN
+  evaluation and redacted failure handling. In-sample objectives never qualify
+  detector accuracy; existing trainer/models/verdicts remain unchanged.
+
 - Complete frozen two-source SRNet fitting and full evaluation: 1,580 updates,
   nine numerical replays and six independent metric audits. Publish every failed
   cell and prior-pilot regression; reduced overconfidence does not hide increased

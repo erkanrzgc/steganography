@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Train-only tiny sanity completed (`SRNET_TINY_SANITY_RESULTS.md`): 24 rows,
+50 epochs/400 updates; two of three sanity objectives fail, stored-BN train
+balanced accuracy .50. Saved-model/NumPy replay passes and all input pairs differ.
+Next freeze strong-signal generated learning/gradient diagnostics before longer
+real fits. No accuracy improvement, deployed model or running training job.
+
 `SRNET_TINY_SANITY_PROTOCOL.md` freezes the next train-only control before
 selection/fitting: 24 rows, 50 epochs/400 updates, metadata-only selection and
 stored-BN singleton evaluation. In-sample learning is not accuracy qualification.

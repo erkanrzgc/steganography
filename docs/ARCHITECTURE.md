@@ -1,5 +1,15 @@
 # Architecture
 
+`core/srnet_sanity` owns metadata-only tiny train selection and fixed in-sample
+objectives. `research_srnet_sanity` binds the frozen manifest/cache/protocol,
+uses the unchanged shared four-row trainer and stored-BN singleton inference.
+The explicit module entrypoint applies CPU/address/file/core limits; external
+wall timeout remains required. No new detector or validation-based tuning.
+`scripts/audit-srnet-tiny-sanity.py` is a read-only post-fit check of schedules,
+numeric reload/BN accounting, all singleton predictions, independent NumPy
+examples and paired pixel differences. Numeric audit and learning goals remain
+separate; neither qualifies a detector or loads validation pixels.
+
 `scripts/audit-srnet-multipair-real.py` checks the frozen two-source fit settings,
 then calls shared complete evaluation/context diagnostics. Its prior-pilot
 comparison is descriptive, with source/batch/update confounding explicitly

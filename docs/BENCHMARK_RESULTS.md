@@ -1,5 +1,9 @@
 # Measured results, not a global accuracy score
 
+[Tiny train-only SRNet sanity](SRNET_TINY_SANITY_RESULTS.md): 50 epochs/400 updates
+complete, selected-row balanced accuracy .50; two of three learning goals fail.
+Input differences and independent numeric replay verified; not accuracy evidence.
+
 [Two-source SRNet control](SRNET_MULTIPAIR_REAL_RESULTS.md): complete four-row
 real fit/eval and independent numerical/scalar audits pass, but all six detector
 cells fail. AUC .501–.507, balanced accuracy 50–52%, FPR 40.49–72%; reduced
