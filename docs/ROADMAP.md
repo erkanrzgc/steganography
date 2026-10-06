@@ -1,5 +1,9 @@
 # Roadmap and status
 
+`SRNET_TINY_SANITY_PROTOCOL.md` freezes the next train-only control before
+selection/fitting: 24 rows, 50 epochs/400 updates, metadata-only selection and
+stored-BN singleton evaluation. In-sample learning is not accuracy qualification.
+
 The frozen two-source real control completed (`SRNET_MULTIPAIR_REAL_RESULTS.md`):
 1,580 updates, all 765 validation rows, nine independent numerical replays and
 six independent scalar-metric audits. All six detection cells fail; AUC remains
