@@ -1,0 +1,600 @@
+{
+  "schema_version": "srnet-real-pilot-evidence-v1",
+  "protocol_sha256": "60f6595d1d4d696eaa3ed88acf0f9aeaebf261f48736eec9873052a5bce58c84",
+  "protocol_commit": "ff24d10",
+  "fit_evaluation_base_commit": "8a73ffa",
+  "diagnostic_service_sha256": "50a18b313f3be94dc4d415e513860bf7fd79d7fab66cb9255ed95add0d0db8c2",
+  "audit_script_sha256": "31726433a89c29d69d90ff857402569ffc280cdef0a6a24cb90c6432abb91562",
+  "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+  "training_plan_sha256": "27634b6576a1428669d3d8c7c490544f86a59a3449c5b7e304fbbd2dac38bdda",
+  "model_card_sha256": "1e4db84ee3b905c73f04bd7de19691ef34c491af38d5d52929c870fc510dc99f",
+  "model_sha256": "b48faf464c9116fa1778d9cc411e03d154f54f3d31c2fc260cce79424b6acd51",
+  "evaluation_seconds": 78.33991313800288,
+  "fit_card": {
+    "schema_version": "srnet-fit-v1",
+    "architecture": "srnet-gray12-cpu-v1",
+    "feature_version": "jpeg-y-idct-center256-phase0-f32-v1",
+    "decoder": {
+      "jpeglib": "1.0.2",
+      "libjpeg": "6b",
+      "numpy": "2.4.6",
+      "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+      "rounding": "none",
+      "clipping": "none"
+    },
+    "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+    "train_cache_sha256": "828158342b8937844e76f8f879bb41177a32e7ebcb85eef1eef59f2e67692028",
+    "train_data_sha256": "fd27c6da9869f4bea8bf7b97edeffd8ebae519824cd23d15b029aba25ceaf392",
+    "training_scope": {
+      "recipe": "single-declared-source-v1",
+      "source_ids": [
+        "source-6a23b26e6f51f8cc"
+      ],
+      "excluded_source_ids": [
+        "source-d2a1dfbee30c5891"
+      ],
+      "rows": 618,
+      "ordered_rows_sha256": "454d8a0f2d36fb5065872bac2bd1d9376330230196e13daa00cd043063d01e1b",
+      "independence": "training exclusion only; reused development validation is not blind"
+    },
+    "source_validation": {
+      "declared_sources": 2,
+      "common_method_families": 2,
+      "origin_manifest_sha256": [
+        "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+        "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+      ],
+      "independence": "declared origins, not verified camera/perceptual independence"
+    },
+    "sampling_settings": {
+      "epochs": 1,
+      "seed": 20261012
+    },
+    "epoch_schedule": [
+      {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 0,
+        "pairs": 412,
+        "rows": 824,
+        "pairs_per_source": 412,
+        "ordered_pair_sha256": "57affc332b551ff55afe45bfeff890daf53c7f20201d2a0b5fcd29276fbe8122",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 103,
+            "sampled_pairs": 103
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 103,
+            "sampled_pairs": 103
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 103,
+            "sampled_pairs": 103
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 103,
+            "sampled_pairs": 103
+          }
+        ]
+      }
+    ],
+    "optimizer": {
+      "name": "Adamax",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "epsilon": 1e-8,
+      "foreach": false,
+      "lr_schedule": "constant",
+      "threads": 2,
+      "max_seconds": 1800,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    },
+    "validation_used": false,
+    "batch_size": 2,
+    "input_units": "unrounded float32 Y pixels; no normalization",
+    "batchnorm": "paired training; persisted running statistics for eval",
+    "training": "completed",
+    "qualification": "unavailable",
+    "accuracy_metrics": "unavailable",
+    "independent_forward_audit": "unavailable",
+    "support_status": "experimental",
+    "calibrated": false,
+    "deployed": false,
+    "training_plan_sha256": "27634b6576a1428669d3d8c7c490544f86a59a3449c5b7e304fbbd2dac38bdda",
+    "epoch_training": [
+      {
+        "epoch": 0,
+        "updates": 412,
+        "mean_pair_loss": 0.6358136689353698
+      }
+    ],
+    "model_sha256": "b48faf464c9116fa1778d9cc411e03d154f54f3d31c2fc260cce79424b6acd51",
+    "seconds": 229.29301884199958,
+    "torch_version": "2.14.0+cpu"
+  },
+  "diagnostics": {
+    "schema_version": "srnet-context-diagnostics-v1",
+    "status": "completed",
+    "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+    "predictions_sha256": "89f5c8cbbfb6319359b6eb61644457ac2dc3d5911953a8d4bd3496a78c79b775",
+    "model_card_sha256": "1e4db84ee3b905c73f04bd7de19691ef34c491af38d5d52929c870fc510dc99f",
+    "model_sha256": "b48faf464c9116fa1778d9cc411e03d154f54f3d31c2fc260cce79424b6acd51",
+    "training_plan_sha256": "27634b6576a1428669d3d8c7c490544f86a59a3449c5b7e304fbbd2dac38bdda",
+    "training_scope": {
+      "recipe": "single-declared-source-v1",
+      "source_ids": [
+        "source-6a23b26e6f51f8cc"
+      ],
+      "excluded_source_ids": [
+        "source-d2a1dfbee30c5891"
+      ],
+      "rows": 618,
+      "ordered_rows_sha256": "454d8a0f2d36fb5065872bac2bd1d9376330230196e13daa00cd043063d01e1b",
+      "independence": "training exclusion only; reused development validation is not blind"
+    },
+    "independent_forward_audit": [
+      {
+        "sha256": "f9f98944ebae898fbf032b4c0956f468919eb84fc594f4df1fd98b304b327c84",
+        "maximum_logit_difference": 0.00001313951159964688,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.432187701766452e-14,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "7a37e4437242374ae9d0ce72ae5f5832219df3f4f0bbefa7e215b43daa35a545",
+        "maximum_logit_difference": 0.000010874014883199834,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.0880185641326534e-14,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "fbb5e81e4459c10a94fe731918d8ec849ffbb521cfd30fcb2922e86c65c4344a",
+        "maximum_logit_difference": 0.000014575516237513853,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.3211653993039363e-14,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "e1b7f1d49a065729e1e402f50af48caf944d477544f162a4c85f50e0b9534c3f",
+        "maximum_logit_difference": 0.000009087845280753015,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 9.156304873488907e-12,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "e9525cdb9229a8b71cd3ecf0f7c5b77fa60202635d056883a44aeae75fcac719",
+        "maximum_logit_difference": 0.000009182237493021717,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 9.130164666571932e-12,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "ec2323ea972d47c6f22dca4fc1302d13ff1d6c804508eab5447a71a20c603bfa",
+        "maximum_logit_difference": 0.000007658251250930448,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 1.0232478268106887e-11,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "27dc50407eaefcd2e6dd24290268e9fe67d5935128a1eed7b566fda2f50431ed",
+        "maximum_logit_difference": 0.00000201541058331145,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 4.271894946247623e-13,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "dd3931ef6a31dcdc86d82044cbd90de2c178ea5a354c967c8f039257e981925e",
+        "maximum_logit_difference": 0.000002320565786639861,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 6.039684437550948e-13,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      },
+      {
+        "sha256": "0eb76f7f48d6780ac581746539a99ab8af66e1622c28e9ad8b193f3f8a6ab33e",
+        "maximum_logit_difference": 0.0000028149744402128363,
+        "absolute_tolerance": 0.0001,
+        "relative_tolerance": 0.00001,
+        "maximum_score_difference": 7.090839527219795e-13,
+        "score_tolerance": 0.000001,
+        "decisions_equal": true,
+        "passed": true
+      }
+    ],
+    "validation_rows": 765,
+    "cells": [
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 75,
+        "method": "JUNIWARD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 6,
+            "tn": 19,
+            "fp": 6,
+            "fn": 19
+          },
+          "precision": 0.5,
+          "recall": 0.24,
+          "specificity": 0.76,
+          "false_positive_rate": 0.24,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.324324,
+          "roc_auc": 0.5096,
+          "expected_calibration_error": 0.499882
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.49038,
+            0.5408799999999999
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.08,
+            0.4
+          ],
+          "false_positive_rate": [
+            0.08,
+            0.4
+          ],
+          "expected_calibration_error": [
+            0.499645,
+            0.5
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 75,
+        "method": "UERD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 6,
+            "tn": 19,
+            "fp": 6,
+            "fn": 19
+          },
+          "precision": 0.5,
+          "recall": 0.24,
+          "specificity": 0.76,
+          "false_positive_rate": 0.24,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.324324,
+          "roc_auc": 0.508,
+          "expected_calibration_error": 0.4999
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.49038,
+            0.5392600000000001
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.08,
+            0.4
+          ],
+          "false_positive_rate": [
+            0.08,
+            0.4
+          ],
+          "expected_calibration_error": [
+            0.499701,
+            0.5
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 95,
+        "method": "JUNIWARD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 6,
+            "tn": 19,
+            "fp": 6,
+            "fn": 19
+          },
+          "precision": 0.5,
+          "recall": 0.24,
+          "specificity": 0.76,
+          "false_positive_rate": 0.24,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.324324,
+          "roc_auc": 0.5048,
+          "expected_calibration_error": 0.49994
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.47914,
+            0.52962
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.08,
+            0.4
+          ],
+          "false_positive_rate": [
+            0.08,
+            0.4
+          ],
+          "expected_calibration_error": [
+            0.499821,
+            0.5
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-6a23b26e6f51f8cc",
+        "quality_factor": 95,
+        "method": "UERD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 50,
+          "positives": 25,
+          "negatives": 25,
+          "confusion": {
+            "tp": 6,
+            "tn": 19,
+            "fp": 6,
+            "fn": 19
+          },
+          "precision": 0.5,
+          "recall": 0.24,
+          "specificity": 0.76,
+          "false_positive_rate": 0.24,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.324324,
+          "roc_auc": 0.5032,
+          "expected_calibration_error": 0.499941
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.48238,
+            0.528
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.08,
+            0.4
+          ],
+          "false_positive_rate": [
+            0.08,
+            0.4
+          ],
+          "expected_calibration_error": [
+            0.499823,
+            0.5
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 25,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-d2a1dfbee30c5891",
+        "quality_factor": null,
+        "method": "JUNIWARD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 410,
+          "positives": 205,
+          "negatives": 205,
+          "confusion": {
+            "tp": 59,
+            "tn": 146,
+            "fp": 59,
+            "fn": 146
+          },
+          "precision": 0.5,
+          "recall": 0.287805,
+          "specificity": 0.712195,
+          "false_positive_rate": 0.287805,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.365325,
+          "roc_auc": 0.501927,
+          "expected_calibration_error": 0.491355
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.501222625,
+            0.5041418000000001
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.219512,
+            0.34158495000000005
+          ],
+          "false_positive_rate": [
+            0.219512,
+            0.34158495000000005
+          ],
+          "expected_calibration_error": [
+            0.48460335,
+            0.49845272500000004
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 205,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      },
+      {
+        "source_id": "source-d2a1dfbee30c5891",
+        "quality_factor": null,
+        "method": "UERD",
+        "metrics": {
+          "threshold": 0.5,
+          "samples": 410,
+          "positives": 205,
+          "negatives": 205,
+          "confusion": {
+            "tp": 59,
+            "tn": 146,
+            "fp": 59,
+            "fn": 146
+          },
+          "precision": 0.5,
+          "recall": 0.287805,
+          "specificity": 0.712195,
+          "false_positive_rate": 0.287805,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "f1": 0.365325,
+          "roc_auc": 0.502035,
+          "expected_calibration_error": 0.491413
+        },
+        "bootstrap_95_percent": {
+          "roc_auc": [
+            0.500983225,
+            0.5040468
+          ],
+          "balanced_accuracy": [
+            0.5,
+            0.5
+          ],
+          "recall": [
+            0.219512,
+            0.34158495000000005
+          ],
+          "false_positive_rate": [
+            0.219512,
+            0.34158495000000005
+          ],
+          "expected_calibration_error": [
+            0.484518725,
+            0.498429175
+          ]
+        },
+        "bootstrap_unit": "cover lineage; all derivatives retained together",
+        "independent_lineages": 205,
+        "metric_gates_passed": false,
+        "sample_size_gate": false,
+        "support_status": "experimental",
+        "qualified": false
+      }
+    ],
+    "bootstrap_replicates": 200,
+    "bootstrap_seed": 20261005,
+    "threshold": 0.5,
+    "calibrated": false,
+    "deployed": false,
+    "qualified": false,
+    "validation_independence": "reused development validation; not blind or untouched",
+    "source_independence": "declared origins; camera/device independence unavailable",
+    "onnx_replay": "unavailable"
+  },
+  "hardware": {
+    "os": "Linux",
+    "architecture": "x86_64",
+    "python": "3.11.14",
+    "vm_vcpu": 8,
+    "vm_memory_gib": 15,
+    "fit_math_threads": 2
+  },
+  "qualification": "unavailable",
+  "deployed": false,
+  "raw_data_and_model_published": false,
+  "onnx_replay": "unavailable; separate full replay remains pending",
+  "replay": {
+    "runs": 2,
+    "validation_rows_per_run": 765,
+    "predictions_identical": true,
+    "metrics_and_intervals_identical": true,
+    "independent_audits_identical": true,
+    "original_predictions_sha256": "4af65198080586a2c5fef0b77e6d53a008fe350dbd1aa90a6dd6c7b7d236947c",
+    "original_evaluation_seconds": 84.39190034399871
+  }
+}

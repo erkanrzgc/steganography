@@ -7,8 +7,9 @@ steganography research srnet-fit --config CONFIG.json --out FRESH_MODEL_DIR
 ```
 
 This implements fitting, not an independently audited forward/export path,
-paper reproduction, benchmark score or deployed detector. Verification uses
-generated fixtures; **no new real-corpus SRNet fit has been run by this slice**.
+paper reproduction, benchmark score or deployed detector. Verification initially
+used generated fixtures. The first separate frozen real pilot has now completed;
+all detector cells failed. See `SRNET_REAL_PILOT_RESULTS.md`.
 
 ## Bound input and output contract
 
@@ -31,7 +32,8 @@ Adamax, betas (.9,.999), epsilon 1e-8, foreach disabled, constant learning rate.
 Defaults lr .001, weight decay .0001, two math threads, 1,800 seconds of the
 optimizer section. Bounds: threads 1–2, seconds 1–1,800, lr 1e-6–.01,
 decay 0–.1. Plan supplies seed and 1–50 epochs; sampler caps 40,000 pairs/epoch.
-These are explicit implementation defaults, **not a frozen real experiment**.
+These implementation defaults alone are not a preregistered experiment; the
+first real pilot freezes them separately in `SRNET_REAL_PILOT_PROTOCOL.md`.
 No early stopping, best-validation checkpoint, augmentation, resume or scheduler.
 
 Direct Python fitting has cooperative checks before/after bounded two-row
@@ -68,7 +70,8 @@ weights/timeouts must fail without publishing a model, while restoring RNG and
 threads. This is engineering regression, not real detection evidence.
 
 Isolated long-job limits and independent numerical forward/export now have
-generated readiness checks in `SRNET_NUMERICAL_READINESS.md`. Next: bind actual
-model evaluation and freeze optimizer/compute/data/source controls before real fitting.
+generated readiness checks in `SRNET_NUMERICAL_READINESS.md`. Actual real NumPy
+evaluation and separately frozen pilot fitting are now documented in
+`SRNET_REAL_PILOT_RESULTS.md`; full ONNX and longer/balanced fitting remain pending.
 Untouched licensed external-source evaluation is still unavailable. All prior
 failed results stay published, and no primary analyzer or installed model changes.

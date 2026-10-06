@@ -6,20 +6,28 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- First frozen real-data SRNet pilot completed: one BOSS-only epoch, 412
+  updates, 229.29 seconds, all 765 validation rows evaluated and nine independent
+  NumPy comparisons passed. Detection failed all six cells (AUC 0.502–0.510,
+  balanced accuracy 50%, FPR 24–28.78%, ECE 0.491–0.500). Nothing deployed;
+  source/sample-size qualification and full ONNX replay remain unavailable.
+  See `SRNET_REAL_PILOT_RESULTS.md` and portable per-cell evidence.
+
 - `research srnet-evaluate` binds complete validation inference to verified
   training/cache/schedule/card/model provenance and independent NumPy gates.
-  Generated checks only; real fits, full ONNX replay and accuracy remain
-  unavailable. Evaluation deadlines are cooperative, not hard-kill isolation.
+  Real pilot results are now recorded above. Full ONNX replay/qualification
+  remain unavailable. Direct evaluation deadlines are cooperative; the pilot
+  invocation additionally uses an external hard wall timeout.
 
 - SRNet fitting CLI now uses hard-limit isolated jobs and artifact verification;
   independent NumPy forward and optional dynamic-batch ONNX have generated
   readiness checks. ONNX preflight rejects unsafe allocation/topology before
-  runtime. No trained-real-model replay or new detector accuracy evidence.
+  runtime. Real NumPy replay is recorded above; full ONNX replay remains pending.
 
 - Shared SRNet paired CPU training engine and `research srnet-fit`, bound to
   complete float-cache/plan provenance with finite learning/BN checks and
-  pickle-free model cards. Generated fitting tests only; no real-corpus fit,
-  trained-real-model forward/export evidence. Hard-limit jobs and generated
+  pickle-free model cards. Real one-epoch fitting/NumPy evidence is now recorded;
+  trained-real-model ONNX export evidence remains unavailable. Hard-limit jobs and generated
   numerical readiness are implemented as described above.
 
 - SRNet train-only paired schedule service and shared `research srnet-plan` CLI:
@@ -183,6 +191,13 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Frozen real SRNet pilot/results service: Python 3.11.14, 1,120 tests pass,
+  94.80% total coverage; new diagnostic service 67/67 statements covered.
+  Ruff, mypy (113 files), whitespace and model/data-free wheel/sdist checks
+  pass. Both complete real evaluation runs reproduce all predictions/audits/
+  metrics/intervals. All six detection cells fail; numerical success is not
+  accuracy. Python 3.12–3.14 and fresh full Docker remain unverified locally.
 
 - SRNet complete-validation service: Python 3.11.14, 1,093 tests pass,
   94.77% total coverage; evaluation/shared fit 149/149 statements covered.

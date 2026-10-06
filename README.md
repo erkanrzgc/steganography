@@ -19,6 +19,10 @@ failed, and no cross-source support gate has passed. See the
 [dataset sources/licenses](docs/DATASET_CATALOG.md). Controlled CTF recovery
 and synthetic regression scores are not overall steganalysis accuracy.
 
+The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
+balanced accuracy 50%), despite passing numerical replay. See the
+[complete pilot results](docs/SRNET_REAL_PILOT_RESULTS.md); no weights are deployed.
+
 Research models use byte-derived spatial/DCT signals, not filenames or dataset
 identity as inputs. That does not prove generalization: compression/content
 can still encode source bias. [Source/context diagnostics](docs/GENERALIZATION_PROTOCOL.md)

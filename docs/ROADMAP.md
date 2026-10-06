@@ -4,10 +4,15 @@
 exclusion engineering fit before results. It is not multi-source qualification;
 complete fitting/validation, numerical gates and honest failures are required.
 
+The frozen first real BOSS-only pilot completed (`SRNET_REAL_PILOT_RESULTS.md`):
+412 updates, complete validation and independent NumPy replay, all six detector
+cells fail. Next diagnose train-only learning/BN/input behavior and freeze a
+separate combined-source/longer-compute control; no weights are deployed.
+
 Complete-validation SRNet evaluation is implemented (`SRNET_EVALUATION.md`):
 full provenance/BN accounting, metadata-only oracle selection, no predictions
-on failed numerical gates. Next freeze real pilot fitting controls, run actual
-fits and full ONNX replay, then measure reused and independently sourced data.
+on failed numerical gates. Full ONNX replay and adequately sized independently
+sourced evaluation remain pending after the failed first real pilot.
 Hard-kill evaluation isolation remains pending; no new accuracy evidence.
 
 SRNet isolated-job and independent numerical readiness are implemented

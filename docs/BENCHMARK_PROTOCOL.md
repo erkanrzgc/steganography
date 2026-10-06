@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+The first frozen real SRNet pilot is now completed, with failed detector cells
+retained in `SRNET_REAL_PILOT_RESULTS.md`. The diagnostic service requires
+complete validation identity/context and paired cover lineages, reuses fixed
+0.5 threshold/200 lineage-bootstrap intervals and cannot qualify reused/tiny
+cells even when generated fixture point estimates are perfect.
+
 The separately frozen `SRNET_REAL_PILOT_PROTOCOL.md` binds the first real-data
 SRNet fit to unchanged cache hashes, one complete source-exclusion epoch and
 fixed optimizer/numerical gates. This is an undertraining/compute pilot, not

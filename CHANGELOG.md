@@ -2,6 +2,12 @@
 
 ## 0.6.0 (unreleased)
 
+- Complete the frozen real-data SRNet pilot: 412 paired updates, all 765
+  validation rows and nine independent numerical replays. Publish all six
+  failed detection cells and lineage intervals; no model installed/deployed.
+- Add provenance-bound context diagnostics with complete-row/paired-lineage
+  validation, finite-score and unchanged-gate guards; no threshold tuning.
+
 - Freeze the first bounded real-data SRNet engineering pilot before fitting:
   one complete BOSS-only source-exclusion epoch, unchanged validation and gates.
 

@@ -1,5 +1,12 @@
 # Architecture
 
+`research_srnet_results` verifies prediction/card/plan/cache provenance,
+complete validation identities and fixed independent numerical audit fields
+before calculating same-source/quality/method diagnostics. It reuses paired
+lineage intervals, never searches thresholds or promotes small/reused cells to
+qualified support. `scripts/audit-srnet-real-pilot.py` applies frozen pilot
+anchors and publishes aggregate evidence, without raw data or model artifacts.
+
 `research_srnet_evaluate` shares `bound_training` and `card_contract` with fit,
 verifies both complete caches/card/model/BN counts and performs complete native
 validation plus metadata-selected independent NumPy replay. CLI is a thin

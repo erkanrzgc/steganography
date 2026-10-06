@@ -76,7 +76,8 @@ near-threshold decisions fail explicitly; none are counted as benchmark passes.
 
 Model/card-to-complete-validation binding is now implemented as described in
 `SRNET_EVALUATION.md`, with failed gates withholding predictions. Run it on
-actual real-trained weights, add full ONNX validation, and freeze a realistic
-real fitting/compute/source protocol before starting the experiment. Untouched licensed
+actual real-trained weights (first pilot completed in `SRNET_REAL_PILOT_RESULTS.md`),
+add full ONNX validation and freeze each subsequent fitting/compute/source
+experiment before starting it. Untouched licensed
 external-source evaluation remains unavailable. Numeric success cannot replace
 ROC-AUC, recall, false-positive, calibration, sample-size or source gates.
