@@ -1,6 +1,10 @@
 # Architecture
 
 `scripts/audit-pixel-cnn.py` replays the explicit local research artifacts with
+an explicit architecture-bound residual domain. Two allowlisted pixel stems
+share exact learned layer shapes; fixed numeric filters prevent cross-domain
+model loading. Legacy defaults/weights remain unchanged.
+The audit replays
 independent NumPy arithmetic/metrics and ONNX CPU batches, separate from detection
 gates. Its complete first trial is published without deploying the failed model.
 

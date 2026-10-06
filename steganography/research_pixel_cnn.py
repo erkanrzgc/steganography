@@ -68,6 +68,11 @@ def settings(config):
 def train_pixels(config: dict, out: Path, *, progress=None):
     fresh(out)
     params = settings(config)
+    architecture = config.get("architecture", cnn.ARCHITECTURE)
+    try:
+        cnn.residual_contract(architecture)
+    except ValueError as exc:
+        raise ResearchManifestError("pixel CNN architecture contract mismatch") from exc
     manifest_path = Path(config["manifest"])
     manifest, digest = read_document(manifest_path)
     if digest != config["manifest_sha256"]:
@@ -101,7 +106,7 @@ def train_pixels(config: dict, out: Path, *, progress=None):
         with torch.random.fork_rng(devices=[]):
             torch.random.default_generator.manual_seed(params["seed"])
             generator = torch.Generator(device="cpu").manual_seed(params["seed"])
-            model = cnn.network()
+            model = cnn.network() if architecture == cnn.ARCHITECTURE else cnn.network(architecture)
             optimizer = torch.optim.Adam(
                 model.parameters(), lr=params["learning_rate"], weight_decay=params["weight_decay"]
             )
@@ -140,7 +145,7 @@ def train_pixels(config: dict, out: Path, *, progress=None):
     checksum = save_model(model, out / "model.npz")
     card = {
         "schema_version": "jpeg-pixel-cnn-v1",
-        "architecture": cnn.ARCHITECTURE,
+        "architecture": architecture,
         "feature_version": FEATURE_VERSION,
         "manifest_sha256": digest,
         "train_cache_sha256": config["cache_sha256"],
@@ -184,7 +189,7 @@ def predict_pixels(config: dict, out: Path):
         or card.get("schema_version") != "jpeg-pixel-cnn-v1"
         or card.get("manifest_sha256") != digest
         or digest != config["manifest_sha256"]
-        or card.get("architecture") != cnn.ARCHITECTURE
+        or card.get("architecture") not in cnn.ARCHITECTURES
         or card.get("feature_version") != FEATURE_VERSION
         or card.get("decoder") != decoder_contract()
         or card.get("calibrated") is not False
@@ -204,7 +209,9 @@ def predict_pixels(config: dict, out: Path):
         raise ResearchManifestError("pixel CNN training scope mismatch")
     if training_scope(selected_samples(manifest, "train"), source_id)[1] != scope:
         raise ResearchManifestError("pixel CNN training scope mismatch")
-    model = load_model(model_dir / "model.npz", checksum=card["model_sha256"])
+    model = load_model(
+        model_dir / "model.npz", checksum=card["model_sha256"], architecture=card["architecture"]
+    )
     import torch
 
     previous_threads = torch.get_num_threads()

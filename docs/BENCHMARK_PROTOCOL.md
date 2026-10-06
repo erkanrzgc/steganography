@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+`PIXEL_CNN_SCALE_PROTOCOL.md` freezes a residual-domain intervention, retaining
+the prior CNN failures, identical optimizer/data and both source controls.
+No untouched-source qualification or score improvement assumed from changing
+preprocessing; full numeric and paired metric replay required.
+
 First custom pixel-CNN fits are fixed in `PIXEL_CNN_TRAINING_PROTOCOL.md`:
 three source scopes, unchanged rows, all 12 source/family cells, no best-run or
 threshold selection. Training completion is not numeric/accuracy qualification.

@@ -26,7 +26,8 @@ SHAPES = {
 }
 
 
-def validate(arrays):
+def validate(arrays, *, architecture=cnn.ARCHITECTURE):
+    filters, _ = cnn.residual_contract(architecture)
     if set(arrays) != set(SHAPES) or any(
         arrays[k].shape != shape
         or arrays[k].dtype != np.dtype("<f4")
@@ -34,7 +35,7 @@ def validate(arrays):
         for k, shape in SHAPES.items()
     ):
         raise ValueError("pixel model dimensions/dtype/parameters mismatch")
-    if not np.array_equal(arrays["filters"], np.array(cnn.FILTERS, dtype="<f4")[:, None]):
+    if not np.array_equal(arrays["filters"], filters):
         raise ValueError("pixel model fixed filters changed")
 
 
@@ -42,7 +43,7 @@ def save_model(model, path: Path) -> str:
     if path.exists() or any(p.is_symlink() for p in (path, *path.parents)):
         raise FileExistsError("pixel model output exists or uses a symlink")
     arrays = {k: v.detach().cpu().numpy().astype("<f4") for k, v in model.state_dict().items()}
-    validate(arrays)
+    validate(arrays, architecture=getattr(model, "architecture", cnn.ARCHITECTURE))
     buffer = io.BytesIO()
     np.savez(buffer, **arrays)
     data = buffer.getvalue()
@@ -53,7 +54,8 @@ def save_model(model, path: Path) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def load_model(path: Path, *, checksum: str):
+def load_model(path: Path, *, checksum: str, architecture=cnn.ARCHITECTURE):
+    cnn.residual_contract(architecture)
     if (
         not path.is_file()
         or any(p.is_symlink() for p in (path, *path.parents))
@@ -93,9 +95,9 @@ def load_model(path: Path, *, checksum: str):
                     raise ValueError("pixel model array header/size mismatch")
     with np.load(io.BytesIO(data), allow_pickle=False, max_header_size=4096) as archive:
         arrays = {k: archive[k] for k in SHAPES}
-    validate(arrays)
+    validate(arrays, architecture=architecture)
     import torch
 
-    model = cnn.network()
+    model = cnn.network(architecture)
     model.load_state_dict({k: torch.from_numpy(v.copy()) for k, v in arrays.items()}, strict=True)
     return model.eval()

@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Additive architecture-bound pixel-unit residual stem for a fixed controlled
+  research follow-up; unchanged legacy default and learned layers. Numeric
+  filters reject cross-domain cards/weights. `PIXEL_CNN_SCALE_PROTOCOL.md`
+  freezes the experiment before real fitting; no detector improvement assumed.
+
 - First real pixel-CNN trial completed: three frozen fits, all 12 cells fail
   detection (AUC .502–.509, zero recall). Full-source integrity, independent
   NumPy forward/metrics and ONNX batch 1/17/64 replay pass. No deployment or
@@ -135,6 +140,11 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Residual-domain implementation freeze: Python 3.11.14, 876 tests pass,
+  94.31% total coverage; new CNN/model/training code 244/244 statements covered.
+  Ruff, mypy (99 files), diff check and fresh wheel/sdist build pass. Other
+  Python versions/full Docker remain unverified; no real new scores at freeze.
 
 - Pixel-CNN result publication: Python 3.11.14, 869 tests pass, 94.30% total
   coverage; new network/numeric model/training code 228/228 statements covered.

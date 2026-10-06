@@ -7,6 +7,8 @@ import numpy as np
 from core.jpeg_pixels import SIDE
 
 ARCHITECTURE = "jpeg-center128-residual-cnn8-v1"
+PIXEL_ARCHITECTURE = "jpeg-center128-pixel-residual-cnn8-v1"
+ARCHITECTURES = (ARCHITECTURE, PIXEL_ARCHITECTURE)
 MAX_INFERENCE_BATCH = 64
 FILTERS = (
     ((0, 0, 0), (-1, 0, 1), (0, 0, 0)),
@@ -15,8 +17,16 @@ FILTERS = (
 )
 
 
-def network():
+def residual_contract(architecture=ARCHITECTURE):
+    if not isinstance(architecture, str) or architecture not in ARCHITECTURES:
+        raise ValueError("unsupported pixel CNN architecture")
+    scale, clip = (1, 1) if architecture == ARCHITECTURE else (255, 3)
+    return np.array(FILTERS, dtype="<f4")[:, None] * scale, clip
+
+
+def network(architecture=ARCHITECTURE):
     """Torch stays optional; fixed filters, no labels/metadata as image inputs."""
+    filters, clip = residual_contract(architecture)
     try:
         import torch
     except ImportError as exc:
@@ -25,9 +35,10 @@ def network():
     class ResidualCNN(torch.nn.Module):
         def __init__(self):
             super().__init__()
+            self.architecture = architecture
             self.filters: torch.Tensor
             self.register_buffer(
-                "filters", torch.tensor(FILTERS, dtype=torch.float32, device="cpu")[:, None]
+                "filters", torch.tensor(filters, dtype=torch.float32, device="cpu")
             )
             self.layers = torch.nn.Sequential(
                 torch.nn.Conv2d(3, 8, 3, padding=1, dtype=torch.float32, device="cpu"),
@@ -45,7 +56,7 @@ def network():
 
         def residuals(self, values):
             # Valid convolution excludes crop padding artifacts from the high-pass stage.
-            return torch.clamp(torch.nn.functional.conv2d(values, self.filters), -1, 1)
+            return torch.clamp(torch.nn.functional.conv2d(values, self.filters), -clip, clip)
 
         def forward(self, values):
             return self.layers(self.residuals(values))

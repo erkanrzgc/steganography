@@ -20,6 +20,64 @@ from tests.test_pixel_research import pixel_corpus as pixel_corpus
 torch = pytest.importorskip("torch")
 
 
+def test_pixel_domain_residuals_and_same_initialization(tmp_path):
+    with torch.random.fork_rng(devices=[]):
+        torch.manual_seed(91)
+        original = cnn.network().eval()
+        torch.manual_seed(91)
+        scaled = cnn.network(cnn.PIXEL_ARCHITECTURE).eval()
+    for a, b in zip(original.parameters(), scaled.parameters(), strict=True):
+        assert torch.equal(a, b)
+    raw = np.zeros((1, 1, 128, 128), dtype="u1")
+    raw[0, 0, 64, 64] = 1
+    values = torch.from_numpy(raw.astype(np.float32) / 255)
+    residuals = scaled.residuals(values).detach().numpy()
+    assert residuals.max() == pytest.approx(1, abs=1e-6)
+    assert residuals.min() == -3
+    assert original.residuals(values).max().item() == pytest.approx(1 / 255)
+    assert sum(p.numel() for p in scaled.parameters()) == 3729
+    path = tmp_path / "scaled.npz"
+    checksum = cm.save_model(scaled, path)
+    loaded = cm.load_model(path, checksum=checksum, architecture=cnn.PIXEL_ARCHITECTURE)
+    np.testing.assert_array_equal(cnn.pixel_logits(scaled, raw), cnn.pixel_logits(loaded, raw))
+    with pytest.raises(ValueError, match="fixed filters"):
+        cm.load_model(path, checksum=checksum)
+    original_path = tmp_path / "original.npz"
+    checksum = cm.save_model(original, original_path)
+    with pytest.raises(ValueError, match="fixed filters"):
+        cm.load_model(original_path, checksum=checksum, architecture=cnn.PIXEL_ARCHITECTURE)
+
+
+@pytest.mark.parametrize("architecture", [None, [], "unknown", 1])
+def test_unknown_architecture_rejected_before_io(architecture, tmp_path):
+    with pytest.raises(ValueError, match="architecture"):
+        cnn.network(architecture)
+    with pytest.raises(ValueError, match="architecture"):
+        cm.load_model(tmp_path / "missing", checksum="0" * 64, architecture=architecture)
+    with pytest.raises(ValueError, match="architecture"):
+        pc.train_pixels({"architecture": architecture}, tmp_path / "output")
+    assert not (tmp_path / "output").exists()
+
+
+def test_scaled_train_predict_and_card_domain_binding(configs, tmp_path):
+    train, predict = configs
+    model_dir = tmp_path / "scaled"
+    card = pc.train_pixels({**train, "architecture": cnn.PIXEL_ARCHITECTURE}, model_dir)
+    assert card["architecture"] == cnn.PIXEL_ARCHITECTURE
+    config = {
+        **predict,
+        "model_dir": str(model_dir),
+        "card_sha256": sha(model_dir / "model-card.json"),
+    }
+    report = pc.predict_pixels(config, tmp_path / "prediction.json")
+    assert len(report["predictions"]) == 6 and not report["deployed"]
+    card["architecture"] = cnn.ARCHITECTURE
+    (model_dir / "model-card.json").write_text(json.dumps(card))
+    config["card_sha256"] = sha(model_dir / "model-card.json")
+    with pytest.raises(ValueError, match="fixed filters"):
+        pc.predict_pixels(config, tmp_path / "wrong-domain.json")
+
+
 @pytest.fixture
 def configs(pixel_corpus, tmp_path):
     manifest, source = pixel_corpus

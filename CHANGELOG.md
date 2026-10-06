@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add opt-in architecture-bound pixel-unit residual preprocessing for a frozen
+  controlled trial. Preserve previous CNN defaults and reject cross-domain
+  numeric weights/cards; no deployed detection change.
+
 - Publish first real pixel-CNN three-fit experiment: all 12 detection cells
   fail, zero recall and near-chance AUC. Complete independent numeric/metric
   and ONNX replay, lineage uncertainty and prior-reference regressions retained.

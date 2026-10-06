@@ -13,6 +13,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from core import jpeg_cnn as cnn  # noqa: E402
 from core.jpeg_cnn_model import SHAPES, load_model  # noqa: E402
 from steganography.research_features import read_document, selected_samples  # noqa: E402
 from steganography.research_jpeg import write_json  # noqa: E402
@@ -41,9 +42,10 @@ def conv(x, w, b=None, padding=0):
     return y if b is None else y + b[None, :, None, None]
 
 
-def numpy_logits(raw, weights):
+def numpy_logits(raw, weights, architecture=cnn.ARCHITECTURE):
+    _, clip = cnn.residual_contract(architecture)
     values = (raw.astype(np.float32) / 255).astype(np.float64)
-    values = np.clip(conv(values, weights["filters"]), -1, 1)
+    values = np.clip(conv(values, weights["filters"]), -clip, clip)
     for index in (0, 3, 6):
         values = np.maximum(
             0, conv(values, weights[f"layers.{index}.weight"], weights[f"layers.{index}.bias"], 1)
@@ -136,7 +138,20 @@ def version(package):
         return "unavailable"
 
 
-def audit(manifest_path, corpus, cache_root, experiment, reference_record, exports):
+def audit(
+    manifest_path,
+    corpus,
+    cache_root,
+    experiment,
+    reference_record,
+    exports,
+    *,
+    architecture=cnn.ARCHITECTURE,
+    protocol=None,
+    pixel_reference_record=None,
+    pixel_reference_experiment=None,
+):
+    cnn.residual_contract(architecture)
     manifest, digest = read_document(manifest_path)
     check(digest == H["MANIFEST_SHA"], "frozen corpus mismatch")
     baseline, baseline_sha = read_document(reference_record)
@@ -145,6 +160,18 @@ def audit(manifest_path, corpus, cache_root, experiment, reference_record, expor
         "reference publication mismatch",
     )
     summary, summary_sha = read_document(experiment / "fit-summary.json")
+    pixel_reference = None
+    if pixel_reference_record is not None:
+        check(pixel_reference_experiment is not None, "missing pixel reference experiment")
+        pixel_reference, pixel_reference_hash = read_document(pixel_reference_record)
+        check(
+            pixel_reference_hash
+            == "a10b916f815238e167cc9c166f1d851aea2a98b70a8c14bc6195c46f4e25b5d1",
+            "frozen pixel reference publication mismatch",
+        )
+        check(pixel_reference["manifest_sha256"] == digest, "pixel reference corpus mismatch")
+    if protocol is not None:
+        check(sha(protocol) == summary["protocol_sha256"], "frozen protocol mismatch")
     check(summary["manifest_sha256"] == digest and not summary["deployed"], "fit summary mismatch")
     training = selected_samples(manifest, "train")
     sources = training_scope(training)[1]["source_ids"]
@@ -208,6 +235,7 @@ def audit(manifest_path, corpus, cache_root, experiment, reference_record, expor
             )
             check(
                 card["manifest_sha256"] == digest
+                and card["architecture"] == architecture
                 and card["decoder"] == train_descriptor["decoder"]
                 and card["decoder"] == validation_descriptor["decoder"]
                 and pred["validation_cache_sha256"]
@@ -228,9 +256,30 @@ def audit(manifest_path, corpus, cache_root, experiment, reference_record, expor
                     all(row[k] == sample[k] for k in ("sha256", "lineage", "label", "method")),
                     "prediction identity",
                 )
-            model = load_model(directory / "model.npz", checksum=card["model_sha256"])
+            model = load_model(
+                directory / "model.npz", checksum=card["model_sha256"], architecture=architecture
+            )
             weights = {k: model.state_dict()[k].numpy().astype(np.float64) for k in SHAPES}
             saved = np.array([r["score"] for r in pred["predictions"]])
+            previous_pixel = None
+            if pixel_reference is not None:
+                previous_pixel, previous_hash = read_document(
+                    pixel_reference_experiment / name / "predictions.json"
+                )
+                check(
+                    previous_hash == pixel_reference["models"][name]["predictions_sha256"],
+                    "pixel reference predictions mismatch",
+                )
+                check(
+                    len(previous_pixel["predictions"]) == len(validation)
+                    and all(
+                        all(a[k] == b[k] for k in ("sha256", "lineage", "label", "method"))
+                        for a, b in zip(
+                            previous_pixel["predictions"], pred["predictions"], strict=True
+                        )
+                    ),
+                    "pixel reference identities mismatch",
+                )
             native, numpy_scores = [], []
             from core.jpeg_cnn import pixel_logits
 
@@ -242,7 +291,9 @@ def audit(manifest_path, corpus, cache_root, experiment, reference_record, expor
                     .ravel()
                     .tolist()
                 )
-                numpy_scores.extend(probability(numpy_logits(raw, weights)).ravel().tolist())
+                numpy_scores.extend(
+                    probability(numpy_logits(raw, weights, architecture)).ravel().tolist()
+                )
             numeric = {
                 "native_reload": comparison(np.array(native), saved),
                 "numpy_forward": comparison(np.array(numpy_scores), saved),
@@ -305,16 +356,28 @@ def audit(manifest_path, corpus, cache_root, experiment, reference_record, expor
                             ],
                         }
                     )
+                    if previous_pixel is not None:
+                        pixel_before = [previous_pixel["predictions"][i] for i in ids]
+                        cells[-1]["previous_pixel_reference"] = cell_metrics(
+                            pixel_before, threshold=0.5, score_scale=1
+                        )
+                        cells[-1]["paired_delta_vs_previous_pixel_95_percent"] = H["paired_deltas"](
+                            pixel_before, after
+                        )
     finally:
         torch.set_num_threads(previous_threads)
     return {
         "schema_version": "pixel-cnn-development-v1",
         "date": "2026-10-06",
+        "architecture": architecture,
         "manifest_sha256": digest,
         "protocol_sha256": summary["protocol_sha256"],
         "preregistered_implementation_protocol_commit": summary["implementation_protocol_commit"],
         "reference_record_sha256": baseline_sha,
         "reference_predictions_sha256": old_hash,
+        "previous_pixel_reference_sha256": (
+            sha(pixel_reference_record) if pixel_reference_record is not None else None
+        ),
         "execution": summary,
         "models": models,
         "comparison_cells": cells,
@@ -348,6 +411,10 @@ def main():
         "out",
     ):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--architecture", choices=cnn.ARCHITECTURES, default=cnn.ARCHITECTURE)
+    parser.add_argument("--protocol", type=Path)
+    parser.add_argument("--pixel-reference-record", type=Path)
+    parser.add_argument("--pixel-reference-experiment", type=Path)
     args = parser.parse_args()
     write_json(
         args.out,
@@ -358,6 +425,10 @@ def main():
             args.experiment,
             args.reference_record,
             args.exports,
+            architecture=args.architecture,
+            protocol=args.protocol,
+            pixel_reference_record=args.pixel_reference_record,
+            pixel_reference_experiment=args.pixel_reference_experiment,
         ),
     )
     print("Complete: every fit/row/cell audited; numeric and detection gates remain separate.")

@@ -9,17 +9,23 @@ import pytest
 AUDIT = runpy.run_path(str(Path(__file__).resolve().parents[1] / "scripts/audit-pixel-cnn.py"))
 
 
-def test_numpy_forward_matches_native():
+@pytest.mark.parametrize("scaled", [False, True])
+def test_numpy_forward_matches_native(scaled):
     torch = pytest.importorskip("torch")
-    from core.jpeg_cnn import network, pixel_logits
+    from core.jpeg_cnn import ARCHITECTURE, PIXEL_ARCHITECTURE, network, pixel_logits
+
+    architecture = PIXEL_ARCHITECTURE if scaled else ARCHITECTURE
 
     with torch.random.fork_rng(devices=[]):
         torch.random.default_generator.manual_seed(71)
-        model = network().eval()
+        model = network(architecture).eval()
     raw = np.random.default_rng(71).integers(0, 256, (2, 1, 128, 128), dtype=np.uint8)
     weights = {k: v.numpy().astype(np.float64) for k, v in model.state_dict().items()}
     np.testing.assert_allclose(
-        AUDIT["numpy_logits"](raw, weights), pixel_logits(model, raw), atol=1e-6, rtol=0
+        AUDIT["numpy_logits"](raw, weights, architecture),
+        pixel_logits(model, raw),
+        atol=1e-6,
+        rtol=0,
     )
 
 
