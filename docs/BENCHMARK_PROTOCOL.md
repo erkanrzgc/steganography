@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+The separately frozen `SRNET_REAL_PILOT_PROTOCOL.md` binds the first real-data
+SRNet fit to unchanged cache hashes, one complete source-exclusion epoch and
+fixed optimizer/numerical gates. This is an undertraining/compute pilot, not
+untouched source or sufficiently sized accuracy qualification.
+
 `SRNET_EVALUATION.md` defines complete-validation provenance and numerical
 eligibility. Metadata-only first-row oracle selection precedes scores; failed
 gates expose no predictions. Successful generated replay is not accuracy.

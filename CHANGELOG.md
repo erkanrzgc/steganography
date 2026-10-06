@@ -2,6 +2,9 @@
 
 ## 0.6.0 (unreleased)
 
+- Freeze the first bounded real-data SRNet engineering pilot before fitting:
+  one complete BOSS-only source-exclusion epoch, unchanged validation and gates.
+
 - Add SRNet complete-validation replay bound to train/validation caches,
   fit plan/card/model and BN accounting. Failed independent numerical gates
   retain evidence but publish no predictions; no accuracy/deployment claim.

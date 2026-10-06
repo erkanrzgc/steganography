@@ -1,5 +1,9 @@
 # Roadmap and status
 
+`SRNET_REAL_PILOT_PROTOCOL.md` freezes a bounded one-epoch BOSS-only source
+exclusion engineering fit before results. It is not multi-source qualification;
+complete fitting/validation, numerical gates and honest failures are required.
+
 Complete-validation SRNet evaluation is implemented (`SRNET_EVALUATION.md`):
 full provenance/BN accounting, metadata-only oracle selection, no predictions
 on failed numerical gates. Next freeze real pilot fitting controls, run actual
