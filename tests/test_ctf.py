@@ -575,7 +575,10 @@ def test_guided_ctf_tui_runs_and_validates_output(tmp_path: Path):
             screen.start()
             for _index in range(100):
                 await pilot.pause(0.02)
-                if (output / "report.json").is_file():
+                # The worker writes the report before its queued UI update runs.
+                if (output / "report.json").is_file() and "base64" in str(
+                    screen.query_one("#ctf-result").render()
+                ):
                     break
             assert json.loads((output / "report.json").read_text())["status"] == "completed"
             assert "base64" in str(screen.query_one("#ctf-result").render())
