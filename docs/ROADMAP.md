@@ -1,5 +1,9 @@
 # Roadmap and status
 
+`SRNET_TRAIN_DIAGNOSTIC_PROTOCOL.md` freezes a train-only paired BN contrast
+following the failed pilot. No model mutation, validation tuning or qualification;
+then preregister a separate balanced learning experiment based on diagnosis.
+
 `SRNET_REAL_PILOT_PROTOCOL.md` freezes a bounded one-epoch BOSS-only source
 exclusion engineering fit before results. It is not multi-source qualification;
 complete fitting/validation, numerical gates and honest failures are required.
