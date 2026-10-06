@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add SRNet complete-validation replay bound to train/validation caches,
+  fit plan/card/model and BN accounting. Failed independent numerical gates
+  retain evidence but publish no predictions; no accuracy/deployment claim.
+
 - Isolate explicit SRNet fitting under hard wall/CPU/memory/file limits and
   verify complete artifacts. Add independent NumPy math and optional bounded
   ONNX export/replay with allocation preflight; generated checks, no accuracy claim.

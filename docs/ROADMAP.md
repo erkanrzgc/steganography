@@ -1,10 +1,16 @@
 # Roadmap and status
 
+Complete-validation SRNet evaluation is implemented (`SRNET_EVALUATION.md`):
+full provenance/BN accounting, metadata-only oracle selection, no predictions
+on failed numerical gates. Next freeze real pilot fitting controls, run actual
+fits and full ONNX replay, then measure reused and independently sourced data.
+Hard-kill evaluation isolation remains pending; no new accuracy evidence.
+
 SRNet isolated-job and independent numerical readiness are implemented
 (`SRNET_NUMERICAL_READINESS.md`): hard CPU/wall/memory/file bounds, complete
 artifact verification, separate NumPy math and optional dynamic-batch ONNX
-with allocation preflight. Generated checks only; next bind actual evaluation
-and freeze real compute/data/source fitting controls. No new accuracy score.
+with allocation preflight. Generated checks only; real compute/data/source
+fitting controls and actual trained-model replay remain pending.
 
 SRNet paired CPU fitting and provenance cards are implemented and generated-test
 verified (`SRNET_TRAINING_ENGINE.md`). Exact shared plan reconstruction, finite

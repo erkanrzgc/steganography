@@ -1,5 +1,11 @@
 # Architecture
 
+`research_srnet_evaluate` shares `bound_training` and `card_contract` with fit,
+verifies both complete caches/card/model/BN counts and performs complete native
+validation plus metadata-selected independent NumPy replay. CLI is a thin
+adapter; numerical failures retain audits without usable predictions. These
+research outputs do not affect primary analyzers, calibration or deployment.
+
 `research_srnet_job` executes fitting in a fixed hard-limit child, checks config
 identity, bounded stdout and complete numeric model/card hashes. `run_fit`/CLI
 use it; direct fitting retains cooperative checks. Missing limits are unavailable.

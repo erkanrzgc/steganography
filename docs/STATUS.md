@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- `research srnet-evaluate` binds complete validation inference to verified
+  training/cache/schedule/card/model provenance and independent NumPy gates.
+  Generated checks only; real fits, full ONNX replay and accuracy remain
+  unavailable. Evaluation deadlines are cooperative, not hard-kill isolation.
+
 - SRNet fitting CLI now uses hard-limit isolated jobs and artifact verification;
   independent NumPy forward and optional dynamic-batch ONNX have generated
   readiness checks. ONNX preflight rejects unsafe allocation/topology before
@@ -178,6 +183,13 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- SRNet complete-validation service: Python 3.11.14, 1,093 tests pass,
+  94.77% total coverage; evaluation/shared fit 149/149 statements covered.
+  Ruff, mypy (112 files), whitespace and model/data-free wheel/sdist checks
+  pass. Generated actual paired-fit/native/NumPy integration and distinct-row
+  ordering are verified; no real-corpus fit/accuracy qualification. Python
+  3.12–3.14, full Docker and hard-kill evaluation isolation remain unverified.
 
 - SRNet isolated-job/numerical readiness: Python 3.11.14, 1,068 tests pass,
   94.72% total coverage; new runner/reference/ONNX/preflight 241/242 statements

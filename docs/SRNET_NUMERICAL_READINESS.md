@@ -74,8 +74,9 @@ Python 3.12–3.14 and fresh full Docker remain unverified. Optional dependency
 absence, corrupt/oversized responses, unsafe graph allocations and changed
 near-threshold decisions fail explicitly; none are counted as benchmark passes.
 
-Bind a trained model/card to evaluation, run these checks on actual trained
-weights and all declared validation rows, and freeze a realistic real fitting/
-compute/source protocol before starting the experiment. Untouched licensed
+Model/card-to-complete-validation binding is now implemented as described in
+`SRNET_EVALUATION.md`, with failed gates withholding predictions. Run it on
+actual real-trained weights, add full ONNX validation, and freeze a realistic
+real fitting/compute/source protocol before starting the experiment. Untouched licensed
 external-source evaluation remains unavailable. Numeric success cannot replace
 ROC-AUC, recall, false-positive, calibration, sample-size or source gates.

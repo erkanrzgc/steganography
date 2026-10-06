@@ -37,6 +37,29 @@ def train_srnet(config: dict, out: Path):
         raise FileExistsError("SRNet fit output exists or uses a symlink")
     params = configuration(config)
     started = time.monotonic()
+    values, samples, descriptor, plan, checked, indices = bound_training(config)
+    model, records = srnet_training.fit(
+        values, samples, indices, seed=checked["seed"], schedule=plan["epochs"], config=params
+    )
+    out.mkdir(parents=True, exist_ok=False)
+    checksum = srnet_model.save_model(model, out / "model.npz")
+    card = {
+        **card_contract(plan, checked, params),
+        "training_plan_sha256": config["plan_sha256"],
+        "epoch_training": records,
+        "model_sha256": checksum,
+        "seconds": time.monotonic() - started,
+    }
+    import torch
+
+    card["torch_version"] = str(torch.__version__)
+    write_json(out / "model-card.json", card)
+    return card
+
+
+def bound_training(config):
+    """Reconstruct complete cache/scope/schedule bindings for fit and evaluation."""
+    configuration(config)
     manifest_path = Path(config["manifest"])
     manifest, digest = read_document(manifest_path)
     plan, plan_sha = read_document(Path(config["plan"]))
@@ -76,21 +99,20 @@ def train_srnet(config: dict, out: Path):
     if plan != expected:
         raise ResearchManifestError("SRNet fit bound schedule/provenance mismatch")
     indices, _ = training_scope(samples, source_id)
-    model, records = srnet_training.fit(
-        values, samples, indices, seed=checked["seed"], schedule=plan["epochs"], config=params
-    )
-    out.mkdir(parents=True, exist_ok=False)
-    checksum = srnet_model.save_model(model, out / "model.npz")
-    card = {
+    return values, samples, descriptor, plan, checked, indices
+
+
+def card_contract(plan, checked, params):
+    """Static fit-card fields; shared verification must not trust edited claims."""
+    return {
         "schema_version": "srnet-fit-v1",
         "architecture": plan["architecture"],
         "feature_version": plan["feature_version"],
         "decoder": plan["decoder"],
-        "manifest_sha256": digest,
-        "train_cache_sha256": config["cache_sha256"],
-        "train_data_sha256": descriptor["data_sha256"],
-        "training_plan_sha256": plan_sha,
-        "training_scope": scope,
+        "manifest_sha256": plan["manifest_sha256"],
+        "train_cache_sha256": plan["train_cache_sha256"],
+        "train_data_sha256": plan["train_data_sha256"],
+        "training_scope": plan["training_scope"],
         "source_validation": plan["source_validation"],
         "sampling_settings": checked,
         "epoch_schedule": plan["epochs"],
@@ -102,9 +124,6 @@ def train_srnet(config: dict, out: Path):
             "lr_schedule": "constant",
             **params,
         },
-        "epoch_training": records,
-        "model_sha256": checksum,
-        "seconds": time.monotonic() - started,
         "validation_used": False,
         "batch_size": 2,
         "input_units": "unrounded float32 Y pixels; no normalization",
@@ -117,11 +136,6 @@ def train_srnet(config: dict, out: Path):
         "calibrated": False,
         "deployed": False,
     }
-    import torch
-
-    card["torch_version"] = str(torch.__version__)
-    write_json(out / "model-card.json", card)
-    return card
 
 
 def run_fit(config_path: Path, out: Path):

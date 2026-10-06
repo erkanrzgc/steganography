@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+`SRNET_EVALUATION.md` defines complete-validation provenance and numerical
+eligibility. Metadata-only first-row oracle selection precedes scores; failed
+gates expose no predictions. Successful generated replay is not accuracy.
+Reused validation, ONNX absence and cooperative-only evaluation limits remain
+explicit; independent-source/calibration/sample-size gates are still required.
+
 `SRNET_NUMERICAL_READINESS.md` fixes a distinct SRNet logit comparison contract
 before real-model replay. Generated NumPy/ONNX agreement and job limits are
 engineering gates only; do not substitute them for accuracy or source gates.
