@@ -1,5 +1,10 @@
 # Roadmap and status
 
+`SRNET_MULTIPAIR_PROTOCOL.md` freezes the opt-in two-source/four-row control
+before real accounting/fitting. Legacy v1 behavior remains unchanged; a new
+plan/card v2 binds exact grouping and BN optimizer-update counts. No real
+multi-pair fit or improved detector score is implied by plan verification.
+
 The train-only diagnostic completed (`SRNET_TRAIN_DIAGNOSTIC_RESULTS.md`):
 normalization-mode sensitivity and in-sample train/eval mismatch confirmed,
 without model changes or validation loading. Next freeze a combined-source,
