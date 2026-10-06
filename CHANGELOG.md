@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Add separate opt-in SRNet-style architectural preparation and explicit
+  resource-limited synthetic readiness command; enforce all-stage eval BN and
+  bounded uint8 inference. No real training, installed model or accuracy claim.
+
 - Publish controlled residual-domain trial: three fixed fresh fits, all twelve
   detection cells fail again. Independent numeric/ONNX replay and paired
   comparisons against both previous CNN and JRM pass; no detector deployment.

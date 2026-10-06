@@ -588,6 +588,14 @@ def cmd_research_pixel_cnn(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_research_srnet(args: argparse.Namespace) -> int:
+    from steganography.research_srnet import run_preflight
+
+    report = run_preflight(Path(args.out))
+    print(json.dumps(report, indent=2))
+    return 0 if report["status"] == "completed" else 2
+
+
 def cmd_research_jrm(args: argparse.Namespace) -> int:
     from steganography.research_jrm import run_reference
 
@@ -920,6 +928,9 @@ def build_parser() -> argparse.ArgumentParser:
     research_pixel_cnn.add_argument("--config", required=True)
     research_pixel_cnn.add_argument("--out", required=True)
     research_pixel_cnn.set_defaults(fn=cmd_research_pixel_cnn)
+    research_srnet = research_commands.add_parser("srnet-preflight")
+    research_srnet.add_argument("--out", required=True)
+    research_srnet.set_defaults(fn=cmd_research_srnet)
     research_jrm = research_commands.add_parser("jrm-reference")
     research_jrm.add_argument("--config", required=True)
     research_jrm.add_argument("--out", required=True)

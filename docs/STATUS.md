@@ -6,6 +6,12 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Separate optional 4.78M-parameter SRNet-style structural block and explicit
+  `research srnet-preflight` fixed resource-limited worker. Finite gradient/
+  parameter-update and singleton/batch eval readiness, nested BN eval guards.
+  No real fit, saved model or accuracy improvement; `SRNET_PREPARATION.md`
+  records uint8/crop/paper differences and remaining preparation gates.
+
 - Completed controlled residual-domain trial: three fixed fresh fits, all
   twelve cells still fail, AUC .495–.509, zero recall. Source/crop/optimizer
   controls and all previous failures retained; native/NumPy/ONNX replay passes.
@@ -145,6 +151,13 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- SRNet-style preparation: Python 3.11.14, 907 tests pass, 94.38% total
+  coverage; new architecture/readiness code 132/133 statements covered.
+  Ruff, mypy (101 files), diff check and model-free wheel/sdist inspection pass.
+  Real fixed-worker generated readiness passes; not a trained detector or
+  accuracy test. Old CTF Pilot race fixed by waiting for the queued UI result.
+  Python 3.12–3.14/fresh full Docker remain unverified.
 
 - Residual-domain results: Python 3.11.14, 877 tests pass, 94.31% total coverage;
   CNN/model/training code 244/244 statements covered. Ruff, mypy (99 files),

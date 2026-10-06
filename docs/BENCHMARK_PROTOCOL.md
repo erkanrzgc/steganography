@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+`SRNET_PREPARATION.md` describes structural/synthetic readiness only. Never
+count its finite-gradient or batch-consistency check as real accuracy. Proper
+JPEG decoding, persistence/parity, frozen real training and untouched-source
+qualification are separate pending gates; existing failed results retained.
+
 `PIXEL_CNN_SCALE_PROTOCOL.md` freezes a residual-domain intervention, retaining
 the prior CNN failures, identical optimizer/data and both source controls.
 No untouched-source qualification or score improvement assumed from changing

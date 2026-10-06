@@ -1,5 +1,11 @@
 # Architecture
 
+`core/srnet.py` is a separate optional SRNet-style structural research block,
+not an extension of the tiny CNN's nine-array model contract. All-stage eval
+is mandatory for bounded inference to prohibit batch-dependent BN predictions.
+`research_srnet` runs explicit generated readiness in a resource-limited fixed
+worker; no datasets, weights, model installation or detector changes.
+
 `scripts/audit-pixel-cnn.py` replays the explicit local research artifacts with
 an explicit architecture-bound residual domain. Two allowlisted pixel stems
 share exact learned layer shapes; fixed numeric filters prevent cross-domain

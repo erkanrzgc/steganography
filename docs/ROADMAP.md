@@ -1,5 +1,12 @@
 # Roadmap and status
 
+SRNet-style structural preparation (`SRNET_PREPARATION.md`) replaces tiny-model
+tweaks as the next research direction. Explicit resource-limited readiness,
+learned front convolutions, no early pooling and eval-only BN implemented.
+Next: proper unrounded/256 JPEG preprocessing, BN-safe numeric persistence,
+independent parity and a frozen real-training protocol; no actual trained model
+or untouched-source qualification yet. Prior failures remain unchanged.
+
 `PIXEL_CNN_SCALE_PROTOCOL.md` freezes a controlled residual-domain follow-up:
 same tiny network/data/optimizer, fixed pixel-unit residuals and clipping, both
 source controls. Completed `PIXEL_CNN_SCALE_RESULTS.md`: all cells fail again;

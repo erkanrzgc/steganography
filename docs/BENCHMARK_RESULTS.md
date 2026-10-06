@@ -1,5 +1,9 @@
 # Measured results, not a global accuracy score
 
+[SRNet-style preparation](SRNET_PREPARATION.md): generated gradient/update and
+singleton/batch readiness completed; no real fit or accuracy metrics. All
+prior failed detectors remain unchanged; do not compare smoke to detection AUC.
+
 [Residual-domain intervention](PIXEL_CNN_SCALE_RESULTS.md): three fixed fits,
 12/12 detection cells fail again (AUC .495–.509, zero recall), despite complete
 numeric/ONNX replay. All same-fit first-CNN and JRM comparisons retained.

@@ -1,5 +1,9 @@
 # Preparing the next detector experiment
 
+SRNet-style preparation does not acquire new data. Existing Pillow uint8/128
+caches cannot be described as the paper's unrounded JPEG/256 preprocessing;
+version the future decoder contract and preserve all originals/lineages.
+
 `PIXEL_CNN_SCALE_RESULTS.md` retains another failed three-fit trial on unchanged
 data, with source and prior-CNN controls. No untouched external-source data
 were acquired or qualified; small architecture changes do not close that gap.
