@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Complete 30 real SRNet schedule accounting checks across all-source and both
+  source exclusions; retain exact oversampling counts/order hashes, exclude all
+  validation rows. Fix audit entrypoint to use checkout modules, not stale wheels.
+
 - Add checksum-bound SRNet training-plan preparation with deterministic matched
   pairs, hierarchical source/quality/method balance, bounded oversampling and
   per-epoch provenance. Reject non-train/incomplete rows; no real fit implied.

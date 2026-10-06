@@ -6,15 +6,18 @@ import argparse
 import hashlib
 import json
 import math
+import sys
 from collections import Counter
 from pathlib import Path
 
 import numpy as np
 
-from core.srnet_sampling import epoch_pairs
-from steganography.research_features import read_document, selected_samples
-from steganography.research_jpeg import write_json
-from steganography.research_srnet_plan import plan_training
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from core.srnet_sampling import epoch_pairs  # noqa: E402
+from steganography.research_features import read_document, selected_samples  # noqa: E402
+from steganography.research_jpeg import write_json  # noqa: E402
+from steganography.research_srnet_plan import plan_training  # noqa: E402
 
 MANIFEST_SHA = "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14"
 

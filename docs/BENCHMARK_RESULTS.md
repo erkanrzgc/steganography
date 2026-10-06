@@ -1,5 +1,9 @@
 # Measured results, not a global accuracy score
 
+[SRNet paired-schedule audit](SRNET_SAMPLING_RESULTS.md): all 30 real scope/epoch
+checks pass, complete train-pair coverage, 765 validation hashes excluded.
+Not real fitting, forward/export parity or detection accuracy evidence.
+
 [Unrounded JPEG preparation](JPEG_FLOAT256_RESULTS.md): all 3,750 original hashes
 and 18 fixed independent mathematical crop examples verified; not real SRNet
 training, native-parser proof or accuracy qualification.

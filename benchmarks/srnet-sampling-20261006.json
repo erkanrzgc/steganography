@@ -1,0 +1,1320 @@
+{
+  "schema_version": "srnet-sampling-audit-v1",
+  "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+  "protocol_sha256": "a8405a5eb91d0701a67c9eae452741398901d2f09ab6d851e23fb8df0804795b",
+  "train_rows": 2985,
+  "validation_rows_excluded": 765,
+  "scopes": [
+    {
+      "plan_sha256": "b602a4befd670f7c0623c2e4779ef67b3a1799c33252892da96994884a795292",
+      "passed": true,
+      "plan": {
+        "schema_version": "srnet-training-plan-v1",
+        "architecture": "srnet-gray12-cpu-v1",
+        "feature_version": "jpeg-y-idct-center256-phase0-f32-v1",
+        "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+        "train_cache_sha256": "828158342b8937844e76f8f879bb41177a32e7ebcb85eef1eef59f2e67692028",
+        "train_data_sha256": "fd27c6da9869f4bea8bf7b97edeffd8ebae519824cd23d15b029aba25ceaf392",
+        "decoder": {
+          "jpeglib": "1.0.2",
+          "libjpeg": "6b",
+          "numpy": "2.4.6",
+          "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+          "rounding": "none",
+          "clipping": "none"
+        },
+        "training_scope": {
+          "recipe": "all-declared-sources-v1",
+          "source_ids": [
+            "source-6a23b26e6f51f8cc",
+            "source-d2a1dfbee30c5891"
+          ],
+          "excluded_source_ids": [],
+          "rows": 2985,
+          "ordered_rows_sha256": "a35e7b04162b4b0b1db62dfed482beffd330581ae45b45ec67280cd42c7000d2",
+          "independence": "training exclusion only; reused development validation is not blind"
+        },
+        "source_validation": {
+          "declared_sources": 2,
+          "common_method_families": 2,
+          "origin_manifest_sha256": [
+            "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+            "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+          ],
+          "independence": "declared origins, not verified camera/perceptual independence"
+        },
+        "settings": {
+          "epochs": 10,
+          "seed": 20261012
+        },
+        "epochs": [
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 0,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "7c6c5c86c5696d274a06778db5f5f2f1b22d75c02f8465987b7a8b9aa77141b6",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 1,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "d887d1266b5cac28483fa679f1964f049c96d08f6d1e01de10e8957c6a40dc22",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 2,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "d62580ab9f71bf366cd8ca081434f519f36c5dd2991e9e13f72ba30a1850d10c",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 3,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "6dbf2f325398ab65e60004ad929a889d9fc6db1068cd1fcb314d5e035206ca31",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 4,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "ed6644d974e5744e045be993bd4d76f793afee6a3c5635e08fff91f014fb5ef2",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 5,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "fb1a6443ac3b4e9cca8f0c7b30f9b2d49485ce5dabb6b3b2740021b060b350c5",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 6,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "96a16cf05dfe93da8c28e3f17bafb02134260970af527a8e651d6e90f000dac7",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 7,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "8543362cf55432b52b032324e4e5747fca54f9ca73a7cc21ed71bffe18008cef",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 8,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "cc15ad82860732b811e29ebe2a7ef6f41f22759f545d45b4b4de047b63a2794a",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 9,
+            "pairs": 3160,
+            "rows": 6320,
+            "pairs_per_source": 1580,
+            "ordered_pair_sha256": "f9eb68b9c13da177ac1040ea281b48e460871b309f0530c3e4802706c2cca727",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 395
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 790
+              }
+            ]
+          }
+        ],
+        "batch_contract": "one matched cover/stego pair; labels [0,1]; float32 pixel units",
+        "balancing": "equal sources, equal quality/method cells within each source",
+        "unknown_quality": "separate declared-unknown cell; never estimated from labels",
+        "validation_used": false,
+        "real_training": "unavailable",
+        "accuracy_metrics": "unavailable",
+        "support_status": "experimental",
+        "deployed": false
+      }
+    },
+    {
+      "plan_sha256": "f72e3511d22b4632397d9a4bc9483e36b6dbca30c41bf6f20af831aa2d79e9a6",
+      "passed": true,
+      "plan": {
+        "schema_version": "srnet-training-plan-v1",
+        "architecture": "srnet-gray12-cpu-v1",
+        "feature_version": "jpeg-y-idct-center256-phase0-f32-v1",
+        "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+        "train_cache_sha256": "828158342b8937844e76f8f879bb41177a32e7ebcb85eef1eef59f2e67692028",
+        "train_data_sha256": "fd27c6da9869f4bea8bf7b97edeffd8ebae519824cd23d15b029aba25ceaf392",
+        "decoder": {
+          "jpeglib": "1.0.2",
+          "libjpeg": "6b",
+          "numpy": "2.4.6",
+          "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+          "rounding": "none",
+          "clipping": "none"
+        },
+        "training_scope": {
+          "recipe": "single-declared-source-v1",
+          "source_ids": [
+            "source-d2a1dfbee30c5891"
+          ],
+          "excluded_source_ids": [
+            "source-6a23b26e6f51f8cc"
+          ],
+          "rows": 2367,
+          "ordered_rows_sha256": "761afc865cce6534455ce751afca65e1c4d8bb80e6d02bb2ce429418fbb2b03d",
+          "independence": "training exclusion only; reused development validation is not blind"
+        },
+        "source_validation": {
+          "declared_sources": 2,
+          "common_method_families": 2,
+          "origin_manifest_sha256": [
+            "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+            "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+          ],
+          "independence": "declared origins, not verified camera/perceptual independence"
+        },
+        "settings": {
+          "epochs": 10,
+          "seed": 20261012
+        },
+        "epochs": [
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 0,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "c574325b7a4049727704a131eb50b9955051f0ac8f990e1411770ed39b29efae",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 1,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "a8c1f8e8bd961d6df1cf3da81816909da7261ef834976ec99c15679c779fb796",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 2,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "c8fbd4a084b76bef99d059b226222b0bf4c73554e475898821dd1bf91d665b3f",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 3,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "09ae51ab7a30c943cbeb3e897935f43e4111a81235ff81e7856a44fef107600a",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 4,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "727f89feb35a3f2ffc62dd559f9742fb43f86f21cca701d026a008b77f9b39db",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 5,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "7402091a115a8e8cd0387760c389ffae6eec572fb542edd55d8aebfca023f05e",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 6,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "6605f60aa4c34efc3a0ef3c6a9e43b8ea0241e9ae709a6c0bf52d3469c7156e1",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 7,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "18deba2e2ac29f8fd81b3fd39f34b93a910398b34219c3db4dda1e617425e0dd",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 8,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "b27a1b69381a908fa555ae8738f5e1538967e74b22e7e3e04f9c5292e176ab12",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 9,
+            "pairs": 1578,
+            "rows": 3156,
+            "pairs_per_source": 1578,
+            "ordered_pair_sha256": "ec19660c98b86d9786ee4659f1c44bdcbc9cdba7ea98fc4a26fdfb51cef7254d",
+            "cells": [
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "JUNIWARD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              },
+              {
+                "source_id": "source-d2a1dfbee30c5891",
+                "quality_factor": null,
+                "method": "UERD",
+                "original_pairs": 789,
+                "sampled_pairs": 789
+              }
+            ]
+          }
+        ],
+        "batch_contract": "one matched cover/stego pair; labels [0,1]; float32 pixel units",
+        "balancing": "equal sources, equal quality/method cells within each source",
+        "unknown_quality": "separate declared-unknown cell; never estimated from labels",
+        "validation_used": false,
+        "real_training": "unavailable",
+        "accuracy_metrics": "unavailable",
+        "support_status": "experimental",
+        "deployed": false
+      }
+    },
+    {
+      "plan_sha256": "1a7019a9715d8e1d3f1a980963afde7b39b12d32c963f3633e36a6aa0ce15734",
+      "passed": true,
+      "plan": {
+        "schema_version": "srnet-training-plan-v1",
+        "architecture": "srnet-gray12-cpu-v1",
+        "feature_version": "jpeg-y-idct-center256-phase0-f32-v1",
+        "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+        "train_cache_sha256": "828158342b8937844e76f8f879bb41177a32e7ebcb85eef1eef59f2e67692028",
+        "train_data_sha256": "fd27c6da9869f4bea8bf7b97edeffd8ebae519824cd23d15b029aba25ceaf392",
+        "decoder": {
+          "jpeglib": "1.0.2",
+          "libjpeg": "6b",
+          "numpy": "2.4.6",
+          "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+          "rounding": "none",
+          "clipping": "none"
+        },
+        "training_scope": {
+          "recipe": "single-declared-source-v1",
+          "source_ids": [
+            "source-6a23b26e6f51f8cc"
+          ],
+          "excluded_source_ids": [
+            "source-d2a1dfbee30c5891"
+          ],
+          "rows": 618,
+          "ordered_rows_sha256": "454d8a0f2d36fb5065872bac2bd1d9376330230196e13daa00cd043063d01e1b",
+          "independence": "training exclusion only; reused development validation is not blind"
+        },
+        "source_validation": {
+          "declared_sources": 2,
+          "common_method_families": 2,
+          "origin_manifest_sha256": [
+            "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288",
+            "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57"
+          ],
+          "independence": "declared origins, not verified camera/perceptual independence"
+        },
+        "settings": {
+          "epochs": 10,
+          "seed": 20261012
+        },
+        "epochs": [
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 0,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "57affc332b551ff55afe45bfeff890daf53c7f20201d2a0b5fcd29276fbe8122",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 1,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "bb96aca7060da289fd7759130e96453957f516f7383f675941697040f9c94108",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 2,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "a4dac5721b4411f02a8691e1a5128e83070c7f3e7b5d38707fa1b6b692d39d60",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 3,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "7d1d613e0c72672cf216c3125bd85c8a2a305593644862a032d7fde439f074f5",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 4,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "043b73eaf7bdbca61e48ca50d16842f74f9f551ca6720cd5175a36a3e08273c0",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 5,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "25f5527d6c1e8b00d242a5fb4a0b6c5a9fe2dea488016903f64502252ab34afd",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 6,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "2dc64edd23130d5d42b7be80c76534b18627c16ab120a3210f9d78ec0cd434d1",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 7,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "e89bfc2b24bebf4fa1200e0b52eeba36d62eea20e8591c5f91d040ab53a7d198",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 8,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "6411eb53dc4a0f8568697e8f900b78f0b44adde117bc3dba7c0cdae43be341ce",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          },
+          {
+            "recipe": "srnet-source-quality-method-pairs-v1",
+            "epoch": 9,
+            "pairs": 412,
+            "rows": 824,
+            "pairs_per_source": 412,
+            "ordered_pair_sha256": "80fe040607f45dd58ec317417cf2ad738b25ae217bd21c2b8cbc075a3ccdc01c",
+            "cells": [
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 75,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "JUNIWARD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              },
+              {
+                "source_id": "source-6a23b26e6f51f8cc",
+                "quality_factor": 95,
+                "method": "UERD",
+                "original_pairs": 103,
+                "sampled_pairs": 103
+              }
+            ]
+          }
+        ],
+        "batch_contract": "one matched cover/stego pair; labels [0,1]; float32 pixel units",
+        "balancing": "equal sources, equal quality/method cells within each source",
+        "unknown_quality": "separate declared-unknown cell; never estimated from labels",
+        "validation_used": false,
+        "real_training": "unavailable",
+        "accuracy_metrics": "unavailable",
+        "support_status": "experimental",
+        "deployed": false
+      }
+    }
+  ],
+  "epochs_audited": 30,
+  "passed": true,
+  "real_training": "unavailable",
+  "accuracy_metrics": "unavailable",
+  "deployed": false,
+  "primary_detection_changed": false,
+  "implementation_protocol_commit": "d2e3132"
+}

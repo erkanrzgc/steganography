@@ -80,6 +80,8 @@ persistence. Float32 weights/BN statistics, int64 nonnegative counters,
 cross-architecture snapshots rejected. Snapshots require all-stage eval;
 no pickle, symlink or overwrite. Reload preserves CPU RNG. Training cards,
 independent forward/export parity and real fitting remain separate pending gates.
+Train-only balanced matched schedules now pass all 30 real scope/epoch accounting
+checks (`SRNET_SAMPLING_RESULTS.md`); they do not fit a model or use validation.
 
 Untouched licensed external-source acquisition remains unavailable. All previous
 failed CNN/JRM results stay published; a larger architecture alone supplies no

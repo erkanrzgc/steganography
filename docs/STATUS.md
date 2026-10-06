@@ -9,7 +9,9 @@ been delivered or validated by this slice.
 - SRNet train-only paired schedule service and shared `research srnet-plan` CLI:
   source-first quality/method balance, complete original pair coverage, bounded
   oversampling, independent RNG, per-epoch order hashes and source exclusions.
-  Frozen `SRNET_SAMPLING_PROTOCOL.md`; no fitting or detector score changes.
+  Frozen `SRNET_SAMPLING_PROTOCOL.md`; all 30 real scope/epoch accounting checks
+  pass, complete original pair coverage and 765 validation hashes excluded.
+  See `SRNET_SAMPLING_RESULTS.md`; no fitting or detector score changes.
 
 - Full unrounded float256 preparation completed: 3,750 original hashes verified,
   18 preregistered independent mathematical examples exact; no accuracy claim.
@@ -165,6 +167,13 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Published SRNet schedule evidence: Python 3.11.14, 995 tests pass, 94.55%
+  total coverage; sampler/plan service 116/116 statements covered. Ruff, mypy
+  (105 source files), whitespace and model-free wheel/sdist checks pass.
+  All 30 real schedule accounting checks pass; checkout-bootstrapped replay
+  produces byte-identical records. No real fitting, accuracy or deployment.
+  Python 3.12–3.14 and fresh full Docker not rerun locally.
 
 - SRNet schedule implementation freeze: Python 3.11.14, 993 tests pass,
   94.55% total coverage; sampler/plan service 116/116 statements covered.

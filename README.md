@@ -189,6 +189,8 @@ Next [SRNet-style preparation](docs/SRNET_PREPARATION.md) adds architectural
 readiness only, not a trained detector or a reproduced published score.
 [Unrounded JPEG preparation](docs/JPEG_FLOAT256_RESULTS.md) now verifies all
 3,750 originals and 18 independent mathematical examples; accuracy still unavailable.
+[Paired training schedules](docs/SRNET_SAMPLING_RESULTS.md) also pass all 30
+scope/epoch integrity checks; no real SRNet fitting or accuracy gain yet.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

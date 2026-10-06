@@ -3,7 +3,11 @@
 import copy
 import hashlib
 import json
+import os
+import subprocess
+import sys
 from collections import Counter
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -242,3 +246,17 @@ def test_config_object_defaults_and_missing_keys(config):
         planner.settings({})
     config = {k: v for k, v in config.items() if k not in {"epochs", "seed"}}
     assert planner.settings(config) == {"epochs": 10, "seed": 20261012}
+
+
+def test_audit_entry_uses_checkout_not_stale_installed_package(tmp_path):
+    script = Path(__file__).resolve().parents[1] / "scripts/audit-srnet-sampling.py"
+    env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
+    result = subprocess.run(  # noqa: S603 — fixed checkout script, never corpus output
+        [sys.executable, str(script), "--help"],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        timeout=10,
+        check=False,
+    )
+    assert result.returncode == 0 and b"--manifest" in result.stdout

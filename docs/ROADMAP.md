@@ -2,15 +2,18 @@
 
 `SRNET_SAMPLING_PROTOCOL.md` freezes checksum-bound train-only paired schedules,
 balancing sources then quality/method contexts without dropping original pairs.
-Explicit `research srnet-plan` and bounded sampler implemented; independent
-real schedule accounting is next. No real fitting or accuracy qualification.
+Explicit `research srnet-plan` and bounded sampler implemented; all 30 real
+scope/epoch audits pass (`SRNET_SAMPLING_RESULTS.md`). Next: provenance-bound
+trainer/card, fixed optimizer/compute schedule and independent forward/export
+parity. No real fitting or accuracy qualification.
 
 `JPEG_FLOAT256_PROTOCOL.md` freezes versioned unrounded Y/256 preprocessing,
 isolated framed workers, separate bounded float cache and independent IDCT
 oracles before real preparation; no accuracy claim.
 Preparation completed (`JPEG_FLOAT256_RESULTS.md`): all 3,750 original hashes,
 18 independent real IDCT examples exact. BN-safe 183-array numeric persistence
-also implemented and tested. Next: training provenance/sampler, independent
+also implemented and tested. Paired sampler accounting is complete as linked
+above. Next: training provenance, independent
 export parity and a frozen real schedule; untouched-source gates stay open.
 
 SRNet-style structural preparation (`SRNET_PREPARATION.md`) replaces tiny-model

@@ -48,7 +48,8 @@ BOSS remains simulated and small, validation inspected, JMiPOD excluded.
 All previous failed CNN/JRM results and primary detector behavior unchanged.
 This is not reproduction of the paper's complete dataset/training/decoder.
 
-Next required work: provenance-bound SRNet training/card/balanced sampler,
+Balanced sampler preparation now passes the independent accounting checks in
+`SRNET_SAMPLING_RESULTS.md`. Next required work: provenance-bound SRNet training/card,
 independent numeric/export parity and a frozen compute/data schedule, followed
 by explicit licensed untouched-source evaluation. Do not infer accuracy from
 lossless cache preparation or synthetic BN model-state roundtrips.
