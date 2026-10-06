@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Publish first real pixel-CNN three-fit experiment: all 12 detection cells
+  fail, zero recall and near-chance AUC. Complete independent numeric/metric
+  and ONNX replay, lineage uncertainty and prior-reference regressions retained.
+  No detector deployment or accuracy qualification.
+
 - Add bounded CPU pixel-CNN minibatch learning/prediction and numeric-only
   model persistence. Restore thread/RNG state, reject unsafe array headers and
   provenance/settings, preserve fixed filters; freeze three-source-scope trial.

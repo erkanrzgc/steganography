@@ -179,8 +179,10 @@ BOSS remains weak. All cells fail detection targets; research-only, not deployed
 The [two-way training-source exclusion test](docs/JRM_TRANSFER_RESULTS.md)
 finds near-chance cross-origin AUC (.52–.55); source generalization remains unproven.
 The [pixel-residual preparation](docs/PIXEL_RESIDUAL_PREPARATION_RESULTS.md)
-verifies all 3,750 raw inputs and bounded CNN building blocks; it is not yet
-real-corpus CNN training or an accuracy improvement.
+verifies all 3,750 raw inputs and bounded CNN building blocks.
+The [first real pixel-CNN trial](docs/PIXEL_CNN_TRAINING_RESULTS.md) completed
+three fixed fits: all 12 cells fail detection (AUC .502–.509, recall 0%).
+Independent numeric/ONNX replay passes; this model is not deployed.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

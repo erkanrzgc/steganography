@@ -1,5 +1,10 @@
 # Roadmap and status
 
+First pixel-CNN trial completed in `PIXEL_CNN_TRAINING_RESULTS.md`: all twelve
+cells fail, despite independent numeric/ONNX parity. Keep this failed baseline;
+next research needs a stronger separately preregistered architecture and an
+untouched external source, not validation-driven tuning or detector deployment.
+
 `PIXEL_CNN_TRAINING_PROTOCOL.md` freezes the first three small raw-pixel fits
 (all-source plus both source exclusions); bounded train/predict/numeric persistence
 is implemented. Independent score/export audits and untouched-source gates stay
@@ -10,8 +15,9 @@ center-crop caches and a custom small optional CNN before real-corpus extraction
 Training/persistence, fixed source-control comparisons and untouched-source
 qualification remain separate pending gates; no detector score claim.
 Completed `PIXEL_RESIDUAL_PREPARATION_RESULTS.md`: all 3,750 files rehashed,
-18 bounded crop oracles exact, custom filter/gradient smoke passes. Next is
-bounded minibatch training/persistence and fixed all-source/source-exclusion runs.
+18 bounded crop oracles exact, custom filter/gradient smoke passes. Bounded
+minibatch training/persistence and all-source/source-exclusion runs are now
+complete; the failed first CNN trial is linked above.
 
 Before raw-residual learning, `JRM_TRANSFER_PROTOCOL.md` freezes a two-way
 training-source exclusion diagnostic on existing bound caches. This measures

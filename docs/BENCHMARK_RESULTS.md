@@ -1,8 +1,12 @@
 # Measured results, not a global accuracy score
 
+[First real pixel-CNN trial](PIXEL_CNN_TRAINING_RESULTS.md): three fixed fits,
+12/12 detection cells fail (AUC .502–.509, zero recall). Complete independent
+numeric/ONNX replay passes; model not deployed, qualification unavailable.
+
 [Pixel-residual preparation](PIXEL_RESIDUAL_PREPARATION_RESULTS.md): all 3,750
 unchanged files rehashed, 18 isolated crop oracles exact and custom CNN gradient
-smoke passes. No real CNN fit or accuracy result; qualification unavailable.
+smoke passes. Preparation alone has no accuracy result; qualification unavailable.
 
 The [two-way JRM training-source exclusion diagnostic](JRM_TRANSFER_RESULTS.md)
 finds ALASKA → BOSS AUC .534/.522 and BOSS → ALASKA .548/.554. All eight

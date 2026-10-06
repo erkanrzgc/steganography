@@ -1,10 +1,15 @@
-# Implementation status — 2026-10-05
+# Implementation status — 2026-10-06
 
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
 been delivered or validated by this slice.
 
 ## Implemented
+
+- First real pixel-CNN trial completed: three frozen fits, all 12 cells fail
+  detection (AUC .502–.509, zero recall). Full-source integrity, independent
+  NumPy forward/metrics and ONNX batch 1/17/64 replay pass. No deployment or
+  qualification; see `PIXEL_CNN_TRAINING_RESULTS.md` for every regression.
 
 - Explicit CPU minibatch pixel-CNN train/predict services and shared CLI;
   source/class weighting on selected train rows only, fixed-scope provenance,
@@ -15,7 +20,7 @@ been delivered or validated by this slice.
 - Explicit bounded JPEG uint8 center-crop caches, pinned decoder/crop provenance,
   framed isolated worker and shared `research pixel-cache` CLI. Custom optional
   residual CNN building block has independent filter/gradient smoke tests, but
-  no real trained model, persistence or deployed detector integration yet.
+  preparation alone is not training or deployed detector evidence.
   Actual preparation completed: all 3,750 original files rehashed, 18 bounded
   independent crop examples exact; see `PIXEL_RESIDUAL_PREPARATION_RESULTS.md`.
 
@@ -130,6 +135,13 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Pixel-CNN result publication: Python 3.11.14, 869 tests pass, 94.30% total
+  coverage; new network/numeric model/training code 228/228 statements covered.
+  Ruff, mypy (99 files), diff check and model-free wheel/sdist build/inspection
+  pass. Real 3,750-file integrity, three complete NumPy/native replay audits and
+  ONNX batches 1/17/64 pass; detection fails in all twelve cells. Python
+  3.12–3.14 and fresh full Docker remain unverified in this environment.
 
 - Pixel-CNN training implementation: Python 3.11, 861 tests at freeze verification,
   94.29% total coverage; network/numeric model/training code 227/228 statements

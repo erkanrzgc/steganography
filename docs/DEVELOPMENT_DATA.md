@@ -1,5 +1,10 @@
 # Preparing the next detector experiment
 
+`PIXEL_CNN_TRAINING_RESULTS.md` completes the first three fixed raw-pixel fits:
+all 12 detection cells fail. No new scenes, independent source or qualification
+were added. Preserve these failures and source controls; any stronger model
+requires a new frozen experiment and untouched licensed external-source data.
+
 `PIXEL_RESIDUAL_PREPARATION_RESULTS.md` now binds raw uint8 center-crop caches
 on the same corpus. This adds no scenes or independent sources. Next training
 must use bounded minibatches/numeric serialization, a frozen objective and both

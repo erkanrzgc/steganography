@@ -1,5 +1,9 @@
 # Architecture
 
+`scripts/audit-pixel-cnn.py` replays the explicit local research artifacts with
+independent NumPy arithmetic/metrics and ONNX CPU batches, separate from detection
+gates. Its complete first trial is published without deploying the failed model.
+
 `research_pixel_cnn` adds explicit CPU minibatch train/predict stages, using the
 unchanged pixel cache/architecture and train-only source/class weighting. Numeric
 `jpeg_cnn_model` persistence preflights nine fixed float32 array headers before

@@ -3,6 +3,10 @@
 First custom pixel-CNN fits are fixed in `PIXEL_CNN_TRAINING_PROTOCOL.md`:
 three source scopes, unchanged rows, all 12 source/family cells, no best-run or
 threshold selection. Training completion is not numeric/accuracy qualification.
+Completed `PIXEL_CNN_TRAINING_RESULTS.md` separates successful numeric/ONNX
+replay from all twelve failed detection cells. Independent local replay lives
+in `scripts/audit-pixel-cnn.py`; preserve fixed tolerances, complete results
+and fresh exclusive export directories. No model deployment or retuning.
 
 `PIXEL_RESIDUAL_PREPARATION_PROTOCOL.md` freezes JPEG tensor preparation, not
 training or accuracy. Codec/crop parity and a gradient smoke test cannot pass
