@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Publish controlled residual-domain trial: three fixed fresh fits, all twelve
+  detection cells fail again. Independent numeric/ONNX replay and paired
+  comparisons against both previous CNN and JRM pass; no detector deployment.
+
 - Add opt-in architecture-bound pixel-unit residual preprocessing for a frozen
   controlled trial. Preserve previous CNN defaults and reject cross-domain
   numeric weights/cards; no deployed detection change.

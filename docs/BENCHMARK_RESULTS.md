@@ -1,5 +1,9 @@
 # Measured results, not a global accuracy score
 
+[Residual-domain intervention](PIXEL_CNN_SCALE_RESULTS.md): three fixed fits,
+12/12 detection cells fail again (AUC .495–.509, zero recall), despite complete
+numeric/ONNX replay. All same-fit first-CNN and JRM comparisons retained.
+
 [First real pixel-CNN trial](PIXEL_CNN_TRAINING_RESULTS.md): three fixed fits,
 12/12 detection cells fail (AUC .502–.509, zero recall). Complete independent
 numeric/ONNX replay passes; model not deployed, qualification unavailable.

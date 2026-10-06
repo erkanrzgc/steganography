@@ -4,6 +4,9 @@
 the prior CNN failures, identical optimizer/data and both source controls.
 No untouched-source qualification or score improvement assumed from changing
 preprocessing; full numeric and paired metric replay required.
+Completed `PIXEL_CNN_SCALE_RESULTS.md`: unchanged-source controlled trial,
+all twelve cells fail; keep both same-fit CNN and JRM comparisons. No further
+validation-driven tuning or deployment inferred from parity.
 
 First custom pixel-CNN fits are fixed in `PIXEL_CNN_TRAINING_PROTOCOL.md`:
 three source scopes, unchanged rows, all 12 source/family cells, no best-run or

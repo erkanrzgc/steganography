@@ -2,7 +2,9 @@
 
 `PIXEL_CNN_SCALE_PROTOCOL.md` freezes a controlled residual-domain follow-up:
 same tiny network/data/optimizer, fixed pixel-unit residuals and clipping, both
-source controls. No evidence of improvement yet; untouched-source gates remain.
+source controls. Completed `PIXEL_CNN_SCALE_RESULTS.md`: all cells fail again;
+do not pursue validation-driven tiny-network tweaks. Stronger learning and
+untouched-source gates remain, no deployment.
 
 First pixel-CNN trial completed in `PIXEL_CNN_TRAINING_RESULTS.md`: all twelve
 cells fail, despite independent numeric/ONNX parity. Keep this failed baseline;

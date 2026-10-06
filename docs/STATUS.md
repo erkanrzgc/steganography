@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Completed controlled residual-domain trial: three fixed fresh fits, all
+  twelve cells still fail, AUC .495–.509, zero recall. Source/crop/optimizer
+  controls and all previous failures retained; native/NumPy/ONNX replay passes.
+  No deployment; see `PIXEL_CNN_SCALE_RESULTS.md`.
+
 - Additive architecture-bound pixel-unit residual stem for a fixed controlled
   research follow-up; unchanged legacy default and learned layers. Numeric
   filters reject cross-domain cards/weights. `PIXEL_CNN_SCALE_PROTOCOL.md`
@@ -140,6 +145,13 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Residual-domain results: Python 3.11.14, 877 tests pass, 94.31% total coverage;
+  CNN/model/training code 244/244 statements covered. Ruff, mypy (99 files),
+  diff check and model-free wheel/sdist build/inspection pass. Complete real
+  corpus and both previous references verified; all three NumPy/native/ONNX
+  replays pass, all twelve detection cells fail. Python 3.12–3.14 and fresh
+  full Docker remain unverified here.
 
 - Residual-domain implementation freeze: Python 3.11.14, 876 tests pass,
   94.31% total coverage; new CNN/model/training code 244/244 statements covered.

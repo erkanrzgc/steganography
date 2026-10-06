@@ -4,9 +4,8 @@
 an explicit architecture-bound residual domain. Two allowlisted pixel stems
 share exact learned layer shapes; fixed numeric filters prevent cross-domain
 model loading. Legacy defaults/weights remain unchanged.
-The audit replays
-independent NumPy arithmetic/metrics and ONNX CPU batches, separate from detection
-gates. Its complete first trial is published without deploying the failed model.
+The audit replays independent NumPy arithmetic/metrics and ONNX CPU batches, separate from detection
+gates. Both complete trials are published without deploying the failed models.
 
 `research_pixel_cnn` adds explicit CPU minibatch train/predict stages, using the
 unchanged pixel cache/architecture and train-only source/class weighting. Numeric

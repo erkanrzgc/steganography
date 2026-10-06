@@ -1,5 +1,9 @@
 # Preparing the next detector experiment
 
+`PIXEL_CNN_SCALE_RESULTS.md` retains another failed three-fit trial on unchanged
+data, with source and prior-CNN controls. No untouched external-source data
+were acquired or qualified; small architecture changes do not close that gap.
+
 `PIXEL_CNN_TRAINING_RESULTS.md` completes the first three fixed raw-pixel fits:
 all 12 detection cells fail. No new scenes, independent source or qualification
 were added. Preserve these failures and source controls; any stronger model
