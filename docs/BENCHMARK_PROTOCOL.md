@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+The two-source real-run audit binds the preregistered recipe/optimizer/counts
+and uses shared complete eval plus fixed cell/lineage diagnostics. Descriptive
+changes against the earlier BOSS-only pilot cannot establish causal BatchNorm
+improvement or blind generalization. Numerical failures produce no accuracy
+comparison. See `SRNET_MULTIPAIR_REAL_RUN.md`.
+
 `SRNET_MULTIPAIR_PROTOCOL.md` freezes the explicit two-source/four-row training
 control; full real schedule accounting is in `SRNET_MULTIPAIR_RESULTS.md`.
 Grouping preserves every original train pair through bounded oversampling.

@@ -1,5 +1,10 @@
 # Roadmap and status
 
+The frozen two-source one-epoch real fit has started on CPU. Metrics remain
+unavailable until complete fitting and independent evaluation finish. The
+real-run audit/comparison command is implemented; see `SRNET_MULTIPAIR_REAL_RUN.md`
+for limits and safe handoff. No improved or deployed detector is claimed.
+
 The opt-in four-row control is implemented and generated-fit/isolated-worker/
 complete-eval tested. All 1,580 real batch groups pass full accounting
 (`SRNET_MULTIPAIR_RESULTS.md`); all original stegos are covered, no validation

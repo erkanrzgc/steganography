@@ -1,5 +1,11 @@
 # Architecture
 
+`scripts/audit-srnet-multipair-real.py` checks the frozen two-source fit settings,
+then calls shared complete evaluation/context diagnostics. Its prior-pilot
+comparison is descriptive, with source/batch/update confounding explicitly
+recorded; failed numerical gates retain evidence without metrics. Local configs
+may contain paths, portable evidence never does. No detector/model installation.
+
 `core/srnet_multibatch` groups the unchanged deterministic paired schedule into
 explicit two-source/four-row batches. Plan/card v2 bind exact grouping hashes
 and optimizer-update counts; fit and complete eval reconstruct this contract.

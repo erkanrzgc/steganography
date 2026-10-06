@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Add frozen two-source real-run evaluation/publication audit and descriptive
+  prior-pilot context comparison. Reject changed recipes/optimizer/counts and
+  retain failed numerical gates without accuracy claims. Start the bounded
+  real CPU fit; no new measured accuracy is claimed before it completes.
+
 - Add explicit two-source/four-row SRNet training with exact v2 plan/card batch
   hashes and optimizer/BN accounting; preserve legacy v1 behavior and standard
   eval inference. Audit all 1,580 real batches and complete original coverage;
