@@ -1,8 +1,12 @@
 # Preparing the next detector experiment
 
+`JPEG_FLOAT256_RESULTS.md` binds complete unrounded Y/256 caches on unchanged
+originals. This adds no independent sources or scenes. Do not reuse old uint8
+cache hashes or claim untouched-source evaluation from the new representation.
+
 SRNet-style preparation does not acquire new data. Existing Pillow uint8/128
 caches cannot be described as the paper's unrounded JPEG/256 preprocessing;
-version the future decoder contract and preserve all originals/lineages.
+use the separate versioned float decoder contract and preserve all originals/lineages.
 
 `PIXEL_CNN_SCALE_RESULTS.md` retains another failed three-fit trial on unchanged
 data, with source and prior-CNN controls. No untouched external-source data

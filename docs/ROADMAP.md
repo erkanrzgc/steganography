@@ -2,14 +2,17 @@
 
 `JPEG_FLOAT256_PROTOCOL.md` freezes versioned unrounded Y/256 preprocessing,
 isolated framed workers, separate bounded float cache and independent IDCT
-oracles before real preparation. Next gates: actual complete preparation audit,
-BN-safe numeric persistence and fixed real training; no accuracy claim.
+oracles before real preparation; no accuracy claim.
+Preparation completed (`JPEG_FLOAT256_RESULTS.md`): all 3,750 original hashes,
+18 independent real IDCT examples exact. BN-safe 183-array numeric persistence
+also implemented and tested. Next: training provenance/sampler, independent
+export parity and a frozen real schedule; untouched-source gates stay open.
 
 SRNet-style structural preparation (`SRNET_PREPARATION.md`) replaces tiny-model
 tweaks as the next research direction. Explicit resource-limited readiness,
 learned front convolutions, no early pooling and eval-only BN implemented.
-Next: proper unrounded/256 JPEG preprocessing, BN-safe numeric persistence,
-independent parity and a frozen real-training protocol; no actual trained model
+Unrounded/256 JPEG preprocessing and BN-safe numeric persistence are complete.
+Next: independent parity and a frozen real-training protocol; no actual trained model
 or untouched-source qualification yet. Prior failures remain unchanged.
 
 `PIXEL_CNN_SCALE_PROTOCOL.md` freezes a controlled residual-domain follow-up:

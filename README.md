@@ -187,6 +187,8 @@ The [controlled residual-domain follow-up](docs/PIXEL_CNN_SCALE_RESULTS.md)
 also fails all cells (AUC .495–.509, zero recall); no accuracy gain claimed.
 Next [SRNet-style preparation](docs/SRNET_PREPARATION.md) adds architectural
 readiness only, not a trained detector or a reproduced published score.
+[Unrounded JPEG preparation](docs/JPEG_FLOAT256_RESULTS.md) now verifies all
+3,750 originals and 18 independent mathematical examples; accuracy still unavailable.
 Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
 results inconclusive; completed analysis is still not proof that a file is clean.
 

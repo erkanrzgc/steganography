@@ -4,6 +4,9 @@
 and 18 independent real IDCT examples. Native coefficient parsing is shared;
 only mathematical reconstruction is independently checked. Never score
 preprocessing parity as detection or untouched-source qualification.
+Completed `JPEG_FLOAT256_RESULTS.md` retains all raw/cache hashes and 18 fixed
+mathematical checks. Numeric SRNet BN-state storage is independently gated;
+safe persistence does not validate training or detection.
 
 `SRNET_PREPARATION.md` describes structural/synthetic readiness only. Never
 count its finite-gradient or batch-consistency check as real accuracy. Proper

@@ -2,6 +2,10 @@
 
 ## 0.6.0 (unreleased)
 
+- Complete unchanged-corpus unrounded JPEG preparation: 3,750 source hashes,
+  18 independent real IDCT examples exact. Add BN-safe bounded SRNet numeric
+  weights/statistics persistence with hostile-header tests; no real model fit.
+
 - Add explicit bounded unrounded JPEG Y/256 float preparation and shared
   phase-aligned cache/inference contracts. Respect actual component-table
   assignment and color-space names; preserve old uint8 cache/limits/verdicts.

@@ -6,6 +6,11 @@ been delivered or validated by this slice.
 
 ## Implemented
 
+- Full unrounded float256 preparation completed: 3,750 original hashes verified,
+  18 preregistered independent mathematical examples exact; no accuracy claim.
+  Separate SRNet numeric persistence validates all 183 weights/BN arrays and
+  hostile NPY headers before allocation, preserves CPU RNG on reload.
+
 - Explicit unrounded phase-aligned component-Y/256 float research caches and
   bounded SRNet fractional inference; all legacy pixel/cache defaults preserved.
   `JPEG_FLOAT256_PROTOCOL.md` freezes preparation/audit, not accuracy/training.
@@ -13,7 +18,7 @@ been delivered or validated by this slice.
 - Separate optional 4.78M-parameter SRNet-style structural block and explicit
   `research srnet-preflight` fixed resource-limited worker. Finite gradient/
   parameter-update and singleton/batch eval readiness, nested BN eval guards.
-  No real fit, saved model or accuracy improvement; `SRNET_PREPARATION.md`
+  No real fit, trained model or accuracy improvement; `SRNET_PREPARATION.md`
   records uint8/crop/paper differences and remaining preparation gates.
 
 - Completed controlled residual-domain trial: three fixed fresh fits, all
@@ -155,6 +160,12 @@ been delivered or validated by this slice.
   All cells and failures are in `SPATIAL_PARITY_RESULTS.md`.
 
 ## Verification
+
+- Float256 evidence and numeric persistence: Python 3.11.14, 955 tests pass,
+  94.48% total coverage; decoder/network/cache/persistence 336/337 statements
+  covered (99.70%). Ruff, mypy (103 source files), whitespace checks and
+  wheel/sdist builds pass. Both packages contain the services but no models or
+  corpora; Torch/jpeglib remain optional. Python 3.12–3.14 not rerun locally.
 
 - Float256 implementation freeze: Python 3.11.14, 938 tests pass, 94.44%
   total coverage; decoder/SRNet/cache code 247/248 statements covered. Ruff,

@@ -1,5 +1,9 @@
 # Measured results, not a global accuracy score
 
+[Unrounded JPEG preparation](JPEG_FLOAT256_RESULTS.md): all 3,750 original hashes
+and 18 fixed independent mathematical crop examples verified; not real SRNet
+training, native-parser proof or accuracy qualification.
+
 [SRNet-style preparation](SRNET_PREPARATION.md): generated gradient/update and
 singleton/batch readiness completed; no real fit or accuracy metrics. All
 prior failed detectors remain unchanged; do not compare smoke to detection AUC.
