@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Complete preregistered generated strong-signal SRNet learning control: all
+  three train-only objectives pass, with complete numeric reload and six NumPy
+  forward oracles. Preserve real-data failures and unavailable qualification;
+  no model installed or primary detector changes.
+
 - Publish complete tiny train-only SRNet sanity: 50 epochs/400 updates, two
   learning objectives fail despite saved-model/NumPy replay and nonzero paired
   input differences. Keep loss decrease separate from actual discrimination;

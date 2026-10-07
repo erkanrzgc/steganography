@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`SRNET_POSITIVE_CONTROL_PROTOCOL.md` preregisters an obvious generated
+checkerboard control before fitting. `SRNET_POSITIVE_CONTROL_RESULTS.md`
+records all three passed in-sample goals separately from six numerical gates.
+Neither generated tensor tags nor training scores are actual JPEG methods,
+real-data accuracy, independent-source evidence or detector qualification.
+Prior real failures remain unchanged; no validation-driven tuning occurs.
+
 `SRNET_TINY_SANITY_PROTOCOL.md` freezes a 24-row/50-epoch train-only learning
 control before selection. Its loss and in-sample stored-BN objectives are not
 accuracy/support gates, even if passed. No validation pixels, threshold search,

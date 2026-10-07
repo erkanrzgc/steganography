@@ -1,0 +1,78 @@
+{
+  "schema_version": "srnet-generated-positive-audit-v1",
+  "model_sha256": "b4b7204c0851f4bc95baba0336887f0d7ddf4eb672bb27979b4540085cb13cbb",
+  "singleton_rows_replayed": 24,
+  "independent_oracles": [
+    {
+      "row": 0,
+      "sha256": "efafaef9356bfd58d936e69e8104787f0e2c082872c7021539fac6c2dff1723f",
+      "maximum_logit_difference": 8.774861104399179e-07,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 1.4492020692539102e-13,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "row": 1,
+      "sha256": "3413595ec1553071e71232fae93c55dca19947878d57eeef3d200ecaa3883a33",
+      "maximum_logit_difference": 1.629102561295781e-06,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 2.4801300568810802e-08,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "row": 2,
+      "sha256": "b4baf0a3f08c16210fc2abed024ca3790896f383808f540d27d801c270e1754a",
+      "maximum_logit_difference": 1.118004105293835e-06,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 2.42833919639196e-09,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "row": 12,
+      "sha256": "3c8fc6fae386ede316920a13c83642d086fbd068acf9d4a15305728727a831a5",
+      "maximum_logit_difference": 1.1309699115003014e-06,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 2.5018190027938423e-13,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "row": 13,
+      "sha256": "7b7efae63acfe03de71ccb7373e68be3db4fcdc18f502dbe2c92645425fdf80c",
+      "maximum_logit_difference": 4.3431609153543604e-07,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 3.0288938024369827e-10,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "row": 14,
+      "sha256": "b77e5214789dbb856f9ff8dc31e435f9b3eb1c87e6398a7d4edaed1acfd82c26",
+      "maximum_logit_difference": 7.395012988631322e-07,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 1.2064910182019162e-09,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    }
+  ],
+  "numerical_gates_passed": true,
+  "learning_objectives_passed": true,
+  "accuracy_qualification": "unavailable",
+  "primary_detection_changed": false,
+  "control_report_sha256": "605f31b19a0440234114dc71835ff5dba18f21a3c53a72fda72bac137acb2c63"
+}

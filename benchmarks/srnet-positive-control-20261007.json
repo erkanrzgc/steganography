@@ -1,0 +1,1478 @@
+{
+  "schema_version": "srnet-generated-positive-control-v1",
+  "status": "completed",
+  "protocol_sha256": "5f34d707ec8c575359ff0d5c42d38a5791c583dbb02b27185589a4f1a1109ab5",
+  "protocol_commit": "ebd8916",
+  "generated_tensors_not_jpeg_or_steganography": true,
+  "sampler_format_and_method_tags_are_synthetic": true,
+  "generated_seed": 20261013,
+  "training_seed": 20261012,
+  "selected_rows": [
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-0",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "efafaef9356bfd58d936e69e8104787f0e2c082872c7021539fac6c2dff1723f"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-0",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "3413595ec1553071e71232fae93c55dca19947878d57eeef3d200ecaa3883a33"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-0",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "b4baf0a3f08c16210fc2abed024ca3790896f383808f540d27d801c270e1754a"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-1",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "fe918aa5a79ac147e21675277a8d1f43b3099a88b2d217130b00100bfc35a7cb"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-1",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "5dc7d8f8d3f16212fd5d8268775344174134e60e9a50cfc6e53cf9d0e2a90d70"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-1",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "834cf47390387d2be07dca2f715f1274101c30194bcd286b31ec034b2c643ca0"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "eccb66404a38bcabda23689bff12f337c735c82a34a608c39ceba6bee505c05f"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "7f15c7297f43eac28d3b6530f7d4c4970febf606f36f0335a5656f59e49f77c7"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "b622daba1cf523b973a30ac84be30e4a09dac64f2e3d44ab78ce3b3a25e3154b"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-3",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "4d3d19b1645f1412cecd72e8c971ae761ee9b43b266aff7bc633da55863d66df"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-3",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "eb70a6f42aa6b88fc1e4138062e90e33950af22321bcc72c096caf3adfd0e55f"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-0",
+      "lineage": "generated-0-3",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "017a1fd420090406f05505b8c19e261f76f0a106713a6eceabfec44279debe60"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-0",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "3c8fc6fae386ede316920a13c83642d086fbd068acf9d4a15305728727a831a5"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-0",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "7b7efae63acfe03de71ccb7373e68be3db4fcdc18f502dbe2c92645425fdf80c"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-0",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "b77e5214789dbb856f9ff8dc31e435f9b3eb1c87e6398a7d4edaed1acfd82c26"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-1",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "d6e82b81edaa25f61c44074c68946b9c1314b0f0e4b59c5962eac2bd36fed895"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-1",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "a452fa8006ccb4b1f2cc4742e1500defe9874db01e122ffab27bdce479e13003"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-1",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "1fc36203509e167fca935cd89a20044e16d6bfd7d3ab22fc1205a278f66d7d3e"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "e515252b323b7ca0a109c07caadbef6a916b4ddc2c509f012e16b1d3ca1c236b"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "6bf708f697c29be69e274df9d2c07caaf17609142ec68a371210b85df7db2de4"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "3571026a203188c372b246b842a8199ea35dad84f1c89b0dec07d5349fe0d414"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-3",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "sha256": "6928a9c866769a54a527941ae086844702cb60cbe7b90d5a94802ebedec4f54f"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-3",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "sha256": "be312d72f8a2b47bd8c6dfbb2b50c4c6ced9b222d5d63f9ed167ff22c4383749"
+    },
+    {
+      "split": "train",
+      "format": "JPEG",
+      "source_group": "generated-1",
+      "lineage": "generated-1-3",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "sha256": "fc41aa1071c88fe75e9f510815b7d71466574731e2714599da2549239c550253"
+    }
+  ],
+  "optimizer": {
+    "threads": 2,
+    "max_seconds": 1800,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001
+  },
+  "optimizer_updates": 160,
+  "epoch_pair_schedule": [
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 0,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "abef1b770ee2084b398ca0677e571a315ebe0184b47af001c9d2a7c56eb3e0b4",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 1,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "089dde9b51ec69e4b1eb50d6d49d2da58a589907f4e4c26730678095993c8954",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 2,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "309d571c8796839923ea56fba34972db004c40d306260c02d9c676c784a3be03",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 3,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "a09c48fadcce1ddc3f20b5b42363f8deedcb3339a7d4578d5b05135af9b76886",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 4,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "d416fda47d3aecb3e987bc5b318de3b7eda4d08720637e98d41cd3cb131f1bd9",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 5,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "2591460f17930f2b75bc792d2a92306f643d72521d1416dc8cd99db48931d7ad",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 6,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "2bde733b9643ada53a149522734617a2606ec69c34a3194a55c8d8c9f3e28380",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 7,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "5b35f35929b7c5582a27f5394dc0874ee92bad1f530b74c671073a0e5a1aa56c",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 8,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "1015486f6e25a4f7155b76e56f0475f61974e3cb349088e709fdda36373c2876",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 9,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "30fa55c1052b56f2cd04bb910128e2a966ce98339457feba4aa7530d4ae32a80",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 10,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "ac0f4c84557299b10af7b646c0e8470d95ea78ee0b962afa84aa5f3d49668289",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 11,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "bfee6e1e8a25a5b6fb0cf394c6104f31cdd4dc5bf8a02d3a64dba0c7bd4630ee",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 12,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "ef5cd6535cfbf8b4237ec03f12f2b60c7572a24220e530fbd04704bd646c80d2",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 13,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "744cb5900628225203d51db657bfcf2b4b71ec0193cc228c279c0c8408d542fb",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 14,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "16654913e15ed7d907e1159f3d732cc92438ee3f0d135f237b3a9a43c5114ccd",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 15,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "af306d643c8f070a3a0dcdca206cf5163edff77d6149d7aef40ba6161f83c449",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 16,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "b478439f809fe0653ec1d7e06bbcf797493c243f465277489d523f39ff2124af",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 17,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "50b4bb470bb56cc5f04cf7a632a33b0d2f601e4c138cc64fa5c9e27709e455fa",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 18,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "8f4e8dde60b1c6d76c3392e48e7ba24a71dba45b573b0bb8e25d7cf39d468e22",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    },
+    {
+      "recipe": "srnet-source-quality-method-pairs-v1",
+      "epoch": 19,
+      "pairs": 16,
+      "rows": 32,
+      "pairs_per_source": 8,
+      "ordered_pair_sha256": "7b1e1fb9987572b8dcd492cd0026a072d0ab96c999ed61b19a860969cabb4618",
+      "cells": [
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-97623c857ff028fe",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "JUNIWARD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        },
+        {
+          "source_id": "source-d456e264f3158641",
+          "quality_factor": null,
+          "method": "UERD",
+          "original_pairs": 4,
+          "sampled_pairs": 4
+        }
+      ]
+    }
+  ],
+  "epoch_batch_schedule": [
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 0,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "d5d626ab804b2bd65d6552df8bc1ea0499c0839aa48725c81677981e77fc593d",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 1,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "517010368912f4608dbee69b2af5751abf7386de81226524416fda4ac7641e78",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 2,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "9ef04610e75d7318e0c2e217f02fea9c26bf22ee9288b10677d54c8f8d84e5cb",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 3,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "b992407d6c62495c6e27a4d202e72768f088071f2c9186a94624b40577849085",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 4,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "7a1cb12825eb059fb306d717ca93c924533f5a232e224a3f9c2eb94237b8b2c9",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 5,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "81421283c71df79e90008ba29469c0bc20aa4c12af7ced01c9cb225267718742",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 6,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "8dbb2fb7617a9344703905e64085d6daa2a0bb006c9a1fe02cfca31e7274a93a",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 7,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "bfb8b502bb5e023f7e6f3e88472c4e0a810e0e27b01d4e3ab2fae95a3928c487",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 8,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "7dfc23543d3c0b26bcbc4eb3497533e6dccc1e7b5101688f2d0eb9692dfea71d",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 9,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "e9821bd67d617053ef74458733fbef2c8fce2e2319f522912debcd4b10702bf1",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 10,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "4bd8e38b238a9f57b11361aa3555062d445f87e0b4feb6c9b640ccadd6adce4d",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 11,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "b9c757d115fbfab1a4c10ae24b8278c0653c02a75450f70c78bc1c1afd824fd9",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 12,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "9ea1ef759b0a27a34eca781522f28dafbfa158f7c142dbe5461228e60d7bb4e6",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 13,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "be75aa698e3ce7e18c0fa53e8c201720fda134fbb11143caa1b30d458d36362b",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 14,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "3219298b8a53b68e3f2b4842e6a964fa25c65ed2d68bd78de872a05ff3a4e6e0",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 15,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "cd18c3c06120fe27bc0d2baa268c459e40eaa0cee1f306838b13472593699678",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 16,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "59bb4037976cfa83ff3366a7f08affec4f391a9087f9822b305df7c3c4c7e7bc",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 17,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "969a324a5ca96fb666995b008b12da0f46e829ebd9e29acaf37b62ec9276a0cc",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 18,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "4aba14b55c33077fa968d0659debe52cf879a28704a442c43021156ad6bf61bb",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    },
+    {
+      "recipe": "two-source-two-lineage-pairs-v1",
+      "epoch": 19,
+      "batch_size": 4,
+      "pairs": 16,
+      "optimizer_updates": 8,
+      "rows": 32,
+      "ordered_batch_sha256": "18b20f1458cb844482f64b49cdbf41602bfe50bd791ac37a7b8f786305cc6c89",
+      "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+    }
+  ],
+  "epoch_training": [
+    {
+      "epoch": 0,
+      "updates": 8,
+      "mean_pair_loss": 0.10859194843214937
+    },
+    {
+      "epoch": 1,
+      "updates": 8,
+      "mean_pair_loss": 0.0029622374568134546
+    },
+    {
+      "epoch": 2,
+      "updates": 8,
+      "mean_pair_loss": 0.0012918185238959268
+    },
+    {
+      "epoch": 3,
+      "updates": 8,
+      "mean_pair_loss": 0.0015758340960019268
+    },
+    {
+      "epoch": 4,
+      "updates": 8,
+      "mean_pair_loss": 0.0009883385064313188
+    },
+    {
+      "epoch": 5,
+      "updates": 8,
+      "mean_pair_loss": 0.0007003335631452501
+    },
+    {
+      "epoch": 6,
+      "updates": 8,
+      "mean_pair_loss": 0.0006687211789540015
+    },
+    {
+      "epoch": 7,
+      "updates": 8,
+      "mean_pair_loss": 0.0006176051392685622
+    },
+    {
+      "epoch": 8,
+      "updates": 8,
+      "mean_pair_loss": 0.0005703263595933095
+    },
+    {
+      "epoch": 9,
+      "updates": 8,
+      "mean_pair_loss": 0.0005085438206151593
+    },
+    {
+      "epoch": 10,
+      "updates": 8,
+      "mean_pair_loss": 0.0004705814972112421
+    },
+    {
+      "epoch": 11,
+      "updates": 8,
+      "mean_pair_loss": 0.00046305114665301517
+    },
+    {
+      "epoch": 12,
+      "updates": 8,
+      "mean_pair_loss": 0.0004438865325937513
+    },
+    {
+      "epoch": 13,
+      "updates": 8,
+      "mean_pair_loss": 0.0004313078861741815
+    },
+    {
+      "epoch": 14,
+      "updates": 8,
+      "mean_pair_loss": 0.0004235870401316788
+    },
+    {
+      "epoch": 15,
+      "updates": 8,
+      "mean_pair_loss": 0.00039995709448703565
+    },
+    {
+      "epoch": 16,
+      "updates": 8,
+      "mean_pair_loss": 0.00040108778921421617
+    },
+    {
+      "epoch": 17,
+      "updates": 8,
+      "mean_pair_loss": 0.00039058327092789114
+    },
+    {
+      "epoch": 18,
+      "updates": 8,
+      "mean_pair_loss": 0.0003697409665619489
+    },
+    {
+      "epoch": 19,
+      "updates": 8,
+      "mean_pair_loss": 0.0003578251889848616
+    }
+  ],
+  "stored_bn_singleton_train_logits": [
+    [
+      8.276520729064941,
+      -7.564754962921143
+    ],
+    [
+      -2.441718101501465,
+      2.186891794204712
+    ],
+    [
+      -3.4406399726867676,
+      3.067711114883423
+    ],
+    [
+      6.520605564117432,
+      -5.906182765960693
+    ],
+    [
+      -3.639648675918579,
+      3.401564598083496
+    ],
+    [
+      -3.7355539798736572,
+      3.471083879470825
+    ],
+    [
+      1.8494653701782227,
+      -1.6691974401474
+    ],
+    [
+      -3.97672963142395,
+      3.7517502307891846
+    ],
+    [
+      -3.730649709701538,
+      3.4716272354125977
+    ],
+    [
+      7.703671455383301,
+      -7.368983745574951
+    ],
+    [
+      -3.248817205429077,
+      3.1197926998138428
+    ],
+    [
+      -2.934891939163208,
+      2.756577491760254
+    ],
+    [
+      7.564151763916016,
+      -7.213138103485107
+    ],
+    [
+      -3.3476831912994385,
+      3.09840989112854
+    ],
+    [
+      -3.7188239097595215,
+      3.320216655731201
+    ],
+    [
+      6.920626640319824,
+      -6.599315166473389
+    ],
+    [
+      -4.426116943359375,
+      4.0580525398254395
+    ],
+    [
+      -4.57666540145874,
+      4.109582901000977
+    ],
+    [
+      1.561323881149292,
+      -1.4010509252548218
+    ],
+    [
+      -3.0526297092437744,
+      2.847705841064453
+    ],
+    [
+      -3.932934045791626,
+      3.6268246173858643
+    ],
+    [
+      0.6978809237480164,
+      -0.5798315405845642
+    ],
+    [
+      -1.3095133304595947,
+      1.247778296470642
+    ],
+    [
+      -2.295538902282715,
+      2.1577835083007812
+    ]
+  ],
+  "stored_bn_singleton_train_metrics": {
+    "cross_entropy": 0.018202433821889935,
+    "balanced_accuracy": 1.0,
+    "recall": 1.0,
+    "false_positive_rate": 0.0,
+    "scores": [
+      1.318928714387362e-07,
+      0.9903261685012974,
+      0.9985112834608495,
+      4.009707187869466e-06,
+      0.9991257008426538,
+      0.9992589031436965,
+      0.028785856500546964,
+      0.9995600809732198,
+      0.9992556666375171,
+      2.8446503651726587e-07,
+      0.9982883936749726,
+      0.9966367192919577,
+      3.822120607127024e-07,
+      0.9984158044408512,
+      0.9991238008465372,
+      1.3438886746134998e-06,
+      0.9997933277136261,
+      0.9998311360472701,
+      0.049154891832937524,
+      0.9972689532903224,
+      0.9994792703352268,
+      0.21793986433887763,
+      0.9280618479784511,
+      0.9884940964050095
+    ]
+  },
+  "sanity_objectives": {
+    "final_batch_loss_at_most_0_35": true,
+    "relative_loss_reduction_at_least_0_25": true,
+    "stored_bn_train_balanced_accuracy_at_least_0_90": true,
+    "relative_loss_reduction": 0.9967048644567932
+  },
+  "sanity_objectives_passed": true,
+  "seconds": 182.16425756600006,
+  "real_dataset_loaded": false,
+  "validation_pixels_loaded": false,
+  "in_sample_only": true,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "primary_detection_changed": false,
+  "model_sha256": "b4b7204c0851f4bc95baba0336887f0d7ddf4eb672bb27979b4540085cb13cbb",
+  "execution_source_sha256": {
+    "core/srnet_positive.py": "03b710bd47d5a2761447019b0ca2d3f99175a759ed1d5f721863a46fbb87e430",
+    "core/srnet_training.py": "4d33776132fdecf5f377734304d806e698848ee27c5eaf984692a83406f8c44f",
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_multibatch.py": "0e9be4c41b8a24753f32da841f8a4356bfe9017b602485802e05d5a50cbebc6d",
+    "core/srnet_sampling.py": "ae0fdc56e538a8a249ca2254ab53b6fb800948f9c7e68190e19313b2c050c964",
+    "steganography/research_srnet_positive.py": "eabedeecc927a29c4203490b35794489969be4ae84b4cd305d2ad56340af4d06"
+  }
+}

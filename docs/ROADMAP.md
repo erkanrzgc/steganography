@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Generated positive learning control completed (`SRNET_POSITIVE_CONTROL_RESULTS.md`):
+20 epochs/160 updates, all three in-sample objectives and six NumPy oracles pass.
+The unchanged trainer can learn an obvious synthetic signal; real-data BA .50
+and failed detector gates remain unchanged. Next preregister train-only gradient/
+input and signal-strength diagnostics; no deployed model or running fit.
+
 Train-only tiny sanity completed (`SRNET_TINY_SANITY_RESULTS.md`): 24 rows,
 50 epochs/400 updates; two of three sanity objectives fail, stored-BN train
 balanced accuracy .50. Saved-model/NumPy replay passes and all input pairs differ.

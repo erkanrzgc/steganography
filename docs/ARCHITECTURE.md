@@ -1,5 +1,13 @@
 # Architecture
 
+`core/srnet_positive` owns generated strong-signal tensors and the unchanged
+shared-trainer control. The explicit `research_srnet_positive` module applies
+process limits, frozen protocol binding and fresh numeric/report outputs.
+`core/srnet_positive_audit` performs read-only content/schedule/BN/singleton
+reload and six independent NumPy replays, with a thin audit script. The original
+executed source hash remains accepted after a nonnumeric type-checking rename;
+it is retained in Git. These generated controls never qualify real detection.
+
 `core/srnet_sanity` owns metadata-only tiny train selection and fixed in-sample
 objectives. `research_srnet_sanity` binds the frozen manifest/cache/protocol,
 uses the unchanged shared four-row trainer and stored-BN singleton inference.

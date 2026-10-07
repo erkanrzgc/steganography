@@ -89,14 +89,14 @@ def learn():
     previous = torch.get_num_threads()
     try:
         torch.set_num_threads(2)
-        logits = []
+        rows_logits = []
         for row in pixels:
             if time.monotonic() - started > 1860:
                 raise ValueError("positive control evaluation deadline exceeded")
-            logits.append(srnet.float_logits(model, row[None])[0])
+            rows_logits.append(srnet.float_logits(model, row[None])[0])
     finally:
         torch.set_num_threads(previous)
-    logits = np.array(logits)
+    logits = np.array(rows_logits)
     final = srnet_sanity.metrics(logits, samples)
     gates = objectives(records, final)
     return model, {
