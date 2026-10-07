@@ -1,5 +1,12 @@
 # Changelog
 
+- Add the separately frozen, bounded eight-row training-context control:
+  distinct source/lineage matching, unchanged legacy trainer callers, exact
+  row-exposure/update accounting, serialized replay and independent oracles.
+  Completed real-train arms reduce singleton loss but fail overall learning
+  goals; original-input training BA stays .50, all 18 numeric oracles pass.
+  This opt-in research experiment does not change the deployed detector.
+
 ## 0.6.0 (unreleased)
 
 - Complete frozen train-only BN context/clone-refresh controls: both refresh

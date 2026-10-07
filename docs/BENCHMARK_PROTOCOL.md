@@ -1,5 +1,13 @@
 # Benchmark protocol
 
+`SRNET_WIDE_BATCH_PROTOCOL.md` freezes an eight-row, train-only comparison
+before fitting: same 24 selected rows, factors 1/32, 20 epochs and 640
+presentations per arm, but 80 updates versus the historical four-row control's
+160. Batch order and optimizer-step confounds remain explicit. Exact lineage
+matching, tensor identities, full singleton reload and nine independent
+numerical oracles per arm are required. In-sample objectives cannot qualify
+real detection support, and all failures must remain published.
+
 `SRNET_BN_REFRESH_PROTOCOL.md` freezes read-only batch-context contrast and a
 single cumulative BN-stat refresh on separate clones before execution.
 `SRNET_BN_REFRESH_RESULTS.md` publishes both failed goals, all numeric replays

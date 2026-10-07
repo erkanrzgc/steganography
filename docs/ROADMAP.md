@@ -1,5 +1,12 @@
 # Roadmap and status
 
+Eight-row training-context control completed (`SRNET_WIDE_BATCH_RESULTS.md`):
+both exposure-matched arms fail complete learning goals; singleton loss falls,
+but original train BA stays .50 and own BA does not improve (.50 / .6875).
+All 18 independent numeric oracles pass; no model deployed. Next freeze
+four-row gradient accumulation with the exact wide-group order, matching
+both optimizer updates and row presentations to separate context confounds.
+
 BN context/refresh control completed (`SRNET_BN_REFRESH_RESULTS.md`): both
 fixed clone-refresh goals fail; original training BA remains .50. Amplified
 batch-stat diagnostics differ sharply from singleton eval but are not deployable.

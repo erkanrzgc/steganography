@@ -1,5 +1,14 @@
 # Architecture
 
+The checkout-only eight-row research control (`core.srnet_widebatch` and
+`steganography.research_srnet_widebatch`) reuses the shared CPU trainer through
+an explicit `wide_context=True` keyword, restricted to the frozen 24-row,
+20-epoch/seed control. Ordinary two/four-row callers and public plan/card
+recipes remain unchanged. Bounded deterministic matching retains every base
+pair while requiring four distinct source/lineage keys per batch. Training
+exposure and optimizer steps are separately reported; inference is still
+ordinary stored-BN singleton evaluation, never batch-stat adaptation.
+
 `core/srnet_bn_refresh` owns bounded final-epoch context probes, isolated clone
 BN-stat refresh and independent numeric gates. Source state/RNG/threads/flags
 are restored; existing gradients/hooks stay intact. Clone learned parameters,
