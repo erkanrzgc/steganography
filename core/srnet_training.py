@@ -31,7 +31,17 @@ def settings(config):
     return values
 
 
-def fit(pixels, samples, indices, *, seed, schedule, config, wide_context=False):
+def fit(
+    pixels,
+    samples,
+    indices,
+    *,
+    seed,
+    schedule,
+    config,
+    wide_context=False,
+    accumulate_context=False,
+):
     params = settings(config)
     batch_recipe = srnet_multibatch.recipe(config)
     if (
@@ -62,6 +72,8 @@ def fit(pixels, samples, indices, *, seed, schedule, config, wide_context=False)
         and (batch_recipe is None or len(selected) != 24 or seed != 20261012 or len(schedule) != 20)
     ):
         raise ValueError("wide context is restricted to the frozen research control")
+    if type(accumulate_context) is not bool or (accumulate_context and not wide_context):
+        raise ValueError("accumulation is restricted to the frozen wide context")
     batch_builder = srnet_multibatch.epoch_batches
     if wide_context:
         from core import srnet_widebatch
@@ -107,27 +119,38 @@ def fit(pixels, samples, indices, *, seed, schedule, config, wide_context=False)
                 total = 0.0
                 for pair in pairs:
                     deadline()
-                    inputs = torch.from_numpy(pixels[indices[pair]].copy())
                     optimizer.zero_grad(set_to_none=True)
-                    logits = model(inputs)
-                    if logits.shape != (len(targets), 2) or not bool(torch.isfinite(logits).all()):
-                        raise ValueError("SRNet training produced invalid logits")
-                    loss = torch.nn.functional.cross_entropy(logits, targets)
-                    if not bool(torch.isfinite(loss)):
-                        raise ValueError("SRNet training produced nonfinite loss")
-                    deadline()
-                    loss.backward()
-                    if not all(
-                        p.grad is not None and bool(torch.isfinite(p.grad).all())
-                        for p in model.parameters()
-                    ):
-                        raise ValueError("SRNet training produced invalid gradients")
+                    chunks = (pair[:4], pair[4:]) if accumulate_context else (pair,)
+                    group_loss = 0.0
+                    for chunk in chunks:
+                        deadline()
+                        inputs = torch.from_numpy(pixels[indices[chunk]].copy())
+                        labels = targets[: len(chunk)]
+                        logits = model(inputs)
+                        if logits.shape != (len(labels), 2) or not bool(
+                            torch.isfinite(logits).all()
+                        ):
+                            raise ValueError("SRNet training produced invalid logits")
+                        loss = torch.nn.functional.cross_entropy(logits, labels)
+                        if not bool(torch.isfinite(loss)):
+                            raise ValueError("SRNet training produced nonfinite loss")
+                        deadline()
+                        if accumulate_context:
+                            (loss / 2).backward()
+                        else:
+                            loss.backward()
+                        if not all(
+                            p.grad is not None and bool(torch.isfinite(p.grad).all())
+                            for p in model.parameters()
+                        ):
+                            raise ValueError("SRNet training produced invalid gradients")
+                        group_loss += float(loss.detach()) / len(chunks)
                     optimizer.step()
                     srnet_model.validate(
                         {k: v.detach().numpy() for k, v in model.state_dict().items()}
                     )
                     deadline()
-                    total += float(loss.detach())
+                    total += group_loss
                 records.append(
                     {"epoch": epoch, "updates": len(pairs), "mean_pair_loss": total / len(pairs)}
                 )

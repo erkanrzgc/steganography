@@ -77,15 +77,17 @@ def objectives(records, final):
     return srnet_positive.objectives([{**r, "updates": 8} for r in records], final)
 
 
-def counters(model):
+def counters(model, *, accumulation=False):
     found = [int(v) for k, v in model.named_buffers() if k.endswith("num_batches_tracked")]
-    if found != [80] * 26:
+    if found != [160 if accumulation else 80] * 26:
         raise ValueError("wide control BN accounting mismatch")
 
 
-def learn(original, samples, *, factor):
+def learn(original, samples, *, factor, accumulation=False):
     from core import srnet_training
 
+    if type(accumulation) is not bool:
+        raise ValueError("accumulation must be explicit boolean")
     pixels, hashes = srnet_signal.prepare(original, samples, factor=factor)
     paired = [epoch_pairs(samples, seed=20261012, epoch=e)[1] for e in range(20)]
     batched = [epoch_batches(samples, seed=20261012, epoch=e)[1] for e in range(20)]
@@ -98,8 +100,9 @@ def learn(original, samples, *, factor):
         schedule=paired,
         config={**srnet_positive.PARAMS, "batch_recipe": srnet_multibatch.RECIPE},
         wide_context=True,
+        accumulate_context=accumulation,
     )
-    counters(model)
+    counters(model, accumulation=accumulation)
     logits, own = srnet_signal.evaluate(model, pixels, samples)
     original_logits, original_metrics = srnet_signal.evaluate(model, original, samples)
     gates = objectives(records, own)
@@ -126,10 +129,23 @@ def learn(original, samples, *, factor):
             v for k, v in gates.items() if k != "relative_loss_reduction"
         ),
         "seconds": time.monotonic() - started,
+        **(
+            {
+                "baseline_optimizer_updates": 80,
+                "optimizer_steps_matched": True,
+                "microbatch_size": 4,
+                "gradient_accumulation_steps": 2,
+                "bn_forward_batches": 160,
+            }
+            if accumulation
+            else {}
+        ),
     }
 
 
-def audit(model, original, samples, report):
+def audit(model, original, samples, report, *, accumulation=False):
+    if type(accumulation) is not bool:
+        raise ValueError("accumulation must be explicit boolean")
     pixels, hashes = srnet_signal.prepare(original, samples, factor=report["factor"])
     if (
         hashes != report["derived_tensor_sha256"]
@@ -142,12 +158,23 @@ def audit(model, original, samples, report):
         or report["batch_recipe"] != RECIPE
         or report["optimizer_updates"] != 80
         or report["presented_rows"] != 640
-        or report["baseline_optimizer_updates"] != 160
+        or report["baseline_optimizer_updates"] != (80 if accumulation else 160)
         or report["baseline_presented_rows"] != 640
-        or report["optimizer_steps_matched"] is not False
+        or report["optimizer_steps_matched"] is not accumulation
+        or (
+            accumulation
+            and any(
+                report.get(k) != v
+                for k, v in (
+                    ("microbatch_size", 4),
+                    ("gradient_accumulation_steps", 2),
+                    ("bn_forward_batches", 160),
+                )
+            )
+        )
     ):
         raise ValueError("wide control content/schedule/exposure mismatch")
-    counters(model)
+    counters(model, accumulation=accumulation)
     own_logits, own = srnet_signal.evaluate(model, pixels, samples)
     original_logits, original_metrics = srnet_signal.evaluate(model, original, samples)
     for logits, metrics, prefix in (
