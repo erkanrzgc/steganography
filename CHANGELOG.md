@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Complete frozen train-only BN context/clone-refresh controls: both refresh
+  goals fail, amplified context sensitivity remains diagnostic only; original
+  weak-input training accuracy stays chance-level. Preserve source weights and
+  all prior failures; numeric reload/oracles and parameter identity pass.
+
 - Add preregistered real-delta signal-strength controls with separate original
   and derived identities, identical two-arm sampling, ordinary singleton eval,
   bounded numeric snapshots and per-arm independent reload/oracle verification.

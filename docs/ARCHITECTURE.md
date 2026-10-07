@@ -1,5 +1,13 @@
 # Architecture
 
+`core/srnet_bn_refresh` owns bounded final-epoch context probes, isolated clone
+BN-stat refresh and independent numeric gates. Source state/RNG/threads/flags
+are restored; existing gradients/hooks stay intact. Clone learned parameters,
+including BN affine weights, remain bit-identical; only BN statistics change.
+`research_srnet_bn_refresh` binds pinned train/baseline/model identities and
+hard-limit execution, ordinary singleton replay and fresh portable outputs.
+No diagnostic batch-stat mode or refreshed model enters deployed inference.
+
 `core/srnet_signal` owns bounded paired-delta transformation, unchanged shared
 training, singleton evaluation and numeric reload/oracle checks. Original JPEG
 hashes remain sampler identities; derived float32 byte hashes are separate.

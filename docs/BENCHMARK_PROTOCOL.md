@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`SRNET_BN_REFRESH_PROTOCOL.md` freezes read-only batch-context contrast and a
+single cumulative BN-stat refresh on separate clones before execution.
+`SRNET_BN_REFRESH_RESULTS.md` publishes both failed goals, all numeric replays
+and source/clone parameter identity. Correlated presented training rows and
+batch-stat diagnostics never qualify accuracy; within-batch cumulative variance
+is not exact population variance. No result-selected repair or deployment.
+
 `SRNET_SIGNAL_STRENGTH_PROTOCOL.md` fixes factors 1/32, identical fresh seed,
 20 epochs and original sampler order before fitting. Modified positives are
 artificial tensors, not actual embedding/payload-rate evidence. Per-arm own and

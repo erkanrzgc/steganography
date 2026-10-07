@@ -1,5 +1,11 @@
 # Roadmap and status
 
+BN context/refresh control completed (`SRNET_BN_REFRESH_RESULTS.md`): both
+fixed clone-refresh goals fail; original training BA remains .50. Amplified
+batch-stat diagnostics differ sharply from singleton eval but are not deployable.
+All 18 numeric oracles and serialized parameter identity checks pass. Next
+freeze larger/diverse training-batch context with explicit exposure accounting.
+
 Signal-strength control completed (`SRNET_SIGNAL_STRENGTH_RESULTS.md`): two
 fixed 20-epoch/160-update arms; amplification lowers batch loss but fails the
 stored-BN own-input learning goal, original-input train BA stays .50. All 18
