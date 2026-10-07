@@ -1,5 +1,13 @@
 # Roadmap and status
 
+Step/exposure-matched accumulation completed (`SRNET_ACCUMULATION_RESULTS.md`):
+same 80 updates/640 presentations/exact group order, four-row microbatches;
+both arms fail complete learning goals, original train BA .50. Amplified own
+BA worsens (.6875 to .59375), all 18 numerical oracles pass, no deployment.
+Next freeze training-only data/exposure scaling, not more unsupported accuracy
+claims from the six-scene sanity subset. `JPEG_TRAINING_DATA_SCOPE.md` records
+the full prepared train scope: 2,985 rows / 892 declared scene lineages.
+
 Eight-row training-context control completed (`SRNET_WIDE_BATCH_RESULTS.md`):
 both exposure-matched arms fail complete learning goals; singleton loss falls,
 but original train BA stays .50 and own BA does not improve (.50 / .6875).

@@ -1,5 +1,13 @@
 # Architecture
 
+The explicit accumulation research module delegates to the shared context
+service, never independent CLI training logic. `accumulate_context=True`
+is accepted only with the frozen wide-context trainer mode: clear gradients
+once per eight-row group, two four-row mean-loss/2 backwards, validate finite
+accumulated gradients, one optimizer step. The second microbatch must succeed
+before any step. Default two/four/eight-row behavior remains unchanged;
+ordinary stored-BN singleton inference is never adapted to batch context.
+
 The checkout-only eight-row research control (`core.srnet_widebatch` and
 `steganography.research_srnet_widebatch`) reuses the shared CPU trainer through
 an explicit `wide_context=True` keyword, restricted to the frozen 24-row,

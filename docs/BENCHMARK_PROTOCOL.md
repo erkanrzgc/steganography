@@ -1,5 +1,14 @@
 # Benchmark protocol
 
+`SRNET_ACCUMULATION_PROTOCOL.md` fixes the eight-row control's exact group
+order, 80 optimizer steps and 640 presentations, splitting each group into
+two four-row microbatches. BN forward count changes from 80 to 160 by design;
+all 26 counters, singleton reload and independent numerical gates are required.
+The 24 rows are a six-scene learning sanity subset, not the entire available
+2,985-row train cache. Neither a failed subset nor the previous failed one-epoch
+full fit establishes corpus size as the sole cause; larger/diverse training
+and adequate cross-source held-out qualification remain necessary work.
+
 `SRNET_WIDE_BATCH_PROTOCOL.md` freezes an eight-row, train-only comparison
 before fitting: same 24 selected rows, factors 1/32, 20 epochs and 640
 presentations per arm, but 80 updates versus the historical four-row control's

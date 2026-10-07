@@ -1,5 +1,12 @@
 # Changelog
 
+- Add the frozen optimizer/exposure-matched accumulation control: exact
+  eight-row order, atomic two-microbatch gradient accumulation, independent
+  full-network update equivalence, finite-gradient failure checks and preserved
+  legacy training behavior. Complete real-train arms fail learning goals;
+  original BA .50, amplified BA worsens, all 18 numeric oracles pass. Record
+  full prepared data versus sanity-subset scope; no deployed detector change.
+
 - Add the separately frozen, bounded eight-row training-context control:
   distinct source/lineage matching, unchanged legacy trainer callers, exact
   row-exposure/update accounting, serialized replay and independent oracles.
