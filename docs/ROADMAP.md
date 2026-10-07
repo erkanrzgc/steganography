@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Signal-strength control completed (`SRNET_SIGNAL_STRENGTH_RESULTS.md`): two
+fixed 20-epoch/160-update arms; amplification lowers batch loss but fails the
+stored-BN own-input learning goal, original-input train BA stays .50. All 18
+numeric oracles pass; neither model is deployed. Next preregister train-only
+batch-context/stored-normalization controls, not validation-based tuning.
+
 Train-only gradient/null controls completed (`SRNET_GRADIENT_RESULTS.md`):
 all six cells covered in nine probes, classifier directional checks 9/9 pass,
 complete replay matches. Real early-layer gradients are nonzero but smaller in

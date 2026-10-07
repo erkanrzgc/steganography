@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`SRNET_SIGNAL_STRENGTH_PROTOCOL.md` fixes factors 1/32, identical fresh seed,
+20 epochs and original sampler order before fitting. Modified positives are
+artificial tensors, not actual embedding/payload-rate evidence. Per-arm own and
+unamplified singleton training metrics and independent numeric gates remain
+separate; neither qualifies held-out accuracy or deployable support. Incomplete
+arms cannot become a complete-job result, and old failures stay unchanged.
+
 `SRNET_GRADIENT_PROTOCOL.md` freezes train-only true versus contradictory-null
 gradient probes before execution. All six context cells are covered; the fresh
 and failed-tiny model comparison and generated contrast are descriptive only.

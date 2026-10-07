@@ -1,5 +1,13 @@
 # Architecture
 
+`core/srnet_signal` owns bounded paired-delta transformation, unchanged shared
+training, singleton evaluation and numeric reload/oracle checks. Original JPEG
+hashes remain sampler identities; derived float32 byte hashes are separate.
+`research_srnet_signal` binds frozen train-only inputs and runs both fixed arms
+with fresh snapshots, hard process limits and a complete-job report only after
+both finish. Amplified tensors are artificial; no detector or validation-based
+selection logic is added to CLI/API/TUI, and no model is installed.
+
 `core/srnet_gradients` owns bounded metadata-only cell/batch selection and
 state-preserving training/null gradient probes. Autograd returns gradients
 without assigning existing `.grad`; BN tracking is disabled and numeric state,

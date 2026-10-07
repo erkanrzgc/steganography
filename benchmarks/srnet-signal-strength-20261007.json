@@ -1,0 +1,3754 @@
+{
+  "schema_version": "srnet-signal-strength-control-v1",
+  "status": "completed",
+  "protocol_sha256": "c1a067ba32ae56d19dffedfec8f20725b5b60e6726e0fb992264ec2b7327e0ca",
+  "protocol_commit": "09e28da",
+  "manifest_sha256": "0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14",
+  "train_cache_sha256": "828158342b8937844e76f8f879bb41177a32e7ebcb85eef1eef59f2e67692028",
+  "train_data_sha256": "fd27c6da9869f4bea8bf7b97edeffd8ebae519824cd23d15b029aba25ceaf392",
+  "selected_rows": [
+    {
+      "sha256": "00da9707442f2706cdac75405beef139730f1a041759d71ad5dd8024f8b6649f",
+      "source_group": "ALASKA2",
+      "lineage": "00da9707442f2706cdac75405beef139730f1a041759d71ad5dd8024f8b6649f",
+      "quality_factor": null,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "fa267b7fa61ccb1cc26339e67d1c3fdf46a59992ff7203deef107b6c0cbc71a2",
+      "source_group": "ALASKA2",
+      "lineage": "00da9707442f2706cdac75405beef139730f1a041759d71ad5dd8024f8b6649f",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "f7ffcdf8ca7a7ce1c8ca44a5d5ea0dca4915aeca173749f7814267bcd11e086a",
+      "source_group": "ALASKA2",
+      "lineage": "00da9707442f2706cdac75405beef139730f1a041759d71ad5dd8024f8b6649f",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "UERD"
+    },
+    {
+      "sha256": "009047021be9b9fe6249710b9f702a147cbf60df11b4746bfd5a020743b04efc",
+      "source_group": "ALASKA2",
+      "lineage": "009047021be9b9fe6249710b9f702a147cbf60df11b4746bfd5a020743b04efc",
+      "quality_factor": null,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "0600ca911584779d4e6aef9f378e8d3b4e31da9e5c862680ab52f1e74f6b75c0",
+      "source_group": "ALASKA2",
+      "lineage": "009047021be9b9fe6249710b9f702a147cbf60df11b4746bfd5a020743b04efc",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "36a3a0fa3f2c46e72edb2a32da43fbbbdf861fc0668a8856a2f5b48a8194a23d",
+      "source_group": "ALASKA2",
+      "lineage": "009047021be9b9fe6249710b9f702a147cbf60df11b4746bfd5a020743b04efc",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "UERD"
+    },
+    {
+      "sha256": "00ae5d8f4d52141c3eedb309d29285a3fe362dbd098f08eda463ce5bcba84d33",
+      "source_group": "ALASKA2",
+      "lineage": "00ae5d8f4d52141c3eedb309d29285a3fe362dbd098f08eda463ce5bcba84d33",
+      "quality_factor": null,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "c85ac9a717166979d85c51558e369512446573fbae0d5869b7792920adc86326",
+      "source_group": "ALASKA2",
+      "lineage": "00ae5d8f4d52141c3eedb309d29285a3fe362dbd098f08eda463ce5bcba84d33",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "b030bd591517c80e6fa4302ab4c016e87180372026f414fe36f5cb58b765648d",
+      "source_group": "ALASKA2",
+      "lineage": "00ae5d8f4d52141c3eedb309d29285a3fe362dbd098f08eda463ce5bcba84d33",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "UERD"
+    },
+    {
+      "sha256": "009dfc37d0a0a2a816235a15d4c24de0c9dd7c533c712e16d16376be1f93bbcb",
+      "source_group": "ALASKA2",
+      "lineage": "009dfc37d0a0a2a816235a15d4c24de0c9dd7c533c712e16d16376be1f93bbcb",
+      "quality_factor": null,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "9608922e8e8b0c80f1653c40ee315d0b3c6046257f49d65c945015807a9c89ff",
+      "source_group": "ALASKA2",
+      "lineage": "009dfc37d0a0a2a816235a15d4c24de0c9dd7c533c712e16d16376be1f93bbcb",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "b1c4dd6abb28da337f00f311b69756be75a50a9f486ae7dfbe49e246acd82111",
+      "source_group": "ALASKA2",
+      "lineage": "009dfc37d0a0a2a816235a15d4c24de0c9dd7c533c712e16d16376be1f93bbcb",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "UERD"
+    },
+    {
+      "sha256": "de4b90755a8480285d892e0199b12e3236727a3c91ec8ac7725567ab0849afb3",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "072945812b2ca7a209bb1807e2c359be186b5e90e8b9a09ba7a91173b4aed678",
+      "quality_factor": 75,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "578108e2faa894af81b1d1b480f261c2e723229e4a00d772b28b7a3e9abf1492",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "072945812b2ca7a209bb1807e2c359be186b5e90e8b9a09ba7a91173b4aed678",
+      "quality_factor": 75,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "f784d5151b4ec62716f854b97937616d979394e946ad8825bf9d9e7b50ab7b42",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "072945812b2ca7a209bb1807e2c359be186b5e90e8b9a09ba7a91173b4aed678",
+      "quality_factor": 75,
+      "label": "stego",
+      "method": "UERD"
+    },
+    {
+      "sha256": "59645c535cde6bdac08156f84a56f7af6774c325118d8e857f1e5667fe21ae59",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "072945812b2ca7a209bb1807e2c359be186b5e90e8b9a09ba7a91173b4aed678",
+      "quality_factor": 95,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "2f8ca85bdeb7e4dcbe437b3ca31d63794173e9705de56a6163f1dd4b81a37a30",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "072945812b2ca7a209bb1807e2c359be186b5e90e8b9a09ba7a91173b4aed678",
+      "quality_factor": 95,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "334a6317b0c605def42eee0bf418aece31d719b8154bd4d86638a936c390bf69",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "072945812b2ca7a209bb1807e2c359be186b5e90e8b9a09ba7a91173b4aed678",
+      "quality_factor": 95,
+      "label": "stego",
+      "method": "UERD"
+    },
+    {
+      "sha256": "7e65149e093d79e2c17a86293bcd160329ac210bfe3bc20ef4917e94527d9e2b",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "086f969e949c46e6b2ee7baf8e6525c004880789cf9685afd23c42e5b94b5551",
+      "quality_factor": 75,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "840a73925d3ad930ff8eefad8b2305354a9aee86e3cfdce44ff198a4d84c57aa",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "086f969e949c46e6b2ee7baf8e6525c004880789cf9685afd23c42e5b94b5551",
+      "quality_factor": 75,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "76b66e9abd3549f17c0e6564a8380778cc2a7ab61daab34345521e7e24e4dc20",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "086f969e949c46e6b2ee7baf8e6525c004880789cf9685afd23c42e5b94b5551",
+      "quality_factor": 75,
+      "label": "stego",
+      "method": "UERD"
+    },
+    {
+      "sha256": "a366ebadfcecea14be0e03fd37f214f9358c13ddfe700c80d2dad465399cdbea",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "086f969e949c46e6b2ee7baf8e6525c004880789cf9685afd23c42e5b94b5551",
+      "quality_factor": 95,
+      "label": "cover",
+      "method": null
+    },
+    {
+      "sha256": "54d91e2fd2ae74483235ad9043b2f7f60db651e72c9b0200f226f6ab9d6dfc6a",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "086f969e949c46e6b2ee7baf8e6525c004880789cf9685afd23c42e5b94b5551",
+      "quality_factor": 95,
+      "label": "stego",
+      "method": "JUNIWARD"
+    },
+    {
+      "sha256": "8936408d753462a37b2f39e976d97507a1e21c7495f2ce1dedb417762ec22d5d",
+      "source_group": "BOSSbase-1.01",
+      "lineage": "086f969e949c46e6b2ee7baf8e6525c004880789cf9685afd23c42e5b94b5551",
+      "quality_factor": 95,
+      "label": "stego",
+      "method": "UERD"
+    }
+  ],
+  "sampler_sha256_is_original_jpeg_identity_not_derived_tensor": true,
+  "amplified_inputs_not_encoded_jpeg_or_actual_embedding": true,
+  "execution_source_sha256": {
+    "core/srnet_signal.py": "772129bf8c9a24775a2fe17b52661a00edbe66d6ae0b1e46e626ea9573bf5e5c",
+    "core/srnet_training.py": "4d33776132fdecf5f377734304d806e698848ee27c5eaf984692a83406f8c44f",
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_multibatch.py": "0e9be4c41b8a24753f32da841f8a4356bfe9017b602485802e05d5a50cbebc6d",
+    "core/srnet_sampling.py": "ae0fdc56e538a8a249ca2254ab53b6fb800948f9c7e68190e19313b2c050c964",
+    "core/srnet_positive.py": "f765f3c7a67b4bf82b8e62f931ff2da86d326a1f0c0a31c9c593b3d72fe7ba34",
+    "steganography/research_srnet_signal.py": "ac846e7904eb7b0356625d19cc8dd481f04811511ae1daddf94fe3dd403f9540"
+  },
+  "arms": [
+    {
+      "factor": 1,
+      "optimizer": {
+        "threads": 2,
+        "max_seconds": 1800,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001
+      },
+      "seed": 20261012,
+      "optimizer_updates": 160,
+      "derived_tensor_sha256": [
+        "7781154c3b8a28f96edf24aee038f9e44880a7a5441f7c1905455c33542b98d3",
+        "65df24847c4b1e8f550e1c6abe20fbd3995f1cbc48614d5e380fd882fde2a698",
+        "31084d27ceba0582dc235cd8666d8f8832eff87a84e2fe00bad80333288e79ad",
+        "6dbab7bc11903aadfa2eea8d8d6d234cf63f49bba02f1dd759aa7467cb12eb1e",
+        "7545bcc9ce625bfc12d5fd01a6ba1ac3dbfa7411bcc60fc6241bb790a905607e",
+        "58a46267bd6ca6b795a2bc8754c98f601c5e322d5c14bbcfef78d59ff77ed48b",
+        "8b3a3cbe154e3e0f886b642da5771c36d42a3ce938a386eaffaa9b3ed619f9aa",
+        "b2ab61f226003f722ca63a4ac012be0fc7341052d51200e5149e04b41935eb0a",
+        "ee410e3477d8beb661fccf1647a36e3714e68497ff4405e772b97475cd76e94d",
+        "e1e9334c5d24c43cc60be4db8738ef735241a0203046940331da736d0c72349f",
+        "20ca9fad6e3fda15bde5c6796dc069ed8438bacaaa601ba1fd9f36637f0f6ee2",
+        "0abbb4ac4b8e2abfeff6f359ce591eb80eb67fbdcccae66b88dbb302168788cb",
+        "7c7ca9633eb81c1ff53893736737c8ccecca1ffa9d392dae5e4fd74a8af7a1af",
+        "3572fff0bb29b07d1222e96f48a71ac40bf6c2528819a31c67288e38e848d2f9",
+        "5a4a0c9b3d18a5755c311952581a7e65310375eac090182658c719704424b421",
+        "90bbb4cfdb1d1e2cbeb0bf31d8637575dde10c2e7535ad91af68462ec41c7edd",
+        "761f506bf2326040429763b844bc1dc123269c188532dd01a11be09c01460023",
+        "e3e787ff2e684cead138d04c40ea8631da898f3f5a1a26361c83f789d5eb6100",
+        "a0c325e378ae0151b382c6914806f9e02936a2893db5adb1086a206a10af4032",
+        "4b5ebd194d2247307c3bafa918933f24521cc8011c14bbd61b1e44a6cce1de8e",
+        "5a8b14a22945eefae5dced251fafb8470d9230c560561a76fbcdb2856ce71d95",
+        "04dca7d1e47f8cd57339e7f57973376eff1b6e8c2e67c6c678c306885d1a665a",
+        "e4d69b57e6414d853dd80d6085b602de521c289acf722143bc57351248f17cca",
+        "b6b2197f4be6eb54bf820282fcb65208778f4d38393013bf92631e6e72f68042"
+      ],
+      "epoch_pair_schedule": [
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 0,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "238f2e1f6705eee1dd6f99b19eb54de27932dfac6ec40051baf14cd681599867",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 1,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "7dd49e6eea52eb7d7403d449d8c308d7fadbab0a63d2ce5e6312affdffbdc602",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 2,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "af73653c51a661b8afa205528c5295c9b25d26316e971f42b516bfe366e93b53",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 3,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "17ce07fd4f95ac647a385e1aacc205b71e8c61e8ecb43add605dd377ef74f53f",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 4,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "413871372988fbcb3672dbbea898961b56f55837acfd9f19aba8a693b9810bfe",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 5,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "144c9be085d223ad7970c70addfec7102c4a0050e31800123656e225407bf10d",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 6,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "127a9015ba8c1d7ca7ab1decb87fc65c45c6fba2ead7d7d44bc1e5ff22fc4da1",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 7,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "a66a3ffe1cf5ff04d3b830f7e1a451d1d183ff0d5e058c205423e46afbc0d2bd",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 8,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "45478493f7ceafa2dd032f1b8d33fadfe973ba80a56381cde56b05646ad16ceb",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 9,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "fd6285bc05367e182cb59b837a179e976e9f54e14af004bc4a6f126b7c186c33",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 10,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "9c47816ba1bb30c2d783c1f1e6abb39c89ba5da4662195e10da221910f0efaf8",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 11,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "2672ccf46d70684a2181f697bd7003f7f663fed063b805d90f64b7166615e6c7",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 12,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "e9128d9e18ec78fae1b20cb0228f83475b72d8fc478046b0fc5828762ca09a7a",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 13,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "702bad133426b45b7426bea7412492374ebc4ca848ff1fc7f9c676b2058a09a6",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 14,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "628f876b6b99ed39582a0436b552ba08064eeded928a0f77ff9c6369950dd885",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 15,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "cab972d05cfa8f9c6c03d3bb13afc017f68218087289503bacee0fa45c8933e6",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 16,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "a51aa89bf73e68cdb5a37de4463a96c19a20e8d09b6a86ca13b538f721e5d343",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 17,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "6cd200395c7e158982e2ec3faabaeddca6d56100b41f8c9cb32213b8c7d03c6d",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 18,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "2a8eeae298fe740d491e51e0dd31968d8a38aa065e6f351db303343526d9500e",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 19,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "fb7d996d9961a0abc19078cdfc89c6f046d1acaee46fd177a1a760c8b8e9b8a1",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        }
+      ],
+      "epoch_batch_schedule": [
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 0,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "d5f960be9d13e1d26d74c56fc05a8e5db295b25f4644ed7e8100941c46bc680b",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 1,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "3fd240a358d5f9fd642931891d9748ce2cc856ce90456ac8111ae2868caa8c49",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 2,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "19306fb7d2eb362c6370d9307c009036b0d547804d71f8943a8e751ce3038afb",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 3,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "2d36aa99b9ac00b30f3cc19c5869d9666f99002b10cfd81e6f157ff74510b2ee",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 4,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "db3e1165d1ca4735d91af303888cb50d83aa3b40fdfb5dc6a49bae78c907b15a",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 5,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "4644dee5e30c87c3fc5f2ea8a83267bc9d32f5a33315a0118589b456a4988949",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 6,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "207cc978e3ce21a10780f1daed6f94c53e514c8b342f5a1d2130a4b178721f5c",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 7,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "1b11832d76da3e07e3a98d81dab34b820245ca9910957de8d96557ae7cf9ca80",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 8,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "18649bec7e35e6b1b7cdc516b5976cc4f8c6337db0f113910e0ffe562131b800",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 9,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "629b48a8c01a4704bd3f8f42cb94f1e12dc3ef932fdc02af8e85fe9166b39957",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 10,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "4753918223441b77c2f80b44ea394c7195ca372429aa9b7e9fe68795a3f69bcc",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 11,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "8759af8bb0c0de057177c3bdd08f4e439f0d92270a2892c452a8b3221155c5af",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 12,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "b90f2ee18bfc5ba99c2abdfc727662a5374133a99d933154e8afc9346f9c62a3",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 13,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "6c83a9c79612d65f1ff0760800930872bc2d23603a6c679bde0a9158fba0d1af",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 14,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "5bd3bc9f495960a7268b55415783950f0dd792c7a15bb16adbc52c7a6891f4b7",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 15,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "0880ace056de622e9f093e33b4990c37427eb6b1b3507e20583110cc375eb2d0",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 16,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "6d28b43e89ec86a7e8f00ffe8cabaf6da56845f9528f845dfb4e0f9241c4ee1d",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 17,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "d664793f0da12f7a442ed0da83eff72a76cb73b73e754143b4ffb7f8f50439a5",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 18,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "333cc5aea65a0e47a4d8dcd7809702fca270e2776661b64770484bf1b362f2f6",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 19,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "3b0dacacdde39c3d05a753d856a23e0601cf9e30b038e2ea70b91316165856bd",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        }
+      ],
+      "epoch_training": [
+        {
+          "epoch": 0,
+          "updates": 8,
+          "mean_pair_loss": 1.0209718868136406
+        },
+        {
+          "epoch": 1,
+          "updates": 8,
+          "mean_pair_loss": 0.7241778373718262
+        },
+        {
+          "epoch": 2,
+          "updates": 8,
+          "mean_pair_loss": 0.7181049138307571
+        },
+        {
+          "epoch": 3,
+          "updates": 8,
+          "mean_pair_loss": 0.7000270709395409
+        },
+        {
+          "epoch": 4,
+          "updates": 8,
+          "mean_pair_loss": 0.6966553330421448
+        },
+        {
+          "epoch": 5,
+          "updates": 8,
+          "mean_pair_loss": 0.6956270337104797
+        },
+        {
+          "epoch": 6,
+          "updates": 8,
+          "mean_pair_loss": 0.6938818246126175
+        },
+        {
+          "epoch": 7,
+          "updates": 8,
+          "mean_pair_loss": 0.6940202713012695
+        },
+        {
+          "epoch": 8,
+          "updates": 8,
+          "mean_pair_loss": 0.6932355463504791
+        },
+        {
+          "epoch": 9,
+          "updates": 8,
+          "mean_pair_loss": 0.6932753473520279
+        },
+        {
+          "epoch": 10,
+          "updates": 8,
+          "mean_pair_loss": 0.6931795850396156
+        },
+        {
+          "epoch": 11,
+          "updates": 8,
+          "mean_pair_loss": 0.693198911845684
+        },
+        {
+          "epoch": 12,
+          "updates": 8,
+          "mean_pair_loss": 0.693170815706253
+        },
+        {
+          "epoch": 13,
+          "updates": 8,
+          "mean_pair_loss": 0.6931617334485054
+        },
+        {
+          "epoch": 14,
+          "updates": 8,
+          "mean_pair_loss": 0.6931490376591682
+        },
+        {
+          "epoch": 15,
+          "updates": 8,
+          "mean_pair_loss": 0.6931515410542488
+        },
+        {
+          "epoch": 16,
+          "updates": 8,
+          "mean_pair_loss": 0.6931478902697563
+        },
+        {
+          "epoch": 17,
+          "updates": 8,
+          "mean_pair_loss": 0.693147823214531
+        },
+        {
+          "epoch": 18,
+          "updates": 8,
+          "mean_pair_loss": 0.6931479722261429
+        },
+        {
+          "epoch": 19,
+          "updates": 8,
+          "mean_pair_loss": 0.6931404396891594
+        }
+      ],
+      "own_input_singleton_logits": [
+        [
+          0.08801192790269852,
+          0.12075793743133545
+        ],
+        [
+          0.08819524198770523,
+          0.12093708664178848
+        ],
+        [
+          0.08800094574689865,
+          0.12069737166166306
+        ],
+        [
+          0.08536451309919357,
+          0.1311238706111908
+        ],
+        [
+          0.08536356687545776,
+          0.1311219185590744
+        ],
+        [
+          0.08536216616630554,
+          0.13112673163414001
+        ],
+        [
+          0.0949540063738823,
+          0.09421145915985107
+        ],
+        [
+          0.09496337175369263,
+          0.0942089855670929
+        ],
+        [
+          0.09495505690574646,
+          0.09419983625411987
+        ],
+        [
+          0.10273656994104385,
+          0.10612758994102478
+        ],
+        [
+          0.10265651345252991,
+          0.10607042163610458
+        ],
+        [
+          0.10257040709257126,
+          0.10622461885213852
+        ],
+        [
+          -1.0238564014434814,
+          -1.4143390655517578
+        ],
+        [
+          -1.0245741605758667,
+          -1.4148342609405518
+        ],
+        [
+          -1.0245558023452759,
+          -1.415238857269287
+        ],
+        [
+          -1.0154393911361694,
+          -1.400883436203003
+        ],
+        [
+          -1.015383005142212,
+          -1.400923490524292
+        ],
+        [
+          -1.015718936920166,
+          -1.4011266231536865
+        ],
+        [
+          0.07181189954280853,
+          0.09894564747810364
+        ],
+        [
+          0.07180633395910263,
+          0.09887900948524475
+        ],
+        [
+          0.07181348651647568,
+          0.09895235300064087
+        ],
+        [
+          0.07187207043170929,
+          0.09897401928901672
+        ],
+        [
+          0.0718657374382019,
+          0.09896525740623474
+        ],
+        [
+          0.07185877114534378,
+          0.09894955158233643
+        ]
+      ],
+      "own_input_train_metrics": {
+        "cross_entropy": 0.7112368842916877,
+        "balanced_accuracy": 0.5,
+        "recall": 0.625,
+        "false_positive_rate": 0.625,
+        "scores": [
+          0.5081857709276066,
+          0.5081847299880079,
+          0.5081733783415526,
+          0.5114378436213317,
+          0.5114375922958204,
+          0.5114391449288864,
+          0.4998143632050218,
+          0.49981140346229425,
+          0.49981119484606723,
+          0.5008477541876337,
+          0.5008534762169715,
+          0.5009135519233171,
+          0.4036011145469916,
+          0.4036546884039484,
+          0.40355287995576294,
+          0.4048145335162405,
+          0.4047912974263348,
+          0.40482329383392895,
+          0.5067830208278358,
+          0.5067677555291318,
+          0.5067843002295077,
+          0.5067750725196808,
+          0.5067744654088421,
+          0.5067722809270393
+        ]
+      },
+      "original_input_singleton_logits": [
+        [
+          0.08801192790269852,
+          0.12075793743133545
+        ],
+        [
+          0.08819524198770523,
+          0.12093708664178848
+        ],
+        [
+          0.08800094574689865,
+          0.12069737166166306
+        ],
+        [
+          0.08536451309919357,
+          0.1311238706111908
+        ],
+        [
+          0.08536356687545776,
+          0.1311219185590744
+        ],
+        [
+          0.08536216616630554,
+          0.13112673163414001
+        ],
+        [
+          0.0949540063738823,
+          0.09421145915985107
+        ],
+        [
+          0.09496337175369263,
+          0.0942089855670929
+        ],
+        [
+          0.09495505690574646,
+          0.09419983625411987
+        ],
+        [
+          0.10273656994104385,
+          0.10612758994102478
+        ],
+        [
+          0.10265651345252991,
+          0.10607042163610458
+        ],
+        [
+          0.10257040709257126,
+          0.10622461885213852
+        ],
+        [
+          -1.0238564014434814,
+          -1.4143390655517578
+        ],
+        [
+          -1.0245741605758667,
+          -1.4148342609405518
+        ],
+        [
+          -1.0245558023452759,
+          -1.415238857269287
+        ],
+        [
+          -1.0154393911361694,
+          -1.400883436203003
+        ],
+        [
+          -1.015383005142212,
+          -1.400923490524292
+        ],
+        [
+          -1.015718936920166,
+          -1.4011266231536865
+        ],
+        [
+          0.07181189954280853,
+          0.09894564747810364
+        ],
+        [
+          0.07180633395910263,
+          0.09887900948524475
+        ],
+        [
+          0.07181348651647568,
+          0.09895235300064087
+        ],
+        [
+          0.07187207043170929,
+          0.09897401928901672
+        ],
+        [
+          0.0718657374382019,
+          0.09896525740623474
+        ],
+        [
+          0.07185877114534378,
+          0.09894955158233643
+        ]
+      ],
+      "original_input_train_metrics": {
+        "cross_entropy": 0.7112368842916877,
+        "balanced_accuracy": 0.5,
+        "recall": 0.625,
+        "false_positive_rate": 0.625,
+        "scores": [
+          0.5081857709276066,
+          0.5081847299880079,
+          0.5081733783415526,
+          0.5114378436213317,
+          0.5114375922958204,
+          0.5114391449288864,
+          0.4998143632050218,
+          0.49981140346229425,
+          0.49981119484606723,
+          0.5008477541876337,
+          0.5008534762169715,
+          0.5009135519233171,
+          0.4036011145469916,
+          0.4036546884039484,
+          0.40355287995576294,
+          0.4048145335162405,
+          0.4047912974263348,
+          0.40482329383392895,
+          0.5067830208278358,
+          0.5067677555291318,
+          0.5067843002295077,
+          0.5067750725196808,
+          0.5067744654088421,
+          0.5067722809270393
+        ]
+      },
+      "learning_objectives": {
+        "final_batch_loss_at_most_0_35": false,
+        "relative_loss_reduction_at_least_0_25": true,
+        "stored_bn_train_balanced_accuracy_at_least_0_90": false,
+        "relative_loss_reduction": 0.3210974282040351
+      },
+      "learning_objectives_passed": false,
+      "seconds": 369.2228373220023,
+      "model_sha256": "14dd74b8d27ac046438563376ef70a3b7d27b65e1f87bb1acd960d5e85d88413",
+      "audit": {
+        "all_own_and_original_singletons_replayed": true,
+        "independent_oracles": [
+          {
+            "row": 0,
+            "source_sha256": "00da9707442f2706cdac75405beef139730f1a041759d71ad5dd8024f8b6649f",
+            "derived_tensor_sha256": "7781154c3b8a28f96edf24aee038f9e44880a7a5441f7c1905455c33542b98d3",
+            "maximum_logit_difference": 4.6083590721224255e-08,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 1.7063410129303236e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 1,
+            "source_sha256": "fa267b7fa61ccb1cc26339e67d1c3fdf46a59992ff7203deef107b6c0cbc71a2",
+            "derived_tensor_sha256": "65df24847c4b1e8f550e1c6abe20fbd3995f1cbc48614d5e380fd882fde2a698",
+            "maximum_logit_difference": 2.2312135028457192e-08,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 2.612577709726338e-09,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 2,
+            "source_sha256": "f7ffcdf8ca7a7ce1c8ca44a5d5ea0dca4915aeca173749f7814267bcd11e086a",
+            "derived_tensor_sha256": "31084d27ceba0582dc235cd8666d8f8832eff87a84e2fe00bad80333288e79ad",
+            "maximum_logit_difference": 3.361234172938321e-08,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 9.357187691350077e-09,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 12,
+            "source_sha256": "de4b90755a8480285d892e0199b12e3236727a3c91ec8ac7725567ab0849afb3",
+            "derived_tensor_sha256": "7c7ca9633eb81c1ff53893736737c8ccecca1ffa9d392dae5e4fd74a8af7a1af",
+            "maximum_logit_difference": 2.0761687657966377e-07,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 3.592211028635717e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 13,
+            "source_sha256": "578108e2faa894af81b1d1b480f261c2e723229e4a00d772b28b7a3e9abf1492",
+            "derived_tensor_sha256": "3572fff0bb29b07d1222e96f48a71ac40bf6c2528819a31c67288e38e848d2f9",
+            "maximum_logit_difference": 5.075933484643969e-07,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 9.142458828881317e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 14,
+            "source_sha256": "f784d5151b4ec62716f854b97937616d979394e946ad8825bf9d9e7b50ab7b42",
+            "derived_tensor_sha256": "5a4a0c9b3d18a5755c311952581a7e65310375eac090182658c719704424b421",
+            "maximum_logit_difference": 1.0660256855032912e-07,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 4.9717529371218205e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 15,
+            "source_sha256": "59645c535cde6bdac08156f84a56f7af6774c325118d8e857f1e5667fe21ae59",
+            "derived_tensor_sha256": "90bbb4cfdb1d1e2cbeb0bf31d8637575dde10c2e7535ad91af68462ec41c7edd",
+            "maximum_logit_difference": 1.0139650674645395e-07,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 3.215539706724613e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 16,
+            "source_sha256": "2f8ca85bdeb7e4dcbe437b3ca31d63794173e9705de56a6163f1dd4b81a37a30",
+            "derived_tensor_sha256": "761f506bf2326040429763b844bc1dc123269c188532dd01a11be09c01460023",
+            "maximum_logit_difference": 2.586499101564499e-07,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 1.5353679716501034e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 17,
+            "source_sha256": "334a6317b0c605def42eee0bf418aece31d719b8154bd4d86638a936c390bf69",
+            "derived_tensor_sha256": "e3e787ff2e684cead138d04c40ea8631da898f3f5a1a26361c83f789d5eb6100",
+            "maximum_logit_difference": 6.712852917978296e-08,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 1.7706593635757883e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          }
+        ],
+        "numerical_gates_passed": true
+      }
+    },
+    {
+      "factor": 32,
+      "optimizer": {
+        "threads": 2,
+        "max_seconds": 1800,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001
+      },
+      "seed": 20261012,
+      "optimizer_updates": 160,
+      "derived_tensor_sha256": [
+        "7781154c3b8a28f96edf24aee038f9e44880a7a5441f7c1905455c33542b98d3",
+        "84f31e48569790aee043dd7089b8c6f5481d504c3175c341d76906624e5b9a9e",
+        "2ab73e52df27f72dc536aa83ab5596d5741a70f9211edd798aae7fe1e0920881",
+        "6dbab7bc11903aadfa2eea8d8d6d234cf63f49bba02f1dd759aa7467cb12eb1e",
+        "6d09559012e551abba9e47b76ef07496fb05d9ccf2b0278f43bee9dcc608b883",
+        "6ecdb696070e27ba174971575378659ca8906c2d801997229a2078ae1dcd436c",
+        "8b3a3cbe154e3e0f886b642da5771c36d42a3ce938a386eaffaa9b3ed619f9aa",
+        "7b15e6cea1e6ee730addbe0b624c43bfa2d4ca7129d1f169abf2d3ce7d9bbca4",
+        "3123bf37b5afabeae1353105c3ff9dc83c2f492cadb9c0142777920e427c99ec",
+        "e1e9334c5d24c43cc60be4db8738ef735241a0203046940331da736d0c72349f",
+        "18dfccb12366221a5a7362f80b1b4558f24dcca9abc73a927beeba1977ad13ce",
+        "6f55a1a0cf787748b724290dcff9833284c777d50ccf67c80f01e086620875f0",
+        "7c7ca9633eb81c1ff53893736737c8ccecca1ffa9d392dae5e4fd74a8af7a1af",
+        "e0b410038959f9244f12bf791c0266dace5a1b5ec64e8cb1dfe448b78fba9b79",
+        "be0750673ad0ad41d0d99d21fe371b7dd5cf64e9ed42dcd9677ba52842545a77",
+        "90bbb4cfdb1d1e2cbeb0bf31d8637575dde10c2e7535ad91af68462ec41c7edd",
+        "61976cc89836afa08d06215fe536605c021e09ab05ed89933a968f796cabc9b4",
+        "c0ac57bb91b253ee8bcfb02309e4efb2450a73d418b8c570cbc4011860855bb0",
+        "a0c325e378ae0151b382c6914806f9e02936a2893db5adb1086a206a10af4032",
+        "5e9f91cd8d95f533645b0726aa88decda2e846f22cd2116b8dc668f556bc2edd",
+        "dba3c861969472404c89baaf66c840b5a625702b2c40ecd3b0612256a997e452",
+        "04dca7d1e47f8cd57339e7f57973376eff1b6e8c2e67c6c678c306885d1a665a",
+        "5918b03bc054875167eac7b7b6804fcd85116b05b3c49d65fd52025b2c532324",
+        "f71599d89f3d6ebfa71c3f6ba3fb1176aa87c0f67b6ea0a1d912e0b913ebe889"
+      ],
+      "epoch_pair_schedule": [
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 0,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "238f2e1f6705eee1dd6f99b19eb54de27932dfac6ec40051baf14cd681599867",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 1,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "7dd49e6eea52eb7d7403d449d8c308d7fadbab0a63d2ce5e6312affdffbdc602",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 2,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "af73653c51a661b8afa205528c5295c9b25d26316e971f42b516bfe366e93b53",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 3,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "17ce07fd4f95ac647a385e1aacc205b71e8c61e8ecb43add605dd377ef74f53f",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 4,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "413871372988fbcb3672dbbea898961b56f55837acfd9f19aba8a693b9810bfe",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 5,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "144c9be085d223ad7970c70addfec7102c4a0050e31800123656e225407bf10d",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 6,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "127a9015ba8c1d7ca7ab1decb87fc65c45c6fba2ead7d7d44bc1e5ff22fc4da1",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 7,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "a66a3ffe1cf5ff04d3b830f7e1a451d1d183ff0d5e058c205423e46afbc0d2bd",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 8,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "45478493f7ceafa2dd032f1b8d33fadfe973ba80a56381cde56b05646ad16ceb",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 9,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "fd6285bc05367e182cb59b837a179e976e9f54e14af004bc4a6f126b7c186c33",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 10,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "9c47816ba1bb30c2d783c1f1e6abb39c89ba5da4662195e10da221910f0efaf8",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 11,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "2672ccf46d70684a2181f697bd7003f7f663fed063b805d90f64b7166615e6c7",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 12,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "e9128d9e18ec78fae1b20cb0228f83475b72d8fc478046b0fc5828762ca09a7a",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 13,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "702bad133426b45b7426bea7412492374ebc4ca848ff1fc7f9c676b2058a09a6",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 14,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "628f876b6b99ed39582a0436b552ba08064eeded928a0f77ff9c6369950dd885",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 15,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "cab972d05cfa8f9c6c03d3bb13afc017f68218087289503bacee0fa45c8933e6",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 16,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "a51aa89bf73e68cdb5a37de4463a96c19a20e8d09b6a86ca13b538f721e5d343",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 17,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "6cd200395c7e158982e2ec3faabaeddca6d56100b41f8c9cb32213b8c7d03c6d",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 18,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "2a8eeae298fe740d491e51e0dd31968d8a38aa065e6f351db303343526d9500e",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        },
+        {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 19,
+          "pairs": 16,
+          "rows": 32,
+          "pairs_per_source": 8,
+          "ordered_pair_sha256": "fb7d996d9961a0abc19078cdfc89c6f046d1acaee46fd177a1a760c8b8e9b8a1",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 2,
+              "sampled_pairs": 2
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 4,
+              "sampled_pairs": 4
+            }
+          ]
+        }
+      ],
+      "epoch_batch_schedule": [
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 0,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "d5f960be9d13e1d26d74c56fc05a8e5db295b25f4644ed7e8100941c46bc680b",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 1,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "3fd240a358d5f9fd642931891d9748ce2cc856ce90456ac8111ae2868caa8c49",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 2,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "19306fb7d2eb362c6370d9307c009036b0d547804d71f8943a8e751ce3038afb",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 3,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "2d36aa99b9ac00b30f3cc19c5869d9666f99002b10cfd81e6f157ff74510b2ee",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 4,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "db3e1165d1ca4735d91af303888cb50d83aa3b40fdfb5dc6a49bae78c907b15a",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 5,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "4644dee5e30c87c3fc5f2ea8a83267bc9d32f5a33315a0118589b456a4988949",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 6,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "207cc978e3ce21a10780f1daed6f94c53e514c8b342f5a1d2130a4b178721f5c",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 7,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "1b11832d76da3e07e3a98d81dab34b820245ca9910957de8d96557ae7cf9ca80",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 8,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "18649bec7e35e6b1b7cdc516b5976cc4f8c6337db0f113910e0ffe562131b800",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 9,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "629b48a8c01a4704bd3f8f42cb94f1e12dc3ef932fdc02af8e85fe9166b39957",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 10,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "4753918223441b77c2f80b44ea394c7195ca372429aa9b7e9fe68795a3f69bcc",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 11,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "8759af8bb0c0de057177c3bdd08f4e439f0d92270a2892c452a8b3221155c5af",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 12,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "b90f2ee18bfc5ba99c2abdfc727662a5374133a99d933154e8afc9346f9c62a3",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 13,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "6c83a9c79612d65f1ff0760800930872bc2d23603a6c679bde0a9158fba0d1af",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 14,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "5bd3bc9f495960a7268b55415783950f0dd792c7a15bb16adbc52c7a6891f4b7",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 15,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "0880ace056de622e9f093e33b4990c37427eb6b1b3507e20583110cc375eb2d0",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 16,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "6d28b43e89ec86a7e8f00ffe8cabaf6da56845f9528f845dfb4e0f9241c4ee1d",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 17,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "d664793f0da12f7a442ed0da83eff72a76cb73b73e754143b4ffb7f8f50439a5",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 18,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "333cc5aea65a0e47a4d8dcd7809702fca270e2776661b64770484bf1b362f2f6",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        },
+        {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 19,
+          "batch_size": 4,
+          "pairs": 16,
+          "optimizer_updates": 8,
+          "rows": 32,
+          "ordered_batch_sha256": "3b0dacacdde39c3d05a753d856a23e0601cf9e30b038e2ea70b91316165856bd",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        }
+      ],
+      "epoch_training": [
+        {
+          "epoch": 0,
+          "updates": 8,
+          "mean_pair_loss": 0.6447123847901821
+        },
+        {
+          "epoch": 1,
+          "updates": 8,
+          "mean_pair_loss": 0.5222273394465446
+        },
+        {
+          "epoch": 2,
+          "updates": 8,
+          "mean_pair_loss": 0.4948201924562454
+        },
+        {
+          "epoch": 3,
+          "updates": 8,
+          "mean_pair_loss": 0.48723113164305687
+        },
+        {
+          "epoch": 4,
+          "updates": 8,
+          "mean_pair_loss": 0.5439884159713984
+        },
+        {
+          "epoch": 5,
+          "updates": 8,
+          "mean_pair_loss": 0.42833803966641426
+        },
+        {
+          "epoch": 6,
+          "updates": 8,
+          "mean_pair_loss": 0.3791045732796192
+        },
+        {
+          "epoch": 7,
+          "updates": 8,
+          "mean_pair_loss": 0.46675064601004124
+        },
+        {
+          "epoch": 8,
+          "updates": 8,
+          "mean_pair_loss": 0.427743274718523
+        },
+        {
+          "epoch": 9,
+          "updates": 8,
+          "mean_pair_loss": 0.3659655638039112
+        },
+        {
+          "epoch": 10,
+          "updates": 8,
+          "mean_pair_loss": 0.38851751387119293
+        },
+        {
+          "epoch": 11,
+          "updates": 8,
+          "mean_pair_loss": 0.2918915553018451
+        },
+        {
+          "epoch": 12,
+          "updates": 8,
+          "mean_pair_loss": 0.26024993136525154
+        },
+        {
+          "epoch": 13,
+          "updates": 8,
+          "mean_pair_loss": 0.2152124575804919
+        },
+        {
+          "epoch": 14,
+          "updates": 8,
+          "mean_pair_loss": 0.19625541823916137
+        },
+        {
+          "epoch": 15,
+          "updates": 8,
+          "mean_pair_loss": 0.21587621263461187
+        },
+        {
+          "epoch": 16,
+          "updates": 8,
+          "mean_pair_loss": 0.14983675989788026
+        },
+        {
+          "epoch": 17,
+          "updates": 8,
+          "mean_pair_loss": 0.17583433305844665
+        },
+        {
+          "epoch": 18,
+          "updates": 8,
+          "mean_pair_loss": 0.13398789113853127
+        },
+        {
+          "epoch": 19,
+          "updates": 8,
+          "mean_pair_loss": 0.1282620127312839
+        }
+      ],
+      "own_input_singleton_logits": [
+        [
+          1.8596086502075195,
+          -1.6164637804031372
+        ],
+        [
+          -4.82896089553833,
+          4.161313533782959
+        ],
+        [
+          -0.4252093434333801,
+          0.35261693596839905
+        ],
+        [
+          1.207559585571289,
+          -1.061492919921875
+        ],
+        [
+          -0.9753628373146057,
+          0.824569821357727
+        ],
+        [
+          1.2124978303909302,
+          -1.06568443775177
+        ],
+        [
+          3.359736680984497,
+          -2.87817645072937
+        ],
+        [
+          2.941422939300537,
+          -2.5183863639831543
+        ],
+        [
+          3.120694398880005,
+          -2.672883987426758
+        ],
+        [
+          3.3130486011505127,
+          -2.8675901889801025
+        ],
+        [
+          -6.478582859039307,
+          5.586665153503418
+        ],
+        [
+          -5.37248420715332,
+          4.605280876159668
+        ],
+        [
+          -13.26356029510498,
+          11.574369430541992
+        ],
+        [
+          -34.63636016845703,
+          30.135738372802734
+        ],
+        [
+          -39.67704391479492,
+          34.527565002441406
+        ],
+        [
+          -12.792677879333496,
+          11.164590835571289
+        ],
+        [
+          -16.24640464782715,
+          14.16650104522705
+        ],
+        [
+          -16.804508209228516,
+          14.654565811157227
+        ],
+        [
+          3.8128650188446045,
+          -3.305588960647583
+        ],
+        [
+          -4.267567157745361,
+          3.669732093811035
+        ],
+        [
+          0.3214942216873169,
+          -0.2991243004798889
+        ],
+        [
+          4.06404447555542,
+          -3.522500514984131
+        ],
+        [
+          0.9983088970184326,
+          -0.8886657953262329
+        ],
+        [
+          0.8746815323829651,
+          -0.7789615392684937
+        ]
+      ],
+      "own_input_train_metrics": {
+        "cross_entropy": 2.833541913211921,
+        "balanced_accuracy": 0.6875,
+        "recall": 0.625,
+        "false_positive_rate": 0.25,
+        "scores": [
+          0.030000764152867346,
+          0.9998753996368948,
+          0.6852114384006533,
+          0.09371865715619268,
+          0.8581407374864124,
+          0.0929460874924386,
+          0.0019501184705161254,
+          0.004236343999326671,
+          0.00303780272563503,
+          0.002064833349622642,
+          0.9999942439194137,
+          0.99995358145505,
+          0.9999999999836685,
+          1.0,
+          1.0,
+          0.9999999999606005,
+          0.999999999999938,
+          0.9999999999999782,
+          0.0008093624898978079,
+          0.9996429577220582,
+          0.3496407912895279,
+          0.000506973363890719,
+          0.1315897980620534,
+          0.1606171857161908
+        ]
+      },
+      "original_input_singleton_logits": [
+        [
+          1.8596086502075195,
+          -1.6164637804031372
+        ],
+        [
+          1.8427670001983643,
+          -1.6018036603927612
+        ],
+        [
+          1.8491425514221191,
+          -1.6073867082595825
+        ],
+        [
+          1.207559585571289,
+          -1.061492919921875
+        ],
+        [
+          1.1937593221664429,
+          -1.049623966217041
+        ],
+        [
+          1.2078276872634888,
+          -1.0617163181304932
+        ],
+        [
+          3.359736680984497,
+          -2.87817645072937
+        ],
+        [
+          3.3598670959472656,
+          -2.8782734870910645
+        ],
+        [
+          3.358527898788452,
+          -2.87713360786438
+        ],
+        [
+          3.3130486011505127,
+          -2.8675901889801025
+        ],
+        [
+          3.295067548751831,
+          -2.8523635864257812
+        ],
+        [
+          3.272822618484497,
+          -2.8330864906311035
+        ],
+        [
+          -13.26356029510498,
+          11.574369430541992
+        ],
+        [
+          -13.300174713134766,
+          11.60605239868164
+        ],
+        [
+          -13.297321319580078,
+          11.603806495666504
+        ],
+        [
+          -12.792677879333496,
+          11.164590835571289
+        ],
+        [
+          -12.809022903442383,
+          11.178791999816895
+        ],
+        [
+          -12.809708595275879,
+          11.179421424865723
+        ],
+        [
+          3.8128650188446045,
+          -3.305588960647583
+        ],
+        [
+          3.764493703842163,
+          -3.2639200687408447
+        ],
+        [
+          3.807184934616089,
+          -3.300755262374878
+        ],
+        [
+          4.06404447555542,
+          -3.522500514984131
+        ],
+        [
+          4.065443515777588,
+          -3.523757219314575
+        ],
+        [
+          4.059514999389648,
+          -3.5186147689819336
+        ]
+      ],
+      "original_input_train_metrics": {
+        "cross_entropy": 4.776954885494884,
+        "balanced_accuracy": 0.5,
+        "recall": 0.25,
+        "false_positive_rate": 0.25,
+        "scores": [
+          0.030000764152867346,
+          0.030931187008549903,
+          0.030574738307191273,
+          0.09371865715619268,
+          0.09592173899287929,
+          0.09367691971616153,
+          0.0019501184705161254,
+          0.001949675828621216,
+          0.0019545057614408935,
+          0.002064833349622642,
+          0.0021344040168630933,
+          0.0022246931553607514,
+          0.9999999999836685,
+          0.9999999999847468,
+          0.9999999999846687,
+          0.9999999999606005,
+          0.9999999999617858,
+          0.9999999999618361,
+          0.0008093624898978079,
+          0.0008855517006520821,
+          0.0008179098448898653,
+          0.000506973363890719,
+          0.0005056294382680161,
+          0.0005112554683754344
+        ]
+      },
+      "learning_objectives": {
+        "final_batch_loss_at_most_0_35": true,
+        "relative_loss_reduction_at_least_0_25": true,
+        "stored_bn_train_balanced_accuracy_at_least_0_90": false,
+        "relative_loss_reduction": 0.8010554539400914
+      },
+      "learning_objectives_passed": false,
+      "seconds": 538.1777494509988,
+      "model_sha256": "5bfcf4a9b319a4e33ae22a562e9763bd15c06a186b6a4fa8aa3b006e7ac1895b",
+      "audit": {
+        "all_own_and_original_singletons_replayed": true,
+        "independent_oracles": [
+          {
+            "row": 0,
+            "source_sha256": "00da9707442f2706cdac75405beef139730f1a041759d71ad5dd8024f8b6649f",
+            "derived_tensor_sha256": "7781154c3b8a28f96edf24aee038f9e44880a7a5441f7c1905455c33542b98d3",
+            "maximum_logit_difference": 5.604616726273548e-08,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 2.5825582575245143e-09,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 1,
+            "source_sha256": "fa267b7fa61ccb1cc26339e67d1c3fdf46a59992ff7203deef107b6c0cbc71a2",
+            "derived_tensor_sha256": "84f31e48569790aee043dd7089b8c6f5481d504c3175c341d76906624e5b9a9e",
+            "maximum_logit_difference": 1.959754802882685e-07,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 6.895928272854235e-12,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 2,
+            "source_sha256": "f7ffcdf8ca7a7ce1c8ca44a5d5ea0dca4915aeca173749f7814267bcd11e086a",
+            "derived_tensor_sha256": "2ab73e52df27f72dc536aa83ab5596d5741a70f9211edd798aae7fe1e0920881",
+            "maximum_logit_difference": 7.04837320730789e-08,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 2.6820465515164926e-08,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 12,
+            "source_sha256": "de4b90755a8480285d892e0199b12e3236727a3c91ec8ac7725567ab0849afb3",
+            "derived_tensor_sha256": "7c7ca9633eb81c1ff53893736737c8ccecca1ffa9d392dae5e4fd74a8af7a1af",
+            "maximum_logit_difference": 1.0943518287120924e-06,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 1.1102230246251565e-16,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 13,
+            "source_sha256": "578108e2faa894af81b1d1b480f261c2e723229e4a00d772b28b7a3e9abf1492",
+            "derived_tensor_sha256": "e0b410038959f9244f12bf791c0266dace5a1b5ec64e8cb1dfe448b78fba9b79",
+            "maximum_logit_difference": 5.583213759763339e-06,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 0.0,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 14,
+            "source_sha256": "f784d5151b4ec62716f854b97937616d979394e946ad8825bf9d9e7b50ab7b42",
+            "derived_tensor_sha256": "be0750673ad0ad41d0d99d21fe371b7dd5cf64e9ed42dcd9677ba52842545a77",
+            "maximum_logit_difference": 3.886801636099335e-06,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 0.0,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 15,
+            "source_sha256": "59645c535cde6bdac08156f84a56f7af6774c325118d8e857f1e5667fe21ae59",
+            "derived_tensor_sha256": "90bbb4cfdb1d1e2cbeb0bf31d8637575dde10c2e7535ad91af68462ec41c7edd",
+            "maximum_logit_difference": 2.957595039987382e-06,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 1.1102230246251565e-16,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 16,
+            "source_sha256": "2f8ca85bdeb7e4dcbe437b3ca31d63794173e9705de56a6163f1dd4b81a37a30",
+            "derived_tensor_sha256": "61976cc89836afa08d06215fe536605c021e09ab05ed89933a968f796cabc9b4",
+            "maximum_logit_difference": 2.2951638314339107e-06,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 0.0,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          },
+          {
+            "row": 17,
+            "source_sha256": "334a6317b0c605def42eee0bf418aece31d719b8154bd4d86638a936c390bf69",
+            "derived_tensor_sha256": "c0ac57bb91b253ee8bcfb02309e4efb2450a73d418b8c570cbc4011860855bb0",
+            "maximum_logit_difference": 1.6883133682199514e-06,
+            "absolute_tolerance": 0.0001,
+            "relative_tolerance": 1e-05,
+            "maximum_score_difference": 0.0,
+            "score_tolerance": 1e-06,
+            "decisions_equal": true,
+            "passed": true
+          }
+        ],
+        "numerical_gates_passed": true
+      }
+    }
+  ],
+  "seconds": 940.5411266430019,
+  "validation_pixels_loaded": false,
+  "in_sample_only": true,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "primary_detection_changed": false
+}

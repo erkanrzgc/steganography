@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Add preregistered real-delta signal-strength controls with separate original
+  and derived identities, identical two-arm sampling, ordinary singleton eval,
+  bounded numeric snapshots and per-arm independent reload/oracle verification.
+  Artificial amplification and in-sample results never qualify real accuracy.
+
 - Add frozen train-only SRNet gradient/null controls with state/RNG/flag/gradient
   preservation, bounded process execution and classifier central differences.
   Complete all six context cells in nine probes with exact repeated replay;
