@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Train-only gradient/null controls completed (`SRNET_GRADIENT_RESULTS.md`):
+all six cells covered in nine probes, classifier directional checks 9/9 pass,
+complete replay matches. Real early-layer gradients are nonzero but smaller in
+the failed tiny model. No unique cause or accuracy improvement established;
+next freeze signal-strength/early-layer learning controls before longer fitting.
+
 Generated positive learning control completed (`SRNET_POSITIVE_CONTROL_RESULTS.md`):
 20 epochs/160 updates, all three in-sample objectives and six NumPy oracles pass.
 The unchanged trainer can learn an obvious synthetic signal; real-data BA .50

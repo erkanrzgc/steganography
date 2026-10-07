@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`SRNET_GRADIENT_PROTOCOL.md` freezes train-only true versus contradictory-null
+gradient probes before execution. All six context cells are covered; the fresh
+and failed-tiny model comparison and generated contrast are descriptive only.
+`SRNET_GRADIENT_RESULTS.md` retains every derivative check and complete replay.
+Nonzero gradients or one classifier directional check never qualify accuracy,
+all-layer derivatives or a unique optimization/normalization cause.
+
 `SRNET_POSITIVE_CONTROL_PROTOCOL.md` preregisters an obvious generated
 checkerboard control before fitting. `SRNET_POSITIVE_CONTROL_RESULTS.md`
 records all three passed in-sample goals separately from six numerical gates.

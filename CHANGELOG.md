@@ -2,6 +2,11 @@
 
 ## 0.6.0 (unreleased)
 
+- Add frozen train-only SRNet gradient/null controls with state/RNG/flag/gradient
+  preservation, bounded process execution and classifier central differences.
+  Complete all six context cells in nine probes with exact repeated replay;
+  publish descriptive weak/strong contrasts without detector accuracy claims.
+
 - Complete preregistered generated strong-signal SRNet learning control: all
   three train-only objectives pass, with complete numeric reload and six NumPy
   forward oracles. Preserve real-data failures and unavailable qualification;

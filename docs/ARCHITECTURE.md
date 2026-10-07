@@ -1,5 +1,14 @@
 # Architecture
 
+`core/srnet_gradients` owns bounded metadata-only cell/batch selection and
+state-preserving training/null gradient probes. Autograd returns gradients
+without assigning existing `.grad`; BN tracking is disabled and numeric state,
+flags, RNG/threads are restored even after failures. Classifier central
+differences restore weights, never optimizer steps or model export.
+`research_srnet_gradients` binds the frozen train inputs/model/protocol,
+hard-limit module entrypoint and portable identities. Diagnostic batch-stat
+behavior never enters primary inference, calibration or benchmark gates.
+
 `core/srnet_positive` owns generated strong-signal tensors and the unchanged
 shared-trainer control. The explicit `research_srnet_positive` module applies
 process limits, frozen protocol binding and fresh numeric/report outputs.
