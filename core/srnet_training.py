@@ -31,7 +31,7 @@ def settings(config):
     return values
 
 
-def fit(pixels, samples, indices, *, seed, schedule, config):
+def fit(pixels, samples, indices, *, seed, schedule, config, wide_context=False):
     params = settings(config)
     batch_recipe = srnet_multibatch.recipe(config)
     if (
@@ -57,11 +57,21 @@ def fit(pixels, samples, indices, *, seed, schedule, config):
             raise ValueError("invalid SRNet training pixel values")
     epoch_pairs(samples, seed=seed, epoch=0)  # Excluded rows cannot hide malformed pairs.
     selected = [samples[i] for i in indices]
+    if type(wide_context) is not bool or (
+        wide_context
+        and (batch_recipe is None or len(selected) != 24 or seed != 20261012 or len(schedule) != 20)
+    ):
+        raise ValueError("wide context is restricted to the frozen research control")
+    batch_builder = srnet_multibatch.epoch_batches
+    if wide_context:
+        from core import srnet_widebatch
+
+        batch_builder = srnet_widebatch.epoch_batches
     for epoch, record in enumerate(schedule):
         if epoch_pairs(selected, seed=seed, epoch=epoch)[1] != record:
             raise ValueError("SRNet training schedule mismatch")
         if batch_recipe is not None:
-            srnet_multibatch.epoch_batches(selected, seed=seed, epoch=epoch)
+            batch_builder(selected, seed=seed, epoch=epoch)
     import torch
 
     started = time.monotonic()
@@ -86,12 +96,14 @@ def fit(pixels, samples, indices, *, seed, schedule, config):
                 foreach=False,
             )
             targets = torch.tensor(
-                [0, 1] * (2 if batch_recipe is not None else 1), dtype=torch.int64, device="cpu"
+                [0, 1] * (4 if wide_context else 2 if batch_recipe is not None else 1),
+                dtype=torch.int64,
+                device="cpu",
             )
             for epoch in range(len(schedule)):
                 pairs, _ = epoch_pairs(selected, seed=seed, epoch=epoch)
                 if batch_recipe is not None:
-                    pairs, _ = srnet_multibatch.epoch_batches(selected, seed=seed, epoch=epoch)
+                    pairs, _ = batch_builder(selected, seed=seed, epoch=epoch)
                 total = 0.0
                 for pair in pairs:
                     deadline()
