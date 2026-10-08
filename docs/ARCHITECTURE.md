@@ -1,5 +1,16 @@
 # Architecture
 
+Checkout-only data acquisition remains explicit and separate from detection.
+`scripts/fetch-wifd.py` binds a source commit/tree, license and member blob
+identities to frozen protocols, fixed HTTPS origins and bounded independent
+process execution. Native MPO acquisition is opt-in, preserves original bytes
+and decodes only the primary frame; it adds no MPO detector/preprocessing
+support. `scripts/audit-data-expansion.py` independently rereads acquired bytes,
+formats, ancestry/splits and reserved identities without importing a downloader.
+Unchanged ALASKA cover/stego pairs quarantine their whole lineage; eligible
+train and validation counts stay separate. Neither script installs a model or
+changes application verdicts. Corpora and unsuccessful partial runs stay local.
+
 The explicit accumulation research module delegates to the shared context
 service, never independent CLI training logic. `accumulate_context=True`
 is accepted only with the frozen wide-context trainer mode: clear gradients

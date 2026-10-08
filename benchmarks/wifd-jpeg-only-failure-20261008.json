@@ -1,0 +1,21 @@
+{
+  "schema_version": "data-acquisition-failure-v1",
+  "status": "unavailable",
+  "date": "2026-10-08",
+  "source_group": "WIFD",
+  "source_url": "https://github.com/CSCRC-SCREED/WIFD",
+  "source_commit": "3f577edf0b14c686aa08e8d0d8ae07a83ba44f26",
+  "protocol_sha256": "29f706034106f8e8706909afebb47d17d3879de2ef41c4b899a3113675c630a7",
+  "acquisition_script_sha256": "e8b20bb61c318eb4d176d8d3264db45b3474d228fc0568bfb7f846f57c72cc34",
+  "selection_sha256": "f2e3d3246731ad1a3605269341f315ae3e97790ca123152c6c1b7ad526acd018",
+  "selected_files": 200,
+  "retained_partial_files": 40,
+  "retained_partial_bytes": 315183023,
+  "success_manifest_produced": false,
+  "cause": "JPEG-only format validation rejected native two-frame MPO at Canon EOS M6 SDR .jpg members; first observed member size and Git blob hash match upstream",
+  "policy": "Partial output preserved but not counted as complete acquisition; do not overwrite or relabel MPO as JPEG",
+  "detection_measured": false,
+  "models_trained": false,
+  "accuracy_qualification": "unavailable",
+  "raw_data_published": false
+}

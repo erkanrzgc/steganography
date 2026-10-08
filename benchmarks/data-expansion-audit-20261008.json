@@ -1,0 +1,139 @@
+{
+  "schema_version": "data-expansion-audit-v1",
+  "status": "completed",
+  "reserved_manifest_sha256": [
+    "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+    "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+    "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    "d25e61bc037aa19489c5b91a6080e2637ff6a20ab4c8c4164fb0969b7785c692",
+    "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+    "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288"
+  ],
+  "sources": [
+    {
+      "source_group": "ALASKA2",
+      "manifest_sha256": "7df0e4a5a4d64576b6c6a2edcae1eadf8b46a3afa54fe6e1855fd79c7d525626",
+      "selection_sha256": "818d1531aafa3976d60a29d53e54fc6d46e24cd1a0aa8934ef1b7b59d9beb0d0",
+      "files": 4000,
+      "original_lineages": 1000,
+      "bytes": 433195060,
+      "labels": {
+        "cover": 1000,
+        "JMiPOD": 1000,
+        "JUNIWARD": 1000,
+        "UERD": 1000
+      },
+      "splits": {
+        "train": 3276,
+        "validation": 724
+      },
+      "declared_camera_counts": {},
+      "native_formats": {
+        "JPEG": 4000
+      },
+      "license": "Subject to Competition Rules; local research only; do not redistribute",
+      "quarantined_lineages": [
+        {
+          "lineage": "88483d1ae300e0b25cacc4c8a48870d4bfc3933e186fa71b63a158c95e5670f9",
+          "unchanged_stego_methods": [
+            "JUNIWARD",
+            "UERD"
+          ]
+        },
+        {
+          "lineage": "2c5c32107341899f02c9390fc4e5cada7841170ba88110616556a95dcce5f1fd",
+          "unchanged_stego_methods": [
+            "JUNIWARD",
+            "UERD"
+          ]
+        },
+        {
+          "lineage": "f637f0e4b4a7e217a6808aea70794181b1e66b0185781a967f9ca46838135f77",
+          "unchanged_stego_methods": [
+            "UERD"
+          ]
+        }
+      ],
+      "eligible_lineages_by_split_after_preparation": {
+        "train": 816,
+        "validation": 181
+      },
+      "training_eligible_lineages_after_preparation": 816,
+      "validation_eligible_lineages_after_preparation": 181,
+      "scene_independence_verified": false
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "manifest_sha256": "9ae58e33f8e71e72a918ed393ecb3f7900f36d3428f3a4347e42018fc84adfe8",
+      "selection_sha256": "b81a9016be1e395aa8f995f26bf9506f65d5fe0d6b30fc661360bb73df1f3d10",
+      "files": 1000,
+      "original_lineages": 1000,
+      "bytes": 262159000,
+      "labels": {
+        "cover": 1000
+      },
+      "splits": {
+        "train": 822,
+        "validation": 178
+      },
+      "declared_camera_counts": {},
+      "native_formats": {
+        "PPM": 1000
+      },
+      "license": "unspecified on download page; local research only; do not redistribute",
+      "quarantined_lineages": [],
+      "eligible_lineages_by_split_after_preparation": {
+        "train": 822,
+        "validation": 178
+      },
+      "training_eligible_lineages_after_preparation": 822,
+      "validation_eligible_lineages_after_preparation": 178,
+      "scene_independence_verified": false
+    },
+    {
+      "source_group": "WIFD",
+      "manifest_sha256": "303995e90fbeb90a52e5a6ee99063741092690b5b47d50c2703c66bdf0959f9c",
+      "selection_sha256": "e8fd776670be8648012852bad58c0a7d5f6dea5c8bfcfc80d6de6f60ecca204d",
+      "files": 200,
+      "original_lineages": 200,
+      "bytes": 1704167268,
+      "labels": {
+        "cover": 200
+      },
+      "splits": {
+        "test": 200
+      },
+      "declared_camera_counts": {
+        "canon_eos_6d": 20,
+        "canon_eos_6d_mark_ii": 20,
+        "canon_eos_m6": 20,
+        "fujifilm_x_a10_1": 20,
+        "fujifilm_x_a10_2": 20,
+        "nikon_d7200": 20,
+        "olympus_e_m10_mark_ii": 20,
+        "sigma_sd_quattro": 20,
+        "sony_rx100_1": 20,
+        "sony_rx100_2": 20
+      },
+      "native_formats": {
+        "JPEG": 120,
+        "MPO": 80
+      },
+      "license": "MIT",
+      "quarantined_lineages": [],
+      "eligible_lineages_by_split_after_preparation": {
+        "test": 200
+      },
+      "training_eligible_lineages_after_preparation": 0,
+      "validation_eligible_lineages_after_preparation": 0,
+      "scene_independence_verified": false
+    }
+  ],
+  "files": 5200,
+  "bytes": 2399521328,
+  "detection_measured": false,
+  "models_trained": false,
+  "accuracy_qualification": "unavailable",
+  "raw_data_published": false,
+  "audit_script_sha256": "d4a0f68a42a71ef808ae7de145b08cbc696fd08b4b0b18f6097aa8f5b9d60b87"
+}

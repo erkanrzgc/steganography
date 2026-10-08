@@ -1,5 +1,20 @@
 # Third-party tools in the `full` image
 
+## Explicit WIFD dataset acquisition
+
+The checkout-only WIFD downloader fetches data only on explicit request; no
+upstream data/code is bundled in the wheel or container. Source:
+[Warwick Image Forensic Dataset](https://github.com/CSCRC-SCREED/WIFD), pinned
+commit `3f577edf0b14c686aa08e8d0d8ae07a83ba44f26`. Its pinned README declares
+data and code under MIT, verified license/README identities are retained with
+the local acquisition. Retain copyright/license notices if separately sharing
+permitted data; this slice publishes no image files.
+
+Requested research citation: Yijun Quan, Chang-Tsun Li, Yujue Zhou and Li Li,
+“Warwick Image Forensics Dataset for Device Fingerprinting in Multimedia Forensics,” ICME 2020,
+[DOI 10.1109/ICME46284.2020.9102783](https://doi.org/10.1109/ICME46284.2020.9102783).
+See `docs/DATA_EXPANSION_RESULTS.md` for format/scene/qualification limits.
+
 Optional research extra `jpeg-sim` uses [conseal 2025.11](https://github.com/uibk-uncover/conseal)
 (MPL-2.0 project license; J-UNIWARD implementation also retains the DDE Lab
 educational/research/non-profit notice) for simulation, not message extraction. It is not

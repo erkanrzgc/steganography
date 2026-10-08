@@ -1,5 +1,17 @@
 # Roadmap and status
 
+2026-10-08 data scaling replaces further six-scene diagnostic repetitions:
+an additional 4,000 ALASKA2 JPEGs and 1,000 BOSS originals are independently
+byte/split/exclusion audited. Three unchanged ALASKA lineages are quarantined;
+new eligible training originals: 816 ALASKA + 822 BOSS, with 359 validation
+originals separate. The JPEG-only WIFD attempt remains unavailable; a separately
+frozen retry completed: 200 WIFD files (120 JPEG, 80 primary-decoded MPO),
+independently audited alongside all 5,000 development files. This adds no MPO
+detector support; see `DATA_EXPANSION_RESULTS.md`. Whole WIFD origin
+is reserved from training/calibration. Larger preparation/streaming and a
+preregistered adequate-exposure fit are next; CPU-only host, GPU access pending.
+These acquired files have not entered the existing train cache or detector.
+
 Step/exposure-matched accumulation completed (`SRNET_ACCUMULATION_RESULTS.md`):
 same 80 updates/640 presentations/exact group order, four-row microbatches;
 both arms fail complete learning goals, original train BA .50. Amplified own

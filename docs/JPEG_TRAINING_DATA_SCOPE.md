@@ -33,3 +33,24 @@ per format/method/payload cell over at least two independent source groups.
 Keep cover derivatives grouped in splits, do not count repeated presentations
 as new data, and do not tune on previously inspected development validation.
 No new data was downloaded or distributed.
+
+## Subsequent acquisition — 2026-10-08
+
+The statement above describes the 2026-10-07 audit. Additional 4,000 ALASKA2
+JPEGs and 1,000 BOSS PGM covers were subsequently acquired and independently
+audited under `DATA_EXPANSION_PROTOCOL.md`; they have **not** entered that
+prepared manifest/cache or a new training run. Three unchanged ALASKA
+cover/stego lineages are excluded from future preparation. Eligible new
+training originals are 816 ALASKA and 822 BOSS; separately reserved development
+validation originals are 181 ALASKA and 178 BOSS. These are existing sources,
+not independently new camera/scene populations or a measured accuracy gain.
+
+Next prepare a versioned, bounded training dataset with whole-lineage splits
+and explicit old/new identities, never overwrite the old caches. The current
+BOSS JPEG preparer caps one job at 128 originals and the trainer at 4,000 rows;
+do not bypass those bounds by silently truncating the expanded corpus or
+allocating an unbounded all-image tensor. A larger fit needs a separately
+reviewed streaming/preprocessing contract, exposure schedule, compute budget
+and training-only learning gate before inspecting new validation scores.
+Observed host: CPU-only PyTorch, eight logical CPUs and about 15 GiB RAM;
+GPU/cloud access remains an unanswered user choice, not provisioned resources.

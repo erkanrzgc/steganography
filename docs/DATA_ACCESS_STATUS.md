@@ -1,5 +1,23 @@
 # Next real-image evaluation: access status — 2026-10-03
 
+## Latest authorized acquisition — 2026-10-08
+
+User authorized additional useful corpora. Bounded existing downloaders acquired
+4,000 new ALASKA2 JPEGs and 1,000 new BOSS originals, excluding prior acquisitions;
+independent audit passed with three contradictory ALASKA lineages quarantined.
+These are not new origins or accuracy measurements. The pinned, MIT-declared
+WIFD JPEG-only acquisition failed on native two-frame MPO; its 40 partial files
+remain without a success manifest. A separately frozen explicit primary-MPO
+retry completed with 200 files (120 JPEG, 80 MPO); the combined independent
+audit reread all 5,200 files. Selection/bytes and native formats stay intact,
+with no training or automatic format conversion. See
+[complete results](DATA_EXPANSION_RESULTS.md). Raw data stays ignored/local.
+
+Observed current host: CPU-only Torch, eight logical CPUs, about 15 GiB RAM and
+86 GiB free disk before expansion. GPU/Kaggle/Colab access was asked optionally;
+no paid/cloud job was provisioned. Historical dated access checks below remain
+historical, not claims about current absence of authenticated access or data.
+
 Existing BOSSbase/Kodak measurements remain frozen in `PILOT_RESULTS.md` and
 `KODAK_RESULTS.md`. They use real photographs with controlled embeddings, not
 unknown field evidence. The latest CTF reruns do not improve the failed native

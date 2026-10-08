@@ -1,5 +1,19 @@
 # Benchmark protocol
 
+The frozen `DATA_EXPANSION_PROTOCOL.md` acquires new ALASKA2/BOSS development
+originals while excluding all existing acquired identities/member names.
+The JPEG-only WIFD attempt failed on native two-frame MPO despite valid upstream
+byte/blob identity. Preserve that failure, partial files and original protocol;
+`WIFD_RETRY_PROTOCOL.md` separately freezes explicit bounded primary-MPO
+acquisition with unchanged selection and no conversion. The whole WIFD origin
+is reserved from training/calibration. Its camera names are declared, scene
+independence unknown, and 200 covers cannot qualify a detection cell.
+Independent acquisition audits are not detection scores. They must verify
+every byte/hash/format/frame declaration and split, reject leakage/forgeries,
+quarantine unchanged cover/stego lineages, and report eligible training and
+validation lineages separately. Preserve failed legacy metrics; more files
+alone do not establish a learning or generalization improvement.
+
 `SRNET_ACCUMULATION_PROTOCOL.md` fixes the eight-row control's exact group
 order, 80 optimizer steps and 640 presentations, splitting each group into
 two four-row microbatches. BN forward count changes from 80 to 160 by design;

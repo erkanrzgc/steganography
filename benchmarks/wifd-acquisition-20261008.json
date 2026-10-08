@@ -1,0 +1,56 @@
+{
+  "schema_version": "wifd-acquisition-summary-v1",
+  "protocol_sha256": "29f706034106f8e8706909afebb47d17d3879de2ef41c4b899a3113675c630a7",
+  "retry_protocol_sha256": "8e01274b87c73610f0a76d6852260cd9761e12c5c17a95e695e3f3a77a6ae7ed",
+  "allow_bounded_mpo": true,
+  "acquisition_script_sha256": "e47dc51d83f1d16add2dd1af29051fe4c97e97a406ac335cd7e5fb42c0758931",
+  "purpose": "whole WIFD origin reserved from training/calibration; evaluation covers only",
+  "source_url": "https://github.com/CSCRC-SCREED/WIFD",
+  "source_commit": "3f577edf0b14c686aa08e8d0d8ae07a83ba44f26",
+  "license": "MIT",
+  "license_url": "https://github.com/CSCRC-SCREED/WIFD/blob/3f577edf0b14c686aa08e8d0d8ae07a83ba44f26/LICENSE",
+  "license_sha256": "c508392518dd61729f4fb4d965bcd858f93a9faa86e2226a9db9dba75989b9a9",
+  "readme_sha256": "43f3d3745a911e56a604c0648dd5bbca1627c59c27fded285858d6d21f9f278d",
+  "tree_sha256": "4e79609c6a47953ab8783d24220f7767a43587d89c0ca31728a9b0152835546f",
+  "selection_sha256": "e8fd776670be8648012852bad58c0a7d5f6dea5c8bfcfc80d6de6f60ecca204d",
+  "reserved_manifest_sha256": [
+    "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+    "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+    "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    "d25e61bc037aa19489c5b91a6080e2637ff6a20ab4c8c4164fb0969b7785c692",
+    "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+    "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288"
+  ],
+  "received_bytes": 1706464574,
+  "requests": 203,
+  "total_bytes": 1704167268,
+  "scene_independence_verified": false,
+  "accuracy_qualification": "unavailable",
+  "source_manifest_sha256": "303995e90fbeb90a52e5a6ee99063741092690b5b47d50c2703c66bdf0959f9c",
+  "files": 200,
+  "native_formats": {
+    "JPEG": 120,
+    "MPO": 80
+  },
+  "declared_frame_counts": {
+    "1": 120,
+    "2": 60,
+    "3": 20
+  },
+  "declared_camera_counts": {
+    "canon_eos_6d": 20,
+    "canon_eos_6d_mark_ii": 20,
+    "canon_eos_m6": 20,
+    "fujifilm_x_a10_1": 20,
+    "fujifilm_x_a10_2": 20,
+    "nikon_d7200": 20,
+    "olympus_e_m10_mark_ii": 20,
+    "sigma_sd_quattro": 20,
+    "sony_rx100_1": 20,
+    "sony_rx100_2": 20
+  },
+  "decoded_frames_per_file": 1,
+  "models_trained": false,
+  "detection_measured": false,
+  "raw_data_published": false
+}

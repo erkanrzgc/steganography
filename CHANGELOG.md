@@ -1,5 +1,12 @@
 # Changelog
 
+- Add frozen, explicit corpus expansion and pinned MIT-licensed WIFD acquisition
+  with bounded fixed-origin downloads, SHA-256/Git blob identities and fresh
+  outputs. Preserve the failed JPEG-only attempt; separately freeze opt-in
+  primary-MPO acquisition without relabeling or converting files. Independent
+  audits verify bytes, license evidence, splits/reserved identities and
+  quarantine unchanged ALASKA cover/stego lineages. No detector/model change.
+
 - Add the frozen optimizer/exposure-matched accumulation control: exact
   eight-row order, atomic two-microbatch gradient accumulation, independent
   full-network update equivalence, finite-gradient failure checks and preserved

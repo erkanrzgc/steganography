@@ -9,10 +9,37 @@ Use [benchmark results](BENCHMARK_RESULTS.md) for scores and limitations.
 | [BOSSbase 1.01, DDE](https://dde.binghamton.edu/download/) | Frozen 1,000-cover PGM pilot; 500 BMP/Steghide and 500 PNG/OpenStego pairs | Original cover hashes; camera metadata unassigned; archive-order selection | No explicit redistribution license verified on download page; originals/derivatives stay local |
 | BOSSbase 1.01 separate development | Additional 1,000 PGM originals: 816 train, 184 validation; 7,000 controlled PNG/BMP files, including 6,000 gray-plane LSB stegos | Reserved names/identities excluded; fixed seed 20261005, complete original ancestry | Same usage limits; [development results](SPATIAL_DEVELOPMENT_RESULTS.md); this is not another independent source |
 | [Kodak suite](https://r0k.us/graphics/kodak/) | Frozen 24 originals; both upstream methods on each | Same original ancestry across conversions and methods; camera metadata unknown | Curator usage statement is not an independently verified license; originals/derivatives stay local |
-| [ALASKA2 competition](https://www.kaggle.com/c/alaska2-image-steganalysis/data) | Frozen 4,000-file baseline, plus disjoint 4,000-file development acquisition | Complete cover/JMiPOD/JUNIWARD/UERD lineages, explicit split, SHA-256 and ZIP CRC; per-file camera/device/payload/QF metadata unassigned | Subject to competition rules; local research only in this workflow; no raw corpus or model redistribution authorized by this inventory |
+| [ALASKA2 competition](https://www.kaggle.com/c/alaska2-image-steganalysis/data) | Frozen 4,000-file baseline, plus two disjoint 4,000-file development acquisitions | Complete cover/JMiPOD/JUNIWARD/UERD lineages, explicit split, SHA-256 and ZIP CRC; per-file camera/device/payload/QF metadata unassigned | Subject to competition rules; local research only in this workflow; no raw corpus or model redistribution authorized by this inventory |
+| BOSSbase 1.01 second development expansion | New 1,000 PGM originals: 822 train, 178 validation; no derivatives prepared yet | Excludes all six previous acquisition manifests; independently audited | Same original source restrictions; not another source group |
+| [WIFD](https://github.com/CSCRC-SCREED/WIFD) | 200 SDR original files: 120 JPEG, 80 MPO; whole origin reserved | Pinned source/Git blob/SHA-256; ten declared camera directories, primary frames only; scene identity unverified | Pinned README declares data/code MIT; license evidence retained; no raw data published or detection measured |
 | [FSDD v1.0.10](https://github.com/Jakobovski/free-spoken-digit-dataset/tree/d6938f9bf1545aa66d8489fc9f1385a7abd64282) | 3,000 actual spoken-digit WAV recordings, six speakers; 6,000 controlled LSB stegos from 1,000 test originals | Pinned commit; per-file SHA-256, CRC, speaker and PCM metadata; whole-speaker train/validation/test roles in separate experiment manifest | Upstream CC-BY-SA-4.0; attribution, license link and applicable ShareAlike/change notices required for redistribution; no audio committed |
 | [StegoAppDB paper](https://arxiv.org/abs/1904.09360) | Not acquired | Intended mobile-app evaluation; no verified local camera/app mapping | Checked database endpoint inaccessible here; access and usage conditions still required |
 | [BOWS2](https://bows2.ec-lille.fr/) | Not acquired | Potential additional image source, independence must be reviewed | Endpoint was unreachable from this environment; no replacement mirror or license assumed |
+
+## Explicit expansion — 2026-10-08
+
+An additional 4,000 ALASKA2 JPEGs (1,000 complete four-way original lineages)
+and 1,000 BOSS PGM covers were acquired. Independent byte/hash/CRC/geometry,
+selection/split and reserved-identity audits found no exact overlap with the
+six prior acquisition manifests. Three ALASKA lineages contain unchanged
+cover/stego bytes and are excluded as whole lineages from future preparation.
+New eligible train originals: ALASKA 816, BOSS 822; validation originals remain
+separate: ALASKA 181, BOSS 178. Acquisition split counts are not model-ready
+train-row counts, and exact exclusion cannot prove scene/camera independence.
+These are larger samples from existing sources, not additional source groups.
+Original source restrictions remain; no raw data or model publication.
+
+The [WIFD](https://github.com/CSCRC-SCREED/WIFD) addition pins commit
+`3f577edf0b14c686aa08e8d0d8ae07a83ba44f26` and verifies its MIT data/code
+license evidence. First JPEG-only attempt failed on native two-frame MPO;
+40 partial files remain local without a success manifest or completed count.
+`WIFD_RETRY_PROTOCOL.md` separately freezes opt-in primary-frame acquisition,
+with identical 20-per-camera selection and all original bounds. Native MPO
+is not relabeled JPEG or counted as deployed format support. The retry completed
+all 200 files and independent primary-frame/byte audit passed; see
+[complete expansion results](DATA_EXPANSION_RESULTS.md). The whole WIFD
+origin remains reserved from training/calibration, and camera IDs/scene
+independence remain declared/unverified. No WIFD accuracy has been measured.
 
 Counts refer to unique original lineages, not to separately counted copies in
 each method comparison. Exact-hash exclusion cannot discover undocumented
