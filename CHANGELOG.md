@@ -1,5 +1,13 @@
 # Changelog
 
+- Add a versioned, checksum/audit-bound train-only block reader, full-source/
+  quality/method four-row schedules and isolated research plan/check/fit jobs.
+  Legacy whole-array limits and numerical optimizer behavior are preserved;
+  both paths use one engine. Propagate a whole-job deadline through hash/read/
+  optimizer boundaries, bind source hashes before data loading, and reject
+  mutation before publication. Generated exact update equivalence is not a
+  real learning or accuracy improvement; no model is deployed.
+
 - Add frozen whole-expansion JPEG preparation in <=128-original blocks, with
   complete lineage/role/exclusion accounting and fresh unrounded-Y float caches.
   BOSS supports bounded explicit selection offsets without changing legacy

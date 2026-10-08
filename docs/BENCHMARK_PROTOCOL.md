@@ -1,5 +1,16 @@
 # Benchmark protocol
 
+`SRNET_STREAM_READINESS_PROTOCOL.md` freezes full train-only block I/O before
+real execution: 7,380 unique rows, one metadata-balanced epoch, no validation
+pixel reads, no real fitting or accuracy claim. Exact generated legacy/stream
+optimizer equivalence is an engineering gate, not independent math or
+generalization qualification. Plans bind start-of-job execution-source hashes
+and all ordered exposure schedules. The new 12,000-row block metadata limit
+does not relax legacy whole-array limits. Hard CLI isolation and propagated
+deadlines apply to new jobs; historical preparer contracts remain unchanged.
+Adequate-exposure learning, GPU support and blind-source evaluation still need
+separate preregistered compute/preprocessing protocols and honest failed gates.
+
 `JPEG_SCALE_PREPARATION_PROTOCOL.md` freezes complete preparation of all 997
 eligible new ALASKA originals and all 1,000 BOSS originals in 16 bounded blocks.
 Original/quality/method descendants cannot split between blocks or roles;

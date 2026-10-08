@@ -1,5 +1,30 @@
 # Architecture
 
+`core/srnet_stream.py` owns bounded, train-only block handles and <=4-row
+reads. A checksum-bound complete independent preparation audit is required;
+global lineage/role/family metadata and every train cache are verified before
+use. Validation pixels are not opened. Each cache is hashed in <=1 MiB chunks,
+then read through its retained regular non-symlink handle with mutation checks.
+The reader is single-job/single-thread owned, not a concurrent shared seek
+interface. Tensor batch limits are not a total RAM claim.
+
+The versioned `srnet_scale_sampling` recipe reuses deterministic source/Q/method
+pair accounting with a separate 12,000-row metadata bound, then the existing
+four-row source/lineage grouping. Legacy 4,000-row public contracts and exact
+ordering remain unchanged. Both trainers call one shared numerical optimizer
+engine; `srnet_stream_training` supplies bounded reads and the propagated
+whole-job deadline instead of requiring a whole-corpus array.
+
+`steganography.research_srnet_stream` is the explicit plan/check/fit service;
+its module CLI always uses a fixed isolated worker with hard wall/CPU/address/
+file limits and redacted failures. Plans bind all source dependency hashes
+captured before loading data, index/audit, decoder, optimizer and exact
+exposure schedules; source mutation invalidates publication. Generated fitting
+and full real I/O readiness are distinct from a real learning or detector gate.
+No deployment, downloads, untrusted-code execution or automatic cloud jobs.
+Historical preparation workers still require their frozen external hard bound;
+this new deadline contract does not retrospectively change their provenance.
+
 `core/jpeg_scale.py` owns metadata-only full-expansion lineage layout: fixed
 hash ordering, <=128 originals per block, complete matched families, preserved
 development roles, reserved identities and whole-lineage quarantine. The

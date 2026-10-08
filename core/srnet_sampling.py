@@ -21,7 +21,11 @@ def source_id(source: str) -> str:
 
 
 def buckets(samples):
-    if not isinstance(samples, list) or not 1 <= len(samples) <= MAX_ROWS:
+    return _buckets(samples, row_limit=MAX_ROWS)
+
+
+def _buckets(samples, *, row_limit):
+    if not isinstance(samples, list) or not 1 <= len(samples) <= row_limit:
         raise ValueError("SRNet sampling row limit")
     groups: dict[tuple[str, str, int | None], list[tuple[int, dict[str, Any]]]] = {}
     hashes = set()
@@ -69,6 +73,10 @@ def buckets(samples):
 
 def epoch_pairs(samples, *, seed: int, epoch: int):
     """Equal sources, then equal quality/method cells; no discarded train pairs."""
+    return _epoch_pairs(samples, seed=seed, epoch=epoch, row_limit=MAX_ROWS)
+
+
+def _epoch_pairs(samples, *, seed, epoch, row_limit):
     if (
         type(seed) is not int
         or not 0 <= seed < 2**32
@@ -76,7 +84,7 @@ def epoch_pairs(samples, *, seed: int, epoch: int):
         or not 0 <= epoch < 50
     ):
         raise ValueError("SRNet sampling seed/epoch outside limits")
-    cells = buckets(samples)
+    cells = _buckets(samples, row_limit=row_limit)
     sources = sorted({key[0] for key in cells})
     if len(sources) > 8:
         raise ValueError("SRNet sampling source limit")

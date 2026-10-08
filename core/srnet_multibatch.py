@@ -19,6 +19,10 @@ def recipe(config):
 
 def epoch_batches(samples, *, seed, epoch):
     pairs, _ = epoch_pairs(samples, seed=seed, epoch=epoch)
+    return _group_pairs(samples, pairs, epoch=epoch)
+
+
+def _group_pairs(samples, pairs, *, epoch):
     if len({s["source_group"] for s in samples}) != 2 or len(pairs) % 2:
         raise ValueError("SRNet multipair batches require exactly two complete sources")
     batches = pairs.reshape(-1, 4).copy()

@@ -84,6 +84,34 @@ def fit(
             raise ValueError("SRNet training schedule mismatch")
         if batch_recipe is not None:
             batch_builder(selected, seed=seed, epoch=epoch)
+
+    def batches(epoch):
+        builder = batch_builder if batch_recipe is not None else epoch_pairs
+        return builder(selected, seed=seed, epoch=epoch)[0]
+
+    return _learn(
+        fetch=lambda chunk: pixels[indices[chunk]].copy(),
+        batches=batches,
+        epochs=len(schedule),
+        seed=seed,
+        params=params,
+        target_pairs=4 if wide_context else 2 if batch_recipe is not None else 1,
+        accumulate_context=accumulate_context,
+    )
+
+
+def _learn(
+    *,
+    fetch,
+    batches,
+    epochs,
+    seed,
+    params,
+    target_pairs,
+    accumulate_context=False,
+    outer_deadline=None,
+):
+    """One numerical optimizer engine shared by legacy and bounded block readers."""
     import torch
 
     started = time.monotonic()
@@ -91,6 +119,8 @@ def fit(
     records = []
 
     def deadline():
+        if outer_deadline is not None:
+            outer_deadline()
         if time.monotonic() - started > params["max_seconds"]:
             raise ValueError("SRNet training deadline exceeded")
 
@@ -108,14 +138,13 @@ def fit(
                 foreach=False,
             )
             targets = torch.tensor(
-                [0, 1] * (4 if wide_context else 2 if batch_recipe is not None else 1),
+                [0, 1] * target_pairs,
                 dtype=torch.int64,
                 device="cpu",
             )
-            for epoch in range(len(schedule)):
-                pairs, _ = epoch_pairs(selected, seed=seed, epoch=epoch)
-                if batch_recipe is not None:
-                    pairs, _ = batch_builder(selected, seed=seed, epoch=epoch)
+            for epoch in range(epochs):
+                deadline()
+                pairs = batches(epoch)
                 total = 0.0
                 for pair in pairs:
                     deadline()
@@ -124,7 +153,7 @@ def fit(
                     group_loss = 0.0
                     for chunk in chunks:
                         deadline()
-                        inputs = torch.from_numpy(pixels[indices[chunk]].copy())
+                        inputs = torch.from_numpy(fetch(chunk))
                         labels = targets[: len(chunk)]
                         logits = model(inputs)
                         if logits.shape != (len(labels), 2) or not bool(
