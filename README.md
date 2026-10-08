@@ -23,7 +23,10 @@ and synthetic regression scores are not overall steganalysis accuracy.
 JPEGs, 1,000 BOSS originals and 200 reserved WIFD images. Acquisition is not
 accuracy. [Complete JPEG preparation](docs/JPEG_SCALE_PREPARATION_RESULTS.md)
 now contains 7,380 train and 1,611 validation rows in bounded blocks; no new
-model has been fitted. Streaming training and blind-source testing remain.
+model has been fitted. [Full-block streaming readiness](docs/SRNET_STREAM_READINESS_RESULTS.md)
+now verifies every training row without a whole-corpus tensor allocation and
+preserves the numerical trainer behavior. Adequate real fitting and blind-source
+testing remain; engineering checks are not an accuracy improvement.
 
 The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
 balanced accuracy 50%), despite passing numerical replay. See the

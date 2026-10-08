@@ -6,7 +6,9 @@
   both paths use one engine. Propagate a whole-job deadline through hash/read/
   optimizer boundaries, bind source hashes before data loading, and reject
   mutation before publication. Generated exact update equivalence is not a
-  real learning or accuracy improvement; no model is deployed.
+  real learning or accuracy improvement. Full real train-only streaming reads
+  all 7,380 unique rows and the complete planned epoch with <=1 MiB returned
+  batches, without opening validation pixels. No real model is trained/deployed.
 
 - Add frozen whole-expansion JPEG preparation in <=128-original blocks, with
   complete lineage/role/exclusion accounting and fresh unrounded-Y float caches.

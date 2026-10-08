@@ -1,12 +1,22 @@
 # Roadmap and status
 
+Versioned streaming training infrastructure and full real train-only I/O
+readiness completed: `SRNET_STREAM_READINESS_RESULTS.md`. All 7,380 train rows
+read without whole-corpus tensor allocation; exact generated legacy/stream
+model/loss/BN equivalence, hard isolated jobs, propagated deadlines and
+start-of-job source snapshots verified. No new real fitting or detection score.
+Next preregister adequate train-only exposure/learning, resolve compute/GPU
+choice and implement/verify that bounded workflow before blind evaluation.
+The current path remains CPU-only/1800s; no silent cap extension or cloud job.
+Historical preparation-worker deadline/source-snapshot hardening remains pending.
+
 Full expansion preparation and independent real audit completed:
 `JPEG_SCALE_PREPARATION_RESULTS.md`, 16 whole-lineage blocks, 8,991 JPEG rows
 (7,380 train / 1,611 validation), unrounded-Y caches, all 4,000 BOSS simulated
 DCT change checks and nine scalar-IDCT contexts pass. No new model trained.
-Next implement a versioned minibatch/streaming reader/trainer with propagated
-deadlines and start-of-job source snapshots, then preregister adequate-exposure
-learning/GPU fitting. Whole-array 4,000-row caps and prior failed scores remain.
+Versioned streaming implementation/readiness now follows as linked above;
+adequate-exposure learning/GPU fitting still awaits its separate protocol.
+Whole-array 4,000-row caps and prior failed scores remain.
 
 2026-10-08 data scaling replaces further six-scene diagnostic repetitions:
 an additional 4,000 ALASKA2 JPEGs and 1,000 BOSS originals are independently
