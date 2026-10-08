@@ -90,6 +90,17 @@ def setup(tmp_path):
                             optimize=False,
                         )
                         body = buffer.getvalue()
+                    if group_no == 1 and method is not None:
+                        import jpeglib
+
+                        jpeg = jpeglib.read_dct(str(folder / f"{i}-{quality}-None.jpg"))
+                        jpeg.load()
+                        modified = jpeg.Y.copy()
+                        modified[0, 0, method_no, 1] += 1
+                        jpeg.Y = modified
+                        name = f"{i}-{quality}-{method}.jpg"
+                        jpeg.write_dct(str(folder / name))
+                        body = (folder / name).read_bytes()
                     sha = hashlib.sha256(body).hexdigest()
                     name = f"{i}-{quality}-{method}.jpg"
                     (folder / name).write_bytes(body)
@@ -102,6 +113,9 @@ def setup(tmp_path):
                         "label": "cover" if method is None else "stego",
                         "method": method,
                         "format": "JPEG",
+                        "coefficient_changes": 0 if method is None else 1,
+                        "payload_rate": None if method is None else 0.2,
+                        "payload_unit": "bpnzAC",
                     }
                     rows.append(r)
                     if group_no == 0:
@@ -196,6 +210,7 @@ def test_all_real_jpeg_bytes_tensor_hashes_and_nine_scalar_contexts(setup):
     assert result["jpeg_rows"] == 18 and len(result["scalar_oracles"]) == 9
     assert all(r["passed"] and r["max_scalar_difference"] < 2e-4 for r in result["scalar_oracles"])
     assert result["tensor_bytes"] == 18 * 256 * 256 * 4
+    assert result["simulated_stegos_coefficient_checked"] == 8
     assert str(args[0].parent) not in args[-1].read_text()
     with pytest.raises(FileExistsError):
         m.audit(*args)
@@ -414,3 +429,39 @@ def test_reserved_lineages_and_short_scalar_tensor(setup):
     short.write_bytes(b"short")
     with pytest.raises(ValueError, match="truncated"):
         m.scalar_replay(jpeg, short, 0)
+
+
+@pytest.mark.parametrize("fault", ["count", "rate", "unit", "quantization", "two_step", "geometry"])
+def test_independent_coefficient_and_payload_validation(setup, fault):
+    import jpeglib
+
+    m, args = setup
+    folder = args[0] / "block-001"
+    doc = json.loads((folder / "manifest.json").read_bytes())
+    row = doc["samples"][1].copy()
+    cover = folder / doc["samples"][0]["path"]
+    stego = folder / row["path"]
+    assert m.check_coefficients(cover, stego, row) == 1
+    if fault == "count":
+        row["coefficient_changes"] += 1
+    if fault == "rate":
+        row["payload_rate"] = 0.4
+    if fault == "unit":
+        row["payload_unit"] = "bpp"
+    if fault == "quantization":
+        stego = folder / doc["samples"][4]["path"]
+    if fault == "two_step":
+        jpeg = jpeglib.read_dct(str(cover))
+        jpeg.load()
+        y = jpeg.Y.copy()
+        y[0, 0, 1, 1] += 2
+        jpeg.Y = y
+        changed = folder / "two-step.jpg"
+        jpeg.write_dct(str(changed))
+        stego = changed
+    if fault == "geometry":
+        changed = folder / "small.jpg"
+        Image.new("L", (16, 16)).save(changed, format="JPEG")
+        stego = changed
+    with pytest.raises(ValueError):
+        m.check_coefficients(cover, stego, row)

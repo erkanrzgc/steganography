@@ -89,6 +89,33 @@ def scalar_replay(jpeg_path, tensor_path, position):
     return max(differences)
 
 
+def check_coefficients(cover_path, stego_path, row):
+    """Independently verify declared nonzero +/-1 DCT changes, not payload recovery."""
+    import jpeglib
+
+    for path in (cover_path, stego_path):
+        with Image.open(io.BytesIO(read(path, MAX_JPEG))) as image:
+            if image.format != "JPEG" or image.size != (512, 512) or image.mode != "L":
+                raise ValueError("bounded grayscale simulated JPEG required")
+    jpeglib.version.set("6b")
+    cover, stego = jpeglib.read_dct(str(cover_path)), jpeglib.read_dct(str(stego_path))
+    cover.load()
+    stego.load()
+    difference = stego.Y.astype(np.int64) - cover.Y.astype(np.int64)
+    changes = int(np.count_nonzero(difference))
+    if (
+        not changes
+        or np.abs(difference).max() > 1
+        or not np.array_equal(cover.get_component_qt(0), stego.get_component_qt(0))
+        or type(row.get("coefficient_changes")) is not int
+        or changes != row["coefficient_changes"]
+        or row.get("payload_rate") != 0.2
+        or row.get("payload_unit") != "bpnzAC"
+    ):
+        raise ValueError("simulated coefficient/payload declaration mismatch")
+    return changes
+
+
 def audit(root, alaska_source, boss_source, acquisition_audit, reserved_paths, out):
     if out.exists() or any(p.is_symlink() for p in (out, *out.parents)):
         raise FileExistsError("fresh nonsymlink audit output required")
@@ -142,6 +169,7 @@ def audit(root, alaska_source, boss_source, acquisition_audit, reserved_paths, o
                 expected[("BOSSbase-1.01", r["lineage"], quality, method)] = r
     seen, hashes, lineage_blocks, counts, source_counts = set(), set(), {}, Counter(), Counter()
     oracle_cells, oracles, cache_bytes, jpeg_bytes, decoder = set(), [], 0, 0, None
+    coefficient_checked = 0
     blocks = index.get("blocks")
     if not isinstance(blocks, list) or not 1 <= len(blocks) <= 16:
         raise ValueError("scale block limit")
@@ -157,6 +185,7 @@ def audit(root, alaska_source, boss_source, acquisition_audit, reserved_paths, o
             raise ValueError("scale block row/lineage limit")
         if {r["lineage"] for r in rows} != set(block["lineages"]):
             raise ValueError("scale block lineage declaration changed")
+        covers = {(r["lineage"], r.get("quality_factor")): r for r in rows if r["label"] == "cover"}
         for row in rows:
             key = (row["source_group"], row["lineage"], row.get("quality_factor"), row["method"])
             if (
@@ -202,6 +231,14 @@ def audit(root, alaska_source, boss_source, acquisition_audit, reserved_paths, o
                     )
                 if encoded.getvalue() != body:
                     raise ValueError("independent BOSS cover re-encoding failed")
+            elif row["source_group"] == "BOSSbase-1.01":
+                cover = covers[(row["lineage"], row["quality_factor"])]
+                check_coefficients(
+                    relative(manifest_path.parent, cover["path"]),
+                    relative(manifest_path.parent, row["path"]),
+                    row,
+                )
+                coefficient_checked += 1
             jpeg_bytes += len(body)
             counts[row["split"]] += 1
             source_counts[row["source_group"]] += 1
@@ -292,6 +329,7 @@ def audit(root, alaska_source, boss_source, acquisition_audit, reserved_paths, o
         "splits": dict(counts),
         "jpeg_bytes": jpeg_bytes,
         "tensor_bytes": cache_bytes,
+        "simulated_stegos_coefficient_checked": coefficient_checked,
         "decoder": decoder,
         "scalar_oracles": oracles,
         "reserved_identity_overlap": 0,
