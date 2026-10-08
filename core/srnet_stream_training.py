@@ -1,6 +1,6 @@
 """Train-only full-block fitting through the unchanged numeric SRNet engine."""
 
-from core import srnet_scale_sampling, srnet_training
+from core import srnet_cuda, srnet_scale_sampling, srnet_training
 from core.srnet_stream import TrainBlocks
 
 
@@ -11,10 +11,11 @@ def fit(reader, *, seed, schedule, config, deadline):
         or not 1 <= len(schedule) <= 50
         or not callable(deadline)
         or not isinstance(config, dict)
-        or config.keys() - {"threads", "max_seconds", "learning_rate", "weight_decay"}
+        or config.keys() - {"threads", "max_seconds", "learning_rate", "weight_decay", "device"}
     ):
         raise ValueError("invalid bounded streaming fit inputs")
     params = srnet_training.settings(config)
+    device = srnet_cuda.device(config.get("device", "cpu"))
     for epoch, record in enumerate(schedule):
         deadline()
         if srnet_scale_sampling.epoch_batches(reader.samples, seed=seed, epoch=epoch)[1] != record:
@@ -29,4 +30,5 @@ def fit(reader, *, seed, schedule, config, deadline):
         params=params,
         target_pairs=2,
         outer_deadline=deadline,
+        device=device,
     )

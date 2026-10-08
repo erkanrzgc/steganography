@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 import time
+from contextlib import AbstractContextManager, nullcontext
 
 import numpy as np
 
@@ -110,9 +111,20 @@ def _learn(
     target_pairs,
     accumulate_context=False,
     outer_deadline=None,
+    device="cpu",
 ):
     """One numerical optimizer engine shared by legacy and bounded block readers."""
     import torch
+
+    if device not in {"cpu", "cuda:0"}:
+        raise ValueError("unsupported explicit training device")
+    execution: AbstractContextManager
+    if device == "cuda:0":
+        from core import srnet_cuda
+
+        execution = srnet_cuda.policy()
+    else:
+        execution = nullcontext()
 
     started = time.monotonic()
     previous = torch.get_num_threads()
@@ -126,9 +138,11 @@ def _learn(
 
     try:
         torch.set_num_threads(params["threads"])
-        with torch.random.fork_rng(devices=[]):
+        with execution, torch.random.fork_rng(devices=[0] if device == "cuda:0" else []):
             torch.random.default_generator.manual_seed(seed)
-            model = srnet.network().train()
+            if device == "cuda:0":
+                torch.cuda.manual_seed(seed)
+            model = srnet.network().to(device).train()
             optimizer = torch.optim.Adamax(
                 model.parameters(),
                 lr=params["learning_rate"],
@@ -140,7 +154,7 @@ def _learn(
             targets = torch.tensor(
                 [0, 1] * target_pairs,
                 dtype=torch.int64,
-                device="cpu",
+                device=device,
             )
             for epoch in range(epochs):
                 deadline()
@@ -153,7 +167,7 @@ def _learn(
                     group_loss = 0.0
                     for chunk in chunks:
                         deadline()
-                        inputs = torch.from_numpy(fetch(chunk))
+                        inputs = torch.from_numpy(fetch(chunk)).to(device)
                         labels = targets[: len(chunk)]
                         logits = model(inputs)
                         if logits.shape != (len(labels), 2) or not bool(
@@ -176,13 +190,16 @@ def _learn(
                         group_loss += float(loss.detach()) / len(chunks)
                     optimizer.step()
                     srnet_model.validate(
-                        {k: v.detach().numpy() for k, v in model.state_dict().items()}
+                        {k: v.detach().cpu().numpy() for k, v in model.state_dict().items()}
                     )
                     deadline()
                     total += group_loss
                 records.append(
                     {"epoch": epoch, "updates": len(pairs), "mean_pair_loss": total / len(pairs)}
                 )
+            if device == "cuda:0":
+                torch.cuda.synchronize(0)
+                model.cpu()
             deadline()
     finally:
         torch.set_num_threads(previous)

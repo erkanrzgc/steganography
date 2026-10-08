@@ -12,7 +12,14 @@ import tempfile
 import time
 from pathlib import Path
 
-from core import jpeg_float256, srnet, srnet_model, srnet_scale_sampling, srnet_stream_training
+from core import (
+    jpeg_float256,
+    srnet,
+    srnet_cuda,
+    srnet_model,
+    srnet_scale_sampling,
+    srnet_stream_training,
+)
 from core.jpeg_scale import identity
 from core.srnet_stream import TrainBlocks, deadline_after, document, regular_open
 from core.srnet_training import settings
@@ -27,6 +34,7 @@ DEPENDENCIES = (
     "core/srnet_stream.py",
     "core/srnet_training.py",
     "core/srnet_stream_training.py",
+    "core/srnet_cuda.py",
     "core/jpeg_float256.py",
     "core/jpeg_scale.py",
     "steganography/research_srnet_stream.py",
@@ -53,7 +61,7 @@ def fresh(path):
 
 def configuration(config):
     required = {"root", "index_sha256", "audit", "audit_sha256", "epochs", "seed"}
-    optional = {"threads", "max_seconds", "learning_rate", "weight_decay"}
+    optional = {"threads", "max_seconds", "learning_rate", "weight_decay", "device"}
     if (
         not isinstance(config, dict)
         or not required <= config.keys()
@@ -69,7 +77,9 @@ def configuration(config):
         raise ValueError("invalid explicit streaming configuration")
     identity(config["index_sha256"])
     identity(config["audit_sha256"])
-    return settings(config)
+    selected = srnet_cuda.device(config.get("device", "cpu"))
+    params = settings(config)
+    return {**params, **({"device": selected} if selected != "cpu" else {})}
 
 
 def plan_record(reader, config, params, deadline, sources):
@@ -79,7 +89,7 @@ def plan_record(reader, config, params, deadline, sources):
         epochs.append(
             srnet_scale_sampling.epoch_batches(reader.samples, seed=config["seed"], epoch=epoch)[1]
         )
-    return {
+    record = {
         "schema_version": "srnet-stream-plan-v1",
         "index_sha256": reader.index_sha256,
         "audit_sha256": reader.audit_sha256,
@@ -98,6 +108,9 @@ def plan_record(reader, config, params, deadline, sources):
         "accuracy_qualification": "unavailable",
         "deployed": False,
     }
+    if params.get("device") == "cuda:0":
+        record.update(schema_version="srnet-stream-plan-v2", execution=srnet_cuda.inspect())
+    return record
 
 
 def execute(config, out, *, operation, plan_path=None, plan_sha256=None):
@@ -111,6 +124,8 @@ def execute(config, out, *, operation, plan_path=None, plan_sha256=None):
     started = time.monotonic()
     deadline = deadline_after(params["max_seconds"])
     sources = snapshot()  # Before any corpus read, not retrospective end-only hashes.
+    if params.get("device") == "cuda:0":
+        srnet_cuda.inspect()  # Fail before opening data; no silent CPU fallback.
     with TrainBlocks(
         Path(config["root"]),
         index_sha256=config["index_sha256"],
@@ -139,6 +154,15 @@ def execute(config, out, *, operation, plan_path=None, plan_sha256=None):
                 "accuracy_qualification": "unavailable",
                 "deployed": False,
             }
+            if params.get("device") == "cuda:0":
+                import torch
+
+                report.update(
+                    schema_version="srnet-stream-fit-v2",
+                    execution=plan["execution"],
+                    process_peak_gpu_allocated_bytes=torch.cuda.max_memory_allocated(0),
+                    process_peak_gpu_reserved_bytes=torch.cuda.max_memory_reserved(0),
+                )
         elif operation == "check":
             seen: set[int] = set()
             presentations, updates = 0, 0
@@ -234,6 +258,7 @@ def run_job(config_path, out, *, operation, plan_path=None, plan_sha256=None):
                     "PYTHONPATH": str(root),
                     "OMP_NUM_THREADS": str(params["threads"]),
                     "OPENBLAS_NUM_THREADS": "1",
+                    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
                 },
             )
             stream.seek(0)
@@ -246,6 +271,9 @@ def run_job(config_path, out, *, operation, plan_path=None, plan_sha256=None):
             or not isinstance(response, dict)
             or response.get("status") != "completed"
         ):
+            if isinstance(response, dict) and response.get("status") == "unavailable":
+                # Fixed worker reasons only; never reflect arbitrary tool output.
+                raise srnet_cuda.CUDAUnavailable("worker_prerequisites_unavailable")
             raise ValueError("stream worker incomplete/unavailable")
         target = out / "model-card.json" if operation == "fit" else out
         report = document(target, response["report_sha256"])
@@ -272,7 +300,12 @@ def main(argv=None):
 
             config = document(args.config, args.config_sha256)
             params = configuration(config)
-            resource.setrlimit(resource.RLIMIT_AS, (8 * 1024**3, 8 * 1024**3))
+            if params.get("device") == "cuda:0":
+                # CUDA virtual reservations are not resident RAM. Require a
+                # kernel cgroup limit instead of silently removing RAM bounds.
+                srnet_cuda.host_bound()
+            else:
+                resource.setrlimit(resource.RLIMIT_AS, (8 * 1024**3, 8 * 1024**3))
             resource.setrlimit(
                 resource.RLIMIT_CPU,
                 (2 * params["max_seconds"] + 30, 2 * params["max_seconds"] + 31),
@@ -301,6 +334,13 @@ def main(argv=None):
                 plan_sha256=args.plan_sha256,
             )
             print("stream job completed; research-only, no accuracy qualification")
+    except srnet_cuda.CUDAUnavailable as exc:
+        print(
+            json.dumps({"status": "unavailable", "reason": exc.reason})
+            if args.worker
+            else "CUDA backend unavailable; bounded WSL/GPU setup required; no CPU fallback"
+        )
+        return 2
     except Exception:
         print(
             '{"status":"failed"}'

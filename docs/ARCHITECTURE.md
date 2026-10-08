@@ -1,5 +1,20 @@
 # Architecture
 
+`core/srnet_cuda.py` defines an explicit, opt-in `cuda:0` FP32 execution policy:
+no CPU fallback, no TF32/AMP, deterministic algorithms, supported compiled
+architecture and a bounded PyTorch allocator. GPU jobs require an inherited
+kernel cgroup-v2 resident RAM bound; they do not reuse the CPU virtual-address
+cap or silently become unlimited. The original CPU numerical engine remains
+the default; CUDA transfers model/batches/state back to the same bounded numeric
+checkpoint contract. CUDA plan/card v2 adds execution metadata; CPU v1 schema
+and old plug-in/model/analysis APIs remain unchanged.
+
+The fixed `research_cuda_probe` service isolates a one-update **generated**
+GPU warmup and CPU/GPU forward parity check, without real corpus access, model
+publication or deployment. CPU/emulated control-flow tests do not verify actual
+GPU execution. See `WINDOWS_GPU_TRAINING.md` and the frozen generated protocol;
+real GPU fitting and independent trained-model qualification remain separate.
+
 `core/srnet_stream.py` owns bounded, train-only block handles and <=4-row
 reads. A checksum-bound complete independent preparation audit is required;
 global lineage/role/family metadata and every train cache are verified before

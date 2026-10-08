@@ -1,5 +1,14 @@
 # Roadmap and status
 
+Opt-in FP32 CUDA streaming path and generated hardware preflight implemented:
+`WINDOWS_GPU_TRAINING.md`. Reported Windows 11/RTX 5060 Laptop hardware is outside
+the current Kali/VMware CPU-only environment. CPU/emulated policy/control-flow
+tests pass; actual CUDA/WSL execution remains unavailable/unverified, not an
+accuracy improvement. Next observe Windows driver/WSL, run bounded generated
+hardware preflight, then freeze adequate real train-only exposure/learning.
+CPU behavior/defaults and the 1800s ceiling remain unchanged; CUDA requires a
+kernel resident RAM bound rather than an unsuitable CPU virtual-address cap.
+
 Versioned streaming training infrastructure and full real train-only I/O
 readiness completed: `SRNET_STREAM_READINESS_RESULTS.md`. All 7,380 train rows
 read without whole-corpus tensor allocation; exact generated legacy/stream
@@ -7,7 +16,8 @@ model/loss/BN equivalence, hard isolated jobs, propagated deadlines and
 start-of-job source snapshots verified. No new real fitting or detection score.
 Next preregister adequate train-only exposure/learning, resolve compute/GPU
 choice and implement/verify that bounded workflow before blind evaluation.
-The current path remains CPU-only/1800s; no silent cap extension or cloud job.
+That historical readiness run is CPU-only; the new opt-in CUDA path above is
+not yet hardware-verified. No silent 1800s cap extension or cloud job.
 Historical preparation-worker deadline/source-snapshot hardening remains pending.
 
 Full expansion preparation and independent real audit completed:

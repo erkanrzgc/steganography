@@ -1,5 +1,13 @@
 # Benchmark protocol
 
+`CUDA_GENERATED_PROBE_PROTOCOL.md` fixes a generated one-update FP32 hardware
+preflight before actual GPU execution. CPU/emulated API/transfer tests only
+verify control flow and unchanged CPU behavior; unavailable hardware is an
+explicit skipped/unavailable gate. A finite CPU/GPU Torch forward agreement
+is not independent mathematics, real learning or detection accuracy. No
+real corpus, threshold tuning, memory-bound bypass, automatic fallback or
+silent exposure/budget change. A real fit still needs its own frozen protocol.
+
 `SRNET_STREAM_READINESS_PROTOCOL.md` freezes full train-only block I/O before
 real execution: 7,380 unique rows, one metadata-balanced epoch, no validation
 pixel reads, no real fitting or accuracy claim. Exact generated legacy/stream

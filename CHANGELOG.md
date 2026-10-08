@@ -1,5 +1,11 @@
 # Changelog
 
+- Add opt-in, no-fallback FP32 CUDA streaming execution and versioned GPU plan/
+  card metadata, scoped deterministic/precision/RNG policy, allocator limits and
+  required kernel resident RAM bounds. Add isolated generated one-update/parity
+  preflight with explicit hardware unavailability. Preserve CPU defaults and
+  published failures; emulated tests do not prove GPU or real detector accuracy.
+
 - Add a versioned, checksum/audit-bound train-only block reader, full-source/
   quality/method four-row schedules and isolated research plan/check/fit jobs.
   Legacy whole-array limits and numerical optimizer behavior are preserved;
