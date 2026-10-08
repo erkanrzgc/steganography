@@ -127,11 +127,14 @@ def generate_boss(
     source_sha256: str,
     reserved_manifests: list[Path],
     count: int = 128,
+    selection_offset: int = 0,
 ):
     if out.exists() or any(p.is_symlink() for p in (out, *out.parents)):
         raise FileExistsError("JPEG corpus output exists or uses a symlink")
     if type(count) is not int or not 2 <= count <= 128:
         raise ResearchManifestError("JPEG development count must be between 2 and 128")
+    if type(selection_offset) is not int or not 0 <= selection_offset <= 1000:
+        raise ResearchManifestError("JPEG selection offset outside bounds")
     source, checksum = read_document(root / "source.json")
     if checksum != source_sha256:
         raise ResearchManifestError("BOSSbase source checksum mismatch")
@@ -156,7 +159,7 @@ def generate_boss(
             if row.get("upstream_member"):
                 reserved_members.add(row["upstream_member"])
     originals = source.get("samples", [])
-    if not isinstance(originals, list) or not count <= len(originals) <= 1000:
+    if not isinstance(originals, list) or not count + selection_offset <= len(originals) <= 1000:
         raise ResearchManifestError("original sample count outside bounds")
     if any(
         not isinstance(s, dict)
@@ -189,7 +192,7 @@ def generate_boss(
     selected = sorted(
         originals,
         key=lambda s: hashlib.sha256(f"jpeg-context:{SEED}:{s['sha256']}".encode()).digest(),
-    )[:count]
+    )[selection_offset : selection_offset + count]
     if {s["split"] for s in selected} != {"train", "validation"}:
         raise ResearchManifestError("selected originals require both development splits")
     versions = {
@@ -297,6 +300,7 @@ def generate_boss(
         "generation": {
             "versions": versions,
             "seed": SEED,
+            "selection_offset": selection_offset,
             "qualities": list(QUALITIES),
             "alpha": ALPHA,
             "methods": list(METHODS),

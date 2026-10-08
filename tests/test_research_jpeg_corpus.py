@@ -205,3 +205,56 @@ def test_worker_main_without_changing_test_process_limits(monkeypatch, capsys):
 
     monkeypatch.setattr(corpus, "generate_lineage", fail)
     assert corpus.main() == 1 and not capsys.readouterr().out
+
+
+@pytest.mark.parametrize("offset", [-1, True, "1", 1001, 1])
+def test_bounded_selection_offsets_do_not_truncate_originals(development, tmp_path, offset):  # noqa: F811
+    root, reserved, _ = development
+    with pytest.raises(ResearchManifestError):
+        corpus.generate_boss(
+            root, tmp_path / "offset", **args(root, reserved), selection_offset=offset
+        )
+
+
+def test_nonzero_offset_prepares_exact_next_originals_not_prefix(development, tmp_path):  # noqa: F811
+    import io
+
+    import numpy as np
+    from PIL import Image
+
+    pytest.importorskip("conseal")
+    root, reserved, source = development
+    for i in range(2):
+        buffer = io.BytesIO()
+        Image.fromarray(
+            np.random.default_rng(101 + i).integers(0, 256, (512, 512), dtype=np.uint8)
+        ).save(buffer, format="PPM")
+        raw = buffer.getvalue()
+        digest = hashlib.sha256(raw).hexdigest()
+        name = f"extra-{i}.pgm"
+        (root / name).write_bytes(raw)
+        source["samples"].append(
+            {
+                **source["samples"][0],
+                "sha256": digest,
+                "lineage": digest,
+                "size": len(raw),
+                "path": name,
+                "upstream_member": "images/" + name,
+            }
+        )
+    ordered = sorted(
+        source["samples"],
+        key=lambda r: hashlib.sha256(f"jpeg-context:{corpus.SEED}:{r['sha256']}".encode()).digest(),
+    )
+    for i, row in enumerate(ordered):
+        row["split"] = "train" if i % 2 == 0 else "validation"
+    selection = {"members": [{"upstream_member": r["upstream_member"]} for r in source["samples"]]}
+    (root / "selection.json").write_text(json.dumps(selection))
+    source["selection_sha256"] = hashlib.sha256((root / "selection.json").read_bytes()).hexdigest()
+    (root / "source.json").write_text(json.dumps(source))
+    out = tmp_path / "next"
+    corpus.generate_boss(root, out, **args(root, reserved), selection_offset=2)
+    manifest = json.loads((out / "manifest.json").read_bytes())
+    assert {r["lineage"] for r in manifest["samples"]} == {r["sha256"] for r in ordered[2:4]}
+    assert manifest["generation"]["selection_offset"] == 2
