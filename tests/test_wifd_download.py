@@ -307,3 +307,46 @@ def test_cli_limits_success_and_secret_redaction(setup, monkeypatch, tmp_path, c
 
     monkeypatch.setattr(m, "acquire", fail)
     assert m.main(args) == 2 and "secret" not in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("frames", [2, 4, 5])
+def test_native_mpo_requires_frozen_explicit_retry_and_bounded_frames(setup, tmp_path, frames):
+    m, reserved, tree, bodies = setup
+    buffer = io.BytesIO()
+    Image.new("RGB", (256, 256), "purple").save(
+        buffer,
+        format="MPO",
+        save_all=True,
+        append_images=[Image.new("RGB", (256, 256), "blue") for _ in range(frames - 1)],
+    )
+    raw = buffer.getvalue()
+    row = tree["tree"][0]
+    bodies[m.RAW + "dataset/" + row["path"]] = raw
+    row.update(sha=m.blob_hash(raw), size=len(raw))
+    with pytest.raises(ValueError):
+        m.acquire(tmp_path / "strict", [reserved])
+    if frames > 4:
+        with pytest.raises(ValueError):
+            m.acquire(tmp_path / "retry", [reserved], allow_bounded_mpo=True)
+        assert not (tmp_path / "retry/source.json").exists()
+    else:
+        report = m.acquire(tmp_path / "retry", [reserved], allow_bounded_mpo=True)
+        native = next(r for r in report["samples"] if r["format"] == "MPO")
+        assert native["declared_frames"] == frames and native["decoded_frames"] == 1
+        assert native["path"].endswith(".mpo")
+        assert report["retry_protocol_sha256"] == m.RETRY_PROTOCOL_SHA
+        assert (tmp_path / "retry" / native["path"]).read_bytes() == raw
+
+
+def test_frozen_protocol_mutation_and_invalid_policy_fail_before_network(
+    setup, monkeypatch, tmp_path
+):
+    m, reserved, _, _ = setup
+    with pytest.raises(ValueError, match="policy"):
+        m.acquire(tmp_path / "bad-policy", [reserved], allow_bounded_mpo=1)
+    monkeypatch.setattr(m, "RETRY_PROTOCOL_SHA", "0" * 64)
+    with pytest.raises(ValueError, match="retry protocol"):
+        m.acquire(tmp_path / "bad-retry", [reserved], allow_bounded_mpo=True)
+    monkeypatch.setattr(m, "PROTOCOL_SHA", "0" * 64)
+    with pytest.raises(ValueError, match="acquisition protocol"):
+        m.acquire(tmp_path / "bad-protocol", [reserved])

@@ -17,6 +17,7 @@ from PIL import Image
 
 COMMIT = "3f577edf0b14c686aa08e8d0d8ae07a83ba44f26"
 PROTOCOL_SHA = "29f706034106f8e8706909afebb47d17d3879de2ef41c4b899a3113675c630a7"
+RETRY_PROTOCOL_SHA = "8e01274b87c73610f0a76d6852260cd9761e12c5c17a95e695e3f3a77a6ae7ed"
 TREE = "d674ddf9516c3044b2627224e19b7a0361e093a9"
 LICENSE_BLOB = "99108f413927f4937261f1e672454fcea4ddceea"
 README_BLOB = "34a107995e0675485948759dfcf2045b9883725f"
@@ -142,7 +143,7 @@ def select(document, per_device, excluded):
     return selected
 
 
-def acquire(out, reserved_paths, *, per_device=20):
+def acquire(out, reserved_paths, *, per_device=20, allow_bounded_mpo=False):
     if type(per_device) is not int or per_device not in (20, 120) or not reserved_paths:
         raise ValueError("explicit selection and reserved manifests required")
     safe(out)
@@ -152,6 +153,12 @@ def acquire(out, reserved_paths, *, per_device=20):
     protocol = Path(__file__).resolve().parents[1] / "docs/DATA_EXPANSION_PROTOCOL.md"
     if hashlib.sha256(protocol.read_bytes()).hexdigest() != PROTOCOL_SHA:
         raise ValueError("frozen acquisition protocol changed")
+    if type(allow_bounded_mpo) is not bool:
+        raise ValueError("explicit native-format policy required")
+    if allow_bounded_mpo:
+        retry = protocol.parent / "WIFD_RETRY_PROTOCOL.md"
+        if hashlib.sha256(retry.read_bytes()).hexdigest() != RETRY_PROTOCOL_SHA:
+            raise ValueError("frozen retry protocol changed")
     reserved, excluded, documents = set(), set(), []
     for path in reserved_paths:
         safe(path)
@@ -192,6 +199,7 @@ def acquire(out, reserved_paths, *, per_device=20):
         "commit": COMMIT,
         "tree": TREE,
         "per_device": per_device,
+        "allow_bounded_mpo": allow_bounded_mpo,
         "reserved_manifest_sha256": sorted(documents),
         "members": [{k: r[k] for k in ("path", "sha", "size")} for r in selected],
     }
@@ -207,8 +215,13 @@ def acquire(out, reserved_paths, *, per_device=20):
             raise ValueError("image integrity or reserved-overlap failure")
         with Image.open(io.BytesIO(raw)) as image:
             width, height = image.size
+            native_format = image.format
+            frames = getattr(image, "n_frames", 1)
             if (
-                image.format != "JPEG"
+                not (
+                    (native_format == "JPEG" and frames == 1)
+                    or (allow_bounded_mpo and native_format == "MPO" and 2 <= frames <= 4)
+                )
                 or image.mode not in ("RGB", "L")
                 or min(width, height) < 256
                 or max(width, height) > 16384
@@ -216,7 +229,7 @@ def acquire(out, reserved_paths, *, per_device=20):
             ):
                 raise ValueError("unexpected or unbounded JPEG geometry")
             image.load()
-        target = out / f"{i:04d}.jpg"
+        target = out / f"{i:04d}.{'mpo' if native_format == 'MPO' else 'jpg'}"
         safe(target)
         with target.open("xb") as f:
             f.write(raw)
@@ -232,7 +245,10 @@ def acquire(out, reserved_paths, *, per_device=20):
             "label": "cover",
             "method": None,
             "split": "test",
-            "format": "JPEG",
+            "format": native_format,
+            "declared_frames": frames,
+            "decoded_frames": 1,
+            "decode_policy": "primary frame only; original bytes preserved",
             "camera": camera,
             "device": camera,
             "device_identity_status": "declared upstream directory; not independently verified",
@@ -252,6 +268,8 @@ def acquire(out, reserved_paths, *, per_device=20):
     report = {
         "schema_version": "wifd-acquisition-v1",
         "protocol_sha256": PROTOCOL_SHA,
+        "retry_protocol_sha256": RETRY_PROTOCOL_SHA if allow_bounded_mpo else None,
+        "allow_bounded_mpo": allow_bounded_mpo,
         "acquisition_script_sha256": source_sha,
         "purpose": "whole WIFD origin reserved from training/calibration; evaluation covers only",
         "source_url": SOURCE,
@@ -281,6 +299,7 @@ def main(argv=None):
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--reserved-manifest", type=Path, action="append", required=True)
     parser.add_argument("--per-device", type=int, choices=(20, 120), default=20)
+    parser.add_argument("--allow-bounded-mpo", action="store_true")
     args = parser.parse_args(argv)
     try:
         import resource
@@ -289,7 +308,12 @@ def main(argv=None):
         resource.setrlimit(resource.RLIMIT_CPU, (1800, 1801))
         resource.setrlimit(resource.RLIMIT_FSIZE, (MAX_FILE, MAX_FILE))
         resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-        report = acquire(args.out, args.reserved_manifest, per_device=args.per_device)
+        report = acquire(
+            args.out,
+            args.reserved_manifest,
+            per_device=args.per_device,
+            allow_bounded_mpo=args.allow_bounded_mpo,
+        )
     except Exception as exc:
         print(
             f"WIFD acquisition failed ({type(exc).__name__}); no success manifest; "
