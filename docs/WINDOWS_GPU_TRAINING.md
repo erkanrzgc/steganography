@@ -4,6 +4,7 @@ Status: CUDA software path implemented; **actual GPU execution unverified**
 in the current Kali/VMware CPU-only development environment. No new real model
 or accuracy improvement. Kali and its working Python environment stay intact.
 Run GPU jobs in Ubuntu/WSL2 on the Windows host, not inside the Kali VM.
+See [local software verification and explicit CUDA unavailability](CUDA_BACKEND_VERIFICATION.md).
 
 ## 1. Check the Windows host first
 
@@ -51,13 +52,15 @@ git clone https://github.com/erkanrzgc/steganography.git steganography-gpu
 cd steganography-gpu
 python3 -m venv .venv-gpu
 .venv-gpu/bin/python -m pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cu130
-.venv-gpu/bin/python -m pip install -e '.[jpeg-sim]' 'numpy==2.4.6'
+.venv-gpu/bin/python -m pip install -e '.[jpeg-sim]' 'numpy==2.4.6' 'jpeglib==1.0.2'
 ```
 
 If Git or Python venv support is missing, install the Ubuntu packages only
 after checking that error; do not alter Kali's venv. The CUDA 13.0 wheel is
 published in the [official PyTorch index](https://download.pytorch.org/whl/cu130/torch/),
-not a nightly/custom third-party build. The precision API, compiled GPU
+not a nightly/custom third-party build. NumPy/jpeglib versions remain bound to
+the already audited float-cache decoder contract, rather than upgrading it
+silently. The precision API, compiled GPU
 architecture, actual driver and runtime are checked before training. WSL
 installation and these commands have **not** been verified on this user's host.
 

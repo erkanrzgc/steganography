@@ -27,6 +27,8 @@ model has been fitted. [Full-block streaming readiness](docs/SRNET_STREAM_READIN
 now verifies every training row without a whole-corpus tensor allocation and
 preserves the numerical trainer behavior. Adequate real fitting and blind-source
 testing remain; engineering checks are not an accuracy improvement.
+An [opt-in Windows/WSL2 CUDA workflow](docs/WINDOWS_GPU_TRAINING.md) is now
+implemented, but actual GPU execution remains unverified on this CPU-only VM.
 
 The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
 balanced accuracy 50%), despite passing numerical replay. See the

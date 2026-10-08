@@ -6,6 +6,8 @@ the current Kali/VMware CPU-only environment. CPU/emulated policy/control-flow
 tests pass; actual CUDA/WSL execution remains unavailable/unverified, not an
 accuracy improvement. Next observe Windows driver/WSL, run bounded generated
 hardware preflight, then freeze adequate real train-only exposure/learning.
+Final verification: `CUDA_BACKEND_VERIFICATION.md`, 1,597 tests pass, actual
+CUDA test explicitly skipped; the isolated Kali probe records unavailable.
 CPU behavior/defaults and the 1800s ceiling remain unchanged; CUDA requires a
 kernel resident RAM bound rather than an unsuitable CPU virtual-address cap.
 
