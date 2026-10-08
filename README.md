@@ -21,7 +21,9 @@ and synthetic regression scores are not overall steganalysis accuracy.
 
 [Verified data expansion](docs/DATA_EXPANSION_RESULTS.md) adds 4,000 ALASKA2
 JPEGs, 1,000 BOSS originals and 200 reserved WIFD images. Acquisition is not
-accuracy: new training preparation/fitting and blind-source testing remain.
+accuracy. [Complete JPEG preparation](docs/JPEG_SCALE_PREPARATION_RESULTS.md)
+now contains 7,380 train and 1,611 validation rows in bounded blocks; no new
+model has been fitted. Streaming training and blind-source testing remain.
 
 The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
 balanced accuracy 50%), despite passing numerical replay. See the

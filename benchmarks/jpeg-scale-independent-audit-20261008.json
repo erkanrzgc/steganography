@@ -1,0 +1,117 @@
+{
+  "schema_version": "jpeg-scale-independent-audit-v1",
+  "status": "completed",
+  "index_sha256": "89f4c726922eb22e3c2edefeb24bf7d2a90473c4f9695a419be642df05fe76fd",
+  "protocol_sha256": "e494621f8d3eee763fe14461fafa81458b8404827fa554b2bf060ea7c5cb3036",
+  "audit_script_sha256": "1e8dce6e53ab94de385663a3bd520c13f011479993042da6b88a4454a9d3c67f",
+  "blocks_audited": 16,
+  "jpeg_rows": 8991,
+  "original_lineages": 1997,
+  "source_rows": {
+    "ALASKA2": 2991,
+    "BOSSbase-1.01": 6000
+  },
+  "splits": {
+    "train": 7380,
+    "validation": 1611
+  },
+  "jpeg_bytes": 663910882,
+  "tensor_bytes": 2356936704,
+  "simulated_stegos_coefficient_checked": 4000,
+  "decoder": {
+    "jpeglib": "1.0.2",
+    "libjpeg": "6b",
+    "numpy": "2.4.6",
+    "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+    "rounding": "none",
+    "clipping": "none"
+  },
+  "scalar_oracles": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "label": "cover",
+      "method": null,
+      "jpeg_sha256": "db3b8caade4f6ab96a1ea9f6b8b050345b4d1cc5bf600e4ad50761eada25f383",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "JUNIWARD",
+      "jpeg_sha256": "7ae29de71b65d8967ae1634ec2378b3712eb048f01c2ed4c82d3ecc102b99e5b",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "label": "stego",
+      "method": "UERD",
+      "jpeg_sha256": "38610e4f5935e093e91c542e526fbd49f704775a3a0fe3acf0542f7d4cc90d05",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "label": "cover",
+      "method": null,
+      "jpeg_sha256": "f3a13efc8dc54a27201b216028eeed5f8b8de391a7c0db88eef9338ea7d986f1",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "label": "stego",
+      "method": "JUNIWARD",
+      "jpeg_sha256": "38ce41f9308af91fa510dc830739f4faef46afa0d1c383c47ae4553905dfe134",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "label": "stego",
+      "method": "UERD",
+      "jpeg_sha256": "751c3935f00e3229a224a52a7a3eee963eeeffc6adc5614bbb1f7a7c3e9b70c3",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "label": "cover",
+      "method": null,
+      "jpeg_sha256": "1bc1dd608b01b437a3b5e520612fb1ea23244d7c72cdc75b61ed7fe3b800e0bf",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "label": "stego",
+      "method": "JUNIWARD",
+      "jpeg_sha256": "d93093bf8247582dedc69ceccb2169a48e0950a562f1a87a6969215d850b3378",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "label": "stego",
+      "method": "UERD",
+      "jpeg_sha256": "4bc15c0f8197033f9d7b748a79b5a573633ed37172a63cd37b25ac72cf038cc0",
+      "max_scalar_difference": 0.0,
+      "passed": true
+    }
+  ],
+  "reserved_identity_overlap": 0,
+  "models_trained": false,
+  "detection_measured": false,
+  "accuracy_qualification": "unavailable",
+  "raw_data_published": false
+}

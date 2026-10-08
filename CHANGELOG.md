@@ -1,5 +1,12 @@
 # Changelog
 
+- Add frozen whole-expansion JPEG preparation in <=128-original blocks, with
+  complete lineage/role/exclusion accounting and fresh unrounded-Y float caches.
+  BOSS supports bounded explicit selection offsets without changing legacy
+  defaults or increasing trainer caps. Add independent full JPEG/cache audit,
+  PGM-to-JPEG cover replay, simulated DCT change/rate checks and sampled scalar
+  IDCT oracles. No fitting, validation-score tuning or deployed detector change.
+
 - Add frozen, explicit corpus expansion and pinned MIT-licensed WIFD acquisition
   with bounded fixed-origin downloads, SHA-256/Git blob identities and fresh
   outputs. Preserve the failed JPEG-only attempt; separately freeze opt-in

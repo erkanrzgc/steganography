@@ -1,5 +1,18 @@
 # Benchmark protocol
 
+`JPEG_SCALE_PREPARATION_PROTOCOL.md` freezes complete preparation of all 997
+eligible new ALASKA originals and all 1,000 BOSS originals in 16 bounded blocks.
+Original/quality/method descendants cannot split between blocks or roles;
+the entire WIFD origin and six prior acquisitions are excluded. Preparation
+targets 8,991 JPEG rows (7,380 train, 1,611 validation), never silent truncation
+to the old preparer/trainer caps. Existing corpora/caches and failed scores stay
+unchanged. Only a complete-job index plus independent whole-source audit can
+establish preparation completion; partial blocks remain local and incomplete.
+Byte/provenance, finite-tensor and sampled scalar-IDCT checks are preprocessing
+evidence, not exact payload recovery, a passed learning gate, detection accuracy
+or independent-source qualification. Simulation input .2 bpnzAC does not mean
+encoded-message recovery; ALASKA quality/payload remain undeclared.
+
 The frozen `DATA_EXPANSION_PROTOCOL.md` acquires new ALASKA2/BOSS development
 originals while excluding all existing acquired identities/member names.
 The JPEG-only WIFD attempt failed on native two-frame MPO despite valid upstream

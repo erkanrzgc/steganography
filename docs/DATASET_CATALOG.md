@@ -10,7 +10,7 @@ Use [benchmark results](BENCHMARK_RESULTS.md) for scores and limitations.
 | BOSSbase 1.01 separate development | Additional 1,000 PGM originals: 816 train, 184 validation; 7,000 controlled PNG/BMP files, including 6,000 gray-plane LSB stegos | Reserved names/identities excluded; fixed seed 20261005, complete original ancestry | Same usage limits; [development results](SPATIAL_DEVELOPMENT_RESULTS.md); this is not another independent source |
 | [Kodak suite](https://r0k.us/graphics/kodak/) | Frozen 24 originals; both upstream methods on each | Same original ancestry across conversions and methods; camera metadata unknown | Curator usage statement is not an independently verified license; originals/derivatives stay local |
 | [ALASKA2 competition](https://www.kaggle.com/c/alaska2-image-steganalysis/data) | Frozen 4,000-file baseline, plus two disjoint 4,000-file development acquisitions | Complete cover/JMiPOD/JUNIWARD/UERD lineages, explicit split, SHA-256 and ZIP CRC; per-file camera/device/payload/QF metadata unassigned | Subject to competition rules; local research only in this workflow; no raw corpus or model redistribution authorized by this inventory |
-| BOSSbase 1.01 second development expansion | New 1,000 PGM originals: 822 train, 178 validation; no derivatives prepared yet | Excludes all six previous acquisition manifests; independently audited | Same original source restrictions; not another source group |
+| BOSSbase 1.01 second development expansion | New 1,000 PGM originals: 822 train, 178 validation; all 6,000 Q75/Q95 cover/JUNIWARD/UERD JPEGs prepared | Excludes all six previous acquisition manifests; byte/ancestry/coefficient/crop audit passes | Same original source restrictions; not another source group or qualified detector |
 | [WIFD](https://github.com/CSCRC-SCREED/WIFD) | 200 SDR original files: 120 JPEG, 80 MPO; whole origin reserved | Pinned source/Git blob/SHA-256; ten declared camera directories, primary frames only; scene identity unverified | Pinned README declares data/code MIT; license evidence retained; no raw data published or detection measured |
 | [FSDD v1.0.10](https://github.com/Jakobovski/free-spoken-digit-dataset/tree/d6938f9bf1545aa66d8489fc9f1385a7abd64282) | 3,000 actual spoken-digit WAV recordings, six speakers; 6,000 controlled LSB stegos from 1,000 test originals | Pinned commit; per-file SHA-256, CRC, speaker and PCM metadata; whole-speaker train/validation/test roles in separate experiment manifest | Upstream CC-BY-SA-4.0; attribution, license link and applicable ShareAlike/change notices required for redistribution; no audio committed |
 | [StegoAppDB paper](https://arxiv.org/abs/1904.09360) | Not acquired | Intended mobile-app evaluation; no verified local camera/app mapping | Checked database endpoint inaccessible here; access and usage conditions still required |
@@ -28,6 +28,14 @@ separate: ALASKA 181, BOSS 178. Acquisition split counts are not model-ready
 train-row counts, and exact exclusion cannot prove scene/camera independence.
 These are larger samples from existing sources, not additional source groups.
 Original source restrictions remain; no raw data or model publication.
+
+The [complete new JPEG preparation](JPEG_SCALE_PREPARATION_RESULTS.md) uses all
+997 eligible ALASKA lineages and all 1,000 BOSS originals in 16 bounded blocks:
+8,991 JPEGs / 7,380 train / 1,611 validation, with fresh unrounded-Y caches.
+JMiPOD is explicitly excluded from this matched BOSS-family recipe. Every JPEG
+and cache hash/role was independently checked, including BOSS cover ancestry,
+4,000 simulated coefficient changes and nine scalar-IDCT contexts. No model was
+trained or accuracy measured; the old prepared corpus stays unchanged.
 
 The [WIFD](https://github.com/CSCRC-SCREED/WIFD) addition pins commit
 `3f577edf0b14c686aa08e8d0d8ae07a83ba44f26` and verifies its MIT data/code

@@ -1,0 +1,379 @@
+{
+  "schema_version": "jpeg-scale-preparation-summary-v1",
+  "status": "completed",
+  "protocol_sha256": "e494621f8d3eee763fe14461fafa81458b8404827fa554b2bf060ea7c5cb3036",
+  "acquisition_audit_sha256": "62b0c8218797c365b697af1068a6c9c1c896e94395430f91c2e818cc0f3eb28a",
+  "preparation_script_sha256": "57e55e05760b7ee464730c789bb7dfa0f3406086995079befb3e2e6c2c7941a3",
+  "layout_script_sha256": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+  "source_manifest_sha256": [
+    "7df0e4a5a4d64576b6c6a2edcae1eadf8b46a3afa54fe6e1855fd79c7d525626",
+    "9ae58e33f8e71e72a918ed393ecb3f7900f36d3428f3a4347e42018fc84adfe8"
+  ],
+  "reserved_manifest_sha256": [
+    "303995e90fbeb90a52e5a6ee99063741092690b5b47d50c2703c66bdf0959f9c",
+    "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+    "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+    "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    "d25e61bc037aa19489c5b91a6080e2637ff6a20ab4c8c4164fb0969b7785c692",
+    "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+    "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288"
+  ],
+  "quarantined_lineages": [
+    "2c5c32107341899f02c9390fc4e5cada7841170ba88110616556a95dcce5f1fd",
+    "88483d1ae300e0b25cacc4c8a48870d4bfc3933e186fa71b63a158c95e5670f9",
+    "f637f0e4b4a7e217a6808aea70794181b1e66b0185781a967f9ca46838135f77"
+  ],
+  "excluded_method": "JMiPOD: no matched BOSS simulator in pinned recipe",
+  "blocks": [
+    {
+      "path": "block-000/manifest.json",
+      "manifest_sha256": "2eb6ff3600ce05a5eb12ea5ef2d7364123506f9c0527d94a5bd6edf1634b7d20",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-000/train/cache.json",
+          "sha256": "108b04c86a576f1bd7330d40df15a399d716b5bffe6260797785b7f4a7877550",
+          "rows": 327,
+          "data_sha256": "3c2225b626fce3fcda8a81011462f5709c8f7956167fccc8a8dddb9c770df1ac"
+        },
+        "validation": {
+          "path": "block-000/validation/cache.json",
+          "sha256": "0d4f76a5e8622e47c1a1a58800c2576b6bab92ea44ef7ef93e6408a6bf6e62ce",
+          "rows": 57,
+          "data_sha256": "51556e0fd1bed2d771990b30fcab3bd0859fb40e8e1d49eca3748ef4f4c638e2"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "7d6849d371683e6fccae50c031a2a135f1f19654b775c6cc2e4f84fba4a78324"
+    },
+    {
+      "path": "block-001/manifest.json",
+      "manifest_sha256": "65430f969eea26257a8d76d357986122444b91c6c0e2a676995b278881b027a7",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-001/train/cache.json",
+          "sha256": "b75a7d33b62605ec1edc35f57fd982e6bfc2a43704d96dde63803b1c2cb1c2b7",
+          "rows": 312,
+          "data_sha256": "0d6f89903308c69dc5a4cb6058b808449d26f04ca398eeca894067ff98cb7189"
+        },
+        "validation": {
+          "path": "block-001/validation/cache.json",
+          "sha256": "e248aca4f6518e3cca6c1f541782f601eb42cbd5584a73e3368d19a38448a7e2",
+          "rows": 72,
+          "data_sha256": "72475eb33c1a528eb6427c490bf600be2abf13780db6ae5a84b39ba50ba8c466"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "5980f029bdd131508827abfecf8327fa5d7cf00dd06afa890d52b2d6e5b96fc4"
+    },
+    {
+      "path": "block-002/manifest.json",
+      "manifest_sha256": "4f15cd2ece2fe15bbb3ed43b64fffdd3ba5137620596365ed85fc11456df9da7",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-002/train/cache.json",
+          "sha256": "20987b0ff20e8938ded7abd9f21cb8d5bc17025b2343244eadf1601efae64bee",
+          "rows": 303,
+          "data_sha256": "ee597de166550ef10fa34c2b739945a942bdb1acb1130d7a7a88b8c0bd6e6ed1"
+        },
+        "validation": {
+          "path": "block-002/validation/cache.json",
+          "sha256": "9010c3633ff73e13bf071470d9fd9fb4d2e7aeddcdce5ff04c1efeba408795a4",
+          "rows": 81,
+          "data_sha256": "108be2c2a69177da4dbbaa30617351603a31302ec2f37e8923ad5dc9b8ec1f30"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "35a60c1902828f21a88bdaaa82e0b0ab630ee705ebaf41f77ff68919e706a68f"
+    },
+    {
+      "path": "block-003/manifest.json",
+      "manifest_sha256": "d64813d82b81ac4aadb1923ff32c9424ebb1093d6d3e750fd392f98d39fb564f",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-003/train/cache.json",
+          "sha256": "c580961fc1b89dec4ee7b09d87d1fe6bbafdb73c2514a7c10b00b0fc2757cafe",
+          "rows": 303,
+          "data_sha256": "db178772d7a7f95efaec9a6fc16235b1bce66d172417e7b3fd3989e878cd3c98"
+        },
+        "validation": {
+          "path": "block-003/validation/cache.json",
+          "sha256": "44c88a1171f438895ce03aff2932578e0bc6ee1af7a21b2bc2f327191e9d8cd4",
+          "rows": 81,
+          "data_sha256": "a9011fa2be2e8b860a003054dff86ee3b443e0aa3b1ebf9ab281f71997fe40b8"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "d2dcbac6084f244bd7dd04b134a84219231abf92afb4f53cbc5552a0a4668667"
+    },
+    {
+      "path": "block-004/manifest.json",
+      "manifest_sha256": "a28878b4874132ad541a3b3c5c0ab030f6b0ad73597beb382579cf3e8ac0a4e0",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-004/train/cache.json",
+          "sha256": "75249e8014ff426a310698a0d43d06a3757bd3671561dbe08cd669f85bde4fc2",
+          "rows": 297,
+          "data_sha256": "c34ccdb12e9f5d1a3e13a94303141f1cbe25fa95cf47e714891d97ea3482ccb9"
+        },
+        "validation": {
+          "path": "block-004/validation/cache.json",
+          "sha256": "b1ee745fccc3378b4014b0b5a0d67a4f5a578f19c52853f4c09e30b1177115e7",
+          "rows": 87,
+          "data_sha256": "b12ed3a004f87b42bfb62166bd261145e79b2c7948694611a89f2a8a1fc96702"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "8c5c69339627cd63a9c627c41af44b53e226ae144a4a545af307ac1342f395fa"
+    },
+    {
+      "path": "block-005/manifest.json",
+      "manifest_sha256": "21456e3d393703750f715ebdbe2808e81059cd6fa5d5c7fc096c26f1ff8a7f0c",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-005/train/cache.json",
+          "sha256": "fa9850049343986979000b11dd5cbb8f37230f33696f665f574aedb564001d8c",
+          "rows": 315,
+          "data_sha256": "8bcfb83fe0af9ff499f920bcc90f81bdc8ab1a1be178144b7dcef5a927a62433"
+        },
+        "validation": {
+          "path": "block-005/validation/cache.json",
+          "sha256": "c8981e21cb5dab92a74d0a1c2e96bd35ce8b55d9a2c7bcf7f01e2b7d24d3c790",
+          "rows": 69,
+          "data_sha256": "28b6b3426eb6039bd58bf197ff8a9e03e67f00c0e9cf797059d065ae4ce6d9d9"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "ffce0cf2b00fb2a09cfc3405a211db6df65cf127927054817b284e1db3558012"
+    },
+    {
+      "path": "block-006/manifest.json",
+      "manifest_sha256": "ab8b02fd2f894657fe02bbcad984858d6ea81365f87e4194ace154791ebb48d3",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-006/train/cache.json",
+          "sha256": "ff62e7713d1b6ec0d3a3a4c9360b62dd6fa3eb360bbcbdaf6077d062aed865ed",
+          "rows": 324,
+          "data_sha256": "77b4b62bbb2bef985f00729d2b2c5c771e67da28500d9fa54c01a06b3fc42035"
+        },
+        "validation": {
+          "path": "block-006/validation/cache.json",
+          "sha256": "a641485fd24813a60b37d26c0b523e061273e0f4255d0594986e605006ee343e",
+          "rows": 60,
+          "data_sha256": "d1d6f16f2f5386f562ed0308c99ac903093052e3336f1f12ab5bb85cbc4495a3"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "c3a4f642aa862dd64448301786b9c56ad45d46cd5c5018207f5d736ed4372e7c"
+    },
+    {
+      "path": "block-007/manifest.json",
+      "manifest_sha256": "12361917f29fcc9102f21aeb0810b1e041baa88c322c924f0415d791dca30a05",
+      "source_group": "ALASKA2",
+      "caches": {
+        "train": {
+          "path": "block-007/train/cache.json",
+          "sha256": "de55506f39db86680bc018e635426681079e3cab12038a096a269486b3149c2e",
+          "rows": 267,
+          "data_sha256": "1ba90825e625e3503938d8c42cc5c836b3d743c976e9a04a03ee95ac6a828f9e"
+        },
+        "validation": {
+          "path": "block-007/validation/cache.json",
+          "sha256": "5ae1655236de72977eca97839abe68c8346f87b957e5e833a3e051398ceef858",
+          "rows": 36,
+          "data_sha256": "c213f8c50c437bab4c6ddeadcea2ce415c491ab0c1f0938de7fa548e5f887fae"
+        }
+      },
+      "original_lineage_count": 101,
+      "ordered_lineages_sha256": "c3841f256383e812ba155c46bbaf9697a9c7fd95f5c20f67ce8e01094884bf5b"
+    },
+    {
+      "path": "block-008/manifest.json",
+      "manifest_sha256": "a9d5bb7113be02dbb804e1e29d16cbcd5557f29c546d03ae93372879b7a455db",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-008/train/cache.json",
+          "sha256": "8ca770471a0dbfb4bef9449784380410941737a471855a8f93d64f85a9ff5adb",
+          "rows": 648,
+          "data_sha256": "80c802784fd540eea23b5742ac54754601f3cd25e6a5eeaf2a6ab949e3108aeb"
+        },
+        "validation": {
+          "path": "block-008/validation/cache.json",
+          "sha256": "0b9d2de26c4a34560a7c4e4b8d78f9352d55be9f37b4c1c096879b590b7cd15a",
+          "rows": 120,
+          "data_sha256": "14e92dfb31eac6a38438243a0a72b1b96de5679970f6c6c4e1196905c6d0b036"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "672b6f879ef5db912c252e6b2526e0546f4322f354c9291953c04216472537e9"
+    },
+    {
+      "path": "block-009/manifest.json",
+      "manifest_sha256": "60f01719da4fa4005269d20fbcdf2b775fe2aed3701158f2a2e27999da861e4d",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-009/train/cache.json",
+          "sha256": "a772f6c48ce8e11efa70382b60367eea96a68d23fef51528f7fbc7aca127d19b",
+          "rows": 666,
+          "data_sha256": "2093aea3c96b3ae5303daa4d8ee9d585782a9611df75fc1c456379d3e6bc224d"
+        },
+        "validation": {
+          "path": "block-009/validation/cache.json",
+          "sha256": "c32486c45f22eda155ea4828d3430d0050a4458f06ef76b28e1e4eadc6744cea",
+          "rows": 102,
+          "data_sha256": "b01a74e53a869b0aa6eb61ca1ae4fcb1a803825812167dab1738b8bb8471b239"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "939bcda72ac0fabc9864d9f3be2650e75dc878dc1270fa23cda178c400ffaeb3"
+    },
+    {
+      "path": "block-010/manifest.json",
+      "manifest_sha256": "bc820a238681effbad5240a18328d31bf96e5839917e4100dd760dc41234a2da",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-010/train/cache.json",
+          "sha256": "dfb4be25d85e09a96680f280a02103fafc101d0b608f4f374881ea69cb2fe191",
+          "rows": 588,
+          "data_sha256": "8eb0f859380bda99734246df9eaf3e74444a4b57d5edc69565418415e1ca1c3d"
+        },
+        "validation": {
+          "path": "block-010/validation/cache.json",
+          "sha256": "5e1cf6dcd51fa8ecbc55e90dc95fec68b693366917504dcfac8dd4bf23d1f4bf",
+          "rows": 180,
+          "data_sha256": "9e6e89f51f7ec0f6fa2d7516262e1790bfe78fff7016d0b04900b300eaf2bcfe"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "20f7390d8c62d25ed5b3299dd0ea0fef0af8911f1e86d79a5889b4f08951975f"
+    },
+    {
+      "path": "block-011/manifest.json",
+      "manifest_sha256": "10938f7b81feb7a7a2bae4c57d09239e2f806cff31229bd9def4b7b693bec132",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-011/train/cache.json",
+          "sha256": "0804bf1ba17e1579dbe8e5855002e5807a65f6c93558bdfc0ef27207f3af3e34",
+          "rows": 654,
+          "data_sha256": "abc084fc88456178ce4326a7eaed3706377295dddd188bdc7eaa4714cc5e5e01"
+        },
+        "validation": {
+          "path": "block-011/validation/cache.json",
+          "sha256": "da4f1cb3f7412cb98195373283fa38ea34e6677f2d8e93b63682810c840e4d19",
+          "rows": 114,
+          "data_sha256": "e5efb661f9eeaa6a4b959e23c91843f3f7ef256c7fd50a8c31cf1db8433a7daa"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "84d43ae772bd15d990b66ffedc708d880a510a7421c38a4095d5aa0992d8f3e8"
+    },
+    {
+      "path": "block-012/manifest.json",
+      "manifest_sha256": "5210799f2d68959ebaf455480156bc6fd06fba682388b604c9c3884e1c96ac4b",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-012/train/cache.json",
+          "sha256": "8bc8ad9fb8fc57962a335a4ff092b4935cdb51b5b36095fc40be4b84be47dd0a",
+          "rows": 660,
+          "data_sha256": "239c0ea0c0ecacfc345712bdbe7fd1d2b913c6c3df7c43111ba35bfbd504415c"
+        },
+        "validation": {
+          "path": "block-012/validation/cache.json",
+          "sha256": "45835837c3af9b0db997e90d6208cfb87021e098386d261ba48262a22eee2872",
+          "rows": 108,
+          "data_sha256": "e81b6064962467cfcf3a6fc4570c42727dd0d90378bf9fc7fae4fd01c6108ec2"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "d07749e4a17bd2f1a7955744f8ee011dcf1d0780d545647e2b1ba6cb9adccf4d"
+    },
+    {
+      "path": "block-013/manifest.json",
+      "manifest_sha256": "61378970fb57d24d4ddab198fa3d18a5322bd45bf3f9766f51bb0d1d83929a15",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-013/train/cache.json",
+          "sha256": "0e06c5da6c2bcb7ebfc2ed702286ea9736128a00e3ee880f7bc1f6b7efffad15",
+          "rows": 594,
+          "data_sha256": "e4a57c28a28b61dcecdf2ab57869a1b494dc43355fec2aae9fa18a41599fb6fa"
+        },
+        "validation": {
+          "path": "block-013/validation/cache.json",
+          "sha256": "454078a22d004a9504d83abd2765ef07f20d8166bd3d8039f74185998939686c",
+          "rows": 174,
+          "data_sha256": "eb884cecb0ecd4f504b5e53bc4571d1b4f82b784204c19cd225792570b22bfd6"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "fc764221117b1619b96e782377677e101981f96bb881771ff32222b3b089f496"
+    },
+    {
+      "path": "block-014/manifest.json",
+      "manifest_sha256": "6b56fd0f998d57539d84b5047714196dfd902105d5a163b35e2a6f1c11c83e3e",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-014/train/cache.json",
+          "sha256": "cfc8be780930c01fea6369ae4e1d42317faaab2890fb8da8394b63ba864d6715",
+          "rows": 606,
+          "data_sha256": "500e1414715f454288ae0cc8e001c3493586e03c5c238bb55d456a61ad365aca"
+        },
+        "validation": {
+          "path": "block-014/validation/cache.json",
+          "sha256": "52f61778233be316cefc20d8deaa04194b4fbab237252288d80cdbc804181ff8",
+          "rows": 162,
+          "data_sha256": "c47f27ae622e1577f890ecc521f9e9fd2116ea4e4e8332b701fa0168deec2384"
+        }
+      },
+      "original_lineage_count": 128,
+      "ordered_lineages_sha256": "9c7842f930c7cc671393819cd8f74918a4b56a04eef0014062e1048c83a89227"
+    },
+    {
+      "path": "block-015/manifest.json",
+      "manifest_sha256": "f4869fb3d20170253a7e7e0fb85b9a5b19cc45dfa2a8cb80179ee724585489f3",
+      "source_group": "BOSSbase-1.01",
+      "caches": {
+        "train": {
+          "path": "block-015/train/cache.json",
+          "sha256": "22f3a9b8d79a802dc4c515adff37c65b3ec6449a745feb0d5e08cfb4ff7d2eeb",
+          "rows": 516,
+          "data_sha256": "7b04925496c8a126081f949912c1d2b937972bdb9c8347e7f773376561ad1566"
+        },
+        "validation": {
+          "path": "block-015/validation/cache.json",
+          "sha256": "f631fd27b465b4bac1f655fa11288f4ed92309861de237595cd62155916b9f00",
+          "rows": 108,
+          "data_sha256": "532248100411a30ca88b2ac6b5cd866ee0fb69dec38e1c3336f81a8099d5e3ff"
+        }
+      },
+      "original_lineage_count": 104,
+      "ordered_lineages_sha256": "bee7357ef264957c0b26ac401f9d4d398fc3d63bf9b928228715d02675913a70"
+    }
+  ],
+  "jpeg_rows": 8991,
+  "splits": {
+    "train": 7380,
+    "validation": 1611
+  },
+  "original_lineages": 1997,
+  "output_bytes_before_index": 3154875454,
+  "seconds": 1746.489777238,
+  "models_trained": false,
+  "detection_measured": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "index_sha256": "89f4c726922eb22e3c2edefeb24bf7d2a90473c4f9695a419be642df05fe76fd",
+  "execution_base_commit": "e7f43e102383db41162efc5b5ed7f47911519cc7"
+}

@@ -1,5 +1,23 @@
 # Architecture
 
+`core/jpeg_scale.py` owns metadata-only full-expansion lineage layout: fixed
+hash ordering, <=128 originals per block, complete matched families, preserved
+development roles, reserved identities and whole-lineage quarantine. The
+explicit `research_jpeg_scale` service orchestrates existing simulation and
+float-cache workers in fresh blocks; CLI only routes arguments. Additive
+`selection_offset` preserves the old BOSS preparer's default prefix behavior
+and 128-original cap while covering the next bounded block without overlap.
+Global trainer/sampler limits remain unchanged; a complete block index is not
+an accepted whole-array training input or a qualified detector.
+
+The independent checkout audit rereads all prepared JPEGs and streams tensor
+hashes/finite checks. It independently re-encodes BOSS covers from PGM ancestry,
+checks each simulated stego's nonzero +/-1 DCT change count, quantization and
+declared rate/unit, and replays four scalar IDCT sums in each metadata-selected
+context. It does not call the simulation or vector decoder for those checks,
+nor independently reproduce every simulator cost/probability decision. No
+model inference, source-score tuning, automatic downloads or deployment.
+
 Checkout-only data acquisition remains explicit and separate from detection.
 `scripts/fetch-wifd.py` binds a source commit/tree, license and member blob
 identities to frozen protocols, fixed HTTPS origins and bounded independent

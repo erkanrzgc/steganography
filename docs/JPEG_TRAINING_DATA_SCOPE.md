@@ -1,5 +1,12 @@
 # Current prepared JPEG training scope — 2026-10-07
 
+Subsequent 2026-10-08 preparation completed a **separate new** block index:
+7,380 train rows (2,448 ALASKA / 4,932 BOSS) over 1,638 original train lineages,
+plus 1,611 validation rows. See [complete results](JPEG_SCALE_PREPARATION_RESULTS.md).
+These are not merged into the old manifest below, and no new fit occurred.
+The new index requires a separately reviewed streaming trainer; the capped
+legacy whole-array interface is unchanged. Counts below remain historical.
+
 Manifest SHA-256
 `0f45f59007d230c6396a9e995cf7bd465de91795f995ced8f79dcd4e0a58cd14`;
 train float-cache descriptor SHA-256
