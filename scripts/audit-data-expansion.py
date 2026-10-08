@@ -248,6 +248,12 @@ def audit(sources, reserved_paths, out):
                 != WIFD_LICENSE_BLOB
             ):
                 raise ValueError("WIFD license evidence changed")
+        quarantined_ids = {q["lineage"] for q in quarantine}
+        eligible_splits = Counter(
+            members[0]["split"]
+            for lineage, members in lineages.items()
+            if lineage not in quarantined_ids
+        )
         records.append(
             {
                 "source_group": group,
@@ -264,9 +270,9 @@ def audit(sources, reserved_paths, out):
                 "native_formats": dict(formats),
                 "license": doc["license"],
                 "quarantined_lineages": quarantine,
-                "training_eligible_lineages_after_preparation": 0
-                if group == "WIFD"
-                else len(lineages) - len(quarantine),
+                "eligible_lineages_by_split_after_preparation": dict(eligible_splits),
+                "training_eligible_lineages_after_preparation": eligible_splits["train"],
+                "validation_eligible_lineages_after_preparation": eligible_splits["validation"],
                 "scene_independence_verified": False,
             }
         )
