@@ -1,8 +1,9 @@
 # Windows 11 / RTX 5060 Laptop: local WSL2 training
 
-Status: CUDA software path implemented; **actual GPU execution unverified**
-in the current Kali/VMware CPU-only development environment. No new real model
-or accuracy improvement. Kali and its working Python environment stay intact.
+Status: the first physical WSL2/RTX 5060 Laptop **generated** CUDA preflight
+completed on 2026-10-09; see [original hardware evidence](WSL_GPU_READINESS_RESULTS.md).
+The current Kali/VMware development environment remains CPU-only. No new real
+model or accuracy improvement. Kali and its working Python environment stay intact.
 Run GPU jobs in Ubuntu/WSL2 on the Windows host, not inside the Kali VM.
 See [local software verification and explicit CUDA unavailability](CUDA_BACKEND_VERIFICATION.md).
 
@@ -61,8 +62,10 @@ published in the [official PyTorch index](https://download.pytorch.org/whl/cu130
 not a nightly/custom third-party build. NumPy/jpeglib versions remain bound to
 the already audited float-cache decoder contract, rather than upgrading it
 silently. The precision API, compiled GPU
-architecture, actual driver and runtime are checked before training. WSL
-installation and these commands have **not** been verified on this user's host.
+architecture, actual driver and runtime are checked before training. This
+separate Ubuntu/Python 3.12.3 environment and the generated preflight are now
+observed through local SSH; this does not qualify the full suite on Python 3.12
+or a real GPU fit.
 
 ## 3. Generated preflight before any real corpus
 

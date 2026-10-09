@@ -1,5 +1,10 @@
 # Changelog
 
+- Record the first completed physical WSL2/RTX 5060 Laptop generated CUDA
+  preflight, original-report checksum and matching execution-source hashes.
+  Freeze local transfer/train-only readiness before checking the fresh copy;
+  no raw data/weights published, real fit or improved accuracy implied.
+
 - Add opt-in, no-fallback FP32 CUDA streaming execution and versioned GPU plan/
   card metadata, scoped deterministic/precision/RNG policy, allocator limits and
   required kernel resident RAM bounds. Add isolated generated one-update/parity

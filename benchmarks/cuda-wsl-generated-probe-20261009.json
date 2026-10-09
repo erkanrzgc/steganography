@@ -1,0 +1,53 @@
+{
+  "schema_version": "srnet-cuda-generated-probe-v1",
+  "status": "completed",
+  "execution": {
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_gpu_bytes": 8518041600,
+    "torch_allocator_limit_bytes": 4294967296,
+    "host_memory_max_bytes": 8589934592,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "mixed_precision": false,
+    "deterministic_algorithms": true,
+    "cpu_fallback": false
+  },
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "b9b22fa52ec39cd81702245767373a88bd9adb7af690730a223caf7daeb88b18",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "e9551465cc758f5715515c0a2beb95b78dcd00771ca3c952b15fb12b8c55e84e",
+    "core/srnet_stream_training.py": "a7e9cf2f4d1f1907928ff53a3bd59b80bb7838e0846f7b30dbd2a4287c22ca21",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b"
+  },
+  "input": "generated-wave-checker-4x1x256x256-f32-v1",
+  "generated_optimizer_updates": 1,
+  "generated_mean_loss": 0.7490881085395813,
+  "input_tensor_bytes": 1048576,
+  "cpu_gpu_logit_max_difference": 9.1552734375e-05,
+  "parity_atol": 0.0001,
+  "parity_rtol": 0.0001,
+  "process_peak_gpu_allocated_bytes": 951980544,
+  "process_peak_gpu_reserved_bytes": 1434451968,
+  "seconds": 19.585241160000123,
+  "real_data_used": false,
+  "real_model_trained": false,
+  "independent_math_oracle": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false
+}

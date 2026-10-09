@@ -1,5 +1,14 @@
 # Benchmark protocol
 
+`WSL_TRANSFER_READINESS_PROTOCOL.md` freezes a fresh, private local copy and
+native train-only schedule check after the completed physical generated CUDA
+preflight. Transport checksums may read validation bytes, but no validation
+predictions/tuning; the native check opens train pixels only. CUDA execution
+metadata in an I/O check does not mean GPU optimizer execution or throughput.
+The physical probe report is original, checksum-bound evidence obtained over
+authenticated local SSH; it is not an independent mathematical oracle or a
+real-data accuracy measurement. Historical unavailable results are preserved.
+
 `CUDA_GENERATED_PROBE_PROTOCOL.md` fixes a generated one-update FP32 hardware
 preflight before actual GPU execution. CPU/emulated API/transfer tests only
 verify control flow and unchanged CPU behavior; unavailable hardware is an

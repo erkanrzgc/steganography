@@ -1,5 +1,16 @@
 # Roadmap and status
 
+2026-10-09: the first physical WSL2/RTX 5060 Laptop generated CUDA preflight
+completed. The original report was fetched over authenticated, pinned-host
+local SSH and all 14 source hashes match this checkout. One generated update,
+same-weight CPU/GPU forward agreement, bounded RAM/allocator; no real learning
+or accuracy gain. A fresh local copy passed the recursive transport checksum
+comparison; native train-only readiness is next under the separately frozen
+`WSL_TRANSFER_READINESS_PROTOCOL.md`. See `WSL_GPU_READINESS_RESULTS.md`.
+
+The following 2026-10-08 software-only status is historical; its explicit
+Kali unavailable result is preserved, not relabeled as a GPU pass.
+
 Opt-in FP32 CUDA streaming path and generated hardware preflight implemented:
 `WINDOWS_GPU_TRAINING.md`. Reported Windows 11/RTX 5060 Laptop hardware is outside
 the current Kali/VMware CPU-only environment. CPU/emulated policy/control-flow
@@ -18,8 +29,9 @@ model/loss/BN equivalence, hard isolated jobs, propagated deadlines and
 start-of-job source snapshots verified. No new real fitting or detection score.
 Next preregister adequate train-only exposure/learning, resolve compute/GPU
 choice and implement/verify that bounded workflow before blind evaluation.
-That historical readiness run is CPU-only; the new opt-in CUDA path above is
-not yet hardware-verified. No silent 1800s cap extension or cloud job.
+That historical readiness run is CPU-only; the separate generated physical
+CUDA preflight is now completed as linked above. Real fitting is still pending;
+no silent 1800s cap extension or cloud job.
 Historical preparation-worker deadline/source-snapshot hardening remains pending.
 
 Full expansion preparation and independent real audit completed:

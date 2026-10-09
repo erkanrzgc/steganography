@@ -14,6 +14,10 @@ GPU warmup and CPU/GPU forward parity check, without real corpus access, model
 publication or deployment. CPU/emulated control-flow tests do not verify actual
 GPU execution. See `WINDOWS_GPU_TRAINING.md` and the frozen generated protocol;
 real GPU fitting and independent trained-model qualification remain separate.
+The first physical WSL GPU generated probe is now recorded in
+`WSL_GPU_READINESS_RESULTS.md`, separately from the preserved Kali unavailable
+record. Local SSH transport is explicit infrastructure, not an application
+network dependency, model download or change to default analysis behavior.
 
 `core/srnet_stream.py` owns bounded, train-only block handles and <=4-row
 reads. A checksum-bound complete independent preparation audit is required;

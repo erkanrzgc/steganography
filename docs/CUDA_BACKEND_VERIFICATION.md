@@ -1,4 +1,11 @@
-# CUDA software verification — actual hardware unavailable
+# CUDA verification — historical Kali absence and separate WSL preflight
+
+The first physical WSL GPU generated preflight completed on 2026-10-09;
+see [original report and limitations](WSL_GPU_READINESS_RESULTS.md). This does
+not replace the historical Kali unavailable record below or prove real-data
+learning, independent math, cross-source accuracy or a deployed detector.
+
+## Historical 2026-10-08 Kali software verification
 
 CUDA software/preflight protocol committed before the local unavailable probe
 at `d71680b8d5e9095ce91de430752836202ee0e3b5`. The frozen
@@ -14,7 +21,8 @@ available there; no complete hardware probe, real dataset access, real model
 fitting, CPU fallback or deployed detector change. The parent records hashes
 of its 14 source dependencies before the attempt. This record does not verify
 Windows WSL, driver compatibility, actual GPU memory/throughput or runtime math.
-The user's Windows 11 / RTX 5060 Laptop is reported, not remotely inspected.
+At that time, the user's Windows 11 / RTX 5060 Laptop was reported, not remotely
+inspected. Subsequent WSL evidence is recorded separately above.
 
 Final local verification, Python 3.11.14 / Torch 2.14.0+cpu:
 
@@ -38,9 +46,9 @@ malformed/symlink/missing memory constraints, generated checksum/timeout/source/
 parity failure paths, unchanged CPU plans, scoped resource policies and explicit
 worker unavailability. Previously verified real-data failures stay published.
 
-Next follow the [Windows GPU setup guide](WINDOWS_GPU_TRAINING.md): observe
-Windows `wsl --status`/`nvidia-smi` first, then configure a separate WSL2
-environment and a kernel-bounded scope, and run the actual generated probe.
+The [Windows GPU setup guide](WINDOWS_GPU_TRAINING.md) has subsequently led to
+a completed generated WSL preflight. Local transfer/train-only readiness and
+adequate real learning are separate subsequent gates.
 Do not bypass guards, overwrite user WSL configuration, install a Linux GPU
 driver inside WSL, auto-upload restricted corpora or silently extend fit budgets.
 Adequate real learning and independent held-out qualification need a separate
