@@ -271,13 +271,36 @@ def test_isolated_worker_failure(tmp_path, monkeypatch, fault):
         service.run_job(arguments(tmp_path / "out.json"))
 
 
-def test_generated_probe_real_cpu_exact_disk_resume(tmp_path):
+def test_generated_probe_real_cpu_exact_disk_resume(tmp_path, monkeypatch):
     pytest.importorskip("torch")
+    # Numeric CPU parity, not a hardware throughput/deadline qualification.
+    # Coverage tracing in a concurrently loaded VM can exceed the GPU probe's
+    # 180s bound. Only this unit's clock is scaled; production limits remain
+    # unchanged and separately exercised below and on the physical GPU.
+    clock = srnet_resume_probe.time.monotonic
+    origin = clock()
+    monkeypatch.setattr(
+        srnet_resume_probe.time, "monotonic", lambda: origin + (clock() - origin) / 20
+    )
     report = srnet_resume_probe.probe(tmp_path, binding="1" * 64, device="cpu")
     assert report["exact_model_bn_optimizer_rng_loss"] is True
     assert report["generated_optimizer_updates"] == 128
     assert len(report["steady_intervals_seconds"]) == 47
     assert report["real_model_trained"] is False
+
+
+def test_generated_probe_deadline_still_fails_closed(tmp_path, monkeypatch):
+    now = [0.0]
+    monkeypatch.setattr(srnet_resume_probe.time, "monotonic", lambda: now[0])
+
+    def expired(**kwargs):
+        now[0] = 180.0
+        kwargs["outer_deadline"]()
+
+    monkeypatch.setattr(srnet_resume_probe.srnet_training, "_learn", expired)
+    with pytest.raises(ValueError, match="deadline"):
+        srnet_resume_probe.probe(tmp_path, binding="1" * 64, device="cpu")
+    assert not list(tmp_path.iterdir())
 
 
 def test_main_fail_closed_without_config(tmp_path, capsys):

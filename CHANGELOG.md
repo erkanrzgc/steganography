@@ -1,5 +1,10 @@
 # Changelog
 
+- Record the original physical CUDA disk-resume parity gate, permitting
+  separately bounded epoch jobs without relabeling prior single-job failures.
+  Add complete fixed-threshold development validation for final epoch models,
+  bounded separate-role pixels and independent stored-BN forward auditing.
+
 - Add explicit isolated per-epoch training jobs with full-plan/parent checkpoint
   binding, before/after train cache verification, unchanged 1800s/RAM/GPU caps
   and generated CUDA disk-resume parity plus a separate per-epoch budget gate.

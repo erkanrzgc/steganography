@@ -1,5 +1,14 @@
 # Roadmap and status
 
+2026-10-10: actual RTX 5060 disk-resume parity completed under the frozen
+protocol: exact numeric/RNG/loss state, per-epoch estimate 714.69s <1800s.
+See `CUDA_EPOCH_RESUME_RESULTS.md`. First full-source five-epoch real GPU pilot
+is in progress, not yet completed/scored. Complete final development-validation
+support is implemented separately with fixed stored-BN/threshold and independent
+forward audit; 26 generated reader/provenance/limit tests pass (new code >=95%),
+including real Torch versus independent NumPy replay of all nine fixture rows.
+No accuracy gain or supported-cell qualification yet.
+
 Explicit isolated epoch jobs implemented with full source/protocol/schedule
 binding, immutable parent cards, exact numeric continuation and before/after
 train cache verification. Generated disk-resume parity and adversarial job

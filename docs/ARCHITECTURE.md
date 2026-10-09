@@ -1,5 +1,13 @@
 # Architecture
 
+`core/srnet_block_validation.py` owns bounded validation pixels and immutable
+stored-BN inference/independent float64 replay. Its reader is deliberately not
+a `TrainBlocks` subclass and cannot enter the fitting service. The explicit
+isolated epoch-validation service accepts only a final complete plan/card,
+checks model/checkpoint identity, rehashes both roles' input bytes, uses fixed
+0.5 decisions and existing shared benchmark metrics without threshold tuning.
+Validation source provenance is separate from the original training sources.
+
 `research_srnet_epochs` orchestrates explicit plan/probe/individual epoch jobs
 through the shared block optimizer and numeric checkpoint services. Each fit
 is a fresh limited worker with its own deadline and 96 MiB output-file bound;
