@@ -101,6 +101,20 @@ def fit(
     )
 
 
+def _finite_gradients(model, device):
+    """Preserve every gradient check; consolidate CUDA host synchronization."""
+    import torch
+
+    parameters = list(model.parameters())
+    if not parameters or any(p.grad is None for p in parameters):
+        return False
+    if device == "cuda:0":
+        # Each element is still checked. Only scalar boolean transfer changes,
+        # not floating-point gradients, reduction order or optimizer arithmetic.
+        return bool(torch.stack([torch.isfinite(p.grad).all() for p in parameters]).all())
+    return all(bool(torch.isfinite(p.grad).all()) for p in parameters)
+
+
 def _learn(
     *,
     fetch,
@@ -182,10 +196,7 @@ def _learn(
                             (loss / 2).backward()
                         else:
                             loss.backward()
-                        if not all(
-                            p.grad is not None and bool(torch.isfinite(p.grad).all())
-                            for p in model.parameters()
-                        ):
+                        if not _finite_gradients(model, device):
                             raise ValueError("SRNet training produced invalid gradients")
                         group_loss += float(loss.detach()) / len(chunks)
                     optimizer.step()

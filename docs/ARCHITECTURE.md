@@ -465,6 +465,12 @@ complete PDF implementation or provide hard CPU deadlines/native OS isolation.
 
 ## Physical timing evidence
 
+The shared optimizer consolidates finite-gradient scalar synchronization only
+for explicit CUDA execution; CPU short-circuit checks remain unchanged. All
+gradient elements, missing-gradient rejection and full per-update numeric-state
+checks remain. This changes execution-source hashes, so old timing evidence
+must not be attributed to the new engine without separate measured evidence.
+
 `CUDA_THROUGHPUT_RESULTS.md` records the fixed generated profile as completed
 but its prospective five-epoch real fit as ineligible. Source-bound portable
 evidence is immutable historical data, not a live-source equality requirement

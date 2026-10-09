@@ -1,5 +1,10 @@
 # Changelog
 
+- Consolidate CUDA finite-gradient boolean synchronization without skipping any
+  element or changing optimizer arithmetic. Preserve legacy CPU checking,
+  per-update full numeric-state validation and resource limits. Generated
+  exact-update equivalence is not a measured GPU speedup or accuracy gain.
+
 - Publish exact physical 64-update CUDA timing with immutable source/protocol
   checks. The conservative five-epoch estimate is 3820.35s, above the unchanged
   1800s job limit; record ineligible without running an incomplete real fit,

@@ -402,6 +402,11 @@ timeout/cancel, exact recovery, provenance, and archive/symlink/overwrite limits
 
 ## Physical timing outcome
 
+CUDA gradient-check consolidation changes the execution-source snapshot even
+though generated CPU update/loss/state equivalence can be exact. That check is
+not a live hardware performance measurement. Freeze a separate timing protocol
+before measuring this changed engine; preserve the original ineligible result.
+
 The first fixed CUDA throughput gate is completed, not a learning pass:
 `CUDA_THROUGHPUT_RESULTS.md`. Its prospective five-epoch attempt is ineligible
 under the unchanged conservative estimate and job cap. Preserve this failure

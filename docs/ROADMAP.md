@@ -1,5 +1,13 @@
 # Roadmap and status
 
+CUDA gradient-check consolidation is implemented: every gradient element is
+still checked, with one aggregate host boolean rather than one per parameter.
+CPU defaults and full per-update state validation remain unchanged. Fourteen
+generated equivalence/fault/read-count tests pass. Full Kali regression:
+1643 pass, one live-CUDA skip, coverage 95.47%; lint/types/builds pass.
+`CUDA_GRADIENT_TIMING_PROTOCOL.md` separately freezes physical timing of this
+changed engine before execution. No measured speedup, real fit or accuracy yet.
+
 Physical CUDA timing completed under the frozen `CUDA_THROUGHPUT_PROTOCOL.md`:
 64 generated updates, steady-interval p95 0.112541s, fixed five-epoch conservative
 estimate 3820.35s >1800s. The prospective fit is ineligible; no real fit started,
