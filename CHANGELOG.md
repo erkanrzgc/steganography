@@ -1,5 +1,10 @@
 # Changelog
 
+- Publish exact physical 64-update CUDA timing with immutable source/protocol
+  checks. The conservative five-epoch estimate is 3820.35s, above the unchanged
+  1800s job limit; record ineligible without running an incomplete real fit,
+  changing exposure/safety assumptions or claiming accuracy improvement.
+
 - Add an explicit isolated generated CUDA timing service: 64 shared-engine
   updates, warmed inter-fetch intervals including numeric-state verification,
   source snapshots and fixed conservative five-epoch budget rule. Keep RAM,

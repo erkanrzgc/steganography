@@ -462,3 +462,11 @@ before whitespace normalization; ASCII85 zero-run expansion is preflighted.
 Truncated/invalid streams remain raw candidates with `decode_status=unavailable`,
 never successful decodes. These limits do not make the regex-based PDF parser a
 complete PDF implementation or provide hard CPU deadlines/native OS isolation.
+
+## Physical timing evidence
+
+`CUDA_THROUGHPUT_RESULTS.md` records the fixed generated profile as completed
+but its prospective five-epoch real fit as ineligible. Source-bound portable
+evidence is immutable historical data, not a live-source equality requirement
+when execution changes later. Timing never changes primary detector verdicts,
+calibration, dataset splits, model deployment or existing safety ceilings.

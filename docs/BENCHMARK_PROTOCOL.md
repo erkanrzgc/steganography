@@ -399,3 +399,11 @@ TUI Pilot, schema/SARIF, fuzz/property tests, and Python 3.11–3.14. Scheduled 
 release jobs use real dataset caches; absent data is `skipped`/`unavailable`.
 Full Docker E2E verifies exact tool versions/licenses, non-root/read-only mode,
 timeout/cancel, exact recovery, provenance, and archive/symlink/overwrite limits.
+
+## Physical timing outcome
+
+The first fixed CUDA throughput gate is completed, not a learning pass:
+`CUDA_THROUGHPUT_RESULTS.md`. Its prospective five-epoch attempt is ineligible
+under the unchanged conservative estimate and job cap. Preserve this failure
+when comparing a separately preregistered execution optimization; do not
+retroactively change the safety factor, exposure, ceiling or original evidence.

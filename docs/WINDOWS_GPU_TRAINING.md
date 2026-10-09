@@ -109,6 +109,11 @@ Generated CPU/emulated tests are not an actual CUDA hardware pass.
 
 ## 4. Actual data and learning are a separate next gate
 
+The first [physical timing result](CUDA_THROUGHPUT_RESULTS.md) is now recorded:
+five-epoch conservative estimate 3820.35s, greater than the unchanged 1800s
+limit. That candidate is ineligible; do not start it using a smaller safety
+factor, fewer epochs or a raised cap. No new real model has been fitted.
+
 Before choosing a real fit, the separately frozen
 [generated timing protocol](CUDA_THROUGHPUT_PROTOCOL.md) provides an explicit
 64-update production-workload estimate (180s internal / 210s parent limit):

@@ -32,6 +32,9 @@ implemented. Its [first physical GPU preflight](docs/WSL_GPU_READINESS_RESULTS.m
 completed on an RTX 5060 Laptop in WSL2: one generated optimizer update and
 same-weight CPU/GPU forward agreement. This is not real-data learning or
 accuracy; the Kali development VM remains CPU-only.
+The [fixed GPU timing gate](docs/CUDA_THROUGHPUT_RESULTS.md) now completes:
+its conservative five-epoch estimate exceeds the unchanged 30-minute job cap.
+No new real fit started; timing does not establish detector accuracy.
 
 The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
 balanced accuracy 50%), despite passing numerical replay. See the
