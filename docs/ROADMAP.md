@@ -5,8 +5,11 @@ completed. The original report was fetched over authenticated, pinned-host
 local SSH and all 14 source hashes match this checkout. One generated update,
 same-weight CPU/GPU forward agreement, bounded RAM/allocator; no real learning
 or accuracy gain. A fresh local copy passed the recursive transport checksum
-comparison; native train-only readiness is next under the separately frozen
-`WSL_TRANSFER_READINESS_PROTOCOL.md`. See `WSL_GPU_READINESS_RESULTS.md`.
+comparison; native train-only readiness now completes under the separately
+frozen `WSL_TRANSFER_READINESS_PROTOCOL.md`: all 7,380 train rows, exact
+historical tensor/schedule hashes, no native validation pixel reads or optimizer
+execution. See `WSL_GPU_READINESS_RESULTS.md`. Next freeze adequate real GPU
+exposure plus a stored-normalization learning gate, not validation-based tuning.
 
 The following 2026-10-08 software-only status is historical; its explicit
 Kali unavailable result is preserved, not relabeled as a GPU pass.

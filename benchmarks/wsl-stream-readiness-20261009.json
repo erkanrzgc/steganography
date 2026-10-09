@@ -1,0 +1,159 @@
+{
+  "schema_version": "srnet-stream-readiness-v1",
+  "status": "completed",
+  "plan": {
+    "schema_version": "srnet-stream-plan-v2",
+    "index_sha256": "89f4c726922eb22e3c2edefeb24bf7d2a90473c4f9695a419be642df05fe76fd",
+    "audit_sha256": "00c2a19067efa78fd9d2b214a6452d9e606c8a169eb54f9ae2c6521f807b40b8",
+    "architecture": "srnet-gray12-cpu-v1",
+    "feature_version": "jpeg-y-idct-center256-phase0-f32-v1",
+    "decoder": {
+      "jpeglib": "1.0.2",
+      "libjpeg": "6b",
+      "numpy": "2.4.6",
+      "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+      "rounding": "none",
+      "clipping": "none"
+    },
+    "seed": 20261008,
+    "settings": {
+      "threads": 2,
+      "max_seconds": 1800,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "device": "cuda:0"
+    },
+    "source_sha256": {
+      "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+      "core/srnet_model.py": "b9b22fa52ec39cd81702245767373a88bd9adb7af690730a223caf7daeb88b18",
+      "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+      "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+      "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+      "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+      "core/srnet_training.py": "e9551465cc758f5715515c0a2beb95b78dcd00771ca3c952b15fb12b8c55e84e",
+      "core/srnet_stream_training.py": "a7e9cf2f4d1f1907928ff53a3bd59b80bb7838e0846f7b30dbd2a4287c22ca21",
+      "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+      "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+      "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+      "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+      "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32"
+    },
+    "epochs": [
+      {
+        "recipe": "srnet-block-source-quality-method-four-row-v1",
+        "pair_schedule": {
+          "recipe": "srnet-source-quality-method-pairs-v1",
+          "epoch": 0,
+          "pairs": 6576,
+          "rows": 13152,
+          "pairs_per_source": 3288,
+          "ordered_pair_sha256": "8f1d15c66361f87703eb1c287acf3486601705b8b4f926293df7fb2dace7ed23",
+          "cells": [
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "JUNIWARD",
+              "original_pairs": 822,
+              "sampled_pairs": 822
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 75,
+              "method": "UERD",
+              "original_pairs": 822,
+              "sampled_pairs": 822
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "JUNIWARD",
+              "original_pairs": 822,
+              "sampled_pairs": 822
+            },
+            {
+              "source_id": "source-6a23b26e6f51f8cc",
+              "quality_factor": 95,
+              "method": "UERD",
+              "original_pairs": 822,
+              "sampled_pairs": 822
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "JUNIWARD",
+              "original_pairs": 816,
+              "sampled_pairs": 1644
+            },
+            {
+              "source_id": "source-d2a1dfbee30c5891",
+              "quality_factor": null,
+              "method": "UERD",
+              "original_pairs": 816,
+              "sampled_pairs": 1644
+            }
+          ]
+        },
+        "batch_schedule": {
+          "recipe": "two-source-two-lineage-pairs-v1",
+          "epoch": 0,
+          "batch_size": 4,
+          "pairs": 6576,
+          "optimizer_updates": 3288,
+          "rows": 13152,
+          "ordered_batch_sha256": "2819b9db1099f95b5beca4ea50b488e58a9428596a9eae2259d9cd872d24936c",
+          "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+        }
+      }
+    ],
+    "train_rows": 7380,
+    "original_train_lineages": 1638,
+    "train_tensor_bytes": 1934622720,
+    "batch_size": 4,
+    "validation_used": false,
+    "accuracy_qualification": "unavailable",
+    "deployed": false,
+    "execution": {
+      "device": "cuda:0",
+      "torch_version": "2.14.0+cu130",
+      "cuda_version": "13.0",
+      "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "compute_capability": [
+        12,
+        0
+      ],
+      "total_gpu_bytes": 8518041600,
+      "torch_allocator_limit_bytes": 4294967296,
+      "host_memory_max_bytes": 8589934592,
+      "precision": "float32-ieee",
+      "tf32": false,
+      "mixed_precision": false,
+      "deterministic_algorithms": true,
+      "cpu_fallback": false
+    }
+  },
+  "unique_train_rows_read": 7380,
+  "planned_optimizer_updates": 3288,
+  "row_presentations": 13152,
+  "ordered_tensor_sha256": "38a8794d44f3edde43cd38e6b577b982f06b4a021e7d61ceccb0700a011ff91a",
+  "max_batch_tensor_bytes": 1048576,
+  "models_trained": false,
+  "detection_measured": false,
+  "validation_pixels_opened": false,
+  "accuracy_qualification": "unavailable",
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "b9b22fa52ec39cd81702245767373a88bd9adb7af690730a223caf7daeb88b18",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "e9551465cc758f5715515c0a2beb95b78dcd00771ca3c952b15fb12b8c55e84e",
+    "core/srnet_stream_training.py": "a7e9cf2f4d1f1907928ff53a3bd59b80bb7838e0846f7b30dbd2a4287c22ca21",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32"
+  },
+  "seconds": 9.693818405999991
+}

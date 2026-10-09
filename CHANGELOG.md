@@ -3,7 +3,9 @@
 - Record the first completed physical WSL2/RTX 5060 Laptop generated CUDA
   preflight, original-report checksum and matching execution-source hashes.
   Freeze local transfer/train-only readiness before checking the fresh copy;
-  no raw data/weights published, real fit or improved accuracy implied.
+  all 7,380 train rows and exact historical tensor/schedule hashes pass.
+  Add immutable evidence/protocol regression checks; no raw data/weights
+  published, real fit or improved accuracy implied.
 
 - Add opt-in, no-fallback FP32 CUDA streaming execution and versioned GPU plan/
   card metadata, scoped deterministic/precision/RNG policy, allocator limits and
