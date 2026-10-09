@@ -402,6 +402,13 @@ timeout/cancel, exact recovery, provenance, and archive/symlink/overwrite limits
 
 ## Physical timing outcome
 
+`SRNET_EPOCH_CHECKPOINTS.md` describes the new core-only continuation contract.
+Exact generated CPU resumed/continuous state, optimizer, loss and Torch RNG
+agreement is an engineering gate, not real learning or CUDA equivalence.
+No failed five-epoch single-job decision is relabeled as eligible. A separate
+controller and frozen physical-resume/real-learning protocols remain required;
+every future epoch job retains 1800s/RAM/allocator caps and full source binding.
+
 `CUDA_STATE_TIMING_PROTOCOL.md` separately freezes the on-device state-check
 candidate. Full per-update numeric coverage, final NumPy verification and all
 resource/eligibility bounds remain. CPU acceptance/update equivalence does not

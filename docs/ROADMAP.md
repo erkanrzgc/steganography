@@ -1,5 +1,15 @@
 # Roadmap and status
 
+Numeric whole-epoch checkpoint core implemented: optional shared-engine/block
+fit segments preserve model/BN, Adamax slots/steps and Torch RNG, with full
+schedule/settings/backend binding and strict non-pickle archive bounds. See
+`SRNET_EPOCH_CHECKPOINTS.md`. All 54 generated exact-resume/adversarial tests
+pass; full Kali regression: 1,719 passed, one live-CUDA skip, coverage 95.53%.
+The three changed/new core files have 100% line coverage; lint/types/builds
+pass. Isolated per-epoch CLI/controller, physical CUDA
+resume parity and preregistered real-learning evaluation remain pending;
+no new real fitting, changed per-job caps or accuracy gain.
+
 On-device full numeric-state checks are implemented for explicit CUDA, with
 unchanged original CPU checks and final NumPy verification after conversion.
 Twenty generated acceptance/update/device/immutability tests pass. Full Kali

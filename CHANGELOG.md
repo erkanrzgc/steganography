@@ -1,5 +1,11 @@
 # Changelog
 
+- Add opt-in four-row whole-epoch resume in the shared numerical engine and
+  block training layer. Persist exact model/BN, Adamax moments/steps and Torch
+  RNG in checksum-bound, strict numeric NPZ without pickle or overwrite.
+  Bind full schedules/settings/backend; preserve legacy behavior and per-job
+  limits. Core support is not an isolated resumable CLI or real-data learning.
+
 - Recover and verify the original on-device state-check GPU report after local
   SSH restoration, without rerunning/overwriting. All 16 source hashes match;
   fixed five-epoch estimate 3130.26s remains ineligible against 1800s. Preserve

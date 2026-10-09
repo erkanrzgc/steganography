@@ -126,12 +126,51 @@ def _learn(
     accumulate_context=False,
     outer_deadline=None,
     device="cpu",
+    segment=None,
 ):
     """One numerical optimizer engine shared by legacy and bounded block readers."""
     import torch
 
     if device not in {"cpu", "cuda:0"}:
         raise ValueError("unsupported explicit training device")
+    started = time.monotonic()
+    start_epoch, stop_epoch = 0, epochs
+    context = None
+    if segment is not None:
+        from core import srnet_checkpoint
+        from core.jpeg_scale import identity
+
+        if (
+            not isinstance(segment, dict)
+            or set(segment) != {"binding", "stop_epoch", "resume", "sink"}
+            or type(epochs) is not int
+            or not 1 <= epochs <= 50
+            or type(segment["stop_epoch"]) is not int
+            or not 1 <= segment["stop_epoch"] <= epochs
+            or not callable(segment["sink"])
+            or type(target_pairs) is not int
+            or target_pairs != 2
+            or type(accumulate_context) is not bool
+            or accumulate_context
+        ):
+            raise ValueError("invalid explicit four-row epoch segment")
+        identity(segment["binding"])
+        counts, digest = srnet_checkpoint.schedule(batches, epochs, deadline=outer_deadline)
+        context = {
+            "binding": segment["binding"],
+            "seed": seed,
+            "settings": params,
+            "device": device,
+            "epochs": epochs,
+            "scheduled_updates": counts,
+            "schedule_sha256": digest,
+        }
+        stop_epoch = segment["stop_epoch"]
+        if segment["resume"] is not None:
+            srnet_checkpoint.validate(segment["resume"])
+            start_epoch = segment["resume"]["metadata"]["next_epoch"]
+            if start_epoch >= stop_epoch:
+                raise ValueError("checkpoint cannot repeat or skip completed segment")
     execution: AbstractContextManager
     if device == "cuda:0":
         from core import srnet_cuda
@@ -140,7 +179,6 @@ def _learn(
     else:
         execution = nullcontext()
 
-    started = time.monotonic()
     previous = torch.get_num_threads()
     records = []
 
@@ -165,12 +203,14 @@ def _learn(
                 eps=1e-8,
                 foreach=False,
             )
+            if segment is not None and segment["resume"] is not None:
+                records = srnet_checkpoint.restore(segment["resume"], model, optimizer, context)
             targets = torch.tensor(
                 [0, 1] * target_pairs,
                 dtype=torch.int64,
                 device=device,
             )
-            for epoch in range(epochs):
+            for epoch in range(start_epoch, stop_epoch):
                 deadline()
                 pairs = batches(epoch)
                 total = 0.0
@@ -211,13 +251,16 @@ def _learn(
                 records.append(
                     {"epoch": epoch, "updates": len(pairs), "mean_pair_loss": total / len(pairs)}
                 )
+            if segment is not None:
+                snapshot = srnet_checkpoint.capture(model, optimizer, records, context)
+                deadline()
             if device == "cuda:0":
                 torch.cuda.synchronize(0)
                 model.cpu()
-                srnet_model.validate(
-                    {k: v.detach().numpy() for k, v in model.state_dict().items()}
-                )
+                srnet_model.validate({k: v.detach().numpy() for k, v in model.state_dict().items()})
             deadline()
+            if segment is not None:
+                segment["sink"](snapshot)
     finally:
         torch.set_num_threads(previous)
     return model.eval(), records

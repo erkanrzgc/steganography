@@ -465,6 +465,14 @@ complete PDF implementation or provide hard CPU deadlines/native OS isolation.
 
 ## Physical timing evidence
 
+`core/srnet_checkpoint.py` owns strict numeric epoch persistence and validation;
+the shared optimizer/stream fit support an explicit optional segment contract.
+Unsegmented callers retain their API/results. Checkpoints bind complete ordered
+schedules/settings/seed/backend, restore optimizer/BN/RNG without pickle and
+are private research state, not deployed models or verdict evidence. A separate
+bounded controller must bind all executed sources and publish only complete
+verified jobs; that controller is not supplied by this core-only slice.
+
 `srnet_model.validate_tensors` checks fixed-shape model state on its current
 device, with bounded concatenations and one host decision. CUDA training uses
 this full check after each optimizer update, then the original NumPy validator

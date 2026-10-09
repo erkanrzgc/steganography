@@ -4,7 +4,7 @@ from core import srnet_cuda, srnet_scale_sampling, srnet_training
 from core.srnet_stream import TrainBlocks
 
 
-def fit(reader, *, seed, schedule, config, deadline):
+def fit(reader, *, seed, schedule, config, deadline, segment=None):
     if (
         not isinstance(reader, TrainBlocks)
         or not isinstance(schedule, list)
@@ -31,4 +31,5 @@ def fit(reader, *, seed, schedule, config, deadline):
         target_pairs=2,
         outer_deadline=deadline,
         device=device,
+        **({"segment": segment} if segment is not None else {}),
     )
