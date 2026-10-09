@@ -1,5 +1,10 @@
 # Changelog
 
+- Add explicit isolated per-epoch training jobs with full-plan/parent checkpoint
+  binding, before/after train cache verification, unchanged 1800s/RAM/GPU caps
+  and generated CUDA disk-resume parity plus a separate per-epoch budget gate.
+  Preregister a five-epoch ALASKA+BOSS GPU pilot; no accuracy claim before results.
+
 - Add opt-in four-row whole-epoch resume in the shared numerical engine and
   block training layer. Persist exact model/BN, Adamax moments/steps and Torch
   RNG in checksum-bound, strict numeric NPZ without pickle or overwrite.

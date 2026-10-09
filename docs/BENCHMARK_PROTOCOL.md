@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`CUDA_EPOCH_RESUME_PROTOCOL.md` preregisters exact generated physical CUDA
+disk-resume parity and a separate per-epoch estimate, not another attempt to
+pass the failed five-epoch single-job gate. `JPEG_EPOCH_LEARNING_PROTOCOL.md`
+fixes the first complete audited ALASKA+BOSS GPU chain at five epochs with
+unchanged source-balanced schedules, settings and independent per-job limits.
+Every failure remains evidence; loss reduction is not detection accuracy.
+
 `CUDA_THROUGHPUT_PROTOCOL.md` fixes 64 generated production-engine updates,
 47 warmed inter-fetch intervals and a conservative, predefined five-epoch
 budget estimate before observing timings. No real-data fit, learning gate or

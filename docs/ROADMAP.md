@@ -1,5 +1,12 @@
 # Roadmap and status
 
+Explicit isolated epoch jobs implemented with full source/protocol/schedule
+binding, immutable parent cards, exact numeric continuation and before/after
+train cache verification. Generated disk-resume parity and adversarial job
+tests pass locally. Full regression and physical CUDA resume gates are pending
+for this slice. The fixed five-epoch ALASKA+BOSS GPU pilot is preregistered in
+`JPEG_EPOCH_LEARNING_PROTOCOL.md`; no real pilot result or accuracy gain yet.
+
 Numeric whole-epoch checkpoint core implemented: optional shared-engine/block
 fit segments preserve model/BN, Adamax slots/steps and Torch RNG, with full
 schedule/settings/backend binding and strict non-pickle archive bounds. See

@@ -1,5 +1,13 @@
 # Architecture
 
+`research_srnet_epochs` orchestrates explicit plan/probe/individual epoch jobs
+through the shared block optimizer and numeric checkpoint services. Each fit
+is a fresh limited worker with its own deadline and 96 MiB output-file bound;
+it binds all schedules, sources, protocol, physical probe and parent card/state,
+and re-verifies all train cache bytes before publication. No implicit retry or
+validation access during training. `core/srnet_resume_probe.py` provides the
+generated numeric-resume/timing gate; it is not an accuracy estimator.
+
 `core/srnet_profile.py` supplies a fixed generated 64-update workload through
 the unchanged shared numerical engine. Warmed inter-fetch intervals include
 finite-gradient/loss and full numeric-state synchronization; the preregistered
