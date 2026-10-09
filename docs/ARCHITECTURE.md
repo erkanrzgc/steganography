@@ -1,5 +1,13 @@
 # Architecture
 
+`core/srnet_profile.py` supplies a fixed generated 64-update workload through
+the unchanged shared numerical engine. Warmed inter-fetch intervals include
+finite-gradient/loss and full numeric-state synchronization; the preregistered
+conservative estimate only determines eligibility to attempt a fixed fit.
+`research_cuda_profile` isolates it with cgroup RAM, wall/CPU/file bounds and
+start/end source snapshots. It never reads a corpus or saves/deploys weights;
+timing eligibility is not learning or accuracy. See `CUDA_THROUGHPUT_PROTOCOL.md`.
+
 `core/srnet_cuda.py` defines an explicit, opt-in `cuda:0` FP32 execution policy:
 no CPU fallback, no TF32/AMP, deterministic algorithms, supported compiled
 architecture and a bounded PyTorch allocator. GPU jobs require an inherited

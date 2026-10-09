@@ -1,5 +1,11 @@
 # Changelog
 
+- Add an explicit isolated generated CUDA timing service: 64 shared-engine
+  updates, warmed inter-fetch intervals including numeric-state verification,
+  source snapshots and fixed conservative five-epoch budget rule. Keep RAM,
+  allocator and 1800s fit limits; timing is not learning or accuracy. Ignore
+  the documented separate GPU virtual environment without publishing models.
+
 - Record the first completed physical WSL2/RTX 5060 Laptop generated CUDA
   preflight, original-report checksum and matching execution-source hashes.
   Freeze local transfer/train-only readiness before checking the fresh copy;

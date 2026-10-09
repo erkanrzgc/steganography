@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`CUDA_THROUGHPUT_PROTOCOL.md` fixes 64 generated production-engine updates,
+47 warmed inter-fetch intervals and a conservative, predefined five-epoch
+budget estimate before observing timings. No real-data fit, learning gate or
+accuracy claim. Ineligible estimates do not authorize changing the safety
+factor/epochs or raising the 1800s ceiling. Short timings do not guarantee
+thermal endurance, real I/O or a complete fit's duration.
+
 `WSL_TRANSFER_READINESS_PROTOCOL.md` freezes a fresh, private local copy and
 native train-only schedule check after the completed physical generated CUDA
 preflight. Transport checksums may read validation bytes, but no validation

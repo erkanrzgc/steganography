@@ -109,6 +109,20 @@ Generated CPU/emulated tests are not an actual CUDA hardware pass.
 
 ## 4. Actual data and learning are a separate next gate
 
+Before choosing a real fit, the separately frozen
+[generated timing protocol](CUDA_THROUGHPUT_PROTOCOL.md) provides an explicit
+64-update production-workload estimate (180s internal / 210s parent limit):
+
+```sh
+systemd-run --user --scope --property=MemoryMax=8G \
+  .venv-gpu/bin/python -m steganography.research_cuda_profile \
+  --out .benchmark/cuda-timing-01.json
+```
+
+It saves no weights and accesses no corpus. A conservative timing estimate
+does not replace a real learning protocol or independently verified inference.
+Never change the fixed safety factor or fit ceiling to force eligibility.
+
 Only after the generated preflight succeeds, copy the already audited private
 prepared block directory from Kali to a user-owned local WSL directory and
 verify its index/cache hashes. This stays on the user's computer; do not upload

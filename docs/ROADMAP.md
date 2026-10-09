@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Fixed generated CUDA timing service implemented and generated/control-flow
+tested (`CUDA_THROUGHPUT_PROTOCOL.md`). A 64-update warmed workload estimates
+whether five full train epochs can be attempted conservatively within 1800s;
+physical timing execution is next. No real model trained or new accuracy.
+Adequate exposure and stored-normalization learning remain separate gates.
+
 2026-10-09: the first physical WSL2/RTX 5060 Laptop generated CUDA preflight
 completed. The original report was fetched over authenticated, pinned-host
 local SSH and all 14 source hashes match this checkout. One generated update,
