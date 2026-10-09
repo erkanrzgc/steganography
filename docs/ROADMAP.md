@@ -5,13 +5,13 @@ unchanged original CPU checks and final NumPy verification after conversion.
 Twenty generated acceptance/update/device/immutability tests pass. Full Kali
 regression: 1663 pass, one live-CUDA skip, coverage 95.48%; changed training/model
 files 100% line coverage. Lint/types/builds pass. Separate physical timing under
-`CUDA_STATE_TIMING_PROTOCOL.md` returned a completed worker response on WSL,
-but the local SSH connection reset before the original report could be fetched.
-The reverse listener remains loopback-only; remote service status cannot be
-read. Its four-hour expiry is a possible cause, not verified. Original report
-retrieval/source-hash verification is pending; do not claim a measured new
-duration, eligible fit or speed/accuracy improvement. See
-`CUDA_STATE_VERIFICATION.md`; renewing remote access needs the user's action.
+`CUDA_STATE_TIMING_PROTOCOL.md` completed on WSL; after user-restored SSH,
+the original report was recovered on 2026-10-10 without rerunning. All 16
+source hashes verify. p95 0.091553s, five-epoch estimate 3130.26s, still
+ineligible against 1800s. See `CUDA_STATE_TIMING_RESULTS.md`; prior retrieval
+incident preserved in `CUDA_STATE_VERIFICATION.md`. No controlled speedup,
+new real fitting or accuracy gain. Next investigate remaining execution costs
+or separately design bounded resumable training; preserve all current guards.
 
 CUDA gradient-check consolidation is implemented: every gradient element is
 still checked, with one aggregate host boolean rather than one per parameter.

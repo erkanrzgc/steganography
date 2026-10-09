@@ -5,6 +5,8 @@ import json
 import math
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -67,3 +69,63 @@ def test_physical_profile_sources_match_historical_snapshot_not_future_engine():
         ),
     }
     assert len(expected) == 16 and report["source_sha256"] == expected
+
+
+@pytest.mark.parametrize(
+    "name,checksum,protocol,protocol_checksum",
+    [
+        (
+            "cuda-wsl-gradient-profile-20261009.json",
+            "cb1c999ffc5d8b8b3ba1fcecf230ce2edf27d3d5be1edc345492881250ea66ae",
+            "CUDA_GRADIENT_TIMING_PROTOCOL.md",
+            "bf015399391f2a3c23f9cc3edd8bc25ac3ef630bb2b342f5b51c5bbeacd4eb78",
+        ),
+        (
+            "cuda-wsl-state-profile-20261009.json",
+            "58c21efd8a93c60f8a83550ee29b7e635cc6320376e03cb5955dc981b1394bfa",
+            "CUDA_STATE_TIMING_PROTOCOL.md",
+            "78798edde84b0aeb39c0d7e0e281cce9241ab74bd44b043768224dd226ac8727",
+        ),
+    ],
+)
+def test_optimized_reports_keep_fixed_budget_and_no_accuracy(
+    name,
+    checksum,
+    protocol,
+    protocol_checksum,
+):
+    raw = (ROOT / "benchmarks" / name).read_bytes()
+    assert len(raw) < 16384 and hashlib.sha256(raw).hexdigest() == checksum
+    assert hashlib.sha256((ROOT / "docs" / protocol).read_bytes()).hexdigest() == protocol_checksum
+    report = json.loads(raw)
+    assert report["status"] == "completed"
+    assert report["schema_version"] == "srnet-cuda-generated-profile-v1"
+    assert len(report["source_sha256"]) == 16
+    assert report["generated_optimizer_updates"] == 64
+    assert report["discarded_initial_intervals"] == 16
+    values = sorted(report["steady_intervals_seconds"])
+    assert len(values) == 47 and all(math.isfinite(v) and v > 0 for v in values)
+    p95 = values[43] + 0.7 * (values[44] - values[43])
+    budget = report["fixed_fit_budget"]
+    assert budget["planned_epochs"] == 5 and budget["planned_updates"] == 16440
+    assert budget["steady_interval_safety_factor"] == 2
+    assert budget["fixed_overhead_seconds"] == 120 and budget["fit_max_seconds"] == 1800
+    assert math.isclose(budget["steady_interval_p95_seconds"], p95, abs_tol=1e-15)
+    assert math.isclose(budget["estimated_fit_seconds"], 120 + 2 * p95 * 16440, abs_tol=1e-10)
+    assert budget["estimated_fit_seconds"] > 1800
+    assert not budget["eligible_to_attempt_fixed_fit"] and budget["estimate_only"]
+    assert not any(report[k] for k in ("real_data_used", "real_model_trained", "deployed"))
+    assert report["accuracy_qualification"] == "unavailable"
+    execution = report["execution"]
+    assert execution["device"] == "cuda:0" and execution["precision"] == "float32-ieee"
+    assert execution["deterministic_algorithms"]
+    assert not any(execution[k] for k in ("tf32", "mixed_precision", "cpu_fallback"))
+    assert execution["host_memory_max_bytes"] == 8 * 1024**3
+    assert execution["torch_allocator_limit_bytes"] == 4 * 1024**3
+    assert (
+        0
+        < report["process_peak_gpu_allocated_bytes"]
+        <= report["process_peak_gpu_reserved_bytes"]
+        < 4 * 1024**3
+    )
+    assert b"/home/" not in raw and b"password" not in raw and b".ssh" not in raw

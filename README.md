@@ -37,6 +37,8 @@ its conservative five-epoch estimate exceeds the unchanged 30-minute job cap.
 No new real fit started; timing does not establish detector accuracy.
 A [separately measured gradient-check optimization](docs/CUDA_GRADIENT_TIMING_RESULTS.md)
 reduces the observed estimate, but it still exceeds the unchanged job cap.
+The [on-device state-check measurement](docs/CUDA_STATE_TIMING_RESULTS.md),
+recovered without rerunning after an SSH interruption, also remains ineligible.
 
 The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
 balanced accuracy 50%), despite passing numerical replay. See the

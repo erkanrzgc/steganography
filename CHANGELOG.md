@@ -1,5 +1,10 @@
 # Changelog
 
+- Recover and verify the original on-device state-check GPU report after local
+  SSH restoration, without rerunning/overwriting. All 16 source hashes match;
+  fixed five-epoch estimate 3130.26s remains ineligible against 1800s. Preserve
+  retrieval history and earlier failures; no real fitting or accuracy gain.
+
 - Add on-device full numeric-state validation for explicit CUDA, preserving
   exact keys/shapes/dtypes, finite values, BN variance/counter bounds and a final
   original NumPy check after CPU conversion. Preserve CPU validation/arithmetic.

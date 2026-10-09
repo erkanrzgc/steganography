@@ -1,5 +1,11 @@
 # On-device state validation verification — 2026-10-09
 
+Update 2026-10-10: the user restored SSH and the existing original report was
+fetched without rerunning. Exact report bytes, all 16 source hashes and fixed
+budget now verify; estimate 3130.26s, still ineligible against 1800s. See
+`CUDA_STATE_TIMING_RESULTS.md`. The following retrieval incident is historical;
+its specific remote-service cause remains unverified.
+
 Implementation/protocol committed and pushed at `c9a6f94` before execution.
 The [separate frozen protocol](CUDA_STATE_TIMING_PROTOCOL.md) SHA-256 is
 `78798edde84b0aeb39c0d7e0e281cce9241ab74bd44b043768224dd226ac8727`.
@@ -21,7 +27,7 @@ weights, credentials and provider-specific memory. Fixed model-state storage
 is 19,139,920 bytes; temporary concatenations are bounded by exact shapes.
 The existing 4 GiB allocator /8 GiB resident RAM limits remain enforced.
 
-## Physical measurement remains unverified
+## Historical retrieval incident — resolved 2026-10-10
 
 WSL fast-forwarded to the frozen implementation and the bounded profiler
 returned `completed`. Before the original JSON report could be fetched,
