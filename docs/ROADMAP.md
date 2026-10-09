@@ -1,5 +1,12 @@
 # Roadmap and status
 
+On-device full numeric-state checks are implemented for explicit CUDA, with
+unchanged original CPU checks and final NumPy verification after conversion.
+Twenty generated acceptance/update/device/immutability tests pass. Full Kali
+regression: 1663 pass, one live-CUDA skip, coverage 95.48%; changed training/model
+files 100% line coverage. Lint/types/builds pass. Separate physical timing under
+`CUDA_STATE_TIMING_PROTOCOL.md` is next; no speed/accuracy claim.
+
 CUDA gradient-check consolidation is implemented: every gradient element is
 still checked, with one aggregate host boolean rather than one per parameter.
 CPU defaults and full per-update state validation remain unchanged. Fourteen

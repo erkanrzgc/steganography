@@ -465,6 +465,13 @@ complete PDF implementation or provide hard CPU deadlines/native OS isolation.
 
 ## Physical timing evidence
 
+`srnet_model.validate_tensors` checks fixed-shape model state on its current
+device, with bounded concatenations and one host decision. CUDA training uses
+this full check after each optimizer update, then the original NumPy validator
+after final CPU conversion. CPU training/storage validation remains unchanged.
+No check is skipped; all-device state must be dense and colocated on CPU or
+primary CUDA. Changing this execution requires a new source-bound timing run.
+
 The shared optimizer consolidates finite-gradient scalar synchronization only
 for explicit CUDA execution; CPU short-circuit checks remain unchanged. All
 gradient elements, missing-gradient rejection and full per-update numeric-state

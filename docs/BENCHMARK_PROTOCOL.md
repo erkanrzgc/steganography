@@ -402,6 +402,11 @@ timeout/cancel, exact recovery, provenance, and archive/symlink/overwrite limits
 
 ## Physical timing outcome
 
+`CUDA_STATE_TIMING_PROTOCOL.md` separately freezes the on-device state-check
+candidate. Full per-update numeric coverage, final NumPy verification and all
+resource/eligibility bounds remain. CPU acceptance/update equivalence does not
+qualify CUDA mathematical parity, performance, real learning or accuracy.
+
 CUDA gradient-check consolidation changes the execution-source snapshot even
 though generated CPU update/loss/state equivalence can be exact. That check is
 not a live hardware performance measurement. Freeze a separate timing protocol

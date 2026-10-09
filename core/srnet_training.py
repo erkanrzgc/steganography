@@ -200,9 +200,12 @@ def _learn(
                             raise ValueError("SRNet training produced invalid gradients")
                         group_loss += float(loss.detach()) / len(chunks)
                     optimizer.step()
-                    srnet_model.validate(
-                        {k: v.detach().cpu().numpy() for k, v in model.state_dict().items()}
-                    )
+                    if device == "cuda:0":
+                        srnet_model.validate_tensors(model.state_dict())
+                    else:
+                        srnet_model.validate(
+                            {k: v.detach().cpu().numpy() for k, v in model.state_dict().items()}
+                        )
                     deadline()
                     total += group_loss
                 records.append(
@@ -211,6 +214,9 @@ def _learn(
             if device == "cuda:0":
                 torch.cuda.synchronize(0)
                 model.cpu()
+                srnet_model.validate(
+                    {k: v.detach().numpy() for k, v in model.state_dict().items()}
+                )
             deadline()
     finally:
         torch.set_num_threads(previous)

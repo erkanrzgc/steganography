@@ -60,6 +60,50 @@ def validate(arrays):
             raise ValueError("SRNet BN counter outside limits")
 
 
+def validate_tensors(state):
+    """Same numeric-state contract, with one host decision and no CPU copies."""
+    import torch
+
+    if not isinstance(state, dict) or set(state) != set(SHAPES):
+        raise ValueError("SRNet numeric state keys mismatch")
+    floats, variances, counters = [], [], []
+    device = None
+    for name, shape in SHAPES.items():
+        value = state[name]
+        counter = name.endswith("num_batches_tracked")
+        if (
+            not isinstance(value, torch.Tensor)
+            or tuple(value.shape) != shape
+            or value.dtype != (torch.int64 if counter else torch.float32)
+            or value.layout != torch.strided
+            or value.device.type not in {"cpu", "cuda"}
+            or value.device.index not in {None, 0}
+            or (device is not None and value.device != device)
+        ):
+            raise ValueError("SRNet numeric state shape/dtype/device mismatch")
+        device = value.device
+        value = value.detach().reshape(-1)
+        if counter:
+            counters.append(value)
+        else:
+            floats.append(value)
+            if name.endswith("running_var"):
+                variances.append(value)
+    # Shapes bind total concatenation size to the fixed architecture. Only
+    # comparisons/reductions are added; no model or optimizer state is changed.
+    with torch.no_grad():
+        count = torch.cat(counters)
+        checks = torch.stack(
+            [
+                torch.isfinite(torch.cat(floats)).all(),
+                (torch.cat(variances) >= 0).all(),
+                ((count >= 0) & (count <= 10_000_000)).all(),
+            ]
+        )
+        if not bool(checks.all()):
+            raise ValueError("SRNet numeric state finite/variance/counter mismatch")
+
+
 def save_model(model, path: Path):
     if path.exists() or any(p.is_symlink() for p in (path, *path.parents)):
         raise FileExistsError("SRNet output exists or uses a symlink")

@@ -1,5 +1,10 @@
 # Changelog
 
+- Add on-device full numeric-state validation for explicit CUDA, preserving
+  exact keys/shapes/dtypes, finite values, BN variance/counter bounds and a final
+  original NumPy check after CPU conversion. Preserve CPU validation/arithmetic.
+  Freeze separate generated timing; equivalence tests are not real accuracy.
+
 - Record separately preregistered physical CUDA timing after gradient-check
   consolidation: p95 0.095847s, fixed five-epoch estimate 3271.44s, still
   ineligible against 1800s. Preserve original evidence and all guards; no
