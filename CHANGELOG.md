@@ -1,5 +1,10 @@
 # Changelog
 
+- Record separately preregistered physical CUDA timing after gradient-check
+  consolidation: p95 0.095847s, fixed five-epoch estimate 3271.44s, still
+  ineligible against 1800s. Preserve original evidence and all guards; no
+  controlled speedup, real fitting or accuracy qualification claimed.
+
 - Consolidate CUDA finite-gradient boolean synchronization without skipping any
   element or changing optimizer arithmetic. Preserve legacy CPU checking,
   per-update full numeric-state validation and resource limits. Generated

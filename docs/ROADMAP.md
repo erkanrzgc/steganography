@@ -5,8 +5,11 @@ still checked, with one aggregate host boolean rather than one per parameter.
 CPU defaults and full per-update state validation remain unchanged. Fourteen
 generated equivalence/fault/read-count tests pass. Full Kali regression:
 1643 pass, one live-CUDA skip, coverage 95.47%; lint/types/builds pass.
-`CUDA_GRADIENT_TIMING_PROTOCOL.md` separately freezes physical timing of this
-changed engine before execution. No measured speedup, real fit or accuracy yet.
+Separate physical timing completed under `CUDA_GRADIENT_TIMING_PROTOCOL.md`:
+p95 0.095847s, conservative five-epoch estimate 3271.44s, still ineligible
+against 1800s. See `CUDA_GRADIENT_TIMING_RESULTS.md`. The descriptive reduction
+is not a controlled speedup claim; no real fit or accuracy gain. Next isolate
+state-transfer/check overhead while preserving all numerical/resource guards.
 
 Physical CUDA timing completed under the frozen `CUDA_THROUGHPUT_PROTOCOL.md`:
 64 generated updates, steady-interval p95 0.112541s, fixed five-epoch conservative
