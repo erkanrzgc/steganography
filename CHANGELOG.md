@@ -1,5 +1,10 @@
 # Changelog
 
+- Add an explicit own-GPU, train-only layerwise population-BN control: immutable
+  learned weights, count-weighted float64 statistics, disjoint original-group
+  calibration/probe subsets and singleton inference. Preserve all old failed
+  scores and deployment behavior; no cloud rentals or accuracy claim.
+
 - Record completed physical RTX 5060 three-origin real-I/O CUDA timing with
   raw intervals, source binding and independently recomputed projection.
   Existing four-row recipe fits the 8 GB laptop; no production model,

@@ -1,5 +1,14 @@
 # Roadmap and status
 
+2026-10-10 own-GPU follow-up: layerwise population-BN control implemented and
+preregistered before real execution. 360 calibration / 120 singleton probe rows
+keep 72 / 24 original groups disjoint within the historical train-only kit.
+Clone only; all learned weights immutable, no optimizer/validation/deployment.
+This corrects upstream-statistics handling compared with the previously failed
+simultaneous refresh, not an assumed accuracy fix. 29 generated/independent
+moment/security tests pass; new services/frontend 97%/97%/98% coverage, lint
+and types pass. Real run and full regression pending at implementation commit.
+
 2026-10-10 physical real-I/O timing completed on the restored RTX 5060 Laptop
 GPU: 66 real updates, 47 warmed intervals, median 0.08837s / p95 0.09303s;
 fixed prospective epoch optimizer estimate 573.55s (9.56 minutes). Peak allocated

@@ -1,5 +1,13 @@
 # Architecture
 
+The explicit research population-BN control lives in `core/srnet_population_bn.py`
+and `core/jpeg_population_control.py`; its module CLI is only Linux resource
+limits, input wiring and private numeric/report persistence. It clones the
+audited prior model and recalibrates layers sequentially using count-weighted
+float64 central moments while model operations remain FP32. No optimizer,
+primary analyzer, old architecture/checkpoint contract or deployment behavior
+changes. Historical training-original probe partitions are not validation.
+
 `core/jpeg_timing_probe.py` is the distinct bounded timing-kit reader and real-I/O
 CUDA adapter. It reuses the shared optimizer unchanged and discards all weights.
 The frontend isolates execution and binds dataset/audit/source/report hashes;

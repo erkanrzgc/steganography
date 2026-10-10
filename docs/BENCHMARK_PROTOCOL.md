@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`JPEG_POPULATION_BN_PROTOCOL.md` freezes a sequential layerwise train-only
+population-statistics intervention on an immutable clone of the five-epoch
+model. Original groups split calibration/probe within historical training;
+all ten context/method cells and singleton-versus-batch parity are reported.
+Zero optimizer updates; even improved probe scores cannot establish held-out
+accuracy or qualify deployment. The prior failed cumulative refresh stands.
+
 `benchmarks/jpeg-real-timing-probe-protocol-20261010.json` freezes 66 actual
 four-row optimizer updates and 47 warmed inter-fetch intervals before any
 physical timing. The unchanged engine is a timing control, not a learning fix.
