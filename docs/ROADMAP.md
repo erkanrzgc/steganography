@@ -6,7 +6,10 @@ origin, not camera independence or accuracy. Both advertised-count/our-name
 failures preserved. See `BOWS_DIVERSITY_RESULTS.md`. Next: versioned three-source
 preparation/sampling and normalization-controlled single-file learning. Old
 two-source plans and failed scores unchanged; WIFD reserved. GPU tunnel currently
-unavailable, no new fit running. Fresh full regression pending.
+unavailable, no new fit running. Fresh full regression: 1,816 passed / one live
+CUDA skip, coverage 95.65%; 20 acquisition/security and two separately added
+portable-evidence tests pass. New acquisition core coverage 99%; lint/types,
+model-free wheel/sdist and whitespace checks pass.
 
 2026-10-10: actual RTX 5060 disk-resume parity completed under the frozen
 protocol: exact numeric/RNG/loss state, per-epoch estimate 714.69s <1800s.

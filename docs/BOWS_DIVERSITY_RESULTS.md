@@ -66,7 +66,24 @@ connection after the new recipe and learning controls are verified.
   and `benchmarks/bows-native-name-failure-20261010.json`.
 
 Generated acquisition/security tests: 20 passed, new core line coverage 99%.
-Lint/type checks pass. An initial full suite was intentionally interrupted
+Lint/type checks pass (146 application source files). An initial full suite was intentionally interrupted
 after 1,259 passed / one live-CUDA skip when native-layout code changed;
-that run is not a complete regression pass. A fresh complete regression is
-running against the final code; its outcome remains pending here.
+that run is not a complete regression pass. The fresh complete regression
+against final application code passed 1,816 tests / one actual-CUDA skip in
+470.55 seconds, total coverage 95.65%, 32 existing ONNX deprecation warnings.
+Two subsequently added portable-evidence tests also passed separately.
+Fresh wheel/sdist inspection (156/314 members) excludes private caches, keys,
+original images and model weights. Python 3.11 exercised here; other Python
+versions, full Docker and new physical GPU training are not passed by this run.
+
+## Evidence-informed next learning controls
+
+[Original SRNet research](https://ws.binghamton.edu/fridrich/research/SRNet.pdf)
+used substantially longer exposure and described curriculum training and a
+high-quality-JPEG convergence difficulty. Its specific results do not transfer
+to our reduced corpus or prove that extending five epochs will fix failure.
+[Group Normalization](https://arxiv.org/abs/1803.08494) defines a batch-independent
+alternative. That is a candidate for the required single-image-consistency
+control, not proof of better steganalysis. Freeze a paired-control experiment
+and independent numerical checks before fitting; never select architecture,
+thresholds or checkpoints by repeatedly consulting the failed validation set.
