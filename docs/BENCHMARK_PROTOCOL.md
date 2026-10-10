@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`benchmarks/jpeg-real-timing-probe-protocol-20261010.json` freezes 66 actual
+four-row optimizer updates and 47 warmed inter-fetch intervals before any
+physical timing. The unchanged engine is a timing control, not a learning fix.
+Projection uses full epoch 4,932 updates, excludes external overhead/charges
+and does not authorize billing. Local reader readiness is separate from the
+actual `unavailable` CUDA invocation. See `JPEG_REAL_TIMING_PROBE.md`.
+
 `benchmarks/jpeg-real-timing-protocol-20261010.json` freezes a private 96-original,
 480-JPEG train-only timing kit with complete source/method families and input
 audit hashes. See `JPEG_REAL_TIMING_RESULTS.md`. Its independent complete

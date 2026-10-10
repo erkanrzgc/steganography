@@ -1,5 +1,10 @@
 # Changelog
 
+- Add isolated real-I/O CUDA timing with an audit-bound four-row reader,
+  unchanged shared optimizer and fixed warm-up/projection rules. Verify actual
+  local reader readiness; preserve unavailable local CUDA as unavailable, not
+  synthetic/CPU timing. No rentals, uploads, model publication or accuracy claim.
+
 - Prepare a checksum-bound, private three-origin real JPEG timing kit: 96 train
   originals, 480 JPEGs, 120 MiB unrounded float cache. Add bounded source-explicit
   BOWS simulation, independent complete SciPy IDCT/coefficient audit and portable

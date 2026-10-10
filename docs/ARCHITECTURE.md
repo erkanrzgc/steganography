@@ -1,5 +1,11 @@
 # Architecture
 
+`core/jpeg_timing_probe.py` is the distinct bounded timing-kit reader and real-I/O
+CUDA adapter. It reuses the shared optimizer unchanged and discards all weights.
+The frontend isolates execution and binds dataset/audit/source/report hashes;
+no CUDA means unavailable, not CPU fallback. No billing/deployment behavior is
+embedded. See `JPEG_REAL_TIMING_PROBE.md`; full-corpus integration is still pending.
+
 `core/jpeg_timing.py` prepares a distinct, private train-only timing kit from
 checksum-bound ALASKA/BOSS blocks and audited BOWS originals. The explicit
 `research_jpeg_timing` frontend supplies the isolated fixed-recipe simulation

@@ -1,5 +1,17 @@
 # Roadmap and status
 
+2026-10-10 real-I/O CUDA timing worker implemented: fixed 66 updates / 18
+discarded warm-up intervals / 47 measured intervals, unchanged optimizer,
+bounded audited reader and isolated process. Local real reader verification
+passes all 66 batches; local GPU invocation is unavailable (CPU-only Torch).
+No physical duration/cost estimate, cloud resource/upload, new production model
+or accuracy improvement. Await laptop GPU access or explicitly budgeted cloud
+choice. See `JPEG_REAL_TIMING_PROBE.md`.
+Full disk-backed retry: 1,979 passed / one actual-CUDA skip, coverage 95.81%;
+44 focused tests pass, new core/frontend 99% each. Initial RAM-backed temp
+failure preserved, generated large fixtures now clean up their own tensors.
+Lint/types and model-free wheel/sdist pass; physical timing remains unavailable.
+
 2026-10-10 real-data timing kit: 32 train originals each from ALASKA/BOSS/BOWS,
 480 JPEGs and a 120 MiB unrounded float cache prepared privately. All 480
 independent SciPy IDCT checks and 128 BOWS coefficient pairs pass. Initial

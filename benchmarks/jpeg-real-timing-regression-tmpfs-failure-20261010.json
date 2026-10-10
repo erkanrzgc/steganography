@@ -1,0 +1,12 @@
+{
+  "schema_version": "research-regression-environment-failure-v1",
+  "status": "failed",
+  "stage": "full local regression",
+  "suite_completed": false,
+  "reason": "Generated pytest fixtures exhausted the 7.8 GiB RAM-backed temporary filesystem; no-space errors preceded closed-output failure.",
+  "confirmed_error": "OSError errno 28 while saving an existing SRNet test fixture",
+  "confirmed_test": "tests/test_srnet_model.py::test_hostile_array_preflight[object]",
+  "resolution": "Preserve inactive task-owned temporary directories on disk; use a fresh disk-backed pytest base directory for retry.",
+  "GPU_timing": "unavailable",
+  "accuracy_qualification": "unavailable"
+}

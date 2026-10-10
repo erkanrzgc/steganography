@@ -1,0 +1,16 @@
+{
+  "schema_version": "srnet-real-timing-reader-readiness-v1",
+  "status": "completed",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "real_rows_verified": 480,
+  "schedule_batches_read": 66,
+  "max_fetch_bytes": 1048576,
+  "ordered_fetch_bytes_sha256": "36ac51c26668d48d92eb45a6a1319726a6d326bf5ada64bc9fc7f7ace3331672",
+  "optimizer_updates": 0,
+  "GPU_timing": "unavailable",
+  "real_data_used": true,
+  "real_model_trained": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false
+}
