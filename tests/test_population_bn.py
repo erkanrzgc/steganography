@@ -4,11 +4,12 @@ from contextlib import nullcontext
 
 import numpy as np
 import pytest
-import torch
 
 from core import jpeg_population_control as control
 from core import srnet_population_bn as population
 from steganography import research_jpeg_population_bn as frontend
+
+torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
 
 def samples():

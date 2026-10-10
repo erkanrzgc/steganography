@@ -29,7 +29,7 @@ def test_rows_fail_closed(rows):
 
 
 def tiny():
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     return torch.nn.Sequential(
         torch.nn.AdaptiveAvgPool2d(1), torch.nn.Flatten(), torch.nn.Linear(1, 2)
@@ -37,7 +37,7 @@ def tiny():
 
 
 def test_real_update_and_input_rejections():
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     model = tiny()
     optimizer = torch.optim.Adamax(model.parameters(), lr=0.001, foreach=False)
@@ -56,7 +56,7 @@ def test_real_update_and_input_rejections():
 
 
 def test_invalid_math_rejected():
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     for width, bias, message in ((3, 0, "logits"), (2, float("nan"), "logits")):
         model = torch.nn.Sequential(
@@ -87,7 +87,7 @@ def test_invalid_math_rejected():
 
 
 def test_mocked_probe_restores_threads(monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     previous = torch.get_num_threads()
     monkeypatch.setattr(c.srnet_cuda, "policy", lambda: nullcontext({"mock": True}))
@@ -132,7 +132,7 @@ def test_sources_reject_oversize(monkeypatch):
 
 
 def test_nonfinite_loss_rejected(monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     model = tiny()
     monkeypatch.setattr(torch.nn.functional, "cross_entropy", lambda *_: torch.tensor(float("nan")))
@@ -202,7 +202,7 @@ def test_worker_response_rejected(monkeypatch, tmp_path, raw, code):
 
 
 def test_worker_bounds_status_and_source_changes(monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     setup_front(monkeypatch)
     limits = []

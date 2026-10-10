@@ -1,5 +1,11 @@
 # Architecture
 
+CI keeps base/API compatibility separate from optional CPU research checks.
+The lightweight version matrix reports missing optional dependencies as skips;
+the provisioned complete-suite job owns the unchanged total coverage gate.
+Development-only SciPy supplies independent IDCT checks. No runtime packaging,
+source-pinned research kernel, dataset or model contract changes are involved.
+
 Cloud AI provider modules and uploads are removed. Native services remain
 local, old `ai_provider=None` callers remain compatible, and retired opt-ins
 fail clearly rather than invoking a provider. Historical `ai_triage` report

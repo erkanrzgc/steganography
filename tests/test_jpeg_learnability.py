@@ -4,11 +4,12 @@ from contextlib import nullcontext
 
 import numpy as np
 import pytest
-import torch
 
 from core import jpeg_learnability as learning
 from core import srnet, srnet_groupnorm, srnet_model, srnet_samepool
 from steganography import research_jpeg_learnability as frontend
+
+torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
 
 @pytest.mark.parametrize("shape", [(8, 8), (7, 7), (8, 7), (16, 16)])

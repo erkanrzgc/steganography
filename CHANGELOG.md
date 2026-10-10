@@ -1,5 +1,10 @@
 # Changelog
 
+- Repair CI optional-dependency boundaries: retain the Python 3.11–3.14
+  lightweight matrix and require a complete CPU research suite with the
+  unchanged 90% coverage gate. Provision Torch/ONNX for type checking and
+  release verification; unavailable optional test dependencies report skips.
+
 - Remove cloud AI providers, triage and file uploads; retire the AI extra and
   settings. Legacy opt-ins fail explicitly, while default v1/v2 routes, local
   research, report schemas, payload readers and Analyzer contracts remain.

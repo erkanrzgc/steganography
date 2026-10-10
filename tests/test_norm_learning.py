@@ -4,13 +4,14 @@ from contextlib import nullcontext
 
 import numpy as np
 import pytest
-import torch
 
 from core import jpeg_norm_learning as pilot
 from core import srnet, srnet_model
 from core import srnet_groupnorm as gn
 from core import srnet_norm_training as training
 from steganography import research_jpeg_norm_learning as frontend
+
+torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
 
 @pytest.fixture(autouse=True)

@@ -1,0 +1,8 @@
+# CI-only optional stack; never a dependency of the base wheel.
+# Install torch==2.14.0 from the official CPU index before this file.
+-r requirements-dev.txt
+onnx==1.22.0
+onnxruntime==1.30.0
+conseal==2025.11
+sealwatch==2024.12
+setuptools>=77,<81

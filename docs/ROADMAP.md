@@ -1,5 +1,11 @@
 # Roadmap and status
 
+2026-10-11 CI repair: the lightweight Python 3.11–3.14 matrix reports optional
+research skips; a separate provisioned CPU job runs the complete suite with
+the unchanged 90% total coverage gate. Quality and release jobs install the
+required optional stack. This is regression infrastructure, not training or
+new detector accuracy. Remote execution must pass before claiming green CI.
+
 2026-10-10 product cleanup: remove cloud AI provider/triage and upload paths,
 retire the AI extra and configuration, and keep local research as explicitly
 experimental. Legacy opt-ins fail with CLI errors/API 410; default v1/v2 and

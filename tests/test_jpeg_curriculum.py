@@ -200,6 +200,7 @@ def test_high_reader_security_and_exclusive_lifecycle(tmp_path, failure):
 
 
 def test_fixed_two_stage_control_keeps_weights_and_reports_all_contexts(monkeypatch, tmp_path):
+    pytest.importorskip("torch", reason="optional research dependency unavailable")
     class Model:
         architecture = "mock-not-hardware"
 
@@ -364,6 +365,7 @@ def test_preparation_reads_only_fixed_fit_rows_and_retains_failures(tmp_path, mo
 
 
 def test_actual_bounded_juniward_worker_and_math_audit(jpeg_pair):
+    pytest.importorskip("conseal", reason="optional JPEG simulator unavailable")
     cover, _ = jpeg_pair()
     stego = front.generate(cover, "a" * 64)
     values, changes, maximum = c.checked_pixels(cover, stego)
@@ -371,6 +373,7 @@ def test_actual_bounded_juniward_worker_and_math_audit(jpeg_pair):
 
 
 def test_direct_worker_math_and_resource_contract(jpeg_pair, monkeypatch):
+    pytest.importorskip("conseal", reason="optional JPEG simulator unavailable")
     cover, _ = jpeg_pair()
     output = io.BytesIO()
     limits = []

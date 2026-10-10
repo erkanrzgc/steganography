@@ -39,7 +39,7 @@ def data():
 
 @pytest.fixture
 def model():
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     previous = torch.get_num_threads()
     torch.set_num_threads(2)
@@ -58,7 +58,7 @@ def snapshot(model):
 
 
 def restored(model, before):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     assert all(torch.equal(v, before[k]) for k, v in model.state_dict().items())
     assert all(not m.training for m in model.modules())
@@ -70,7 +70,7 @@ def restored(model, before):
 
 
 def test_actual_context_refresh_parameter_identity_rng_grad_threads_and_inputs(model):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     pixels, rows = data()
     before, rng = snapshot(model), torch.random.get_rng_state().clone()
@@ -103,7 +103,7 @@ def test_actual_context_refresh_parameter_identity_rng_grad_threads_and_inputs(m
 
 
 def test_invalid_inputs_tracking_cpu_layers_and_complete_schedule(model, monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     pixels, rows = data()
     for bad in (
@@ -144,7 +144,7 @@ def test_invalid_inputs_tracking_cpu_layers_and_complete_schedule(model, monkeyp
 
 
 def test_context_mutation_failure_hook_and_rng_restoration(model, monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     pixels, rows = data()
     before, rng = snapshot(model), torch.random.get_rng_state().clone()
@@ -175,7 +175,7 @@ def test_context_mutation_failure_hook_and_rng_restoration(model, monkeypatch):
 def test_refresh_rejects_mutation_and_restores_source_even_on_exception(
     model, monkeypatch, mutation
 ):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     pixels, rows = data()
     before, rng = snapshot(model), torch.random.get_rng_state().clone()

@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+CI separates lightweight compatibility checks (Python 3.11–3.14, explicit
+optional-dependency skips) from the complete CPU research regression suite.
+Only the complete provisioned suite enforces the unchanged 90% coverage gate;
+its dependency preflight must fail rather than silently omit research tests.
+Neither job downloads real datasets or qualifies detection accuracy. Synthetic
+benchmark gates and source-bound historical evidence remain unchanged.
+
 Cloud AI integrations are removed. Historical raw triage rows remain excluded
 from primary metrics and published reports are not rewritten. This removal is
 a product/privacy change, not a measured detector improvement.

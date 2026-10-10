@@ -44,6 +44,11 @@ The PR gate is Python 3.11–3.14 and total coverage >= 90%; new analysis, CTF,
 and report code targets >= 95%. Real-dataset jobs may be skipped only as
 `skipped`/`unavailable`, never passed.
 
+CI's lightweight version matrix uses `pytest --no-cov`; explicit optional
+dependency skips are expected. The separate CPU `research` job provisions
+`requirements-research-ci.txt` and runs the complete unchanged coverage gate.
+Quality checks also need Torch/ONNX to check the source-bound export contracts.
+
 ## Active milestone
 
 `v0.6`: shared analysis context, PNG/BMP native analysis, bounded CTF playbook,

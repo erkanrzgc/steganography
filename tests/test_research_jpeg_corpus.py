@@ -55,6 +55,7 @@ def test_count_bounds(development, tmp_path, value):  # noqa: F811
 
 
 def test_preflight_provenance_and_worker_failures(development, tmp_path, monkeypatch):  # noqa: F811
+    pytest.importorskip("conseal", reason="optional JPEG simulator unavailable")
     root, reserved, source = development
     with pytest.raises(ResearchManifestError, match="checksum"):
         corpus.generate_boss(
@@ -84,6 +85,7 @@ def test_preflight_provenance_and_worker_failures(development, tmp_path, monkeyp
 
 @pytest.mark.parametrize("fault", ["exit", "limit", "count", "recipe", "identity", "features"])
 def test_worker_output_fail_closed(development, tmp_path, monkeypatch, fault):  # noqa: F811
+    pytest.importorskip("conseal", reason="optional JPEG simulator unavailable")
     root, reserved, _ = development
 
     def fake_run(command, *, stdout, **kwargs):

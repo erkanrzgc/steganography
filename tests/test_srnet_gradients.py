@@ -15,7 +15,7 @@ from steganography import research_srnet_gradients as service
 
 @pytest.fixture
 def model():
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     previous = torch.get_num_threads()
     with torch.random.fork_rng(devices=[]):
@@ -79,7 +79,7 @@ def snapshot(model):
 
 
 def assert_restored(model, before):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     assert all(torch.equal(v, before[k]) for k, v in model.state_dict().items())
     assert all(not m.training for m in model.modules())
@@ -89,7 +89,7 @@ def assert_restored(model, before):
 
 
 def test_actual_gradient_and_classifier_central_difference_preserve_everything(model):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     original = snapshot(model)
     data = pixels()
@@ -111,7 +111,7 @@ def test_actual_gradient_and_classifier_central_difference_preserve_everything(m
 
 
 def test_invalid_inputs_architecture_cpu_and_disabled_parameters(model, monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     for data in (
         np.zeros((2, 1, 256, 256), dtype="<f4"),
@@ -143,7 +143,7 @@ def test_invalid_inputs_architecture_cpu_and_disabled_parameters(model, monkeypa
 
 @pytest.mark.parametrize("failure", ["logits", "loss", "gradients", "zero_classifier", "exception"])
 def test_failure_restores_state_flags_threads_rng(model, monkeypatch, failure):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     saved, rng = snapshot(model), torch.random.get_rng_state().clone()
     threads = torch.get_num_threads()
@@ -178,7 +178,7 @@ def test_failure_restores_state_flags_threads_rng(model, monkeypatch, failure):
 
 
 def test_mutation_rejected_restored_and_bad_finite_difference_retained(model, monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     saved = snapshot(model)
 
@@ -205,6 +205,7 @@ def test_mutation_rejected_restored_and_bad_finite_difference_retained(model, mo
 
 @pytest.fixture
 def fake_service(monkeypatch):
+    pytest.importorskip("torch", reason="optional research dependency unavailable")
     model = SimpleNamespace(
         named_buffers=lambda: [("bn.num_batches_tracked", 400)], eval=lambda: model
     )

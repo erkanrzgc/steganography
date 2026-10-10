@@ -57,7 +57,6 @@ desktop.ini
 .claude/
 .codex/
 .agents/
-.claude/
 .python-version
 
 # --- Runtime artifacts ------------------------------------------------------

@@ -75,7 +75,7 @@ def test_objectives_retain_failures_and_reject_incomplete_nonfinite():
 
 @pytest.fixture
 def fake(monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     model = SimpleNamespace(
         named_buffers=lambda: [("bn.num_batches_tracked", 160)],
@@ -98,7 +98,7 @@ def fake(monkeypatch):
 
 
 def test_learn_failure_preserved_and_thread_restoration(fake):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     threads = torch.get_num_threads()
     model, report = positive.learn()
@@ -110,7 +110,7 @@ def test_learn_failure_preserved_and_thread_restoration(fake):
 
 
 def test_bn_deadline_and_forward_exception_restore(fake, monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     fake.named_buffers = lambda: [("bn.num_batches_tracked", 159)]
     with pytest.raises(ValueError, match="BN"):
@@ -230,7 +230,7 @@ def test_audit_tampering_rejected(audit_fixture, key, value):
 
 
 def test_audit_protocol_source_bn_and_thread_guards(audit_fixture, monkeypatch, fake):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     report, directory = audit_fixture
     monkeypatch.setattr(positive, "PROTOCOL_SHA", "b" * 64)

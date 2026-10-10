@@ -162,7 +162,7 @@ def test_actual_eight_row_forward_backward_mapping_and_exception_restoration(mon
 
 @pytest.fixture
 def fake(monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     model = SimpleNamespace(
         named_buffers=lambda: [(f"bn{i}.num_batches_tracked", 80) for i in range(26)],

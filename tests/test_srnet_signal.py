@@ -94,7 +94,7 @@ def test_invalid_shape_dtype_values_cardinality_pairs_and_derived_limit():
 
 @pytest.fixture
 def fake(monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     model = SimpleNamespace(
         named_buffers=lambda: [("bn.num_batches_tracked", 160)],
@@ -155,7 +155,7 @@ def test_replay_tampering_rejected(fake, key, value):
 
 
 def test_bn_thread_restore_and_oracle_coverage(fake, monkeypatch):
-    import torch
+    torch = pytest.importorskip("torch", reason="optional research dependency unavailable")
 
     pixels, rows = data()
     model, report = signal.learn(pixels, rows, factor=1)

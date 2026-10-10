@@ -18,6 +18,8 @@ jobs:
           cache: pip
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install onnx==1.22.0
       - run: python scripts/check-identity.py
       - run: ruff check .
       - run: mypy core modules report api steganography ui registry.py config.py cli.py
@@ -36,7 +38,26 @@ jobs:
           cache: pip
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements-dev.txt
-      - run: pytest
+      # Optional research checks report skips here; the complete coverage gate
+      # runs in the fully provisioned research job below, not a reduced suite.
+      - run: pytest --no-cov
+
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -r requirements-research-ci.txt
+      - name: Require optional research dependencies
+        run: python -c 'import torch, onnx, onnxruntime, conseal, sealwatch; assert not torch.version.cuda'
+      - name: Complete generated and independent-fixture suite with coverage gate
+        run: pytest
 
   package:
     runs-on: ubuntu-latest
