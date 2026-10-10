@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import base64
 import sys
+import time
 from pathlib import Path
 
 import pytest
@@ -22,6 +23,58 @@ from modules.external_tools import (
     StegseekAdapter,
     ZstegAdapter,
 )
+
+
+def test_stegseek_recovered_secret_output_is_never_reported(tmp_path, monkeypatch):
+    monkeypatch.setattr("core.tools.shutil.which", lambda tool: sys.executable)
+    result = ToolRunner(timeout=5).run(
+        "stegseek", ["-c", "print('Found passphrase: secret\\nunlabelled secret')"], cwd=tmp_path
+    )
+    assert result.status == "completed"
+    assert "secret" not in result.output
+    assert result.output == "[output redacted: passphrase recovery]"
+
+
+@pytest.mark.parametrize("kwargs", [{"timeout": 0}, {"max_output": 0}, {"memory_bytes": 0}])
+def test_tool_limit_configuration_rejects_zero(kwargs):
+    with pytest.raises(ValueError):
+        ToolRunner(**kwargs)
+
+
+def test_running_tool_cancellation_and_invalid_workdir(tmp_path):
+    runner = ToolRunner()
+    started = time.monotonic()
+    result = runner.run(
+        sys.executable, ["-c", "import time; time.sleep(5)"], cwd=tmp_path,
+        should_cancel=lambda: time.monotonic() - started >= 0.05,
+    )
+    assert result.status == "cancelled" and result.exit_code is not None
+    with pytest.raises(ValueError):
+        runner.run(sys.executable, [], cwd=tmp_path, timeout=0)
+    link = tmp_path / "link"
+    link.symlink_to(tmp_path, target_is_directory=True)
+    for path in (link, tmp_path / "missing"):
+        with pytest.raises(ValueError):
+            runner.run(sys.executable, [], cwd=path)
+
+
+def test_tool_resource_policy_and_empty_version(tmp_path, monkeypatch):
+    import resource
+    from types import SimpleNamespace
+
+    runner = ToolRunner(memory_bytes=1234, max_output=5678)
+    limits = []
+    monkeypatch.setattr(resource, "setrlimit", lambda kind, value: limits.append((kind, value)))
+    runner._limits(5)()
+    assert limits == [
+        (resource.RLIMIT_AS, (1234, 1234)),
+        (resource.RLIMIT_CPU, (6, 7)),
+        (resource.RLIMIT_FSIZE, (5678, 5678)),
+        (resource.RLIMIT_CORE, (0, 0)),
+        (resource.RLIMIT_NOFILE, (64, 64)),
+    ]
+    monkeypatch.setattr(runner, "run", lambda *a, **k: SimpleNamespace(output=""))
+    assert runner.version(sys.executable) is None
 
 
 def test_tool_runner_execution_and_redaction(tmp_path: Path) -> None:

@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+The full-image inventory/recovery smoke is controlled integration evidence,
+not a detection benchmark or blind CTF gate. Preserve strict failures and
+unavailable tools; never treat version presence as successful recovery.
+See `FULL_IMAGE_VERIFICATION.md` for identities, limits and remaining boundaries.
+
 CI separates lightweight compatibility checks (Python 3.11–3.14, explicit
 optional-dependency skips) from the complete CPU research regression suite.
 Only the complete provisioned suite enforces the unchanged 90% coverage gate;

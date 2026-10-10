@@ -1,5 +1,17 @@
 # Implementation status — 2026-10-07
 
+Latest checkpoint (2026-10-11): full-image direct tools and three base-image
+digests are pinned. The checked 12-tool/four-gem inventory retains upstream
+license identities and verifies executable/JAR/gem-tree hashes at runtime.
+Local non-root/read-only/network-disabled smoke passed native, Steghide,
+explicit-wordlist Stegseek and OpenStego exact recovery, cancellation/timeout,
+symlink/overwrite/output limits and recovered-passphrase redaction. See
+`FULL_IMAGE_VERIFICATION.md`; these are controlled fixtures, not blind accuracy.
+Focused inventory/runner coverage is >=95%; complete regression/remote Docker
+checks are pending at this implementation checkpoint. Old failed CI is not
+rewritten: seven jobs passed, but its complete CPU suite had one strict
+readiness-test assumption failure. The production numerical gate is unchanged.
+
 Source version is 0.6.0, unreleased and classified beta. Baseline 0.5.0 was
 validated and committed as `1aaa747`. The complete v0.6–v1.0 roadmap has not
 been delivered or validated by this slice.

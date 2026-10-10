@@ -26,6 +26,8 @@ instructions so that implementation readiness is not mistaken for accuracy.
 
 ## Maintain and deploy
 
+- [Full-image verification](FULL_IMAGE_VERIFICATION.md): pinned tools and hardened recovery smoke.
+
 - [Architecture](ARCHITECTURE.md) and [roadmap](ROADMAP.md).
 - [Threat model](THREAT_MODEL.md) and [security reporting](../SECURITY.md).
 - [Contribution guide](../CONTRIBUTING.md) and [changelog](../CHANGELOG.md).

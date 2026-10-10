@@ -56,6 +56,14 @@ Downloaded release artifacts are verified with the SHA-256 values pinned in
 package checksum chain and their installed versions are checked during full
 image E2E.
 
+Direct Debian tool package versions and base-image digests are now pinned in
+`Dockerfile.full`; `tools/full-image.lock.json` is the checked inventory contract.
+Build/runtime verification records installed executable, OpenStego JAR, gem-tree
+and license-document identities. Stegseek's COPYING is copied from its verified
+source distribution; installed Debian copyright files and gem notices remain.
+See `docs/FULL_IMAGE_VERIFICATION.md`. Transitive dependencies are not fully
+locked, and package declarations do not constitute legal certification.
+
 ## Optional JRM research reference
 
 The `jrm-reference` extra uses sealwatch **2024.12** only when explicitly

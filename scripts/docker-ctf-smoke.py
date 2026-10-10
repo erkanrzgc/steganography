@@ -1,9 +1,11 @@
 """Run inside the full image with read-only root and a writable /tmp tmpfs."""
 
+import json
 import os
 import shutil
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 
 import numpy as np
@@ -11,6 +13,7 @@ from PIL import Image
 
 from core.ctf import CTFLimits, CTFService
 from core.service import StegoService
+from core.tool_inventory import read_lock, verify_inventory
 from core.tools import ToolRunner
 
 
@@ -21,6 +24,15 @@ def require(condition: bool, message: str) -> None:
 
 def main() -> None:
     require(os.getuid() != 0, "smoke must run as non-root")
+    root_mount = [line.split() for line in Path("/proc/mounts").read_text().splitlines()]
+    require(any(row[1] == "/" and "ro" in row[3].split(",") for row in root_mount),
+            "smoke requires read-only root")
+    inventory = verify_inventory(
+        read_lock(Path("/usr/share/steganography/full-image.lock.json")), cwd=Path.cwd()
+    )
+    baseline = json.loads(Path("/usr/share/steganography/full-image-inventory.json").read_text())
+    require(inventory["status"] == "verified" and inventory == baseline,
+            "installed inventory differs from verified build")
     for tool in (
         "binwalk",
         "zsteg",
@@ -38,6 +50,23 @@ def main() -> None:
         require(shutil.which(tool) is not None, f"missing {tool}")
     with tempfile.TemporaryDirectory(prefix="ctf-smoke-") as directory:
         root = Path(directory)
+        runner = ToolRunner(timeout=0.1, max_output=128)
+        timed_out = runner.run("sleep", ["2"], cwd=root, _include_version=False)
+        require(timed_out.status == "timed_out" and timed_out.exit_code is not None,
+                "tool deadline ignored")
+        started = time.monotonic()
+        interrupted = runner.run(
+            "sleep", ["2"], cwd=root, timeout=5,
+            should_cancel=lambda: time.monotonic() - started > 0.05,
+            _include_version=False,
+        )
+        require(interrupted.status == "cancelled" and interrupted.exit_code is not None,
+                "live tool cancellation ignored")
+        flood = runner.run(
+            "python", ["-c", "print('x' * 10000)"], cwd=root, timeout=5, _include_version=False
+        )
+        require("[output truncated]" in flood.output and len(flood.output) < 200,
+                "tool output budget ignored")
         payload = root / "payload.bin"
         payload.write_bytes(b"flag{independent_container_recovery}")
         cover = root / "cover.png"
@@ -52,6 +81,22 @@ def main() -> None:
             any(a.path and a.path.read_bytes() == payload.read_bytes() for a in report.artifacts),
             "native payload mismatch",
         )
+        try:
+            CTFService().solve(native, root / "native-job", mode="quick")
+        except FileExistsError:
+            pass
+        else:
+            raise RuntimeError("existing output overwritten")
+        link = root / "input-link.png"
+        link.symlink_to(native)
+        try:
+            CTFService().solve(link, root / "link-job", mode="quick")
+        except ValueError:
+            pass
+        else:
+            raise RuntimeError("artifact input symlink accepted")
+        cancelled = CTFService().solve(native, root / "cancelled-job", should_cancel=lambda: True)
+        require(cancelled.status == "cancelled", "job cancellation ignored")
         bmp = root / "cover.bmp"
         with Image.open(cover) as image:
             image.save(bmp)
@@ -89,6 +134,31 @@ def main() -> None:
             "independent steghide payload mismatch",
         )
         require("fixture-password" not in str(external.to_dict()), "password leaked")
+        require(str(root) not in str(external.to_dict()), "absolute sandbox path leaked")
+        require(all(a.sha256 and a.provenance for a in external.artifacts),
+                "artifact provenance missing")
+        wordlist = root / "fixture-wordlist.txt"
+        wordlist.write_text("wrong\nfixture-password\n", encoding="utf-8")
+        seek_dir = root / "stegseek-budget"
+        seek_dir.mkdir()
+        seek = ToolRunner(timeout=10).run(
+            "stegseek", ["../external.bmp", "../fixture-wordlist.txt", "payload.bin", "-f"],
+            cwd=seek_dir,
+        )
+        require(seek.status == "completed", "Stegseek fixture recovery failed")
+        require((seek_dir / "payload.bin").read_bytes() == payload.read_bytes(),
+                "Stegseek exact payload mismatch")
+        seek_report = CTFService().solve(stego, root / "wordlist-job", wordlist=wordlist)
+        require(seek_report.status == "completed", "wordlist playbook failed")
+        require(
+            any(a.path and a.path.read_bytes() == payload.read_bytes()
+                and "stegseek" in a.provenance for a in seek_report.artifacts),
+            "wordlist playbook did not recover payload through Stegseek",
+        )
+        require(any(t.tool == "stegseek" and t.status == "completed" and t.exit_code == 0
+                    for t in seek_report.tools), "Stegseek success provenance missing")
+        require("fixture-password" not in str(seek_report.to_dict()),
+                "recovered wordlist passphrase leaked")
         openstego = shutil.which("openstego")
         if openstego is None:
             raise RuntimeError("missing openstego")
@@ -136,7 +206,7 @@ def main() -> None:
             ),
             "independent OpenStego payload mismatch",
         )
-        print("PASS: tool inventory, native, Steghide and OpenStego exact recovery, redaction")
+        print("PASS: pinned inventory, exact recovery, limits and redaction")
         for execution in external.tools:
             print(f"{execution.tool}: {execution.status}")
             if execution.status == "failed":

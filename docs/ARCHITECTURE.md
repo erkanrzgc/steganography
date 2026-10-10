@@ -1,5 +1,11 @@
 # Architecture
 
+`core/tool_inventory.py` verifies the explicit full-image lock using bounded
+shared ToolRunner probes and installed-file hashes. Docker records a build
+baseline; hardened runtime smoke verifies it before recovery. This service does
+not download tools, analyze evidence or change verdicts. The base wheel remains
+executable-optional; the checked lock and integration scripts live outside it.
+
 CI keeps base/API compatibility separate from optional CPU research checks.
 The lightweight version matrix reports missing optional dependencies as skips;
 the provisioned complete-suite job owns the unchanged total coverage gate.

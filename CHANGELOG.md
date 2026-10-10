@@ -1,5 +1,14 @@
 # Changelog
 
+- Pin full-image base digests and direct tool versions; verify installed
+  12-tool/four-gem inventory, retained license identities and runtime file hashes.
+  Extend hardened E2E with Stegseek exact recovery and cancellation/timeout,
+  symlink/overwrite/output-budget checks. No detection accuracy claim.
+  Omit Stegseek cracking stdout from reports so recovered wordlist passphrases
+  cannot leak through otherwise valid extraction provenance.
+- Test SRNet readiness state restoration against its unchanged strict numerical
+  pass/fail rule instead of assuming every CPU backend must pass readiness.
+
 - Repair CI optional-dependency boundaries: retain the Python 3.11–3.14
   lightweight matrix and require a complete CPU research suite with the
   unchanged 90% coverage gate. Provision Torch/ONNX for type checking and

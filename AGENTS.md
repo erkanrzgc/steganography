@@ -55,6 +55,11 @@ Quality checks also need Torch/ONNX to check the source-bound export contracts.
 portable JSON/HTML/SARIF/bundle reporting, and initial CLI/API/TUI surfaces.
 See `docs/ROADMAP.md` for current status and later milestones.
 
+Full-image tool changes must update `tools/full-image.lock.json`, preserve
+upstream license notices and run the hardened checks in
+`docs/FULL_IMAGE_VERIFICATION.md`. Inventory presence is not recovery evidence.
+Never publish Stegseek wordlist cracking stdout (it can expose recovered keys).
+
 ## Handoff checklist
 
 1. Preserve unrelated working-tree changes and avoid history rewrites.

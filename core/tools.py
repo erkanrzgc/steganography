@@ -122,6 +122,13 @@ class ToolRunner:
         for secret in secret_values:
             if secret:
                 output = output.replace(secret, "[REDACTED]")
+        if tool == "stegseek" and not set(map(str, args)).intersection(
+            {"--seed", "--version", "--help", "-h"}
+        ):
+            # A recovered passphrase is not known to secret_values. Never
+            # publish cracking stdout, including multiline/unlabelled secrets.
+            output = "[output redacted: passphrase recovery]"
+            clipped = False
         if clipped:
             output += "\n[output truncated]"
         if status == "completed" and process.returncode:

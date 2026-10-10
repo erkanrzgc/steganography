@@ -1,0 +1,23 @@
+{
+  "schema_version": "full-image-tools-v1",
+  "tools": [
+    {"name":"binwalk","package":"binwalk","version":"2.3.4+dfsg1-1","license":"MIT"},
+    {"name":"steghide","package":"steghide","version":"0.5.1-15","license":"GPL-2.0-or-later"},
+    {"name":"outguess","package":"outguess","version":"1:0.4-2","license":"BSD-4-Clause"},
+    {"name":"exiftool","package":"libimage-exiftool-perl","version":"12.57+dfsg-1","license":"Artistic-1.0-Perl OR GPL-1.0-or-later"},
+    {"name":"pngcheck","package":"pngcheck","version":"3.0.3-1","license":"Zlib"},
+    {"name":"ffmpeg","package":"ffmpeg","version":"7:5.1.9-0+deb12u1","license":"GPL-2.0-or-later"},
+    {"name":"sox","package":"sox","version":"14.4.2+git20190427-3.5","license":"GPL-2.0-or-later AND LGPL-2.1-or-later"},
+    {"name":"gifsicle","package":"gifsicle","version":"1.93-2","license":"GPL-2.0-or-later"},
+    {"name":"zbarimg","package":"zbar-tools","version":"0.23.92-7+deb12u1","license":"LGPL-2.1-or-later"},
+    {"name":"openstego","package":"openstego","version":"0.8.6-1","license":"GPL-2.0-only","artifact_arg":"OPENSTEGO","sha256":"821c4a1e190e994659b05a6c8142d14568204675b431c9e7278b379934a1d34a"},
+    {"name":"zsteg","gem":"zsteg","version":"0.2.14","license":"MIT","artifact_arg":"ZSTEG","sha256":"761ee35a8512630606946187ed1a3150c6ab30dd5e32cefe48ebb2b874190f6f"},
+    {"name":"stegseek","version":"0.6","license":"GPL-3.0-only","artifact_arg":"STEGSEEK","sha256":"66cdd8e4e4b815d7fe368843e7df2f0416af0304df35e4f22db9f16c7ae6c771"}
+  ],
+  "gems": [
+    {"name":"iostruct","version":"0.7.0","license":"MIT","artifact_arg":"IOSTRUCT","sha256":"e93f2ffea3b79a0e1045f0e0bd3f202368d89c53b692878e693cf50603bae49c"},
+    {"name":"zpng","version":"0.4.6","license":"MIT","artifact_arg":"ZPNG","sha256":"40f4629f7dac4864662fa5cdfe7b410cc4bc8e72e271d39551f084291e64246e"},
+    {"name":"rainbow","version":"3.1.1","license":"MIT","artifact_arg":"RAINBOW","sha256":"039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a"},
+    {"name":"prime","version":"0.1.4","license":"Ruby OR BSD-2-Clause","artifact_arg":"PRIME","sha256":"4d755ebf7c2994a6f3a3fee0d072063be3fff2d4042ebff6cd5eebd4747a225e"}
+  ]
+}

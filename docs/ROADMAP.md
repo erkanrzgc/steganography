@@ -1,5 +1,18 @@
 # Roadmap and status
 
+2026-10-11 full-image slice: three digest-pinned base images, exact direct Debian
+tool pins, checked 12-tool/four-gem version/license identities and baked/runtime
+file hashes. Hardened E2E expands Stegseek recovery and cancellation/timeout,
+symlink/overwrite/output-budget checks. See `FULL_IMAGE_VERIFICATION.md`.
+This does not complete all tool-specific recovery, transitive locking or blind
+CTF gates; the full-image milestone stays open until broader E2E qualifies it.
+
+The prior complete research CI ended with 2,179 passes and one strict readiness
+test failure (96.01% coverage), not a green run. The state-restoration test now
+checks the actual strict pass/fail condition instead of assuming every CPU
+qualifies numerically. Production readiness tolerance and all research source
+hashes/results remain unchanged; this cannot promote a detector.
+
 2026-10-11 CI repair: the lightweight Python 3.11–3.14 matrix reports optional
 research skips; a separate provisioned CPU job runs the complete suite with
 the unchanged 90% total coverage gate. Quality and release jobs install the
