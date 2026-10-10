@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+The completed physical normalization learning results live in
+`JPEG_NORM_LEARNING_RESULTS.md`: both arms fail detection improvement, all ten
+cells reported. Independently replay original hash-bound logits/confusion/loss
+with `core/jpeg_norm_audit.py`; numerical parity and lowered loss are not an
+accuracy gain. Retain inspected-probe qualification and private snapshots.
+
 `JPEG_NORM_LEARNING_PROTOCOL.md` freezes a fresh matched BN-versus-eight-group-GN
 learning pilot before real optimization: same seed, initialization and ordered
 fit exposure, eight epochs/final evaluation only, no probe-driven selection.

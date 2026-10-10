@@ -1,0 +1,109 @@
+{
+  "schema_version": "jpeg-train-crop-signal-v1",
+  "status": "completed",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "fit_pairs": 240,
+  "identical_crops": 3,
+  "crop_signal_coverage": "partial",
+  "cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.037467452759282246,
+      "maximum_rms_pixel_difference": 1.7661866489645113
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "fit_pairs": 24,
+      "identical_crops": 3,
+      "minimum_rms_pixel_difference": 0.0,
+      "maximum_rms_pixel_difference": 1.6725091769988707
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.24702207195364728,
+      "maximum_rms_pixel_difference": 0.8391075820825784
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.332628128304282,
+      "maximum_rms_pixel_difference": 0.9815109058430109
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.07763517818018066,
+      "maximum_rms_pixel_difference": 0.2565368469383555
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.11294400682254276,
+      "maximum_rms_pixel_difference": 0.30688312205957025
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.26950293066544057,
+      "maximum_rms_pixel_difference": 0.8499124057818489
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.20082078312399734,
+      "maximum_rms_pixel_difference": 0.9017094396467752
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.0933422264190728,
+      "maximum_rms_pixel_difference": 0.27318627939980544
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "fit_pairs": 24,
+      "identical_crops": 0,
+      "minimum_rms_pixel_difference": 0.0934239134965068,
+      "maximum_rms_pixel_difference": 0.33689001742581226
+    }
+  ],
+  "probe_pixels_read": 0,
+  "validation_test_used": false,
+  "optimizer_updates": 0,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "source_sha256": {
+    "core/jpeg_crop_signal.py": "dd9e25dc8df9c7cd2e4a6d4fd0ddfe624fc2aa72238d87cd59e5b407be7c972b"
+  }
+}

@@ -1,5 +1,28 @@
 # Roadmap and status
 
+Verification for the fresh normalization slice: full disk-backed regression
+2,044 passed /one actual-CUDA skip on the CPU-only VM, 32 existing ONNX warnings.
+31 later-added metric/crop/portable-evidence tests run separately with coverage
+append; combined total coverage 95.89%, new audit and crop services 100%, new
+learning services/frontend 97–100%. Physical GPU fitting is separately evidenced,
+not inferred from the skipped local hardware test. Lint/types/dependencies and
+fresh model-free wheel/sdist builds pass.
+
+Train-only crop follow-up: all 240 fit pairs inspected, three ALASKA/UERD
+256-square crops identical to their covers. Preserve partial signal coverage,
+original labels/inputs and all failed scores; this is not the sole learning
+failure explanation. New read-only service excludes all probe pixels and
+re-verifies the cache. See `JPEG_NORM_LEARNING_RESULTS.md`.
+
+2026-10-10 matched fresh BN/GN physical fits both completed on the RTX 5060:
+eight epochs /1,152 updates each, identical initialization and ordered exposure.
+All ten inspected train-role probe cells remain at 50% balanced accuracy;
+GN reduces loss/positive calls but not discrimination. Independent scalar replay
+verifies all 20 confusion/loss cells and report/source binding. No deployment,
+blind validation, support qualification or cloud spending. Next: frozen real-pair
+learnability/preprocessing controls before larger fitting; do not extend failed
+epochs without a new hypothesis. See `JPEG_NORM_LEARNING_RESULTS.md`.
+
 2026-10-10 fresh BN/GN pilot implemented and frozen before optimizer execution:
 two arms, 360 fit /120 previously inspected train-role probe rows, eight fixed
 144-update epochs, same initial learned weights/ordered exposure. The GN variant

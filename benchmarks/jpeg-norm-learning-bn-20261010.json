@@ -1,0 +1,1892 @@
+{
+  "schema_version": "jpeg-bn-gn-learning-pilot-v1",
+  "status": "completed",
+  "arm": "bn",
+  "architecture": "srnet-gray12-cpu-v1",
+  "execution": {
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_gpu_bytes": 8518041600,
+    "torch_allocator_limit_bytes": 4294967296,
+    "host_memory_max_bytes": 8589934592,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "mixed_precision": false,
+    "deterministic_algorithms": true,
+    "cpu_fallback": false
+  },
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "fit_rows": 360,
+  "fit_originals": 72,
+  "probe_rows": 120,
+  "probe_originals": 24,
+  "original_groups_disjoint": true,
+  "probe_previously_inspected": true,
+  "probe_is_train_role_development": true,
+  "validation_test_used": false,
+  "initial_parameter_sha256": "9f9112bc42e8f4f753b6afb716f62c9f82f97620ddd78169899812ef8986a849",
+  "learned_parameter_sha256": "69dc45492b8e338815863afa3b556768984419242d6bf6870b60ddb53e9792d6",
+  "seed": 20261010,
+  "epochs": 8,
+  "optimizer_updates": 1152,
+  "optimizer": {
+    "name": "Adamax",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "foreach": false
+  },
+  "schedules": [
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 0,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "e16db37befe74a133a163a3bbaefa045782fa1b26e076c86c2961b04b70b25a1",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 0,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "825adaff088820968a5e7386d79fc4a14bcfbf3c2eb5bec8ccbcf4650bd46d0e",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 1,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "5107b201f0a360a883c4576af8ba2ec667344c098c7c4025738e909f25a54114",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 1,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "961d3876738fb60bcd1bb81c94e100e771fcdd4b751cccb617b958298e1eb328",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 2,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "db2b59b0f185b124a434b8b77cfadf54f65499a1c6d7aaea63ac96edcf5d91ac",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 2,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "29789348e9f9b1e2b54547e8fc5af7864f02d38d77ebef7da1d3b33d538ab6e4",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 3,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "f1e52e2b2b6b5b8230a5c9918634e117a3e89d42566e807d24ded520011d18d1",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 3,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "217fe8f9ead6aabea730932b124e7f5c48561bcf8ca0fad9322b6f9f3575a212",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 4,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "fc2bf9d77ea82bc7f40222b457fd2e713999f5d0e78474dbbbfc5043d4e48bc6",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 4,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "6d9a88bfe3584facb7f19f0abe8bf353003e2b3af3a588ff1cde3ad0d7bff25d",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 5,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "6d0618aaffd8799410417c106c59cab68c1eff09745bfb13eef379f542c11a89",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 5,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "2fecd3ffc48f894a0151ea60010ee0d26d42fa55f03d21b3ba73c3dcfedff1f9",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 6,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "b50e46c8b7d212a8a59b46f9cba4b44d2897b384e43f4005db0cefb021f351e5",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 6,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "475ac6d3fb40226db19ae7ce878effaa5d52668ee8044e84abad31d4e20203ff",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-three-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 7,
+        "pairs": 288,
+        "rows": 576,
+        "pairs_per_source": 96,
+        "ordered_pair_sha256": "8f1d65e0ec92d388a57e092c40b139768859adfe75724eee5bf4abf90af95e6f",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-84429b9df410a5d5",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 24
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 24,
+            "sampled_pairs": 48
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "srnet-three-source-quality-method-four-row-v1",
+        "epoch": 7,
+        "batch_size": 4,
+        "sources": 3,
+        "pairs": 288,
+        "optimizer_updates": 144,
+        "rows": 576,
+        "ordered_batch_sha256": "a84c641cadf01a6722464c70967b1a7676e5ebb5d1127ed9e8a2710098be6a8e",
+        "independence": "distinct declared sources and original lineages; camera/perceptual independence unverified"
+      }
+    }
+  ],
+  "epoch_losses": [
+    {
+      "epoch": 0,
+      "updates": 144,
+      "mean_pair_loss": 0.7029172235892879
+    },
+    {
+      "epoch": 1,
+      "updates": 144,
+      "mean_pair_loss": 0.6931670469542345
+    },
+    {
+      "epoch": 2,
+      "updates": 144,
+      "mean_pair_loss": 0.6931599589685599
+    },
+    {
+      "epoch": 3,
+      "updates": 144,
+      "mean_pair_loss": 0.6931571339567503
+    },
+    {
+      "epoch": 4,
+      "updates": 144,
+      "mean_pair_loss": 0.6931644744343228
+    },
+    {
+      "epoch": 5,
+      "updates": 144,
+      "mean_pair_loss": 0.6931480007867018
+    },
+    {
+      "epoch": 6,
+      "updates": 144,
+      "mean_pair_loss": 0.6931425063974328
+    },
+    {
+      "epoch": 7,
+      "updates": 144,
+      "mean_pair_loss": 0.6931547174851099
+    }
+  ],
+  "schedule_sha256": "b98ea33cc04c463d2babfd1064f18cf1b09db5ae23159ef3d725cb364fcfa323",
+  "probe_cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 3,
+      "false_positive": 3,
+      "true_negative": 5,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 0.6937186511452029,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 3,
+      "false_positive": 3,
+      "true_negative": 5,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 0.6935389006500594,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 2,
+      "false_positive": 2,
+      "true_negative": 6,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6942565897505469,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 2,
+      "false_positive": 2,
+      "true_negative": 6,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6942531926089262,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 2,
+      "false_positive": 2,
+      "true_negative": 6,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6942904325679813,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 2,
+      "false_positive": 2,
+      "true_negative": 6,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6942856199563625,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6961228846644071,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6960458327264292,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6960058377916987,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6960006356059142,
+      "cover_rows_shared_across_method_cells": true
+    }
+  ],
+  "singleton_batch_parity": {
+    "passed": true,
+    "atol": 0.0001,
+    "rtol": 0.0001
+  },
+  "probe_logits": [
+    {
+      "row": 12,
+      "logits": [
+        -0.32062721252441406,
+        -0.4604256749153137
+      ]
+    },
+    {
+      "row": 13,
+      "logits": [
+        -0.32062721252441406,
+        -0.4604256749153137
+      ]
+    },
+    {
+      "row": 14,
+      "logits": [
+        -0.32062721252441406,
+        -0.4604256749153137
+      ]
+    },
+    {
+      "row": 18,
+      "logits": [
+        -0.03757983818650246,
+        -0.0265536867082119
+      ]
+    },
+    {
+      "row": 19,
+      "logits": [
+        -0.03619338572025299,
+        -0.025165272876620293
+      ]
+    },
+    {
+      "row": 20,
+      "logits": [
+        -0.035670503973960876,
+        -0.023902252316474915
+      ]
+    },
+    {
+      "row": 21,
+      "logits": [
+        -0.0380135178565979,
+        -0.04546574503183365
+      ]
+    },
+    {
+      "row": 22,
+      "logits": [
+        -0.03802608698606491,
+        -0.04526578262448311
+      ]
+    },
+    {
+      "row": 23,
+      "logits": [
+        -0.03784237802028656,
+        -0.04534714296460152
+      ]
+    },
+    {
+      "row": 36,
+      "logits": [
+        0.043565597385168076,
+        0.17544086277484894
+      ]
+    },
+    {
+      "row": 37,
+      "logits": [
+        0.043956365436315536,
+        0.17663303017616272
+      ]
+    },
+    {
+      "row": 38,
+      "logits": [
+        0.043243393301963806,
+        0.17613637447357178
+      ]
+    },
+    {
+      "row": 48,
+      "logits": [
+        0.09270771592855453,
+        0.08525074273347855
+      ]
+    },
+    {
+      "row": 49,
+      "logits": [
+        0.09148746728897095,
+        0.08579717576503754
+      ]
+    },
+    {
+      "row": 50,
+      "logits": [
+        0.08799106627702713,
+        0.08692391216754913
+      ]
+    },
+    {
+      "row": 57,
+      "logits": [
+        0.01423236820846796,
+        0.04156993329524994
+      ]
+    },
+    {
+      "row": 58,
+      "logits": [
+        0.014104656875133514,
+        0.04165080189704895
+      ]
+    },
+    {
+      "row": 59,
+      "logits": [
+        0.014221509918570518,
+        0.041906896978616714
+      ]
+    },
+    {
+      "row": 75,
+      "logits": [
+        -0.15174512565135956,
+        -0.17129844427108765
+      ]
+    },
+    {
+      "row": 76,
+      "logits": [
+        -0.15020044147968292,
+        -0.17020951211452484
+      ]
+    },
+    {
+      "row": 77,
+      "logits": [
+        -0.1507650762796402,
+        -0.17049933969974518
+      ]
+    },
+    {
+      "row": 81,
+      "logits": [
+        0.143625870347023,
+        0.08705192059278488
+      ]
+    },
+    {
+      "row": 82,
+      "logits": [
+        0.1436428278684616,
+        0.08703546226024628
+      ]
+    },
+    {
+      "row": 83,
+      "logits": [
+        0.143625870347023,
+        0.08705192059278488
+      ]
+    },
+    {
+      "row": 96,
+      "logits": [
+        0.007718121632933617,
+        0.14328888058662415
+      ]
+    },
+    {
+      "row": 97,
+      "logits": [
+        0.007733006030321121,
+        0.14399972558021545
+      ]
+    },
+    {
+      "row": 98,
+      "logits": [
+        0.008141210302710533,
+        0.14312218129634857
+      ]
+    },
+    {
+      "row": 99,
+      "logits": [
+        0.011985547840595245,
+        0.14472396671772003
+      ]
+    },
+    {
+      "row": 100,
+      "logits": [
+        0.011918142437934875,
+        0.14468996226787567
+      ]
+    },
+    {
+      "row": 101,
+      "logits": [
+        0.011976879090070724,
+        0.14473795890808105
+      ]
+    },
+    {
+      "row": 114,
+      "logits": [
+        -0.014774332754313946,
+        0.012099932879209518
+      ]
+    },
+    {
+      "row": 115,
+      "logits": [
+        -0.014671705663204193,
+        0.012087106704711914
+      ]
+    },
+    {
+      "row": 116,
+      "logits": [
+        -0.014819417148828506,
+        0.012154102325439453
+      ]
+    },
+    {
+      "row": 117,
+      "logits": [
+        -0.014179911464452744,
+        0.012275420129299164
+      ]
+    },
+    {
+      "row": 118,
+      "logits": [
+        -0.014148694463074207,
+        0.012278936803340912
+      ]
+    },
+    {
+      "row": 119,
+      "logits": [
+        -0.01414644904434681,
+        0.012255068868398666
+      ]
+    },
+    {
+      "row": 132,
+      "logits": [
+        -0.05739009380340576,
+        -0.09897802770137787
+      ]
+    },
+    {
+      "row": 133,
+      "logits": [
+        -0.05764751508831978,
+        -0.09886711835861206
+      ]
+    },
+    {
+      "row": 134,
+      "logits": [
+        -0.05779040604829788,
+        -0.09858649224042892
+      ]
+    },
+    {
+      "row": 135,
+      "logits": [
+        -0.05715176835656166,
+        -0.09895673394203186
+      ]
+    },
+    {
+      "row": 136,
+      "logits": [
+        -0.05711418762803078,
+        -0.09894455969333649
+      ]
+    },
+    {
+      "row": 137,
+      "logits": [
+        -0.05711127072572708,
+        -0.09909134358167648
+      ]
+    },
+    {
+      "row": 144,
+      "logits": [
+        0.3002966046333313,
+        0.22639138996601105
+      ]
+    },
+    {
+      "row": 145,
+      "logits": [
+        0.30021902918815613,
+        0.2266271710395813
+      ]
+    },
+    {
+      "row": 146,
+      "logits": [
+        0.30008599162101746,
+        0.22670228779315948
+      ]
+    },
+    {
+      "row": 147,
+      "logits": [
+        0.30304041504859924,
+        0.22788649797439575
+      ]
+    },
+    {
+      "row": 148,
+      "logits": [
+        0.3030083477497101,
+        0.22796186804771423
+      ]
+    },
+    {
+      "row": 149,
+      "logits": [
+        0.3029709458351135,
+        0.2278352677822113
+      ]
+    },
+    {
+      "row": 162,
+      "logits": [
+        -0.0341416671872139,
+        -0.0956931784749031
+      ]
+    },
+    {
+      "row": 163,
+      "logits": [
+        -0.03434310108423233,
+        -0.0957045704126358
+      ]
+    },
+    {
+      "row": 164,
+      "logits": [
+        -0.034205395728349686,
+        -0.09546390175819397
+      ]
+    },
+    {
+      "row": 165,
+      "logits": [
+        -0.034671686589717865,
+        -0.09414660930633545
+      ]
+    },
+    {
+      "row": 166,
+      "logits": [
+        -0.03468255698680878,
+        -0.09410697221755981
+      ]
+    },
+    {
+      "row": 167,
+      "logits": [
+        -0.03485821187496185,
+        -0.09409695118665695
+      ]
+    },
+    {
+      "row": 168,
+      "logits": [
+        0.2506940960884094,
+        0.2013641893863678
+      ]
+    },
+    {
+      "row": 169,
+      "logits": [
+        0.25057297945022583,
+        0.20140808820724487
+      ]
+    },
+    {
+      "row": 170,
+      "logits": [
+        0.2509004473686218,
+        0.20177491009235382
+      ]
+    },
+    {
+      "row": 171,
+      "logits": [
+        0.2510383427143097,
+        0.2022399604320526
+      ]
+    },
+    {
+      "row": 172,
+      "logits": [
+        0.25100550055503845,
+        0.20229366421699524
+      ]
+    },
+    {
+      "row": 173,
+      "logits": [
+        0.25089961290359497,
+        0.2022593468427658
+      ]
+    },
+    {
+      "row": 240,
+      "logits": [
+        0.14423628151416779,
+        0.07788719236850739
+      ]
+    },
+    {
+      "row": 241,
+      "logits": [
+        0.14395169913768768,
+        0.0774255320429802
+      ]
+    },
+    {
+      "row": 242,
+      "logits": [
+        0.14410634338855743,
+        0.07789070904254913
+      ]
+    },
+    {
+      "row": 243,
+      "logits": [
+        0.14410899579524994,
+        0.07500138878822327
+      ]
+    },
+    {
+      "row": 244,
+      "logits": [
+        0.14417918026447296,
+        0.07481604069471359
+      ]
+    },
+    {
+      "row": 245,
+      "logits": [
+        0.14394594728946686,
+        0.07473844289779663
+      ]
+    },
+    {
+      "row": 264,
+      "logits": [
+        0.5254791378974915,
+        0.3330899775028229
+      ]
+    },
+    {
+      "row": 265,
+      "logits": [
+        0.5255180597305298,
+        0.33313775062561035
+      ]
+    },
+    {
+      "row": 266,
+      "logits": [
+        0.5254935026168823,
+        0.3330952227115631
+      ]
+    },
+    {
+      "row": 267,
+      "logits": [
+        0.5242055058479309,
+        0.3326551616191864
+      ]
+    },
+    {
+      "row": 268,
+      "logits": [
+        0.5242456197738647,
+        0.3326631188392639
+      ]
+    },
+    {
+      "row": 269,
+      "logits": [
+        0.5241895318031311,
+        0.33261585235595703
+      ]
+    },
+    {
+      "row": 306,
+      "logits": [
+        -0.22467541694641113,
+        -0.24339397251605988
+      ]
+    },
+    {
+      "row": 307,
+      "logits": [
+        -0.2243838906288147,
+        -0.24351494014263153
+      ]
+    },
+    {
+      "row": 308,
+      "logits": [
+        -0.22473716735839844,
+        -0.24315355718135834
+      ]
+    },
+    {
+      "row": 309,
+      "logits": [
+        -0.22181427478790283,
+        -0.23887713253498077
+      ]
+    },
+    {
+      "row": 310,
+      "logits": [
+        -0.2217993587255478,
+        -0.2387980967760086
+      ]
+    },
+    {
+      "row": 311,
+      "logits": [
+        -0.22185909748077393,
+        -0.23891553282737732
+      ]
+    },
+    {
+      "row": 312,
+      "logits": [
+        -0.3114377558231354,
+        -0.37234941124916077
+      ]
+    },
+    {
+      "row": 313,
+      "logits": [
+        -0.3120921850204468,
+        -0.372264564037323
+      ]
+    },
+    {
+      "row": 314,
+      "logits": [
+        -0.31168487668037415,
+        -0.3720211684703827
+      ]
+    },
+    {
+      "row": 315,
+      "logits": [
+        -0.3126409649848938,
+        -0.3724808990955353
+      ]
+    },
+    {
+      "row": 316,
+      "logits": [
+        -0.31254222989082336,
+        -0.37245503067970276
+      ]
+    },
+    {
+      "row": 317,
+      "logits": [
+        -0.31241774559020996,
+        -0.3720701336860657
+      ]
+    },
+    {
+      "row": 342,
+      "logits": [
+        0.034711889922618866,
+        0.22803576290607452
+      ]
+    },
+    {
+      "row": 343,
+      "logits": [
+        0.03490009531378746,
+        0.2280711829662323
+      ]
+    },
+    {
+      "row": 344,
+      "logits": [
+        0.03476840257644653,
+        0.22820201516151428
+      ]
+    },
+    {
+      "row": 345,
+      "logits": [
+        0.034444764256477356,
+        0.2171614170074463
+      ]
+    },
+    {
+      "row": 346,
+      "logits": [
+        0.034343935549259186,
+        0.2172887921333313
+      ]
+    },
+    {
+      "row": 347,
+      "logits": [
+        0.034487318247556686,
+        0.2172345072031021
+      ]
+    },
+    {
+      "row": 360,
+      "logits": [
+        -0.02130907028913498,
+        0.04335935786366463
+      ]
+    },
+    {
+      "row": 361,
+      "logits": [
+        -0.021029677242040634,
+        0.04353306069970131
+      ]
+    },
+    {
+      "row": 362,
+      "logits": [
+        -0.021302293986082077,
+        0.043428435921669006
+      ]
+    },
+    {
+      "row": 363,
+      "logits": [
+        -0.018783193081617355,
+        0.0444650836288929
+      ]
+    },
+    {
+      "row": 364,
+      "logits": [
+        -0.018541958183050156,
+        0.04454629868268967
+      ]
+    },
+    {
+      "row": 365,
+      "logits": [
+        -0.018917031586170197,
+        0.0444621816277504
+      ]
+    },
+    {
+      "row": 366,
+      "logits": [
+        0.021149635314941406,
+        0.2984278202056885
+      ]
+    },
+    {
+      "row": 367,
+      "logits": [
+        0.021100550889968872,
+        0.2984553575515747
+      ]
+    },
+    {
+      "row": 368,
+      "logits": [
+        0.021317504346370697,
+        0.29870057106018066
+      ]
+    },
+    {
+      "row": 369,
+      "logits": [
+        0.021717645227909088,
+        0.29865121841430664
+      ]
+    },
+    {
+      "row": 370,
+      "logits": [
+        0.021723926067352295,
+        0.29860424995422363
+      ]
+    },
+    {
+      "row": 371,
+      "logits": [
+        0.02188122645020485,
+        0.2986617684364319
+      ]
+    },
+    {
+      "row": 402,
+      "logits": [
+        -0.1217355951666832,
+        -0.1620400846004486
+      ]
+    },
+    {
+      "row": 403,
+      "logits": [
+        -0.12101364135742188,
+        -0.16175858676433563
+      ]
+    },
+    {
+      "row": 404,
+      "logits": [
+        -0.1212058961391449,
+        -0.16183121502399445
+      ]
+    },
+    {
+      "row": 405,
+      "logits": [
+        -0.12060462683439255,
+        -0.1601775586605072
+      ]
+    },
+    {
+      "row": 406,
+      "logits": [
+        -0.12078144401311874,
+        -0.1602276861667633
+      ]
+    },
+    {
+      "row": 407,
+      "logits": [
+        -0.12051357328891754,
+        -0.16002586483955383
+      ]
+    },
+    {
+      "row": 414,
+      "logits": [
+        0.004452904686331749,
+        0.24019189178943634
+      ]
+    },
+    {
+      "row": 415,
+      "logits": [
+        0.00506596639752388,
+        0.23976854979991913
+      ]
+    },
+    {
+      "row": 416,
+      "logits": [
+        0.004601048305630684,
+        0.2407168745994568
+      ]
+    },
+    {
+      "row": 417,
+      "logits": [
+        -0.0018615331500768661,
+        0.23333263397216797
+      ]
+    },
+    {
+      "row": 418,
+      "logits": [
+        -0.001786569133400917,
+        0.23347346484661102
+      ]
+    },
+    {
+      "row": 419,
+      "logits": [
+        -0.002001069486141205,
+        0.23355714976787567
+      ]
+    },
+    {
+      "row": 456,
+      "logits": [
+        0.03136060759425163,
+        0.12802495062351227
+      ]
+    },
+    {
+      "row": 457,
+      "logits": [
+        0.03135599195957184,
+        0.12830762565135956
+      ]
+    },
+    {
+      "row": 458,
+      "logits": [
+        0.03130760416388512,
+        0.1283845752477646
+      ]
+    },
+    {
+      "row": 459,
+      "logits": [
+        0.030686497688293457,
+        0.12462443858385086
+      ]
+    },
+    {
+      "row": 460,
+      "logits": [
+        0.03064832091331482,
+        0.1245410293340683
+      ]
+    },
+    {
+      "row": 461,
+      "logits": [
+        0.030872086063027382,
+        0.12449675053358078
+      ]
+    }
+  ],
+  "seconds": 177.2711021819996,
+  "process_peak_gpu_allocated_bytes": 1057371648,
+  "process_peak_gpu_reserved_bytes": 1438646272,
+  "real_model_trained": true,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "model_sha256": "e3452b2cf2cd644b094a165c53099ebf6da06bb64cd50bb557150128337d3743",
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b",
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "core/jpeg_timing_probe.py": "f1f78bc9fc6b279003637ad116f42cfcb4a1e09c1b7fb9c139333ecb01bd6777",
+    "core/srnet_diversity_sampling.py": "96c00eaf608fd3cb1192d14b8a5a2ac07faaad8e30e124bf6001c803373d1df3",
+    "steganography/research_jpeg_timing_probe.py": "b6dd2c95a9ca44b03d8d85d757122915cc71bd805a99c1e86206bc689e39c8a3",
+    "core/srnet_population_bn.py": "99ca45b4ece2736dbf981648db274bf259d5c832d1dda5d23c9084d8a7b581a8",
+    "core/jpeg_population_control.py": "83f9d21e38d36c19a90a1c9724c3ed407d382d7a4552170c54aba9ebb66435ba",
+    "steganography/research_jpeg_population_bn.py": "742ec92b579c98a4a893a978bb203c5ff43703b224d4d12c77b5f2f065921f19",
+    "docs/JPEG_POPULATION_BN_PROTOCOL.md": "1136f45698bf55c57aed8fcf8e3945d6a8e3b8c89696a0c12aaeb12e33bf9c39",
+    "core/srnet_groupnorm.py": "7bc350808062a2eb5dd6c3c6c289228f9eef97efa00ca1766b56fa89b522f1a4",
+    "core/srnet_norm_training.py": "b44b7dab5a2cb6fb3e63cc0dd9eb581d629988e064d41762b87937cf30b4b6db",
+    "core/jpeg_norm_learning.py": "3d5d91bbf597c90c06057294609c184afc416613fb17fb4e12f3ffd63460e443",
+    "steganography/research_jpeg_norm_learning.py": "d06540ee5dc074087258e256fd7d6ac4b86429eda517cbb40cf01eba9bfc5aab",
+    "docs/JPEG_NORM_LEARNING_PROTOCOL.md": "7c9f170805f0750b625e5cc026fbb0165ea92f9add31991295ea4eecfeb69658"
+  }
+}

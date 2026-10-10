@@ -1,5 +1,16 @@
 # Architecture
 
+`core/jpeg_crop_signal.py` checks all fixed fit-pair crops through the bounded
+audited timing reader and re-verifies the cache afterward. No probe pixels,
+training, filtering, relabeling or automatic preprocessing changes occur;
+identical cover/stego crops are reported as partial signal coverage, not success.
+
+`core/jpeg_norm_audit.py` independently replays the frozen arms' singleton
+confusion counts and stable logistic losses with bounded hash-bound JSON and
+Python scalar math. It verifies matched controls without importing training or
+scoring services. This is metric replay, not an independent forward oracle or
+support/deployment gate; failed physical results remain visible.
+
 Fresh normalization learning is a separate opt-in research path:
 `core/srnet_groupnorm.py` owns the distinctly tagged 26-layer eight-group
 variant and bounded numeric-only snapshots; `srnet_norm_training.py` owns its

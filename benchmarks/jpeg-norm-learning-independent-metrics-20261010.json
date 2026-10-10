@@ -1,0 +1,161 @@
+{
+  "schema_version": "jpeg-bn-gn-scalar-audit-v1",
+  "status": "completed",
+  "bn_report_sha256": "5a8a12a62c05d62255ba1ab54337ce8ff303d59fcf48a14d2e9ec4cfe930248e",
+  "gn_report_sha256": "aabebb6ad6dc0bcd96ccc33435693442561829501b7591f94fcd5775f3cadc73",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "matched_initialization_schedule_optimizer": true,
+  "bn_cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    }
+  ],
+  "gn_cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "counts_exact": true,
+      "scalar_metrics_passed": true
+    }
+  ],
+  "arithmetic": "independent Python math stable logistic loss and confusion counts",
+  "independent_whole_model_oracle": false,
+  "accuracy_qualification": "unavailable",
+  "probe_previously_inspected": true,
+  "deployed": false,
+  "auditor_source_sha256": {
+    "core/jpeg_norm_audit.py": "6bd7a71d8b35ca2f1126b3f74132f2b214e1a67691519c69cc033187139b0baa"
+  }
+}

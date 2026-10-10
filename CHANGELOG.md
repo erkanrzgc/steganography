@@ -1,5 +1,14 @@
 # Changelog
 
+- Audit all 240 fixed train crop pairs without optimization or probe reads:
+  three ALASKA/UERD crops are identical to covers. Report partial input-signal
+  coverage; do not silently filter, relabel or claim this explains all failures.
+
+- Publish both completed fresh RTX 5060 BN/GN learning arms and independent
+  scalar replay of all ten cells per arm. Both remain at 50% balanced accuracy;
+  retain failed hypotheses, raw singleton logits and exact matched controls.
+  No primary detector change, blind accuracy claim or model deployment.
+
 - Add opt-in fresh BN-versus-GroupNorm research learning with matched schedules,
   initialization/optimizer controls, numeric-only private snapshots and distinct
   GN architecture. Keep legacy engines, verdicts and model contracts unchanged;

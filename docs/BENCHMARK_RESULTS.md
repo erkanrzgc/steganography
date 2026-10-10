@@ -113,6 +113,12 @@ coverage and limitations. Scores are not calibrated probabilities.
 
 ## Next measured development slices
 
+The [matched fresh BN/GN pilot](JPEG_NORM_LEARNING_RESULTS.md) completed two
+eight-epoch real-GPU fits with identical initialization, schedules and optimizer.
+All ten train-role inspected probe cells remain at 50% balanced accuracy;
+independent scalar replay passes, but neither model improves detection or is
+deployed. Next prove train-only real-pair learnability before scaling this recipe.
+
 The [numerical repair and operating-point follow-up](INFERENCE_PRECISION_RESULTS.md)
 passes export gates for opt-in derived checkpoints; historical failures above
 remain accurate for the originals. Threshold fitting on 94 covers and separate
