@@ -15,10 +15,15 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--archive", type=Path)
     parser.add_argument("--reserved-manifest", type=Path, action="append", required=True)
+    parser.add_argument("--esc-original-group-retry", action="store_true")
     args = parser.parse_args()
     try:
         result = acquire(
-            args.dataset, args.out, archive_path=args.archive, reserved_paths=args.reserved_manifest
+            args.dataset,
+            args.out,
+            archive_path=args.archive,
+            reserved_paths=args.reserved_manifest,
+            esc_group_retry=args.esc_original_group_retry,
         )
     except Exception as exc:
         parser.exit(

@@ -57,6 +57,8 @@ MAX_SECONDS = 2400
 MAX_FILE = 32 * 1024**2
 MAX_EXPANDED = 6 * 1024**3
 MAX_DOCUMENT = 1024**2
+ESC_GROUP_ARCHIVE_SHA = "661183a6f53ef04f12c9bd618fed0ddc1713280d6c94a5a5431e844ba6f6a21f"
+ESC_GROUP_CSV_SHA = "ca660da60191a97de289983a05821c9382d852a38a2ba8428980816b68cf6246"
 LEGACY_ORIGINAL_MANIFESTS = frozenset(
     {
         "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
@@ -169,7 +171,9 @@ def members(archive, config):
     return selected
 
 
-def esc_metadata(raw):
+def esc_metadata(raw, *, group_folds=False):
+    if group_folds and hashlib.sha256(raw).hexdigest() != ESC_GROUP_CSV_SHA:
+        raise ValueError("grouped ESC metadata checksum mismatch")
     rows = list(csv.DictReader(io.StringIO(raw.decode("utf-8"))))
     if len(rows) != 2000:
         raise ValueError("ESC metadata count")
@@ -190,13 +194,19 @@ def esc_metadata(raw):
             or row.get("esc10") not in ("True", "False")
             or not row.get("category")
             or filename in result
-            or groups.setdefault(source, fold) != fold
+            or (not group_folds and groups.setdefault(source, fold) != fold)
         ):
             raise ValueError("ESC source fragments cross folds or metadata invalid")
         result[filename] = row
         cells[(fold, int(target))] += 1
     if len(cells) != 250 or set(cells.values()) != {8}:
         raise ValueError("ESC fold/class balance mismatch")
+    if group_folds:
+        highest: dict[str, int] = {}
+        for row in rows:
+            highest[row["src_file"]] = max(int(row["fold"]), highest.get(row["src_file"], 0))
+        for row in result.values():
+            row["assigned_group_fold"] = str(highest[row["src_file"]])
     return result
 
 
@@ -234,9 +244,20 @@ def media_details(data, source):
     }
 
 
-def acquire(key: str, out: Path, *, reserved_paths: list[Path], archive_path: Path | None = None):
+def acquire(
+    key: str,
+    out: Path,
+    *,
+    reserved_paths: list[Path],
+    archive_path: Path | None = None,
+    esc_group_retry: bool = False,
+):
     if key not in SOURCES:
         raise ValueError("unsupported explicit media source")
+    if type(esc_group_retry) is not bool or (
+        esc_group_retry and (key != "esc50" or archive_path is None)
+    ):
+        raise ValueError("ESC original-group retry requires explicit cached ESC archive")
     if out.exists() or any(p.is_symlink() for p in (out, *out.parents)):
         raise FileExistsError("output exists or uses symlink")
     config = SOURCES[key]
@@ -291,12 +312,18 @@ def acquire(key: str, out: Path, *, reserved_paths: list[Path], archive_path: Pa
         binding = fetch(config["url"], archive_path, config["archive_limit"], deadline)
     else:
         archive_digest = hashlib.sha256()
-        with archive_path.open("rb") as archive_stream:
+        with (
+            archive_path.open("rb") as archive_stream,
+            (out / "archive.zip").open("xb") as retained,
+        ):
             while chunk := archive_stream.read(1024**2):
                 deadline()
                 archive_digest.update(chunk)
+                retained.write(chunk)
         binding = {"sha256": archive_digest.hexdigest(), "bytes": archive_path.stat().st_size}
     zip_preflight(archive_path, config["archive_limit"])
+    if esc_group_retry and binding["sha256"] != ESC_GROUP_ARCHIVE_SHA:
+        raise ValueError("grouped ESC archive checksum mismatch")
     rows = []
     encoded: set[str] = set()
     decoded: set[str] = set()
@@ -308,7 +335,11 @@ def acquire(key: str, out: Path, *, reserved_paths: list[Path], archive_path: Pa
             if not 0 < info.file_size <= MAX_DOCUMENT:
                 raise ValueError("ESC metadata size limit")
             csv_raw = archive.read(info)
-            metadata = esc_metadata(csv_raw)
+            metadata = (
+                esc_metadata(csv_raw, group_folds=True)
+                if esc_group_retry
+                else esc_metadata(csv_raw)
+            )
             if set(metadata) != set(selected):
                 raise ValueError("ESC metadata/media membership mismatch")
             with (out / "upstream-metadata.csv").open("xb") as metadata_stream:
@@ -329,7 +360,7 @@ def acquire(key: str, out: Path, *, reserved_paths: list[Path], archive_path: Pa
             split = "train" if key == "div2k-train" else "validation"
             if key == "esc50":
                 split = {"1": "train", "2": "train", "3": "train", "4": "validation", "5": "test"}[
-                    meta["fold"]
+                    meta.get("assigned_group_fold", meta["fold"])
                 ]
             row = {
                 "path": name,
@@ -354,6 +385,8 @@ def acquire(key: str, out: Path, *, reserved_paths: list[Path], archive_path: Pa
                     group_key="ESC-50:" + meta["src_file"],
                     esc10=meta["esc10"] == "True",
                 )
+                if esc_group_retry:
+                    row["assigned_group_fold"] = int(meta["assigned_group_fold"])
             with (out / name).open("xb") as stream:
                 stream.write(data)
             rows.append(row)
@@ -373,6 +406,9 @@ def acquire(key: str, out: Path, *, reserved_paths: list[Path], archive_path: Pa
         "upstream_sha256_verified": False,
         "originals": len(rows),
         "splits": dict(Counter(r["split"] for r in rows)),
+        "split_policy": "esc-original-group-max-fold-v1"
+        if esc_group_retry
+        else "fixed-upstream-roles-v1",
         "samples": rows,
         "total_media_bytes": sum(r["size"] for r in rows),
         "cover_cleanliness_verified": False,

@@ -1,0 +1,17 @@
+{
+  "schema_version": "media-acquisition-failure-v1",
+  "status": "failed",
+  "dataset": "esc50",
+  "source_commit": "33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6",
+  "implementation_sha256": "b273d24f3fe8403f15df4f780b5dd8daa782a130e2c5a17ed8de71ce7927e8c1",
+  "archive_sha256": "661183a6f53ef04f12c9bd618fed0ddc1713280d6c94a5a5431e844ba6f6a21f",
+  "archive_bytes": 645832161,
+  "metadata_sha256": "ca660da60191a97de289983a05821c9382d852a38a2ba8428980816b68cf6246",
+  "reason": "four native original-recording IDs span folds; two cross validation/test roles",
+  "cross_fold_groups": {"131943": [2, 3], "134049": [2, 3], "209698": [4, 5], "234879": [4, 5]},
+  "original_recording_groups": 1524,
+  "originals_written": 0,
+  "success_manifest_written": false,
+  "model_trained": false,
+  "accuracy_qualification": "unavailable"
+}
