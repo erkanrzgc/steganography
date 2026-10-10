@@ -1,4 +1,8 @@
-# Third-party tools in the `full` image
+# Third-party notices
+
+Original project code is covered by [MIT](LICENSE). This grant does not relicense
+the separately distributed tools, research dependencies, models, or datasets
+listed here. See [licensing boundaries](docs/LICENSING.md).
 
 ## Explicit WIFD dataset acquisition
 

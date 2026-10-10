@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security reporting
+    url: https://github.com/erkanrzgc/steganography/blob/main/SECURITY.md
+    about: Read the private vulnerability reporting policy before sharing security details.

@@ -1,280 +1,140 @@
 # steganography
 
-Local-first steganography and DFIR workbench for guided file analysis,
-encrypted evidence handling, payload hiding/recovery, and reproducible
-research.
+**Inspect files. Recover hidden payloads. Preserve the evidence.**
 
-`steganography` helps an analyst inspect suspicious files, preserve evidence in
-an encrypted local vault, hide and recover versioned payloads, and produce
-repeatable reports. Deterministic detectors, bounded optional tools, and
-optional signed ONNX models run on the machine you control.
+[![CI](https://github.com/erkanrzgc/steganography/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/erkanrzgc/steganography/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?style=flat-square)](pyproject.toml)
+[![Status](https://img.shields.io/badge/status-beta-64748B?style=flat-square)](docs/ROADMAP.md)
+[![License](https://img.shields.io/badge/license-MIT-0F766E?style=flat-square)](LICENSE)
 
-[Source diversity expansion](docs/BOWS_DIVERSITY_RESULTS.md) adds 1,001 audited
-BOWS2 originals (807 train / 194 validation), without merging reserved WIFD.
-These are acquired originals, not yet prepared/trained model inputs or an
-accuracy improvement; the existing failed JPEG model remains undeployed.
+A local-first steganography and digital-forensics toolkit with a guided terminal
+interface, bounded CTF recovery, encrypted evidence storage, and portable reports.
+Analysis uses native detectors and optional local tools—not cloud AI services.
 
-[Multi-carrier expansion](docs/DATASET_CATALOG.md) also adds 900 RGB DIV2K
-originals and 2,000 environmental ESC-50 WAVs. Original-recording grouping
-prevents observed upstream fold leakage. These are candidate covers, not
-newly trained detectors; [learning gaps by method](docs/METHOD_DATA_PLAN.md)
-remain explicit.
+[Getting started](docs/GETTING_STARTED.md) · [Documentation](docs/README.md) ·
+[Measured results](docs/BENCHMARK_RESULTS.md) · [Security](SECURITY.md)
 
-It does **not** prove that a file is clean, recover arbitrary unknown stego
-schemes, replace manual forensic validation, or make unencrypted hidden data
-confidential. No default operation makes a network request.
+## What you can do
 
-Measured detection is still experimental: the published real-image baselines
-failed, and no cross-source support gate has passed. See the
-[results by method](docs/BENCHMARK_RESULTS.md) and
-[dataset sources/licenses](docs/DATASET_CATALOG.md). Controlled CTF recovery
-and synthetic regression scores are not overall steganalysis accuracy.
+- **Inspect suspicious files:** structure, metadata, known markers, statistical
+  indicators, Unicode anomalies, and appended data, with explicit analyzer coverage.
+- **Work through CTF challenges:** bounded decoding, carving, extraction, and
+  recursive artifact inspection with provenance and user-supplied wordlists.
+- **Hide and recover payloads:** compatible payload v2/v3 workflows, optional
+  password encryption, compression, and error correction.
+- **Preserve evidence:** encrypted local vault, cases, SHA-256 identities,
+  custody events, and JSON, HTML, SARIF, or evidence-bundle exports.
 
-[Latest Q75 curriculum experiment](docs/JPEG_CURRICULUM_RESULTS.md): 48 original
-fit images, 80 epochs /7,680 own-GPU updates. Two small inspected development
-cells reach BA 56.25%; eight remain at 50%, with FPR 12.5–50%. This is not a
-reliable broad accuracy gain or a supported detector; weights were discarded.
+Use the CLI, guided TUI, or optional browser/API workspace. They share the same
+application services; optional executables are not required by the base package.
 
-[Verified data expansion](docs/DATA_EXPANSION_RESULTS.md) adds 4,000 ALASKA2
-JPEGs, 1,000 BOSS originals and 200 reserved WIFD images. Acquisition is not
-accuracy. [Complete JPEG preparation](docs/JPEG_SCALE_PREPARATION_RESULTS.md)
-now contains 7,380 train and 1,611 validation rows in bounded blocks. A separately
-preregistered five-epoch GPU pilot completed on 2026-10-10: 16,440 RTX 5060
-updates, followed by all 1,611 development-validation rows. All six detection
-cells failed (AUC .504–.520; balanced accuracy 50–52%). See the
-[full GPU learning results](docs/JPEG_EPOCH_LEARNING_RESULTS.md).
-[Full-block streaming readiness](docs/SRNET_STREAM_READINESS_RESULTS.md)
-now verifies every training row without a whole-corpus tensor allocation and
-preserves the numerical trainer behavior. Adequate real fitting and blind-source
-testing remain; engineering checks are not an accuracy improvement.
-An [opt-in Windows/WSL2 CUDA workflow](docs/WINDOWS_GPU_TRAINING.md) is now
-implemented. Its [first physical GPU preflight](docs/WSL_GPU_READINESS_RESULTS.md)
-completed on an RTX 5060 Laptop in WSL2: one generated optimizer update and
-same-weight CPU/GPU forward agreement. This is not real-data learning or
-accuracy; the Kali development VM remains CPU-only.
-The [fixed GPU timing gate](docs/CUDA_THROUGHPUT_RESULTS.md) now completes:
-its conservative five-epoch estimate exceeds the unchanged 30-minute job cap.
-That timing experiment did not start a real fit; timing does not establish detector accuracy.
-A [separately measured gradient-check optimization](docs/CUDA_GRADIENT_TIMING_RESULTS.md)
-reduces the observed estimate, but it still exceeds the unchanged job cap.
-The [on-device state-check measurement](docs/CUDA_STATE_TIMING_RESULTS.md),
-recovered without rerunning after an SSH interruption, also remains ineligible.
-[Physical disk-resume parity](docs/CUDA_EPOCH_RESUME_RESULTS.md) now passes;
-the separate [epoch-chain pilot](docs/JPEG_EPOCH_LEARNING_PROTOCOL.md) uses
-fresh source-bound jobs with unchanged per-job limits, not a bypass of the
-failed single-job gate. Training loss decreased, but detection remains near
-chance; no checkpoint is deployed or qualified for single-file detection.
+## Quick start
 
-The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
-balanced accuracy 50%), despite passing numerical replay. See the
-[complete pilot results](docs/SRNET_REAL_PILOT_RESULTS.md); no weights are deployed.
-
-[Train-only BN diagnosis](docs/SRNET_TRAIN_DIAGNOSTIC_RESULTS.md) now exposes
-normalization-mode sensitivity. Its in-sample paired results are not accuracy;
-single-file detection remains unqualified and original failures remain published.
-
-[Two-source/four-row real training](docs/SRNET_MULTIPAIR_REAL_RESULTS.md) completed:
-all six detection cells still fail (AUC .501–.507, balanced accuracy 50–52%).
-Overconfidence decreases but false alarms rise; no model is deployed.
-
-Research models use byte-derived spatial/DCT signals, not filenames or dataset
-identity as inputs. That does not prove generalization: compression/content
-can still encode source bias. [Source/context diagnostics](docs/GENERALIZATION_PROTOCOL.md)
-keep same-source development scores separate from independent-source evidence.
-The [current audit](docs/GENERALIZATION_RESULTS.md) finds no unseen validation
-sources for either research model; cross-source generalization is unproven.
-
-## Choose a task
-
-| Goal | Start here | What happens |
-|---|---|---|
-| Scan suspicious files | `steganography tui` → **Scan suspicious files** | Temporary multi-file analysis; nothing enters the vault unless you choose **Preserve in a case** |
-| Hide data | `steganography tui` → **Hide data** | Capacity check and payload v3 embedding; encryption is optional but strongly recommended |
-| Recover data | `steganography tui` → **Recover hidden data** | Automatic method detection, metadata preview, and no-overwrite extraction |
-| Manage evidence | `steganography tui` → **Manage evidence** | Encrypted vault, cases, evidence custody, persistent scans, and report export |
-
-## Three-minute start
-
-Python 3.11 or newer is required. The distribution name differs from the
-import and command names:
+Requires Python **3.11+**. Install the current source checkout in a virtual environment:
 
 ```bash
-python -m pip install steganography-dfir
+git clone https://github.com/erkanrzgc/steganography.git
+cd steganography
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install .
 steganography tui
 ```
 
-The TUI works without a local web server. It starts in Guided mode, uses a
-Balanced scan profile, supports keyboard navigation, and displays a warning
-below 80×24 terminals. Press `?` for help.
+On Windows, activate with `.\.venv\Scripts\Activate.ps1`. The package distribution
+is `steganography-dfir`; the command and Python import are `steganography`.
 
-For the browser workspace and API:
+For the optional browser workspace and API:
 
 ```bash
-python -m pip install 'steganography-dfir[api]'
+python -m pip install '.[api]'
 steganography ui
 ```
 
-Or run the hardened, non-root, read-only container:
+Keep the service on loopback unless you have configured authentication and
+deployment controls. See [Getting started](docs/GETTING_STARTED.md) for Docker,
+vault setup, and first-run details.
+
+## Common workflows
 
 ```bash
-docker compose up --build
-docker compose exec steganography sh -c 'cat /state/v2-api.key'
-```
-
-Open `http://127.0.0.1:8000`. See [Getting started](docs/GETTING_STARTED.md)
-for the complete first-run walkthrough.
-
-## Formats and available features
-
-| Format | Hide / recover | Built-in analysis |
-|---|---|---|
-| PNG, BMP | Sequential or keyed scattered RGB LSB | LSB statistics, bit planes, known payload markers, trailing data |
-| JPEG | EXIF, marker payload; experimental DCT | EXIF/structure, marker and trailing data; optional external tools/model |
-| TIFF | EXIF | Metadata and structure |
-| WAV PCM16 | Sample LSB | Audio LSB indicators and markers |
-| TXT, MD | Whitespace or zero-width encoding | Whitespace and Unicode anomaly analysis |
-| GIF, PDF | Checksummed structural trailer | File structure and trailing-data analysis |
-| ZIP and supported archives | — | Bounded member/path/compression anomaly inspection |
-
-Optional `zsteg`, Stegseek, ExifTool, JPEG DCT support, ONNX Runtime, and AI
-triage are reported as `unavailable` when absent. A low score is not proof of
-a clean file; the pipeline's [minimum coverage policy](docs/COVERAGE_POLICY.md)
-makes incomplete low-score scans inconclusive. Feature availability is not a validated detection
-support claim. See the full [detection guide](docs/DETECTION_GUIDE.md).
-
-## Steganography is not encryption
-
-Steganography conceals that a payload exists. Encryption protects the content
-when it is found. A passwordless payload is hidden but readable by anyone who
-can identify the method. Guided Hide requires explicit acknowledgement before
-creating one. Password-protected payload v3 uses Argon2id and AES-256-GCM;
-case evidence uses an Argon2id-unlocked XChaCha20 secretstream vault.
-
-## Reading verdicts
-
-| Verdict | Meaning |
-|---|---|
-| `confirmed` | A verified project marker was found or extraction succeeded |
-| `likely` | Strong evidence exists; validate with another method or extraction |
-| `suspicious` | One or more heuristics deserve review and may be false positives |
-| `no_indicators` | Supported detectors found nothing; this is not proof of absence |
-| `inconclusive` | Required analyzers were unavailable, unsupported, or failed |
-
-Scores are prioritization aids, not probabilities. Natural image noise,
-editing software, metadata, appended signatures, and unusual Unicode can
-produce false positives. Results therefore include analyzer names, evidence
-strength, locations when known, unavailable tooling, and suggested next steps.
-
-## Privacy and trust boundaries
-
-- Analysis, vault, Studio, reports, and models are local by default.
-- Passwords and placement keys remain in memory and are cleared from TUI fields;
-  they are never written to the database, audit chain, or logs.
-- AI is off by default. `--ai` sends signal text only. File upload additionally
-  requires `--allow-ai-file-upload` and server-side opt-in.
-- Models are not downloaded automatically. Installation requires a local,
-  Ed25519-signed manifest and matching SHA-256.
-- Optional external executables run with time, memory, descriptor, file-size,
-  and output bounds. The full container documents their separate licenses.
-
-The detailed boundaries are in the [threat model](docs/THREAT_MODEL.md),
-[model guide](docs/MODELS.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
-
-## CLI examples
-
-```bash
-# Existing compatible embed/extract defaults remain available.
-steganography embed --in secret.bin --carrier cover.png --out stego.png
-steganography extract --in stego.png --out recovered.bin --no-clobber
-
-# Encrypted payload v3 with compression and Reed–Solomon protection.
-steganography embed --payload-version 3 --compress --ecc-symbols 8 \
-  --password-file ./password --in secret.bin --carrier cover.wav --out stego.wav
-
-# One-file and directory analysis.
+# Inspect one file and produce a structured report.
 steganography analyze --in suspect.png --format json-v2 --profile balanced
-steganography scan --dir ./evidence --report sarif --out findings.sarif --jobs 4
 
-# Case workflow.
-steganography case --state-dir ./state create --name "Case 2026-014"
-steganography case --state-dir ./state add CASE_ID --file suspect.png --password-stdin
-steganography case --state-dir ./state scan CASE_ID --profile balanced --password-stdin
-steganography case --state-dir ./state export SCAN_ID --format html --out report.html
+# Run the bounded CTF playbook into a new output directory.
+steganography ctf challenge.png --out ./ctf-result --report bundle
+
+# Scan a directory for integration with security tooling.
+steganography scan --dir ./evidence --report sarif --out findings.sarif
+
+# Hide an encrypted payload; enter its password through stdin.
+steganography embed --in secret.bin --carrier cover.png --out stego.png \
+  --payload-version 3 --password-stdin --no-clobber
+
+# Recover without overwriting an existing file.
+steganography extract --in stego.png --out recovered.bin \
+  --password-stdin --no-clobber
 ```
 
-See the complete [CLI reference](docs/CLI.md) and [user guide](docs/USER_GUIDE.md).
+In the TUI, start with **Scan suspicious files**, **Hide data**, **Recover hidden
+data**, or **Manage evidence**. Press `?` for help. The [CLI reference](docs/CLI.md)
+covers limits, optional tools, cases, and advanced options.
 
-## Python API
+## Format coverage
 
-```python
-from pathlib import Path
+| Carrier | Hide / recover | Available analysis |
+|---|---|---|
+| PNG, BMP | RGB LSB, sequential or keyed | LSB statistics, bit planes, markers, trailing data |
+| JPEG | EXIF and marker payloads; experimental DCT | Metadata, structure, markers; optional DCT/tools |
+| TIFF | EXIF | Metadata and structure |
+| WAV PCM16 | Sample LSB | Sample-plane indicators and markers |
+| TXT, MD | Whitespace and zero-width encoding | Whitespace and Unicode anomalies |
+| GIF, PDF | Checksummed structural trailer | Structure and trailing data |
+| ZIP and supported archives | — | Bounded member and compression inspection |
 
-from core.pipeline import AnalysisPipeline
+This describes implemented features, **not validated detection accuracy**.
+Missing optional tools are reported as unavailable; missing required native
+coverage makes a low-score result inconclusive. See the
+[detection guide](docs/DETECTION_GUIDE.md) and [coverage policy](docs/COVERAGE_POLICY.md).
 
-report = AnalysisPipeline().analyze(Path("suspect.png"))
-print(report.verdict, report.confidence)
-for finding in report.findings:
-    print(finding.analyzer, finding.detail)
-```
+## Know what a result means
 
-The compatible `/v1` endpoints and authenticated `/v2` case, Studio, model,
-artifact, report, and audit APIs are documented in [API.md](docs/API.md).
+`confirmed` requires a verified project marker or successful extraction.
+`likely` and `suspicious` are evidence for further investigation.
+`no_indicators` is not proof that a file is clean; `inconclusive` means the
+required analysis could not be completed. Scores are not calibrated probabilities.
 
-## Development and release evidence
+**Real-world statistical detection remains experimental.** No research model has
+passed the project's cross-source support gates. Small development gains and
+synthetic regression results are not an overall accuracy score. Research code
+and failed experiments remain available for reproducibility, separate from
+advertised capabilities; no model is downloaded or deployed automatically.
 
-Real-data baselines, development experiments and controlled CTF recovery are
-reported separately in [measured results](docs/BENCHMARK_RESULTS.md). The
-[two-origin JPEG context experiment](docs/JPEG_CONTEXT_RESULTS.md) failed its
-detection targets and is not deployed; no method has qualified cross-source support.
-Its [residual/parity follow-up](docs/JPEG_RESIDUAL_RESULTS.md) lowers some false
-alarms but also loses recall; it remains an undeployed development experiment.
-The latest [nonlinear feature comparison](docs/JPEG_NONLINEAR_RESULTS.md)
-improves ALASKA ranking/FPR, but detection still fails; BOSS/UERD and calibration
-regress. It is research-only, not a deployed CNN or a global accuracy claim.
-The optional [JRM + FLD reference](docs/JRM_REFERENCE_RESULTS.md) raises ALASKA/
-UERD AUC to .698 and lowers FPR to 31.71%, but JUNIWARD recall regresses and
-BOSS remains weak. All cells fail detection targets; research-only, not deployed.
-The [two-way training-source exclusion test](docs/JRM_TRANSFER_RESULTS.md)
-finds near-chance cross-origin AUC (.52–.55); source generalization remains unproven.
-The [pixel-residual preparation](docs/PIXEL_RESIDUAL_PREPARATION_RESULTS.md)
-verifies all 3,750 raw inputs and bounded CNN building blocks.
-The [first real pixel-CNN trial](docs/PIXEL_CNN_TRAINING_RESULTS.md) completed
-three fixed fits: all 12 cells fail detection (AUC .502–.509, recall 0%).
-Independent numeric/ONNX replay passes; this model is not deployed.
-The [controlled residual-domain follow-up](docs/PIXEL_CNN_SCALE_RESULTS.md)
-also fails all cells (AUC .495–.509, zero recall); no accuracy gain claimed.
-Next [SRNet-style preparation](docs/SRNET_PREPARATION.md) adds architectural
-readiness only, not a trained detector or a reproduced published score.
-[Unrounded JPEG preparation](docs/JPEG_FLOAT256_RESULTS.md) now verifies all
-3,750 originals and 18 independent mathematical examples; accuracy still unavailable.
-[Paired training schedules](docs/SRNET_SAMPLING_RESULTS.md) also pass all 30
-scope/epoch integrity checks; no real SRNet fitting or accuracy gain yet.
-[Paired CPU fitting](docs/SRNET_TRAINING_ENGINE.md) is now available explicitly
-through `research srnet-fit`; generated tests do not establish real accuracy.
-`research srnet-evaluate` verifies complete validation/cache/model provenance
-and independent NumPy replay before publishing research predictions. See
-[evaluation contract](docs/SRNET_EVALUATION.md); no new real accuracy claim.
-[Isolated jobs and numerical readiness](docs/SRNET_NUMERICAL_READINESS.md)
-add hard fitting limits and independent NumPy/ONNX checks, not a detection score.
-Missing [required native coverage](docs/COVERAGE_POLICY.md) makes low-score
-results inconclusive; completed analysis is still not proof that a file is clean.
+Read [Known limitations](docs/LIMITATIONS.md), [Measured results](docs/BENCHMARK_RESULTS.md),
+and [Dataset sources and licenses](docs/DATASET_CATALOG.md) before relying on a verdict.
 
-```bash
-python -m pip install '.[dev,dct]'
-ruff check .
-mypy core modules report api steganography ui registry.py config.py cli.py
-pytest
-npm --prefix web test
-npm --prefix web run build
-python -m build
-python scripts/generate-sbom.py --out dist/steganography.cdx.json
-python scripts/check-identity.py dist
-```
+## Local by design
 
-The wheel is named `steganography_dfir-<version>-py3-none-any.whl`; the Python
-import and console command remain `steganography`. Research benchmark gates,
-payload compatibility, contribution rules, and disclosure policy are covered
-by [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), and
-[SECURITY.md](SECURITY.md).
+- Built-in analysis does not upload files or signals to cloud providers.
+- External tools run with resource limits; extracted artifacts are never executed.
+- Payload v3 supports Argon2id and AES-256-GCM. The evidence vault uses
+  Argon2id and XChaCha20 secretstream. **Hiding is not encryption.**
+- Model installation and dataset acquisition are explicit operations. The base
+  wheel contains no model weights or datasets.
 
-Licensed under the [MIT License](LICENSE).
+Third-party plug-ins and executables have their own trust boundaries. Review
+the [threat model](docs/THREAT_MODEL.md) before handling sensitive evidence.
+
+## Contribute
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, tests, and compatibility rules.
+Report vulnerabilities privately through [SECURITY.md](SECURITY.md).
+Changes and planned milestones are tracked in [CHANGELOG.md](CHANGELOG.md) and
+the [roadmap](docs/ROADMAP.md).
+
+## License
+
+Project code is licensed under [MIT](LICENSE). Optional tools, research
+dependencies, models, and datasets retain their own licenses and usage terms;
+the project's license does not relicense them. See
+[Third-party notices](THIRD_PARTY_NOTICES.md) and [Licensing boundaries](docs/LICENSING.md).
