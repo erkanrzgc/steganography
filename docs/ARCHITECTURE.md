@@ -6,6 +6,10 @@ oracle and all legacy contracts remain unchanged. `jpeg_learnability.py` owns
 fixed train-only pair selection, bounded optimization and in-sample scoring;
 its explicit module frontend binds sources/limits and persists reports only.
 No weights are exported or interpreted through the old checkpoint contract.
+Portable learnability evidence is independently replayed with two-class
+logsumexp in `tests/test_learnability_evidence.py`, separate from training's
+margin-based helper. Report/source hashes and both controls are verified; this
+is scalar accounting, not whole-model parity or deployment qualification.
 
 `core/jpeg_crop_signal.py` checks all fixed fit-pair crops through the bounded
 audited timing reader and re-verifies the cache afterward. No probe pixels,

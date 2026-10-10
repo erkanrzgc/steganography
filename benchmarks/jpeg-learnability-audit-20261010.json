@@ -1,0 +1,55 @@
+{
+  "schema_version": "jpeg-learnability-independent-metrics-v1",
+  "status": "completed",
+  "matched_initialization_and_exposure": true,
+  "independent_metadata_selection_verified": true,
+  "fit_rows": [
+    354,
+    355,
+    474,
+    475
+  ],
+  "fit_lineages": [
+    "17da85c1b631f66a8c30cb1aba7770a9e7727b13213cf36a6db3bc7e333a30b2",
+    "19f1673c2ccde7db44c9428a158d939f56c24f44e87bbf04ccb7b694eeab77ea"
+  ],
+  "probe_pixels_read": 0,
+  "validation_test_used": false,
+  "independent_whole_model_oracle": false,
+  "in_sample_only": true,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "auditor_source_sha256": {
+    "tests/test_learnability_evidence.py": "567994c5463922b2b7854a36ddb43fa96fdea196903b047ff3f46fbed7edffb5"
+  },
+  "legacy_report_sha256": "8ac58c5804b11f7cf56b469f3b07ebb62168f933fca4f89a797ec0f1d18db0ad",
+  "legacy": {
+    "initial": {
+      "correct": 2,
+      "cross_entropy": 1068.1060485839844,
+      "learnability_criterion_passed": false,
+      "scalar_metrics_passed": true
+    },
+    "final": {
+      "correct": 4,
+      "cross_entropy": 0.0007014005109317045,
+      "learnability_criterion_passed": true,
+      "scalar_metrics_passed": true
+    }
+  },
+  "reference_report_sha256": "4b1eee63fffea2cca23c4abf880748f69e70c04833496fa5cb66154862bc4fba",
+  "reference": {
+    "initial": {
+      "correct": 2,
+      "cross_entropy": 1074.9412841796875,
+      "learnability_criterion_passed": false,
+      "scalar_metrics_passed": true
+    },
+    "final": {
+      "correct": 4,
+      "cross_entropy": 0.000687588485209778,
+      "learnability_criterion_passed": true,
+      "scalar_metrics_passed": true
+    }
+  }
+}

@@ -1,5 +1,21 @@
 # Roadmap and status
 
+Verification for the learnability slice: complete disk-backed regression
+2,100 passed /one actual-CUDA skip on the CPU-only VM, 32 existing ONNX warnings.
+Three later portable-evidence tests pass separately with coverage append;
+combined total coverage 95.92%, new core services 100% /frontend 96%.
+Lint/types/dependencies, source-bound physical GPU reports and fresh model-free
+wheel/sdist checks pass. Local hardware skip is not claimed as GPU success.
+
+2026-10-10 physical real-pair control completed: legacy and reference-inspired
+SAME-pool/BN-eps arms both memorize the same four real Q75/JUNIWARD rows after
+1,024 updates, final singleton CE .0007014 /.0006876, 156.27s /202.11s. Independent
+scalar replay, initialization/exposure/source binding and singleton parity pass.
+This is in-sample learnability only; previous 50% probe scores remain unchanged.
+No probe/validation/test pixels, saved model, deployment or cloud cost. Next:
+separately frozen larger easy-to-hard curriculum and untouched-source evaluation.
+See `JPEG_LEARNABILITY_RESULTS.md` and `JPEG_RESEARCH_FINDINGS.md`.
+
 2026-10-10 research follow-up: frozen two-arm real-pair learnability protocol,
 same two Q75 BOWS/JUNIWARD fit originals /four rows, fresh matched initialization
 and 1,024 updates each. Legacy control versus separately tagged SAME-pool/

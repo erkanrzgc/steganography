@@ -1,5 +1,10 @@
 # Changelog
 
+- Publish both physical four-row JPEG learnability controls and independent
+  scalar/metadata evidence. Both pass memorization; broad detection improvement
+  remains unqualified. Preserve failed historical results and record the
+  primary-source curriculum research findings. No deployed detector change.
+
 - Add a separately tagged SAME-pool/BN-epsilon research variant and frozen
   four-row real-JPEG learnability control. Preserve original engines and the
   independent NumPy oracle. Report-only outputs, no model export/deployment;

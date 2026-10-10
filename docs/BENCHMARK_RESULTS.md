@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+[Real-pair JPEG learnability](JPEG_LEARNABILITY_RESULTS.md): both legacy and
+reference-inspired numerical arms memorize four train rows (4/4, CE .00070
+/.00069). Independent scalar replay passes; this is not held-out accuracy and
+does not replace the 50% historical probe results. No saved/deployed model.
+
 [Physical layerwise population-BN control](JPEG_POPULATION_BN_RESULTS.md): all
 ten selected historical-training probe cells remain at 50% balanced accuracy.
 Loss decreases but learned weights are unchanged; no held-out improvement or

@@ -1,0 +1,212 @@
+{
+  "schema_version": "jpeg-real-pair-learnability-v1",
+  "status": "completed",
+  "arm": "legacy",
+  "architecture": "srnet-gray12-cpu-v1",
+  "execution": {
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_gpu_bytes": 8518041600,
+    "torch_allocator_limit_bytes": 4294967296,
+    "host_memory_max_bytes": 8589934592,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "mixed_precision": false,
+    "deterministic_algorithms": true,
+    "cpu_fallback": false
+  },
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "fit_rows": [
+    354,
+    355,
+    474,
+    475
+  ],
+  "fit_originals": 2,
+  "source_group": "BOWS2",
+  "quality_factor": 75,
+  "method": "JUNIWARD",
+  "selected_crops_have_signal": true,
+  "initial_parameter_sha256": "9f9112bc42e8f4f753b6afb716f62c9f82f97620ddd78169899812ef8986a849",
+  "learned_parameter_sha256": "05e5818876cab3e4d68e376d43bafb5b004219b4e456f3e4f102c8e69cd8c671",
+  "seed": 20261010,
+  "epochs": 8,
+  "optimizer_updates": 1024,
+  "schedule_sha256": "3a489ac1a5f1088df25509dbfaa0c7bf826b29645d991ee68d9f8469df12d137",
+  "epoch_losses": [
+    {
+      "epoch": 0,
+      "updates": 128,
+      "mean_pair_loss": 0.7144613061100245
+    },
+    {
+      "epoch": 1,
+      "updates": 128,
+      "mean_pair_loss": 0.6784004364162683
+    },
+    {
+      "epoch": 2,
+      "updates": 128,
+      "mean_pair_loss": 0.11798319920853828
+    },
+    {
+      "epoch": 3,
+      "updates": 128,
+      "mean_pair_loss": 0.0039387650995195145
+    },
+    {
+      "epoch": 4,
+      "updates": 128,
+      "mean_pair_loss": 0.0019996389437437756
+    },
+    {
+      "epoch": 5,
+      "updates": 128,
+      "mean_pair_loss": 0.0012943505971634295
+    },
+    {
+      "epoch": 6,
+      "updates": 128,
+      "mean_pair_loss": 0.0009373172238156258
+    },
+    {
+      "epoch": 7,
+      "updates": 128,
+      "mean_pair_loss": 0.0007247074681799859
+    }
+  ],
+  "initial": {
+    "rows": [
+      {
+        "position": 0,
+        "label": 0,
+        "logits": [
+          -1544.439697265625,
+          -3450.577392578125
+        ]
+      },
+      {
+        "position": 1,
+        "label": 1,
+        "logits": [
+          -1544.295654296875,
+          -3450.584716796875
+        ]
+      },
+      {
+        "position": 2,
+        "label": 0,
+        "logits": [
+          -1950.8946533203125,
+          -4316.9970703125
+        ]
+      },
+      {
+        "position": 3,
+        "label": 1,
+        "logits": [
+          -1950.3878173828125,
+          -4316.52294921875
+        ]
+      }
+    ],
+    "correct": 2,
+    "cross_entropy": 1068.1060485839844,
+    "learnability_criterion_passed": false
+  },
+  "final": {
+    "rows": [
+      {
+        "position": 0,
+        "label": 0,
+        "logits": [
+          3.705601215362549,
+          -3.2567763328552246
+        ]
+      },
+      {
+        "position": 1,
+        "label": 1,
+        "logits": [
+          -3.8624637126922607,
+          3.3902640342712402
+        ]
+      },
+      {
+        "position": 2,
+        "label": 0,
+        "logits": [
+          3.9134960174560547,
+          -3.4376959800720215
+        ]
+      },
+      {
+        "position": 3,
+        "label": 1,
+        "logits": [
+          -4.033759593963623,
+          3.5478756427764893
+        ]
+      }
+    ],
+    "correct": 4,
+    "cross_entropy": 0.0007014005109317557,
+    "learnability_criterion_passed": true
+  },
+  "singleton_batch_parity": {
+    "initial": true,
+    "final": true,
+    "atol": 0.0001,
+    "rtol": 0.0001
+  },
+  "seconds": 156.26554571400084,
+  "process_peak_gpu_allocated_bytes": 1058944512,
+  "process_peak_gpu_reserved_bytes": 1319108608,
+  "real_model_trained": true,
+  "in_sample_only": true,
+  "probe_pixels_read": 0,
+  "validation_test_used": false,
+  "model_discarded": true,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b",
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "core/jpeg_timing_probe.py": "f1f78bc9fc6b279003637ad116f42cfcb4a1e09c1b7fb9c139333ecb01bd6777",
+    "core/srnet_diversity_sampling.py": "96c00eaf608fd3cb1192d14b8a5a2ac07faaad8e30e124bf6001c803373d1df3",
+    "steganography/research_jpeg_timing_probe.py": "b6dd2c95a9ca44b03d8d85d757122915cc71bd805a99c1e86206bc689e39c8a3",
+    "core/srnet_population_bn.py": "99ca45b4ece2736dbf981648db274bf259d5c832d1dda5d23c9084d8a7b581a8",
+    "core/jpeg_population_control.py": "83f9d21e38d36c19a90a1c9724c3ed407d382d7a4552170c54aba9ebb66435ba",
+    "steganography/research_jpeg_population_bn.py": "742ec92b579c98a4a893a978bb203c5ff43703b224d4d12c77b5f2f065921f19",
+    "docs/JPEG_POPULATION_BN_PROTOCOL.md": "1136f45698bf55c57aed8fcf8e3945d6a8e3b8c89696a0c12aaeb12e33bf9c39",
+    "core/srnet_groupnorm.py": "7bc350808062a2eb5dd6c3c6c289228f9eef97efa00ca1766b56fa89b522f1a4",
+    "core/srnet_norm_training.py": "b44b7dab5a2cb6fb3e63cc0dd9eb581d629988e064d41762b87937cf30b4b6db",
+    "core/jpeg_norm_learning.py": "3d5d91bbf597c90c06057294609c184afc416613fb17fb4e12f3ffd63460e443",
+    "steganography/research_jpeg_norm_learning.py": "d06540ee5dc074087258e256fd7d6ac4b86429eda517cbb40cf01eba9bfc5aab",
+    "docs/JPEG_NORM_LEARNING_PROTOCOL.md": "7c9f170805f0750b625e5cc026fbb0165ea92f9add31991295ea4eecfeb69658",
+    "core/srnet_samepool.py": "eeaf4b98b5dfa41a2a500812c107e33e76c16be50c2e5c330e8d74a74bf0089b",
+    "core/jpeg_learnability.py": "a691e05b7b6fffa48857bc56c55441a38e26f750cf0125aa47ec9f98cf9f45c0",
+    "steganography/research_jpeg_learnability.py": "14876735448e4f8cb134e58f64a6970a50ac0a09cfcc78dacc3f98e910337078",
+    "docs/JPEG_LEARNABILITY_PROTOCOL.md": "86926fff75edffc780e29ef821574a169366cbadd3009d794dc35342434ed06f"
+  }
+}

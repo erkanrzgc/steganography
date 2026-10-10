@@ -5,6 +5,10 @@ optimization: all four final singleton labels correct and CE <.2 is a learning
 sanity criterion only, never held-out accuracy. Select pairs by original hash,
 verify input differences, retain failed final epochs and unchanged old results.
 Reference-inspired numerics must not be called full original-SRNet parity.
+The completed four-row physical results and independent scalar replay are in
+`JPEG_LEARNABILITY_RESULTS.md`. Both controls pass memorization; historical
+inspected-probe failures remain unchanged. No confidence intervals or support
+claim can be inferred from two fit originals and one seed.
 
 The completed physical normalization learning results live in
 `JPEG_NORM_LEARNING_RESULTS.md`: both arms fail detection improvement, all ten
