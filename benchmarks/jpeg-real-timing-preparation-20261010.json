@@ -1,0 +1,29 @@
+{
+  "schema_version": "jpeg-real-timing-preparation-v1",
+  "status": "completed",
+  "protocol_commit": "889ac77",
+  "protocol_sha256": "a96560070d08a3e9de34ccac1a8d9e5124d71fd48f1337b255af91ee396bcf96",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "independent_audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "execution_source_sha256": {
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "steganography/research_jpeg_timing.py": "1cdae109a342776625c7a712965226fd474ba842c8291032c28db86e0857d1d5",
+    "steganography/research_jpeg_corpus.py": "b83f83f5907b2c54888dc661d4c63a0ef94f7f60be4b2a7da6e83d61c023df61"
+  },
+  "originals": 96,
+  "jpeg_rows": 480,
+  "rows_per_source": {"ALASKA2": 96, "BOSSbase-1.01": 192, "BOWS2": 192},
+  "tensor_bytes": 125829120,
+  "tensor_sha256": "49a198ac18e8d5fc89eb1e0b2311536fcecf53b9fdf7b9d4f909ed0e2dc6e6aa",
+  "timing_kit_epoch_updates": 192,
+  "prospective_full_corpus_epoch_updates": 4932,
+  "ordered_batch_sha256": "1c25b8185593b0763cc65c57819ce80b91fd05c60811313151d4d48ccf64880c",
+  "validation_pixels_read": 0,
+  "model_trained": false,
+  "accuracy_qualification": "unavailable",
+  "GPU_timing": "unavailable",
+  "cloud_resources_created": 0,
+  "cloud_upload_started": false,
+  "deployed": false,
+  "redistribution": "private local use only; source licenses unchanged"
+}

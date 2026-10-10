@@ -1,5 +1,15 @@
 # Architecture
 
+`core/jpeg_timing.py` prepares a distinct, private train-only timing kit from
+checksum-bound ALASKA/BOSS blocks and audited BOWS originals. The explicit
+`research_jpeg_timing` frontend supplies the isolated fixed-recipe simulation
+worker; source provenance remains BOWS2. The shared service owns selection,
+bounded bytes, exclusive outputs, decoding and three-source scheduling. This
+new schema is not accepted as a historical two-source training index. The
+independent SciPy audit imports neither service nor sampler. Full BOWS training
+preparation and a new physical timing reader/worker remain pending. See
+`JPEG_REAL_TIMING_RESULTS.md`.
+
 `core/media_dataset.py` is an explicit fixed-origin streaming acquisition service
 for DIV2K PNG and pinned ESC-50 PCM; it is never called by installation/analysis.
 Bound ZIP-directory allocation before parsing, retain archive/usage/CSV evidence,

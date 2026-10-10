@@ -29,11 +29,15 @@ SEED = 20261006
 MAX_WORKER_OUTPUT = 256 * 1024
 
 
-def generate_lineage(data: bytes, out: Path, lineage: str, split: str):
+def generate_lineage(
+    data: bytes, out: Path, lineage: str, split: str, *, source_group: str = "BOSSbase-1.01"
+):
     """Trusted worker routine: fixed recipes, coefficient round-trip validation."""
     import conseal
     import jpeglib
 
+    if source_group not in {"BOSSbase-1.01", "BOWS2"}:
+        raise ResearchManifestError("unsupported grayscale original source")
     if not 0 < len(data) <= 1024 * 1024:
         raise ResearchManifestError("bounded PGM input required")
     if hashlib.sha256(data).hexdigest() != lineage or split not in {"train", "validation"}:
@@ -103,7 +107,7 @@ def generate_lineage(data: bytes, out: Path, lineage: str, split: str):
                         "split": split,
                         "label": "cover" if method is None else "stego",
                         "method": method,
-                        "source_group": "BOSSbase-1.01",
+                        "source_group": source_group,
                         "format": "JPEG",
                         "quality_factor": quality,
                         "camera": None,

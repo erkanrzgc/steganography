@@ -1,5 +1,13 @@
 # Benchmark protocol
 
+`benchmarks/jpeg-real-timing-protocol-20261010.json` freezes a private 96-original,
+480-JPEG train-only timing kit with complete source/method families and input
+audit hashes. See `JPEG_REAL_TIMING_RESULTS.md`. Its independent complete
+reconstruction audit is preprocessing evidence, not detection accuracy or a
+GPU cost measurement. Keep 192 kit updates separate from 4,932 prospective
+full-corpus updates. A physical timing worker, fresh live pricing and explicit
+spending cap must precede any paid full-run estimate or cloud creation.
+
 `MEDIA_DIVERSITY_PROTOCOL.md` / `MEDIA_DIVERSITY_LEGACY_RETRY.md` freeze explicit
 new RGB-image/environmental-audio acquisition with full prior manifest binding.
 The first metadata-schema assumption failed before downloads. The subsequent

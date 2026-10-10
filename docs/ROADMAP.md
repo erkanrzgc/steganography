@@ -1,5 +1,17 @@
 # Roadmap and status
 
+2026-10-10 real-data timing kit: 32 train originals each from ALASKA/BOSS/BOWS,
+480 JPEGs and a 120 MiB unrounded float cache prepared privately. All 480
+independent SciPy IDCT checks and 128 BOWS coefficient pairs pass. Initial
+auditor carrier-bound mistake is retained. Kit epoch 192 updates is distinct
+from prospective full epoch 4,932; no validation pixels, cloud spending or
+new fit/accuracy. Next: bounded physical real-I/O timing worker and measured
+cost gate, then separately controlled learning. See `JPEG_REAL_TIMING_RESULTS.md`.
+Final application regression: 1,932 passed / one actual-CUDA skip, total coverage
+95.77%; 64 focused tests and three later portable-evidence tests pass separately.
+New service/frontend coverage 99%/98%; lint/types, model-free builds and
+whitespace checks pass. Python 3.11 only, no physical cloud GPU verified.
+
 2026-10-10 multi-carrier diversity: 900 DIV2K RGB originals (800 train / 100
 development validation) and 2,000 ESC-50 environmental WAVs (1,200 train /398
 validation /402 test) acquired. Independent complete audit reread all new media

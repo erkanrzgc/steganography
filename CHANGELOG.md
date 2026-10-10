@@ -1,5 +1,11 @@
 # Changelog
 
+- Prepare a checksum-bound, private three-origin real JPEG timing kit: 96 train
+  originals, 480 JPEGs, 120 MiB unrounded float cache. Add bounded source-explicit
+  BOWS simulation, independent complete SciPy IDCT/coefficient audit and portable
+  failure evidence. Preserve legacy training contracts; no cloud spending,
+  measured GPU cost, full three-source fit or improved accuracy claim.
+
 - Add explicit bounded DIV2K/ESC-50 research acquisition and an independent
   whole-original audit. Preserve the failed legacy-manifest assumption and
   native ESC fold leakage. Add a checksum-pinned cached whole-recording split

@@ -1,0 +1,9 @@
+{
+  "schema_version": "jpeg-real-timing-audit-failure-v1",
+  "status": "failed",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "reason": "Auditor incorrectly applied the isolated generated-JPEG 256 KiB bound to native ALASKA JPEGs; actual shared native carrier limit is 2 MiB.",
+  "resolution": "Keep dataset and production limits unchanged; independently audit native JPEGs under the existing 2 MiB bound.",
+  "model_trained": false,
+  "accuracy_qualification": "unavailable"
+}
