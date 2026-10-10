@@ -57,6 +57,12 @@ MAX_SECONDS = 2400
 MAX_FILE = 32 * 1024**2
 MAX_EXPANDED = 6 * 1024**3
 MAX_DOCUMENT = 1024**2
+LEGACY_ORIGINAL_MANIFESTS = frozenset(
+    {
+        "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+        "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    }
+)
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -250,16 +256,23 @@ def acquire(key: str, out: Path, *, reserved_paths: list[Path], archive_path: Pa
         if len(prior_raw) > 8 * MAX_DOCUMENT:
             raise ValueError("prior manifest byte limit")
         prior = json.loads(prior_raw)
+        prior_digest = hashlib.sha256(prior_raw).hexdigest()
         samples = prior.get("samples") if isinstance(prior, dict) else None
         if not isinstance(samples, list) or not 1 <= len(samples) <= 15000:
             raise ValueError("prior manifest sample limit")
         for sample in samples:
             for field in ("sha256", "lineage"):
                 digest = sample.get(field) if isinstance(sample, dict) else None
+                if (
+                    field == "lineage"
+                    and digest is None
+                    and prior_digest in LEGACY_ORIGINAL_MANIFESTS
+                ):
+                    digest = sample.get("sha256")
                 if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
                     raise ValueError("invalid prior original identity")
                 reserved.add(digest)
-        prior_bindings.append(hashlib.sha256(prior_raw).hexdigest())
+        prior_bindings.append(prior_digest)
 
     if archive_path is not None:
         zip_preflight(archive_path, config["archive_limit"])

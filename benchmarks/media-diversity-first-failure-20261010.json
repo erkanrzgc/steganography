@@ -1,0 +1,12 @@
+{
+  "schema_version": "media-acquisition-failure-v1",
+  "status": "failed",
+  "datasets": ["div2k-train", "div2k-validation", "esc50"],
+  "protocol_sha256": "e4b15841887761c974962e9edf07af33c38a3c4be2e4b9ee00f2ab351ac07c83",
+  "implementation_sha256": "23fb890939ce78b398ff2f27a50ca0b36f37d59b0f8240cfd3600d248e18729b",
+  "reason": "incorrect assumption: frozen BOSS pilot and Kodak original manifests omit lineage",
+  "output_directories_created": false,
+  "media_download_started": false,
+  "model_trained": false,
+  "accuracy_qualification": "unavailable"
+}

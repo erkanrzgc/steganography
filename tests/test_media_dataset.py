@@ -250,6 +250,24 @@ def test_media_decode_limits_and_pcm_integrity():
             service.media_details(data, "DIV2K")
 
 
+def test_only_exact_pinned_legacy_manifests_can_omit_original_lineage(
+    prepared, tmp_path, monkeypatch
+):
+    prior, path = prepared
+    prior.write_text(json.dumps({"samples": [{"sha256": "a" * 64}]}))
+    with pytest.raises(ValueError, match="prior original identity"):
+        service.acquire(
+            "div2k-train", tmp_path / "rejected", reserved_paths=[prior], archive_path=path
+        )
+    monkeypatch.setattr(
+        service, "LEGACY_ORIGINAL_MANIFESTS", {hashlib.sha256(prior.read_bytes()).hexdigest()}
+    )
+    result = service.acquire(
+        "div2k-train", tmp_path / "accepted", reserved_paths=[prior], archive_path=path
+    )
+    assert result["originals"] == 2
+
+
 class Response(io.BytesIO):
     status = 200
     headers = {}
