@@ -1,5 +1,10 @@
 # Changelog
 
+- Add opt-in fresh BN-versus-GroupNorm research learning with matched schedules,
+  initialization/optimizer controls, numeric-only private snapshots and distinct
+  GN architecture. Keep legacy engines, verdicts and model contracts unchanged;
+  fixed train-role development probes do not qualify detector accuracy.
+
 - Publish the completed RTX 5060 layerwise population-BN intervention: all ten
   train-scope probe cells remain at 50% balanced accuracy despite lower loss.
   Singleton parity passes and learned weights remain unchanged. Do not treat

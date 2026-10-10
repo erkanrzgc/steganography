@@ -1,5 +1,13 @@
 # Roadmap and status
 
+2026-10-10 fresh BN/GN pilot implemented and frozen before optimizer execution:
+two arms, 360 fit /120 previously inspected train-role probe rows, eight fixed
+144-update epochs, same initial learned weights/ordered exposure. The GN variant
+has a separate architecture/numeric contract; BN still uses the original engine.
+Generated Adamax BN-adapter equivalence and independent NumPy GN checks pass.
+No real fit/accuracy claim at implementation commit. Own GPU only, no rental.
+See `JPEG_NORM_LEARNING_PROTOCOL.md`.
+
 2026-10-10 physical layerwise population-BN control completed on the user's
 RTX 5060 in 60.27s, zero optimizer updates. Calibration 360 rows /72 originals;
 probe 120 rows /24 disjoint historical training originals. All ten cells still

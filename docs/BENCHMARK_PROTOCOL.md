@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`JPEG_NORM_LEARNING_PROTOCOL.md` freezes a fresh matched BN-versus-eight-group-GN
+learning pilot before real optimization: same seed, initialization and ordered
+fit exposure, eight epochs/final evaluation only, no probe-driven selection.
+Its original-disjoint probe is already inspected train-role development data,
+not blind validation or support qualification. Keep failed arms and any numeric
+parity failures visible; no automatic deployment or cap relaxation.
+
 `JPEG_POPULATION_BN_PROTOCOL.md` freezes a sequential layerwise train-only
 population-statistics intervention on an immutable clone of the five-epoch
 model. Original groups split calibration/probe within historical training;

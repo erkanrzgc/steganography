@@ -1,5 +1,14 @@
 # Architecture
 
+Fresh normalization learning is a separate opt-in research path:
+`core/srnet_groupnorm.py` owns the distinctly tagged 26-layer eight-group
+variant and bounded numeric-only snapshots; `srnet_norm_training.py` owns its
+matched optimizer adapter (BN delegates to the unchanged legacy engine).
+`jpeg_norm_learning.py` binds fit/probe original groups, full schedules and
+fixed-final-epoch singleton evaluation. Its module CLI only wires explicit
+inputs, source checks, process limits and private persistence. No legacy
+architecture, source-pinned plan, API, primary verdict or automatic model changes.
+
 The explicit research population-BN control lives in `core/srnet_population_bn.py`
 and `core/jpeg_population_control.py`; its module CLI is only Linux resource
 limits, input wiring and private numeric/report persistence. It clones the
