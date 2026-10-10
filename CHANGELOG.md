@@ -1,5 +1,10 @@
 # Changelog
 
+- Add a separately tagged SAME-pool/BN-epsilon research variant and frozen
+  four-row real-JPEG learnability control. Preserve original engines and the
+  independent NumPy oracle. Report-only outputs, no model export/deployment;
+  memorization success cannot qualify real-world accuracy.
+
 - Audit all 240 fixed train crop pairs without optimization or probe reads:
   three ALASKA/UERD crops are identical to covers. Report partial input-signal
   coverage; do not silently filter, relabel or claim this explains all failures.

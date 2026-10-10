@@ -1,5 +1,13 @@
 # Roadmap and status
 
+2026-10-10 research follow-up: frozen two-arm real-pair learnability protocol,
+same two Q75 BOWS/JUNIWARD fit originals /four rows, fresh matched initialization
+and 1,024 updates each. Legacy control versus separately tagged SAME-pool/
+BN-eps numerics; this is not full upstream reproduction. Generated independent
+pooling/BN equations and security tests pass. Real optimization pending at this
+implementation checkpoint. No probe/validation/test, deployment or cloud job.
+See `JPEG_LEARNABILITY_PROTOCOL.md`.
+
 Verification for the fresh normalization slice: full disk-backed regression
 2,044 passed /one actual-CUDA skip on the CPU-only VM, 32 existing ONNX warnings.
 31 later-added metric/crop/portable-evidence tests run separately with coverage

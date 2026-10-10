@@ -1,5 +1,12 @@
 # Architecture
 
+The distinct `core/srnet_samepool.py` research variant changes only BN epsilon
+and SAME average-pool geometry. The existing `srnet_reference.py` NumPy forward
+oracle and all legacy contracts remain unchanged. `jpeg_learnability.py` owns
+fixed train-only pair selection, bounded optimization and in-sample scoring;
+its explicit module frontend binds sources/limits and persists reports only.
+No weights are exported or interpreted through the old checkpoint contract.
+
 `core/jpeg_crop_signal.py` checks all fixed fit-pair crops through the bounded
 audited timing reader and re-verifies the cache afterward. No probe pixels,
 training, filtering, relabeling or automatic preprocessing changes occur;
