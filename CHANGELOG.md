@@ -1,5 +1,10 @@
 # Changelog
 
+- Record the fixed final-model train-only normalization comparison: 48 pairs,
+  unchanged model/BN state, no validation or fitting. Publish bound execution
+  source and portable aggregates; paired-mode scores are not detector accuracy
+  and do not replace failed development results.
+
 - Publish the complete preregistered five-epoch RTX 5060 ALASKA+BOSS fit and
   fixed development validation: 16,440 updates, 1,611 scored rows, nine passing
   independent forward audits, all six detection cells failed near chance.

@@ -1,5 +1,10 @@
 # Architecture
 
+The final epoch model's read-only normalization diagnosis calls the existing
+shared `core.srnet_diagnostics.paired_probe`, on train-only bounded blocks.
+Its paired batch-statistics mode is diagnostic-only, never product inference,
+calibration or deployed detection. See `JPEG_EPOCH_DIAGNOSTIC_RESULTS.md`.
+
 `core/srnet_block_validation.py` owns bounded validation pixels and immutable
 stored-BN inference/independent float64 replay. Its reader is deliberately not
 a `TrainBlocks` subclass and cannot enter the fitting service. The explicit

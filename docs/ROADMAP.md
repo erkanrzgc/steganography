@@ -10,9 +10,12 @@ passes 1,793 tests / one live-CUDA skip, coverage 95.61%. Complete development-v
 support is implemented separately with fixed stored-BN/threshold and independent
 forward audit; 26 generated reader/provenance/limit tests pass (new code >=95%),
 including real Torch versus independent NumPy replay of all nine fixture rows.
-No qualified accuracy gain or supported-cell qualification. Next: bounded
-train-only normalization diagnosis, then a separately frozen learning
-intervention; never choose thresholds/epochs from these validation failures.
+No qualified accuracy gain or supported-cell qualification. The bounded
+48-pair train-only normalization diagnosis also completed, unchanged model
+state and no validation access; substantial mode sensitivity is not a detector
+fix. See `JPEG_EPOCH_DIAGNOSTIC_RESULTS.md`. Next: a separately frozen
+single-file-compatible normalization intervention with an unchanged control;
+never choose thresholds/epochs from these validation failures. No fit running.
 
 Historical implementation status (superseded by the completed pilot above):
 explicit isolated epoch jobs implemented with full source/protocol/schedule

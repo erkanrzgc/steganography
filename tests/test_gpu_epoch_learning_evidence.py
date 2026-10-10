@@ -61,3 +61,28 @@ def test_original_development_scores_preserve_failed_detection_gates():
     assert not report["threshold_tuned"] and not report["normalization_refreshed"]
     assert not report["cross_source_heldout"] and not report["deployed"]
     assert report["qualification"] == "development_only_not_supported"
+
+
+def test_train_only_diagnosis_is_immutable_not_detector_accuracy():
+    report = pinned(
+        "jpeg-epoch-train-normalization-summary-20261010.json",
+        "590a5b315a8ff10df349d87694c61ac5a935bc165843951b2f22a4b1a3374d6d",
+    )
+    protocol = ROOT / "docs/JPEG_EPOCH_DIAGNOSTIC_PROTOCOL.md"
+    assert hashlib.sha256(protocol.read_bytes()).hexdigest() == report["protocol_sha256"]
+    script = ROOT / "benchmarks/jpeg-epoch-diagnostic-script-20261010.py.txt"
+    assert hashlib.sha256(script.read_bytes()).hexdigest() == report["script_sha256"]
+    assert report["raw_diagnostic_sha256"] == (
+        "8675c3fe838a2f68c4bb7499d12d55f8c0394d0c43dcc9db1e550f3c36f8ce5a"
+    )
+    assert report["status"] == "completed" and report["paired_records"] == 48
+    assert report["all_model_states_unchanged"] and report["known_cover_pair_required"]
+    assert report["optimizer_updates"] == 0
+    assert not report["validation_used"] and not report["normalization_refreshed"]
+    assert not report["deployed"] and report["accuracy_qualification"] == "unavailable"
+    assert report["plan_sha256"] == PLAN_SHA and report["final_card_sha256"] == HASHES[-1]
+    assert 0 < report["seconds"] < 180
+    assert report["host_memory_max_bytes"] == 8 * 1024**3
+    assert len(report["cells"]) == 6 and all(c["pairs"] == 8 for c in report["cells"])
+    assert sum(c["native"]["correct_rows"] for c in report["cells"]) == 46
+    assert sum(c["batch_statistics"]["correct_rows"] for c in report["cells"]) == 76

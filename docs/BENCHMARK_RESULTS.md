@@ -1,5 +1,11 @@
 # Measured results, not a global accuracy score
 
+[Complete five-epoch RTX 5060 fit](JPEG_EPOCH_LEARNING_RESULTS.md): 16,440 real
+updates and all 1,611 lineage-disjoint development rows; six of six detection
+cells fail (AUC .504–.520, balanced accuracy 50–52%). No qualified gain/deployment.
+[Final-model train-only diagnosis](JPEG_EPOCH_DIAGNOSTIC_RESULTS.md) establishes
+normalization-mode sensitivity, not a detector fix or held-out accuracy.
+
 [Tiny train-only SRNet sanity](SRNET_TINY_SANITY_RESULTS.md): 50 epochs/400 updates
 complete, selected-row balanced accuracy .50; two of three learning goals fail.
 Input differences and independent numeric replay verified; not accuracy evidence.

@@ -1,0 +1,153 @@
+{
+  "schema_version": "srnet-epoch-train-normalization-summary-v1",
+  "status": "completed",
+  "plan_sha256": "13ea2f8d97e382e5a4c1ed2df8d84aeebe70c656948219dfed2407adeaf0ed90",
+  "final_card_sha256": "b48686d96f9302b95380a830763c550f238ba9f378878ac4ccf5c6ad2b1e22c7",
+  "model_sha256": "71f6f5fe8730944c38d406362bf26e382f348f302b03c7f30809991db73e44b6",
+  "protocol_sha256": "2fb346e1c1f5894fab7ecf2639f3cfb7a57f400833e5c327072758f5a9c1a70a",
+  "script_sha256": "999ac0fea03c35beba42f64bafd421c6f21159406816adb49c7243efe5f2592a",
+  "diagnostic_core_sha256": "17e372802cfa633fa9823c6b950ed0b43fa4e3b87ec1f62b0191f7d6db196d27",
+  "training_source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "core/srnet_resume_probe.py": "5e9673af920969787dab1ef2eca1cd1c5467d3b8a9120fdc3543ccc6ea36e4f0",
+    "steganography/research_srnet_epochs.py": "b44db82a69ae2565cd0fc00f37410020deb61142066280b26740f08215325c94"
+  },
+  "selection": "epoch0-seed20261008-first8-unique-stego-per-context",
+  "evaluation_device": "cpu",
+  "threads": 2,
+  "host_memory_max_bytes": 8589934592,
+  "validation_used": false,
+  "optimizer_updates": 0,
+  "normalization_refreshed": false,
+  "known_cover_pair_required": true,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "seconds": 70.33485234499676,
+  "raw_diagnostic_sha256": "8675c3fe838a2f68c4bb7499d12d55f8c0394d0c43dcc9db1e550f3c36f8ce5a",
+  "original_detail_location": "private_job_sandbox_not_packaged",
+  "paired_records": 48,
+  "all_model_states_unchanged": true,
+  "cells": [
+    {
+      "source_id": "source-d2a1dfbee30c5891",
+      "quality_factor": null,
+      "method": "UERD",
+      "pairs": 8,
+      "native": {
+        "correct_rows": 7,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 1.38729686394455,
+        "maximum_standardized_mean_shift": 3.0073516091881833
+      },
+      "batch_statistics": {
+        "correct_rows": 13,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 0.5128072850938208,
+        "maximum_standardized_mean_shift": 1.2490379920011951
+      }
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "pairs": 8,
+      "native": {
+        "correct_rows": 8,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 5.246574756820535,
+        "maximum_standardized_mean_shift": 9.978667683167034
+      },
+      "batch_statistics": {
+        "correct_rows": 12,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 0.6824269980037971,
+        "maximum_standardized_mean_shift": 1.0457857206354657
+      }
+    },
+    {
+      "source_id": "source-d2a1dfbee30c5891",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "pairs": 8,
+      "native": {
+        "correct_rows": 8,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 4.499786681344662,
+        "maximum_standardized_mean_shift": 8.116254759810683
+      },
+      "batch_statistics": {
+        "correct_rows": 11,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 0.567017459997184,
+        "maximum_standardized_mean_shift": 1.1598250238804353
+      }
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 75,
+      "method": "UERD",
+      "pairs": 8,
+      "native": {
+        "correct_rows": 7,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 12.288057732923408,
+        "maximum_standardized_mean_shift": 27.648640704090916
+      },
+      "batch_statistics": {
+        "correct_rows": 15,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 0.5869656479947206,
+        "maximum_standardized_mean_shift": 1.1677808832313934
+      }
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 95,
+      "method": "UERD",
+      "pairs": 8,
+      "native": {
+        "correct_rows": 8,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 3.4331762839204294,
+        "maximum_standardized_mean_shift": 11.989697183630012
+      },
+      "batch_statistics": {
+        "correct_rows": 14,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 0.6426312546388141,
+        "maximum_standardized_mean_shift": 0.9290672743606762
+      }
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "pairs": 8,
+      "native": {
+        "correct_rows": 8,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 1.4721187255290382,
+        "maximum_standardized_mean_shift": 4.0224889067409135
+      },
+      "batch_statistics": {
+        "correct_rows": 11,
+        "total_rows": 16,
+        "mean_paired_cross_entropy": 0.6087983612500029,
+        "maximum_standardized_mean_shift": 1.5714598935403368
+      }
+    }
+  ]
+}

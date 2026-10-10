@@ -1,0 +1,122 @@
+"""Frozen read-only train-pair diagnosis; private execution glue, no fitting."""
+
+import hashlib
+import json
+import resource
+import sys
+import time
+from pathlib import Path
+
+BASE = Path(__file__).resolve().parent
+ROOT = BASE.parents[1]
+sys.path.insert(0, str(ROOT))
+START = time.monotonic()
+resource.setrlimit(resource.RLIMIT_CPU, (390, 391))
+resource.setrlimit(resource.RLIMIT_FSIZE, (1024**2, 1024**2))
+resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+
+import numpy as np
+import torch
+
+from core import srnet_cuda, srnet_diagnostics, srnet_model
+from core.srnet_scale_sampling import epoch_batches
+from core.srnet_stream import TrainBlocks, document
+from steganography import research_srnet_epochs as epochs
+from steganography.research_jpeg import write_json
+
+PLAN = "13ea2f8d97e382e5a4c1ed2df8d84aeebe70c656948219dfed2407adeaf0ed90"
+CARD = "b48686d96f9302b95380a830763c550f238ba9f378878ac4ccf5c6ad2b1e22c7"
+MODEL = "71f6f5fe8730944c38d406362bf26e382f348f302b03c7f30809991db73e44b6"
+
+
+def deadline():
+    if time.monotonic() - START > 180:
+        raise ValueError("train-only diagnosis exceeded its frozen deadline")
+
+
+def run():
+    script_sha, protocol_sha = sys.argv[1:]
+    assert epochs.file_sha(Path(__file__), maximum=1024**2) == script_sha
+    protocol = ROOT / "docs/JPEG_EPOCH_DIAGNOSTIC_PROTOCOL.md"
+    assert epochs.file_sha(protocol) == protocol_sha
+    host_bytes = srnet_cuda.host_bound()
+    out = BASE / "train-normalization-diagnostic.json"
+    epochs.legacy.fresh(out)
+    config = json.loads((BASE / "config.json").read_bytes())
+    epochs.configuration(config)
+    plan = document(BASE / "plan.json", PLAN)
+    before = epochs.sources()
+    assert before == plan["source_sha256"]
+    diagnostic_sha = epochs.file_sha(ROOT / "core/srnet_diagnostics.py")
+    state = epochs.parent_state(BASE / "epoch-004", CARD, plan, PLAN, 5)
+    card = document(BASE / "epoch-004/epoch.json", CARD)
+    assert card["model_sha256"] == MODEL
+    model = srnet_model.load_model(BASE / "epoch-004/model.npz", checksum=MODEL)
+    assert all(
+        np.array_equal(state["arrays"]["model/" + k], v.detach().numpy())
+        for k, v in model.state_dict().items()
+    )
+    torch.set_num_threads(2)
+    torch.use_deterministic_algorithms(True)
+    arguments = {
+        "index_sha256": config["index_sha256"],
+        "audit": Path(config["audit"]),
+        "audit_sha256": config["audit_sha256"],
+        "deadline": deadline,
+    }
+    records, counts, seen = [], {}, set()
+    with TrainBlocks(Path(config["root"]), **arguments) as reader:
+        batches, _ = epoch_batches(reader.samples, seed=20261008, epoch=0)
+        pairs = []
+        for batch in batches:
+            for cover, stego in ((batch[0], batch[1]), (batch[2], batch[3])):
+                sample = reader.samples[stego]
+                key = (sample["source_group"], sample["quality_factor"], sample["method"])
+                if sample["sha256"] not in seen and counts.get(key, 0) < 8:
+                    pairs.append((cover, stego))
+                    seen.add(sample["sha256"])
+                    counts[key] = counts.get(key, 0) + 1
+        assert len(counts) == 6 and len(pairs) == 48 and set(counts.values()) == {8}
+        for cover, stego in pairs:
+            deadline()
+            pixels = reader.batch(np.array([cover, stego], dtype=np.int64))
+            sample = reader.samples[stego]
+            difference = pixels[1].astype(np.float64) - pixels[0]
+            records.append({
+                "cover_sha256": reader.samples[cover]["sha256"],
+                "stego_sha256": sample["sha256"],
+                "source_id": "source-" + hashlib.sha256(sample["source_group"].encode()).hexdigest()[:16],
+                "quality_factor": sample["quality_factor"],
+                "method": sample["method"],
+                "input_difference_rms": float(np.sqrt(np.mean(difference**2))),
+                **srnet_diagnostics.paired_probe(model, pixels),
+            })
+            deadline()
+    with TrainBlocks(Path(config["root"]), **arguments):
+        pass
+    assert epochs.sources() == before
+    assert epochs.file_sha(ROOT / "core/srnet_diagnostics.py") == diagnostic_sha
+    assert epochs.file_sha(Path(__file__), maximum=1024**2) == script_sha
+    assert epochs.file_sha(protocol) == protocol_sha
+    assert epochs.file_sha(BASE / "epoch-004/model.npz", maximum=32 * 1024**2) == MODEL
+    report = {
+        "schema_version": "srnet-epoch-train-normalization-diagnostic-v1",
+        "status": "completed", "plan_sha256": PLAN, "final_card_sha256": CARD,
+        "model_sha256": MODEL, "protocol_sha256": protocol_sha,
+        "script_sha256": script_sha, "diagnostic_core_sha256": diagnostic_sha,
+        "training_source_sha256": before, "pairs": records,
+        "selection": "epoch0-seed20261008-first8-unique-stego-per-context",
+        "evaluation_device": "cpu", "threads": 2, "host_memory_max_bytes": host_bytes,
+        "validation_used": False, "optimizer_updates": 0, "normalization_refreshed": False,
+        "known_cover_pair_required": True, "accuracy_qualification": "unavailable",
+        "deployed": False, "seconds": time.monotonic() - START,
+    }
+    raw = json.dumps(report, indent=2, allow_nan=False).encode() + b"\n"
+    assert len(raw) <= 1024**2
+    deadline()
+    write_json(out, report)
+    print(json.dumps({"status": "completed", "pairs": len(records)}))
+
+
+if __name__ == "__main__":
+    run()
