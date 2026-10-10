@@ -1,0 +1,24 @@
+{
+  "schema_version": "jpeg-real-timing-protocol-v1",
+  "seed": 20261010,
+  "originals_per_source": 32,
+  "inputs": {
+    "index_sha256": "89f4c726922eb22e3c2edefeb24bf7d2a90473c4f9695a419be642df05fe76fd",
+    "audit_sha256": "00c2a19067efa78fd9d2b214a6452d9e606c8a169eb54f9ae2c6521f807b40b8",
+    "bows_sha256": "7b0160a7f631f857f127b6299f6c2a4b9c913a3ad8c87a5562614d62f5d94014",
+    "bows_audit_sha256": "5f3f945a606fd5f6cf3cffe5bfb632b2732523ae9adfecbfc80241e0974b5536"
+  },
+  "selection": "first 32 complete training families ordered by SHA256(timing-kit:20261010:source:lineage)",
+  "methods": ["JUNIWARD", "UERD"],
+  "simulation": {"conseal": "2025.11", "qualities": [75, 95], "alpha": 0.2, "unit": "bpnzAC", "seed": 20261006},
+  "native_ALASKA_quality_and_rate": "unknown; never imputed",
+  "tensor": "jpeg-y-idct-center256-phase0-f32-v1",
+  "kit_rows": 480,
+  "kit_epoch_updates": 192,
+  "prospective_full_corpus_epoch_updates": 4932,
+  "limits": {"wall_seconds": 600, "worker_seconds": 90, "worker_ram_bytes": 2147483648, "output_bytes": 536870912},
+  "purpose": "local private train-only timing preparation, no validation or scores",
+  "cloud_creation_authorized": false,
+  "model_trained": false,
+  "accuracy_qualification": "unavailable"
+}
