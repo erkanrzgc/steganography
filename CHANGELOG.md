@@ -1,5 +1,11 @@
 # Changelog
 
+- Publish the complete preregistered five-epoch RTX 5060 ALASKA+BOSS fit and
+  fixed development validation: 16,440 updates, 1,611 scored rows, nine passing
+  independent forward audits, all six detection cells failed near chance.
+  Preserve original hashes/parent chains and failure evidence; no weights,
+  private data, threshold tuning or detector deployment.
+
 - Record the original physical CUDA disk-resume parity gate, permitting
   separately bounded epoch jobs without relabeling prior single-job failures.
   Add complete fixed-threshold development validation for final epoch models,

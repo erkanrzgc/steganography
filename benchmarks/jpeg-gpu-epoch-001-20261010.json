@@ -1,0 +1,64 @@
+{
+  "schema_version": "srnet-epoch-job-v1",
+  "status": "completed",
+  "plan_sha256": "13ea2f8d97e382e5a4c1ed2df8d84aeebe70c656948219dfed2407adeaf0ed90",
+  "protocol_sha256": "5a371c2a2a8192835ac194f2e57e21f583cbc34b3f490772e88e63f4a05d76c2",
+  "parent_report_sha256": "e9ca5d1beecfacd5de74f88a079bc211b739f1a63c998deba56d557a3eb3fdaf",
+  "next_epoch": 2,
+  "checkpoint_sha256": "8d42765f1b9441c20e7aad3da96353da8214992ef98eb4fe57197f6e912186be",
+  "model_sha256": "202e3599498e6c1dbe967c54fd7e3e699d6523e63ba45318d663ba9a73bc1292",
+  "epoch_training": [
+    {
+      "epoch": 0,
+      "mean_pair_loss": 0.6935669663940033,
+      "updates": 3288
+    },
+    {
+      "epoch": 1,
+      "updates": 3288,
+      "mean_pair_loss": 0.6822251183889498
+    }
+  ],
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "core/srnet_resume_probe.py": "5e9673af920969787dab1ef2eca1cd1c5467d3b8a9120fdc3543ccc6ea36e4f0",
+    "steganography/research_srnet_epochs.py": "b44db82a69ae2565cd0fc00f37410020deb61142066280b26740f08215325c94"
+  },
+  "seconds": 575.1989125830005,
+  "validation_used": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "execution": {
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_gpu_bytes": 8518041600,
+    "torch_allocator_limit_bytes": 4294967296,
+    "host_memory_max_bytes": 8589934592,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "mixed_precision": false,
+    "deterministic_algorithms": true,
+    "cpu_fallback": false
+  },
+  "process_peak_gpu_allocated_bytes": 1058289152,
+  "process_peak_gpu_reserved_bytes": 1323302912
+}

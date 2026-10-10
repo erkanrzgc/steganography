@@ -22,8 +22,12 @@ and synthetic regression scores are not overall steganalysis accuracy.
 [Verified data expansion](docs/DATA_EXPANSION_RESULTS.md) adds 4,000 ALASKA2
 JPEGs, 1,000 BOSS originals and 200 reserved WIFD images. Acquisition is not
 accuracy. [Complete JPEG preparation](docs/JPEG_SCALE_PREPARATION_RESULTS.md)
-now contains 7,380 train and 1,611 validation rows in bounded blocks; no new
-model has been fitted. [Full-block streaming readiness](docs/SRNET_STREAM_READINESS_RESULTS.md)
+now contains 7,380 train and 1,611 validation rows in bounded blocks. A separately
+preregistered five-epoch GPU pilot completed on 2026-10-10: 16,440 RTX 5060
+updates, followed by all 1,611 development-validation rows. All six detection
+cells failed (AUC .504–.520; balanced accuracy 50–52%). See the
+[full GPU learning results](docs/JPEG_EPOCH_LEARNING_RESULTS.md).
+[Full-block streaming readiness](docs/SRNET_STREAM_READINESS_RESULTS.md)
 now verifies every training row without a whole-corpus tensor allocation and
 preserves the numerical trainer behavior. Adequate real fitting and blind-source
 testing remain; engineering checks are not an accuracy improvement.
@@ -34,11 +38,16 @@ same-weight CPU/GPU forward agreement. This is not real-data learning or
 accuracy; the Kali development VM remains CPU-only.
 The [fixed GPU timing gate](docs/CUDA_THROUGHPUT_RESULTS.md) now completes:
 its conservative five-epoch estimate exceeds the unchanged 30-minute job cap.
-No new real fit started; timing does not establish detector accuracy.
+That timing experiment did not start a real fit; timing does not establish detector accuracy.
 A [separately measured gradient-check optimization](docs/CUDA_GRADIENT_TIMING_RESULTS.md)
 reduces the observed estimate, but it still exceeds the unchanged job cap.
 The [on-device state-check measurement](docs/CUDA_STATE_TIMING_RESULTS.md),
 recovered without rerunning after an SSH interruption, also remains ineligible.
+[Physical disk-resume parity](docs/CUDA_EPOCH_RESUME_RESULTS.md) now passes;
+the separate [epoch-chain pilot](docs/JPEG_EPOCH_LEARNING_PROTOCOL.md) uses
+fresh source-bound jobs with unchanged per-job limits, not a bypass of the
+failed single-job gate. Training loss decreased, but detection remains near
+chance; no checkpoint is deployed or qualified for single-file detection.
 
 The first real SRNet pilot also failed all six detection cells (AUC 0.502–0.510,
 balanced accuracy 50%), despite passing numerical replay. See the

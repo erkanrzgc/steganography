@@ -1,0 +1,322 @@
+{
+  "status": "completed",
+  "validation_rows": 1611,
+  "cells": [
+    {
+      "source_id": "source-d2a1dfbee30c5891",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "metrics": {
+        "threshold": 50,
+        "samples": 362,
+        "positives": 181,
+        "negatives": 181,
+        "confusion": {
+          "tp": 86,
+          "tn": 100,
+          "fp": 81,
+          "fn": 95
+        },
+        "precision": 0.51497,
+        "recall": 0.475138,
+        "specificity": 0.552486,
+        "false_positive_rate": 0.447514,
+        "accuracy": 0.513812,
+        "balanced_accuracy": 0.513812,
+        "f1": 0.494253,
+        "roc_auc": 0.513675,
+        "average_precision": 0.509601,
+        "recommended_threshold": null
+      },
+      "support": "experimental"
+    },
+    {
+      "source_id": "source-d2a1dfbee30c5891",
+      "quality_factor": null,
+      "method": "UERD",
+      "metrics": {
+        "threshold": 50,
+        "samples": 362,
+        "positives": 181,
+        "negatives": 181,
+        "confusion": {
+          "tp": 85,
+          "tn": 100,
+          "fp": 81,
+          "fn": 96
+        },
+        "precision": 0.512048,
+        "recall": 0.469613,
+        "specificity": 0.552486,
+        "false_positive_rate": 0.447514,
+        "accuracy": 0.51105,
+        "balanced_accuracy": 0.51105,
+        "f1": 0.489914,
+        "roc_auc": 0.520115,
+        "average_precision": 0.517261,
+        "recommended_threshold": null
+      },
+      "support": "experimental"
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "metrics": {
+        "threshold": 50,
+        "samples": 356,
+        "positives": 178,
+        "negatives": 178,
+        "confusion": {
+          "tp": 47,
+          "tn": 132,
+          "fp": 46,
+          "fn": 131
+        },
+        "precision": 0.505376,
+        "recall": 0.264045,
+        "specificity": 0.741573,
+        "false_positive_rate": 0.258427,
+        "accuracy": 0.502809,
+        "balanced_accuracy": 0.502809,
+        "f1": 0.346863,
+        "roc_auc": 0.505113,
+        "average_precision": 0.507378,
+        "recommended_threshold": null
+      },
+      "support": "experimental"
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 75,
+      "method": "UERD",
+      "metrics": {
+        "threshold": 50,
+        "samples": 356,
+        "positives": 178,
+        "negatives": 178,
+        "confusion": {
+          "tp": 53,
+          "tn": 132,
+          "fp": 46,
+          "fn": 125
+        },
+        "precision": 0.535354,
+        "recall": 0.297753,
+        "specificity": 0.741573,
+        "false_positive_rate": 0.258427,
+        "accuracy": 0.519663,
+        "balanced_accuracy": 0.519663,
+        "f1": 0.382671,
+        "roc_auc": 0.518732,
+        "average_precision": 0.515337,
+        "recommended_threshold": null
+      },
+      "support": "experimental"
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "metrics": {
+        "threshold": 50,
+        "samples": 356,
+        "positives": 178,
+        "negatives": 178,
+        "confusion": {
+          "tp": 23,
+          "tn": 155,
+          "fp": 23,
+          "fn": 155
+        },
+        "precision": 0.5,
+        "recall": 0.129213,
+        "specificity": 0.870787,
+        "false_positive_rate": 0.129213,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.205357,
+        "roc_auc": 0.503582,
+        "average_precision": 0.504692,
+        "recommended_threshold": null
+      },
+      "support": "experimental"
+    },
+    {
+      "source_id": "source-6a23b26e6f51f8cc",
+      "quality_factor": 95,
+      "method": "UERD",
+      "metrics": {
+        "threshold": 50,
+        "samples": 356,
+        "positives": 178,
+        "negatives": 178,
+        "confusion": {
+          "tp": 23,
+          "tn": 155,
+          "fp": 23,
+          "fn": 155
+        },
+        "precision": 0.5,
+        "recall": 0.129213,
+        "specificity": 0.870787,
+        "false_positive_rate": 0.129213,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "f1": 0.205357,
+        "roc_auc": 0.505728,
+        "average_precision": 0.505702,
+        "recommended_threshold": null
+      },
+      "support": "experimental"
+    }
+  ],
+  "independent_forward_audit": [
+    {
+      "sha256": "7667be514ee41653774e470d184a1ca67e152929791d4ad1212427c3d608dc36",
+      "maximum_logit_difference": 2.172500629393781e-08,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 8.614620017333152e-09,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "4f491cbec3e02f25f18f3ab0869c2b09dd6796daad7a1b89ef87d456e069dc7c",
+      "maximum_logit_difference": 1.366513141531911e-07,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 3.9736731072270715e-08,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "9c5394ae8d426f22a9d970c313fa15f1620cb66ea77d015c2e000c1c087589d7",
+      "maximum_logit_difference": 1.3069994697634257e-08,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 4.708776091266742e-09,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "cfeffb05c2048502dbfd8ae50f0269a63b39f7de3f1c59a9ae5019ff33167fa5",
+      "maximum_logit_difference": 2.4818223580413967e-08,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 8.252793115559598e-09,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "dde96b050a6ece2bc7a84677f77ee45db274021d219654259e7feef1df037e8e",
+      "maximum_logit_difference": 2.0735277828087817e-08,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 1.2347455280448116e-09,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "5a65851002bd045367dd5b8dbc83363d67d71551981e51e3a33989883d675cf6",
+      "maximum_logit_difference": 7.231750384639746e-08,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 1.7836268240145614e-08,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "58c9314ffb1b6bc4f285d552f401f94541a4608ec96127754a6f8e8b8e939c73",
+      "maximum_logit_difference": 3.0469702316793246e-08,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 6.5470720234106494e-09,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "b2acbe47daf0946fee54bb0505eae160e96bb5249dd0f7fe3bb999ffc1cd0cd4",
+      "maximum_logit_difference": 1.0974967068477781e-07,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 3.696700551225618e-08,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    },
+    {
+      "sha256": "5355479ed0ad5078f4b5bfd34c04eca9b3f6c8bca1970beaaf0b3192234ff7ff",
+      "maximum_logit_difference": 3.790779468104688e-09,
+      "absolute_tolerance": 0.0001,
+      "relative_tolerance": 1e-05,
+      "maximum_score_difference": 3.048424290774676e-10,
+      "score_tolerance": 1e-06,
+      "decisions_equal": true,
+      "passed": true
+    }
+  ],
+  "threshold": 0.5,
+  "threshold_tuned": false,
+  "normalization_refreshed": false,
+  "evaluation_device": "cpu",
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "schema_version": "srnet-epoch-development-validation-v1",
+  "plan_sha256": "13ea2f8d97e382e5a4c1ed2df8d84aeebe70c656948219dfed2407adeaf0ed90",
+  "final_card_sha256": "b48686d96f9302b95380a830763c550f238ba9f378878ac4ccf5c6ad2b1e22c7",
+  "model_sha256": "71f6f5fe8730944c38d406362bf26e382f348f302b03c7f30809991db73e44b6",
+  "index_sha256": "89f4c726922eb22e3c2edefeb24bf7d2a90473c4f9695a419be642df05fe76fd",
+  "audit_sha256": "00c2a19067efa78fd9d2b214a6452d9e606c8a169eb54f9ae2c6521f807b40b8",
+  "protocol_sha256": "5a371c2a2a8192835ac194f2e57e21f583cbc34b3f490772e88e63f4a05d76c2",
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "core/srnet_resume_probe.py": "5e9673af920969787dab1ef2eca1cd1c5467d3b8a9120fdc3543ccc6ea36e4f0",
+    "steganography/research_srnet_epochs.py": "b44db82a69ae2565cd0fc00f37410020deb61142066280b26740f08215325c94",
+    "core/srnet_block_validation.py": "9ac521658e9de578fd10374cc0d865be1dd67d382657955d5e8fba89cce473d3",
+    "core/srnet_reference.py": "74e083c7b0db93d0cfa5b88ed60df70405aee791aac8beeedecb42230c33bc36",
+    "steganography/benchmarking/metrics.py": "7ce03697dc51672399c5f07f475d55d50f353aba45290229709ca49742d7a586",
+    "steganography/research_srnet_epoch_validation.py": "14cccb7fa885538062a0bd5eb843de2bf608c0f6c90a31eb953b45c2bd54bb32"
+  },
+  "training_source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "core/srnet_resume_probe.py": "5e9673af920969787dab1ef2eca1cd1c5467d3b8a9120fdc3543ccc6ea36e4f0",
+    "steganography/research_srnet_epochs.py": "b44db82a69ae2565cd0fc00f37410020deb61142066280b26740f08215325c94"
+  },
+  "seconds": 294.1241374839956,
+  "cross_source_heldout": false,
+  "qualification": "development_only_not_supported"
+}

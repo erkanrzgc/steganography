@@ -1,5 +1,12 @@
 # Numeric epoch checkpoint core — engineering only
 
+Status update, 2026-10-10: an explicit isolated controller and final-development
+validation service now use this core; see `EPOCH_PILOT_VERIFICATION.md` and
+`CUDA_EPOCH_RESUME_RESULTS.md`. The original core-only slice's scope and
+verification below are historical. The real five-epoch pilot completed and
+failed all six detection cells; see `JPEG_EPOCH_LEARNING_RESULTS.md`.
+Physical resume parity is not detection qualification.
+
 The shared four-row optimizer supports an explicit `segment` contract:
 `binding` (SHA-256 of the complete caller-bound plan), `stop_epoch` (exclusive
 stop within the complete planned epoch count), `resume` (verified numeric

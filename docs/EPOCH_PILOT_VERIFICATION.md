@@ -6,7 +6,11 @@ five-epoch plan SHA-256 is
 `13ea2f8d97e382e5a4c1ed2df8d84aeebe70c656948219dfed2407adeaf0ed90`.
 The first actual full train epoch completed 3,288 updates in 532.9954s;
 mean paired training loss 0.69356697. This is not an accuracy/learning pass.
-Subsequent epoch jobs and final fixed development validation are pending.
+All five actual epoch jobs now completed 16,440 updates. Final fixed
+development validation completed on all 1,611 rows. All nine independent forward
+audits pass, but all six detection cells fail (AUC .504–.520, balanced accuracy
+50–52%). Numerical correctness is not detection accuracy. Original reports and
+hashes are preserved in `JPEG_EPOCH_LEARNING_RESULTS.md`; no weights deployed.
 
 Generated epoch controller tests and adversarial cases pass locally; its core
 probe has 100% focused line coverage and job controller 98%. The separate
@@ -23,8 +27,10 @@ untraced in the focused run. This is preserved as a correctly enforced timeout,
 not a successful throughput result. CPU numeric equality now uses an explicitly
 scaled unit-test clock; a separate unit still requires the unchanged 180s
 probe deadline to fail closed. Production code, physical protocol and all
-actual GPU/epoch job limits were not changed. A fresh full regression, now also
-including complete validation tests, is pending; do not mark that attempt passed.
+actual GPU/epoch job limits were not changed. The fresh full regression,
+including complete validation tests, passes 1,793 tests / one actual-CUDA skip
+with 32 existing ONNX deprecation warnings in 2206.37s. Overall coverage is
+95.61%; the original timed-out attempt above remains a failure, not relabeled.
 
 Ruff/mypy (145 files)/whitespace checks pass. Fresh wheel/sdist build inspection
 found 155/310 members and no private caches, keys, raw tensors or model weights.

@@ -1,0 +1,405 @@
+{
+  "schema_version": "srnet-epoch-plan-v1",
+  "index_sha256": "89f4c726922eb22e3c2edefeb24bf7d2a90473c4f9695a419be642df05fe76fd",
+  "audit_sha256": "00c2a19067efa78fd9d2b214a6452d9e606c8a169eb54f9ae2c6521f807b40b8",
+  "architecture": "srnet-gray12-cpu-v1",
+  "feature_version": "jpeg-y-idct-center256-phase0-f32-v1",
+  "decoder": {
+    "jpeglib": "1.0.2",
+    "libjpeg": "6b",
+    "numpy": "2.4.6",
+    "idct": "orthonormal-cosine-f64-to-le-f32-v1",
+    "rounding": "none",
+    "clipping": "none"
+  },
+  "seed": 20261008,
+  "settings": {
+    "threads": 2,
+    "max_seconds": 1800,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "device": "cuda:0"
+  },
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "core/srnet_resume_probe.py": "5e9673af920969787dab1ef2eca1cd1c5467d3b8a9120fdc3543ccc6ea36e4f0",
+    "steganography/research_srnet_epochs.py": "b44db82a69ae2565cd0fc00f37410020deb61142066280b26740f08215325c94"
+  },
+  "epochs": [
+    {
+      "recipe": "srnet-block-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 0,
+        "pairs": 6576,
+        "rows": 13152,
+        "pairs_per_source": 3288,
+        "ordered_pair_sha256": "8f1d15c66361f87703eb1c287acf3486601705b8b4f926293df7fb2dace7ed23",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "two-source-two-lineage-pairs-v1",
+        "epoch": 0,
+        "batch_size": 4,
+        "pairs": 6576,
+        "optimizer_updates": 3288,
+        "rows": 13152,
+        "ordered_batch_sha256": "2819b9db1099f95b5beca4ea50b488e58a9428596a9eae2259d9cd872d24936c",
+        "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-block-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 1,
+        "pairs": 6576,
+        "rows": 13152,
+        "pairs_per_source": 3288,
+        "ordered_pair_sha256": "e93dbbe04044dcce8ab49e2360a8de72836a51f5995fb72706204a3ba6753198",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "two-source-two-lineage-pairs-v1",
+        "epoch": 1,
+        "batch_size": 4,
+        "pairs": 6576,
+        "optimizer_updates": 3288,
+        "rows": 13152,
+        "ordered_batch_sha256": "15f0497e9ef4d980f4f09b146cf4761010dc418758cbe5a1e5860fae083937ba",
+        "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-block-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 2,
+        "pairs": 6576,
+        "rows": 13152,
+        "pairs_per_source": 3288,
+        "ordered_pair_sha256": "97d27dcd04304266f9a0777c8335367d21a664212760be7fbdd5a12463301f09",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "two-source-two-lineage-pairs-v1",
+        "epoch": 2,
+        "batch_size": 4,
+        "pairs": 6576,
+        "optimizer_updates": 3288,
+        "rows": 13152,
+        "ordered_batch_sha256": "181df6919f9f74bc217b0ba1f6d0dfa6420af642d838be58fbc0477191ee5e9d",
+        "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-block-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 3,
+        "pairs": 6576,
+        "rows": 13152,
+        "pairs_per_source": 3288,
+        "ordered_pair_sha256": "654bfecacfa2ef85d47c2da65d66a5df8b6152de70ea5df3fa5145aed1e9b8d1",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "two-source-two-lineage-pairs-v1",
+        "epoch": 3,
+        "batch_size": 4,
+        "pairs": 6576,
+        "optimizer_updates": 3288,
+        "rows": 13152,
+        "ordered_batch_sha256": "a28ee8289368a981d97ea4fb18fc9de5ee2bd36e74bdd605d5206b357d36c08e",
+        "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+      }
+    },
+    {
+      "recipe": "srnet-block-source-quality-method-four-row-v1",
+      "pair_schedule": {
+        "recipe": "srnet-source-quality-method-pairs-v1",
+        "epoch": 4,
+        "pairs": 6576,
+        "rows": 13152,
+        "pairs_per_source": 3288,
+        "ordered_pair_sha256": "25e945c99254edcfc52d1b1505ab48bbf81f70c9717a50a21bf86fef9332c7ae",
+        "cells": [
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 75,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "JUNIWARD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-6a23b26e6f51f8cc",
+            "quality_factor": 95,
+            "method": "UERD",
+            "original_pairs": 822,
+            "sampled_pairs": 822
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "JUNIWARD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          },
+          {
+            "source_id": "source-d2a1dfbee30c5891",
+            "quality_factor": null,
+            "method": "UERD",
+            "original_pairs": 816,
+            "sampled_pairs": 1644
+          }
+        ]
+      },
+      "batch_schedule": {
+        "recipe": "two-source-two-lineage-pairs-v1",
+        "epoch": 4,
+        "batch_size": 4,
+        "pairs": 6576,
+        "optimizer_updates": 3288,
+        "rows": 13152,
+        "ordered_batch_sha256": "349c1c4eee2a392c1b13872eeef978a6120d8ce98322735ceaec883622ed4f24",
+        "independence": "distinct declared source/lineage; camera/perceptual independence unverified"
+      }
+    }
+  ],
+  "train_rows": 7380,
+  "original_train_lineages": 1638,
+  "train_tensor_bytes": 1934622720,
+  "batch_size": 4,
+  "validation_used": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "execution": {
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_gpu_bytes": 8518041600,
+    "torch_allocator_limit_bytes": 4294967296,
+    "host_memory_max_bytes": 8589934592,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "mixed_precision": false,
+    "deterministic_algorithms": true,
+    "cpu_fallback": false
+  },
+  "protocol_sha256": "5a371c2a2a8192835ac194f2e57e21f583cbc34b3f490772e88e63f4a05d76c2",
+  "resume_probe_sha256": "c00264d64a8522ff275694fb6823ff1b2a55450c55d42a2071a2733518c61813",
+  "epoch_estimated_seconds": [
+    714.6880642828414,
+    714.6880642828414,
+    714.6880642828414,
+    714.6880642828414,
+    714.6880642828414
+  ],
+  "per_job_max_seconds": 1800,
+  "fixed_overhead_seconds": 120,
+  "timing_safety_factor": 2
+}
