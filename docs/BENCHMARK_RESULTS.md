@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+[Physical three-origin JPEG timing](JPEG_REAL_TIMING_PROBE.md): RTX 5060 Laptop
+GPU completed 66 real updates, median 0.08837s / p95 0.09303s and 0.985 GiB
+peak allocated VRAM. Fixed prospective epoch optimizer estimate 9.56 minutes;
+not a full epoch measurement, cloud cost, production fit or accuracy improvement.
+
 [Complete five-epoch RTX 5060 fit](JPEG_EPOCH_LEARNING_RESULTS.md): 16,440 real
 updates and all 1,611 lineage-disjoint development rows; six of six detection
 cells fail (AUC .504–.520, balanced accuracy 50–52%). No qualified gain/deployment.

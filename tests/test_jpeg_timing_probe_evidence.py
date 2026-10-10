@@ -1,4 +1,4 @@
-"""Real reader readiness and local unavailable status are not physical timing."""
+"""Portable real reader, unavailable CPU and completed physical CUDA evidence."""
 
 import hashlib
 import json
@@ -59,3 +59,41 @@ def test_protocol_binds_frozen_workload_not_old_synthetic_timing():
     assert protocol["steady_intervals"] == probe.UPDATES - 1 - probe.DISCARD == 47
     assert protocol["limits"]["job_seconds"] == probe.MAX_SECONDS == 180
     assert not protocol["cloud_creation_authorized"] and not protocol["cpu_fallback"]
+
+
+def test_completed_physical_cuda_evidence_is_timing_not_accuracy():
+    report = record("jpeg-real-timing-rtx5060-20261010.json")
+    assert report["schema_version"] == "srnet-cuda-real-timing-v1"
+    assert report["status"] == "completed"
+    assert report["manifest_sha256"] == probe.MANIFEST_SHA
+    assert report["audit_sha256"] == probe.AUDIT_SHA
+    assert report["real_optimizer_updates"] == probe.UPDATES == 66
+    assert report["discarded_initial_intervals"] == probe.DISCARD == 18
+    assert len(report["steady_intervals_seconds"]) == 47
+    assert report["projection"] == probe.projection(report["steady_intervals_seconds"])
+    assert report["projection"]["estimate_only"]
+    assert not report["projection"]["full_corpus_reader_integrated"]
+    execution = report["execution"]
+    assert execution["device"] == "cuda:0"
+    assert execution["gpu_name"] == "NVIDIA GeForce RTX 5060 Laptop GPU"
+    assert execution["torch_version"] == "2.14.0+cu130"
+    assert execution["precision"] == "float32-ieee"
+    assert execution["deterministic_algorithms"]
+    assert not execution["cpu_fallback"]
+    assert not execution["tf32"] and not execution["mixed_precision"]
+    assert execution["torch_allocator_limit_bytes"] == 4 * 1024**3
+    assert execution["host_memory_max_bytes"] == 8 * 1024**3
+    assert report["max_fetch_bytes"] == 1024**2
+    assert 0 < report["seconds"] < probe.MAX_SECONDS
+    assert (
+        0 < report["process_peak_gpu_allocated_bytes"]
+        <= report["process_peak_gpu_reserved_bytes"]
+        <= execution["torch_allocator_limit_bytes"]
+        < execution["total_gpu_bytes"]
+    )
+    for name, digest in report["source_sha256"].items():
+        assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest
+    assert report["real_data_used"] and report["real_model_trained"]
+    assert not report["production_model_trained"] and not report["deployed"]
+    assert report["accuracy_qualification"] == "unavailable"
+    assert "cost" not in report and "hourly_price" not in report

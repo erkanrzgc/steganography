@@ -25,7 +25,7 @@ queued timings. The last update is still completed/checked, but does not supply
 an additional interval. Temporary updated weights/optimizer state are discarded.
 `real_model_trained: true` on a completed GPU run means transient updates actually
 occurred; `production_model_trained: false` and no saved weights make its limited
-purpose explicit. No completed GPU report exists yet.
+purpose explicit. The completed RTX 5060 report is recorded below.
 
 The fixed projection is `p95(47 warmed intervals) * 4932 * 1.25` optimizer seconds
 per prospective full-corpus epoch. Report median/p95 and the raw intervals.
@@ -74,10 +74,41 @@ Zero optimizer updates; this is reader readiness, not GPU timing.
 
 `benchmarks/jpeg-real-timing-local-unavailable-20261010.json`: actual isolated
 local invocation returned `unavailable`; Torch 2.14.0+cpu and no CUDA visible.
-The previously approved laptop reverse-tunnel port 22240 is not listening.
-No physical timing, new production fit, deployment, cloud upload/resource or
-charge was initiated. Next execution requires restored laptop GPU access or a
-fresh quoted RunPod choice with an explicit maximum total spending limit.
+At that local attempt, the laptop reverse tunnel was unavailable. This historical
+failure remains unavailable, not a pass. The later restored laptop measurement
+does not replace it.
+
+## Completed physical laptop measurement
+
+`benchmarks/jpeg-real-timing-rtx5060-20261010.json` records the actual restored
+WSL RTX 5060 Laptop GPU run, Torch 2.14.0+cu130, strict deterministic IEEE FP32.
+The clean laptop checkout was fast-forwarded to `d074e40`; only the private
+train-only kit was copied between the user's local machines. All execution
+source hashes match the local checkout; projection was independently recomputed
+from the 47 raw measured intervals after retrieval.
+
+- 66 real optimizer updates completed in 25.51745 seconds (including input
+  verification and engine setup inside the profile; not SSH/transfer/startup).
+- Median update 0.08836576 seconds; p95 0.09303266 seconds.
+- Fixed prospective 4,932-update epoch projection: 573.54635 seconds, about
+  9.56 minutes, including the preregistered 1.25 safety factor.
+- Peak allocated GPU memory 1,057,371,648 bytes (about 0.985 GiB); peak reserved
+  1,438,646,272 bytes (about 1.340 GiB). Allocator cap 4 GiB, host cgroup 8 GiB.
+
+This demonstrates that the existing four-row timing recipe fits the 8 GB laptop;
+it does not qualify larger batches. The small verified cache is likely warm.
+Full three-source reader integration, cold I/O, long-run thermals, validation
+and checkpoint overhead remain unmeasured. No production weights were saved,
+no accuracy improvement was established and no cloud pod was rented.
+
+The live RunPod `list_gpu_types` read on 2026-10-10, Secure Cloud/POD/one GPU,
+CUDA >=13.0, quotes RTX A5000 24 GB at USD 0.27/GPU-hour with LOW stock in
+CA-MTL-1. RTX A4500 20 GB has NONE under the same filter. This is a dated
+catalog observation, not a reservation or final storage-inclusive pod quote.
+Neither GPU was measured: laptop seconds must not be presented as their runtime,
+and VRAM ratios do not establish speed ratios. Exact cloud cost remains
+unavailable until a chosen cloud GPU is timed; a paid run still needs an explicit
+total spending cap and storage/setup/validation allowances.
 
 ## Regression environment failure
 
@@ -98,5 +129,14 @@ coverage 95.81%; new reader/profile service and isolated frontend each 99%.
 All 44 focused reader/worker/portable-evidence tests pass separately. Ruff,
 mypy, dependency and whitespace checks pass. Final wheel/sdist builds have
 162/329 members, respectively, and contain no private media/tensors/weights.
-Verified on Python 3.11.14 only. Physical CUDA timing, other Python versions and
-Docker are not verified; no measured GPU cost or accuracy improvement exists.
+That full suite was verified on Python 3.11.14 only, before the physical evidence
+addition. Physical CUDA timing is now verified separately on WSL Python 3.12;
+other Python versions and Docker remain unverified. No measured cloud cost or
+accuracy improvement exists.
+
+Physical-evidence addition verification: 45 focused tests pass; full fresh
+disk-backed suite passes 1,980 tests / one local actual-CUDA skip / 32 existing
+ONNX warnings in 486.97 seconds. The full suite ran on local Python 3.11 with
+`--no-cov`; coverage was not remeasured (the previous measured 95.81% is above).
+Ruff, mypy, dependency and whitespace checks pass. Application execution sources
+were not modified. The physical WSL run separately used Python 3.12.3.

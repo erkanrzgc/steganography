@@ -1,5 +1,18 @@
 # Roadmap and status
 
+2026-10-10 physical real-I/O timing completed on the restored RTX 5060 Laptop
+GPU: 66 real updates, 47 warmed intervals, median 0.08837s / p95 0.09303s;
+fixed prospective epoch optimizer estimate 573.55s (9.56 minutes). Peak allocated
+GPU memory 0.985 GiB. All source hashes and projection verified locally after
+retrieval. The private three-origin kit was copied locally, not to cloud.
+No production fit, accuracy gain or paid pod; exact RunPod duration/cost remains
+unavailable. Next: separately controlled normalization/learning and full
+three-source reader integration, not more unchecked epochs of the failed recipe.
+See `JPEG_REAL_TIMING_PROBE.md` and the portable RTX 5060 evidence report.
+Fresh full suite: 1,980 passed / one local actual-CUDA skip (not a pass), 32
+existing ONNX warnings; 45 focused tests and lint/types/dependencies pass.
+No coverage remeasurement in this evidence-only slice; application code unchanged.
+
 2026-10-10 real-I/O CUDA timing worker implemented: fixed 66 updates / 18
 discarded warm-up intervals / 47 measured intervals, unchanged optimizer,
 bounded audited reader and isolated process. Local real reader verification

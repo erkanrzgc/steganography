@@ -6,6 +6,10 @@ physical timing. The unchanged engine is a timing control, not a learning fix.
 Projection uses full epoch 4,932 updates, excludes external overhead/charges
 and does not authorize billing. Local reader readiness is separate from the
 actual `unavailable` CUDA invocation. See `JPEG_REAL_TIMING_PROBE.md`.
+The subsequent portable RTX 5060 report preserves all raw intervals and execution
+source hashes; independently recompute its projection on retrieval. This is
+physical laptop timing, not a passed learning gate or a cloud GPU benchmark.
+Do not turn a VRAM ratio or a catalog hourly price into measured cloud cost.
 
 `benchmarks/jpeg-real-timing-protocol-20261010.json` freezes a private 96-original,
 480-JPEG train-only timing kit with complete source/method families and input

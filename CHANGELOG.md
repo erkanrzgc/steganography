@@ -1,5 +1,10 @@
 # Changelog
 
+- Record completed physical RTX 5060 three-origin real-I/O CUDA timing with
+  raw intervals, source binding and independently recomputed projection.
+  Existing four-row recipe fits the 8 GB laptop; no production model,
+  accuracy gain or paid/cloud timing claim.
+
 - Add isolated real-I/O CUDA timing with an audit-bound four-row reader,
   unchanged shared optimizer and fixed warm-up/projection rules. Verify actual
   local reader readiness; preserve unavailable local CUDA as unavailable, not
