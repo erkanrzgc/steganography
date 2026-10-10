@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`JPEG_DIVERSITY_SAMPLING.md` specifies a new three-origin metadata recipe,
+not a preregistered real-learning experiment. Generated coverage/accounting
+tests cannot pass preprocessing or detection gates. Its prospective epoch has
+4,932 updates, so old two-source timing/eligibility cannot authorize its fit.
+Freeze real preparation, single-file normalization controls, untouched evaluation
+and a new physical resource/budget gate before execution; old scores stay failed.
+
 `CUDA_EPOCH_RESUME_PROTOCOL.md` preregisters exact generated physical CUDA
 disk-resume parity and a separate per-epoch estimate, not another attempt to
 pass the failed five-epoch single-job gate. `JPEG_EPOCH_LEARNING_PROTOCOL.md`

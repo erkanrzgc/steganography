@@ -1,5 +1,12 @@
 # Architecture
 
+`core/srnet_diversity_sampling.py` is a separate opt-in three-origin metadata
+recipe with a 15,000-train-row cap and unchanged shared 40,000-pair bound.
+It balances source-local quality/method exposure into four-row AB/CA/BC
+batches and rejects cross-origin original-lineage reuse. It is not yet connected
+to a versioned preparation/reader/trainer; historical two-source contracts and
+all pixel/process bounds remain unchanged. See `JPEG_DIVERSITY_SAMPLING.md`.
+
 `core/bows_dataset.py` is an explicit research acquisition service, called only
 by `scripts/fetch-bows-diversity.py`, never package installation or analysis.
 Fixed HTTPS origins, bounded gzip/TAR preflight, no archive-path extraction,

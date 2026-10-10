@@ -1,5 +1,17 @@
 # Roadmap and status
 
+Three-origin metadata scheduling is implemented separately: full original-pair
+coverage, equal source exposure, four-row distinct-source batches, explicit
+15,000-row cap and unchanged historical recipes. Fifteen independent generated
+accounting/adversarial tests pass. See `JPEG_DIVERSITY_SAMPLING.md`. Real BOWS
+JPEG preparation, new bounded reader/trainer integration and normalization
+control remain pending; no new training or accuracy improvement. No RunPod
+resource provisioned or charge initiated.
+Full regression against final application code: 1,830 passed / one actual-CUDA
+skip, total coverage 95.66%; all fifteen new tests also passed separately
+(three added after full-run collection). New sampler coverage 100%; lint/types,
+model-free builds and whitespace checks pass. Python 3.11 only in this run.
+
 2026-10-10 source-diversity slice: 1,001 BOWS2 originals acquired and independently
 audited; 807 train / 194 validation, no exact/BOSS-pixel overlap. Third declared
 origin, not camera independence or accuracy. Both advertised-count/our-name

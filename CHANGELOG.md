@@ -1,5 +1,10 @@
 # Changelog
 
+- Add a separate three-origin train-only JPEG sampling service with complete
+  source/Q/method pair exposure, balanced four-row source combinations and
+  cross-source original-lineage rejection. Preserve historical two-source
+  schedules and reader/process bounds; no new real fitting or cloud spending.
+
 - Acquire/audit 1,001 BOWS2 original images as a third declared research origin:
   807 train / 194 validation, no old exact/BOSS-pixel overlap, WIFD reserved.
   Add fixed-origin bounded gzip/TAR acquisition and independent pixel audit;
