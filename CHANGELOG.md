@@ -1,5 +1,10 @@
 # Changelog
 
+- Add explicit checksum-frozen CTF payload evaluation with byte-verified recovery,
+  incomplete-job separation, unavailable-tool denominator retention and portable
+  timing/provenance. Checked-in examples are development-only; blind qualification
+  remains unavailable, not inferred from fixture success.
+
 - Pin full-image base digests and direct tool versions; verify installed
   12-tool/four-gem inventory, retained license identities and runtime file hashes.
   Extend hardened E2E with Stegseek exact recovery and cancellation/timeout,

@@ -1,5 +1,15 @@
 # Implementation status — 2026-10-07
 
+CTF evaluation checkpoint (2026-10-11): the frozen-manifest runner verifies
+exact non-root artifact bytes after solving, retains unavailable/failed cases,
+and separates complete recovery from incomplete recovery and timing. Its two
+encoding examples remain development evidence. Blind qualification is always
+unavailable pending independent challenge custody and audit. See `CTF_EVALUATION.md`.
+
+The preceding `b3ba459` checkpoint passed GitHub CI (Python 3.11–3.14, quality,
+package, benchmark and full CPU research) and hardened full-image recovery.
+Local complete suite: 2,207 passed, one actual-CUDA-unavailable skip, 96.17% coverage.
+
 Latest checkpoint (2026-10-11): full-image direct tools and three base-image
 digests are pinned. The checked 12-tool/four-gem inventory retains upstream
 license identities and verifies executable/JAR/gem-tree hashes at runtime.
@@ -8,7 +18,7 @@ explicit-wordlist Stegseek and OpenStego exact recovery, cancellation/timeout,
 symlink/overwrite/output limits and recovered-passphrase redaction. See
 `FULL_IMAGE_VERIFICATION.md`; these are controlled fixtures, not blind accuracy.
 Focused inventory/runner coverage is >=95%; complete regression/remote Docker
-checks are pending at this implementation checkpoint. Old failed CI is not
+checks passed as recorded above. Old failed CI is not
 rewritten: seven jobs passed, but its complete CPU suite had one strict
 readiness-test assumption failure. The production numerical gate is unchanged.
 

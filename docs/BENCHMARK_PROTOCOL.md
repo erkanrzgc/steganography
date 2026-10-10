@@ -491,7 +491,13 @@ Actual validation-artifact ONNX parity is separate from small fixture parity.
 Neither a good development score nor perfect generator-oracle recovery passes
 the cross-source detector or blind CTF gates.
 
-The blind suite contains 120 supported challenges. At least 90% require exact
+`CTF_EVALUATION.md` describes the frozen-manifest recovery runner. It checks
+non-root artifact bytes after solving, retains missing tools/failures in the
+denominator and separates recovery from completed jobs. Its checked-in encoding
+examples and all automated runs remain development-only: independent blind
+custody is not certified by a manifest checksum or a high recovery rate.
+
+The target blind suite contains 120 supported challenges. At least 90% require exact
 payload/flag recovery; remaining challenges must place the correct method in
 the first three recommendations. For typical inputs below 10 MiB, publish the
 reference hardware and require median <= 60 seconds and p95 <= 180 seconds.

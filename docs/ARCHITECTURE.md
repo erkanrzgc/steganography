@@ -1,5 +1,11 @@
 # Architecture
 
+`core.ctf_evaluation` evaluates frozen challenge manifests through `CTFService`;
+`scripts/evaluate-ctf.py` is only its explicit command wrapper. Oracle hashes and
+method labels are checked after solve, never supplied to the playbook. Payload
+recovery, job completion, missing dependencies and blind qualification remain
+separate. See `CTF_EVALUATION.md` for the bounded development-only contract.
+
 `core/tool_inventory.py` verifies the explicit full-image lock using bounded
 shared ToolRunner probes and installed-file hashes. Docker records a build
 baseline; hardened runtime smoke verifies it before recovery. This service does

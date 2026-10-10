@@ -1,0 +1,32 @@
+{
+  "schema_version": "ctf-evaluation-manifest-v1",
+  "suite_id": "two-case-development-example",
+  "mode": "quick",
+  "limits": {
+    "max_depth": 3,
+    "max_artifacts": 256,
+    "max_bytes": 1073741824,
+    "tool_timeout": 30,
+    "job_timeout": 180
+  },
+  "cases": [
+    {
+      "id": "case-01",
+      "source_group": "handwritten-encoding-examples",
+      "method_family": "base64",
+      "input": "case-01.txt",
+      "input_sha256": "fe9cdfa4d19eb000ad317389fb4dd727323b27c2601701e271c5c74660f760a0",
+      "payload_sha256": "c08374a5af985ec6b50bda2b79c77583c8be011a8005e4758c9e7ac7a3149d30",
+      "required_tools": []
+    },
+    {
+      "id": "case-02",
+      "source_group": "handwritten-encoding-examples",
+      "method_family": "base16",
+      "input": "case-02.txt",
+      "input_sha256": "cfc4cb9c0342dd2e3f9aab09b347bf2b74546de9fd6a8ccbeb18fce21a096d53",
+      "payload_sha256": "2e812e9426561294b72d9ae2d41fb44c12cce6bae694cfedcb54cbdf877741c5",
+      "required_tools": []
+    }
+  ]
+}

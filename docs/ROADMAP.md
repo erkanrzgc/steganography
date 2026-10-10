@@ -1,5 +1,13 @@
 # Roadmap and status
 
+2026-10-11 CTF evaluation slice: checksum-frozen manifests, preflight/repeated
+input integrity checks, byte-verified non-root payload recovery, complete-job
+versus incomplete recovery counts, timings and missing-tool denominator retention.
+The explicit script delegates to the shared CTF service. Two published encoding
+examples are development fixtures; blind custody and the 120-case gate remain
+unavailable. Generic method recommendations are still incomplete. See
+`CTF_EVALUATION.md`; no detection accuracy improvement is claimed.
+
 2026-10-11 full-image slice: three digest-pinned base images, exact direct Debian
 tool pins, checked 12-tool/four-gem version/license identities and baked/runtime
 file hashes. Hardened E2E expands Stegseek recovery and cancellation/timeout,
