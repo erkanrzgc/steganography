@@ -8,6 +8,7 @@ import numpy as np
 
 from core import srnet_positive, srnet_sanity, srnet_signal
 from core.srnet_sampling import epoch_pairs
+from tests.evidence_assertions import assert_metrics_replay
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -41,7 +42,7 @@ def test_published_signal_control_complete_arm_failures_provenance_and_scalar_me
         assert len(arm["derived_tensor_sha256"]) == 24
         for prefix in ("own_input", "original_input"):
             metrics = srnet_sanity.metrics(np.array(arm[prefix + "_singleton_logits"]), rows)
-            assert metrics == arm[prefix + "_train_metrics"]
+            assert_metrics_replay(metrics, arm[prefix + "_train_metrics"])
         assert arm["learning_objectives"] == srnet_positive.objectives(
             arm["epoch_training"], arm["own_input_train_metrics"]
         )

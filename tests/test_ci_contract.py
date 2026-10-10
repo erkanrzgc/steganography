@@ -3,6 +3,10 @@
 import ast
 from pathlib import Path
 
+import pytest
+
+from tests.evidence_assertions import assert_metrics_replay
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -34,3 +38,17 @@ def test_release_provisions_same_optional_stack_before_verification():
     workflow = (ROOT / ".github/workflows/release.yml").read_text(encoding="utf-8")
     assert workflow.index("requirements-research-ci.txt") < workflow.index("- run: mypy")
     assert "- run: pytest\n" in workflow
+
+
+def test_evidence_replay_accepts_roundoff_not_metric_or_decision_changes():
+    expected = {"scores": [0.4, 0.6], "cross_entropy": 0.7, "recall": 1.0}
+    assert_metrics_replay({**expected, "scores": [0.4 + 1e-16, 0.6]}, expected)
+    for changes in (
+        {"scores": [0.4001, 0.6]},
+        {"cross_entropy": 0.7001},
+        {"recall": 0.0},
+        {"scores": [float("nan"), 0.6]},
+        {"scores": [0.4]},
+    ):
+        with pytest.raises(AssertionError):
+            assert_metrics_replay({**expected, **changes}, expected)

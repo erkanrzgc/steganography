@@ -5,6 +5,12 @@ research skips; a separate provisioned CPU job runs the complete suite with
 the unchanged 90% total coverage gate. Quality and release jobs install the
 required optional stack. This is regression infrastructure, not training or
 new detector accuracy. Remote execution must pass before claiming green CI.
+The first remote repair run exposed a pilot fixture leaking fake executable
+discovery into native decoding. Disable tools for that fixture's native checks;
+do not require host-installed executables or bypass exact payload recovery.
+Python 3.12–3.14 also exposed last-bit scalar replay differences (~6e-17).
+Float replay allows only 1e-14 absolute error; discrete metrics and published
+evidence/source hashes stay exact. No historical score or threshold is changed.
 
 2026-10-10 product cleanup: remove cloud AI provider/triage and upload paths,
 retire the AI extra and configuration, and keep local research as explicitly

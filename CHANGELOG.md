@@ -4,6 +4,9 @@
   lightweight matrix and require a complete CPU research suite with the
   unchanged 90% coverage gate. Provision Torch/ONNX for type checking and
   release verification; unavailable optional test dependencies report skips.
+  Isolate the pilot fixture's fake tool discovery from native decoder checks.
+  Bound cross-Python scalar replay roundoff at 1e-14 while retaining exact
+  discrete metrics, source hashes and historical failure assertions.
 
 - Remove cloud AI providers, triage and file uploads; retire the AI extra and
   settings. Legacy opt-ins fail explicitly, while default v1/v2 routes, local

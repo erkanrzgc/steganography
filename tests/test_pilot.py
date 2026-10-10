@@ -50,6 +50,9 @@ def test_pilot_generation_integrity_and_exact_decoder_recovery(tmp_path, monkeyp
     # Keep actual extraction tests on standard encodings, independent of stego adapters.
     manifest["challenges"] = manifest["challenges"][2:6]
     (root / "manifest.json").write_text(json.dumps(manifest))
+    # shutil is shared with ToolRunner: do not leak the generation adapter's
+    # fictitious executable names into native decoder recovery checks.
+    monkeypatch.setattr(pilot.shutil, "which", lambda tool: None)
     report = pilot.evaluate(root, tmp_path / "ctf", ctf=True)
     assert report["exact_recovery_rate"] == 1.0
     assert report["blind"] is False and report["support_status"] == "experimental"

@@ -9,6 +9,7 @@ import pytest
 
 from core import srnet_bn_refresh as bn
 from core import srnet_multibatch, srnet_sanity
+from tests.evidence_assertions import assert_metrics_replay
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -48,7 +49,7 @@ def test_public_refresh_complete_provenance_scalar_replay_and_preserved_failures
         )
         for prefix in ("own_input", "original_input"):
             metric = srnet_sanity.metrics(np.array(arm[prefix + "_singleton_logits"]), rows)
-            assert metric == arm[prefix + "_train_metrics"]
+            assert_metrics_replay(metric, arm[prefix + "_train_metrics"])
             contrast = arm["contrast"][prefix]
             assert contrast["state_unchanged"] and contrast["epoch_batch_schedule"] == schedule
             for mode in ("stored_bn", "batch_statistics_diagnostic_only"):
