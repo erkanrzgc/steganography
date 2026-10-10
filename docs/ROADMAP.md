@@ -1,5 +1,18 @@
 # Roadmap and status
 
+2026-10-10 multi-carrier diversity: 900 DIV2K RGB originals (800 train / 100
+development validation) and 2,000 ESC-50 environmental WAVs (1,200 train /398
+validation /402 test) acquired. Independent complete audit reread all new media
+and 10,225 historical cover rows: no exact/decoded overlap or recording-group
+role leakage. Native ESC fold leakage and legacy-schema failures are retained;
+explicit pinned grouped retry preserves original metadata. See
+`MEDIA_DIVERSITY_RESULTS.md` and `METHOD_DATA_PLAN.md`. No new fit, GPU/cloud
+spending, deployed model or improved accuracy; restricted originals private.
+Fresh full regression: 1,892 passed / one actual-CUDA skip, coverage 95.73%;
+new acquisition core 100%. All 59 acquisition/auditor tests and three later
+portable-evidence tests pass separately. Lint/types and whitespace checks pass;
+other Python versions, Docker and physical 24 GB GPU not verified here.
+
 Three-origin metadata scheduling is implemented separately: full original-pair
 coverage, equal source exposure, four-row distinct-source batches, explicit
 15,000-row cap and unchanged historical recipes. Fifteen independent generated

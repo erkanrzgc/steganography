@@ -1,5 +1,17 @@
 # Architecture
 
+`core/media_dataset.py` is an explicit fixed-origin streaming acquisition service
+for DIV2K PNG and pinned ESC-50 PCM; it is never called by installation/analysis.
+Bound ZIP-directory allocation before parsing, retain archive/usage/CSV evidence,
+use exclusive generated-safe media paths and publish a manifest only after all
+identities and decode constraints pass. Historical legacy hash exclusions are
+pinned. Default ESC import rejects cross-fold source IDs; the separate checksum-
+pinned cached retry preserves raw metadata and assigns whole original groups to
+their highest native fold. `scripts/audit-media-diversity.py` imports none of
+that implementation and independently rereads all new/prior original bytes,
+decoded media, archive evidence, metadata and split accounting. No training or
+commercial/public distribution is implied. See `METHOD_DATA_PLAN.md`.
+
 `core/srnet_diversity_sampling.py` is a separate opt-in three-origin metadata
 recipe with a 15,000-train-row cap and unchanged shared 40,000-pair bound.
 It balances source-local quality/method exposure into four-row AB/CA/BC

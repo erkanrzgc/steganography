@@ -1,0 +1,77 @@
+{
+  "schema_version": "media-diversity-independent-audit-v1",
+  "status": "completed",
+  "sources": [
+    {
+      "dataset": "div2k-train",
+      "manifest_sha256": "12ccdeab2e6f89d98e58f04262a07324ca3baca317b3fe515626e88e23b529f2",
+      "originals": 800,
+      "splits": {
+        "train": 800
+      },
+      "archive_sha256": "9d0b9c463f6e35b6c62cc6a930ee2224f670b34c1df841a57670f9acf0f6c335",
+      "archive_bytes": 3530603713,
+      "media_bytes": 3533759878,
+      "license": "academic_research_only_original_owner_copyright",
+      "license_evidence_sha256": "e23ab442a90f985bd8856ddc04af34f30549e38f05bbdb4d0f6d514773f67723",
+      "split_policy": "fixed-upstream-roles-v1",
+      "original_recording_groups": null
+    },
+    {
+      "dataset": "div2k-validation",
+      "manifest_sha256": "f8d5e27349ed8a82f2feb74d1a27f3c69d91f6897cc73dbbfb1b69bb97c5569e",
+      "originals": 100,
+      "splits": {
+        "validation": 100
+      },
+      "archive_sha256": "20dd31fd84d777bc1cf5d6b7654a3f569c0aec74458ae094122ad1d0489900fc",
+      "archive_bytes": 448993893,
+      "media_bytes": 449507452,
+      "license": "academic_research_only_original_owner_copyright",
+      "license_evidence_sha256": "e23ab442a90f985bd8856ddc04af34f30549e38f05bbdb4d0f6d514773f67723",
+      "split_policy": "fixed-upstream-roles-v1",
+      "original_recording_groups": null
+    },
+    {
+      "dataset": "esc50",
+      "manifest_sha256": "64595a617ed7787cf39fe3b9f09ed02c7f0fb1bd6954f8b627c9a22a11900c16",
+      "originals": 2000,
+      "splits": {
+        "train": 1200,
+        "validation": 398,
+        "test": 402
+      },
+      "archive_sha256": "661183a6f53ef04f12c9bd618fed0ddc1713280d6c94a5a5431e844ba6f6a21f",
+      "archive_bytes": 645832161,
+      "media_bytes": 882088000,
+      "license": "CC-BY-NC-3.0; ESC-10 subset separately CC-BY",
+      "license_evidence_sha256": "60a3ae8cecca8488f5381ef54f302396dbd1b0d82ae0d14afc92a4bfd6b34501",
+      "split_policy": "esc-original-group-max-fold-v1",
+      "original_recording_groups": 1524
+    }
+  ],
+  "prior_manifest_sha256": [
+    "303995e90fbeb90a52e5a6ee99063741092690b5b47d50c2703c66bdf0959f9c",
+    "7b0160a7f631f857f127b6299f6c2a4b9c913a3ad8c87a5562614d62f5d94014",
+    "7df0e4a5a4d64576b6c6a2edcae1eadf8b46a3afa54fe6e1855fd79c7d525626",
+    "9ae58e33f8e71e72a918ed393ecb3f7900f36d3428f3a4347e42018fc84adfe8",
+    "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+    "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+    "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+    "f4199c1e58b4f8be1ffbcb1924cdcdb980daa46b52a537f6f7c845273fbf8b4d",
+    "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288"
+  ],
+  "prior_covers_reread": 10225,
+  "originals_audited": 2900,
+  "prior_exact_overlap": 0,
+  "prior_decoded_overlap": 0,
+  "new_duplicate_originals": 0,
+  "original_group_split_overlap": 0,
+  "camera_scene_independence_verified": false,
+  "cover_cleanliness_verified": false,
+  "model_trained": false,
+  "accuracy_qualification": "unavailable",
+  "audit_source_sha256": "66c2f88fb402db2429493c8a468034eeff8d1a90cfbc907496cbae0b11d7d226",
+  "seconds": 227.3381063249999
+}

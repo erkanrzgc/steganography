@@ -13,6 +13,8 @@ Use [benchmark results](BENCHMARK_RESULTS.md) for scores and limitations.
 | BOSSbase 1.01 second development expansion | New 1,000 PGM originals: 822 train, 178 validation; all 6,000 Q75/Q95 cover/JUNIWARD/UERD JPEGs prepared | Excludes all six previous acquisition manifests; byte/ancestry/coefficient/crop audit passes | Same original source restrictions; not another source group or qualified detector |
 | [WIFD](https://github.com/CSCRC-SCREED/WIFD) | 200 SDR original files: 120 JPEG, 80 MPO; whole origin reserved | Pinned source/Git blob/SHA-256; ten declared camera directories, primary frames only; scene identity unverified | Pinned README declares data/code MIT; license evidence retained; no raw data published or detection measured |
 | [FSDD v1.0.10](https://github.com/Jakobovski/free-spoken-digit-dataset/tree/d6938f9bf1545aa66d8489fc9f1385a7abd64282) | 3,000 actual spoken-digit WAV recordings, six speakers; 6,000 controlled LSB stegos from 1,000 test originals | Pinned commit; per-file SHA-256, CRC, speaker and PCM metadata; whole-speaker train/validation/test roles in separate experiment manifest | Upstream CC-BY-SA-4.0; attribution, license link and applicable ShareAlike/change notices required for redistribution; no audio committed |
+| [DIV2K HR](https://data.vision.ee.ethz.ch/cvl/DIV2K/) | 900 original RGB PNGs: 800 train / 100 development validation | Exact native identities, archive/media/decoded hashes; one declared origin, cameras/scenes unknown | Academic research only, original owners retain copyright; originals/derivatives/weights private |
+| [ESC-50 pinned original recordings](https://github.com/karolpiczak/ESC-50/tree/33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6) | 2,000 five-second mono PCM16/44.1kHz WAVs, 50 environmental categories: 1,200 train / 398 validation / 402 test | 1,524 original recording IDs; explicit checksum-pinned max-fold grouping prevents observed upstream cross-fold leakage; native CSV/folds unchanged | CC-BY-NC-3.0; ESC-10 subset separately CC-BY; private research, no audio/weights published |
 | [StegoAppDB paper](https://arxiv.org/abs/1904.09360) | Not acquired | Intended mobile-app evaluation; no verified local camera/app mapping | Checked database endpoint inaccessible here; access and usage conditions still required |
 | [BOWS2](https://bows2.ec-lille.fr/) | Not acquired | Potential additional image source, independence must be reviewed | Endpoint was unreachable from this environment; no replacement mirror or license assumed |
 
@@ -113,6 +115,12 @@ arbitrary audio methods. Existing recordings have not been certified free of
 all possible steganography; “cover” is the controlled experiment's source role.
 
 ## What we publish
+
+The [media-diversity acquisition](../benchmarks/media-diversity-acquisition-20261010.json)
+records 2,900 new originals, not 2,900 positive stego examples or trained inputs.
+The [method/data plan](METHOD_DATA_PLAN.md) separates remaining learning and
+qualification work across JPEG, spatial images, GIF, WAV, compressed audio,
+text and containers. Extra data does not itself qualify any detection method.
 
 - Commit acquisition/evaluation code, protocols, versions, source links, license
   notes, hashes, portable metrics and unsuccessful results. No credentials,

@@ -1,5 +1,11 @@
 # Changelog
 
+- Add explicit bounded DIV2K/ESC-50 research acquisition and an independent
+  whole-original audit. Preserve the failed legacy-manifest assumption and
+  native ESC fold leakage. Add a checksum-pinned cached whole-recording split
+  recipe without changing upstream metadata or silently promoting held-out
+  data into training; method/data coverage remains explicit, not accuracy.
+
 - Add a separate three-origin train-only JPEG sampling service with complete
   source/Q/method pair exposure, balanced four-row source combinations and
   cross-source original-lineage rejection. Preserve historical two-source

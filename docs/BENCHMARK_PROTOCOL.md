@@ -1,5 +1,14 @@
 # Benchmark protocol
 
+`MEDIA_DIVERSITY_PROTOCOL.md` / `MEDIA_DIVERSITY_LEGACY_RETRY.md` freeze explicit
+new RGB-image/environmental-audio acquisition with full prior manifest binding.
+The first metadata-schema assumption failed before downloads. The subsequent
+native ESC acquisition failed on four cross-fold original-recording IDs; preserve
+that result. `ESC_ORIGINAL_GROUP_RETRY_PROTOCOL.md` separately fixes a pinned
+cached import assigning each recording's fragments to its highest upstream fold,
+retaining native metadata and excluding validation/test leakage. No source-media
+count, archive/PCM/pixel audit or GPU capacity is a steganalysis accuracy result.
+
 `JPEG_DIVERSITY_SAMPLING.md` specifies a new three-origin metadata recipe,
 not a preregistered real-learning experiment. Generated coverage/accounting
 tests cannot pass preprocessing or detection gates. Its prospective epoch has

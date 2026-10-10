@@ -14,6 +14,12 @@ BOWS2 originals (807 train / 194 validation), without merging reserved WIFD.
 These are acquired originals, not yet prepared/trained model inputs or an
 accuracy improvement; the existing failed JPEG model remains undeployed.
 
+[Multi-carrier expansion](docs/DATASET_CATALOG.md) also adds 900 RGB DIV2K
+originals and 2,000 environmental ESC-50 WAVs. Original-recording grouping
+prevents observed upstream fold leakage. These are candidate covers, not
+newly trained detectors; [learning gaps by method](docs/METHOD_DATA_PLAN.md)
+remain explicit.
+
 It does **not** prove that a file is clean, recover arbitrary unknown stego
 schemes, replace manual forensic validation, or make unencrypted hidden data
 confidential. No default operation makes a network request.
