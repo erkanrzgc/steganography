@@ -16,6 +16,15 @@ Use [benchmark results](BENCHMARK_RESULTS.md) for scores and limitations.
 | [StegoAppDB paper](https://arxiv.org/abs/1904.09360) | Not acquired | Intended mobile-app evaluation; no verified local camera/app mapping | Checked database endpoint inaccessible here; access and usage conditions still required |
 | [BOWS2](https://bows2.ec-lille.fr/) | Not acquired | Potential additional image source, independence must be reviewed | Endpoint was unreachable from this environment; no replacement mirror or license assumed |
 
+2026-10-10 update: the author-hosted [TU Dresden BOWS archive](https://dud.inf.tu-dresden.de/~westfeld/rsp/rsp.html)
+is reachable. **1,001 original grayscale PGMs** acquired, 807 train / 194
+development validation, independently byte/pixel-audited against all 3,000
+existing BOSS covers. This is a third declared origin; camera/scene independence
+unverified, explicit redistribution license not verified, originals private.
+The old unreachable contest endpoint above is historical. No preparation,
+fitting or accuracy gain yet; see `BOWS_DIVERSITY_RESULTS.md` and both retained
+count/name failures. WIFD remains reserved, never merged into training.
+
 ## Explicit expansion — 2026-10-08
 
 An additional 4,000 ALASKA2 JPEGs (1,000 complete four-way original lineages)

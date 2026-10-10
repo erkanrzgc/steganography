@@ -1,0 +1,20 @@
+{
+  "schema_version": "bows2-acquisition-failure-v1",
+  "status": "failed",
+  "reason": "advertised_1000_file_count_guard_failed",
+  "protocol_sha256": "5892a7e112a82e8ab346d2ba859c1b7116075f6a9d9692a887d4b7f3b86d4dd7",
+  "implementation_sha256": "136014097fc25f5d3ac0126135525fba3a24bd2c8720aa29f715beddd9716a8e",
+  "source_url": "https://dud.inf.tu-dresden.de/~westfeld/rsp/bows2-1g.tar.gz",
+  "expected_files": 1000,
+  "retained_originals": 0,
+  "first_attempt_archive_sha256": null,
+  "separate_investigation": {
+    "archive_sha256": "3e26b0faf740f7cd6d3a67df5ac86dba1631b8bcc69f17302498c785e240bd49",
+    "archive_bytes": 183938734,
+    "expanded_bytes": 263434240,
+    "pgm_files": 1001,
+    "note": "Later independent bounded retrieval, not a claimed hash of the first in-memory attempt."
+  },
+  "model_trained": false,
+  "accuracy_qualification": "unavailable"
+}

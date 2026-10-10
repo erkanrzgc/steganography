@@ -9,6 +9,11 @@ an encrypted local vault, hide and recover versioned payloads, and produce
 repeatable reports. Deterministic detectors, bounded optional tools, and
 optional signed ONNX models run on the machine you control.
 
+[Source diversity expansion](docs/BOWS_DIVERSITY_RESULTS.md) adds 1,001 audited
+BOWS2 originals (807 train / 194 validation), without merging reserved WIFD.
+These are acquired originals, not yet prepared/trained model inputs or an
+accuracy improvement; the existing failed JPEG model remains undeployed.
+
 It does **not** prove that a file is clean, recover arbitrary unknown stego
 schemes, replace manual forensic validation, or make unencrypted hidden data
 confidential. No default operation makes a network request.

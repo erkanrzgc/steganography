@@ -1,5 +1,11 @@
 # Changelog
 
+- Acquire/audit 1,001 BOWS2 original images as a third declared research origin:
+  807 train / 194 validation, no old exact/BOSS-pixel overlap, WIFD reserved.
+  Add fixed-origin bounded gzip/TAR acquisition and independent pixel audit;
+  preserve both failed advertised-count/name attempts. No raw corpus/weights,
+  automatic downloads, source relabeling, new training or accuracy claim.
+
 - Record the fixed final-model train-only normalization comparison: 48 pairs,
   unchanged model/BN state, no validation or fitting. Publish bound execution
   source and portable aggregates; paired-mode scores are not detector accuracy

@@ -1,0 +1,33 @@
+{
+  "schema_version": "bows2-independent-original-audit-v1",
+  "status": "completed",
+  "source_manifest_sha256": "7b0160a7f631f857f127b6299f6c2a4b9c913a3ad8c87a5562614d62f5d94014",
+  "archive_sha256": "3e26b0faf740f7cd6d3a67df5ac86dba1631b8bcc69f17302498c785e240bd49",
+  "archive_bytes": 183938734,
+  "originals": 1001,
+  "original_bytes": 262421270,
+  "split": {
+    "train": 807,
+    "validation": 194
+  },
+  "reserved_manifest_sha256": [
+    "303995e90fbeb90a52e5a6ee99063741092690b5b47d50c2703c66bdf0959f9c",
+    "7df0e4a5a4d64576b6c6a2edcae1eadf8b46a3afa54fe6e1855fd79c7d525626",
+    "9ae58e33f8e71e72a918ed393ecb3f7900f36d3428f3a4347e42018fc84adfe8",
+    "a2412f69124b3c2cb84907d8f276dd7a2f21a0aacb6eac212a123c889822f832",
+    "a75c1237d9d67194374062e62baba69b9c84e9283b2e2680cceaf04869bc6844",
+    "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    "eea495733f0243b420850ca00372877e30c89836738ebc9175ec4b2bbe571d57",
+    "f54f1f66c366a5e57c4ab65214a211e807ac4a0d0a5a1a549e736b34c2bbe288"
+  ],
+  "prior_boss_originals_pixel_checked": 3000,
+  "exact_identity_overlap": 0,
+  "decoded_boss_pixel_overlap": 0,
+  "camera_scene_independence": "unverified",
+  "WIFD_training_used": false,
+  "license": "no_explicit_redistribution_license_verified_local_only",
+  "model_trained": false,
+  "accuracy_qualification": "unavailable",
+  "prepared_training_rows": 0,
+  "audit_script_sha256": "b53d306cc6925f1709b97cef4852ca50403a9591a0914db0ee4e24f921c6604e"
+}

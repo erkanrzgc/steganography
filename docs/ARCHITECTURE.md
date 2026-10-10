@@ -1,5 +1,14 @@
 # Architecture
 
+`core/bows_dataset.py` is an explicit research acquisition service, called only
+by `scripts/fetch-bows-diversity.py`, never package installation or analysis.
+Fixed HTTPS origins, bounded gzip/TAR preflight, no archive-path extraction,
+fresh generated output names and prior identities precede original publication.
+Native-layout import is checksum-pinned rather than a general count override.
+The separate audit script imports no acquisition implementation and checks
+original bytes/pixels, old BOSS pixels and whole-lineage splits independently.
+This does not change the frozen two-source JPEG preparation/trainer contracts.
+
 The final epoch model's read-only normalization diagnosis calls the existing
 shared `core.srnet_diagnostics.paired_probe`, on train-only bounded blocks.
 Its paired batch-statistics mode is diagnostic-only, never product inference,

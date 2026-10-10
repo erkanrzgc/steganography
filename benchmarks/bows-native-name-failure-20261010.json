@@ -1,0 +1,12 @@
+{
+  "schema_version": "bows2-acquisition-failure-v1",
+  "status": "failed",
+  "reason": "incorrect_preregistered_0_through_1000_name_assumption",
+  "protocol_sha256": "e11f0c8837fdf1a4d0f5730e7f9ec3a65758d57706b4a7380e0d1b6357ccee74",
+  "implementation_sha256": "fe7965d3fbf1555237ad19a8df2676ecfbcac25758fc6e07082fe4a582daaee8",
+  "archive_sha256": "3e26b0faf740f7cd6d3a67df5ac86dba1631b8bcc69f17302498c785e240bd49",
+  "actual_members": "1.pgm through 1000.pgm plus 3661.pgm; no 0.pgm",
+  "retained_originals": 0,
+  "model_trained": false,
+  "accuracy_qualification": "unavailable"
+}
