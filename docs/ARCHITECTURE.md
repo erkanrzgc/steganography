@@ -1,5 +1,12 @@
 # Architecture
 
+`core/jpeg_curriculum.py` owns a separate fixed two-source Q75 experiment:
+bounded high-payload cache preparation with independent SciPy IDCT math, paired
+D4 exposures and a two-stage warm-up/adaptation kernel. Only explicit module
+commands prepare/train; no downloads, model exports or primary verdict changes.
+All historical development probe contexts remain visible, including out-of-fit
+methods/qualities. High-cache and current source identities are both bound.
+
 The distinct `core/srnet_samepool.py` research variant changes only BN epsilon
 and SAME average-pool geometry. The existing `srnet_reference.py` NumPy forward
 oracle and all legacy contracts remain unchanged. `jpeg_learnability.py` owns

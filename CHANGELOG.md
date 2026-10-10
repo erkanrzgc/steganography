@@ -1,5 +1,9 @@
 # Changelog
 
+- Add explicit bounded two-source Q75 high-to-low payload curriculum with
+  paired D4, independent new-cache IDCT checks and complete contextual probe
+  reports. Keep historical failures, legacy contracts and deployment unchanged.
+
 - Publish both physical four-row JPEG learnability controls and independent
   scalar/metadata evidence. Both pass memorization; broad detection improvement
   remains unqualified. Preserve failed historical results and record the

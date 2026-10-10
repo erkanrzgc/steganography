@@ -1,5 +1,12 @@
 # Roadmap and status
 
+2026-10-10 curriculum implementation: separately frozen high-payload Q75 warm-up
+and .2 adaptation, BOSS/BOWS 48 originals, paired D4 and 7,680 updates. All ten
+historical original-disjoint development probe cells remain reported. Independent
+SciPy IDCT/worker/cache checks precede optimization; own GPU only, no deployment.
+Real preparation/fitting pending at this implementation checkpoint.
+See `JPEG_CURRICULUM_PROTOCOL.md`.
+
 Verification for the learnability slice: complete disk-backed regression
 2,100 passed /one actual-CUDA skip on the CPU-only VM, 32 existing ONNX warnings.
 Three later portable-evidence tests pass separately with coverage append;

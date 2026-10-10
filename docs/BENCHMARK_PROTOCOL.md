@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+`JPEG_CURRICULUM_PROTOCOL.md` freezes 48 original two-source Q75/JUNIWARD fit
+pairs, .4 warm-up/.2 adaptation, paired D4 and 7,680 updates. One final evaluation
+keeps all ten historically inspected development cells. No blind/causal/support
+claim; retain unchanged threshold, out-of-fit failures and all epoch losses.
+
 `JPEG_LEARNABILITY_PROTOCOL.md` freezes matched real-pair memorization before
 optimization: all four final singleton labels correct and CE <.2 is a learning
 sanity criterion only, never held-out accuracy. Select pairs by original hash,
