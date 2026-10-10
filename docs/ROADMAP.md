@@ -1,5 +1,17 @@
 # Roadmap and status
 
+2026-10-10 physical layerwise population-BN control completed on the user's
+RTX 5060 in 60.27s, zero optimizer updates. Calibration 360 rows /72 originals;
+probe 120 rows /24 disjoint historical training originals. All ten cells still
+50% balanced accuracy despite lower cross-entropy. Singleton parity and learned
+weight/source immutability pass; no validation, deployment or paid cloud job.
+This specific statistics-only correction is insufficient, not a learning gain.
+Next: separately frozen fresh-model normalization learning control with matched
+exposure, not an unqualified epoch extension. See `JPEG_POPULATION_BN_RESULTS.md`.
+Full disk-backed regression: 2,009 passed /one local actual-CUDA skip, total
+coverage 95.83%; three later physical-evidence tests pass separately (32 focused
+with new controls). New core/frontend 97%/97%/98%; lint/types/dependencies pass.
+
 2026-10-10 own-GPU follow-up: layerwise population-BN control implemented and
 preregistered before real execution. 360 calibration / 120 singleton probe rows
 keep 72 / 24 original groups disjoint within the historical train-only kit.

@@ -1,0 +1,503 @@
+{
+  "schema_version": "jpeg-layerwise-population-bn-v1",
+  "status": "completed",
+  "execution": {
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_gpu_bytes": 8518041600,
+    "torch_allocator_limit_bytes": 4294967296,
+    "host_memory_max_bytes": 8589934592,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "mixed_precision": false,
+    "deterministic_algorithms": true,
+    "cpu_fallback": false
+  },
+  "model_sha256": "71f6f5fe8730944c38d406362bf26e382f348f302b03c7f30809991db73e44b6",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "calibration_rows": 360,
+  "probe_rows": 120,
+  "calibration_originals": 72,
+  "probe_originals": 24,
+  "original_groups_disjoint": true,
+  "validation_used": false,
+  "probe_is_historical_training_data": true,
+  "optimizer_updates": 0,
+  "learned_parameters_bit_identical": true,
+  "source_model_unchanged": true,
+  "normalization_refreshed": true,
+  "calibration_layers": [
+    {
+      "layer": "front.0.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.1.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.2.branch.0.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.2.branch.1.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.3.branch.0.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.3.branch.1.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.4.branch.0.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.4.branch.1.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.5.branch.0.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.5.branch.1.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.6.branch.0.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "front.6.branch.1.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "middle.0.branch.0.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "middle.0.branch.1.1",
+      "activation_count_per_channel": 23592960
+    },
+    {
+      "layer": "middle.0.skip.1",
+      "activation_count_per_channel": 5898240
+    },
+    {
+      "layer": "middle.1.branch.0.1",
+      "activation_count_per_channel": 5898240
+    },
+    {
+      "layer": "middle.1.branch.1.1",
+      "activation_count_per_channel": 5898240
+    },
+    {
+      "layer": "middle.1.skip.1",
+      "activation_count_per_channel": 1474560
+    },
+    {
+      "layer": "middle.2.branch.0.1",
+      "activation_count_per_channel": 1474560
+    },
+    {
+      "layer": "middle.2.branch.1.1",
+      "activation_count_per_channel": 1474560
+    },
+    {
+      "layer": "middle.2.skip.1",
+      "activation_count_per_channel": 368640
+    },
+    {
+      "layer": "middle.3.branch.0.1",
+      "activation_count_per_channel": 368640
+    },
+    {
+      "layer": "middle.3.branch.1.1",
+      "activation_count_per_channel": 368640
+    },
+    {
+      "layer": "middle.3.skip.1",
+      "activation_count_per_channel": 92160
+    },
+    {
+      "layer": "tail.0.1",
+      "activation_count_per_channel": 92160
+    },
+    {
+      "layer": "tail.1.1",
+      "activation_count_per_channel": 92160
+    }
+  ],
+  "baseline_cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 7,
+      "false_positive": 7,
+      "true_negative": 1,
+      "false_negative": 1,
+      "balanced_accuracy": 0.5,
+      "recall": 0.875,
+      "false_positive_rate": 0.875,
+      "cross_entropy": 15.71028798756067,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 6,
+      "false_positive": 7,
+      "true_negative": 1,
+      "false_negative": 2,
+      "balanced_accuracy": 0.4375,
+      "recall": 0.75,
+      "false_positive_rate": 0.875,
+      "cross_entropy": 15.717933628883076,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 1,
+      "false_positive": 1,
+      "true_negative": 7,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 2.742496236088607,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 1,
+      "false_positive": 1,
+      "true_negative": 7,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 2.7403022919359556,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 1,
+      "false_positive": 1,
+      "true_negative": 7,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 1.732891130684313,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 1,
+      "false_positive": 1,
+      "true_negative": 7,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 1.7314273261269462,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 18.345481407112114,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 18.342103595986643,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 4,
+      "false_positive": 4,
+      "true_negative": 4,
+      "false_negative": 4,
+      "balanced_accuracy": 0.5,
+      "recall": 0.5,
+      "false_positive_rate": 0.5,
+      "cross_entropy": 14.75332031524466,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 4,
+      "false_positive": 4,
+      "true_negative": 4,
+      "false_negative": 4,
+      "balanced_accuracy": 0.5,
+      "recall": 0.5,
+      "false_positive_rate": 0.5,
+      "cross_entropy": 14.752800832538878,
+      "cover_rows_shared_across_method_cells": true
+    }
+  ],
+  "refreshed_cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 2.2507679952945296,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 5,
+      "false_positive": 5,
+      "true_negative": 3,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 2.254209692559214,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 7,
+      "false_positive": 7,
+      "true_negative": 1,
+      "false_negative": 1,
+      "balanced_accuracy": 0.5,
+      "recall": 0.875,
+      "false_positive_rate": 0.875,
+      "cross_entropy": 1.1508180767071292,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 7,
+      "false_positive": 7,
+      "true_negative": 1,
+      "false_negative": 1,
+      "balanced_accuracy": 0.5,
+      "recall": 0.875,
+      "false_positive_rate": 0.875,
+      "cross_entropy": 1.144891129937299,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 7,
+      "false_positive": 7,
+      "true_negative": 1,
+      "false_negative": 1,
+      "balanced_accuracy": 0.5,
+      "recall": 0.875,
+      "false_positive_rate": 0.875,
+      "cross_entropy": 1.0342044800532801,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 7,
+      "false_positive": 7,
+      "true_negative": 1,
+      "false_negative": 1,
+      "balanced_accuracy": 0.5,
+      "recall": 0.875,
+      "false_positive_rate": 0.875,
+      "cross_entropy": 1.0333719784468702,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 3,
+      "false_positive": 3,
+      "true_negative": 5,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 1.8487720399481697,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 3,
+      "false_positive": 3,
+      "true_negative": 5,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 1.8807179670379157,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 3,
+      "false_positive": 3,
+      "true_negative": 5,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 1.8423896206547163,
+      "cover_rows_shared_across_method_cells": true
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "cover_rows": 8,
+      "stego_rows": 8,
+      "true_positive": 3,
+      "false_positive": 3,
+      "true_negative": 5,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 1.83968515645037,
+      "cover_rows_shared_across_method_cells": true
+    }
+  ],
+  "singleton_batch_parity": {
+    "baseline": true,
+    "refreshed": true,
+    "atol": 0.0001,
+    "rtol": 0.0001
+  },
+  "numerical_gates_passed": true,
+  "seconds": 60.27474536,
+  "process_peak_gpu_allocated_bytes": 478966784,
+  "process_peak_gpu_reserved_bytes": 490733568,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "refreshed_model_sha256": "0afb1493f762a6302d25e26c9776d4f3db82a162450f9f765dbd054fbdf072ae",
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b",
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "core/jpeg_timing_probe.py": "f1f78bc9fc6b279003637ad116f42cfcb4a1e09c1b7fb9c139333ecb01bd6777",
+    "core/srnet_diversity_sampling.py": "96c00eaf608fd3cb1192d14b8a5a2ac07faaad8e30e124bf6001c803373d1df3",
+    "steganography/research_jpeg_timing_probe.py": "b6dd2c95a9ca44b03d8d85d757122915cc71bd805a99c1e86206bc689e39c8a3",
+    "core/srnet_population_bn.py": "99ca45b4ece2736dbf981648db274bf259d5c832d1dda5d23c9084d8a7b581a8",
+    "core/jpeg_population_control.py": "83f9d21e38d36c19a90a1c9724c3ed407d382d7a4552170c54aba9ebb66435ba",
+    "steganography/research_jpeg_population_bn.py": "742ec92b579c98a4a893a978bb203c5ff43703b224d4d12c77b5f2f065921f19",
+    "docs/JPEG_POPULATION_BN_PROTOCOL.md": "1136f45698bf55c57aed8fcf8e3945d6a8e3b8c89696a0c12aaeb12e33bf9c39"
+  }
+}

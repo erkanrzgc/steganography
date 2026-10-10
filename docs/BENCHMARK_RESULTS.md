@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+[Physical layerwise population-BN control](JPEG_POPULATION_BN_RESULTS.md): all
+ten selected historical-training probe cells remain at 50% balanced accuracy.
+Loss decreases but learned weights are unchanged; no held-out improvement or
+deployment. Own RTX 5060, 60.27 seconds, no paid cloud resources.
+
 [Physical three-origin JPEG timing](JPEG_REAL_TIMING_PROBE.md): RTX 5060 Laptop
 GPU completed 66 real updates, median 0.08837s / p95 0.09303s and 0.985 GiB
 peak allocated VRAM. Fixed prospective epoch optimizer estimate 9.56 minutes;

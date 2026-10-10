@@ -1,5 +1,10 @@
 # Changelog
 
+- Publish the completed RTX 5060 layerwise population-BN intervention: all ten
+  train-scope probe cells remain at 50% balanced accuracy despite lower loss.
+  Singleton parity passes and learned weights remain unchanged. Do not treat
+  numerical gates or reduced overconfidence as improved detection.
+
 - Add an explicit own-GPU, train-only layerwise population-BN control: immutable
   learned weights, count-weighted float64 statistics, disjoint original-group
   calibration/probe subsets and singleton inference. Preserve all old failed
