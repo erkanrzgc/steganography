@@ -1,5 +1,11 @@
 # Architecture
 
+`core/srnet_batch_probe.py` isolates genuine 8/16/32-row generated training
+capacity checks from historical four-row kernels. The explicit frontend runs
+one bounded process per invocation and persists exclusive reports only. Missing
+CUDA, timeout and allocator OOM are unavailable, never CPU fallback or accuracy.
+No deployed detectors, model exports or old source-bound experiments change.
+
 `core/jpeg_curriculum.py` owns a separate fixed two-source Q75 experiment:
 bounded high-payload cache preparation with independent SciPy IDCT math, paired
 D4 exposures and a two-stage warm-up/adaptation kernel. Only explicit module

@@ -1,5 +1,10 @@
 # Benchmark protocol
 
+`JPEG_BATCH_PROBE_PROTOCOL.md` fixes generated genuine-batch feasibility checks
+before larger real-data fitting. Two updates per isolated size measure capacity
+only; retain unavailable/OOM/timeout outcomes. No accuracy or independent-math
+qualification, limit increases, cloud spending or automatic model deployment.
+
 `JPEG_CURRICULUM_PROTOCOL.md` freezes 48 original two-source Q75/JUNIWARD fit
 pairs, .4 warm-up/.2 adaptation, paired D4 and 7,680 updates. One final evaluation
 keeps all ten historically inspected development cells. No blind/causal/support

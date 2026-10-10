@@ -1,5 +1,9 @@
 # Changelog
 
+- Add an isolated generated 8/16/32-row genuine-batch capacity probe with
+  fixed CUDA/host limits, timeout/OOM unavailability and exclusive source-bound
+  reports. GPU execution pending SSH reconnection; no claimed accuracy gain.
+
 - Publish completed two-source Q75 curriculum and independent rank-AUC/scalar
   replay. Retain all ten contexts: two small BA 56.25% cells, eight 50%, high FPR;
   do not qualify these as robust detection improvement or deploy the model.

@@ -1,5 +1,16 @@
 # Roadmap and status
 
+2026-10-10: separate 8/16/32-row generated genuine-batch capacity probe prepared.
+Physical GPU execution is pending: the loopback SSH port accepts connections but
+the WSL endpoint resets them. Do not report a fit, batch-size success or accuracy
+gain. Preserve the 4 GiB CUDA allocator and 8 GiB host limits; reconnect the
+existing local-only WSL endpoint before the next hardware check.
+See `JPEG_BATCH_PROBE_PROTOCOL.md` and `WSL_GPU_RECONNECT.md`.
+Verification: 108 focused/regression tests passed, one actual-CUDA test skipped;
+new core 100% /frontend 99% coverage, Ruff and 168-file mypy passed. Isolated
+local subprocess correctly reports CUDA unavailable. Full suite and physical
+8/16/32-row GPU results have not been rerun at this checkpoint.
+
 2026-10-10 physical Q75 curriculum completed: .4 warm-up/.2 adaptation, 80
 epochs /7,680 updates, 23m20.77s own RTX 5060. Train losses fall to .5347 /.5992;
 two of ten small inspected development cells reach BA 56.25%, eight stay 50%.
