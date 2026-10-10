@@ -43,23 +43,9 @@ def _password_from_args(args: argparse.Namespace) -> str | None:
     return os.environ.get("STEGANO_PASSWORD") or None
 
 
-def _enable_ai_if_requested(args: argparse.Namespace) -> str | None:
-    if not getattr(args, "ai", False):
-        from modules.ai_triage import set_provider
-
-        set_provider(None)
-        return None
-    from modules.ai_provider_nim import make_provider
-    from modules.ai_triage import set_provider
-
-    upload_file = bool(getattr(args, "allow_ai_file_upload", False))
-    provider = make_provider(upload_file=upload_file)
-    if provider is None:
-        set_provider(None)
-        return "warning: --ai requested but NVIDIA_NIM_API_KEY is not set; using heuristics"
-    set_provider(provider)
-    privacy = "signals + file" if upload_file else "signals only"
-    return f"ai: NVIDIA NIM provider registered ({privacy})"
+def _reject_retired_ai_options(args: argparse.Namespace) -> None:
+    if getattr(args, "ai", False) or getattr(args, "allow_ai_file_upload", False):
+        raise ValueError("Cloud AI triage has been removed; omit the AI options")
 
 
 def cmd_embed(args: argparse.Namespace) -> int:
@@ -113,11 +99,8 @@ def _legacy_result(result: AnalysisResult) -> dict:
 
 
 def cmd_analyze(args: argparse.Namespace) -> int:
+    _reject_retired_ai_options(args)
     registry = _build_registry()
-    status = _enable_ai_if_requested(args)
-    machine_output = args.json or args.output_format in {"json-v1", "json-v2"}
-    if status and not machine_output:
-        print(status, file=sys.stderr)
     maximum = args.max_file_size * 1024 * 1024 if args.max_file_size else None
     analysis = AnalysisService(
         registry,
@@ -156,10 +139,8 @@ def cmd_analyze(args: argparse.Namespace) -> int:
 
 
 def cmd_scan(args: argparse.Namespace) -> int:
+    _reject_retired_ai_options(args)
     registry = _build_registry()
-    status = _enable_ai_if_requested(args)
-    if status:
-        print(status, file=sys.stderr)
     root = Path(args.dir)
     if not root.is_dir():
         raise NotADirectoryError(root)
@@ -751,11 +732,11 @@ def _add_analysis_options(parser: argparse.ArgumentParser) -> None:
         choices=("sensitive", "balanced", "strict"),
         default="sensitive",
     )
-    parser.add_argument("--ai", action="store_true", help="enable signal-only NIM triage")
+    parser.add_argument("--ai", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument(
         "--allow-ai-file-upload",
         action="store_true",
-        help="explicitly allow the analyzed image to be sent to the AI provider",
+        help=argparse.SUPPRESS,
     )
     parser.add_argument(
         "--max-file-size",

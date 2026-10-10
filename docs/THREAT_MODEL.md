@@ -6,6 +6,9 @@ output are untrusted.
 
 Security boundaries:
 
+- Built-in analysis does not send signals or evidence to cloud providers.
+  Cloud AI integrations are removed; optional third-party plug-ins and tools
+  still require their own review and are not covered by that built-in guarantee.
 - Evidence is encrypted per object with libsodium XChaCha20 secretstream. The
   master key is derived with Argon2id and only retained in process memory while
   the vault is unlocked.

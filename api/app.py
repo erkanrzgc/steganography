@@ -31,7 +31,7 @@ _CHUNK_SIZE = 1024 * 1024
 class APISettings:
     state_dir: Path
     api_key: str | None = None
-    allow_ai_file_upload: bool = False
+    allow_ai_file_upload: bool = False  # Retired, inert constructor compatibility only.
     max_file_bytes: int = 50 * 1024 * 1024
     max_batch_files: int = 20
     max_batch_bytes: int = 200 * 1024 * 1024
@@ -49,7 +49,6 @@ class APISettings:
         return cls(
             state_dir=state_dir,
             api_key=os.environ.get("STEGANO_API_KEY") or None,
-            allow_ai_file_upload=os.environ.get("STEGANO_ALLOW_AI_FILE_UPLOAD") == "1",
             max_file_bytes=int(os.environ.get("STEGANO_MAX_UPLOAD_BYTES", 50 * 1024 * 1024)),
             max_batch_files=int(os.environ.get("STEGANO_MAX_BATCH_FILES", 20)),
             max_batch_bytes=int(os.environ.get("STEGANO_MAX_BATCH_BYTES", 200 * 1024 * 1024)),
@@ -140,19 +139,16 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
         _: auth,
         file: Annotated[UploadFile, File()],
         profile: profile_query = "sensitive",
-        ai: bool = False,
-        allow_ai_file_upload: bool = False,
+        ai: Annotated[bool, Query(include_in_schema=False)] = False,
+        allow_ai_file_upload: Annotated[bool, Query(include_in_schema=False)] = False,
     ) -> JSONResponse:
+        _reject_retired_ai_options(ai, allow_ai_file_upload)
         upload_dir = Path(tempfile.mkdtemp(prefix="single-", dir=settings.state_dir))
         try:
             path, _size, display_name = await _save_upload(
                 file, upload_dir, settings.max_file_bytes
             )
-            provider = _provider_for_request(
-                ai=ai,
-                upload_file=allow_ai_file_upload and settings.allow_ai_file_upload,
-            )
-            service = AnalysisService(_registry(), profile=profile, ai_provider=provider)
+            service = AnalysisService(_registry(), profile=profile)
             analysis = await run_in_threadpool(_analyze_uploaded, service, path, display_name)
             return JSONResponse(analysis.to_dict(tool_version=__version__))
         finally:
@@ -164,9 +160,10 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
         _: auth,
         files: Annotated[list[UploadFile], File()],
         profile: profile_query = "sensitive",
-        ai: bool = False,
-        allow_ai_file_upload: bool = False,
+        ai: Annotated[bool, Query(include_in_schema=False)] = False,
+        allow_ai_file_upload: Annotated[bool, Query(include_in_schema=False)] = False,
     ) -> dict:
+        _reject_retired_ai_options(ai, allow_ai_file_upload)
         if not files or len(files) > settings.max_batch_files:
             raise HTTPException(
                 status_code=413,
@@ -204,8 +201,6 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
             uploads,
             upload_dir,
             profile,
-            ai,
-            allow_ai_file_upload and settings.allow_ai_file_upload,
         )
         return {"job_id": job_id, "status": "queued"}
 
@@ -269,13 +264,10 @@ def _run_scan_job(
     uploads: list[tuple[Path, str]],
     upload_dir: Path,
     profile: str,
-    ai: bool,
-    upload_file: bool,
 ) -> None:
     try:
         store.set_running(job_id)
-        provider = _provider_for_request(ai=ai, upload_file=upload_file)
-        service = AnalysisService(_registry(), profile=profile, ai_provider=provider)
+        service = AnalysisService(_registry(), profile=profile)
         analyses = tuple(
             _analyze_uploaded(service, path, display_name) for path, display_name in uploads
         )
@@ -296,12 +288,9 @@ def _analyze_uploaded(service: AnalysisService, path: Path, display_name: str):
     return replace(analysis, file=file_info)
 
 
-def _provider_for_request(*, ai: bool, upload_file: bool):
-    if not ai:
-        return None
-    from modules.ai_provider_nim import make_provider
-
-    return make_provider(upload_file=upload_file)
+def _reject_retired_ai_options(ai: bool, upload_file: bool) -> None:
+    if ai or upload_file:
+        raise HTTPException(status_code=410, detail="Cloud AI triage has been removed")
 
 
 def _registry() -> Registry:

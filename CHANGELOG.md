@@ -1,5 +1,11 @@
 # Changelog
 
+- Remove cloud AI providers, triage and file uploads; retire the AI extra and
+  settings. Legacy opt-ins fail explicitly, while default v1/v2 routes, local
+  research, report schemas, payload readers and Analyzer contracts remain.
+  Refresh README, documentation navigation, limitations and MIT/third-party
+  licensing guidance. No new detection accuracy or deployment claim.
+
 - Add an isolated generated 8/16/32-row genuine-batch capacity probe with
   fixed CUDA/host limits, timeout/OOM unavailability and exclusive source-bound
   reports. GPU execution pending SSH reconnection; no claimed accuracy gain.

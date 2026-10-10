@@ -122,43 +122,22 @@ def test_api_limits_and_delete(tmp_path: Path):
         assert "batch byte" in response.json()["detail"]
 
 
-def test_ai_file_upload_requires_server_and_request_opt_in(
-    tmp_path: Path, monkeypatch
-):
-    observed: list[bool] = []
-
-    def fake_make_provider(*, upload_file=True, **kwargs):
-        observed.append(upload_file)
-
-        def provider(info, signals):
-            return 1, "ok"
-
-        return provider
-
-    import modules.ai_provider_nim
-
-    monkeypatch.setattr(modules.ai_provider_nim, "make_provider", fake_make_provider)
-    app = create_app(
-        APISettings(state_dir=tmp_path / "off", allow_ai_file_upload=False)
-    )
+@pytest.mark.parametrize("route", ["analyze", "scans"])
+@pytest.mark.parametrize("query", ["ai=true", "allow_ai_file_upload=true"])
+def test_retired_ai_requests_are_rejected_before_analysis(tmp_path: Path, route, query):
+    app = create_app(APISettings(state_dir=tmp_path, allow_ai_file_upload=True))
     with TestClient(app) as client:
         response = client.post(
-            "/v1/analyze?ai=true&allow_ai_file_upload=true",
-            files={"file": ("x.txt", b"x", "text/plain")},
+            f"/v1/{route}?{query}",
+            files={"file" if route == "analyze" else "files": ("x.txt", b"x", "text/plain")},
         )
-        assert response.status_code == 200
-    assert observed == [False]
-
-    observed.clear()
-    app = create_app(
-        APISettings(state_dir=tmp_path / "on", allow_ai_file_upload=True)
-    )
-    with TestClient(app) as client:
-        client.post(
-            "/v1/analyze?ai=true&allow_ai_file_upload=true",
-            files={"file": ("x.txt", b"x", "text/plain")},
-        )
-    assert observed == [True]
+        assert response.status_code == 410
+        assert "removed" in response.json()["detail"]
+        schema = client.get("/openapi.json").json()
+        parameters = schema["paths"][f"/v1/{route}"]["post"].get("parameters", [])
+        assert not any(p["name"] in {"ai", "allow_ai_file_upload"} for p in parameters)
+    assert not list(tmp_path.glob("single-*"))
+    assert not (tmp_path / "uploads").exists()
 
 
 def test_loopback_and_public_bind_policy(monkeypatch):

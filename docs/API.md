@@ -3,12 +3,13 @@
 Pipeline reports keep JSON `schema_version: "2.0"` with additive revision 2:
 `coverage_policy` records required native execution. Missing components make
 low-score results inconclusive, not clean negatives; positive findings remain
-visible. See [coverage policy](COVERAGE_POLICY.md). Existing v1 routes are unchanged.
+visible. See [coverage policy](COVERAGE_POLICY.md). Existing v1 routes remain;
+retired cloud AI opt-ins return 410, as documented in [migration notes](MIGRATION.md).
 
 Install and start the loopback service:
 
 ```bash
-python -m pip install 'steganography-dfir[api]'
+python -m pip install '.[api]'
 steganography serve --host 127.0.0.1 --port 8000
 ```
 
@@ -49,8 +50,8 @@ Binding outside loopback is refused without `STEGANO_API_KEY`. CORS is disabled.
 An internet-facing deployment still needs TLS termination, a hardened reverse
 proxy, network controls, authentication policy, backups, and monitoring.
 
-AI sends locally generated signal text only by default. Image upload requires
-both request opt-in and `STEGANO_ALLOW_AI_FILE_UPLOAD=1` on the server.
+Analysis is local. Cloud AI providers and their file-upload integrations have
+been removed; legacy opt-in requests are rejected rather than silently ignored.
 
 Python callers that do not need HTTP should use the service layer directly:
 

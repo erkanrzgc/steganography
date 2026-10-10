@@ -1,5 +1,10 @@
 # Architecture
 
+Cloud AI provider modules and uploads are removed. Native services remain
+local, old `ai_provider=None` callers remain compatible, and retired opt-ins
+fail clearly rather than invoking a provider. Historical `ai_triage` report
+entries remain excluded from primary scoring. See `MIGRATION.md`.
+
 `core/srnet_batch_probe.py` isolates genuine 8/16/32-row generated training
 capacity checks from historical four-row kernels. The explicit frontend runs
 one bounded process per invocation and persists exclusive reports only. Missing
@@ -516,8 +521,9 @@ search, and uncertainty resamples whole lineages. See `ALASKA2_PROTOCOL.md`.
 `core.dataset` defines shared identity and connected-component rules. Research
 partitioning uses these to keep lineage/camera/device groups together, reserve
 whole test sources and reject overlap with frozen manifests. Partition policy
-is rechecked by research manifest validation. AI triage stays in raw analysis
-results but cannot contribute to aggregate scores or primary pipeline findings.
+is rechecked by research manifest validation. Historical AI triage results
+cannot contribute to aggregate scores or primary pipeline findings; the removed
+provider layer is not invoked by current analysis.
 
 `core.features` owns the bounded `spatial-summary-v1` preprocessing contract.
 `steganography.research_features` binds feature rows to verified partition

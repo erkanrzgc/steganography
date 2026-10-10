@@ -9,7 +9,6 @@ import os
 import tempfile
 import zlib
 from collections.abc import Iterable
-from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -24,7 +23,7 @@ from core.crypto import (
 )
 from core.filetype import detect_type, extension_mismatch
 from core.payload import VERSION_3, InvalidPayloadError, ParsedPayload, pack, pack_v3, unpack
-from core.result import AnalysisResult, EmbedResult, FileAnalysis, FileInfo, Signal
+from core.result import AnalysisResult, EmbedResult, FileAnalysis, FileInfo
 from registry import Registry
 
 
@@ -45,7 +44,6 @@ class OutputExistsError(SteganographyError):
 
 
 _PROFILE_MINIMUMS = {"sensitive": 10, "balanced": 25, "strict": 50}
-_USE_REGISTERED_AI = object()
 
 
 def _sha256(path: Path) -> str:
@@ -108,14 +106,17 @@ class AnalysisService:
         *,
         profile: str = "sensitive",
         max_file_size: int | None = None,
-        ai_provider: Any = _USE_REGISTERED_AI,
+        ai_provider: Any = None,
     ) -> None:
         if profile not in _PROFILE_MINIMUMS:
             raise ValueError(f"unknown analysis profile: {profile}")
+        # Preserve ai_provider=None for existing local/benchmark callers, but
+        # never accept a cloud provider or silently claim to have used one.
+        if ai_provider is not None:
+            raise ValueError("Cloud AI triage has been removed; use local analyzers")
         self.registry = registry or _discovered_registry()
         self.profile = profile
         self.max_file_size = max_file_size
-        self.ai_provider = ai_provider
 
     def analyze(self, path: Path) -> FileAnalysis:
         path = Path(path)
@@ -145,23 +146,11 @@ class AnalysisService:
         for carrier in self.registry.select_carriers(path, detected_extension=detected.extension):
             results.append(_safe_context_analyze(carrier.identifier, carrier, context))
 
-        ai_triage: Any | None = None
         for analyzer in self.registry.all_analyzers():
             if analyzer.name == "ai_triage":
-                ai_triage = analyzer
+                # Retired third-party adapters must not regain network access.
                 continue
             results.append(_safe_context_analyze(analyzer.name, analyzer, context))
-
-        if ai_triage is not None:
-            prior = tuple(
-                signal for result in results if result.status == "ok" for signal in result.signals
-            )
-            if self.ai_provider is _USE_REGISTERED_AI:
-                results.append(_safe_ai_analyze(ai_triage, path, prior))
-            elif self.ai_provider is None:
-                results.append(ai_triage.score_from_signals(prior))
-            else:
-                results.append(_safe_ai_provider(self.ai_provider, path, prior))
 
         score = aggregate_score(results, self.profile)
         return FileAnalysis(
@@ -229,47 +218,6 @@ def _safe_context_analyze(name: str, analyzer: Any, context: AnalysisContext) ->
     if contextual is not None:
         return _safe_analyze(name, contextual, context)
     return _safe_analyze(name, analyzer.analyze, context.path)
-
-
-def _safe_ai_analyze(analyzer: Any, path: Path, prior: tuple[Signal, ...]) -> AnalysisResult:
-    try:
-        result = analyzer.analyze_with_context(path, prior)
-    except Exception as exc:
-        return AnalysisResult(
-            analyzer="ai_triage",
-            suspicion=0,
-            signals=(),
-            explanation=None,
-            status="error",
-            error=f"{type(exc).__name__}: {exc}",
-        )
-    if result.explanation and result.explanation.startswith("NIM provider error:"):
-        return replace(result, status="error", error=result.explanation)
-    return result
-
-
-def _safe_ai_provider(provider: Any, path: Path, prior: tuple[Signal, ...]) -> AnalysisResult:
-    try:
-        score, explanation = provider({"path": str(path), "size": path.stat().st_size}, list(prior))
-        if explanation.startswith("NIM provider error:"):
-            return AnalysisResult(
-                "ai_triage",
-                0,
-                (),
-                None,
-                status="error",
-                error=explanation,
-            )
-        return AnalysisResult("ai_triage", score, (), explanation)
-    except Exception as exc:
-        return AnalysisResult(
-            "ai_triage",
-            0,
-            (),
-            None,
-            status="error",
-            error=f"{type(exc).__name__}: {exc}",
-        )
 
 
 class StegoService:

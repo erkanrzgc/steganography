@@ -12,8 +12,9 @@ automation working on this repository. Read it before changing code.
   independent detection or extraction logic.
 - Untrusted files, archives, decoder output, and external-tool output are always
   bounded. Never execute an extracted artifact or follow an artifact symlink.
-- Optional AI is explanation/triage only. It must not affect primary verdicts,
-  calibration, or benchmark gates.
+- Cloud AI providers and uploads have been removed. Do not reintroduce them
+  through old compatibility options. Historical triage cannot affect primary
+  verdicts, calibration, or benchmark gates; local ML research stays explicit.
 - The base wheel remains model-free and does not require external executables.
   Model and dataset downloads require an explicit user command.
 

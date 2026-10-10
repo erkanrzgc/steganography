@@ -43,7 +43,7 @@ defaults to payload v2; Guided TUI embedding defaults to v3.
 ```text
 steganography analyze --in FILE [--profile sensitive|balanced|strict]
   [--format text|json-v1|json-v2] [--json] [--max-file-size MIB]
-  [--fail-on medium|high] [--ai] [--allow-ai-file-upload]
+  [--fail-on medium|high]
 
 steganography scan --dir DIRECTORY --out REPORT
   [--report json|html|json-v1|json-v2|ndjson|sarif] [--jobs N]
@@ -53,6 +53,7 @@ steganography scan --dir DIRECTORY --out REPORT
 Directory scan skips its own output and does not follow symlinks unless asked.
 Module failures become structured results. `--fail-on` returns 1 when a result
 meets the threshold; user errors return 2 and interruption returns 130.
+Cloud AI options have been retired; see [migration notes](MIGRATION.md).
 
 ## CTF recovery playbook
 

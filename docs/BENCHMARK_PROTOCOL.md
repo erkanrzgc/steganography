@@ -1,5 +1,9 @@
 # Benchmark protocol
 
+Cloud AI integrations are removed. Historical raw triage rows remain excluded
+from primary metrics and published reports are not rewritten. This removal is
+a product/privacy change, not a measured detector improvement.
+
 `JPEG_BATCH_PROBE_PROTOCOL.md` fixes generated genuine-batch feasibility checks
 before larger real-data fitting. Two updates per isolated size measure capacity
 only; retain unavailable/OOM/timeout outcomes. No accuracy or independent-math

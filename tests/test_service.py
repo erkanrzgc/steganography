@@ -202,14 +202,12 @@ def test_content_dispatches_disguised_png(png_64x64: Path, tmp_path: Path):
     assert any(carrier.identifier == "image_lsb" for carrier in carriers)
 
 
-def test_analysis_ai_error_is_structured(tmp_path: Path):
+def test_analysis_rejects_retired_provider_without_calling_it(tmp_path: Path):
     path = tmp_path / "x.txt"
     path.write_text("hello")
 
     def failing_provider(info, signals):
-        raise RuntimeError("provider boom")
+        pytest.fail("retired provider must not be called")
 
-    analysis = AnalysisService(_registry(), ai_provider=failing_provider).analyze(path)
-    ai = next(result for result in analysis.results if result.analyzer == "ai_triage")
-    assert ai.status == "error"
-    assert "provider boom" in (ai.error or "")
+    with pytest.raises(ValueError, match="Cloud AI triage has been removed"):
+        AnalysisService(_registry(), ai_provider=failing_provider)

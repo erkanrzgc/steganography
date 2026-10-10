@@ -6,7 +6,6 @@ from core.analyzer import Analyzer
 from core.pipeline import AnalysisPipeline
 from core.result import AnalysisResult, FileAnalysis, FileInfo, Signal
 from core.service import AnalysisService, aggregate_score
-from modules.ai_triage import AITriage
 from registry import Registry
 
 
@@ -49,7 +48,7 @@ def test_triage_cannot_change_primary_findings_or_coverage(tmp_path, score, stat
     assert result.analysis.results[-1].explanation == "explanation only"
 
 
-def test_external_provider_score_does_not_raise_or_lower_native_score(tmp_path):
+def test_retired_analyzer_is_not_invoked_and_provider_is_rejected(tmp_path):
     path = tmp_path / "sample.txt"
     path.write_text("plain text")
 
@@ -61,14 +60,19 @@ def test_external_provider_score_does_not_raise_or_lower_native_score(tmp_path):
 
     registry = Registry()
     registry.register(Native())
-    registry.register(AITriage())
-    for score in (0, 100):
-        service = AnalysisService(
-            registry, ai_provider=lambda info, signals, value=score: (value, "triage")
-        )
-        result = service.analyze(path)
-        assert result.overall_score == 40
-        assert result.results[-1].suspicion == score
-        report = AnalysisPipeline(service).analyze(path)
-        assert report.verdict == "suspicious"
-        assert report.confidence == 0.4
+
+    class Retired(Analyzer):
+        name = "ai_triage"
+
+        def analyze(self, path):
+            pytest.fail("retired adapter must not be invoked")
+
+    registry.register(Retired())
+    service = AnalysisService(registry, ai_provider=None)
+    result = service.analyze(path)
+    assert result.overall_score == 40
+    assert [r.analyzer for r in result.results] == ["native"]
+    report = AnalysisPipeline(service).analyze(path)
+    assert report.verdict == "suspicious" and report.confidence == 0.4
+    with pytest.raises(ValueError, match="removed"):
+        AnalysisService(registry, ai_provider=lambda *_: pytest.fail("provider called"))

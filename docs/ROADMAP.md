@@ -1,5 +1,19 @@
 # Roadmap and status
 
+2026-10-10 product cleanup: remove cloud AI provider/triage and upload paths,
+retire the AI extra and configuration, and keep local research as explicitly
+experimental. Legacy opt-ins fail with CLI errors/API 410; default v1/v2 and
+payload/plugin contracts remain. README and documentation now separate usable
+workflows from failed research evidence; standard MIT licensing is unchanged.
+No accuracy gain or new model deployment is implied. See `MIGRATION.md`.
+Verification: complete disk-backed Python 3.11 regression, 2,176 passed /one
+actual-CUDA skip, 96.07% total coverage; Ruff, 166-file mypy, dependencies,
+web test/build, wheel/sdist and packaged-registry checks passed. Retired cloud
+modules/extra are absent and MIT is included. No Python 3.12–3.14, physical GPU
+or full-Docker execution is claimed by this cleanup. The earlier RAM-scratch
+run was deliberately interrupted and is not counted as a full-suite pass.
+
+
 2026-10-10: separate 8/16/32-row generated genuine-batch capacity probe prepared.
 Physical GPU execution is pending: the loopback SSH port accepts connections but
 the WSL endpoint resets them. Do not report a fit, batch-size success or accuracy

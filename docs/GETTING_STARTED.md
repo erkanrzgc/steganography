@@ -5,12 +5,15 @@
 Use Python 3.11 or newer in a virtual environment:
 
 ```bash
+git clone https://github.com/erkanrzgc/steganography.git
+cd steganography
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install steganography-dfir
+python -m pip install .
 ```
 
-The installed command and import are both `steganography`.
+On Windows, use `.\.venv\Scripts\Activate.ps1` to activate. The installed command
+and import are both `steganography`; the distribution is `steganography-dfir`.
 
 ## Start the guided terminal workbench
 
@@ -51,7 +54,7 @@ are never overwritten.
 ## Start the browser workspace
 
 ```bash
-python -m pip install 'steganography-dfir[api]'
+python -m pip install '.[api]'
 steganography ui --state-dir ./workbench-state
 ```
 

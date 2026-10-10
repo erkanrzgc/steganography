@@ -12,9 +12,8 @@ license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
 keywords = [
-    "benchmarking",
+    "ctf",
     "dfir",
-    "fastapi",
     "forensics",
     "security",
     "steganalysis",
@@ -50,7 +49,6 @@ Issues = "https://github.com/erkanrzgc/steganography/issues"
 Changelog = "https://github.com/erkanrzgc/steganography/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
-ai = ["httpx>=0.27"]
 api = [
     "fastapi>=0.115",
     "httpx>=0.27",
