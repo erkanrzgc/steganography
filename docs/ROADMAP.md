@@ -1,5 +1,16 @@
 # Roadmap and status
 
+2026-10-10 physical Q75 curriculum completed: .4 warm-up/.2 adaptation, 80
+epochs /7,680 updates, 23m20.77s own RTX 5060. Train losses fall to .5347 /.5992;
+two of ten small inspected development cells reach BA 56.25%, eight stay 50%.
+No robust/broad improvement or qualified support; FPR 12.5–50%. Independent
+logsumexp/rank-AUC replay and all source/cache/probe bindings pass. Models
+discarded, no cloud cost/deployment. Next: separately frozen larger-batch
+feasibility and larger original-diverse corpus, not blind epoch extension.
+Full regression 2,144 passed /one local hardware skip, three later evidence tests;
+coverage 95.95%, new core 98% /frontend 97%, lint/types/dependencies/builds pass.
+See `JPEG_CURRICULUM_RESULTS.md`.
+
 2026-10-10 curriculum implementation: separately frozen high-payload Q75 warm-up
 and .2 adaptation, BOSS/BOWS 48 originals, paired D4 and 7,680 updates. All ten
 historical original-disjoint development probe cells remain reported. Independent

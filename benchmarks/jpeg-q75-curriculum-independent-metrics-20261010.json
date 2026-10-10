@@ -1,0 +1,1527 @@
+{
+  "schema_version": "jpeg-curriculum-independent-metrics-v1",
+  "status": "completed",
+  "report_sha256": "3af2e7aed5e4360e1a5736a18eaa57096777da6c8d76b4b3badcba9476fce7d8",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "high_manifest_sha256": "8e551b93a69eab1e4499a6863a8dac8bf35f5e55f4a4f5cc167b6fc42e9d3c16",
+  "independent_metadata_selection_verified": true,
+  "all_cells_scalar_and_rank_metrics_passed": true,
+  "probe_metadata": [
+    {
+      "row": 12,
+      "lineage": "edfda564b75d03c6aeab6ee9cb53b8b9bae827ffdf31ec1f75cdc5b95b5712e2",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 13,
+      "lineage": "edfda564b75d03c6aeab6ee9cb53b8b9bae827ffdf31ec1f75cdc5b95b5712e2",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 14,
+      "lineage": "edfda564b75d03c6aeab6ee9cb53b8b9bae827ffdf31ec1f75cdc5b95b5712e2",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 18,
+      "lineage": "ce22d9253e2a383c21fa20db4cbb03eed5e17f88452e479a11e17f306722e346",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 19,
+      "lineage": "ce22d9253e2a383c21fa20db4cbb03eed5e17f88452e479a11e17f306722e346",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 20,
+      "lineage": "ce22d9253e2a383c21fa20db4cbb03eed5e17f88452e479a11e17f306722e346",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 21,
+      "lineage": "d92a082f7af11f446bb842db21dcf0dea4f92e8f2d8f05244d6b0783f36e195e",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 22,
+      "lineage": "d92a082f7af11f446bb842db21dcf0dea4f92e8f2d8f05244d6b0783f36e195e",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 23,
+      "lineage": "d92a082f7af11f446bb842db21dcf0dea4f92e8f2d8f05244d6b0783f36e195e",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 36,
+      "lineage": "cb351d4b35d595e6bcc23719c57cc93152d9add4bdc2e4a9686da4fba9e4edc5",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 37,
+      "lineage": "cb351d4b35d595e6bcc23719c57cc93152d9add4bdc2e4a9686da4fba9e4edc5",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 38,
+      "lineage": "cb351d4b35d595e6bcc23719c57cc93152d9add4bdc2e4a9686da4fba9e4edc5",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 48,
+      "lineage": "ceffa6205203c67bdc0e29881dc42aee7c78e425eadd0be0621b355680a4f702",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 49,
+      "lineage": "ceffa6205203c67bdc0e29881dc42aee7c78e425eadd0be0621b355680a4f702",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 50,
+      "lineage": "ceffa6205203c67bdc0e29881dc42aee7c78e425eadd0be0621b355680a4f702",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 57,
+      "lineage": "ce308546df084c5bb136bde27d6e6b5d12d0e4c973ce4b5bcf912a53271e6bbe",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 58,
+      "lineage": "ce308546df084c5bb136bde27d6e6b5d12d0e4c973ce4b5bcf912a53271e6bbe",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 59,
+      "lineage": "ce308546df084c5bb136bde27d6e6b5d12d0e4c973ce4b5bcf912a53271e6bbe",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 75,
+      "lineage": "e7bfa9919f26cf8a50a5acd47659b9e68bb3f392210cbd665bb1f51cb0fc8246",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 76,
+      "lineage": "e7bfa9919f26cf8a50a5acd47659b9e68bb3f392210cbd665bb1f51cb0fc8246",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 77,
+      "lineage": "e7bfa9919f26cf8a50a5acd47659b9e68bb3f392210cbd665bb1f51cb0fc8246",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 81,
+      "lineage": "ea01073cdefd57829d817caced799e281c4a780de2ea265fe9565bf4b874c5a9",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 82,
+      "lineage": "ea01073cdefd57829d817caced799e281c4a780de2ea265fe9565bf4b874c5a9",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 83,
+      "lineage": "ea01073cdefd57829d817caced799e281c4a780de2ea265fe9565bf4b874c5a9",
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 96,
+      "lineage": "9a4020ee2a18a18d70f5d372ba91a5cd8fb664df3dfa63fb1d4912cc4fb3839a",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 97,
+      "lineage": "9a4020ee2a18a18d70f5d372ba91a5cd8fb664df3dfa63fb1d4912cc4fb3839a",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 98,
+      "lineage": "9a4020ee2a18a18d70f5d372ba91a5cd8fb664df3dfa63fb1d4912cc4fb3839a",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 99,
+      "lineage": "9a4020ee2a18a18d70f5d372ba91a5cd8fb664df3dfa63fb1d4912cc4fb3839a",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 100,
+      "lineage": "9a4020ee2a18a18d70f5d372ba91a5cd8fb664df3dfa63fb1d4912cc4fb3839a",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 101,
+      "lineage": "9a4020ee2a18a18d70f5d372ba91a5cd8fb664df3dfa63fb1d4912cc4fb3839a",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 114,
+      "lineage": "c21056c4484d38728565a2bd6791e473c73795678d4a949cdb9664a579a9067c",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 115,
+      "lineage": "c21056c4484d38728565a2bd6791e473c73795678d4a949cdb9664a579a9067c",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 116,
+      "lineage": "c21056c4484d38728565a2bd6791e473c73795678d4a949cdb9664a579a9067c",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 117,
+      "lineage": "c21056c4484d38728565a2bd6791e473c73795678d4a949cdb9664a579a9067c",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 118,
+      "lineage": "c21056c4484d38728565a2bd6791e473c73795678d4a949cdb9664a579a9067c",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 119,
+      "lineage": "c21056c4484d38728565a2bd6791e473c73795678d4a949cdb9664a579a9067c",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 132,
+      "lineage": "ca68379ab4dda720c897ad749464732a8b599efea90fc01d3bd67799cc46e942",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 133,
+      "lineage": "ca68379ab4dda720c897ad749464732a8b599efea90fc01d3bd67799cc46e942",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 134,
+      "lineage": "ca68379ab4dda720c897ad749464732a8b599efea90fc01d3bd67799cc46e942",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 135,
+      "lineage": "ca68379ab4dda720c897ad749464732a8b599efea90fc01d3bd67799cc46e942",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 136,
+      "lineage": "ca68379ab4dda720c897ad749464732a8b599efea90fc01d3bd67799cc46e942",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 137,
+      "lineage": "ca68379ab4dda720c897ad749464732a8b599efea90fc01d3bd67799cc46e942",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 144,
+      "lineage": "b207ec126374e887850f8471bc7a59fedd098cfede0564f9ae83033ba7accc54",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 145,
+      "lineage": "b207ec126374e887850f8471bc7a59fedd098cfede0564f9ae83033ba7accc54",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 146,
+      "lineage": "b207ec126374e887850f8471bc7a59fedd098cfede0564f9ae83033ba7accc54",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 147,
+      "lineage": "b207ec126374e887850f8471bc7a59fedd098cfede0564f9ae83033ba7accc54",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 148,
+      "lineage": "b207ec126374e887850f8471bc7a59fedd098cfede0564f9ae83033ba7accc54",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 149,
+      "lineage": "b207ec126374e887850f8471bc7a59fedd098cfede0564f9ae83033ba7accc54",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 162,
+      "lineage": "b5740df48ca930290c2729469da3db66a624798c76c88ec0a3c347a27af5cd83",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 163,
+      "lineage": "b5740df48ca930290c2729469da3db66a624798c76c88ec0a3c347a27af5cd83",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 164,
+      "lineage": "b5740df48ca930290c2729469da3db66a624798c76c88ec0a3c347a27af5cd83",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 165,
+      "lineage": "b5740df48ca930290c2729469da3db66a624798c76c88ec0a3c347a27af5cd83",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 166,
+      "lineage": "b5740df48ca930290c2729469da3db66a624798c76c88ec0a3c347a27af5cd83",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 167,
+      "lineage": "b5740df48ca930290c2729469da3db66a624798c76c88ec0a3c347a27af5cd83",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 168,
+      "lineage": "bf227954ef2d04bb070db67e51ea81c7cb6f3c509b07e28cf0d84c93922de236",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 169,
+      "lineage": "bf227954ef2d04bb070db67e51ea81c7cb6f3c509b07e28cf0d84c93922de236",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 170,
+      "lineage": "bf227954ef2d04bb070db67e51ea81c7cb6f3c509b07e28cf0d84c93922de236",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 171,
+      "lineage": "bf227954ef2d04bb070db67e51ea81c7cb6f3c509b07e28cf0d84c93922de236",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 172,
+      "lineage": "bf227954ef2d04bb070db67e51ea81c7cb6f3c509b07e28cf0d84c93922de236",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 173,
+      "lineage": "bf227954ef2d04bb070db67e51ea81c7cb6f3c509b07e28cf0d84c93922de236",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 240,
+      "lineage": "c77c5d33a30bac7686ba18a5e13cedf6e7ff9124d8973806bc02273afd801b21",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 241,
+      "lineage": "c77c5d33a30bac7686ba18a5e13cedf6e7ff9124d8973806bc02273afd801b21",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 242,
+      "lineage": "c77c5d33a30bac7686ba18a5e13cedf6e7ff9124d8973806bc02273afd801b21",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 243,
+      "lineage": "c77c5d33a30bac7686ba18a5e13cedf6e7ff9124d8973806bc02273afd801b21",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 244,
+      "lineage": "c77c5d33a30bac7686ba18a5e13cedf6e7ff9124d8973806bc02273afd801b21",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 245,
+      "lineage": "c77c5d33a30bac7686ba18a5e13cedf6e7ff9124d8973806bc02273afd801b21",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 264,
+      "lineage": "bc98f217b51d0921856dd4a6401e1a130945717c25bcc41b6a4538319531a113",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 265,
+      "lineage": "bc98f217b51d0921856dd4a6401e1a130945717c25bcc41b6a4538319531a113",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 266,
+      "lineage": "bc98f217b51d0921856dd4a6401e1a130945717c25bcc41b6a4538319531a113",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 267,
+      "lineage": "bc98f217b51d0921856dd4a6401e1a130945717c25bcc41b6a4538319531a113",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 268,
+      "lineage": "bc98f217b51d0921856dd4a6401e1a130945717c25bcc41b6a4538319531a113",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 269,
+      "lineage": "bc98f217b51d0921856dd4a6401e1a130945717c25bcc41b6a4538319531a113",
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 306,
+      "lineage": "d323db561fd09ca5aaa86f2b6813d55433f343fd4a5c8fc1e549738d08da63dd",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 307,
+      "lineage": "d323db561fd09ca5aaa86f2b6813d55433f343fd4a5c8fc1e549738d08da63dd",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 308,
+      "lineage": "d323db561fd09ca5aaa86f2b6813d55433f343fd4a5c8fc1e549738d08da63dd",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 309,
+      "lineage": "d323db561fd09ca5aaa86f2b6813d55433f343fd4a5c8fc1e549738d08da63dd",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 310,
+      "lineage": "d323db561fd09ca5aaa86f2b6813d55433f343fd4a5c8fc1e549738d08da63dd",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 311,
+      "lineage": "d323db561fd09ca5aaa86f2b6813d55433f343fd4a5c8fc1e549738d08da63dd",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 312,
+      "lineage": "c03d0250e05ce08301c7de38db9b28863949cbe88d11c0bb469d9e68dd22812c",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 313,
+      "lineage": "c03d0250e05ce08301c7de38db9b28863949cbe88d11c0bb469d9e68dd22812c",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 314,
+      "lineage": "c03d0250e05ce08301c7de38db9b28863949cbe88d11c0bb469d9e68dd22812c",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 315,
+      "lineage": "c03d0250e05ce08301c7de38db9b28863949cbe88d11c0bb469d9e68dd22812c",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 316,
+      "lineage": "c03d0250e05ce08301c7de38db9b28863949cbe88d11c0bb469d9e68dd22812c",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 317,
+      "lineage": "c03d0250e05ce08301c7de38db9b28863949cbe88d11c0bb469d9e68dd22812c",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 342,
+      "lineage": "d99d8e01bab2239ce71073541f668fac8c58ab956e72986122f9d0f97368cf14",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 343,
+      "lineage": "d99d8e01bab2239ce71073541f668fac8c58ab956e72986122f9d0f97368cf14",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 344,
+      "lineage": "d99d8e01bab2239ce71073541f668fac8c58ab956e72986122f9d0f97368cf14",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 345,
+      "lineage": "d99d8e01bab2239ce71073541f668fac8c58ab956e72986122f9d0f97368cf14",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 346,
+      "lineage": "d99d8e01bab2239ce71073541f668fac8c58ab956e72986122f9d0f97368cf14",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 347,
+      "lineage": "d99d8e01bab2239ce71073541f668fac8c58ab956e72986122f9d0f97368cf14",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 360,
+      "lineage": "dde994a0cac99e2edf778e8bdcebac89f2134e5b5311ef2242055071b93ecc65",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 361,
+      "lineage": "dde994a0cac99e2edf778e8bdcebac89f2134e5b5311ef2242055071b93ecc65",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 362,
+      "lineage": "dde994a0cac99e2edf778e8bdcebac89f2134e5b5311ef2242055071b93ecc65",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 363,
+      "lineage": "dde994a0cac99e2edf778e8bdcebac89f2134e5b5311ef2242055071b93ecc65",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 364,
+      "lineage": "dde994a0cac99e2edf778e8bdcebac89f2134e5b5311ef2242055071b93ecc65",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 365,
+      "lineage": "dde994a0cac99e2edf778e8bdcebac89f2134e5b5311ef2242055071b93ecc65",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 366,
+      "lineage": "dda92bd262fb075c436c2275a26c77e36a04addc3373c9d25c26bc265be4593a",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 367,
+      "lineage": "dda92bd262fb075c436c2275a26c77e36a04addc3373c9d25c26bc265be4593a",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 368,
+      "lineage": "dda92bd262fb075c436c2275a26c77e36a04addc3373c9d25c26bc265be4593a",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 369,
+      "lineage": "dda92bd262fb075c436c2275a26c77e36a04addc3373c9d25c26bc265be4593a",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 370,
+      "lineage": "dda92bd262fb075c436c2275a26c77e36a04addc3373c9d25c26bc265be4593a",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 371,
+      "lineage": "dda92bd262fb075c436c2275a26c77e36a04addc3373c9d25c26bc265be4593a",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 402,
+      "lineage": "d25b1d0b68084612fd28e0f98022353935342457cd0524d71ac8b19e5b4de0d2",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 403,
+      "lineage": "d25b1d0b68084612fd28e0f98022353935342457cd0524d71ac8b19e5b4de0d2",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 404,
+      "lineage": "d25b1d0b68084612fd28e0f98022353935342457cd0524d71ac8b19e5b4de0d2",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 405,
+      "lineage": "d25b1d0b68084612fd28e0f98022353935342457cd0524d71ac8b19e5b4de0d2",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 406,
+      "lineage": "d25b1d0b68084612fd28e0f98022353935342457cd0524d71ac8b19e5b4de0d2",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 407,
+      "lineage": "d25b1d0b68084612fd28e0f98022353935342457cd0524d71ac8b19e5b4de0d2",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 414,
+      "lineage": "de6e1922bb2a23615679c739003d941ba6f6e927fe75738492f2f9743fc8affb",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 415,
+      "lineage": "de6e1922bb2a23615679c739003d941ba6f6e927fe75738492f2f9743fc8affb",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 416,
+      "lineage": "de6e1922bb2a23615679c739003d941ba6f6e927fe75738492f2f9743fc8affb",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 417,
+      "lineage": "de6e1922bb2a23615679c739003d941ba6f6e927fe75738492f2f9743fc8affb",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 418,
+      "lineage": "de6e1922bb2a23615679c739003d941ba6f6e927fe75738492f2f9743fc8affb",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 419,
+      "lineage": "de6e1922bb2a23615679c739003d941ba6f6e927fe75738492f2f9743fc8affb",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 456,
+      "lineage": "c5beffa19725e1f33706c27ef269c3431c4680c3f8d1f4bff4a5063299cfe461",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 457,
+      "lineage": "c5beffa19725e1f33706c27ef269c3431c4680c3f8d1f4bff4a5063299cfe461",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 458,
+      "lineage": "c5beffa19725e1f33706c27ef269c3431c4680c3f8d1f4bff4a5063299cfe461",
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 459,
+      "lineage": "c5beffa19725e1f33706c27ef269c3431c4680c3f8d1f4bff4a5063299cfe461",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": null,
+      "label": "cover",
+      "split": "train"
+    },
+    {
+      "row": 460,
+      "lineage": "c5beffa19725e1f33706c27ef269c3431c4680c3f8d1f4bff4a5063299cfe461",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "label": "stego",
+      "split": "train"
+    },
+    {
+      "row": 461,
+      "lineage": "c5beffa19725e1f33706c27ef269c3431c4680c3f8d1f4bff4a5063299cfe461",
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "label": "stego",
+      "split": "train"
+    }
+  ],
+  "cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "true_positive": 4,
+      "true_negative": 4,
+      "false_positive": 4,
+      "false_negative": 4,
+      "balanced_accuracy": 0.5,
+      "recall": 0.5,
+      "false_positive_rate": 0.5,
+      "cross_entropy": 3.0053250822727673,
+      "roc_auc": 0.4921875
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "true_positive": 4,
+      "true_negative": 4,
+      "false_positive": 4,
+      "false_negative": 4,
+      "balanced_accuracy": 0.5,
+      "recall": 0.5,
+      "false_positive_rate": 0.5,
+      "cross_entropy": 3.2600324632175086,
+      "roc_auc": 0.46875
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "true_positive": 4,
+      "true_negative": 4,
+      "false_positive": 4,
+      "false_negative": 4,
+      "balanced_accuracy": 0.5,
+      "recall": 0.5,
+      "false_positive_rate": 0.5,
+      "cross_entropy": 1.6755519687814386,
+      "roc_auc": 0.53125
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "true_positive": 4,
+      "true_negative": 4,
+      "false_positive": 4,
+      "false_negative": 4,
+      "balanced_accuracy": 0.5,
+      "recall": 0.5,
+      "false_positive_rate": 0.5,
+      "cross_entropy": 1.6701310555445583,
+      "roc_auc": 0.515625
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 1.2861291994465338,
+      "roc_auc": 0.484375
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "true_positive": 3,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5625,
+      "recall": 0.375,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 1.2599151486833489,
+      "roc_auc": 0.46875
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "true_positive": 3,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5625,
+      "recall": 0.375,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 2.668075583119675,
+      "roc_auc": 0.59375
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 2.5286840736334666,
+      "roc_auc": 0.5625
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 5.140105793424206,
+      "roc_auc": 0.53125
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 5.1340524420142,
+      "roc_auc": 0.515625
+    }
+  ],
+  "historical_comparison_is_matched_causal_trial": false,
+  "independent_whole_model_oracle": false,
+  "probe_previously_inspected": true,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "auditor_source_sha256": {
+    "tests/test_curriculum_evidence.py": "4dc3412492da9176ca12a038828e8c1f65c194323f88b6000b73167d49d8aec5"
+  },
+  "historical_bn_report_sha256": "5a8a12a62c05d62255ba1ab54337ce8ff303d59fcf48a14d2e9ec4cfe930248e",
+  "historical_bn_cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "true_positive": 3,
+      "true_negative": 5,
+      "false_positive": 3,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 0.6937186511452029,
+      "roc_auc": 0.5390625
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "true_positive": 3,
+      "true_negative": 5,
+      "false_positive": 3,
+      "false_negative": 5,
+      "balanced_accuracy": 0.5,
+      "recall": 0.375,
+      "false_positive_rate": 0.375,
+      "cross_entropy": 0.6935389006500594,
+      "roc_auc": 0.515625
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.694256589750547,
+      "roc_auc": 0.53125
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.694253192608926,
+      "roc_auc": 0.53125
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6942904325679812,
+      "roc_auc": 0.5
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6942856199563624,
+      "roc_auc": 0.5
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "true_positive": 5,
+      "true_negative": 3,
+      "false_positive": 5,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6961228846644071,
+      "roc_auc": 0.484375
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "true_positive": 5,
+      "true_negative": 3,
+      "false_positive": 5,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6960458327264291,
+      "roc_auc": 0.546875
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "true_positive": 5,
+      "true_negative": 3,
+      "false_positive": 5,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6960058377916986,
+      "roc_auc": 0.5
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "true_positive": 5,
+      "true_negative": 3,
+      "false_positive": 5,
+      "false_negative": 3,
+      "balanced_accuracy": 0.5,
+      "recall": 0.625,
+      "false_positive_rate": 0.625,
+      "cross_entropy": 0.6960006356059142,
+      "roc_auc": 0.53125
+    }
+  ],
+  "historical_gn_report_sha256": "aabebb6ad6dc0bcd96ccc33435693442561829501b7591f94fcd5775f3cadc73",
+  "historical_gn_cells": [
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "JUNIWARD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6931457929269609,
+      "roc_auc": 0.5078125
+    },
+    {
+      "source_group": "ALASKA2",
+      "quality_factor": null,
+      "method": "UERD",
+      "true_positive": 2,
+      "true_negative": 6,
+      "false_positive": 2,
+      "false_negative": 6,
+      "balanced_accuracy": 0.5,
+      "recall": 0.25,
+      "false_positive_rate": 0.25,
+      "cross_entropy": 0.6931443302141984,
+      "roc_auc": 0.515625
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931488957434361,
+      "roc_auc": 0.484375
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 75,
+      "method": "UERD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931469084677644,
+      "roc_auc": 0.5
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931480269823909,
+      "roc_auc": 0.484375
+    },
+    {
+      "source_group": "BOSSbase-1.01",
+      "quality_factor": 95,
+      "method": "UERD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931480987091315,
+      "roc_auc": 0.484375
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "JUNIWARD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931462160012746,
+      "roc_auc": 0.53125
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 75,
+      "method": "UERD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931472801146108,
+      "roc_auc": 0.53125
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "JUNIWARD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931476218026753,
+      "roc_auc": 0.5
+    },
+    {
+      "source_group": "BOWS2",
+      "quality_factor": 95,
+      "method": "UERD",
+      "true_positive": 1,
+      "true_negative": 7,
+      "false_positive": 1,
+      "false_negative": 7,
+      "balanced_accuracy": 0.5,
+      "recall": 0.125,
+      "false_positive_rate": 0.125,
+      "cross_entropy": 0.6931481155596587,
+      "roc_auc": 0.484375
+    }
+  ]
+}

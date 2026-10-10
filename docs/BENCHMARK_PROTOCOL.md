@@ -4,6 +4,10 @@
 pairs, .4 warm-up/.2 adaptation, paired D4 and 7,680 updates. One final evaluation
 keeps all ten historically inspected development cells. No blind/causal/support
 claim; retain unchanged threshold, out-of-fit failures and all epoch losses.
+Completed results and independent scalar/rank-AUC replay are in
+`JPEG_CURRICULUM_RESULTS.md`; the two 56.25% small cells do not pass support or
+reliable-improvement gates. Do not replace older failures or aggregate these
+shared-cover development cells into a global accuracy claim.
 
 `JPEG_LEARNABILITY_PROTOCOL.md` freezes matched real-pair memorization before
 optimization: all four final singleton labels correct and CE <.2 is a learning

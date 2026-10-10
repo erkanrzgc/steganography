@@ -1,5 +1,9 @@
 # Changelog
 
+- Publish completed two-source Q75 curriculum and independent rank-AUC/scalar
+  replay. Retain all ten contexts: two small BA 56.25% cells, eight 50%, high FPR;
+  do not qualify these as robust detection improvement or deploy the model.
+
 - Add explicit bounded two-source Q75 high-to-low payload curriculum with
   paired D4, independent new-cache IDCT checks and complete contextual probe
   reports. Keep historical failures, legacy contracts and deployment unchanged.

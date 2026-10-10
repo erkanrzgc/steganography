@@ -1,0 +1,631 @@
+{
+  "schema_version": "jpeg-q75-curriculum-cache-v1",
+  "status": "completed",
+  "manifest_sha256": "53af09292d57f4ddba383060452a21979f00028a9938af3a86ccdf4372d136ca",
+  "audit_sha256": "9df6fed4383fe9d84717c3c1edb145160a4e0c44fbeb3114a9c2a253a3b7d7bb",
+  "rows": [
+    {
+      "indices": [
+        234,
+        235
+      ],
+      "lineage": "08411e74d8a602269d763126b11bf54ebb5e69b721c7d23486ac189fc9f12e84",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "5bf008ee072da4a642a6bd421d7f997aede5a5ed9b732584a96d6c3634111896",
+      "bytes": 20008,
+      "coefficient_changes": 2008,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        270,
+        271
+      ],
+      "lineage": "152773bab6b4239d05436d562b9e59e5ffef8f53e0ec8aa1a817273f27ace3c0",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "8820e44ffb6af8e8217cccccccac31edc1478d09ea4fcc9928014a30a0b5e5eb",
+      "bytes": 43497,
+      "coefficient_changes": 5226,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        258,
+        259
+      ],
+      "lineage": "23ad97c1cc3972a710a8d80988b1db7f48b6a74790f0ba0323cb3ea3fdc94e2f",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "66fb1a7c7e8cdcd7eb0ebe597b75856a8697b265bab299be89c4b3ede4be8401",
+      "bytes": 51404,
+      "coefficient_changes": 6443,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        108,
+        109
+      ],
+      "lineage": "2dbb7fbb25c9cbfe92913ea2d6b5f8dcc193dc438cb3e3f1f937f1782f45b7b3",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "048b77006a9d049dcb30c9a25b3b86eda25691d9e4a7c0eafc2a54fcd44ed3b3",
+      "bytes": 17751,
+      "coefficient_changes": 1417,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        186,
+        187
+      ],
+      "lineage": "37828b04768349bde23b361fe0aba339a7a12c8330beb3d9e8e564a74978eac2",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "d812f8d2becb22159650de95495e9021c0b747bef44695cd996596243dd5d9c4",
+      "bytes": 18390,
+      "coefficient_changes": 1563,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        180,
+        181
+      ],
+      "lineage": "385f9aedae11f6a7db4a235854e15ce91a71591e02f1053469c658bbe7dcb66f",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "ce8a92eab6a80a942572b5b95b85b9bd05785db6c7be3eae14c502365e730d60",
+      "bytes": 40809,
+      "coefficient_changes": 5377,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        156,
+        157
+      ],
+      "lineage": "495eaeb2204e1e8c669bdefd48208cb795d77e87ac1a1d6aaa9efa81a2d78fd7",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "ac127751a39700f5d9af18220d96ac774f262a170235e998da93be1e6e121dd2",
+      "bytes": 34405,
+      "coefficient_changes": 3894,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        276,
+        277
+      ],
+      "lineage": "4e379f4f3db174308c3dd74bc4a66b7fe77000517621c74cf8856a0a10cdac09",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "18ce4febdfe2f0821af36b72c8ce668c2b875db1232e9f30fc2e1afdcc428c2a",
+      "bytes": 29547,
+      "coefficient_changes": 2436,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        150,
+        151
+      ],
+      "lineage": "51e6efabfd58c4524ff9fb45a1849d03ddeeebb898d87095ab349e08ee2c0e25",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "76b9b3644622195fd582fdc07d310c5816c57cab0eb2da45f80c8205b34c79be",
+      "bytes": 12071,
+      "coefficient_changes": 740,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        138,
+        139
+      ],
+      "lineage": "55a162b07e88d90c18018da93e6608b84168e94a0dc6630b5efa416b56928a3c",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "5be449dda8d17acae2f2a2e3ad7ce3a3056d8fc5f95575ef3b618229da876f20",
+      "bytes": 34311,
+      "coefficient_changes": 4021,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        102,
+        103
+      ],
+      "lineage": "5913935c010f343a08a778b31265bbf24cf80552c12c6169d0740a90c5bf2587",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "1185bc16dd1333a76874a50e6771c84e8a0750660971114ee0a2b226e0bd9e23",
+      "bytes": 33850,
+      "coefficient_changes": 3522,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        174,
+        175
+      ],
+      "lineage": "5f52c859dfc3f521597557e84958271af9d037e5ddf6033ad0f6cbaeb293b327",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "ed08a1a6e4f881da8921a34fc0c1b4ff3394d95d9bad532aed6e2b4850914368",
+      "bytes": 14989,
+      "coefficient_changes": 1277,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        246,
+        247
+      ],
+      "lineage": "624e725be3be67dde6ebbbc0901ad3cc9073f53326ac7b7a21446f968746b87b",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "5f2885cc66f146684b47f359ce8f23789d28bdb4aa276c2108273e0243dcf9c0",
+      "bytes": 24139,
+      "coefficient_changes": 2402,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        204,
+        205
+      ],
+      "lineage": "6a9b96bd51375c53986f8c8e85561683939e62db63419854fa339f64d4ac2ad7",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "efb666b9cfe3b5169af103c5bd686943078d2b9bd45d1651ecb12a81ddf54037",
+      "bytes": 23888,
+      "coefficient_changes": 2026,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        126,
+        127
+      ],
+      "lineage": "7485dde9ed5d3920b1da1d420711960f4c85f4eb9eca8b001efcd02a5a8363b6",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "7494d238508226a49a6cd0ad391abc74def35929a24bf88df6f05d375f07f95e",
+      "bytes": 66735,
+      "coefficient_changes": 8167,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        252,
+        253
+      ],
+      "lineage": "75793aaaf27ddb579c3c520d3a1f4966e20f0685ae26b50a6402de783cc88612",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "2344f99ea44e09d136a499b6c28a31b6ab59b17c526c5213a9b4238c0a9ced26",
+      "bytes": 26829,
+      "coefficient_changes": 3050,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        192,
+        193
+      ],
+      "lineage": "75f6671b6105f68b00557f3b5ebd470dc134e79a11192b248c4d09d4b4e458f3",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "7a45f238df235bad0c2e7ca404b20e3397941eccbdb5971a7316bcfcbee00cb4",
+      "bytes": 58875,
+      "coefficient_changes": 6966,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        216,
+        217
+      ],
+      "lineage": "761b614b00116ba33b41dcfecc1035df82b389c324e365eee9e3038e1cb24d05",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "fe26d6a5c42d8e8e62c250a50af06a460c9997a0f7565da5c0c26e262a10f74c",
+      "bytes": 18077,
+      "coefficient_changes": 1515,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        282,
+        283
+      ],
+      "lineage": "76377f91e1265a68361509173577d45882dd360d6f9438c4b94b75d2775dacad",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "9005db6cf72b06bdf6880d2508d5185ddb1deb20b4ab79c9627647242708abbf",
+      "bytes": 48457,
+      "coefficient_changes": 5577,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        222,
+        223
+      ],
+      "lineage": "7872c4367fca170fa6b1ef5f2744dd431cd237898cf4bde65dd5e61e9b5f1beb",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "4e37c673fb6a169dcd6cdfa7c2764452f4b1ee9deada40c3e8e36389ec39e620",
+      "bytes": 41796,
+      "coefficient_changes": 4856,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        210,
+        211
+      ],
+      "lineage": "7d59ef2eabeb139e66820dc37f572e1b8899c2c9922eb2555d09c43ee6cba686",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "589a33d2d9d82650d84c3ab3c753a9833a43016650a650bdb8fd9ca1278fb483",
+      "bytes": 24340,
+      "coefficient_changes": 2604,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        228,
+        229
+      ],
+      "lineage": "8416c2cfd80e21f5e9d95fb9621e2be1cd0b961be87c722e772b18fac9d10456",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "3c3e7550b9272c81a3a96c91f9da53360b33d0448982bd9ec1de1c3fe0ce84a0",
+      "bytes": 16909,
+      "coefficient_changes": 1584,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        120,
+        121
+      ],
+      "lineage": "8dc107fc6d13713423650aca55bcada90599f855349a6975379a74501e6fc555",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "5ad77590702e588417d5fe3e077bfc0c8c88015f6aae2baeb9cb9bb5e085587d",
+      "bytes": 16412,
+      "coefficient_changes": 1145,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        198,
+        199
+      ],
+      "lineage": "952ce5ac2f37a22931fe8f1030b986dbb0f2b10a5c02a2c96d8dc3c5e7198b21",
+      "source_group": "BOSSbase-1.01",
+      "sha256": "8e2f7cac6f9a3febc5bb24724a7cbe6555b1636fbe9bb3edabb160e004619ab7",
+      "bytes": 52433,
+      "coefficient_changes": 6200,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        354,
+        355
+      ],
+      "lineage": "17da85c1b631f66a8c30cb1aba7770a9e7727b13213cf36a6db3bc7e333a30b2",
+      "source_group": "BOWS2",
+      "sha256": "6d4fc209c764fea53143b5b53656be802281e7a28d03f70a7b92136862c939f0",
+      "bytes": 47893,
+      "coefficient_changes": 6449,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        474,
+        475
+      ],
+      "lineage": "19f1673c2ccde7db44c9428a158d939f56c24f44e87bbf04ccb7b694eeab77ea",
+      "source_group": "BOWS2",
+      "sha256": "79344c851014bf1f558f0c6ca96c8f6f30076a44ae9b8d6ecd6053fda048e652",
+      "bytes": 45658,
+      "coefficient_changes": 5503,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        336,
+        337
+      ],
+      "lineage": "2404721fc4267ed642594990a8122f145f66207d09d3326cf365686f5e35f6bb",
+      "source_group": "BOWS2",
+      "sha256": "2fc439166e2a275aae97e75f86ac2ed44d2d5994202d93788ad35165f0f18716",
+      "bytes": 35684,
+      "coefficient_changes": 4568,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        384,
+        385
+      ],
+      "lineage": "25e2e956dee961ea22dc816d6ff41b6c025a12bbe826009553aadddab8e25f14",
+      "source_group": "BOWS2",
+      "sha256": "1bb9540d485d4edd0db999e0f200ea0990cc1cbcd1e9a7f91b9974af1ea51710",
+      "bytes": 20856,
+      "coefficient_changes": 1984,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        330,
+        331
+      ],
+      "lineage": "2a8c8883b53d5cf8baf23f258326cea55eb0d06b0873004487e2d183e6609c3e",
+      "source_group": "BOWS2",
+      "sha256": "26dbca401376b03df7d8639ab2497070105bfa7d89c56b91585a25cd65634b0a",
+      "bytes": 41395,
+      "coefficient_changes": 4792,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        438,
+        439
+      ],
+      "lineage": "37bf40a7c4c080f3b0392f3d9ea70a075efa704e5d0d11a21e66697c08633531",
+      "source_group": "BOWS2",
+      "sha256": "247071cb64d6d1d7853c2fcbe1677a8c292c8de2a1f04a144a0da9bef0ee9fa5",
+      "bytes": 61333,
+      "coefficient_changes": 7587,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        288,
+        289
+      ],
+      "lineage": "3e6b95a90424d895a5b5ff489065ecde2586dc992e52377388a5482088a5eda7",
+      "source_group": "BOWS2",
+      "sha256": "d7247577686076e42836c95888feb5345648e720803a67eddc0f3e5e89a1c5c3",
+      "bytes": 36172,
+      "coefficient_changes": 4236,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        432,
+        433
+      ],
+      "lineage": "414b2dac50f2031803f5fd75e7929ee9c135bb9debb53f02334428a75e571123",
+      "source_group": "BOWS2",
+      "sha256": "4dd0373f9ace8ee7353b2a9f58cf777959f5210ac013c5ec14d93a9fe19137a9",
+      "bytes": 37673,
+      "coefficient_changes": 4520,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        390,
+        391
+      ],
+      "lineage": "6f2ccff95c6043d4276f6b373f576543d6015fcc0319f32d52a89107701c22a4",
+      "source_group": "BOWS2",
+      "sha256": "fee1ed24f2df2663352ab94331d8efcc351bd05d833a68dec8ccfdfba6274997",
+      "bytes": 47192,
+      "coefficient_changes": 5728,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        300,
+        301
+      ],
+      "lineage": "7ec54a5221e0a3254c870094f5ba7b4474f2db2f152af35256241d9391cef4c2",
+      "source_group": "BOWS2",
+      "sha256": "a143cee1c00a29ea2bd971b2b382f3fef8ddaa80b5d91d10923f8b21c066d950",
+      "bytes": 36617,
+      "coefficient_changes": 4163,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        372,
+        373
+      ],
+      "lineage": "85f1569f92f632d9195d8aecd1050ac0a76ff558ff54a87ab47959997b630dab",
+      "source_group": "BOWS2",
+      "sha256": "b242494882ae136be469b789a1a848f5c752f681c1b6bf93cf0cb001abb4984b",
+      "bytes": 48466,
+      "coefficient_changes": 5753,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        324,
+        325
+      ],
+      "lineage": "86a9ac812b90df52545357f9b8ce9369094871443c9a8bb41d2c27cf8010d170",
+      "source_group": "BOWS2",
+      "sha256": "cb1cc652d4bdabd3f412cca0c77eb2b615a385c9d3f36e38614354a3149a7566",
+      "bytes": 31208,
+      "coefficient_changes": 2951,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        462,
+        463
+      ],
+      "lineage": "893a90cb67b415518f72bc3aba98ac2f6369162f9c0de2e2515cd8e7704fcb45",
+      "source_group": "BOWS2",
+      "sha256": "eea3ba47bc96a71662906186340e330421c4ab4c640bdb11624cec90ab909917",
+      "bytes": 18042,
+      "coefficient_changes": 1948,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        444,
+        445
+      ],
+      "lineage": "8d9adffba60cfc2bee884ff7a6e511ada95dad095053bfaaf67d98f15dc06c86",
+      "source_group": "BOWS2",
+      "sha256": "cd14290969abed9ff6300968f272ca5e993c06a9cdba0b25d2c8aa561fe0f341",
+      "bytes": 20881,
+      "coefficient_changes": 2140,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        378,
+        379
+      ],
+      "lineage": "93189e7b61b44f45a87ee2112ba361dda3d17c1fdfd96217a4a98bc2b342630f",
+      "source_group": "BOWS2",
+      "sha256": "1d807fc22cb858d071962c8419584e69a4c06fd6cd1e6878745257441e303395",
+      "bytes": 40593,
+      "coefficient_changes": 4931,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        294,
+        295
+      ],
+      "lineage": "9b5aa71da7eaeb2515476096ade1b2bfe51b3b1c37568acf1d2aa99bc8f59847",
+      "source_group": "BOWS2",
+      "sha256": "2296a1e4c8790d1805c9022ccbb9f061416697f7684ec2342648d0bc52e968b0",
+      "bytes": 25703,
+      "coefficient_changes": 2978,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        468,
+        469
+      ],
+      "lineage": "a34a73164dcf7b1be588d0115255746fb261560e75b9323664c143c370c58ae8",
+      "source_group": "BOWS2",
+      "sha256": "431627f4031870a6709029d0889f8dc0df4f79d022287222bc99458579c73a22",
+      "bytes": 22984,
+      "coefficient_changes": 2649,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        318,
+        319
+      ],
+      "lineage": "a425efbae74d0f6b7ca05fe1479acc44a8c03a0d0fb6c7d52bb67d0887f50f7f",
+      "source_group": "BOWS2",
+      "sha256": "c93049bf6133e42db8daf6321901be77bc7af18bb484677ce3116ac9e1276061",
+      "bytes": 33689,
+      "coefficient_changes": 3837,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        408,
+        409
+      ],
+      "lineage": "a57b52f022573981adc387d27706036f6504897d631016942354f475e278afbd",
+      "source_group": "BOWS2",
+      "sha256": "838e7b7eee1b1c6ad32e290e2bff0d15ffaa69281276c19b9e27d7bf02a50cca",
+      "bytes": 21313,
+      "coefficient_changes": 2072,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        426,
+        427
+      ],
+      "lineage": "aa41e0d720d06593ff8b379378b30b449251114f9d6e2e19939e1b7bd6de54a6",
+      "source_group": "BOWS2",
+      "sha256": "759ecade22e363ba1455ecf48ed5d2dfee58459b6e76e4f4397114a738b59fd0",
+      "bytes": 58551,
+      "coefficient_changes": 7199,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        348,
+        349
+      ],
+      "lineage": "ac28529d34e92304ae037bbdd9b421f15acc71e02dbff7c68e740448a83e9ae7",
+      "source_group": "BOWS2",
+      "sha256": "d895ee98b3f649e7d048f85f2316730525fda9af4666876e7357f1bd594b5741",
+      "bytes": 26438,
+      "coefficient_changes": 3200,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        450,
+        451
+      ],
+      "lineage": "b296cbfff0fa23c6615d289acf68c1c69af32babb18a35288c75fbd301dd08ae",
+      "source_group": "BOWS2",
+      "sha256": "412310546c3fc11ae816a0ae7a97029db20e5fa470e5cdeb0354891b22602c07",
+      "bytes": 24258,
+      "coefficient_changes": 2874,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        420,
+        421
+      ],
+      "lineage": "b980db55a09f17c23d7a5c9c71c8ec6764b7412032b38f62c5afea990a749267",
+      "source_group": "BOWS2",
+      "sha256": "18676c90080342bc25aa4de6e2bc41a32603b8c58fd3c6420aac66a7dc246836",
+      "bytes": 74999,
+      "coefficient_changes": 9271,
+      "idct_max_difference": 0.0
+    },
+    {
+      "indices": [
+        396,
+        397
+      ],
+      "lineage": "be5828b101bd530fd4feda9eb16530a5d13d57531d08a7bf21a9a66f97a96e68",
+      "source_group": "BOWS2",
+      "sha256": "bbab3c2cf6b0e795bb17da0c80391d09c584b732fb330b70937f9e9b1c4c15d6",
+      "bytes": 35357,
+      "coefficient_changes": 4360,
+      "idct_max_difference": 0.0
+    }
+  ],
+  "tensor_sha256": "7c58e4fc351c7ec1cde43a1e8c4aeab15ed1f44b8320233cd342c1842770a6ef",
+  "tensor_bytes": 25165824,
+  "payload_rate": 0.4,
+  "payload_unit": "bpnzAC",
+  "quality_factor": 75,
+  "method": "JUNIWARD",
+  "probe_pixels_read": 0,
+  "independent_idct_rows": 96,
+  "independent_native_parser": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b",
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "core/jpeg_timing_probe.py": "f1f78bc9fc6b279003637ad116f42cfcb4a1e09c1b7fb9c139333ecb01bd6777",
+    "core/srnet_diversity_sampling.py": "96c00eaf608fd3cb1192d14b8a5a2ac07faaad8e30e124bf6001c803373d1df3",
+    "steganography/research_jpeg_timing_probe.py": "b6dd2c95a9ca44b03d8d85d757122915cc71bd805a99c1e86206bc689e39c8a3",
+    "core/srnet_population_bn.py": "99ca45b4ece2736dbf981648db274bf259d5c832d1dda5d23c9084d8a7b581a8",
+    "core/jpeg_population_control.py": "83f9d21e38d36c19a90a1c9724c3ed407d382d7a4552170c54aba9ebb66435ba",
+    "steganography/research_jpeg_population_bn.py": "742ec92b579c98a4a893a978bb203c5ff43703b224d4d12c77b5f2f065921f19",
+    "docs/JPEG_POPULATION_BN_PROTOCOL.md": "1136f45698bf55c57aed8fcf8e3945d6a8e3b8c89696a0c12aaeb12e33bf9c39",
+    "core/srnet_groupnorm.py": "7bc350808062a2eb5dd6c3c6c289228f9eef97efa00ca1766b56fa89b522f1a4",
+    "core/srnet_norm_training.py": "b44b7dab5a2cb6fb3e63cc0dd9eb581d629988e064d41762b87937cf30b4b6db",
+    "core/jpeg_norm_learning.py": "3d5d91bbf597c90c06057294609c184afc416613fb17fb4e12f3ffd63460e443",
+    "steganography/research_jpeg_norm_learning.py": "d06540ee5dc074087258e256fd7d6ac4b86429eda517cbb40cf01eba9bfc5aab",
+    "docs/JPEG_NORM_LEARNING_PROTOCOL.md": "7c9f170805f0750b625e5cc026fbb0165ea92f9add31991295ea4eecfeb69658",
+    "core/srnet_samepool.py": "eeaf4b98b5dfa41a2a500812c107e33e76c16be50c2e5c330e8d74a74bf0089b",
+    "core/jpeg_learnability.py": "a691e05b7b6fffa48857bc56c55441a38e26f750cf0125aa47ec9f98cf9f45c0",
+    "steganography/research_jpeg_learnability.py": "14876735448e4f8cb134e58f64a6970a50ac0a09cfcc78dacc3f98e910337078",
+    "docs/JPEG_LEARNABILITY_PROTOCOL.md": "86926fff75edffc780e29ef821574a169366cbadd3009d794dc35342434ed06f",
+    "core/jpeg_curriculum.py": "269e556404b943142ef3058e756a1154a9ca5c8565b7fd617a0210063dca16d1",
+    "steganography/research_jpeg_curriculum.py": "e009ade8519dbb252161107759e37318dd0d47b971635f28950bc00b5b9e6359",
+    "docs/JPEG_CURRICULUM_PROTOCOL.md": "dd4fd187a25106c28e6f567c25c0994e4fea7ae7cb37afe9919690a781eddda6"
+  }
+}

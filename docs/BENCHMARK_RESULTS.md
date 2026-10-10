@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+[Q75 high-to-low payload curriculum](JPEG_CURRICULUM_RESULTS.md): 80 epochs,
+7,680 updates; two small inspected development cells move to BA56.25%, eight
+stay 50%, FPR 12.5–50%. No robust/broad accuracy gain, supported cell or deployment.
+All ten contexts and independent rank/logsumexp replay remain public.
+
 [Real-pair JPEG learnability](JPEG_LEARNABILITY_RESULTS.md): both legacy and
 reference-inspired numerical arms memorize four train rows (4/4, CE .00070
 /.00069). Independent scalar replay passes; this is not held-out accuracy and

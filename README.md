@@ -30,6 +30,11 @@ failed, and no cross-source support gate has passed. See the
 [dataset sources/licenses](docs/DATASET_CATALOG.md). Controlled CTF recovery
 and synthetic regression scores are not overall steganalysis accuracy.
 
+[Latest Q75 curriculum experiment](docs/JPEG_CURRICULUM_RESULTS.md): 48 original
+fit images, 80 epochs /7,680 own-GPU updates. Two small inspected development
+cells reach BA 56.25%; eight remain at 50%, with FPR 12.5–50%. This is not a
+reliable broad accuracy gain or a supported detector; weights were discarded.
+
 [Verified data expansion](docs/DATA_EXPANSION_RESULTS.md) adds 4,000 ALASKA2
 JPEGs, 1,000 BOSS originals and 200 reserved WIFD images. Acquisition is not
 accuracy. [Complete JPEG preparation](docs/JPEG_SCALE_PREPARATION_RESULTS.md)
