@@ -1160,3 +1160,25 @@ def test_native_audit_reads_private_copies_not_mutable_corpus_paths(prepared, mo
     monkeypatch.setattr(jpeglib, "read_dct", read)
     assert audit.audit(root, sha, deadline=lambda: None)["status"] == "completed"
     assert len(reads) == 16 and all(not Path(path).exists() for path in reads)
+
+
+def test_invalid_worker_does_not_import_optional_torch(monkeypatch):
+    import builtins
+    import sys
+    from types import SimpleNamespace
+
+    original = builtins.__import__
+    calls = []
+
+    def importing(name, *args, **kwargs):
+        if name == "torch" or name.startswith("torch."):
+            calls.append(name)
+            raise ImportError("independent absent optional backend fixture")
+        return original(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", importing)
+    monkeypatch.setattr(frontend.resource, "setrlimit", lambda *a: None)
+    monkeypatch.setattr(sys, "stdin", SimpleNamespace(buffer=io.BytesIO(b" " * 65537)))
+    with pytest.raises(ValueError, match="bounds"):
+        frontend.worker(SimpleNamespace(worker="audit"))
+    assert calls == []

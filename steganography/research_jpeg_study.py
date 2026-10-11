@@ -264,9 +264,11 @@ def worker(args):
     except InterruptedError:
         result = {"status": "cancelled", "reason": "user_cancelled"}
     except Exception as exc:
-        import torch
-
-        if not isinstance(exc, torch.cuda.OutOfMemoryError):
+        # Invalid input must not import an absent optional backend just to
+        # classify the exception. A real CUDA OOM already has Torch loaded.
+        cuda = getattr(sys.modules.get("torch"), "cuda", None)
+        oom = getattr(cuda, "OutOfMemoryError", None)
+        if oom is None or not isinstance(exc, oom):
             raise
         result = {"status": "unavailable", "reason": "gpu_allocator_out_of_memory"}
     if sources() != before:
