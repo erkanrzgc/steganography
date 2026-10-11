@@ -67,7 +67,10 @@ Every run is `development_only`, with `blind_gate: unavailable`. Even 120/120
 does not automatically qualify the tool. A separate custodian must establish
 independent provenance, untouched challenges, appropriate method/source coverage,
 no prior tuning, reference hardware and a predeclared audit. Once inspected,
-challenges become regression evidence. Current generic playbook recommendations
-are not comprehensive method-family recommendations; top-three misses remain
+challenges become regression evidence. Playbook recommendations now rank a
+narrow allowlist of native findings by evidence strength and heuristic score.
+They are inspection routes, not calibrated method diagnoses. Broad families
+such as `wav-lsb` and `appended-data` deliberately do not guess manifest labels
+such as mono/channel or PNG/BMP; exact-label top-three misses remain
 visible. Flag substring recovery and a certified blind package are not implemented
 by this payload-hash runner. Do not publish fixture success as real-world accuracy.

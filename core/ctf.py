@@ -9,6 +9,7 @@ import gzip
 import hashlib
 import io
 import lzma
+import math
 import mimetypes
 import re
 import shutil
@@ -35,6 +36,37 @@ _FLAG_PATTERN = re.compile(rb"([a-zA-Z0-9_]{3,24}\{[ -~]{4,120}\})")
 
 CTFMode = Literal["quick", "balanced", "deep"]
 EventCallback = Callable[[dict[str, Any]], None]
+
+# Deliberately narrow: format, generic DCT statistics and tool failures are not
+# method evidence. Do not echo plug-in details or tool stdout into these hints.
+_METHOD_HINTS = {
+    "text_whitespace.trailing_whitespace_ratio": (
+        "text-whitespace", "Inspect trailing spaces/tabs and their bit ordering"
+    ),
+    "text_whitespace.validated_whitespace_payload": (
+        "text-whitespace", "Inspect trailing spaces/tabs and their bit ordering"
+    ),
+    "text_zerowidth.zero_width_chars": (
+        "text-zerowidth", "Inspect zero-width code points and their bit ordering"
+    ),
+    "text_zerowidth.validated_zerowidth_payload": (
+        "text-zerowidth", "Inspect zero-width code points and their bit ordering"
+    ),
+    "image_gif.gif_comment_payload": ("gif-comment", "Inspect GIF comment extensions"),
+    "image_gif.gif_comment_flag": ("gif-comment", "Inspect GIF comment extensions"),
+    "image_jpeg.appended_data": ("appended-data", "Inspect bytes after the carrier boundary"),
+    "image_gif.gif_appended_data": ("appended-data", "Inspect bytes after the carrier boundary"),
+    "image_gif.gif_appended_flag": ("appended-data", "Inspect bytes after the carrier boundary"),
+    "audio_wav.riff_appended_data": ("appended-data", "Inspect bytes after the carrier boundary"),
+    "audio_wav.riff_appended_flag": ("appended-data", "Inspect bytes after the carrier boundary"),
+    "audio_wav.wav_lsb_bias": ("wav-lsb", "Inspect bounded interleaved and per-channel PCM LSBs"),
+    "audio_wav.audio_lsb_plaintext_flag": (
+        "wav-lsb", "Inspect bounded interleaved and per-channel PCM LSBs"
+    ),
+    "image_lsb.lsb_channel_bias": (
+        "spatial-lsb", "Inspect channel order and image LSB planes independently"
+    ),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -755,27 +787,66 @@ class CTFService:
     @staticmethod
     def _recommendations(state: _JobState, mode: CTFMode) -> list[Recommendation]:
         values: list[Recommendation] = []
-        unavailable = [item.component for item in state.coverage if item.status == "unavailable"]
-        if unavailable:
+        ranked: dict[str, tuple[int, float, str]] = {}
+        strength = {"heuristic": 1, "strong": 2, "verified": 3}
+        for analysis in state.analyses:
+            for finding in analysis.get("findings", []):
+                rule = finding.get("rule_id")
+                evidence = finding.get("evidence_strength")
+                score = finding.get("confidence")
+                if (
+                    not isinstance(rule, str) or rule not in _METHOD_HINTS
+                    or finding.get("status") != "ok"
+                    or not isinstance(evidence, str) or evidence not in strength
+                    or (evidence == "verified" and not (
+                        ".validated_" in rule or rule.endswith("_flag")
+                    ))
+                    or isinstance(score, bool) or not isinstance(score, (int, float))
+                    or not math.isfinite(score) or not 0.30 <= score <= 1.0
+                ):
+                    continue
+                family, action = _METHOD_HINTS[rule]
+                candidate = (strength[evidence], float(score), action)
+                if candidate > ranked.get(family, (0, 0.0, "")):
+                    ranked[family] = candidate
+        for family, (level, _score, action) in sorted(
+            ranked.items(), key=lambda item: (-item[1][0], -item[1][1], item[0])
+        ):
+            values.append(Recommendation(
+                len(values) + 1, action,
+                ("A native finding reports a verified marker; "
+                 "validate the extracted bytes independently."
+                 if level == 3 else
+                 "Native indicators suggest this inspection route; benign content can also "
+                 "trigger it. Validate independently; this is not a calibrated method diagnosis."),
+                family,
+            ))
+        if any(item.required and item.status != "available" for item in state.coverage):
+            values.append(Recommendation(
+                len(values) + 1, "Restore required native analyzer coverage",
+                "Required native analysis is missing, unsupported or failed; installing "
+                "external tools alone does not restore native coverage.",
+            ))
+        if any(not item.required and item.status == "unavailable" for item in state.coverage):
             values.append(
                 Recommendation(
-                    1,
+                    len(values) + 1,
                     "Re-run in the full Docker image",
-                    "Optional tools were unavailable: " + ", ".join(sorted(set(unavailable))[:6]),
+                    "Optional components were unavailable; check their coverage before re-running.",
                     "external-tools",
                 )
             )
         if mode != "deep":
             values.append(
                 Recommendation(
-                    2,
+                    len(values) + 1,
                     "Re-run with --mode deep",
                     "Enables additional carving and XOR candidates",
                 )
             )
         values.append(
             Recommendation(
-                3,
+                len(values) + 1,
                 "Review artifact provenance and validate candidates independently",
                 "Decoder and carving outputs are candidates until extraction or a marker "
                 "verifies them",

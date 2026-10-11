@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+CTF inspection hints are derived only from native findings, never manifest
+method labels or payload oracles. Their heuristic score ordering is not a
+probability estimate. The frozen evaluator retains exact family matching;
+do not relabel broad hints to inflate top-three counts. Recommendations do not
+change detector thresholds, verdicts or successful payload recovery counts.
+
 The full-image inventory/recovery smoke is controlled integration evidence,
 not a detection benchmark or blind CTF gate. Preserve strict failures and
 unavailable tools; never treat version presence as successful recovery.

@@ -1,5 +1,12 @@
 # Roadmap and status
 
+2026-10-11 CTF triage slice: evidence-ranked, allowlisted native inspection
+routes replace exclusively generic advice. Required native gaps and optional
+tool absence have different next steps. Broad families are intentionally not
+invented as specific embedding algorithms or encoder/channel labels. Complete
+method discrimination, blind top-three qualification and detection accuracy
+gates remain open; verdicts and extraction are unchanged.
+
 2026-10-11 paired CTF matrix: one generated 17-fixture source group, unchanged
 input hashes/quick budgets, exact completed recovery 14/17 -> 17/17. Missing root
 BMP trailer carving and stereo-channel WAV extraction are fixed with bounded

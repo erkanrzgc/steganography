@@ -1,5 +1,15 @@
 # Architecture
 
+CTF recommendations remain in the shared `core.ctf` service. An exact native
+rule allowlist supplies static inspection routes for whitespace, zero-width,
+GIF comments, appended data, PCM LSB and spatial LSB findings. Only successful,
+non-informational findings with finite heuristic scores >= 0.30 are eligible;
+verified strength requires a marker/flag rule. Families are deduplicated and
+ordered by strength, score, then family for stable ties; at most three routes
+are reported. Raw details, commands, paths and tool stdout are not copied.
+These routes do not influence verdicts, extraction, calibration or coverage.
+Generic JPEG DCT statistics and filename extensions cannot identify a family.
+
 `steganography.benchmarking.ctf_matrix` explicitly generates independent-encoder
 development fixtures without project Carrier encoders. Thin scripts wire it to
 the evaluator; production recovery stays in `core.ctf` and the WAV module. BMP

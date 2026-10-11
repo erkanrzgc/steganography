@@ -1,5 +1,20 @@
 # Implementation status — 2026-10-07
 
+CTF inspection routes (2026-10-11): successful allowlisted native findings now
+rank specific next steps without changing verdicts or extraction. Unknown,
+informational and failed findings are excluded; raw plug-in/tool details are
+not echoed. Required native coverage gaps are not disguised as optional tools.
+The prior `0b2f2ce` checkpoint passed both normal and full-image CI; its local
+full suite passed 2,282 tests with one explicit CUDA skip and 96.31% coverage.
+Blind method discrimination and real-dataset accuracy gates remain open.
+
+Triage verification: 36 new recommendation tests; 86 focused CTF/evaluator/matrix
+tests passed. Full provisioned suite: 2,318 passed, one actual-CUDA unavailable
+skip, 96.32% total coverage (789.07 seconds); all 20 changed executable lines
+in `core.ctf` covered. Lint, type checking and model-free wheel build passed.
+Fresh hardened full-image smoke and independent matrix passed (17 native plus
+four upstream-tool fixtures). These counts do not qualify real-world accuracy.
+
 Paired development recovery (2026-10-11): frozen native fixtures move 14/17 ->
 17/17 completed exact payload recovery, with unchanged inputs/budgets. Fixes:
 BMP trailer carving and per-channel stereo WAV LSB extraction, with invalid

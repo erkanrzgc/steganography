@@ -1,5 +1,11 @@
 # Changelog
 
+- Rank CTF inspection routes from allowlisted native findings, deduplicated by
+  method family and ordered by evidence strength then heuristic score. Ignore
+  informational/failed/unknown findings and never copy raw details into hints.
+  Distinguish required native gaps from optional tool absence. Verdicts,
+  extraction and calibration are unchanged; no accuracy improvement is claimed.
+
 - Fix bounded BMP appended-payload and stereo WAV per-channel 1/2-bit recovery.
   Preserve interleaved PCM8/16/32 and cap aggregate raw samples. Pair 17 frozen
   independent-encoder development fixtures (14/17 -> 17/17); add actual upstream
