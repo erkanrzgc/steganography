@@ -1,4 +1,45 @@
-# Implementation status — 2026-10-07
+# Implementation status — 2026-10-12
+
+Causal JPEG controls (2026-10-12): `research jpeg-study --config FILE --out DIR`
+implements bounded original-disjoint preparation, complete independent SciPy
+IDCT audit, four source/initialization/order-matched optimizer/L2/batch arms,
+two seeds, numeric resume snapshots and paired bootstrap learning gates.
+Legacy `srnet_reference` and old trainers/checkpoint formats are unchanged.
+An initial actual preparation stopped on an upstream iteration warning; direct
+Shannon measurement found 0.07937% residual, inside the unchanged 0.1% entropy
+bound. Both that run and a later actual excess-residual failure are retained.
+An independently implemented bounded Gibbs/Shannon refinement now corrects
+excess-residual probabilities without changing costs, seeds, tolerances or
+selected originals. Native audit input is a verified private byte copy.
+CUDA/SSH are unavailable and no new GPU fitting or accuracy
+gain is claimed. Pretrained/color comparison, .2 adaptation and reserved-source
+evaluation are not implemented yet; WIFD remains unscored. See
+`JPEG_LEARNING_STUDY.md` for the complete first-slice contract and remaining work.
+
+Actual center-only data gate: after 153 complete fit pairs, the next fixed BOSS
+original failed unchanged-center detection. Independent SciPy reconstruction
+confirms 646 full-image coefficient changes but **zero** in the center crop;
+cover and stego inputs there are identical. The four fixed corners change
+576/0/7488/5504 pixels. The incomplete corpus was retained, not fitted or filtered.
+See [the portable single-original audit](../benchmarks/jpeg-study-center-signal-20261012.json).
+This one case proves representation loss, not the cause of chance AUC on the
+whole previous corpus. Moving the planned label-independent five-view
+representation into the first controls needs an explicit protocol decision;
+the new study has no completed training corpus or GPU trial yet. Like the other
+source-bound research runners, this command requires a source checkout with
+protocol docs and explicit optional research dependencies, not only the wheel.
+
+Verification of this slice: 127 focused tests; full provisioned CPU suite
+2,452 passed /one actual-CUDA unavailable skip, 32 existing ONNX deprecation
+warnings, 597.48 seconds. Total coverage 96.34%; the seven new executable study
+modules have 96.59% aggregate coverage and each exceeds 95%. Ruff, 176-file
+type checking, diff whitespace and a 493,882-byte model/data-free wheel pass.
+An explicit import-absence profile passed 88 tests with 39 optional-dependency
+skips; this is a regression profile, not actual GPU or Python-version qualification.
+Malformed worker input no longer imports Torch to classify non-CUDA failures.
+These checks do not qualify real-GPU execution or learning. Only this turn's
+generated test scratch directories are removed after verification; datasets,
+partial failed preparations, caller files and public evidence are retained.
 
 Report parity (2026-10-11): HTML now shows CTF routes, required/optional
 coverage and tool execution status. Escaped complete normalized JSON and SARIF

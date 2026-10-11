@@ -1,5 +1,24 @@
 # Roadmap and status
 
+2026-10-12 causal JPEG control slice: explicit preparation plus four matched
+optimizer/regularization/batch controls across two seeds. Fixed historical-train
+original identities, source-balanced paired D4, separate development caches,
+independent complete IDCT audit, singleton/stored-BN evaluation and paired
+bootstrap improvement gates replace repeated tiny-corpus epoch counting.
+Legacy research oracles/checkpoints and production detection remain unchanged.
+The own-GPU connection is unavailable; no new GPU fit or accuracy increase is
+claimed. Optional pretrained/color comparison, .2 adaptation and one-shot WIFD
+evaluation still need subsequent implementation and gates; this is not the
+complete learning plan. See `JPEG_LEARNING_STUDY.md`.
+
+The actual fixed-original preparation now exposes a blocking center-only
+representation gate: one BOSS cover/stego has identical central input despite
+646 changed full-image coefficients. Preserve this failure and the identity
+list. Decide whether to move the planned fixed center-plus-four-corner views
+into the first controls; do not substitute an easier original or claim a
+completed training corpus. The single-original proof is in
+`benchmarks/jpeg-study-center-signal-20261012.json`.
+
 2026-10-11 report parity slice: HTML visibly exposes CTF recommendations,
 coverage and tool status, and carries escaped complete normalized evidence.
 SARIF preserves that document as run properties without converting inspection

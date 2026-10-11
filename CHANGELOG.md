@@ -1,5 +1,14 @@
 # Changelog
 
+- Add opt-in `research jpeg-study` preparation and source-bound matched JPEG
+  controls: author-rule Adamax, convolution-only L2, genuine batches, paired
+  D4/order/initialization, singleton evaluation and original-pair bootstrap gates.
+  Independently check/refine simulated entropy and every unrounded cache row; isolate
+  subprocess groups, cancellation, limits and new numeric resume snapshots.
+  Preserve legacy oracles/checkpoints and deployed detection. GPU absence is
+  unavailable, not CPU fallback or accuracy evidence. Later learning-plan
+  comparison/adaptation/independent-source stages remain pending.
+
 - Preserve complete normalized evidence in HTML and SARIF, including additive
   fields and incomplete jobs with no findings. Show CTF recommendations, native
   coverage gaps and tool execution status in HTML. Escape embedded report text;

@@ -1,5 +1,24 @@
 # Benchmark protocol
 
+The opt-in causal JPEG study has a separate versioned development protocol in
+`JPEG_LEARNING_STUDY.md`. Fit and development originals come only from historical
+train; content hashes and decoded identities cannot cross roles. Fixed Q75
+JUNIWARD .4 simulation preserves upstream costs/layout/RNG and independently
+checks probability finiteness and Shannon-entropy residual <=0.1% of requested
+bits. An iteration-count warning is not itself a residual test. Never replace
+failed samples with easier originals. Two seeds, source cells and matched
+original-pair bootstrap improvement over unchanged controls are mandatory for
+the exploratory AUC .70 learning gate. That gate is not support qualification;
+the 1000+1000/two-independent-source acceptance criteria remain unchanged.
+Missing CUDA, capacity, audit, dependency, time or cancelled work stays visible
+and cannot become a successful real-data benchmark. WIFD remains unscored.
+
+The published center-signal audit is a single historical-train original,
+not a population accuracy measurement. It demonstrates identical center
+inputs with differing whole-image coefficients. Retain the failed preparation;
+any move to a fixed multi-view representation requires a new frozen contract
+and matched controls, not outcome-based crop selection or replacement samples.
+
 Zero SARIF finding results are not a successful/clean CTF job certificate.
 Inspect the normalized run report (`runs[].properties.report`) for job status,
 required coverage, tool failure/unavailability and heuristic calibration.

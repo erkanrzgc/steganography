@@ -1,5 +1,24 @@
 # Architecture
 
+`core.jpeg_study*` isolates the causal JPEG learning experiment from legacy
+trainers, the independent `srnet_reference` oracle and deployed analyzers.
+`jpeg_study_optimizer` implements separate author-rule Adamax controls and
+convolution-only L2; `jpeg_study_data` streams original-disjoint role caches;
+`jpeg_study_audit` checks native coefficients and independently reconstructs
+every cached row with SciPy.
+`jpeg_study_entropy` independently refines out-of-tolerance Gibbs/Shannon
+probabilities with fixed iteration bounds, preserving original costs and seeds.
+Native audit parsers consume byte-verified private copies, not mutable corpus
+paths. Cancellation kills and reaps owned workers and retains portable status.
+New numeric snapshots reject pickle/compression,
+preflight array headers, and bind recipe, source, input and Torch version.
+The explicit `research jpeg-study` wrapper owns bounded subprocess groups,
+serial trials and portable status reporting. CUDA absence fails before opening
+training data; test-only CPU kernels never qualify real-GPU results. Later
+comparison/adaptation/source-test stages are not implemented by this first
+control slice. See `JPEG_LEARNING_STUDY.md`; old verdicts and support gates stay
+unchanged.
+
 `report.v2` renders normalized service reports without independent analysis.
 HTML includes readable CTF job/route/coverage/tool summaries and the complete
 JSON document as escaped text in a collapsible `<pre>`, never a script. SARIF
