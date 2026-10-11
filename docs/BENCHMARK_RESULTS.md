@@ -1,5 +1,10 @@
 # Measured results, not a global accuracy score
 
+[Paired CTF matrix](CTF_MATRIX_RESULTS.md): 17 generated challenges improve
+from 14/17 to 17/17 completed exact recovery after BMP trailer/stereo WAV fixes.
+One generated group and unchanged budgets; development regression, not a
+real-world detection accuracy score or blind qualification.
+
 [Q75 high-to-low payload curriculum](JPEG_CURRICULUM_RESULTS.md): 80 epochs,
 7,680 updates; two small inspected development cells move to BA56.25%, eight
 stay 50%, FPR 12.5–50%. No robust/broad accuracy gain, supported cell or deployment.

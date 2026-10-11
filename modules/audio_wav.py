@@ -71,28 +71,37 @@ def extract_wav_payload(src: Path) -> tuple[bytes, str] | None:
     try:
         with wave.open(str(src), "rb") as w:
             width = w.getsampwidth()
-            raw = w.readframes(min(w.getnframes(), 65536 * 8))
+            channels = w.getnchannels()
+            if width not in (1, 2, 4) or not 1 <= channels <= 8:
+                return None
+            # Bound aggregate samples, not frames (a frame contains all channels).
+            raw = w.readframes(min(w.getnframes(), (65536 * 8) // channels))
+            if len(raw) % (width * channels):
+                return None
         if width == 1:
             samples = np.frombuffer(raw, dtype=np.uint8).astype(np.int16)
         elif width == 2:
             samples = np.frombuffer(raw, dtype="<i2")
         elif width == 4:
             samples = np.frombuffer(raw, dtype="<i4")
-        else:
-            return None
     except Exception:
         return None
 
-    b1, b2 = extract_raw_lsb(samples, max_bytes=65536)
-    for stream, label in ((b1, "1-bit LSB"), (b2, "2-bit LSB")):
-        if not stream:
-            continue
-        m = _FLAG_PATTERN.search(stream)
-        if m:
-            return m.group(0), f"extracted flag from WAV {label}"
-        for magic, magic_name in _MAGICS:
-            if stream.startswith(magic):
-                return stream, f"extracted {magic_name} from WAV {label}"
+    layouts = [(samples, "interleaved")]
+    if channels > 1:
+        shaped = samples.reshape(-1, channels)
+        layouts.extend((shaped[:, channel], f"channel {channel}") for channel in range(channels))
+    for selected, layout in layouts:
+        b1, b2 = extract_raw_lsb(selected, max_bytes=65536)
+        for stream, label in ((b1, "1-bit LSB"), (b2, "2-bit LSB")):
+            if not stream:
+                continue
+            m = _FLAG_PATTERN.search(stream)
+            if m:
+                return m.group(0), f"extracted flag from WAV {layout} {label}"
+            for magic, magic_name in _MAGICS:
+                if stream.startswith(magic):
+                    return stream, f"extracted {magic_name} from WAV {layout} {label}"
     return None
 
 

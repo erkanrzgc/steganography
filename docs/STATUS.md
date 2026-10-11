@@ -1,5 +1,12 @@
 # Implementation status — 2026-10-07
 
+Paired development recovery (2026-10-11): frozen native fixtures move 14/17 ->
+17/17 completed exact payload recovery, with unchanged inputs/budgets. Fixes:
+BMP trailer carving and per-channel stereo WAV LSB extraction, with invalid
+BMP/PCM/read-limit tests. One generated group, no real-world/blind claim.
+`CTF_MATRIX_RESULTS.md` preserves both runs. The preceding `1b54f0c` checkpoint
+passed complete GitHub CI and full Docker.
+
 CTF evaluation checkpoint (2026-10-11): the frozen-manifest runner verifies
 exact non-root artifact bytes after solving, retains unavailable/failed cases,
 and separates complete recovery from incomplete recovery and timing. Its two

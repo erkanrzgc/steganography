@@ -1,5 +1,11 @@
 # Changelog
 
+- Fix bounded BMP appended-payload and stereo WAV per-channel 1/2-bit recovery.
+  Preserve interleaved PCM8/16/32 and cap aggregate raw samples. Pair 17 frozen
+  independent-encoder development fixtures (14/17 -> 17/17); add actual upstream
+  Steghide/OutGuess/OpenStego recovery fixtures to hardened full-image CI.
+  These are regression recovery counts, not detection accuracy or blind scores.
+
 - Add explicit checksum-frozen CTF payload evaluation with byte-verified recovery,
   incomplete-job separation, unavailable-tool denominator retention and portable
   timing/provenance. Checked-in examples are development-only; blind qualification

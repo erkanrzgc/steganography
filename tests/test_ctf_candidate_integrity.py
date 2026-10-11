@@ -17,6 +17,7 @@ from core.ctf import (
     _decoded_candidates,
     _JobState,
     _signature_offsets,
+    _trailer,
     _valid_bmp_header,
 )
 from core.ctf_types import ToolExecution
@@ -27,6 +28,22 @@ def bmp_bytes() -> bytes:
     output = io.BytesIO()
     Image.new("RGB", (8, 8), (66, 77, 255)).save(output, format="BMP")
     return output.getvalue()
+
+
+def test_bmp_trailer_requires_coherent_uncompressed_pixel_extent():
+    data = bmp_bytes()
+    payload = b"flag{independent_bmp_trailer}"
+    assert _trailer(data + payload, ".bmp") == payload
+    assert _trailer(data, ".bmp") == b""
+    assert _trailer(b"not a BMP" + payload, ".bmp") == b""
+    for field, value in ((30, 1), (18, 100000), (2, 30), (6, 1)):
+        damaged = bytearray(data + payload)
+        struct.pack_into("<I", damaged, field, value)
+        assert _trailer(bytes(damaged), ".bmp") == b""
+    # Independent OS/2 BITMAPCOREHEADER, eight 24-bit pixels in one row.
+    core = struct.pack("<2sIHHI", b"BM", 50, 0, 0, 26)
+    core += struct.pack("<IHHHH", 12, 8, 1, 1, 24) + bytes(24)
+    assert _trailer(core + payload, ".bmp") == payload
 
 
 def job(tmp_path, *, limits=None):

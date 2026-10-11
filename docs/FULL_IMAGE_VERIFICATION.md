@@ -35,6 +35,12 @@ an actual recovery test is not proof that a tool works.
 
 ## What the smoke checks
 
+The workflow also runs `scripts/docker-ctf-matrix.py` under the same hardened
+settings: 17 independent native encoder fixtures and four actual upstream-tool
+fixtures (Steghide BMP/JPEG, OutGuess JPEG, OpenStego PNG). Its separate
+`ctf-development-matrix` artifact is controlled recovery evidence, not blind
+validation or detector accuracy. See `CTF_MATRIX_RESULTS.md`.
+
 - Non-root operation on a read-only root with no network and dropped privileges.
 - Exact independent payload recovery through native, Steghide, Stegseek and
   OpenStego paths; Stegseek wordlist recovery through the shared CTF playbook,

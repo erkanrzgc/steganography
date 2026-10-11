@@ -1,5 +1,12 @@
 # Roadmap and status
 
+2026-10-11 paired CTF matrix: one generated 17-fixture source group, unchanged
+input hashes/quick budgets, exact completed recovery 14/17 -> 17/17. Missing root
+BMP trailer carving and stereo-channel WAV extraction are fixed with bounded
+parser/recovery tests. Four actual Steghide/OutGuess/OpenStego fixtures are added
+to full-image CI. This is development recovery, not JPEG detector improvement
+or blind/source qualification. See `CTF_MATRIX_RESULTS.md`.
+
 2026-10-11 CTF evaluation slice: checksum-frozen manifests, preflight/repeated
 input integrity checks, byte-verified non-root payload recovery, complete-job
 versus incomplete recovery counts, timings and missing-tool denominator retention.

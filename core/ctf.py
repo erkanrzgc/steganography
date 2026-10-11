@@ -805,6 +805,23 @@ def _bounded_read(path: Path, limit: int) -> bytes:
 
 
 def _trailer(data: bytes, suffix: str) -> bytes:
+    if suffix == ".bmp":
+        if not data.startswith(b"BM") or not _valid_bmp_header(data, 0):
+            return b""
+        dib = int.from_bytes(data[14:18], "little")
+        width_bytes = 2 if dib == 12 else 4
+        width = int.from_bytes(data[18:18 + width_bytes], "little", signed=dib != 12)
+        height = int.from_bytes(data[18 + width_bytes:18 + 2 * width_bytes],
+                                "little", signed=dib != 12)
+        bpp_offset = 20 + 2 * width_bytes
+        bpp = int.from_bytes(data[bpp_offset:bpp_offset + 2], "little")
+        # Only uncompressed BMP has a directly auditable row extent here.
+        if dib != 12 and int.from_bytes(data[30:34], "little") != 0:
+            return b""
+        bmp_end = int.from_bytes(data[2:6], "little")
+        pixels = int.from_bytes(data[10:14], "little")
+        minimum = pixels + ((width * bpp + 31) // 32) * 4 * abs(height)
+        return data[bmp_end:] if minimum <= bmp_end else b""
     if suffix in {".wav", ".wave"}:
         if data.startswith(b"RIFF") and len(data) >= 8:
             riff_size = int.from_bytes(data[4:8], "little")

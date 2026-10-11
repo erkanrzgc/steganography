@@ -1,5 +1,12 @@
 # Architecture
 
+`steganography.benchmarking.ctf_matrix` explicitly generates independent-encoder
+development fixtures without project Carrier encoders. Thin scripts wire it to
+the evaluator; production recovery stays in `core.ctf` and the WAV module. BMP
+trailers require coherent uncompressed pixel extent; WAV reads bound aggregate
+samples before interleaved/channel inspection. No research kernel, calibrated
+threshold or legacy payload contract changes.
+
 `core.ctf_evaluation` evaluates frozen challenge manifests through `CTFService`;
 `scripts/evaluate-ctf.py` is only its explicit command wrapper. Oracle hashes and
 method labels are checked after solve, never supplied to the playbook. Payload

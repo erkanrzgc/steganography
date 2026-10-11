@@ -4,6 +4,11 @@ This runner measures exact **payload** recovery, not detector accuracy. It does
 not certify blind custody. The two checked-in encoding examples are development
 fixtures, not an independent 120-challenge package.
 
+The explicit `generate-ctf-matrix.py` creates 17 independent-encoder development
+fixtures, or four upstream-tool fixtures with `--external`. See
+`CTF_MATRIX_RESULTS.md` for paired failures/fixes. Generated groups must not be
+relabeled as independent real-world sources.
+
 ## Run
 
 ```bash

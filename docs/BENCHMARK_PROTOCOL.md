@@ -497,6 +497,11 @@ denominator and separates recovery from completed jobs. Its checked-in encoding
 examples and all automated runs remain development-only: independent blind
 custody is not certified by a manifest checksum or a high recovery rate.
 
+`CTF_MATRIX_RESULTS.md` records a paired 17-fixture recovery regression with
+identical corpus hashes/budgets. Independent encoder implementation is not blind
+custody: all generated cases keep one generated group/development qualification.
+Real upstream-tool fixture generation is separately checked in hardened Docker.
+
 The target blind suite contains 120 supported challenges. At least 90% require exact
 payload/flag recovery; remaining challenges must place the correct method in
 the first three recommendations. For typical inputs below 10 MiB, publish the
