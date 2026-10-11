@@ -1,5 +1,10 @@
 # Changelog
 
+- Preserve complete normalized evidence in HTML and SARIF, including additive
+  fields and incomplete jobs with no findings. Show CTF recommendations, native
+  coverage gaps and tool execution status in HTML. Escape embedded report text;
+  inspection routes/tool failures remain metadata, not SARIF detector alerts.
+
 - Rank CTF inspection routes from allowlisted native findings, deduplicated by
   method family and ordered by evidence strength then heuristic score. Ignore
   informational/failed/unknown findings and never copy raw details into hints.

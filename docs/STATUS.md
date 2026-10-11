@@ -1,5 +1,20 @@
 # Implementation status — 2026-10-07
 
+Report parity (2026-10-11): HTML now shows CTF routes, required/optional
+coverage and tool execution status. Escaped complete normalized JSON and SARIF
+run properties preserve additive fields, limits and incomplete jobs; bundle
+views round-trip the same evidence. No score, verdict or recovery change.
+The prior `c077797` checkpoint passed both normal and full-image CI.
+
+Report parity verification: seven new tests cover complete/failed/cancelled
+jobs, empty/legacy views, additive fields, HTML injection escaping, bundle
+round-trips and real service output without host paths. The focused integration
+run passed 77 tests. Full suite: 2,325 passed, one actual-CUDA unavailable skip,
+96.32% total coverage in 548.58 seconds; all seven changed executable lines in
+`report.v2` were covered. Lint, 169-file type checking and a model-free wheel
+build passed. These are content round-trip checks, not formal SARIF schema or
+consumer interoperability qualification; detection/recovery scores are unchanged.
+
 CTF inspection routes (2026-10-11): successful allowlisted native findings now
 rank specific next steps without changing verdicts or extraction. Unknown,
 informational and failed findings are excluded; raw plug-in/tool details are

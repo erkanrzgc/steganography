@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+Zero SARIF finding results are not a successful/clean CTF job certificate.
+Inspect the normalized run report (`runs[].properties.report`) for job status,
+required coverage, tool failure/unavailability and heuristic calibration.
+HTML and evidence bundles retain the same report, including future additive
+fields. Recommendations and tool errors are metadata, not detection alerts.
+
 CTF inspection hints are derived only from native findings, never manifest
 method labels or payload oracles. Their heuristic score ordering is not a
 probability estimate. The frozen evaluator retains exact family matching;

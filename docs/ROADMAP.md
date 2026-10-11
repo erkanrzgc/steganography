@@ -1,5 +1,12 @@
 # Roadmap and status
 
+2026-10-11 report parity slice: HTML visibly exposes CTF recommendations,
+coverage and tool status, and carries escaped complete normalized evidence.
+SARIF preserves that document as run properties without converting inspection
+routes or unavailable tools into detection results. Bundle views round-trip
+additive fields and incomplete-job evidence. This is reporting completeness,
+not detector qualification or expanded method recovery.
+
 2026-10-11 CTF triage slice: evidence-ranked, allowlisted native inspection
 routes replace exclusively generic advice. Required native gaps and optional
 tool absence have different next steps. Broad families are intentionally not

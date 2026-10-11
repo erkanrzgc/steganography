@@ -72,6 +72,53 @@ def html_v2(report: dict[str, Any]) -> str:
         if artifact_rows
         else ""
     )
+    job_section = ""
+    if report.get("report_type") == "ctf":
+        recommendations = "".join(
+            "<li><strong>{}</strong> <code>{}</code><p>{}</p></li>".format(
+                html.escape(str(item.get("action", "Review evidence"))),
+                html.escape(str(item.get("method_family") or "general")),
+                html.escape(str(item.get("rationale", ""))),
+            )
+            for item in report.get("recommendations", [])
+        ) or "<li>No recommendations.</li>"
+        coverage = "".join(
+            "<li>{}: {} ({}) — {}</li>".format(
+                html.escape(str(item.get("component", "unknown"))),
+                html.escape(str(item.get("status", "unavailable"))),
+                "required" if item.get("required") else "optional",
+                html.escape(str(item.get("reason") or "")),
+            )
+            for item in report.get("coverage", [])
+        ) or "<li>No coverage recorded.</li>"
+        tools = "".join(
+            "<li>{} {}: {} (exit {}, {} ms)</li>".format(
+                html.escape(str(item.get("tool", "unknown"))),
+                html.escape(str(item.get("version") or "version unavailable")),
+                html.escape(str(item.get("status", "unavailable"))),
+                html.escape(str(item.get("exit_code"))),
+                html.escape(str(item.get("duration_ms", 0))),
+            )
+            for item in report.get("tool_executions", [])
+        ) or "<li>No external tool executions.</li>"
+        job_section = (
+            "<section><h2>CTF job</h2><p>Status: {}. Verdict: {}.</p><p>{}</p>"
+            "<p>Inspection routes are not calibrated method diagnoses.</p>"
+            "<h3>Recommendations</h3><ol>{}</ol><h3>Analyzer coverage</h3><ul>{}</ul>"
+            "<h3>Tool executions</h3><ul>{}</ul></section>"
+        ).format(
+            html.escape(str(report.get("status", "unknown"))),
+            html.escape(str(report.get("verdict", "inconclusive"))),
+            html.escape(str(report.get("verdict_reason", ""))),
+            recommendations, coverage, tools,
+        )
+    # Escaped text, never an executable script: preserve additive fields and
+    # incomplete-job evidence even when there are no finding/result rows.
+    normalized_section = (
+        '<details><summary>Complete normalized report</summary><pre id="normalized-report">'
+        + html.escape(json_v2(report))
+        + "</pre></details>"
+    )
     return (
         """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width"><title>steganography report</title>
@@ -81,8 +128,10 @@ margin:1rem 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #
 padding:.5rem;text-align:left;overflow-wrap:anywhere}code{color:#8bd5ff}.confirmed,.likely{color:#ff7b72}.suspicious{color:#e5c07b}
 .no_indicators{color:#7ee787}</style></head><body>
 <h1>steganography DFIR report</h1>"""
+        + job_section
         + "".join(rows)
         + artifact_section
+        + normalized_section
         + "</body></html>"
     )
 
@@ -133,6 +182,10 @@ def sarif_v2(report: dict[str, Any]) -> dict[str, Any]:
                 },
                 "results": results,
                 "properties": {
+                    # SARIF results remain detector findings, not recommendations
+                    # or tool errors. Preserve the complete normalized evidence
+                    # separately, including cancelled/failed jobs with no results.
+                    "report": report,
                     "analyses": [
                         {
                             "file": item.get("file", {}).get("name", "evidence"),

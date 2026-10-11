@@ -1,5 +1,14 @@
 # Architecture
 
+`report.v2` renders normalized service reports without independent analysis.
+HTML includes readable CTF job/route/coverage/tool summaries and the complete
+JSON document as escaped text in a collapsible `<pre>`, never a script. SARIF
+keeps detector findings in `results` and the full normalized document in
+`runs[].properties.report`. Empty/cancelled/failed jobs therefore retain their
+status, limits and coverage even with zero results. Bundle views share these
+renderers. Service-layer redaction remains the input contract; renderers must
+not be handed raw secrets or unnormalized host paths.
+
 CTF recommendations remain in the shared `core.ctf` service. An exact native
 rule allowlist supplies static inspection routes for whitespace, zero-width,
 GIF comments, appended data, PCM LSB and spatial LSB findings. Only successful,

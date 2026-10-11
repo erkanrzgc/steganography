@@ -1,5 +1,10 @@
 # Frozen CTF evaluation
 
+HTML shows CTF next steps, coverage and tool executions; its collapsible
+normalized report and SARIF `runs[].properties.report` preserve all JSON fields.
+Evidence bundles use the same views. A cancelled/failed job with zero SARIF
+results still carries its incomplete status: result count is not recovery proof.
+
 This runner measures exact **payload** recovery, not detector accuracy. It does
 not certify blind custody. The two checked-in encoding examples are development
 fixtures, not an independent 120-challenge package.
