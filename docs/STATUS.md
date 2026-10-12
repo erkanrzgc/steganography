@@ -43,9 +43,11 @@ with native JPEG/SciPy present, now passes 1,836 tests with 234 explicit skips
 in 103.56 seconds. Both repaired tests also pass with Torch present. This is
 a local dependency profile, not actual Python 3.11–3.14 matrix qualification;
 the all-optional-absent profile alone concealed the preceding CI failure.
-Remote `4e36149` subsequently passed the actual Python 3.11–3.14 matrix,
-quality, package and benchmark jobs. Its complete CPU research job was still
-running at this handoff check, not yet reported as passed.
+Remote `4e36149` subsequently passed all eight CI jobs: the actual Python
+3.11–3.14 matrix, quality, package, benchmark and complete CPU research gate
+([run 38239679695](https://github.com/erkanrzgc/steganography/actions/runs/38239679695)).
+Later documentation/evidence-only commits have their own CI runs; their success
+is not inferred from this code checkpoint.
 
 Causal JPEG controls (2026-10-12): `research jpeg-study --config FILE --out DIR`
 implements bounded original-disjoint preparation, complete independent SciPy
