@@ -1,5 +1,10 @@
 # Changelog
 
+- Mark two Torch-dependent JPEG kernel tests explicitly optional in lightweight
+  CI. Keep native JPEG/SciPy tests active, the fully provisioned research job
+  unchanged and the total coverage threshold intact. Missing Torch is a skip,
+  not a successful GPU learning result.
+
 - Add explicitly selected, versioned center-plus-four-corner JPEG study data.
   Preserve selected originals and unchanged individual views; independently
   audit all five crops, match cyclic pair views across arms and average frozen-BN

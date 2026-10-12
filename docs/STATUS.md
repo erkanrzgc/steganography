@@ -21,6 +21,14 @@ CI research/quality/package/benchmark jobs passed; all four lightweight Python
 jobs failed on two missing-Torch test guards. Keep this red historical outcome.
 Actual five-view preparation is in progress, not yet a completed corpus/audit.
 
+The two missing-Torch guards are now explicit in cancellation/kernel-resume
+tests. This does not skip native JPEG/SciPy checks or reduce the complete
+research coverage gate. The complete lightweight import-absence profile,
+with native JPEG/SciPy present, now passes 1,836 tests with 234 explicit skips
+in 103.56 seconds. Both repaired tests also pass with Torch present. This is
+a local dependency profile, not actual Python 3.11–3.14 matrix qualification;
+the all-optional-absent profile alone concealed the preceding CI failure.
+
 Causal JPEG controls (2026-10-12): `research jpeg-study --config FILE --out DIR`
 implements bounded original-disjoint preparation, complete independent SciPy
 IDCT audit, four source/initialization/order-matched optimizer/L2/batch arms,

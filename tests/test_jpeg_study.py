@@ -426,6 +426,7 @@ def test_missing_gpu_fails_before_opening_data(monkeypatch, tmp_path):
 
 
 def test_cancellation_and_fail_closed_math(prepared, tmp_path):
+    pytest.importorskip("torch")
     root, _, sha = prepared
     out = tmp_path / "cancel"
     out.mkdir()
@@ -1028,6 +1029,7 @@ def test_training_logit_and_singleton_parity_fail_closed(prepared, tmp_path, mon
 
 
 def test_resume_orchestration_next_row_and_separate_snapshot(prepared, tmp_path, monkeypatch):
+    pytest.importorskip("torch")
     root, _, sha = prepared
     out = tmp_path / "resume"
     out.mkdir()
