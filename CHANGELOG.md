@@ -10,6 +10,9 @@
   audit all five crops, match cyclic pair views across arms and average frozen-BN
   singleton probabilities. Old center contracts and deployed analysis remain
   unchanged. Preparation is not accuracy evidence; GPU learning remains pending.
+  Publish source-bound completed 640-original /6,400-view preparation evidence
+  with complete independent IDCT audit; preserve unchanged crops and the prior
+  blocking pair's exact JPEG hashes. No learning/accuracy result is claimed.
 
 - Add opt-in `research jpeg-study` preparation and source-bound matched JPEG
   controls: author-rule Adamax, convolution-only L2, genuine batches, paired

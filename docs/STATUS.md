@@ -6,9 +6,24 @@ The same original identities and simulation remain fixed; unchanged individual
 views are retained. Matched training cycles all views per pair and stored-BN
 evaluation equally averages five singleton probabilities. A complete SciPy
 audit checks every view. This implements the grayscale representation stage,
-not a pretrained/color comparison or a measured accuracy increase. Real
-preparation and verification results will be recorded below when completed;
-the own-GPU SSH tunnel is still unavailable. See `JPEG_FIVE_VIEW_STUDY.md`.
+not a pretrained/color comparison or a measured accuracy increase. The own-GPU
+SSH tunnel is still unavailable. See `JPEG_FIVE_VIEW_STUDY.md`.
+
+Actual preparation completed: the unchanged 640-original identity selection
+produced 1,280 JPEGs, 1,024 fit /256 development image rows and 6,400 views.
+All views passed independent SciPy reconstruction (maximum absolute difference
+5.684341886080802e-14, unchanged 1e-4 tolerance), native coefficient/quantization
+checks and lineage-role separation. The historical blocking original remains
+with exactly the same cover/stego JPEG hashes. Identical coefficient-view pairs
+are retained: fit [1,4,11,1,4], development [0,0,1,0,1] in the fixed view order.
+Total cache/JPEG bytes 1,724,097,458, preparation+audit 1,291.42 seconds.
+No optimizer update occurred, no model was trained/deployed, camera independence
+is unverified and WIFD remains unscored. The explicit local controls preflight
+returned `unavailable: cuda_not_visible_or_cpu_torch`, with no CPU fallback.
+See [portable preparation evidence](../benchmarks/jpeg-five-view-preparation-20261012.json),
+bound to 49 source files at `fd2b0a4` and verified against its exact Git blobs.
+Only this turn's regenerable test scratch (5.84 GiB) was removed; datasets,
+failed preparations, coverage JSON and the model-free wheel are retained.
 
 Five-view implementation verification: 165 focused tests passed; full provisioned
 CPU suite 2,490 passed /one actual-CUDA unavailable skip, 32 existing ONNX
@@ -19,7 +34,7 @@ wheel pass. The all-optional-absent profile passed 119 with 46 skips, but it
 does not represent partially provisioned environments. The preceding `b329fc9`
 CI research/quality/package/benchmark jobs passed; all four lightweight Python
 jobs failed on two missing-Torch test guards. Keep this red historical outcome.
-Actual five-view preparation is in progress, not yet a completed corpus/audit.
+These are regression checks, not real-GPU execution or learning qualification.
 
 The two missing-Torch guards are now explicit in cancellation/kernel-resume
 tests. This does not skip native JPEG/SciPy checks or reduce the complete
@@ -28,6 +43,9 @@ with native JPEG/SciPy present, now passes 1,836 tests with 234 explicit skips
 in 103.56 seconds. Both repaired tests also pass with Torch present. This is
 a local dependency profile, not actual Python 3.11–3.14 matrix qualification;
 the all-optional-absent profile alone concealed the preceding CI failure.
+Remote `4e36149` subsequently passed the actual Python 3.11–3.14 matrix,
+quality, package and benchmark jobs. Its complete CPU research job was still
+running at this handoff check, not yet reported as passed.
 
 Causal JPEG controls (2026-10-12): `research jpeg-study --config FILE --out DIR`
 implements bounded original-disjoint preparation, complete independent SciPy
@@ -52,9 +70,9 @@ cover and stego inputs there are identical. The four fixed corners change
 576/0/7488/5504 pixels. The incomplete corpus was retained, not fitted or filtered.
 See [the portable single-original audit](../benchmarks/jpeg-study-center-signal-20261012.json).
 This one case proves representation loss, not the cause of chance AUC on the
-whole previous corpus. Moving the planned label-independent five-view
-representation into the first controls needs an explicit protocol decision;
-the new study has no completed training corpus or GPU trial yet. Like the other
+whole previous corpus. The label-independent five-view revision above was
+explicitly approved; the center-only run stays incomplete and no new GPU trial
+has occurred. Like the other
 source-bound research runners, this command requires a source checkout with
 protocol docs and explicit optional research dependencies, not only the wheel.
 

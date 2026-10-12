@@ -27,6 +27,12 @@ Preparation/audit can proceed on CPU; actual learning still needs the own-GPU
 tunnel. No new accuracy result or later-stage completion is implied. See
 `JPEG_FIVE_VIEW_STUDY.md`.
 
+The actual fixed-selection five-view preparation and complete independent
+audit passed: 640 originals /1,280 JPEGs /6,400 views, no optimizer updates.
+The historical blocking pair retains its exact JPEG hashes. GPU fitting still
+needs the own-GPU tunnel; no accuracy increase or blind/source qualification
+is claimed. Portable evidence: `benchmarks/jpeg-five-view-preparation-20261012.json`.
+
 2026-10-11 report parity slice: HTML visibly exposes CTF recommendations,
 coverage and tool status, and carries escaped complete normalized evidence.
 SARIF preserves that document as run properties without converting inspection

@@ -27,6 +27,13 @@ probabilities, never max/best-view selection. The complete independent audit
 checks every cached view. This changes representation, not population size,
 source independence or production support gates; old evidence remains intact.
 
+`benchmarks/jpeg-five-view-preparation-20261012.json` records the actual completed
+640-original preparation and all-view audit, source-bound to `fd2b0a4`. Real
+grayscale covers have simulated JUNIWARD positives, not extracted messages.
+Keep the 1,280-image denominator distinct from 6,400 overlapping views; retained
+unchanged regions are not failed samples to omit. These counts prove cache and
+ground-truth construction integrity, not held-out accuracy or camera independence.
+
 Zero SARIF finding results are not a successful/clean CTF job certificate.
 Inspect the normalized run report (`runs[].properties.report`) for job status,
 required coverage, tool failure/unavailability and heuristic calibration.
