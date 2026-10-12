@@ -116,6 +116,16 @@ all possible steganography; “cover” is the controlled experiment's source ro
 
 ## What we publish
 
+2026-10-12 non-JPEG controlled preparation reused only acquired originals:
+32 train /8 native validation each from DIV2K, BOWS, FSDD and ESC. The 160
+lineages produce 3,360 PNG/BMP carriers and 720 WAVs, including 3,840 marker-free
+positives, independently scalar-audited in full. No native test file was opened,
+no new download/model/score; all source restrictions remain. BOWS stays gray,
+DIV2K is one RGB origin and both audio sources remain mono. See
+`NONJPEG_PREPARATION_PROTOCOL.md`, `NONJPEG_METHOD_READINESS.md` and
+`../benchmarks/nonjpeg-preparation-20261012.json`; these are small development
+inputs, not qualified independent-source accuracy or autonomous recovery.
+
 The [media-diversity acquisition](../benchmarks/media-diversity-acquisition-20261010.json)
 records 2,900 new originals, not 2,900 positive stego examples or trained inputs.
 The [method/data plan](METHOD_DATA_PLAN.md) separates remaining learning and

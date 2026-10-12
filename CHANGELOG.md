@@ -5,6 +5,9 @@
   isolated workers and validated separate research manifests. Preserve failed
   detector results and untouched test media; track native GIF/text/container/
   stereo/tool data gaps. No training, deployed model or accuracy claim.
+  Complete actual 160-original /4,080-artifact preparation and all 3,840 scalar
+  recovery oracles; publish portable source-bound counts and full contextual
+  cell membership. Raw corpora stay private; no detection score is implied.
 
 - Mark two Torch-dependent JPEG kernel tests explicitly optional in lightweight
   CI. Keep native JPEG/SciPy tests active, the fully provisioned research job

@@ -8,6 +8,13 @@ Preparation success is not detection, calibration or autonomous recovery.
 GIF/text/container/stereo/compressed-audio gaps remain explicit in
 `NONJPEG_METHOD_READINESS.md`. Existing support and blind gates stay unchanged.
 
+`benchmarks/nonjpeg-preparation-20261012.json` records the actual complete
+four-origin, 160-original preparation at `4271395`: 240 saved cover carriers,
+3,840 controlled positives, all scalar oracles and all 192 contextual cells.
+Each source/role cell has only 32 or 8 unique positive originals; neither total
+derivative count nor oracle recovery qualifies statistical detection or blind
+CTF recovery. Raw corpora remain private; no acquisition/learning occurred.
+
 The opt-in causal JPEG study has a separate versioned development protocol in
 `JPEG_LEARNING_STUDY.md`. Fit and development originals come only from historical
 train; content hashes and decoded identities cannot cross roles. Fixed Q75

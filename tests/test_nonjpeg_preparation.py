@@ -754,3 +754,88 @@ def test_changed_bindings_cannot_report_completion(inputs, tmp_path, monkeypatch
     monkeypatch.setattr(frontend, "worker", worker)
     result = frontend.run(path, out)
     assert result["status"] == "incomplete"
+
+
+@pytest.mark.parametrize(
+    ("fault", "message"),
+    [
+        ("config-count", "audit config bounds"),
+        ("empty-source", "audit original metadata"),
+        ("source-row-bound", "audit original count bound"),
+        ("source-role", "audit source role contract"),
+        ("repeated-original", "audit repeated original"),
+        ("decoded-leakage", "audit grouping leakage"),
+        ("insufficient-selection", "audit fixed selection count"),
+        ("original-integrity", "audit original integrity"),
+    ],
+)
+def test_additional_independent_source_guards(corpus, fault, message):
+    path, cfg, out, manifest, bindings = corpus
+    source_path = Path(cfg["sources"][0]["manifest"])
+    doc = json.loads(source_path.read_bytes())
+    if fault == "config-count":
+        cfg["counts"]["train"] = True
+    elif fault == "insufficient-selection":
+        cfg["counts"]["train"] = 3
+    elif fault == "original-integrity":
+        selected = manifest["originals"][0]
+        binding = next(
+            b for b in cfg["sources"] if b["sha256"] == selected["source_manifest_sha256"]
+        )
+        original_source = Path(binding["manifest"])
+        original_doc = json.loads(original_source.read_bytes())
+        row = next(r for r in original_doc["samples"] if r["sha256"] == selected["sha256"])
+        (original_source.parent / row["path"]).write_bytes(b"corrupted original")
+    else:
+        if fault == "empty-source":
+            doc["samples"] = []
+        elif fault == "source-row-bound":
+            doc["samples"] = [doc["samples"][0]] * 15001
+        elif fault == "source-role":
+            doc["samples"][0]["split"] = "unknown"
+        elif fault == "repeated-original":
+            doc["samples"][1] = copy.deepcopy(doc["samples"][0])
+        elif fault == "decoded-leakage":
+            for index in (0, 2):  # Same decoded identity in train and validation.
+                doc["samples"][index]["decoded_sha256"] = "a" * 64
+        digest = save_json(source_path, doc)
+        cfg["sources"][0]["sha256"] = digest
+        manifest["source_bindings"][0]["sha256"] = digest
+    manifest["config_sha256"] = save_json(path, cfg)
+    save_json(out / "manifest.json", manifest)
+    with pytest.raises(ValueError, match=message):
+        oracle.audit(path, out, bindings)
+
+
+def test_additional_independent_decode_guards():
+    buffer = io.BytesIO()
+    Image.new("L", (257, 256)).save(buffer, format="PNG")
+    with pytest.raises(ValueError, match="audit saved image size"):
+        oracle.decode(buffer.getvalue(), "BOWS2", "PNG")
+    buffer = io.BytesIO()
+    with wave.open(buffer, "wb") as audio:
+        audio.setparams((1, 2, 8000, 0, "NONE", "not compressed"))
+        audio.writeframes(bytes(640))
+    with pytest.raises(ValueError, match="audit PCM truncation"):
+        oracle.decode(buffer.getvalue()[:-2], "FSDD-v1.0.10")
+    with pytest.raises(ValueError, match="truncated PCM"):
+        raw = buffer.getvalue()[:-2]
+        raw = raw[:4] + (len(raw) - 8).to_bytes(4, "little") + raw[8:]
+        service.carrier(raw, "FSDD-v1.0.10")
+
+
+def test_independent_audit_main_rejects_symlink_output(tmp_path, monkeypatch):
+    bindings_path = tmp_path / "bindings.json"
+    save_json(bindings_path, {})
+    sentinel = tmp_path / "sentinel.json"
+    sentinel.write_text("untouched")
+    (tmp_path / "independent-audit.json").symlink_to(sentinel)
+    monkeypatch.setattr(oracle.resource, "setrlimit", lambda *a: None)
+    monkeypatch.setattr(oracle, "audit", lambda *a: {"status": "test-only"})
+    monkeypatch.setattr(
+        "sys.argv",
+        ["audit", "--config", "unused", "--root", str(tmp_path), "--bindings", str(bindings_path)],
+    )
+    with pytest.raises(ValueError, match="audit symlink output"):
+        oracle.main()
+    assert sentinel.read_text() == "untouched"

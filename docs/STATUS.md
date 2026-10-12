@@ -1,13 +1,45 @@
 # Implementation status — 2026-10-12
 
-GPU-deferred non-JPEG preparation: shared bounded spatial/audio generator and
-generator-independent scalar audit implemented, with native historical roles,
-fixed channel/plane/rate cells and compatible separate research manifests.
-Initial focused checks passed 109 tests; additional binding/cancellation tests
-and actual preparation/full regression remain pending at implementation freeze.
-No GPU, fitting, scoring, download or detector improvement. GIF/text/container/
-stereo/tool families keep their explicit native data/oracle gaps. See
-`NONJPEG_PREPARATION_PROTOCOL.md` and `NONJPEG_METHOD_READINESS.md`.
+GPU-deferred non-JPEG preparation completed on actual media: 160 existing
+originals (80 images /80 recordings), four declared origins, each 32 train /8
+validation, produced 4,080 artifacts (240 covers /3,840 marker-free positives).
+Independent scalar audit checked every saved payload and every unchanged bit,
+fixed source/role/cell membership, original ancestry and complete WAV metadata.
+All 192 source-role-format-method-rate-channel-plane cells retained their 32/8
+positive counts. Test media remained unopened; BOWS stayed native gray, DIV2K
+is one RGB origin, audio stayed native mono PCM16. Total artifact bytes
+613,635,514; preparation/audit 278.87 seconds, audit alone 236.94 seconds,
+observed concurrently with regression, not inference latency qualification.
+Compatible spatial/audio research manifests independently pass the existing
+validator. Portable evidence: `benchmarks/nonjpeg-preparation-20261012.json`,
+six code/protocol bindings at `4271395`. Initial focused checks passed 109 tests;
+eight final binding/cancellation/adapter/subprocess checks also passed.
+The first complete invocation failed when the separate 7.8 GiB `/tmp` tmpfs
+filled: errors accumulated and even its log stopped at 16,384 bytes; it is not
+a regression pass. An isolated 39-test SRNet training rerun passed. Only this
+invocation's regenerable scratch (5,741,727,223 apparent bytes) was removed,
+restoring 5.5 GiB tmpfs availability; failed log/wheel, raw corpora and audited
+derivatives are retained. The unchanged complete suite reran with an exclusive
+disk-backed fixture directory, not a larger parser/tool limit.
+No GPU, fitting, scoring, download, paid compute or detector improvement.
+GIF/text/container/stereo/tool families retain explicit native data/oracle gaps.
+See `NONJPEG_PREPARATION_PROTOCOL.md` and `NONJPEG_METHOD_READINESS.md`.
+
+Non-JPEG verification: complete provisioned CPU suite 2,604 passed /one actual
+CUDA-unavailable skip, 32 existing ONNX deprecation warnings, 963.18 seconds;
+total coverage 96.34%. Its first independent-auditor coverage was only 91.85%,
+so ten additional source/identity/decoded-leakage/selection/integrity/PCM/symlink
+guard tests were added and passed separately in 25.11 seconds. Appended coverage
+over the complete run plus these ten tests is 96.41% total; each new executable
+module exceeds 95% (preparation 98.25%, independent audit 97.00%, orchestration
+98.92%; aggregate 97.83%). Production code/protocol hashes are unchanged since
+the audited preparation. Ruff, 180-file type checking, whitespace, identity
+checks and a 511,177-byte model/data-free wheel pass. Actual Python-version
+matrix/GPU/full-Docker execution is not inferred from local CPU checks.
+Only the two completed invocations' owned regenerable fixtures were removed
+(6,047,857,095 apparent bytes); both logs, original/full and appended coverage
+JSON, the first failed invocation log, raw corpora and audited carriers remain.
+`CONTRIBUTING.md` now documents safe disk-backed regression scratch.
 
 Approved five-view revision (2026-10-12): preparation can explicitly select
 `center-four-corners256` using a separate manifest/representation contract.

@@ -32,6 +32,23 @@ The lightweight Python 3.11–3.14 CI matrix uses `pytest --no-cov`, retaining
 explicit optional-dependency skips. The separate complete research job owns
 the unchanged total coverage gate; do not lower it to accommodate missing extras.
 
+The complete provisioned suite can accumulate several GiB of temporary fixtures.
+Check the temporary filesystem as well as the repository disk: `/tmp` may be
+a small RAM-backed tmpfs even when the repository has free disk space. If so,
+use a fresh, exclusive disk-backed scratch directory without changing any
+coverage or parser limits:
+
+```bash
+mkdir -p .benchmark
+steg_test_scratch=$(mktemp -d .benchmark/pytest-run.XXXXXXXX)
+pytest --basetemp "$steg_test_scratch/fixtures" --cov-report=json:"$steg_test_scratch/coverage.json"
+```
+
+`--basetemp` clears its target; never point it at an existing corpus or caller
+directory. Remove only the owned fixture directory after pytest and its children
+exit, keeping logs/coverage and any failed research preparation for handoff.
+An out-of-space invocation is a failed verification, not an optional-data skip.
+
 Before proposing a change, run:
 
 ```bash

@@ -7,6 +7,17 @@ preparation and full verification are pending at implementation freeze; no
 fitting/scoring/accuracy claim. Remaining method-specific native sources and
 oracles are tracked in `NONJPEG_METHOD_READINESS.md`.
 
+The subsequent actual non-JPEG preparation/audit completed all 160 originals,
+4,080 artifacts /3,840 scalar payload recoveries and 192 contextual cells.
+Both research-manifest adapters validate; six source/protocol hashes bind
+`4271395`. See `benchmarks/nonjpeg-preparation-20261012.json`. Native test roles
+remain unopened and qualification/learning remain unavailable; this is not
+evidence that GIF/text/stereo/tool-specific corpora are prepared.
+Complete local regression passed 2,604 tests with one actual-CUDA skip; ten
+subsequent guard tests passed separately, taking appended coverage to 96.41%
+overall and >=95% in each new module. See `STATUS.md` for the preserved first
+out-of-space failure and exact verification scope; remote checks are separate.
+
 2026-10-12 causal JPEG control slice: explicit preparation plus four matched
 optimizer/regularization/batch controls across two seeds. Fixed historical-train
 original identities, source-balanced paired D4, separate development caches,
