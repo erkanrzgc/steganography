@@ -19,6 +19,14 @@ into the first controls; do not substitute an easier original or claim a
 completed training corpus. The single-original proof is in
 `benchmarks/jpeg-study-center-signal-20261012.json`.
 
+The user approved that revision on 2026-10-12. The new explicit five-view
+contract preserves the exact original selection, simulation and roles;
+all individual unchanged views are retained. Training uses matched cyclic
+pair views and evaluation equally averages five singleton probabilities.
+Preparation/audit can proceed on CPU; actual learning still needs the own-GPU
+tunnel. No new accuracy result or later-stage completion is implied. See
+`JPEG_FIVE_VIEW_STUDY.md`.
+
 2026-10-11 report parity slice: HTML visibly exposes CTF recommendations,
 coverage and tool status, and carries escaped complete normalized evidence.
 SARIF preserves that document as run properties without converting inspection

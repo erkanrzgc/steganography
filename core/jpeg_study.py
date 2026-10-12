@@ -10,7 +10,14 @@ from contextlib import nullcontext
 import numpy as np
 
 from core import jpeg_study_data as data
-from core import jpeg_study_optimizer, jpeg_study_state, srnet_cuda, srnet_samepool
+from core import (
+    jpeg_study_optimizer,
+    jpeg_study_state,
+    jpeg_study_views,
+    srnet_cuda,
+    srnet_samepool,
+)
+from core.srnet_stream import document
 from steganography.benchmarking.metrics import classification_metrics
 
 ARMS = ("legacy", "reference-adamax", "convolution-l2", "genuine-batch")
@@ -18,18 +25,23 @@ SEEDS = (20261012, 20261013)
 PRESENTED_ROWS = 32768
 
 
-def recipe(arm, seed, rows):
+def recipe(arm, seed, rows, *, representation=jpeg_study_views.CENTER):
     if (arm not in ARMS or type(seed) is not int or seed not in SEEDS
         or type(rows) is not int or rows not in (4, 8, 16, 32)
         or (arm != "genuine-batch" and rows != 4)
-        or (arm == "genuine-batch" and rows == 4)):
+        or (arm == "genuine-batch" and rows == 4)
+        or representation not in (jpeg_study_views.CENTER, jpeg_study_views.FIVE)):
         raise ValueError("study arm/seed/genuine-batch settings invalid")
-    return {"arm": arm, "seed": seed, "rows": rows,
+    result = {"arm": arm, "seed": seed, "rows": rows,
             "presented_rows": PRESENTED_ROWS, "learning_rate": 0.001,
             "optimizer_rule": "pytorch-adamax" if arm == "legacy" else jpeg_study_optimizer.RULE,
             "convolution_only_l2": arm in ARMS[2:], "gradient_accumulation": False,
             "architecture": srnet_samepool.ARCHITECTURE,
             "initialization": "unchanged legacy Kaiming; not full upstream parity"}
+    if representation == jpeg_study_views.FIVE:
+        result["representation"] = jpeg_study_views.contract()
+        result["row_unit"] = "one view of one image; two matched rows per original pair"
+    return result
 
 
 def schedule(samples, seed, rows, presented_rows=PRESENTED_ROWS):
@@ -70,6 +82,33 @@ def schedule(samples, seed, rows, presented_rows=PRESENTED_ROWS):
     indices.setflags(write=False)
     angles.setflags(write=False)
     return indices, angles
+
+
+def view_schedule(samples, seed, indices):
+    """Same view for paired rows; cycle all five regardless of content or label."""
+    if (type(seed) is not int or seed not in SEEDS or not isinstance(indices, np.ndarray)
+        or indices.ndim != 2 or indices.shape[1] not in (4, 8, 16, 32)
+        or indices.dtype.kind not in "iu" or not 1 <= indices.size <= PRESENTED_ROWS
+        or np.any(indices < 0) or np.any(indices >= len(samples))):
+        raise ValueError("study view schedule bounds invalid")
+    exposures: dict[str, int] = {}
+    result = np.empty(indices.size, dtype=np.int64)
+    flat = indices.ravel()
+    for position in range(0, len(flat), 2):
+        i = int(flat[position])
+        if i % 2 or flat[position + 1] != i + 1:
+            raise ValueError("study view schedule requires adjacent original pairs")
+        lineage = samples[i]["lineage"]
+        if samples[i + 1]["lineage"] != lineage:
+            raise ValueError("study view schedule pair ancestry mismatch")
+        offset = int.from_bytes(hashlib.sha256(
+            f"jpeg-five-view:{seed}:{lineage}".encode()).digest()[:8], "little") % 5
+        exposure = exposures.get(lineage, 0)
+        result[position:position + 2] = (offset + exposure) % 5
+        exposures[lineage] = exposure + 1
+    result = result.reshape(indices.shape)
+    result.setflags(write=False)
+    return result
 
 
 def augment(values, angles):
@@ -162,13 +201,18 @@ def evaluate(model, reader, device):
     with torch.no_grad():
         for start in range(0, len(reader.samples), 4):
             indices = np.arange(start, min(start + 4, len(reader.samples)), dtype=np.int64)
-            values = torch.from_numpy(reader.batch(indices)).to(device)
-            batch = model(values)
-            singleton = torch.cat([model(value[None]) for value in values])
-            if (batch.shape != (len(indices), 2) or not bool(torch.isfinite(batch).all())
-                or not torch.allclose(batch, singleton, atol=1e-4, rtol=1e-4)):
-                raise ValueError("study singleton/batch inference parity failed")
-            scores.extend(torch.softmax(singleton, dim=1)[:, 1].cpu().tolist())
+            predictions = []
+            for view in range(reader.view_count):
+                pixels = (reader.batch(indices, np.full(len(indices), view, dtype=np.int64))
+                          if reader.view_count == 5 else reader.batch(indices))
+                values = torch.from_numpy(pixels).to(device)
+                batch = model(values)
+                singleton = torch.cat([model(value[None]) for value in values])
+                if (batch.shape != (len(indices), 2) or not bool(torch.isfinite(batch).all())
+                    or not torch.allclose(batch, singleton, atol=1e-4, rtol=1e-4)):
+                    raise ValueError("study singleton/batch inference parity failed")
+                predictions.append(torch.softmax(singleton, dim=1)[:, 1].cpu().numpy())
+            scores.extend(np.mean(np.asarray(predictions, dtype=np.float64), axis=0).tolist())
     reader.verify()
     return scores
 
@@ -183,7 +227,11 @@ def kernel(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None,
            device="cuda:0", factory=srnet_samepool.network, row_budget=PRESENTED_ROWS):
     import torch
 
-    selected = recipe(arm, seed, rows)
+    manifest = document(root / "manifest.json", manifest_sha256)
+    data.validate_manifest(manifest)
+    representation = (jpeg_study_views.FIVE if manifest["schema_version"] == jpeg_study_views.SCHEMA
+                      else jpeg_study_views.CENTER)
+    selected = recipe(arm, seed, rows, representation=representation)
     if (type(row_budget) is not int or not 1 <= row_budget <= PRESENTED_ROWS
         or row_budget % rows):
         raise ValueError("study row budget invalid")
@@ -227,14 +275,18 @@ def kernel(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None,
             records, checkpoints = [], []
             with data.Reader(root, manifest_sha256, "fit", deadline=deadline) as reader:
                 batches, angles = schedule(reader.samples, seed, rows, row_budget)
+                views = view_schedule(reader.samples, seed, batches) if reader.view_count == 5 \
+                    else None
                 schedule_hash = hashlib.sha256(
-                    batches.tobytes() + angles.tobytes()
+                    batches.tobytes() + angles.tobytes() + (views.tobytes() if views is not None
+                                                          else b"")
                 ).hexdigest()
                 labels = torch.tensor([0, 1] * (rows // 2), device=device)
                 for i in range(next_row // rows, len(batches)):
                     deadline()
                     optimizer.zero_grad(set_to_none=True)
-                    pixels = augment(reader.batch(batches[i]), angles[i])
+                    pixels = augment(reader.batch(batches[i], views[i]) if views is not None
+                                     else reader.batch(batches[i]), angles[i])
                     logits = model(torch.from_numpy(pixels).to(device))
                     if logits.shape != (rows, 2) or not bool(torch.isfinite(logits).all()):
                         raise ValueError("study training logits invalid")

@@ -19,6 +19,14 @@ inputs with differing whole-image coefficients. Retain the failed preparation;
 any move to a fixed multi-view representation requires a new frozen contract
 and matched controls, not outcome-based crop selection or replacement samples.
 
+The approved revision is frozen in `JPEG_FIVE_VIEW_STUDY.md`: center plus four
+corners for every original, including identical individual views. One training
+row remains one crop/image; pair view order is label-independent, cyclic and
+identical across arms. Image metrics use the equal mean of all five singleton
+probabilities, never max/best-view selection. The complete independent audit
+checks every cached view. This changes representation, not population size,
+source independence or production support gates; old evidence remains intact.
+
 Zero SARIF finding results are not a successful/clean CTF job certificate.
 Inspect the normalized run report (`runs[].properties.report`) for job status,
 required coverage, tool failure/unavailability and heuristic calibration.

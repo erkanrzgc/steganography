@@ -16,6 +16,7 @@ from core import jpeg_study_data as d
 from core import jpeg_study_entropy as entropy
 from core import jpeg_study_optimizer as opt
 from core import jpeg_study_state as state
+from core import jpeg_study_views as views
 from core import srnet_model
 from steganography import research_jpeg_study as frontend
 
@@ -712,7 +713,7 @@ def test_preparation_failure_retained_without_path_secrets(tmp_path, monkeypatch
     assert result["optimizer_updates"] == 0 and "secret" not in json.dumps(result)
 
 
-def control_mocks(monkeypatch, tmp_path, *, fault=None):
+def control_mocks(monkeypatch, tmp_path, *, fault=None, representation=views.CENTER):
     import time
 
     before = {"source": "a" * 64}
@@ -722,6 +723,14 @@ def control_mocks(monkeypatch, tmp_path, *, fault=None):
     proof = {"schema_version": "jpeg-study-independent-audit-v1", "status": "completed",
              "manifest_sha256": "a" * 64, "source_sha256": before,
              "idct_rows": {"fit": 1024, "development": 256}}
+    if representation == views.FIVE:
+        manifest.update(schema_version=views.SCHEMA, representation=views.contract())
+        proof.update(schema_version="jpeg-study-independent-audit-v2",
+                     representation=views.contract(), idct_views={"fit": 5120, "development": 1280})
+        if fault == "missing_view_audit":
+            proof["idct_views"]["development"] = 256
+        elif fault == "wrong_aggregation":
+            proof["representation"]["inference"] = "max-positive-crop"
     monkeypatch.setattr(frontend, "document", lambda path, sha:
                         manifest if path.name == "manifest.json" else proof)
     monkeypatch.setattr(frontend.jpeg_study_data, "validate_manifest", lambda m: None)
@@ -738,9 +747,11 @@ def control_mocks(monkeypatch, tmp_path, *, fault=None):
             return json.dumps(result).encode()
         arm = command[command.index("--arm") + 1]
         seed = int(command[command.index("--seed") + 1])
-        result = {"status": "completed", "recipe": c.recipe(arm, seed, rows),
+        result = {"status": "completed", "recipe": c.recipe(
+            arm, seed, rows, representation=representation),
                   "presented_rows": c.PRESENTED_ROWS, "real_gpu_fit": True,
                   "source_sha256": before, "initial_learned_sha256": "a" * 64,
+                  "schedule_sha256": "c" * 64,
                   "scores": [.5] * 256 if arm == "legacy" else [.1, .9] * 128}
         if fault == "timeout":
             raise TimeoutError
@@ -754,6 +765,10 @@ def control_mocks(monkeypatch, tmp_path, *, fault=None):
             result["source_sha256"] = {}
         if fault == "different_initialization" and arm != "legacy":
             result["initial_learned_sha256"] = "b" * 64
+        if fault == "different_schedule" and arm != "legacy":
+            result["schedule_sha256"] = "d" * 64
+        if fault == "center_recipe":
+            result["recipe"] = c.recipe(arm, seed, rows)
         if fault == "cpu":
             result["real_gpu_fit"] = False
         if fault == "invalid_status":
@@ -783,7 +798,8 @@ def test_control_matrix_gates_require_all_sources_seeds_and_baseline(monkeypatch
 
 
 @pytest.mark.parametrize("fault", ["missing_source", "partial", "different_source", "cpu",
-                                   "invalid_status", "different_initialization", "bad_probe"])
+                                   "invalid_status", "different_initialization", "bad_probe",
+                                   "different_schedule"])
 def test_control_matrix_fails_closed_on_unbound_results(monkeypatch, tmp_path, fault):
     run = control_mocks(monkeypatch, tmp_path, fault=fault)
     with pytest.raises(ValueError):
@@ -1182,3 +1198,392 @@ def test_invalid_worker_does_not_import_optional_torch(monkeypatch):
     with pytest.raises(ValueError, match="bounds"):
         frontend.worker(SimpleNamespace(worker="audit"))
     assert calls == []
+
+
+def corner_generator(raw, lineage):
+    jpeglib = pytest.importorskip("jpeglib")
+    import tempfile
+
+    assert hashlib.sha256(raw).hexdigest() == lineage
+    with tempfile.TemporaryDirectory() as folder:
+        cover, stego = Path(folder) / "cover.jpg", Path(folder) / "stego.jpg"
+        with Image.open(io.BytesIO(raw)) as image:
+            image.save(cover, quality=75, optimize=False)
+        jpeglib.version.set("6b")
+        jpeg = jpeglib.read_dct(str(cover))
+        jpeg.load()
+        coefficients = jpeg.Y.copy()
+        coefficients[2, 2, 1, 1] += 1
+        jpeg.Y = coefficients
+        jpeg.write_dct(str(stego))
+        return [cover.read_bytes(), stego.read_bytes()]
+
+
+@pytest.fixture
+def five_prepared(tmp_path, original_inputs):
+    inputs, reserved = original_inputs
+    out = tmp_path / "five"
+    manifest = d.prepare(inputs, reserved, out, generator=corner_generator,
+                         deadline=lambda: None, fit=2, development=2, representation=views.FIVE)
+    sha = hashlib.sha256((out / "manifest.json").read_bytes()).hexdigest()
+    return out, manifest, sha
+
+
+def test_five_view_keeps_signal_free_centers_and_all_originals(five_prepared, original_inputs):
+    pytest.importorskip("scipy")
+    root, manifest, sha = five_prepared
+    assert manifest["schema_version"] == views.SCHEMA
+    assert manifest["representation"] == views.contract()
+    assert manifest["tensors"]["fit"]["bytes"] == 8 * views.ROW_BYTES
+    inputs, reserved = original_inputs
+    forbidden = d.reservations(reserved)
+    for entry in inputs:
+        selected = d.originals(Path(entry["root"]), entry["sha256"],
+                               entry["source_group"], forbidden)
+        for role, expected in (("fit", selected[:2]), ("development", selected[2:4])):
+            actual = [row["lineage"] for row in manifest["samples"][role][::2]
+                      if row["source_group"] == entry["source_group"]]
+            assert actual == [row["sha256"] for row in expected]
+    with d.Reader(root, sha, "fit", deadline=lambda: None) as reader:
+        indices = np.array([0, 1], dtype=np.int64)
+        centers = reader.batch(indices, np.array([0, 0]))
+        top_left = reader.batch(indices, np.array([1, 1]))
+        assert np.array_equal(centers[0], centers[1])
+        assert not np.array_equal(top_left[0], top_left[1])
+        for invalid in (None, np.array([0]), np.array([0., 1.]), np.array([-1, 1]),
+                        np.array([5, 0]), np.array([[0, 1]])):
+            with pytest.raises(ValueError, match="five-view"):
+                reader.batch(indices, invalid)
+    proof = audit.audit(root, sha, deadline=lambda: None)
+    assert proof["schema_version"] == "jpeg-study-independent-audit-v2"
+    assert proof["idct_rows"] == {"fit": 8, "development": 8}
+    assert proof["idct_views"] == {"fit": 40, "development": 40}
+    assert proof["identical_coefficient_view_pairs"] == {
+        "fit": [4, 0, 4, 4, 4], "development": [4, 0, 4, 4, 4]}
+    assert proof["maximum_absolute_pixel_difference"] <= 1e-4
+    assert proof["optimizer_updates"] == 0 and not proof["deployed"]
+
+
+def test_five_view_contract_and_cache_mutations(five_prepared, prepared):
+    root, manifest, sha = five_prepared
+    for mutate in (
+        lambda m: m.update(schema_version=d.SCHEMA),
+        lambda m: m["representation"].update(inference="max-positive-crop"),
+        lambda m: m["representation"]["regions"].reverse(),
+        lambda m: m.pop("representation"),
+    ):
+        altered = copy.deepcopy(manifest)
+        mutate(altered)
+        with pytest.raises(ValueError, match="contract"):
+            d.validate_manifest(altered)
+    old_root, old_manifest, old_sha = prepared
+    with (d.Reader(old_root, old_sha, "fit", deadline=lambda: None) as reader,
+          pytest.raises(ValueError, match="center")):
+        reader.batch(np.array([0]), np.array([0]))
+    old_manifest["representation"] = views.contract()
+    with pytest.raises(ValueError, match="contract"):
+        d.validate_manifest(old_manifest)
+    path = root / "fit.f32"
+    with path.open("r+b") as stream:
+        # Corrupt the LAST corner, not just the historically tested center.
+        stream.seek(4 * d.ROW_BYTES)
+        value = np.frombuffer(stream.read(4), dtype="<f4")[0] + 1
+        stream.seek(4 * d.ROW_BYTES)
+        stream.write(np.array([value], dtype="<f4").tobytes())
+    manifest["tensors"]["fit"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    sha = write(root / "manifest.json", manifest)
+    pytest.importorskip("scipy")
+    with pytest.raises(ValueError, match="IDCT"):
+        audit.audit(root, sha, deadline=lambda: None)
+
+
+def test_five_view_identical_full_pair_is_not_replaced(original_inputs, tmp_path):
+    inputs, reserved = original_inputs
+    calls = []
+
+    def identical(raw, lineage):
+        calls.append(lineage)
+        pair = corner_generator(raw, lineage)
+        return [pair[0], pair[0]]
+
+    with pytest.raises(ValueError, match="identical"):
+        d.prepare(inputs, reserved, tmp_path / "bad-five", generator=identical,
+                  deadline=lambda: None, fit=2, development=2, representation=views.FIVE)
+    assert len(calls) == 1
+    assert not (tmp_path / "bad-five" / "manifest.json").exists()
+    with pytest.raises(ValueError, match="limits"):
+        d.prepare(inputs, reserved, tmp_path / "bad-representation", generator=identical,
+                  deadline=lambda: None, representation="best-crop")
+
+
+def test_five_view_independent_idct_and_legacy_center_parity():
+    scipy = pytest.importorskip("scipy.fft")
+    coefficients = np.random.default_rng(42).integers(-20, 21, (64, 64, 8, 8), dtype=np.int16)
+    qt = np.arange(1, 65, dtype=np.uint16).reshape(8, 8)
+    decoded = scipy.idctn(coefficients.astype(np.float64) * qt, axes=(-2, -1), norm="ortho") + 128
+    full = decoded.transpose(0, 2, 1, 3).reshape(512, 512).astype("<f4")
+    actual = views.reconstruct(coefficients, qt)
+    for tensor, (left, top, width, height) in zip(actual, views.REGIONS, strict=True):
+        np.testing.assert_allclose(tensor[0], full[top:top + height, left:left + width], atol=1e-4)
+    np.testing.assert_array_equal(actual[0, 0], d.jpeg_float256.reconstruct(
+        coefficients, qt, 512, 512))
+    assert actual.shape == (5, 1, 256, 256) and actual.dtype == np.dtype("<f4")
+    assert min(qt.ravel()) == 1 and np.any(actual < 0) and np.any(actual > 255)
+
+
+def test_five_view_schedule_is_matched_cyclic_and_label_independent():
+    samples = sample_rows()
+    hashes = []
+    for rows in (4, 8, 16, 32):
+        indices, angles = c.schedule(samples, c.SEEDS[0], rows, 128)
+        selected = c.view_schedule(samples, c.SEEDS[0], indices)
+        assert not selected.flags.writeable
+        assert np.array_equal(selected.ravel()[::2], selected.ravel()[1::2])
+        hashes.append(hashlib.sha256(indices.tobytes() + angles.tobytes() +
+                                     selected.tobytes()).hexdigest())
+        for index in range(0, len(samples), 2):
+            visits = selected.ravel()[indices.ravel() == index]
+            assert set(visits[:5]) == set(range(5))
+            assert np.all((visits[1:] - visits[:-1]) % 5 == 1)
+        changed = copy.deepcopy(samples)
+        for row in changed:
+            row["label"] = "label-not-available"
+            row["prediction"] = 1.0
+        np.testing.assert_array_equal(selected, c.view_schedule(changed, c.SEEDS[0], indices))
+    assert len(set(hashes)) == 1
+    assert c.recipe("legacy", c.SEEDS[0], 4) != c.recipe(
+        "legacy", c.SEEDS[0], 4, representation=views.FIVE)
+    with pytest.raises(ValueError):
+        c.recipe("legacy", c.SEEDS[0], 4, representation="adaptive")
+    for invalid in (None, np.array([0, 1]), np.zeros((1, 3), dtype=int),
+                    np.full((1, 4), 999), np.array([[0, 0, 2, 3]])):
+        with pytest.raises(ValueError):
+            c.view_schedule(samples, c.SEEDS[0], invalid)
+    altered = copy.deepcopy(samples)
+    altered[1]["lineage"] = "different"
+    with pytest.raises(ValueError, match="ancestry"):
+        c.view_schedule(altered, c.SEEDS[0], np.array([[0, 1, 2, 3]]))
+
+
+def test_five_view_evaluation_is_mean_probability_not_max_or_logit():
+    torch = pytest.importorskip("torch")
+
+    class Reader:
+        view_count = 5
+        samples = sample_rows("development")
+        calls: list = []
+
+        def batch(self, indices, selected):
+            self.calls.append((indices.copy(), selected.copy()))
+            return np.broadcast_to(selected[:, None, None, None],
+                                   (len(indices), 1, 256, 256)).astype("<f4")
+
+        def verify(self):
+            self.verified = True
+
+    class Model(torch.nn.Module):
+        def forward(self, values):
+            score = values.mean(dim=(1, 2, 3))
+            return torch.stack([torch.zeros_like(score), score], dim=1)
+
+    reader = Reader()
+    model = Model()
+    result = c.evaluate(model, reader, "cpu")
+    expected = np.mean(1 / (1 + np.exp(-np.arange(5))))
+    np.testing.assert_allclose(result, [expected] * 8, atol=1e-7)
+    assert not np.isclose(expected, 1 / (1 + np.exp(-2)))
+    assert not np.isclose(expected, 1 / (1 + np.exp(-4)))
+    assert reader.verified and not model.training
+    assert [int(v[0]) for _, v in reader.calls] == list(range(5)) * 2
+
+
+def test_five_view_kernel_matches_arms_without_more_updates(five_prepared, tmp_path):
+    pytest.importorskip("torch")
+    root, _, sha = five_prepared
+    results = []
+    for arm, rows in (("legacy", 4), ("reference-adamax", 4), ("genuine-batch", 8)):
+        out = tmp_path / arm
+        out.mkdir()
+        results.append(c.kernel(root, sha, out, arm, c.SEEDS[0], rows, {}, device="cpu",
+                                factory=tiny, row_budget=16))
+    assert len({r["initial_learned_sha256"] for r in results}) == 1
+    assert len({r["schedule_sha256"] for r in results}) == 1
+    assert all(r["recipe"]["representation"] == views.contract() for r in results)
+    assert all(r["presented_rows"] == 16 and not r["real_gpu_fit"] for r in results)
+    assert [r["optimizer_updates"] for r in results] == [4, 4, 2]
+
+
+@pytest.mark.parametrize("value", [None, "max-crop", [], {}, 5])
+def test_five_view_prepare_config_rejects_implicit_or_adaptive_view(value):
+    config = {"schema_version": "jpeg-study-config-v1", "action": "prepare", "inputs": [
+        {"root": "private", "sha256": "a" * 64, "source_group": source}
+        for source in d.ORIGINS], "reserved_manifests": [], "representation": value}
+    with pytest.raises(ValueError, match="representation"):
+        frontend.configuration(config)
+
+
+def test_five_view_frontend_forwards_representation_and_preserves_failure(tmp_path, monkeypatch):
+    config = {"schema_version": "jpeg-study-config-v1", "action": "prepare", "inputs": [
+        {"root": "private", "sha256": "a" * 64, "source_group": source}
+        for source in d.ORIGINS], "reserved_manifests": [], "representation": views.FIVE}
+    assert frontend.configuration(config) == config
+    path = tmp_path / "config.json"
+    write(path, config)
+
+    def fail(*args, **kwargs):
+        assert kwargs["representation"] == views.FIVE
+        raise ValueError("invalid pair")
+
+    monkeypatch.setattr(d, "prepare", fail)
+    report = frontend.run(path, tmp_path / "out")
+    assert report["status"] == "unavailable" and report["optimizer_updates"] == 0
+    assert report["representation"] == views.contract()
+    assert str(tmp_path) not in json.dumps(report)
+
+
+def test_five_view_decoder_rejects_wrong_format_bounds_and_nonfinite(monkeypatch):
+    for raw in (b"", b"x" * (views.MAX_JPEG + 1), "not-bytes"):
+        with pytest.raises(ValueError, match="bounds"):
+            views.validate(raw)
+    for mode, size in (("RGB", (512, 512)), ("L", (256, 256))):
+        stream = io.BytesIO()
+        Image.new(mode, size).save(stream, format="JPEG")
+        with pytest.raises(ValueError, match="gray"):
+            views.validate(stream.getvalue())
+    with pytest.raises(ValueError):
+        views.reconstruct(np.zeros((32, 32, 8, 8), dtype=np.int16), np.ones((8, 8), dtype=int))
+    monkeypatch.setattr(views.jpeg_float256, "reconstruct", lambda *a: None)
+    monkeypatch.setattr(views.np, "einsum", lambda *a, **k: np.full((64, 64, 8, 8), np.nan))
+    with pytest.raises(ValueError):
+        views.reconstruct(np.zeros((64, 64, 8, 8), dtype=np.int16), np.ones((8, 8), dtype=int))
+
+
+@pytest.mark.parametrize("fault", ["timeout", "nonzero", "truncated", "oversize", "nan", "ok"])
+def test_five_view_owned_worker_bounds_and_reaping(tmp_path, monkeypatch, fault):
+    import subprocess
+
+    killed, waited = [], []
+    monkeypatch.setattr(views, "validate", lambda raw: None)
+    monkeypatch.setattr(views.jpeg_float256, "decoder_contract", lambda: {})
+    monkeypatch.setattr(views.os, "killpg", lambda *args: killed.append(args))
+
+    class Process:
+        pid = 123456789
+        returncode = 1 if fault == "nonzero" else 0
+
+        def __init__(self, command, **kwargs):
+            assert command[-1] == "core.jpeg_study_views" and kwargs["start_new_session"]
+            self.output = kwargs["stdout"]
+
+        def communicate(self, payload, timeout):
+            assert timeout == 20 and payload == b"\x01\x00\x00\x00\x01\x00\x00\x00x"
+            if fault == "timeout":
+                raise subprocess.TimeoutExpired("fixed worker", 20)
+            raw = np.zeros((5, 1, 256, 256), dtype="<f4").tobytes()
+            if fault == "truncated":
+                raw = raw[:-1]
+            elif fault == "oversize":
+                raw += b"x"
+            elif fault == "nan":
+                raw = np.array([np.nan], dtype="<f4").tobytes() + raw[4:]
+            self.output.write(raw)
+
+        def wait(self):
+            waited.append(True)
+
+    monkeypatch.setattr(views.subprocess, "Popen", Process)
+    if fault == "ok":
+        assert views.pixel_batch([b"x"]).shape == (1, 5, 1, 256, 256)
+    else:
+        with pytest.raises((ValueError, RuntimeError)):
+            views.pixel_batch([b"x"])
+    assert waited and killed[0][0] == Process.pid
+    for files in (None, [], [b"x"] * 3):
+        with pytest.raises(ValueError):
+            views.pixel_batch(files)
+
+
+@pytest.mark.parametrize("raw,code", [
+    (b"", 2), ((3).to_bytes(4, "little"), 2),
+    ((1).to_bytes(4, "little") + b"\x00", 2),
+    ((1).to_bytes(4, "little") + (views.MAX_JPEG + 1).to_bytes(4, "little"), 2),
+    ((1).to_bytes(4, "little") + (2).to_bytes(4, "little") + b"x", 2),
+    ((1).to_bytes(4, "little") + (1).to_bytes(4, "little") + b"xz", 2),
+    ((1).to_bytes(4, "little") + (1).to_bytes(4, "little") + b"x", 0),
+])
+def test_five_view_worker_frame_and_resource_limits(monkeypatch, raw, code):
+    import sys
+    from types import SimpleNamespace
+
+    limits = []
+    monkeypatch.setattr(views.resource, "setrlimit", lambda *args: limits.append(args))
+    monkeypatch.setattr(sys, "stdin", SimpleNamespace(buffer=io.BytesIO(raw)))
+    monkeypatch.setattr(sys, "stdout", SimpleNamespace(buffer=io.BytesIO()))
+    monkeypatch.setattr(views, "decode", lambda raw: b"tensor")
+    assert views.main() == code
+    assert len(limits) == 4
+    assert limits[2] == (views.resource.RLIMIT_FSIZE, (2 * views.ROW_BYTES,) * 2)
+
+
+def test_five_view_direct_decoder_private_copy_and_structure(original_inputs, monkeypatch):
+    jpeglib = pytest.importorskip("jpeglib")
+    from types import SimpleNamespace
+
+    inputs, _ = original_inputs
+    root = Path(inputs[0]["root"])
+    row = json.loads((root / "source.json").read_bytes())["samples"][0]
+    pair = corner_generator((root / row["path"]).read_bytes(), row["sha256"])
+    calls = []
+    original = jpeglib.read_dct
+
+    def read(path):
+        assert Path(path).read_bytes() == pair[0]
+        calls.append(Path(path))
+        return original(path)
+
+    monkeypatch.setattr(jpeglib, "read_dct", read)
+    tensor = np.frombuffer(views.decode(pair[0]), dtype="<f4").reshape(5, 1, 256, 256)
+    np.testing.assert_array_equal(tensor, views.pixel_batch([pair[0]])[0])
+    assert calls and all(not path.exists() for path in calls)
+    monkeypatch.setattr(jpeglib, "read_dct", lambda path: SimpleNamespace(
+        load=lambda: None, jpeg_color_space=SimpleNamespace(name="JCS_YCbCr")))
+    with pytest.raises(ValueError, match="structure"):
+        views.decode(pair[0])
+
+
+@pytest.mark.parametrize("fault", [None, "missing_view_audit", "wrong_aggregation",
+                                   "center_recipe", "different_schedule"])
+def test_five_view_control_gate_requires_whole_representation(monkeypatch, tmp_path, fault):
+    run = control_mocks(monkeypatch, tmp_path, fault=fault, representation=views.FIVE)
+    if fault:
+        with pytest.raises(ValueError):
+            run()
+    else:
+        result = run()
+        assert result["status"] == "completed" and result["learning_gate"]
+        assert result["representation"] == views.contract()
+        assert len(result["trials"]) == 8
+
+
+@pytest.mark.parametrize("error", [TimeoutError, InterruptedError, KeyboardInterrupt, ValueError])
+def test_preparation_retains_audit_failure_without_training(tmp_path, monkeypatch, error):
+    config = {"schema_version": "jpeg-study-config-v1", "action": "prepare", "inputs": [
+        {"root": "private", "sha256": "a" * 64, "source_group": source}
+        for source in d.ORIGINS], "reserved_manifests": [], "representation": views.FIVE}
+    path = tmp_path / "config.json"
+    write(path, config)
+
+    def prepare(*args, **kwargs):
+        out = args[2]
+        out.mkdir()
+        result = {"samples": {"fit": sample_rows(), "development": sample_rows("development")}}
+        write(out / "manifest.json", result)
+        return result
+
+    monkeypatch.setattr(d, "prepare", prepare)
+    monkeypatch.setattr(frontend, "child", lambda *a, **k: (_ for _ in ()).throw(error("secret")))
+    report = frontend.run(path, tmp_path / "out")
+    assert report["status"] == ("cancelled" if error in (InterruptedError, KeyboardInterrupt)
+                                else "unavailable")
+    assert report["optimizer_updates"] == 0 and not report["real_model_trained"]
+    assert "secret" not in json.dumps(report) and "manifest_sha256" in report

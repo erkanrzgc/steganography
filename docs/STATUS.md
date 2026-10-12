@@ -1,5 +1,26 @@
 # Implementation status — 2026-10-12
 
+Approved five-view revision (2026-10-12): preparation can explicitly select
+`center-four-corners256` using a separate manifest/representation contract.
+The same original identities and simulation remain fixed; unchanged individual
+views are retained. Matched training cycles all views per pair and stored-BN
+evaluation equally averages five singleton probabilities. A complete SciPy
+audit checks every view. This implements the grayscale representation stage,
+not a pretrained/color comparison or a measured accuracy increase. Real
+preparation and verification results will be recorded below when completed;
+the own-GPU SSH tunnel is still unavailable. See `JPEG_FIVE_VIEW_STUDY.md`.
+
+Five-view implementation verification: 165 focused tests passed; full provisioned
+CPU suite 2,490 passed /one actual-CUDA unavailable skip, 32 existing ONNX
+deprecation warnings, 694.88 seconds. Total coverage 96.37%; the eight study
+modules aggregate 97.03%, each >=95%, new view decoder 99.04%. Ruff, 177-file
+type checking, whitespace, identity checks and a 498,021-byte model/data-free
+wheel pass. The all-optional-absent profile passed 119 with 46 skips, but it
+does not represent partially provisioned environments. The preceding `b329fc9`
+CI research/quality/package/benchmark jobs passed; all four lightweight Python
+jobs failed on two missing-Torch test guards. Keep this red historical outcome.
+Actual five-view preparation is in progress, not yet a completed corpus/audit.
+
 Causal JPEG controls (2026-10-12): `research jpeg-study --config FILE --out DIR`
 implements bounded original-disjoint preparation, complete independent SciPy
 IDCT audit, four source/initialization/order-matched optimizer/L2/batch arms,

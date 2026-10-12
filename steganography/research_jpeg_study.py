@@ -22,7 +22,14 @@ from typing import Any
 import numpy as np
 from PIL import Image
 
-from core import jpeg_study, jpeg_study_audit, jpeg_study_data, jpeg_study_entropy, srnet_cuda
+from core import (
+    jpeg_study,
+    jpeg_study_audit,
+    jpeg_study_data,
+    jpeg_study_entropy,
+    jpeg_study_views,
+    srnet_cuda,
+)
 from core.jpeg_scale import identity
 from core.jpeg_timing import write_document
 from core.srnet_stream import deadline_after, document, regular_open
@@ -40,9 +47,10 @@ def sources():
     for name in (
         "core/srnet_samepool.py", "core/jpeg_study_optimizer.py", "core/jpeg_study.py",
         "core/jpeg_study_data.py", "core/jpeg_study_state.py", "core/jpeg_study_audit.py",
-        "core/jpeg_study_entropy.py",
+        "core/jpeg_study_entropy.py", "core/jpeg_study_views.py",
         "core/srnet_checkpoint.py", "core/jpeg_timing.py",
         "steganography/research_jpeg_study.py", "docs/JPEG_LEARNING_STUDY.md",
+        "docs/JPEG_FIVE_VIEW_STUDY.md",
         "steganography/benchmarking/metrics.py",
     ):
         with regular_open(ROOT / name) as stream:
@@ -59,12 +67,16 @@ def configuration(value):
     action = value.get("action")
     keys = ({"inputs", "reserved_manifests"} if action == "prepare" else
             {"root", "manifest_sha256", "audit", "audit_sha256"})
-    optional = {"resume"} if action == "controls" else set()
+    optional = {"resume"} if action == "controls" else {"representation"}
     if (action not in {"prepare", "controls"}
         or not keys | {"schema_version", "action"} <= set(value)
         or set(value) - keys - {"schema_version", "action"} - optional):
         raise ValueError("study configuration fields/action invalid")
     if action == "prepare":
+        if value.get("representation", jpeg_study_views.CENTER) not in (
+            jpeg_study_views.CENTER, jpeg_study_views.FIVE
+        ):
+            raise ValueError("study representation invalid")
         if (not isinstance(value["inputs"], list) or len(value["inputs"]) != 2
             or not isinstance(value["reserved_manifests"], list)):
             raise ValueError("study configuration input list invalid")
@@ -290,16 +302,21 @@ def run(config_path, out):
               "accuracy_qualification": "unavailable", "deployed": False,
               "max_seconds": 28800, "max_new_bytes": jpeg_study_data.MAX_BYTES,
               "cpu_fallback": False, "cloud_spending": 0}
+    if config.get("representation") == jpeg_study_views.FIVE:
+        report["representation"] = jpeg_study_views.contract()
     if config["action"] == "prepare":
         limit = deadline_after(1800)
         progress = {"original_sha256": None}
 
-        def checkpoint():
-            limit()
+        def cancelled():
             marker = out / "CANCEL"
             if marker.is_symlink():
                 raise ValueError("study cancellation marker cannot use symlink")
-            if marker.exists():
+            return marker.exists()
+
+        def checkpoint():
+            limit()
+            if cancelled():
                 raise InterruptedError("study preparation cancelled")
 
         def producer(raw, lineage):
@@ -311,6 +328,8 @@ def run(config_path, out):
                 config["inputs"], config["reserved_manifests"], out,
                 generator=producer,
                 deadline=checkpoint,
+                **({"representation": config["representation"]} if "representation" in config
+                   else {}),
             )
         except (ImportError, TimeoutError, InterruptedError, KeyboardInterrupt, ValueError) as exc:
             if not out.exists():
@@ -330,18 +349,28 @@ def run(config_path, out):
         audit_config = {"schema_version": "jpeg-study-config-v1", "action": "controls",
                         "root": str(out.absolute()), "manifest_sha256": manifest_sha,
                         "audit": "unused", "audit_sha256": "0" * 64}
-        proof = json.loads(child(
-            [sys.executable, "-m", "steganography.research_jpeg_study", "--worker", "audit"],
-            timeout=1200, payload=json.dumps(audit_config).encode(),
-        ))
-        audit_sha = write_document(out / "independent-audit.json", proof)
-        if proof.get("status") != "completed" or proof.get("source_sha256") != before:
-            report.update(status="unavailable", reason="independent_audit_incomplete",
-                          manifest_sha256=manifest_sha, audit_sha256=audit_sha,
-                          optimizer_updates=0, real_model_trained=False)
-        else:
-            report.update(status="completed", manifest_sha256=manifest_sha, audit_sha256=audit_sha,
-                          selected_originals=sum(len(v) for v in result["samples"].values()) // 2,
+        try:
+            proof = json.loads(child(
+                [sys.executable, "-m", "steganography.research_jpeg_study", "--worker", "audit"],
+                timeout=1200, payload=json.dumps(audit_config).encode(),
+                cancelled=cancelled,
+            ))
+            audit_sha = write_document(out / "independent-audit.json", proof)
+            if proof.get("status") != "completed" or proof.get("source_sha256") != before:
+                report.update(status="unavailable", reason="independent_audit_incomplete",
+                              manifest_sha256=manifest_sha, audit_sha256=audit_sha,
+                              optimizer_updates=0, real_model_trained=False)
+            else:
+                report.update(status="completed", manifest_sha256=manifest_sha,
+                              audit_sha256=audit_sha,
+                              selected_originals=sum(
+                                  len(v) for v in result["samples"].values()) // 2,
+                              optimizer_updates=0, real_model_trained=False)
+        except (ImportError, TimeoutError, InterruptedError, KeyboardInterrupt, ValueError) as exc:
+            was_cancelled = isinstance(exc, (InterruptedError, KeyboardInterrupt))
+            report.update(status="cancelled" if was_cancelled else "unavailable",
+                          reason="user_cancelled" if was_cancelled else "independent_audit_failed",
+                          manifest_sha256=manifest_sha,
                           optimizer_updates=0, real_model_trained=False)
     else:
         out.mkdir(parents=True, exist_ok=False)
@@ -368,11 +397,17 @@ def controls(config, out, before, started):
     proof = document(Path(config["audit"]), config["audit_sha256"])
     manifest = document(Path(config["root"]) / "manifest.json", config["manifest_sha256"])
     jpeg_study_data.validate_manifest(manifest)
-    if (proof.get("schema_version") != "jpeg-study-independent-audit-v1"
+    five = manifest.get("schema_version") == jpeg_study_views.SCHEMA
+    representation = jpeg_study_views.FIVE if five else jpeg_study_views.CENTER
+    if (proof.get("schema_version") != ("jpeg-study-independent-audit-v2" if five
+                                        else "jpeg-study-independent-audit-v1")
         or proof.get("status") != "completed"
         or proof.get("manifest_sha256") != config["manifest_sha256"]
         or proof.get("source_sha256") != before
         or proof.get("idct_rows") != {r: len(v) for r, v in manifest["samples"].items()}
+        or (five and (proof.get("representation") != jpeg_study_views.contract()
+                      or proof.get("idct_views") != {
+                          r: 5 * len(v) for r, v in manifest["samples"].items()}))
         or manifest["originals_per_source"] != {"fit": 256, "development": 64}):
         raise ValueError("study controls require complete bound independent audit")
     trials: list[dict[str, Any]] = []
@@ -434,7 +469,9 @@ def controls(config, out, before, started):
             if value.get("source_sha256", before) != before:
                 raise ValueError("study trial source binding mismatch")
             if value.get("status") == "completed":
-                if value.get("recipe") != jpeg_study.recipe(arm, seed, rows) or (
+                if value.get("recipe") != jpeg_study.recipe(
+                    arm, seed, rows, representation=representation
+                ) or (
                     value.get("presented_rows") != jpeg_study.PRESENTED_ROWS
                 ) or not value.get("real_gpu_fit"):
                     raise ValueError("study incomplete/non-GPU trial cannot complete")
@@ -449,6 +486,8 @@ def controls(config, out, before, started):
                 if (baseline and value["initial_learned_sha256"]
                     != baseline["initial_learned_sha256"]):
                     raise ValueError("study initialization not matched")
+                if (baseline and value["schedule_sha256"] != baseline["schedule_sha256"]):
+                    raise ValueError("study exposure/view/D4 schedule not matched")
             value.update(arm=arm, seed=seed)
             trials.append(value)
             write_document(out / f"trial-{arm}-{seed}.json", value)
@@ -461,6 +500,7 @@ def controls(config, out, before, started):
     return {"status": "completed" if completed else "unavailable", "trials": trials,
             "reason": None if completed else "incomplete_required_controls", "capacity": probes,
             "learning_gate": bool(winners), "passing_arms": winners,
+            **({"representation": jpeg_study_views.contract()} if five else {}),
             "baseline_stage": "not_started", "adaptation_stage": "not_started",
             "independent_source_evaluation": "not_started"}
 

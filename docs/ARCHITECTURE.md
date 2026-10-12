@@ -1,5 +1,13 @@
 # Architecture
 
+`jpeg_study_views` adds an explicit versioned five-view grayscale representation,
+with bounded native workers, fixed phase-zero regions and no label-based region
+choice. Role readers fetch one view per row without materializing the whole
+cache. Matched training cycles five views per pair; evaluation averages five
+stored-BN singleton probabilities. A complete independent audit checks every
+view, including identical individual views. Center-only contracts remain
+separate; snapshots bind the representation. See `JPEG_FIVE_VIEW_STUDY.md`.
+
 `core.jpeg_study*` isolates the causal JPEG learning experiment from legacy
 trainers, the independent `srnet_reference` oracle and deployed analyzers.
 `jpeg_study_optimizer` implements separate author-rule Adamax controls and

@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from core import jpeg_float256
+from core import jpeg_float256, jpeg_study_views
 from core.jpeg_scale import identity, safe_name
 from core.jpeg_timing import read_bytes, write_document
 from core.srnet_stream import document, regular_open, signature
@@ -86,12 +86,14 @@ def reservations(bindings):
     return result
 
 
-def prepare(inputs, reserved, out, *, generator, deadline, fit=256, development=64):
+def prepare(inputs, reserved, out, *, generator, deadline, fit=256, development=64,
+            representation=jpeg_study_views.CENTER):
     if (
         type(fit) is not int or not 2 <= fit <= 256
         or type(development) is not int or not 2 <= development <= 64
         or not isinstance(inputs, list) or len(inputs) != 2
         or {e["source_group"] for e in inputs} != set(ORIGINS)
+        or representation not in (jpeg_study_views.CENTER, jpeg_study_views.FIVE)
     ):
         raise ValueError("study selection counts/sources outside limits")
     fresh(out)
@@ -123,7 +125,8 @@ def prepare(inputs, reserved, out, *, generator, deadline, fit=256, development=
     (out / "jpeg").mkdir()
     rows_by_role: dict[str, list] = {"fit": [], "development": []}
     tensor_hashes = {role: hashlib.sha256() for role in rows_by_role}
-    used = len(selection) * 2 * ROW_BYTES
+    row_bytes = ROW_BYTES * (5 if representation == jpeg_study_views.FIVE else 1)
+    used = len(selection) * 2 * row_bytes
     streams = {}
     try:
         for role in rows_by_role:
@@ -135,7 +138,8 @@ def prepare(inputs, reserved, out, *, generator, deadline, fit=256, development=
             pair = generator(raw, row["sha256"])
             if not isinstance(pair, (list, tuple)) or len(pair) != 2:
                 raise ValueError("study simulation must return a cover/stego pair")
-            pixels = jpeg_float256.pixel_batch(pair)
+            pixels = (jpeg_study_views.pixel_batch(pair) if representation == jpeg_study_views.FIVE
+                      else jpeg_float256.pixel_batch(pair))
             if np.array_equal(pixels[0], pixels[1]):
                 # Reject the whole preparation; never cherry-pick labels/regions.
                 raise ValueError("study simulated pair has identical selected inputs")
@@ -162,29 +166,36 @@ def prepare(inputs, reserved, out, *, generator, deadline, fit=256, development=
         for stream in streams.values():
             stream.close()
     result = {
-        "schema_version": SCHEMA, "status": "completed", "seed": SEED,
+        "schema_version": jpeg_study_views.SCHEMA if representation == jpeg_study_views.FIVE
+        else SCHEMA, "status": "completed", "seed": SEED,
         "simulation_contract": SIMULATION,
         "source_manifests_sha256": sorted(e["sha256"] for e in inputs),
         "reserved_manifests_sha256": sorted(forbidden), "originals_per_source": {
             "fit": fit, "development": development,
         }, "samples": rows_by_role, "tensors": {
             role: {"path": f"{role}.f32", "rows": len(rows),
-                   "sha256": tensor_hashes[role].hexdigest(), "bytes": len(rows) * ROW_BYTES}
+                   "sha256": tensor_hashes[role].hexdigest(), "bytes": len(rows) * row_bytes}
             for role, rows in rows_by_role.items()
         }, "decoder": jpeg_float256.decoder_contract(), "output_bytes": used,
         "camera_independence_verified": False, "blind_test": False,
         "accuracy_qualification": "unavailable", "deployed": False,
     }
+    if representation == jpeg_study_views.FIVE:
+        result["representation"] = jpeg_study_views.contract()
     write_document(out / "manifest.json", result)
     return result
 
 
 def validate_manifest(manifest):
+    schema = manifest.get("schema_version")
     if (
-        manifest.get("schema_version") != SCHEMA or manifest.get("status") != "completed"
+        schema not in (SCHEMA, jpeg_study_views.SCHEMA) or manifest.get("status") != "completed"
         or manifest.get("simulation_contract") != SIMULATION
         or set(manifest.get("samples", {})) != {"fit", "development"}
         or manifest.get("decoder") != jpeg_float256.decoder_contract()
+        or (schema == jpeg_study_views.SCHEMA
+            and manifest.get("representation") != jpeg_study_views.contract())
+        or (schema == SCHEMA and "representation" in manifest)
     ):
         raise ValueError("study data contract/decoder mismatch")
     seen, roles, source_groups = set(), {}, defaultdict(set)
@@ -230,13 +241,15 @@ class Reader:
             raise ValueError("study reader role invalid")
         self.manifest = document(root / "manifest.json", checksum)
         validate_manifest(self.manifest)
+        self.view_count = 5 if self.manifest["schema_version"] == jpeg_study_views.SCHEMA else 1
+        self.row_bytes = ROW_BYTES * self.view_count
         self.samples = self.manifest["samples"][role]
         self.deadline = deadline
         tensor = self.manifest["tensors"][role]
         identity(tensor["sha256"])
         if (tensor["path"] != f"{role}.f32" or type(tensor["rows"]) is not int
             or type(tensor["bytes"]) is not int or tensor["rows"] != len(self.samples)
-            or tensor["bytes"] != len(self.samples) * ROW_BYTES):
+            or tensor["bytes"] != len(self.samples) * self.row_bytes):
             raise ValueError("study tensor identity/accounting mismatch")
         self.sha256 = tensor["sha256"]
         self.stream = regular_open(root / tensor["path"])
@@ -264,17 +277,24 @@ class Reader:
         if digest.hexdigest() != self.sha256 or signature(self.stream) != self.initial:
             raise ValueError("study tensor checksum/mutation mismatch")
 
-    def batch(self, indices):
+    def batch(self, indices, views=None):
         self.deadline()
         if (not isinstance(indices, np.ndarray) or indices.ndim != 1
             or indices.dtype.kind not in "iu" or not 1 <= len(indices) <= 32
             or np.any(indices < 0) or np.any(indices >= len(self.samples))
             or signature(self.stream) != self.initial):
             raise ValueError("study batch bounds/state mismatch")
+        if self.view_count == 5:
+            if (not isinstance(views, np.ndarray) or views.shape != indices.shape
+                or views.dtype.kind not in "iu" or np.any(views < 0) or np.any(views >= 5)):
+                raise ValueError("study five-view indices invalid")
+        elif views is not None:
+            raise ValueError("center study does not accept view indices")
         result = np.empty((len(indices), 1, 256, 256), dtype="<f4")
-        for target, i in zip(result, indices, strict=True):
+        for position, (target, i) in enumerate(zip(result, indices, strict=True)):
             self.deadline()
-            self.stream.seek(int(i) * ROW_BYTES)
+            view = int(views[position]) if views is not None else 0
+            self.stream.seek(int(i) * self.row_bytes + view * ROW_BYTES)
             raw = self.stream.read(ROW_BYTES)
             if len(raw) != ROW_BYTES or signature(self.stream) != self.initial:
                 raise ValueError("study row truncated/changed")
