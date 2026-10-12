@@ -1,5 +1,13 @@
 # Architecture
 
+`core.nonjpeg_data` prepares bounded, marker-free native L/RGB and mono PCM16
+controlled carriers without inference. `core.nonjpeg_audit` imports no generator
+and independently checks scalar extraction, unchanged bits, cell membership,
+original selection and grouping. The thin `research nonjpeg-prepare` wrapper
+owns limited subprocess groups and only reports completion after audit and
+validated separate research-manifest exports. No test media, GPU or detector
+is used. See `NONJPEG_PREPARATION_PROTOCOL.md` and `NONJPEG_METHOD_READINESS.md`.
+
 `jpeg_study_views` adds an explicit versioned five-view grayscale representation,
 with bounded native workers, fixed phase-zero regions and no label-based region
 choice. Role readers fetch one view per row without materializing the whole

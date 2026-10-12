@@ -1,5 +1,13 @@
 # Benchmark protocol
 
+`NONJPEG_PREPARATION_PROTOCOL.md` freezes real originals with controlled LSB
+positives, native roles, label-independent carriers, channel/plane/rate cells
+and independent scalar recovery. Derivatives do not increase original counts;
+DIV2K is one RGB origin, BOWS native gray. Speakers/recordings cannot cross roles.
+Preparation success is not detection, calibration or autonomous recovery.
+GIF/text/container/stereo/compressed-audio gaps remain explicit in
+`NONJPEG_METHOD_READINESS.md`. Existing support and blind gates stay unchanged.
+
 The opt-in causal JPEG study has a separate versioned development protocol in
 `JPEG_LEARNING_STUDY.md`. Fit and development originals come only from historical
 train; content hashes and decoded identities cannot cross roles. Fixed Q75

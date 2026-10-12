@@ -1,5 +1,11 @@
 # Changelog
 
+- Add CPU-only `research nonjpeg-prepare`: fixed-source-role PNG/BMP gray/RGB
+  channel/plane/rate and mono-WAV derivatives, independent scalar audit, bounded
+  isolated workers and validated separate research manifests. Preserve failed
+  detector results and untouched test media; track native GIF/text/container/
+  stereo/tool data gaps. No training, deployed model or accuracy claim.
+
 - Mark two Torch-dependent JPEG kernel tests explicitly optional in lightweight
   CI. Keep native JPEG/SciPy tests active, the fully provisioned research job
   unchanged and the total coverage threshold intact. Missing Torch is a skip,

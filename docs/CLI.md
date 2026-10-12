@@ -84,6 +84,13 @@ steganography case --state-dir PATH export SCAN_ID
 
 ## Models, research, and diagnostics
 
+Explicit CPU preparation (source checkout, no downloads/fitting/scoring):
+`steganography research nonjpeg-prepare --config FILE --out FRESH_DIR`.
+Config/checksum/limits and native role contracts are in
+[the preparation protocol](NONJPEG_PREPARATION_PROTOCOL.md). Exit 0 requires
+complete independent audit and validated research manifests; missing/failed/
+cancelled work exits 2 and cannot qualify detector accuracy.
+
 ```text
 steganography models --state-dir PATH list
 steganography models --state-dir PATH catalog

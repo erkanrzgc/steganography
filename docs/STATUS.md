@@ -1,5 +1,14 @@
 # Implementation status — 2026-10-12
 
+GPU-deferred non-JPEG preparation: shared bounded spatial/audio generator and
+generator-independent scalar audit implemented, with native historical roles,
+fixed channel/plane/rate cells and compatible separate research manifests.
+Initial focused checks passed 109 tests; additional binding/cancellation tests
+and actual preparation/full regression remain pending at implementation freeze.
+No GPU, fitting, scoring, download or detector improvement. GIF/text/container/
+stereo/tool families keep their explicit native data/oracle gaps. See
+`NONJPEG_PREPARATION_PROTOCOL.md` and `NONJPEG_METHOD_READINESS.md`.
+
 Approved five-view revision (2026-10-12): preparation can explicitly select
 `center-four-corners256` using a separate manifest/representation contract.
 The same original identities and simulation remain fixed; unchanged individual

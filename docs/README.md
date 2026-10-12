@@ -21,6 +21,8 @@ instructions so that implementation readiness is not mistaken for accuracy.
 - [Benchmark protocol](BENCHMARK_PROTOCOL.md): splits, qualification gates, and reproducibility.
 - [CTF evaluation](CTF_EVALUATION.md): frozen payload-hash recovery, timings and honest qualification.
 - [Dataset catalog](DATASET_CATALOG.md): sources, provenance, and acquisition conditions.
+- [Non-JPEG preparation](NONJPEG_PREPARATION_PROTOCOL.md) and
+  [method readiness](NONJPEG_METHOD_READINESS.md): CPU data/oracle preparation and remaining gaps.
 - [Latest JPEG curriculum results](JPEG_CURRICULUM_RESULTS.md): small inspected-development
   changes, not qualified real-world accuracy.
 - [Model guide](MODELS.md): explicit installation and verification of optional local models.

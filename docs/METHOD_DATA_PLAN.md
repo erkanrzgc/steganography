@@ -1,5 +1,10 @@
 # Method/data coverage and next learning work
 
+CPU-only PNG/BMP and WAV preparation is now implemented separately from JPEG
+fitting. See `NONJPEG_PREPARATION_PROTOCOL.md` for fixed source roles and scalar
+oracles, and `NONJPEG_METHOD_READINESS.md` for format/method-specific next work.
+No model/score or completed real-data preparation is implied by implementation.
+
 More acquired media is not more qualified methods. No single generic accuracy
 percentage combines detection, method identification and exact payload recovery.
 Preserve all failed historical gates. Raw restricted corpora and learned weights

@@ -562,6 +562,14 @@ def cmd_research_jpeg_study(args: argparse.Namespace) -> int:
     return 0 if result["status"] == "completed" else 2
 
 
+def cmd_research_nonjpeg(args: argparse.Namespace) -> int:
+    from steganography.research_nonjpeg import run
+
+    result = run(Path(args.config), Path(args.out))
+    print(json.dumps({"status": result["status"]}))
+    return 0 if result["status"] == "completed" else 2
+
+
 def cmd_research_train(args: argparse.Namespace) -> int:
     from steganography.research import train_model
 
@@ -954,6 +962,10 @@ def build_parser() -> argparse.ArgumentParser:
     research_study.add_argument("--config", required=True)
     research_study.add_argument("--out", required=True)
     research_study.set_defaults(fn=cmd_research_jpeg_study)
+    research_nonjpeg = research_commands.add_parser("nonjpeg-prepare")
+    research_nonjpeg.add_argument("--config", required=True)
+    research_nonjpeg.add_argument("--out", required=True)
+    research_nonjpeg.set_defaults(fn=cmd_research_nonjpeg)
     research_pixels = research_commands.add_parser("pixel-cache")
     research_pixels.add_argument("--manifest", required=True)
     research_pixels.add_argument("--source", required=True)

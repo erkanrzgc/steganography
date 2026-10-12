@@ -1,5 +1,12 @@
 # Roadmap and status
 
+2026-10-12 GPU-deferred non-JPEG slice: explicit bounded PNG/BMP/WAV preparation
+and generator-independent scalar audit implemented. Native roles, channel/
+plane/rate cells and separate research manifests are preserved. Actual real-data
+preparation and full verification are pending at implementation freeze; no
+fitting/scoring/accuracy claim. Remaining method-specific native sources and
+oracles are tracked in `NONJPEG_METHOD_READINESS.md`.
+
 2026-10-12 causal JPEG control slice: explicit preparation plus four matched
 optimizer/regularization/batch controls across two seeds. Fixed historical-train
 original identities, source-balanced paired D4, separate development caches,
