@@ -1,5 +1,31 @@
 # Implementation status — 2026-10-12
 
+Own-GPU connection restored on 2026-10-12. The clean WSL checkout was
+fast-forwarded to verified `cc82608`; all 49 JPEG study sources match the
+completed five-view preparation/audit. A new generated CUDA preflight passed
+with native RTX 5060 Laptop /Torch 2.14.0+cu130, 4 GiB allocator and kernel
+8 GiB host bound. All 1,285 private media/cache/metadata files transferred to
+the own laptop with no symlinks or recursive checksum differences; no cloud.
+Genuine generated batches 8/16 completed; 32 hit the unchanged allocator cap
+and remains unavailable, without retry or memory increase. Batch 16 is only
+the later genuine-batch arm's candidate, not a guarantee of real-data success.
+
+The systemd user service `steg-jpeg-five-controls-20261012` started at
+17:09:20 UTC. At the 17:11:25 observation, the actual four-row `legacy` fit
+worker for seed 20261012 was running on GPU. No completed trial, numeric
+snapshot or final scores had been observed; optimizer-update count is not
+inferred from utilization. Four arms/two seeds retain 32,768 presented view
+rows per trial, 30-minute trial and four-hour control budgets. Do not mutate
+the remote execution source closure during this job. Active remote files are
+under `.benchmark/jpeg-own-gpu-session-20261012/controls-run`; the existing
+regular `CANCEL` marker contract remains available. Portable startup evidence:
+`benchmarks/jpeg-five-view-gpu-start-20261012.json`. This is a dated startup
+observation, not a claim the process is still running when read later or that
+it completed/learned. GPU was 86 C against its reported 87 C target; keep the
+laptop ventilated, plugged in and awake. WIFD/reserved sources remain unscored;
+accuracy qualification/deployment are unavailable. Earlier SSH-unavailable
+attempts below are retained historical outcomes, not overwritten successes.
+
 GPU-deferred non-JPEG preparation completed on actual media: 160 existing
 originals (80 images /80 recordings), four declared origins, each 32 train /8
 validation, produced 4,080 artifacts (240 covers /3,840 marker-free positives).

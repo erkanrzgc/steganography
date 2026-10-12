@@ -1,5 +1,13 @@
 # Roadmap and status
 
+2026-10-12 own-GPU startup: private five-view transport/source bindings and
+generated CUDA preflight passed. Generated batches 8/16 fit; 32 is unavailable
+under the unchanged 4 GiB cap. The bounded eight-trial controls service started
+its first real fit; no completed model or learning scores are claimed. See
+`STATUS.md` and `benchmarks/jpeg-five-view-gpu-start-20261012.json` for the dated
+observation. Do not treat startup as completion or infer the current process
+state from this file.
+
 2026-10-12 GPU-deferred non-JPEG slice: explicit bounded PNG/BMP/WAV preparation
 and generator-independent scalar audit implemented. Native roles, channel/
 plane/rate cells and separate research manifests are preserved. Actual real-data

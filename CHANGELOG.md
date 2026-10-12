@@ -1,5 +1,9 @@
 # Changelog
 
+- Record own-GPU five-view JPEG study startup, verified private transfer and
+  generated 8/16 batch feasibility; retain 32-row allocator OOM. Controls are
+  running at observation, not a completed model or measured accuracy increase.
+
 - Add CPU-only `research nonjpeg-prepare`: fixed-source-role PNG/BMP gray/RGB
   channel/plane/rate and mono-WAV derivatives, independent scalar audit, bounded
   isolated workers and validated separate research manifests. Preserve failed
