@@ -7,15 +7,11 @@ import hashlib
 import importlib.metadata
 import io
 import json
-import os
 import resource
-import signal
-import subprocess
 import sys
 import tempfile
 import time
 import warnings
-from contextlib import suppress
 from pathlib import Path
 from typing import Any
 
@@ -27,10 +23,12 @@ from core import (
     jpeg_study_audit,
     jpeg_study_data,
     jpeg_study_entropy,
+    jpeg_study_process,
     jpeg_study_views,
     srnet_cuda,
 )
 from core.jpeg_scale import identity
+from core.jpeg_study_process import MAX_REPORT, MAX_SIMULATION_REPORT, WorkerFailure
 from core.jpeg_timing import write_document
 from core.srnet_stream import deadline_after, document, regular_open
 from steganography.research_batch_probe import sources as capacity_sources
@@ -38,8 +36,6 @@ from steganography.research_srnet_stream import fresh
 from steganography.research_srnet_stream import snapshot as previous_sources
 
 ROOT = Path(__file__).resolve().parents[1]
-MAX_REPORT = 256 * 1024
-MAX_SIMULATION_REPORT = 768 * 1024
 
 
 def sources():
@@ -47,6 +43,7 @@ def sources():
     for name in (
         "core/srnet_samepool.py", "core/jpeg_study_optimizer.py", "core/jpeg_study.py",
         "core/jpeg_study_data.py", "core/jpeg_study_state.py", "core/jpeg_study_audit.py",
+        "core/jpeg_study_process.py",
         "core/jpeg_study_entropy.py", "core/jpeg_study_views.py",
         "core/srnet_checkpoint.py", "core/jpeg_timing.py",
         "steganography/research_jpeg_study.py", "docs/JPEG_LEARNING_STUDY.md",
@@ -112,41 +109,8 @@ def configuration(value):
 
 
 def child(command, *, timeout, cancelled=lambda: False, payload=None, maximum=MAX_REPORT):
-    """Owned process group, bounded output, kill and reap on timeout/cancel."""
-    if payload is not None and len(payload) > 1024**2:
-        raise ValueError("study child input exceeds bounds")
-    if maximum not in (MAX_REPORT, MAX_SIMULATION_REPORT):
-        raise ValueError("study child output limit invalid")
-    with tempfile.TemporaryFile() as output, tempfile.TemporaryFile() as input_file:
-        if payload is not None:
-            input_file.write(payload)
-            input_file.seek(0)
-        process = subprocess.Popen(  # noqa: S603 - fixed module and arguments, no shell
-            command, cwd=ROOT, stdin=input_file if payload is not None else subprocess.DEVNULL,
-            stdout=output, stderr=subprocess.DEVNULL, start_new_session=True,
-            env={**os.environ, "OMP_NUM_THREADS": "2", "OPENBLAS_NUM_THREADS": "1",
-                 "NUMBA_NUM_THREADS": "1", "CUBLAS_WORKSPACE_CONFIG": ":4096:8"},
-        )
-        started = time.monotonic()
-        try:
-            while process.poll() is None:
-                if cancelled():
-                    raise InterruptedError("study cancelled")
-                if time.monotonic() - started >= timeout:
-                    raise TimeoutError("study worker deadline exceeded")
-                if os.fstat(output.fileno()).st_size > maximum:
-                    raise ValueError("study worker output exceeded bounds")
-                time.sleep(0.1)
-        finally:
-            # Also kill descendants after a normally exited parent.
-            with suppress(ProcessLookupError):
-                os.killpg(process.pid, signal.SIGKILL)
-            process.wait()
-        output.seek(0)
-        raw = output.read(maximum + 1)
-        if process.returncode or not 0 < len(raw) <= maximum:
-            raise ValueError("study worker failed/output exceeded bounds")
-        return raw
+    return jpeg_study_process.run(command, cwd=ROOT, timeout=timeout,
+                                  cancelled=cancelled, payload=payload, maximum=maximum)
 
 
 def generate(raw, lineage, *, deadline=lambda: None):
@@ -339,10 +303,14 @@ def run(config_path, out):
                        ValueError: "preparation_contract_failed",
                        KeyboardInterrupt: "user_cancelled"}
             was_cancelled = isinstance(exc, (InterruptedError, KeyboardInterrupt))
+            reason = exc.reason if isinstance(exc, WorkerFailure) else reasons[type(exc)]
             report.update(status="cancelled" if was_cancelled else "unavailable",
-                          reason=reasons[type(exc)], optimizer_updates=0, real_model_trained=False,
+                          reason=reason,
+                          optimizer_updates=0, real_model_trained=False,
                           failed_original_sha256=progress["original_sha256"],
                           seconds=time.monotonic() - started)
+            if isinstance(exc, WorkerFailure):
+                report["worker_execution"] = exc.execution.record()
             write_document(out / "report.json", report)
             return report
         manifest_sha = hashlib.sha256((out / "manifest.json").read_bytes()).hexdigest()
@@ -372,6 +340,8 @@ def run(config_path, out):
                           reason="user_cancelled" if was_cancelled else "independent_audit_failed",
                           manifest_sha256=manifest_sha,
                           optimizer_updates=0, real_model_trained=False)
+            if isinstance(exc, WorkerFailure):
+                report.update(exc.unavailable())
     else:
         out.mkdir(parents=True, exist_ok=False)
         try:
@@ -427,6 +397,8 @@ def controls(config, out, before, started):
             ], timeout=180, cancelled=cancelled))
         except TimeoutError:
             probe = {"status": "unavailable", "reason": "worker_timeout"}
+        except WorkerFailure as exc:
+            probe = exc.unavailable()
         except InterruptedError:
             return {"status": "cancelled", "trials": trials, "capacity": probes}
         if (not isinstance(probe, dict) or probe.get("status") not in {"completed", "unavailable"}
@@ -460,6 +432,8 @@ def controls(config, out, before, started):
                 value = json.loads(raw)
             except TimeoutError:
                 value = {"status": "unavailable", "reason": "worker_timeout"}
+            except WorkerFailure as exc:
+                value = exc.unavailable()
             except InterruptedError:
                 return {"status": "cancelled", "trials": trials}
             if not isinstance(value, dict) or value.get("status") not in {

@@ -1,5 +1,11 @@
 # Changelog
 
+- Retain bounded JPEG worker exit/signal evidence and continue later capacity
+  probes/fit trials after CPU-limit or other process failures. Preserve failed
+  trials/checkpoints, secret-free reports, source/data fail-closed checks and
+  unchanged budgets/learning gates. Diagnose the prior own-GPU SIGXCPU event;
+  successful read-only evaluation is not retrospective training qualification.
+
 - Record own-GPU five-view JPEG study startup, verified private transfer and
   generated 8/16 batch feasibility; retain 32-row allocator OOM. Controls are
   running at observation, not a completed model or measured accuracy increase.

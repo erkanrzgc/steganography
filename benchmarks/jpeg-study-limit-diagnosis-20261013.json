@@ -1,0 +1,48 @@
+{
+  "schema_version": "jpeg-study-limit-diagnosis-v1",
+  "status": "diagnosed",
+  "historical_run_status": "failed",
+  "execution_git_commit": "cc8260825a91ebd48b9ea34d80860bf3ffb6b1e0",
+  "historical_source_files": 49,
+  "historical_source_closure_sha256": "a475fe66e7783e6f914464977273d42483233d7d8385c7b3d36e23ec4da05080",
+  "completed_trial_reports": 2,
+  "planned_trials": 8,
+  "failed_arm": "convolution-l2",
+  "failed_seed": 20261012,
+  "root_cause": "worker_cpu_time_limit",
+  "kernel_evidence": {
+    "soft_limit_at": "2026-10-12T18:34:54Z",
+    "signal": 24,
+    "signal_name": "SIGXCPU",
+    "hard_limit_at": "2026-10-12T18:35:06Z",
+    "worker_rlimit_cpu_seconds": [1800, 1801],
+    "historical_worker_returncode": "not_retained"
+  },
+  "checkpoint": {
+    "sha256": "3940d944776a52b7f764a7469b99bb1f6ac0e3fd6cfdfa2222504345725c9b3e",
+    "binding": "bb261cc4f49eeb0250462df62423afc1252db9a55ffb91ca82f938edc18d8159",
+    "presented_rows": 32768,
+    "optimizer_updates": 8192
+  },
+  "read_only_replay": {
+    "status": "completed",
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "development_image_rows": 256,
+    "batch_view_comparisons": 320,
+    "max_absolute_logit_difference": 0.000011444091796875,
+    "parity_atol": 0.0001,
+    "parity_rtol": 0.0001,
+    "seconds": 23.1800882790003,
+    "weights_unchanged": true,
+    "source_closure_unchanged": true,
+    "optimizer_updates_performed": 0,
+    "private_report_sha256": "03380f4745513b36c4a93ed0af3908af69d3de85797f74307ac981a97b7777cb"
+  },
+  "historical_failed_trial_reclassified": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "training_restarted": false,
+  "reserved_sources_scored": false,
+  "cloud_spending": 0
+}

@@ -1,5 +1,12 @@
 # Architecture
 
+`core.jpeg_study_process` owns isolated JPEG research workers and immutable
+numeric exit evidence. `SIGXCPU` is a CPU-budget failure; `SIGKILL` alone is not
+classified as OOM. Capacity probes and fit trials retain `unavailable` outcomes
+and continue within existing budgets. Invalid response/source/data contracts
+still fail closed. Reports contain exit/signal/byte counts, never commands,
+stderr or failed-worker stdout. All owned groups are killed and reaped.
+
 `core.nonjpeg_data` prepares bounded, marker-free native L/RGB and mono PCM16
 controlled carriers without inference. `core.nonjpeg_audit` imports no generator
 and independently checks scalar extraction, unchanged bits, cell membership,

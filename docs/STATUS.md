@@ -1,4 +1,39 @@
-# Implementation status — 2026-10-12
+# Implementation status — 2026-10-13
+
+The 2026-10-12 own-GPU controls stopped at 18:35:07 UTC: two of eight trial
+reports completed, and the third (`convolution-l2`, seed 20261012) retained its
+32,768-row /8,192-update numeric snapshot but no completed report. Kernel
+records show soft CPU timeout /SIGXCPU at 18:34:54 UTC and hard timeout at
+18:35:06 UTC. This was the unchanged 1800/1801 CPU-second worker limit, not
+evidence of VRAM exhaustion. A bounded read-only replay of the final snapshot
+evaluated all 256 development image rows /320 batch-view comparisons in
+23.18 seconds, with unchanged weights, 49-file source closure and 1e-4 parity
+tolerances. No optimizer update or accuracy qualification resulted.
+Portable diagnostic evidence: `benchmarks/jpeg-study-limit-diagnosis-20261013.json`.
+
+The runner now separates CPU/file-size limits, other signals, nonzero exits,
+empty output and oversized output into numeric portable `unavailable` records.
+Capacity/fit loops retain failures and continue; malformed results and altered
+source/data contracts still fail closed. The shared core worker owner preserves
+group cleanup, timeouts, cancellation and discarded secret-bearing stderr.
+CPU/RAM/GPU/output budgets and learning gates are unchanged. The new execution
+closure includes this service and differs from the archived 49-file closure;
+old audits and snapshots are never silently rebound. Before another GPU run,
+produce a fresh matching audit and new outputs. The last connection check
+returned SSH connection reset; no training restart or model deployment.
+
+Handoff checkpoint at the user's stop request (2026-10-13): 182 focused tests
+passed in 102.58 seconds before the final preparation/audit failure guards;
+the subsequent targeted 19-test run passed in 27.58 seconds. Ruff and type
+checking passed. The complete regression invocation collected 2,636 tests but
+was interrupted before completion; it is not a pass and coverage is unmeasured
+for this revision. Its private log/scratch remains under
+`.benchmark/jpeg-runner-verification-20261013.bDTXwngF`; no owned pytest process
+remained at handoff. Next: rerun complete regression in fresh disk-backed
+scratch, verify new worker coverage >=95%, then create a newly source-bound
+audit before any new GPU run. Do not reuse the old audit/snapshot binding or
+claim recovery of the historical failed trial. Unrelated user files are intact.
+
 
 Own-GPU connection restored on 2026-10-12. The clean WSL checkout was
 fast-forwarded to verified `cc82608`; all 49 JPEG study sources match the

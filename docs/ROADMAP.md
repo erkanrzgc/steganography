@@ -1,5 +1,15 @@
 # Roadmap and status
 
+2026-10-13 JPEG runner repair: the previous own-GPU study stopped after two
+completed trial reports. Kernel records establish a CPU-limit event in the
+third arm, after its final numeric snapshot. Read-only evaluation of that
+snapshot passes unchanged parity; this does not retroactively complete or
+qualify a budget-exceeded trial. Numeric worker exits are now retained as
+unavailable and later trials continue within unchanged limits; source/data
+validation errors still stop execution. A new run requires a matching audit
+and new source binding; historical evidence/checkpoints are not rebound.
+GPU rerun remains pending. See `STATUS.md`.
+
 2026-10-12 own-GPU startup: private five-view transport/source bindings and
 generated CUDA preflight passed. Generated batches 8/16 fit; 32 is unavailable
 under the unchanged 4 GiB cap. The bounded eight-trial controls service started

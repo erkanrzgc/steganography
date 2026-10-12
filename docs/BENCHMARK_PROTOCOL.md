@@ -1,5 +1,15 @@
 # Benchmark protocol
 
+JPEG research worker failures carry numeric return code, signal and stdout byte
+count, not raw output or commands. A CPU-limit exit is `unavailable` even if its
+final numeric snapshot exists or a later read-only evaluation succeeds. Later
+controls may continue under the same limits, but a failed required trial keeps
+the matrix incomplete and cannot qualify its arm. Invalid source/data/response
+contracts remain fail-closed. Runner revisions change the execution closure:
+re-audit unchanged data explicitly for a new run, preserve old audit/checkpoint
+bindings, and never relabel historical failed runs as completed. See
+`benchmarks/jpeg-study-limit-diagnosis-20261013.json`.
+
 `NONJPEG_PREPARATION_PROTOCOL.md` freezes real originals with controlled LSB
 positives, native roles, label-independent carriers, channel/plane/rate cells
 and independent scalar recovery. Derivatives do not increase original counts;

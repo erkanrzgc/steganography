@@ -700,18 +700,26 @@ def test_simulation_response_validation(monkeypatch):
     assert frontend.generate(b"raw", "a" * 64) == [b"x", b"y"]
 
 
-@pytest.mark.parametrize("error", [ImportError, ValueError, TimeoutError, InterruptedError])
+@pytest.mark.parametrize("error", [ImportError, ValueError, TimeoutError, InterruptedError,
+                                   "cpu_limit"])
 def test_preparation_failure_retained_without_path_secrets(tmp_path, monkeypatch, error):
+    from core.jpeg_study_process import WorkerExit, WorkerFailure
+
     config = {"schema_version": "jpeg-study-config-v1", "action": "prepare", "inputs": [
         {"root": "private", "sha256": "a" * 64, "source_group": source}
         for source in d.ORIGINS], "reserved_manifests": []}
     path = tmp_path / "config.json"
     write(path, config)
+    failure = (WorkerFailure(WorkerExit(-24, 0)) if error == "cpu_limit"
+               else error("/private/secret"))
     monkeypatch.setattr(frontend.jpeg_study_data, "prepare", lambda *a, **k:
-                        (_ for _ in ()).throw(error("/private/secret")))
+                        (_ for _ in ()).throw(failure))
     result = frontend.run(path, tmp_path / "out")
     assert result["status"] == ("cancelled" if error is InterruptedError else "unavailable")
     assert result["optimizer_updates"] == 0 and "secret" not in json.dumps(result)
+    if error == "cpu_limit":
+        assert result["reason"] == "worker_cpu_limit"
+        assert result["worker_execution"]["signal_name"] == "SIGXCPU"
 
 
 def control_mocks(monkeypatch, tmp_path, *, fault=None, representation=views.CENTER):
@@ -813,6 +821,70 @@ def test_control_matrix_retains_unavailable_or_cancelled_trials(monkeypatch, tmp
     result = run()
     assert result["status"] == ("cancelled" if fault == "cancel" else "unavailable")
     assert not all(t["status"] == "completed" for t in result["trials"]) or fault == "cancel"
+
+
+@pytest.mark.parametrize("returncode,output_limit", [(-24, False), (-9, False), (7, False),
+                                                     (0, False), (-9, True)])
+def test_worker_exit_retains_failed_trial_and_continues_without_qualifying_it(
+    monkeypatch, tmp_path, returncode, output_limit,
+):
+    from core.jpeg_study_process import WorkerExit, WorkerFailure
+
+    run = control_mocks(monkeypatch, tmp_path)
+    original = frontend.child
+    calls = []
+
+    def child(command, **kwargs):
+        if "--arm" in command:
+            arm = command[command.index("--arm") + 1]
+            seed = int(command[command.index("--seed") + 1])
+            calls.append((arm, seed))
+            if (arm, seed) == ("convolution-l2", c.SEEDS[0]):
+                snapshot = tmp_path / "out" / f"{arm}-{seed}" / "rows-32768.npz"
+                snapshot.parent.mkdir()
+                snapshot.write_bytes(b"retained snapshot fixture; not a real model")
+                raise WorkerFailure(WorkerExit(returncode, 0), output_limit=output_limit)
+        return original(command, **kwargs)
+
+    monkeypatch.setattr(frontend, "child", child)
+    result = run()
+    assert len(calls) == len(result["trials"]) == 8
+    assert result["status"] == "unavailable"
+    assert result["reason"] == "incomplete_required_controls"
+    assert "convolution-l2" not in result["passing_arms"]
+    failed = result["trials"][2]
+    assert failed["status"] == "unavailable"
+    assert failed["worker_execution"]["returncode"] == returncode
+    assert "scores" not in failed and "cells" not in failed
+    assert result["trials"][3]["arm"] == "genuine-batch"
+    assert result["trials"][3]["status"] == "completed"
+    saved = json.loads((tmp_path / "out" / f"trial-convolution-l2-{c.SEEDS[0]}.json").read_bytes())
+    assert saved == failed and str(tmp_path) not in json.dumps(saved)
+    assert (tmp_path / "out" / f"convolution-l2-{c.SEEDS[0]}" / "rows-32768.npz").exists()
+
+
+def test_failed_capacity_probe_is_unavailable_but_other_batch_candidates_continue(
+    monkeypatch, tmp_path,
+):
+    import signal
+
+    from core.jpeg_study_process import WorkerExit, WorkerFailure
+
+    run = control_mocks(monkeypatch, tmp_path)
+    original = frontend.child
+
+    def child(command, **kwargs):
+        if "steganography.research_batch_probe" in command and command[-1] == "32":
+            raise WorkerFailure(WorkerExit(-signal.SIGXCPU, 0))
+        return original(command, **kwargs)
+
+    monkeypatch.setattr(frontend, "child", child)
+    result = run()
+    assert result["status"] == "completed"
+    assert result["capacity"][-1]["reason"] == "worker_cpu_limit"
+    assert result["capacity"][-1]["status"] == "unavailable"
+    assert all(t["recipe"]["rows"] == 16 for t in result["trials"]
+               if t["arm"] == "genuine-batch")
 
 
 def test_control_budget_and_cancellation_markers(monkeypatch, tmp_path):
@@ -1567,8 +1639,11 @@ def test_five_view_control_gate_requires_whole_representation(monkeypatch, tmp_p
         assert len(result["trials"]) == 8
 
 
-@pytest.mark.parametrize("error", [TimeoutError, InterruptedError, KeyboardInterrupt, ValueError])
+@pytest.mark.parametrize("error", [TimeoutError, InterruptedError, KeyboardInterrupt, ValueError,
+                                   "cpu_limit"])
 def test_preparation_retains_audit_failure_without_training(tmp_path, monkeypatch, error):
+    from core.jpeg_study_process import WorkerExit, WorkerFailure
+
     config = {"schema_version": "jpeg-study-config-v1", "action": "prepare", "inputs": [
         {"root": "private", "sha256": "a" * 64, "source_group": source}
         for source in d.ORIGINS], "reserved_manifests": [], "representation": views.FIVE}
@@ -1583,9 +1658,13 @@ def test_preparation_retains_audit_failure_without_training(tmp_path, monkeypatc
         return result
 
     monkeypatch.setattr(d, "prepare", prepare)
-    monkeypatch.setattr(frontend, "child", lambda *a, **k: (_ for _ in ()).throw(error("secret")))
+    failure = WorkerFailure(WorkerExit(-24, 0)) if error == "cpu_limit" else error("secret")
+    monkeypatch.setattr(frontend, "child", lambda *a, **k: (_ for _ in ()).throw(failure))
     report = frontend.run(path, tmp_path / "out")
     assert report["status"] == ("cancelled" if error in (InterruptedError, KeyboardInterrupt)
                                 else "unavailable")
     assert report["optimizer_updates"] == 0 and not report["real_model_trained"]
     assert "secret" not in json.dumps(report) and "manifest_sha256" in report
+    if error == "cpu_limit":
+        assert report["reason"] == "worker_cpu_limit"
+        assert report["worker_execution"]["signal_name"] == "SIGXCPU"

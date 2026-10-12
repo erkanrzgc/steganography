@@ -106,6 +106,18 @@ New outputs/cache <=5 GiB, optional weights <=250 MiB, no paid compute. Create a
 regular `CANCEL` file in the run directory or interrupt the parent to stop;
 owned subprocess groups are killed and reaped on timeout/cancellation.
 
+Worker exit evidence is numeric and additive: return code, signal/name and
+stdout byte count; never raw stderr, command or failed-worker stdout. CPU/file
+size limits, other signals, nonzero exits, empty output and output overflow
+are unavailable, not successful trials. Capacity and fit loops retain these
+failures and continue within existing budgets. Malformed responses, changed
+source/audit/data contracts and cancellation remain fail-closed. SIGKILL alone
+does not prove OOM or CPU exhaustion. A completed numeric snapshot and later
+successful read-only evaluation cannot complete a CPU-budget-exceeded trial.
+The shared worker owner is part of the execution-source closure; a runner
+revision requires a new matching audit/run, never silent rebinding of old
+checkpoints or retroactive qualification of a failed run.
+
 ## Gates and remaining phases
 
 Only frozen-statistics singleton predictions count. Every source cell reports
