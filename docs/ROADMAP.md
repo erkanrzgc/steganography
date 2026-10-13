@@ -1,5 +1,13 @@
 # Roadmap and status
 
+The 2026-10-13 frozen eight-trial job ended incomplete: genuine-16 completed
+both seeds, six four-row arms were unavailable on CPU/wall limits. Retain both
+the higher first-seed development scores and weaker second-seed scores; neither
+passes learning gates. The next measured execution candidate removes the
+reference optimizer's scalar-transfer bottleneck without changing equations.
+Physical exact parity, conservative whole-update timing and fresh audit remain
+mandatory before another fit. See `JPEG_EXECUTION_OPTIMIZATION.md`.
+
 Next execution-only candidate: consolidate JPEG gradient/state finite-check
 host transfers without skipping any tensor. Focused CPU semantics/update
 equivalence tests pass; physical CUDA equivalence/timing and full regression

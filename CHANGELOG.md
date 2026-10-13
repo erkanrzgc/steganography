@@ -1,5 +1,11 @@
 # Changelog
 
+- Consolidate reference-Adamax pre-update CUDA validation flags while retaining
+  all finite/dense/FP32/slot/norm/integral-step checks and unchanged equations.
+  Freeze exact native parity/whole-update timing gates; retain the preceding
+  incomplete six-limit/two-fit result and seed instability. No model promotion
+  or retrospective budget success; physical verification still required.
+
 - Prepare complete JPEG gradient/state finite-check consolidation to reduce CUDA
   host scalar transfers without changing optimizer/model arithmetic or dropping
   checks. Keep the running frozen GPU job unchanged; physical speed/parity and

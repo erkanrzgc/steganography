@@ -1,5 +1,26 @@
 # Implementation status — 2026-10-13
 
+Final receipt of the frozen eight-trial job was retrieved after tunnel renewal:
+`unavailable: incomplete_required_controls`, 13,766.60 monotonic seconds;
+five CPU-limit outcomes /one parent timeout and two completed genuine-16 fits.
+Each completed fit presented all 32,768 rows /2,048 updates. Seed 20261012
+development accuracy/AUC: BOSS 67.97%/.770508, BOWS 63.28%/.679199; seed
+20261013: BOSS 57.81%/.613037, BOWS 57.03%/.574951. Both remain experimental,
+all learning gates false; missing matched baselines are not silently imported.
+Final report SHA-256 `ef83fab7f89451c7bef353945dc9a1d2cd4d06992e0dd656fb0bbe88651d92a0`
+matches the remote receipt and all 50 archived `fb649d6` source blobs. Models,
+partial checkpoints and prior successful reports are retained, nothing deployed.
+
+Physical generated profiling of verified `9cdd31f` locates a remaining reference
+optimizer bottleneck: 0.44516 of 0.66157 seconds/update in the optimizer. The
+next candidate preserves all dense/FP32/finite/moment/norm/integral-step checks
+but consolidates their CUDA scalar transfers per device before any parameter
+update. 67 focused oracle/guard tests passed in 4.85 seconds; full regression,
+physical exact CUDA parity and whole-update timing remain pending. No budgets,
+exposure or accuracy gates were increased to call a failed trial successful.
+See `JPEG_EXECUTION_OPTIMIZATION.md`. New sources are not used for real fitting
+until those gates and a fresh complete audit pass.
+
 Unattended monitoring (user explicitly requested continued work): a bounded
 read-only watcher polls the current job and preserves numeric states/report
 hashes privately in `.benchmark/jpeg-own-gpu-session-20261013/monitor.jsonl`.

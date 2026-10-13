@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+`JPEG_EXECUTION_OPTIMIZATION.md` freezes actual generated CUDA comparison of
+old/new complete guards, including reference-Adamax slot/norm/integral-step
+validation. Bitwise model/optimizer/loss equality is mandatory; instrumented
+stage timings cannot be substituted for whole-update timing. A conservative
+estimate must respect existing fit limits; probes cannot qualify accuracy or
+retroactively complete the six failed controls in the preceding eight-trial run.
+
 The queued JPEG guard-consolidation candidate changes only scalar boolean
 transfers, preserving every gradient/parameter/buffer finite check. CPU-tensor
 emulation can establish guard/update equivalence, not CUDA throughput or model

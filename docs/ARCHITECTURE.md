@@ -1,5 +1,12 @@
 # Architecture
 
+`jpeg_study_optimizer.validate_reference` preserves the complete pre-update
+reference-Adamax contract. Scalar CUDA flags are copied once per device, with
+typed slot/shape metadata checked on host and no floating-point update fusion.
+Every moment/norm/step constraint remains mandatory and parameter updates begin
+only after all checks pass. See `JPEG_EXECUTION_OPTIMIZATION.md` for the pinned
+old-source physical bitwise-parity and conservative timing gate.
+
 The next JPEG candidate reuses `srnet_training._finite_gradients` and checks
 every model parameter/buffer through `_finite_state`. CUDA aggregates boolean
 results before a single host scalar transfer per guard; CPU retains serial

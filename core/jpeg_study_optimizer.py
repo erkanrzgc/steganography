@@ -12,6 +12,50 @@ RULE = "srnet-author-adamax-no-bias-correction-v1"
 L2_SCALE = 2e-4
 
 
+def validate_reference(parameters, states, *, consolidate=None):
+    """Complete pre-update checks; batch CUDA booleans, never FP arithmetic."""
+    import torch
+
+    checks = []
+    for parameter in parameters:
+        gradient = parameter.grad
+        if (parameter.dtype != torch.float32 or gradient is None
+            or gradient.is_sparse or gradient.dtype != torch.float32):
+            raise ValueError("reference Adamax requires finite dense FP32 gradients")
+        for value in (parameter, gradient):
+            checks.append(("gradients", torch.isfinite(value).all()))
+        state = states[parameter]
+        if not state:
+            continue
+        if (set(state) != {"step", "exp_avg", "exp_inf"}
+            or state["exp_avg"].shape != parameter.shape
+            or state["exp_inf"].shape != parameter.shape
+            or state["step"].shape != torch.Size([])
+            or any(v.dtype != torch.float32 for v in state.values())):
+            raise ValueError("reference Adamax state invalid")
+        checks.extend(("state", torch.isfinite(value).all()) for value in state.values())
+        checks.append(("state", (state["exp_inf"] >= 0).all()))
+        step = state["step"]
+        checks.append(("state", (step >= 1) & (step == step.floor())))
+    by_device: dict[torch.device, list[int]] = {}
+    for index, (_, value) in enumerate(checks):
+        by_device.setdefault(value.device, []).append(index)
+    results = [False] * len(checks)
+    for device, indices in by_device.items():
+        batched = device.type == "cuda" if consolidate is None else consolidate
+        if batched:
+            flags = torch.stack([checks[index][1] for index in indices]).cpu().tolist()
+        else:
+            flags = [bool(checks[index][1]) for index in indices]
+        for index, valid in zip(indices, flags, strict=True):
+            results[index] = valid
+    for (kind, _), valid in zip(checks, results, strict=True):
+        if not valid:
+            if kind == "gradients":
+                raise ValueError("reference Adamax requires finite dense FP32 gradients")
+            raise ValueError("reference Adamax state invalid")
+
+
 def optimizer(model, *, reference=False, corrected_l2=False, learning_rate=0.001):
     import torch
 
@@ -37,29 +81,8 @@ def optimizer(model, *, reference=False, corrected_l2=False, learning_rate=0.001
             if closure is not None:
                 raise ValueError("research optimizer does not execute closures")
             # Validate every parameter/gradient before changing any parameter.
-            for group in self.param_groups:
-                for parameter in group["params"]:
-                    gradient = parameter.grad
-                    if (
-                        parameter.dtype != torch.float32 or gradient is None
-                        or gradient.is_sparse or gradient.dtype != torch.float32
-                        or not bool(torch.isfinite(parameter).all())
-                        or not bool(torch.isfinite(gradient).all())
-                    ):
-                        raise ValueError("reference Adamax requires finite dense FP32 gradients")
-                    state = self.state[parameter]
-                    if state and (
-                        set(state) != {"step", "exp_avg", "exp_inf"}
-                        or any(not bool(torch.isfinite(v).all()) for v in state.values())
-                        or bool((state["exp_inf"] < 0).any())
-                        or state["exp_avg"].shape != parameter.shape
-                        or state["exp_inf"].shape != parameter.shape
-                        or state["step"].shape != torch.Size([])
-                        or any(v.dtype != torch.float32 for v in state.values())
-                        or float(state["step"]) < 1
-                        or not float(state["step"]).is_integer()
-                    ):
-                        raise ValueError("reference Adamax state invalid")
+            validate_reference([p for group in self.param_groups for p in group["params"]],
+                               self.state)
             for group in self.param_groups:
                 for parameter in group["params"]:
                     gradient = parameter.grad.add(parameter, alpha=group["weight_decay"])
