@@ -1,5 +1,10 @@
 # Changelog
 
+- Add explicit owned cancelled-job JPEG continuation with checksum-bound prefix
+  replay, numeric snapshot validation, inherited provenance and cumulative
+  six-hour accounting. Preserve parent evidence and the fitting-source closure;
+  train only missing halves. No new accuracy or deployment claim from replay.
+
 - Verify the first complete real checkpoint-linked JPEG control: 32,768 rows,
   8,192 updates, both workers below unchanged limits. All 498 numeric arrays
   and development results match the preserved uninterrupted baseline exactly.

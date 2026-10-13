@@ -712,6 +712,14 @@ after final CPU conversion. CPU training/storage validation remains unchanged.
 No check is skipped; all-device state must be dense and colocated on CPU or
 primary CUDA. Changing this execution requires a new source-bound timing run.
 
+`core/jpeg_study_continue.py` owns checksum-bound cancelled-job validation,
+prefix replay, inherited provenance, copying, cancellation and cumulative
+budget accounting. `steganography/research_jpeg_continue.py` is its explicit
+own-GPU CLI adapter to existing isolated workers. They have a separate source
+closure without modifying/rebinding the frozen fitting implementation. Parent
+reports/snapshots remain immutable and only missing halves are newly fitted;
+see `JPEG_OWNED_CONTINUATION.md`.
+
 The shared optimizer consolidates finite-gradient scalar synchronization only
 for explicit CUDA execution; CPU short-circuit checks remain unchanged. All
 gradient elements, missing-gradient rejection and full per-update numeric-state

@@ -1,6 +1,17 @@
-# Implementation status — 2026-10-13
+# Implementation status — 2026-10-14
 
-USER-REQUESTED STOP at 18:40 UTC: do not restart anything until the user asks
+User explicitly resumed work and SSH is reconnected. Owned-job continuation
+is implemented separately from the unchanged 52 fitting-source files; see
+`JPEG_OWNED_CONTINUATION.md`. It retains the cancelled parent, replays only
+verified prefix receipts/snapshots into a fresh attempt, and deducts the entire
+3,688.12-second prior attempt from the same six-hour controls budget. Completed
+legacy fitting and the reference first half need no repeated GPU updates.
+80 independent CPU orchestration/rejection tests, including a full-shape
+numeric snapshot parser integration, pass; lint/type checks pass. Full
+regression and physical continuation remain pending. No accuracy gain claimed.
+The earlier stop and running observations below remain historical records.
+
+Historical USER-REQUESTED STOP at 18:40 UTC: do not restart anything until the user asks
 to continue. Training received SIGINT and wrote `cancelled: user_cancelled`;
 the service's exit code 2 is expected cancellation, not a CPU/GPU failure.
 Both remote observer/final-check services and the local SSH watcher were

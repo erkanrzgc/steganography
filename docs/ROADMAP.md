@@ -1,5 +1,11 @@
 # Roadmap and status
 
+2026-10-14: user explicitly resumed work. Separate checksum-bound owned-job
+continuation preserves the original fitting-source binding and subtracts prior
+spent/discarded time from the unchanged controls budget. 80 CPU tests and
+lint/type checks pass; full regression and physical restart remain pending.
+See `JPEG_OWNED_CONTINUATION.md`. The pause below is historical.
+
 PAUSED BY USER, 2026-10-13 18:40 UTC. Training and all accompanying watchers /
 final checkers stopped; GPU has no compute process. Keep the complete legacy
 control and the source-bound reference-Adamax first-half checkpoint. Only

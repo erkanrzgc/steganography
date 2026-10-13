@@ -1,5 +1,13 @@
 # Benchmark protocol
 
+`JPEG_OWNED_CONTINUATION.md` defines explicit continuation of a user-cancelled
+owned segmented job. Keep parent evidence immutable and fitting hashes fixed;
+the new orchestrator/protocol have their own recorded source closure. Reused
+segments are inherited evidence, not fresh GPU training or model imports.
+All elapsed prior work, including discarded work, consumes the same six-hour
+budget. Complete logical exposure and unchanged paired development learning
+gates are required; CPU replay fixtures and numeric parsing are not accuracy.
+
 `JPEG_SEGMENTED_CONTROL_PROTOCOL.md` defines a separately versioned execution
 mode, preserving the full 32,768-row, four-arm/two-seed experiment and all
 learning gates. Two 16,384-row workers retain the old per-process limits; the
