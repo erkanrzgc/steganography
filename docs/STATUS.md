@@ -1,5 +1,25 @@
 # Implementation status — 2026-10-14
 
+USER-REQUESTED PAUSE, 2026-10-13 21:56:09 UTC (00:56 local Oct 14): training
+and its own-host observer are stopped. The runner wrote `cancelled:user_cancelled`;
+service exit 2 is expected cancellation. CUDA compute-process inventory is empty.
+Two full first-seed controls are preserved: legacy and reference-Adamax, each
+32,768 rows, with four checksum-bound numeric snapshots. The third control's
+first half had not reached its checkpoint and must restart; never claim that
+partial work saved. No artifacts/data/checkpoints were deleted or overwritten.
+The cumulative useful controls time, including discarded work, is 5,403.52 s;
+remaining budget 16,196.48 s. Preserve all 52 fitting-source hashes and the
+separate controller closure. Parent cancellation SHA-256:
+`da85544091ba0ff84d8074fc3b05e4576e2c9d2051735c7fed8e623bdbfc23e9`.
+Next private explicit prefix plan: `next-resume-plan.json` in the owned
+continuation handoff directory; use a fresh next attempt, no automatic restart.
+
+New reference development results for first seed only: BOSS accuracy 60.94%,
+AUC .594482; BOWS accuracy 51.56%, AUC .536377. Both learning gates fail;
+BOWS AUC is not above legacy, and the second seed/six controls remain pending.
+Do not claim general learning success or promote/deploy this snapshot. Earlier
+running observations below are historical, not current activity.
+
 Actual continuation started 2026-10-13 21:27:35 UTC (00:27:35 local Oct 14),
 execution `c218e5e`, after the complete unchanged regression gate: 2,830 passed,
 one actual-CUDA skip, total coverage 96.47%, 1,039.29 seconds. New controller

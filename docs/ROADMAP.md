@@ -1,5 +1,13 @@
 # Roadmap and status
 
+PAUSED BY USER at 00:56 local Oct 14. Two complete first-seed controls and four
+snapshots are preserved; training and its observer stopped, no CUDA compute
+process remains. Six controls pending. Reuse the exact verified owned prefix
+on an explicit later resume; keep cumulative spent time 5,403.52 s, no budget
+reset or source rebinding. The third uncheckpointed half must restart. Both
+reference learning gates fail; source-wide/second-seed improvement unverified.
+See `STATUS.md`. Running observations below remain historical.
+
 Actual own-GPU continuation started 00:27:35 local Oct 14 after 2,830 full tests,
 96.47% coverage, lint/type/diff checks and physical verification of all three
 inherited numeric snapshots. Original 52 fitting sources/bindings and cancelled
