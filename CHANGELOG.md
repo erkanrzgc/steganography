@@ -1,5 +1,12 @@
 # Changelog
 
+- Verify bounded JPEG continuation with 2,743 full tests /96.40% coverage,
+  all eight CI jobs, 12 physical CUDA generated proofs and a fresh complete
+  52-source audit. Start a separate own-GPU control matrix; retain initial
+  private controller schema failure and capacity OOM. Record startup only,
+  with bounded remote observation/final verification independent of SSH expiry;
+  no completed training, accuracy increase or deployment claimed from startup.
+
 - Add explicit `bounded-half-v1` JPEG controls: unchanged full image exposure,
   two isolated halves, verified numeric-only source-bound continuation, no
   partial evaluation and per-phase receipts. Keep worker limits; record a

@@ -1,0 +1,247 @@
+{
+  "accuracy_qualification": "unavailable",
+  "capacity": [
+    {
+      "reason": null,
+      "rows": 8,
+      "status": "completed"
+    },
+    {
+      "reason": null,
+      "rows": 16,
+      "status": "completed"
+    },
+    {
+      "reason": "gpu_allocator_out_of_memory",
+      "rows": 32,
+      "status": "unavailable"
+    }
+  ],
+  "cloud_spending": 0,
+  "config_sha256": "a3b7ea7553dfcb309f4f5eed1a97f06b5e112bd4ed27cb81d35420598a182c10",
+  "controls": {
+    "controls_budget_seconds": 21600,
+    "genuine_rows": 16,
+    "later_stage_extra_budget_authorized": false,
+    "later_stages_started": false,
+    "original_overall_study_envelope_seconds": 28800,
+    "per_worker_cpu_hard_seconds": 1801,
+    "per_worker_cpu_soft_seconds": 1800,
+    "per_worker_parent_timeout_seconds": 1830,
+    "per_worker_wall_seconds": 1800,
+    "presented_rows_per_logical_trial": 32768,
+    "required_trials": 8,
+    "rows_per_segment": 16384,
+    "segments_per_trial": 2,
+    "service_watchdog_seconds": 21720
+  },
+  "deployed": false,
+  "execution": {
+    "compute_capability": [
+      12,
+      0
+    ],
+    "cpu_fallback": false,
+    "cuda_version": "13.0",
+    "deterministic_algorithms": true,
+    "device": "cuda:0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "host_memory_max_bytes": 8589934592,
+    "mixed_precision": false,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "torch_allocator_limit_bytes": 4294967296,
+    "torch_version": "2.14.0+cu130",
+    "total_gpu_bytes": 8518041600
+  },
+  "execution_git_commit": "16a2c69c59ce78970919e002a99b323d3f5b34e5",
+  "execution_mode": "bounded-half-v1",
+  "execution_source_closure_sha256": "c440553cbe100023d79d666564ee19910ac758e547e2114e1587f6d8b4e06c17",
+  "execution_source_files": 52,
+  "fresh_audit": {
+    "corpus_regenerated": false,
+    "development_views": 1280,
+    "fit_views": 5120,
+    "maximum_absolute_pixel_difference": 5.684341886080802e-14,
+    "original_identities_changed": false,
+    "status": "completed"
+  },
+  "fresh_audit_sha256": "23c8e1828abb7745774027971f0b0a7684af2c6153dfed0fc2741f4fbc2add4e",
+  "generated_gates": {
+    "archived_optimizer_bitwise_parity_all_arms": true,
+    "disk_resume_bitwise_parity_all_arms": true,
+    "fixture_counters_generated_not_real_fit": true,
+    "real_data_used": false,
+    "receipts": [
+      {
+        "name": "parity-legacy.json",
+        "sha256": "8fa0afcd79c9684e11231c63787ab125f374317657852fd7b08221fdae513a17"
+      },
+      {
+        "name": "resume-legacy.json",
+        "sha256": "8d1439985c5cb8eba5a5cbd073dbd04d3b4e0405fae8fd4e1fe4be7707c7c8f3"
+      },
+      {
+        "name": "whole-legacy.json",
+        "sha256": "966e6fa0018af659cf3f89f53bb9ac3729c85c37685a2a5ade40a3198d939154"
+      },
+      {
+        "name": "parity-reference-adamax.json",
+        "sha256": "0dc96c0a0ba3c834d5319d9f5265f32c2fa5970773bb73974bba5134aa6ea828"
+      },
+      {
+        "name": "resume-reference-adamax.json",
+        "sha256": "b32f7b6183b8cb3e5a187a5dc76f6297e3bb9443e003dcd5587d052b5e96d7be"
+      },
+      {
+        "name": "whole-reference-adamax.json",
+        "sha256": "6877897615c9b38a03c277b165677ced7976df4b2704dc5cb6cfa4f60e4125f1"
+      },
+      {
+        "name": "parity-convolution-l2.json",
+        "sha256": "2e12b1c5276c20de91171b801317bb54ca94b303e8857fed94fcce8a2a61a35e"
+      },
+      {
+        "name": "resume-convolution-l2.json",
+        "sha256": "263cd9c2f0ad0420f520ec9643d208b6718c73c6df7e55d7b3b98b031b0db422"
+      },
+      {
+        "name": "whole-convolution-l2.json",
+        "sha256": "6454022cff5281791d2b343467a02bcdbef76b308149d2a3382aa2b7cdc82bd8"
+      },
+      {
+        "name": "parity-genuine-batch.json",
+        "sha256": "d40f5d4b92137c6c511de54ad31e279b2ade6685c60149116e79155d6db92b92"
+      },
+      {
+        "name": "resume-genuine-batch.json",
+        "sha256": "46102f3ad58ef60f9ee314466d234813110b131aa5d8bc0b39e63d1816569511"
+      },
+      {
+        "name": "whole-genuine-batch.json",
+        "sha256": "837649cf9d329262e177b3965c7b851aff1f53f3a15e38f2380ce3d1ac9a5268"
+      }
+    ],
+    "report_sha256": "f1450928bc9591216a0e7845cc0e725fb84c300d5373663556f68d97f971b3a1",
+    "status": "completed"
+  },
+  "generated_half_timing": [
+    {
+      "arm": "legacy",
+      "conservative_half_seconds": 877.2202671199921,
+      "half_budget_eligible": true,
+      "measured_updates": 64,
+      "rows": 4,
+      "whole_seconds_per_update": 0.15961333342187345
+    },
+    {
+      "arm": "reference-adamax",
+      "conservative_half_seconds": 1112.4535363999894,
+      "half_budget_eligible": true,
+      "measured_updates": 64,
+      "rows": 4,
+      "whole_seconds_per_update": 0.20555733132812293
+    },
+    {
+      "arm": "convolution-l2",
+      "conservative_half_seconds": 1224.5178736798698,
+      "half_budget_eligible": true,
+      "measured_updates": 64,
+      "rows": 4,
+      "whole_seconds_per_update": 0.22744489720309957
+    },
+    {
+      "arm": "genuine-batch",
+      "conservative_half_seconds": 662.0968708600412,
+      "half_budget_eligible": true,
+      "measured_updates": 64,
+      "rows": 16,
+      "whole_seconds_per_update": 0.4703881803594072
+    }
+  ],
+  "historical_failed_trials_reclassified": false,
+  "historical_snapshots_rebound_or_imported": false,
+  "learning_gain_established": false,
+  "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+  "observed_at": "2026-10-13T17:39:41.109296+00:00",
+  "preserved_failed_preflight_controller": {
+    "key": "real_model_trained",
+    "native_generated_probes_failed": false,
+    "reason": "receipt_schema_key_error",
+    "resolution": "separate_schema_specific_gate_verified_all_12_receipts",
+    "status": "failed"
+  },
+  "schema_version": "jpeg-segmented-gpu-start-v1",
+  "service_started_at": "2026-10-13T17:37:24Z",
+  "source_sha256": {
+    "core/jpeg_curriculum.py": "269e556404b943142ef3058e756a1154a9ca5c8565b7fd617a0210063dca16d1",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_learnability.py": "a691e05b7b6fffa48857bc56c55441a38e26f750cf0125aa47ec9f98cf9f45c0",
+    "core/jpeg_norm_learning.py": "3d5d91bbf597c90c06057294609c184afc416613fb17fb4e12f3ffd63460e443",
+    "core/jpeg_population_control.py": "83f9d21e38d36c19a90a1c9724c3ed407d382d7a4552170c54aba9ebb66435ba",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "core/jpeg_study.py": "b782c8651e9d9107b2ca591d4856d59143e13bc471254df74c6eb54a26c479e8",
+    "core/jpeg_study_audit.py": "b7613f79f02ac90144e78ee951b71bbede0fee46df38cbcf96c1db1c6bf51a7f",
+    "core/jpeg_study_data.py": "1208aaac72f6b16e0851ea743beb4d6c55fa566f1eaea4a46f2819d86d7d58e5",
+    "core/jpeg_study_entropy.py": "49ceec8e0b105bae08f53e4b97f9a5d7896d10aeebb8842fff7e52baad406be6",
+    "core/jpeg_study_optimizer.py": "41c9a3d76b6b31f916ed80d2e055a1d46d23758fe7ca52f7ac1544ab81e941a0",
+    "core/jpeg_study_process.py": "dc888db327620a433ea21c7f184216629154ff07b834e4acb72c4a46aa002ca9",
+    "core/jpeg_study_segments.py": "e708d5ae478b4efe1dcbbb1f62cbbfc11b02141deb20a6fc574fa91c00f93a5d",
+    "core/jpeg_study_state.py": "6456f8cadbfe3290fd8edae2d3594204462cced496dd8e4c6982b1cd627757d5",
+    "core/jpeg_study_views.py": "84a88e7bd985fa55af4bb78621a37471c3c9012a5ee78c4b5095bae9bd62ffe8",
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "core/jpeg_timing_probe.py": "f1f78bc9fc6b279003637ad116f42cfcb4a1e09c1b7fb9c139333ecb01bd6777",
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_batch_probe.py": "388a6930942d0e049840bcb4c421816b224ac999029a761b8f0aa643aa672126",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/srnet_diversity_sampling.py": "96c00eaf608fd3cb1192d14b8a5a2ac07faaad8e30e124bf6001c803373d1df3",
+    "core/srnet_groupnorm.py": "7bc350808062a2eb5dd6c3c6c289228f9eef97efa00ca1766b56fa89b522f1a4",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_norm_training.py": "b44b7dab5a2cb6fb3e63cc0dd9eb581d629988e064d41762b87937cf30b4b6db",
+    "core/srnet_population_bn.py": "99ca45b4ece2736dbf981648db274bf259d5c832d1dda5d23c9084d8a7b581a8",
+    "core/srnet_samepool.py": "eeaf4b98b5dfa41a2a500812c107e33e76c16be50c2e5c330e8d74a74bf0089b",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "docs/JPEG_BATCH_PROBE_PROTOCOL.md": "44435efa14af90899eed29f33be0ce7163f95e01a07ceb6d7bb8f4fed6a5a507",
+    "docs/JPEG_CURRICULUM_PROTOCOL.md": "dd4fd187a25106c28e6f567c25c0994e4fea7ae7cb37afe9919690a781eddda6",
+    "docs/JPEG_FIVE_VIEW_STUDY.md": "8894214b0d40a0576e7d8705f324bf2bf0260ff49f5aba5d00255559ed245ee9",
+    "docs/JPEG_LEARNABILITY_PROTOCOL.md": "86926fff75edffc780e29ef821574a169366cbadd3009d794dc35342434ed06f",
+    "docs/JPEG_LEARNING_STUDY.md": "beda9c06699ca44044588d62366a4caa9a82c58f5dc3e303bf77f5fe6a7b4df3",
+    "docs/JPEG_NORM_LEARNING_PROTOCOL.md": "7c9f170805f0750b625e5cc026fbb0165ea92f9add31991295ea4eecfeb69658",
+    "docs/JPEG_POPULATION_BN_PROTOCOL.md": "1136f45698bf55c57aed8fcf8e3945d6a8e3b8c89696a0c12aaeb12e33bf9c39",
+    "docs/JPEG_SEGMENTED_CONTROL_PROTOCOL.md": "6f70a17fbd66a95ec5b6fef70e6b35530eb79bb43c2cffc4138198adb897d971",
+    "steganography/benchmarking/metrics.py": "7ce03697dc51672399c5f07f475d55d50f353aba45290229709ca49742d7a586",
+    "steganography/research_batch_probe.py": "6013bce0dabe93fcff09916d8cb8870fb38d71fd3018ac23e3b970866385f723",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_jpeg_curriculum.py": "e009ade8519dbb252161107759e37318dd0d47b971635f28950bc00b5b9e6359",
+    "steganography/research_jpeg_learnability.py": "14876735448e4f8cb134e58f64a6970a50ac0a09cfcc78dacc3f98e910337078",
+    "steganography/research_jpeg_norm_learning.py": "d06540ee5dc074087258e256fd7d6ac4b86429eda517cbb40cf01eba9bfc5aab",
+    "steganography/research_jpeg_population_bn.py": "742ec92b579c98a4a893a978bb203c5ff43703b224d4d12c77b5f2f065921f19",
+    "steganography/research_jpeg_study.py": "dd8003892cbab3f4d510c3ac2febed34223889aba3e2f2d69771a1676f865b4a",
+    "steganography/research_jpeg_timing_probe.py": "b6dd2c95a9ca44b03d8d85d757122915cc71bd805a99c1e86206bc689e39c8a3",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a"
+  },
+  "status": "running_observed",
+  "training_complete_at_observation": false,
+  "verification": {
+    "ci_jobs_passed": 8,
+    "ci_run": 38438164182,
+    "full_suite_passed": 2743,
+    "full_suite_seconds": 654.35,
+    "full_suite_skipped": 1,
+    "new_segment_core_coverage_percent": 98.77,
+    "python_versions": [
+      "3.11",
+      "3.12",
+      "3.13",
+      "3.14"
+    ],
+    "total_coverage_percent": 96.4
+  }
+}

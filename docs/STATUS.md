@@ -1,5 +1,31 @@
 # Implementation status — 2026-10-13
 
+Bounded-segment own-GPU startup observed at 17:39:41 UTC, service started
+17:37:24 UTC at verified `16a2c69`. All eight actual CI jobs passed, including
+the complete unchanged gate: 2,743 passed /one actual-CUDA skip, 654.35 seconds,
+total coverage 96.40%, new segment core 98.77%. All 12 native CUDA generated
+proofs passed: archived-optimizer and disk-continuation bitwise parity across
+four arms, plus half-budget estimates 877.22 /1,112.45 /1,224.52 /662.10 seconds.
+The disk fixtures use explicitly generated counters, not real previous fits.
+
+Fresh independent 52-source audit verifies all 6,400 existing views; original
+identities and data remain unchanged. Capacity 8/16 passed, 32 retains allocator
+OOM under the same 4 GiB policy. The new eight-trial `bounded-half-v1` job is
+running its first actual GPU half at this observation; no completed trial,
+learning gain or qualified model is claimed. Per-worker CPU/wall caps stay
+unchanged; the six-hour controls budget is explicit. Remote bounded observation
+and separate final snapshot/metric verification run independently of temporary
+SSH availability. They do not restart jobs or alter sources/budgets. Local SSH
+watching also retains changed receipts; it stops on three failed connections.
+
+The first private preflight controller failed on a receipt-schema KeyError
+(`real_model_trained` is absent in the archived parity receipt). All native
+probes had completed; a separate strict schema-specific gate verified their
+actual fields and checksums before audit/start. Preserve the failed controller
+unit and original receipts, not a silently successful rewrite. See the dated
+portable `benchmarks/jpeg-segmented-gpu-start-20261013.json`; startup is not
+completion. Earlier implementation observations below remain historical.
+
 Actual generated CUDA eight-update parity at `b37793d` passed all four arms:
 losses and all model/BatchNorm/optimizer arrays are bitwise equal to the pinned
 old validator, maximum difference zero. Whole-update means (seconds) are legacy

@@ -1,5 +1,13 @@
 # Roadmap and status
 
+2026-10-13 at 17:39 UTC: bounded-segment own-GPU controls started after all
+eight actual CI jobs (2,743 full tests, 96.40% coverage), 12 native generated
+proofs and the complete fresh 52-source /6,400-view audit passed. All four
+conservative half-time gates fit below the unchanged 1,800-second worker cap.
+The first actual half is running; learning/completion remain pending. A remote
+bounded observer and final checker survive temporary SSH expiry without
+restarting the job. See `benchmarks/jpeg-segmented-gpu-start-20261013.json`.
+
 Execution repair: actual CUDA eight-update comparison at `b37793d` matches the
 archived validator bitwise in every model/BN/optimizer array and all losses,
 across all four arms. Whole-update reference/L2 estimates still exceed the old
