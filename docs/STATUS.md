@@ -1,5 +1,22 @@
 # Implementation status — 2026-10-13
 
+At 18:11 UTC the first actual segmented logical control completed: legacy,
+seed 20261012, all 32,768 rows /8,192 updates. Kernel durations 830.67 and
+1,073.06 seconds stay below unchanged worker limits, aggregate 1,903.73
+seconds. Both real snapshots pass shape/dtype/finite/BN/optimizer-counter
+checks. Read-only comparison with the preserved earlier uninterrupted legacy
+fit matches all 498 numeric arrays bitwise and every development probability
+and metric. Different original bindings are retained; no historical snapshot
+was resumed/rebound/reclassified. This verifies real continuation, not an
+accuracy increase: legacy remains BOSS 53.91%/.547241 AUC and BOWS
+50.78%/.538818 AUC, with high FPR and failed learning gates. The next reference
+arm is running; seven required controls remain. See
+`benchmarks/jpeg-segmented-first-trial-20261013.json`.
+
+The separate startup-publication revision `77549b6` also passed all eight CI
+jobs: 2,749 full tests /one actual-CUDA skip, coverage 96.40%, 1,231.84 seconds
+(run 38441084959). It changed no active execution source or training binding.
+
 Bounded-segment own-GPU startup observed at 17:39:41 UTC, service started
 17:37:24 UTC at verified `16a2c69`. All eight actual CI jobs passed, including
 the complete unchanged gate: 2,743 passed /one actual-CUDA skip, 654.35 seconds,

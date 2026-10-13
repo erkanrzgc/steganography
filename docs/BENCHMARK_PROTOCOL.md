@@ -16,6 +16,13 @@ The initial private preflight-controller schema failure stays failed; its
 schema-specific replacement validates each existing receipt, not defaulted
 missing proof fields. Final matrices/snapshots require separate verification.
 
+The subsequent `jpeg-segmented-first-trial-20261013.json` records only one
+completed logical control out of eight. Both actual worker durations respect
+the old limits although their aggregate exceeds the old monolithic ceiling.
+All 498 arrays, development probabilities and metrics match the preserved
+uninterrupted baseline; unchanged chance-level detection is not an improvement.
+Original snapshot bindings remain distinct and historical fits are not rebound.
+
 `JPEG_EXECUTION_OPTIMIZATION.md` freezes actual generated CUDA comparison of
 old/new complete guards, including reference-Adamax slot/norm/integral-step
 validation. Bitwise model/optimizer/loss equality is mandatory; instrumented

@@ -1,5 +1,11 @@
 # Changelog
 
+- Verify the first complete real checkpoint-linked JPEG control: 32,768 rows,
+  8,192 updates, both workers below unchanged limits. All 498 numeric arrays
+  and development results match the preserved uninterrupted baseline exactly.
+  Record only 1/8 controls complete, unchanged failed legacy detection and no
+  historical snapshot rebinding or qualified/deployed model.
+
 - Verify bounded JPEG continuation with 2,743 full tests /96.40% coverage,
   all eight CI jobs, 12 physical CUDA generated proofs and a fresh complete
   52-source audit. Start a separate own-GPU control matrix; retain initial

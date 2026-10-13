@@ -79,3 +79,25 @@ def test_portable_observation_retains_capacity_oom_without_secrets(receipt):
     assert all(secret not in encoded for secret in (
         "/home/", "/tmp/",  # noqa: S108 - forbid leaked host paths, not create a temporary file
         "password=", "api_key=", "SSH_AUTH_SOCK", "unredacted_command"))
+
+
+def test_real_completed_trial_preserves_exposure_and_bounded_processes(receipt):
+    path = ROOT / "benchmarks/jpeg-segmented-first-trial-20261013.json"
+    progress = json.loads(path.read_bytes())
+    assert progress["execution_source_closure_sha256"] == receipt["execution_source_closure_sha256"]
+    assert progress["status"] == "partial_matrix_observed" and not progress["matrix_complete"]
+    assert progress["completed_logical_trials"] == 1 and progress["required_logical_trials"] == 8
+    trial = progress["trial"]
+    assert trial["status"] == "completed" and trial["real_gpu_fit"]
+    assert trial["presented_rows"] == 32768 and trial["optimizer_updates"] == 8192
+    assert [s["status"] for s in trial["segments"]] == ["checkpointed", "completed"]
+    assert all(s["seconds"] < 1800 and s["worker_wall_seconds"] < 1830 for s in trial["segments"])
+    assert trial["seconds"] > 1800  # logical exposure no longer depends on one long process
+    assert trial["validated_arrays_per_snapshot"] == 498
+    compare = progress["real_uninterrupted_baseline_comparison"]
+    assert compare["all_numeric_arrays_bitwise_equal"] and compare["scores_equal"]
+    assert compare["historical_numeric_sha256"] == compare["new_numeric_sha256"]
+    assert not compare["historical_snapshot_rebound"]
+    assert not compare["historical_snapshot_imported_for_training"]
+    assert not compare["historical_fit_reclassified"]
+    assert not progress["learning_gain_established"] and not progress["deployed"]

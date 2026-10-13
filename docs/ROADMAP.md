@@ -1,5 +1,11 @@
 # Roadmap and status
 
+First real segmented control completed at 18:11 UTC: full 32,768-row legacy
+fit, two workers each below its old limit. All 498 model/BN/optimizer arrays
+and development results match the preserved uninterrupted baseline exactly;
+no snapshot rebinding or accuracy increase. Reference fitting continues,
+seven controls remain. See `benchmarks/jpeg-segmented-first-trial-20261013.json`.
+
 2026-10-13 at 17:39 UTC: bounded-segment own-GPU controls started after all
 eight actual CI jobs (2,743 full tests, 96.40% coverage), 12 native generated
 proofs and the complete fresh 52-source /6,400-view audit passed. All four
