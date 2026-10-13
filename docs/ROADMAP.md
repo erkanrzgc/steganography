@@ -1,9 +1,17 @@
 # Roadmap and status
 
+Actual own-GPU continuation started 00:27:35 local Oct 14 after 2,830 full tests,
+96.47% coverage, lint/type/diff checks and physical verification of all three
+inherited numeric snapshots. Original 52 fitting sources/bindings and cancelled
+parent remain intact. Legacy is inherited, reference second half is running;
+seven controls remain and no learning gain/completion is claimed. Total spent
+time remains within the original cumulative controls budget. New CI pending.
+See `benchmarks/jpeg-owned-continuation-start-20261014.json`.
+
 2026-10-14: user explicitly resumed work. Separate checksum-bound owned-job
 continuation preserves the original fitting-source binding and subtracts prior
 spent/discarded time from the unchanged controls budget. 80 CPU tests and
-lint/type checks pass; full regression and physical restart remain pending.
+lint/type checks pass; complete regression and physical startup are recorded above.
 See `JPEG_OWNED_CONTINUATION.md`. The pause below is historical.
 
 PAUSED BY USER, 2026-10-13 18:40 UTC. Training and all accompanying watchers /

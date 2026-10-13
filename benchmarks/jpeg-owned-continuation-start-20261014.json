@@ -1,0 +1,102 @@
+{
+  "schema_version": "jpeg-owned-continuation-observation-v1",
+  "observed_at": "2026-10-13T21:28:05Z",
+  "execution_commit": "c218e5e3c3a44b507732c27a0ca0a79e4728235a",
+  "status": "running",
+  "fitting_source_record": "jpeg-segmented-gpu-start-20261013.json",
+  "fitting_source_count": 52,
+  "fitting_sources_unchanged": true,
+  "controller_sha256": {
+    "core/jpeg_study_continue.py": "04fbd6a41a5a10b9f6bd5e78d5597a2e23d74afe108099ee84fc33e256f1eda5",
+    "steganography/research_jpeg_continue.py": "4f040c1506378c14e65426326ba018c7f896b4eae1d160941e4477047d71fb36",
+    "docs/JPEG_OWNED_CONTINUATION.md": "174b82896d2ab963b3a65c45e7edb1ae6717b6789e4a739ea547c11f93abf953"
+  },
+  "config_sha256": "a3b7ea7553dfcb309f4f5eed1a97f06b5e112bd4ed27cb81d35420598a182c10",
+  "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+  "audit_sha256": "23c8e1828abb7745774027971f0b0a7684af2c6153dfed0fc2741f4fbc2add4e",
+  "parent_report_sha256": "5785d91f1769ee577fc5506665f3507b69c314e28e0c61274a6adf67f0c2f477",
+  "parent_report_unchanged": true,
+  "verification": {
+    "full_regression_passed": 2830,
+    "full_regression_skipped": 1,
+    "skip_reason": "actual CUDA unavailable on CPU regression host; not passed",
+    "full_regression_seconds": 1039.29,
+    "total_coverage_percent": 96.47,
+    "new_core_coverage_percent": 97.71428571428571,
+    "new_cli_coverage_percent": 97.5609756097561,
+    "ruff": "passed",
+    "mypy": "passed",
+    "diff_check": "passed",
+    "physical_numeric_snapshots_verified": 3,
+    "physical_verification_sha256": "468ab36da249540504012fb3d9fda05aebfae86788a0fc78cd1fcc26f20111d1",
+    "new_ci": "pending"
+  },
+  "inherited_segments": [
+    {
+      "arm": "legacy",
+      "seed": 20261012,
+      "stop_rows": 16384,
+      "receipt_sha256": "8a33708a8b04ec8fb6a6890160946b0e039a4e9921c9df114d3c5751ae22edf2",
+      "checkpoint_sha256": "fe9b171a22034b4840465a99cceb561334588f7f0ba509e21be1906e67f76b94"
+    },
+    {
+      "arm": "legacy",
+      "seed": 20261012,
+      "stop_rows": 32768,
+      "receipt_sha256": "a8dbd34572c782ec314397f21f15cbc04da6befb451e2558106064e1a2421520",
+      "trial_sha256": "edc5c4367964e1e5fd96a02baefc324e4194dec74351112101a44422d22ca6c8",
+      "checkpoint_sha256": "b73cc272a5e0f40271b841c5c40ed802dbe8620a9ab64939df3c4756d1d51c62"
+    },
+    {
+      "arm": "reference-adamax",
+      "seed": 20261012,
+      "stop_rows": 16384,
+      "receipt_sha256": "489ecf5a3bf87e2fb834bc9db6f2afad28a55ee36aab55dbceae07bd32b015dc",
+      "checkpoint_sha256": "71b89cc56c30b4b745c89724134127fe1d32884b961fb54679e034ffd76af4ed"
+    }
+  ],
+  "inherited_completed_controls": 1,
+  "newly_completed_controls": 0,
+  "required_controls": 8,
+  "matrix_complete": false,
+  "active_control": {
+    "arm": "reference-adamax",
+    "seed": 20261012,
+    "resumed_from_rows": 16384,
+    "target_rows": 32768,
+    "status": "running"
+  },
+  "capacity": {
+    "8": "completed",
+    "16": "completed",
+    "32": "unavailable: gpu_allocator_out_of_memory"
+  },
+  "budget": {
+    "total_controls_seconds": 21600,
+    "prior_spent_seconds_including_discarded_work": 3688.1173132080003,
+    "remaining_seconds_at_start": 17911.882686792,
+    "service_watchdog_seconds": 18032,
+    "worker_cpu_soft_seconds": 1800,
+    "worker_cpu_hard_seconds": 1801,
+    "worker_parent_wall_seconds_max": 1830,
+    "host_memory_max_bytes": 8589934592,
+    "gpu_allocator_limit_bytes": 4294967296
+  },
+  "observation": {
+    "training_service": "running",
+    "remote_bounded_observer": "running",
+    "gpu_utilization_percent": 64,
+    "total_gpu_memory_used_mib": 2309,
+    "automatic_restart": false
+  },
+  "accuracy_improvement_verified": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "cloud_spending": 0,
+  "limitations": [
+    "Startup is not completion or accuracy evidence.",
+    "Inherited fitting is explicitly not newly repeated GPU computation.",
+    "Only the frozen native-gray Q75/JUNIWARD development study is running.",
+    "No independent-source production evaluation or model promotion."
+  ]
+}

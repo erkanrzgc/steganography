@@ -1,5 +1,21 @@
 # Implementation status — 2026-10-14
 
+Actual continuation started 2026-10-13 21:27:35 UTC (00:27:35 local Oct 14),
+execution `c218e5e`, after the complete unchanged regression gate: 2,830 passed,
+one actual-CUDA skip, total coverage 96.47%, 1,039.29 seconds. New controller
+coverage is 97.71% /CLI 97.56%; lint/type/diff checks pass. The own-GPU bounded
+precheck validates all three original numeric snapshots with the unchanged
+52 fitting-source files and Torch binding. The cancelled parent remains intact.
+Fresh capacity 8/16 passes; 32 remains allocator-OOM under the same 4 GiB cap.
+At 21:28:05 UTC legacy is inherited-complete, not newly fitted; reference-Adamax
+seed 20261012 is running its missing second half from the verified 16,384-row
+snapshot. Seven controls remain; no new complete trial or learning gain yet.
+Remaining useful budget starts at 17,911.88 seconds; whole-service watchdog
+18,032 seconds. The bounded own-host observer independently watches/finally
+validates results without restarting jobs if SSH expires. New CI remains
+pending, not substituted for the actual complete local regression. See
+`benchmarks/jpeg-owned-continuation-start-20261014.json`.
+
 User explicitly resumed work and SSH is reconnected. Owned-job continuation
 is implemented separately from the unchanged 52 fitting-source files; see
 `JPEG_OWNED_CONTINUATION.md`. It retains the cancelled parent, replays only
@@ -7,8 +23,9 @@ verified prefix receipts/snapshots into a fresh attempt, and deducts the entire
 3,688.12-second prior attempt from the same six-hour controls budget. Completed
 legacy fitting and the reference first half need no repeated GPU updates.
 80 independent CPU orchestration/rejection tests, including a full-shape
-numeric snapshot parser integration, pass; lint/type checks pass. Full
-regression and physical continuation remain pending. No accuracy gain claimed.
+numeric snapshot parser integration, pass; the complete regression and physical
+inheritance/startup are verified above. Final fitting/learning gates remain
+pending. No accuracy gain claimed.
 The earlier stop and running observations below remain historical records.
 
 Historical USER-REQUESTED STOP at 18:40 UTC: do not restart anything until the user asks

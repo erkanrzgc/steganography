@@ -1,5 +1,10 @@
 # Changelog
 
+- Verify owned JPEG continuation with 2,830 full tests /96.47% total coverage,
+  unchanged fitting-source hashes and three actual numeric snapshots. Start
+  only the missing GPU halves under the remaining cumulative budget; keep
+  inherited baseline, original cancellation and startup/learning distinct.
+
 - Add explicit owned cancelled-job JPEG continuation with checksum-bound prefix
   replay, numeric snapshot validation, inherited provenance and cumulative
   six-hour accounting. Preserve parent evidence and the fitting-source closure;

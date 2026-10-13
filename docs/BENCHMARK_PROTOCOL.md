@@ -8,6 +8,13 @@ All elapsed prior work, including discarded work, consumes the same six-hour
 budget. Complete logical exposure and unchanged paired development learning
 gates are required; CPU replay fixtures and numeric parsing are not accuracy.
 
+`jpeg-owned-continuation-start-20261014.json` is a dated startup observation
+after the complete local gate and actual own-GPU numeric inheritance checks.
+It separates inherited-complete from newly completed controls and records
+unchanged parent hashes, separate controller hashes and cumulative budgets.
+Native snapshot validation/copying and GPU activity are not an accuracy gain;
+final required-matrix/learning verification and new CI remain pending.
+
 `JPEG_SEGMENTED_CONTROL_PROTOCOL.md` defines a separately versioned execution
 mode, preserving the full 32,768-row, four-arm/two-seed experiment and all
 learning gates. Two 16,384-row workers retain the old per-process limits; the
