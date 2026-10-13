@@ -1,5 +1,13 @@
 # Architecture
 
+The next JPEG candidate reuses `srnet_training._finite_gradients` and checks
+every model parameter/buffer through `_finite_state`. CUDA aggregates boolean
+results before a single host scalar transfer per guard; CPU retains serial
+checks. No floating-point gradient, optimizer or inference arithmetic changes.
+This candidate is not deployed into the running 50-source GPU job. A changed
+execution-source hash still requires fresh audit/run binding; CPU equivalence
+tests are not a physical GPU timing or detection qualification.
+
 `core.jpeg_study_process` owns isolated JPEG research workers and immutable
 numeric exit evidence. `SIGXCPU` is a CPU-budget failure; `SIGKILL` alone is not
 classified as OOM. Capacity probes and fit trials retain `unavailable` outcomes

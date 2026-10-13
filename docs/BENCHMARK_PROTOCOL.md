@@ -1,5 +1,12 @@
 # Benchmark protocol
 
+The queued JPEG guard-consolidation candidate changes only scalar boolean
+transfers, preserving every gradient/parameter/buffer finite check. CPU-tensor
+emulation can establish guard/update equivalence, not CUDA throughput or model
+accuracy. Measure physical CUDA parity/timing separately, only after the live
+frozen controls stop; preserve their source hashes and unavailable outcomes.
+Do not modify training exposure, budgets, precision or thresholds to qualify it.
+
 JPEG research worker failures carry numeric return code, signal and stdout byte
 count, not raw output or commands. A CPU-limit exit is `unavailable` even if its
 final numeric snapshot exists or a later read-only evaluation succeeds. Later

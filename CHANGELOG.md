@@ -1,5 +1,10 @@
 # Changelog
 
+- Prepare complete JPEG gradient/state finite-check consolidation to reduce CUDA
+  host scalar transfers without changing optimizer/model arithmetic or dropping
+  checks. Keep the running frozen GPU job unchanged; physical speed/parity and
+  full regression remain pending, and no accuracy improvement is inferred.
+
 - Verify the JPEG worker repair with the complete CPU regression and a fresh
   independent 50-source-bound audit of unchanged private JPEG carriers. Record
   the new own-GPU preflight/control startup, retaining allocator-OOM and prior

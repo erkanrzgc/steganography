@@ -1,5 +1,29 @@
 # Implementation status — 2026-10-13
 
+Unattended monitoring (user explicitly requested continued work): a bounded
+read-only watcher polls the current job and preserves numeric states/report
+hashes privately in `.benchmark/jpeg-own-gpu-session-20261013/monitor.jsonl`.
+It stops after terminal state, three failed connections, or 15:00 UTC; it never
+changes remote sources/budgets or restarts a worker. The first new legacy trial
+became `unavailable: worker_timeout`; a kernel SIGXCPU event was also observed.
+The parent stayed active and started reference-Adamax, unlike the old failed
+parent. No new completed model or accuracy increase. `cc66511` passed all eight
+actual CI jobs, including Python 3.11–3.14 and the full research coverage gate
+(run 38387100939); this is regression, not GPU learning qualification.
+
+An execution-only next candidate consolidates JPEG gradient and full-state
+finite checks using the already-tested shared gradient helper and a complete
+parameter/buffer boolean reduction. Every tensor is still checked; CPU four-arm
+comparisons retain identical losses, model state and optimizer slots. 29 focused
+tests passed in 46.28 seconds, including CPU-tensor CUDA-branch emulation; Ruff
+and 181-file type checking pass. Physical CUDA speed/equivalence and complete
+regression for this candidate are pending. It is not installed into the live
+WSL job; do not transfer changed sources until that frozen job stops. No model
+arithmetic/exposure, tolerance, precision, budget or accuracy gate is relaxed.
+Nine additional kernel/training/resume tests passed in 31.43 seconds. The new
+candidate is queued separately for the full CI gate, avoiding another heavy
+local full-suite workload on the same Windows host during GPU controls.
+
 Checkpoint `fb649d6` is now fully verified on the provisioned Kali CPU runtime:
 2,635 passed /one explicit actual-CUDA skip, 32 existing ONNX warnings,
 1,035.38 seconds, total coverage 96.44%. New core worker coverage is 98.59%;

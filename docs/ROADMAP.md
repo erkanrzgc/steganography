@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Next execution-only candidate: consolidate JPEG gradient/state finite-check
+host transfers without skipping any tensor. Focused CPU semantics/update
+equivalence tests pass; physical CUDA equivalence/timing and full regression
+remain pending. Do not change the live 2026-10-13 GPU job or reuse its binding
+for this candidate. Detection thresholds and learning gates stay unchanged.
+
 2026-10-13 verification/startup: the complete `fb649d6` CPU regression passed
 2,635 tests /one actual-CUDA skip, coverage 96.44% and new worker 98.59%.
 The unchanged private JPEG data passed a fresh 50-source-bound independent

@@ -16,6 +16,7 @@ from core import (
     jpeg_study_views,
     srnet_cuda,
     srnet_samepool,
+    srnet_training,
 )
 from core.srnet_stream import document
 from steganography.benchmarking.metrics import classification_metrics
@@ -217,6 +218,18 @@ def evaluate(model, reader, device):
     return scores
 
 
+def _finite_state(model, device):
+    """Check every parameter/buffer; CUDA transfers only one scalar boolean."""
+    import torch
+
+    values = list(model.state_dict().values())
+    if not values:
+        return False
+    if device == "cuda:0":
+        return bool(torch.stack([torch.isfinite(value).all() for value in values]).all())
+    return all(bool(torch.isfinite(value).all()) for value in values)
+
+
 def fit(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None):
     """CUDA-only production entrypoint; tests exercise kernel explicitly on CPU."""
     srnet_cuda.inspect()  # Fail before opening data or starting any optimizer.
@@ -296,11 +309,10 @@ def kernel(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None,
                     if not bool(torch.isfinite(objective)):
                         raise ValueError("study training objective nonfinite")
                     objective.backward()
-                    if any(p.grad is None or not bool(torch.isfinite(p.grad).all())
-                           for p in model.parameters()):
+                    if not srnet_training._finite_gradients(model, device):
                         raise ValueError("study training gradients nonfinite")
                     optimizer.step()
-                    if any(not bool(torch.isfinite(v).all()) for v in model.state_dict().values()):
+                    if not _finite_state(model, device):
                         raise ValueError("study training state nonfinite")
                     records.append(float(loss.detach()))
                     presented = (i + 1) * rows
