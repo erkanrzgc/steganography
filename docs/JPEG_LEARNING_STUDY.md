@@ -4,6 +4,11 @@ This opt-in study does not change deployed analyzers, old source closures or
 legacy checkpoints. Missing GPU/optional dependencies are unavailable; no CPU
 fallback, cloud spending, model export or automatic dataset download occurs.
 
+The monolithic execution defaults below remain unchanged. The separately
+versioned opt-in `bounded-half-v1` execution revision is specified in
+`JPEG_SEGMENTED_CONTROL_PROTOCOL.md`; it preserves this learning experiment
+but makes two bounded checkpoint-linked processes and its total budget explicit.
+
 ## Evidence and hypotheses
 
 The five-epoch full-corpus model improved training loss but retained approximately

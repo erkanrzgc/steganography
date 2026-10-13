@@ -24,6 +24,7 @@ from core import (
     jpeg_study_data,
     jpeg_study_entropy,
     jpeg_study_process,
+    jpeg_study_segments,
     jpeg_study_views,
     srnet_cuda,
 )
@@ -44,6 +45,7 @@ def sources():
         "core/srnet_samepool.py", "core/jpeg_study_optimizer.py", "core/jpeg_study.py",
         "core/jpeg_study_data.py", "core/jpeg_study_state.py", "core/jpeg_study_audit.py",
         "core/jpeg_study_process.py",
+        "core/jpeg_study_segments.py", "docs/JPEG_SEGMENTED_CONTROL_PROTOCOL.md",
         "core/jpeg_study_entropy.py", "core/jpeg_study_views.py",
         "core/srnet_checkpoint.py", "core/jpeg_timing.py",
         "steganography/research_jpeg_study.py", "docs/JPEG_LEARNING_STUDY.md",
@@ -64,7 +66,7 @@ def configuration(value):
     action = value.get("action")
     keys = ({"inputs", "reserved_manifests"} if action == "prepare" else
             {"root", "manifest_sha256", "audit", "audit_sha256"})
-    optional = {"resume"} if action == "controls" else {"representation"}
+    optional = {"resume", "execution_mode"} if action == "controls" else {"representation"}
     if (action not in {"prepare", "controls"}
         or not keys | {"schema_version", "action"} <= set(value)
         or set(value) - keys - {"schema_version", "action"} - optional):
@@ -88,6 +90,12 @@ def configuration(value):
                 raise ValueError("study configuration reservation fields invalid")
             identity(entry["sha256"])
     else:
+        if value.get("execution_mode", "monolithic") not in (
+            "monolithic", jpeg_study_segments.MODE
+        ):
+            raise ValueError("study execution mode invalid")
+        if value.get("execution_mode") == jpeg_study_segments.MODE and value.get("resume"):
+            raise ValueError("segmented controls cannot import old resume bindings")
         for key in ("manifest_sha256", "audit_sha256"):
             identity(value[key])
         if any(not isinstance(value[k], str) or not value[k] for k in ("root", "audit")):
@@ -230,6 +238,8 @@ def worker(args):
                 args.arm, args.seed, args.rows, before,
                 resume={"path": Path(resume["path"]), "sha256": resume["sha256"]}
                 if resume else None,
+                **({"stop_rows": args.stop_rows} if getattr(args, "stop_rows", 32768) != 32768
+                   else {}),
             )
     except srnet_cuda.CUDAUnavailable as exc:
         result = {"status": "unavailable", "reason": exc.reason}
@@ -381,6 +391,16 @@ def controls(config, out, before, started):
         or manifest["originals_per_source"] != {"fit": 256, "development": 64}):
         raise ValueError("study controls require complete bound independent audit")
     trials: list[dict[str, Any]] = []
+    segmented = config.get("execution_mode") == jpeg_study_segments.MODE
+    controls_seconds = jpeg_study_segments.CONTROLS_SECONDS if segmented else 14400
+
+    def launch_segment(payload, phase_out, stop_rows, timeout):
+        raw = child([
+            sys.executable, "-m", "steganography.research_jpeg_study", "--worker", "fit",
+            "--out", str(phase_out), "--arm", arm, "--seed", str(seed), "--rows", str(rows),
+            "--stop-rows", str(stop_rows),
+        ], timeout=timeout, payload=json.dumps(payload).encode(), cancelled=cancelled)
+        return json.loads(raw)
 
     def cancelled():
         marker = out / "CANCEL"
@@ -414,7 +434,7 @@ def controls(config, out, before, started):
         for arm in jpeg_study.ARMS:
             if cancelled():
                 return {"status": "cancelled", "trials": trials}
-            if time.monotonic() - started > 4 * 3600:
+            if time.monotonic() - started > controls_seconds:
                 return {"status": "unavailable", "reason": "controls_budget_exhausted",
                         "trials": trials}
             if arm == "genuine-batch" and not available:
@@ -424,12 +444,22 @@ def controls(config, out, before, started):
             rows = max(available) if arm == "genuine-batch" else 4
             trial_out = out / f"{arm}-{seed}"
             try:
-                raw = child([
-                    sys.executable, "-m", "steganography.research_jpeg_study", "--worker", "fit",
-                    "--out", str(trial_out), "--arm", arm, "--seed", str(seed), "--rows", str(rows),
-                ], timeout=min(1830, max(1, 14400 - (time.monotonic() - started))),
-                    payload=json.dumps(config).encode(), cancelled=cancelled)
-                value = json.loads(raw)
+                if segmented:
+                    value = jpeg_study_segments.trial(
+                        config, trial_out, arm=arm, seed=seed, rows=rows, sources=before,
+                        recipe=jpeg_study.recipe(arm, seed, rows, representation=representation),
+                        launch=launch_segment,
+                        budget_left=lambda: controls_seconds - (time.monotonic() - started),
+                    )
+                else:
+                    raw = child([
+                        sys.executable, "-m", "steganography.research_jpeg_study",
+                        "--worker", "fit",
+                        "--out", str(trial_out), "--arm", arm, "--seed", str(seed),
+                        "--rows", str(rows),
+                    ], timeout=min(1830, max(1, controls_seconds - (time.monotonic() - started))),
+                        payload=json.dumps(config).encode(), cancelled=cancelled)
+                    value = json.loads(raw)
             except TimeoutError:
                 value = {"status": "unavailable", "reason": "worker_timeout"}
             except WorkerFailure as exc:
@@ -474,6 +504,8 @@ def controls(config, out, before, started):
     return {"status": "completed" if completed else "unavailable", "trials": trials,
             "reason": None if completed else "incomplete_required_controls", "capacity": probes,
             "learning_gate": bool(winners), "passing_arms": winners,
+            "execution_mode": config.get("execution_mode", "monolithic"),
+            "controls_budget_seconds": controls_seconds,
             **({"representation": jpeg_study_views.contract()} if five else {}),
             "baseline_stage": "not_started", "adaptation_stage": "not_started",
             "independent_source_evaluation": "not_started"}
@@ -488,6 +520,8 @@ def main(argv=None):
     parser.add_argument("--arm", choices=jpeg_study.ARMS, help=argparse.SUPPRESS)
     parser.add_argument("--seed", type=int, choices=jpeg_study.SEEDS, help=argparse.SUPPRESS)
     parser.add_argument("--rows", type=int, choices=(4, 8, 16, 32), help=argparse.SUPPRESS)
+    parser.add_argument("--stop-rows", type=int, choices=(16384, 32768), default=32768,
+                        help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if args.worker:
         print(json.dumps(worker(args), allow_nan=False))

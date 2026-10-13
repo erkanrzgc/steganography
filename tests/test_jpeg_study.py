@@ -416,6 +416,35 @@ def test_cpu_kernel_controls_are_not_real_gpu_evidence(prepared, tmp_path):
         c.kernel(root, sha, out, "legacy", c.SEEDS[0], 4, {}, device="cpu", row_budget=3)
 
 
+def test_partial_kernel_never_opens_development_or_reports_scores(prepared, tmp_path,
+                                                                 monkeypatch):
+    pytest.importorskip("torch")
+    root, _, sha = prepared
+    out = tmp_path / "partial"
+    out.mkdir()
+    roles = []
+    original = d.Reader
+
+    def reader(*args, **kwargs):
+        roles.append(args[2])
+        assert args[2] == "fit"
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(d, "Reader", reader)
+    result = c.kernel(root, sha, out, "legacy", c.SEEDS[0], 4, {}, device="cpu",
+                      factory=tiny, row_budget=8, evaluate_development=False)
+    assert roles == ["fit"] and result["status"] == "checkpointed"
+    assert "scores" not in result and "cells" not in result
+    assert not result["real_gpu_fit"] and not result["real_gpu_segment"]
+
+
+@pytest.mark.parametrize("stop", [True, 8, 16383, 32769])
+def test_production_segment_endpoint_is_not_arbitrary(monkeypatch, tmp_path, stop):
+    monkeypatch.setattr(c.srnet_cuda, "inspect", lambda: None)
+    with pytest.raises(ValueError, match="endpoint"):
+        c.fit(tmp_path, "a" * 64, tmp_path, "legacy", c.SEEDS[0], 4, {}, stop_rows=stop)
+
+
 def test_missing_gpu_fails_before_opening_data(monkeypatch, tmp_path):
     from core.srnet_cuda import CUDAUnavailable
 
@@ -537,6 +566,21 @@ def test_snapshot_restore_and_capture(numeric_snapshot):
         state.restore(numeric_snapshot, model, optimizer, "a" * 64, 4)
     assert torch.equal(before, model.classifier.weight)
     assert set(model.state_dict()) == set(srnet_model.SHAPES)
+
+
+@pytest.mark.parametrize("reference", [False, True])
+def test_snapshot_restore_preserves_optimizer_slot_placement(numeric_snapshot, reference):
+    torch = pytest.importorskip("torch")
+    model = c.srnet_samepool.network()
+    optimizer = opt.optimizer(model, reference=reference)
+    assert state.restore(numeric_snapshot, model, optimizer, "b" * 64, 4) == 16384
+    for parameter in model.parameters():
+        slots = optimizer.state[parameter]
+        assert slots["step"].device == torch.device("cpu")
+        assert slots["exp_avg"].device == parameter.device
+        assert slots["exp_inf"].device == parameter.device
+    for name, value in state.capture(model, optimizer, "b" * 64, 16384)["arrays"].items():
+        np.testing.assert_array_equal(value, numeric_snapshot["arrays"][name])
 
 
 @pytest.mark.parametrize("fault", ["members", "compression", "symlink", "shape", "meta",
@@ -722,7 +766,8 @@ def test_preparation_failure_retained_without_path_secrets(tmp_path, monkeypatch
         assert result["worker_execution"]["signal_name"] == "SIGXCPU"
 
 
-def control_mocks(monkeypatch, tmp_path, *, fault=None, representation=views.CENTER):
+def control_mocks(monkeypatch, tmp_path, *, fault=None, representation=views.CENTER,
+                  segmented=False):
     import time
 
     before = {"source": "a" * 64}
@@ -762,6 +807,22 @@ def control_mocks(monkeypatch, tmp_path, *, fault=None, representation=views.CEN
                   "source_sha256": before, "initial_learned_sha256": "a" * 64,
                   "schedule_sha256": "c" * 64,
                   "scores": [.5] * 256 if arm == "legacy" else [.1, .9] * 128}
+        if segmented:
+            stop = int(command[command.index("--stop-rows") + 1])
+            phase = Path(command[command.index("--out") + 1])
+            phase.mkdir()
+            raw = f"generated:{arm}:{seed}:{stop}".encode()
+            (phase / f"rows-{stop}.npz").write_bytes(raw)
+            result.update(status="checkpointed" if stop == 16384 else "completed",
+                          presented_rows=stop, real_gpu_fit=stop == 32768,
+                          resumed_from_rows=0 if stop == 16384 else 16384,
+                          real_gpu_segment=True, execution={"device": "cuda:0"},
+                          optimizer_updates=16384 // rows, total_optimizer_updates=stop // rows,
+                          binding="b" * 64, seconds=100, mean_cross_entropy=.7,
+                          checkpoints=[{"path": f"rows-{stop}.npz", "presented_rows": stop,
+                                        "sha256": hashlib.sha256(raw).hexdigest()}])
+            if stop == 16384:
+                del result["scores"]
         if fault == "timeout":
             raise TimeoutError
         if fault == "cancel":
@@ -788,10 +849,25 @@ def control_mocks(monkeypatch, tmp_path, *, fault=None, representation=views.CEN
     out = tmp_path / "out"
     out.mkdir()
     def run(start=None):
-        return frontend.controls(control_configuration(), out, before,
+        config = control_configuration()
+        if segmented:
+            config["execution_mode"] = frontend.jpeg_study_segments.MODE
+        return frontend.controls(config, out, before,
                                  time.monotonic() if start is None else start)
 
     return run
+
+
+def test_segmented_frontend_requires_all_eight_full_logical_trials(monkeypatch, tmp_path):
+    run = control_mocks(monkeypatch, tmp_path, segmented=True, representation=views.FIVE)
+    result = run()
+    assert result["status"] == "completed" and result["learning_gate"]
+    assert result["execution_mode"] == "bounded-half-v1"
+    assert result["controls_budget_seconds"] == 21600
+    assert len(result["trials"]) == 8
+    assert all(len(t["segments"]) == 2 and t["presented_rows"] == 32768
+               for t in result["trials"])
+    assert result["baseline_stage"] == result["adaptation_stage"] == "not_started"
 
 
 def test_control_matrix_gates_require_all_sources_seeds_and_baseline(monkeypatch, tmp_path):

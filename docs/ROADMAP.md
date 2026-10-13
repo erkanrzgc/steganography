@@ -1,5 +1,14 @@
 # Roadmap and status
 
+Execution repair: actual CUDA eight-update comparison at `b37793d` matches the
+archived validator bitwise in every model/BN/optimizer array and all losses,
+across all four arms. Whole-update reference/L2 estimates still exceed the old
+monolithic limit. An explicit `bounded-half-v1` execution policy now preserves
+the same full exposure via verified continuation, with unchanged worker limits
+and a six-hour controls phase. Its fresh verification/audit/run is pending;
+no new learning increase or completed model is claimed from this implementation.
+See `JPEG_SEGMENTED_CONTROL_PROTOCOL.md`.
+
 The 2026-10-13 frozen eight-trial job ended incomplete: genuine-16 completed
 both seeds, six four-row arms were unavailable on CPU/wall limits. Retain both
 the higher first-seed development scores and weaker second-seed scores; neither

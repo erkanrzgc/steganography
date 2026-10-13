@@ -1,5 +1,13 @@
 # Benchmark protocol
 
+`JPEG_SEGMENTED_CONTROL_PROTOCOL.md` defines a separately versioned execution
+mode, preserving the full 32,768-row, four-arm/two-seed experiment and all
+learning gates. Two 16,384-row workers retain the old per-process limits; the
+six-hour controls budget is explicit, within the original eight-hour envelope,
+not plus the historical later-stage budgets. Partial fits never score development
+data or qualify; historical limit failures are not imported or reclassified.
+Generated half-time estimates and exact CUDA parity precede fresh source audit.
+
 `JPEG_EXECUTION_OPTIMIZATION.md` freezes actual generated CUDA comparison of
 old/new complete guards, including reference-Adamax slot/norm/integral-step
 validation. Bitwise model/optimizer/loss equality is mandatory; instrumented

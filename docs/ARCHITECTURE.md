@@ -1,5 +1,13 @@
 # Architecture
 
+`core.jpeg_study_segments` owns opt-in `bounded-half-v1` continuation. Each
+logical control executes two isolated source-bound halves with unchanged
+per-worker CPU/wall/RAM/GPU limits. Partial workers never load development
+pixels; the second restores verified model/BN/optimizer state, including CPU
+step scalars for noncapturable PyTorch Adamax. Parent validates numeric receipts
+and bounded checkpoint checksums; only the full evaluated fit can complete.
+CLI stays a subprocess/report adapter. See `JPEG_SEGMENTED_CONTROL_PROTOCOL.md`.
+
 `jpeg_study_optimizer.validate_reference` preserves the complete pre-update
 reference-Adamax contract. Scalar CUDA flags are copied once per device, with
 typed slot/shape metadata checked on host and no floating-point update fusion.

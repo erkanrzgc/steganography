@@ -1,5 +1,12 @@
 # Changelog
 
+- Add explicit `bounded-half-v1` JPEG controls: unchanged full image exposure,
+  two isolated halves, verified numeric-only source-bound continuation, no
+  partial evaluation and per-phase receipts. Keep worker limits; record a
+  separate six-hour controls budget within the old eight-hour study envelope.
+  Restore noncapturable Adamax step scalars on CPU, preserving numeric state.
+  Retain all historical failures; no inference/deployment or accuracy claim.
+
 - Consolidate reference-Adamax pre-update CUDA validation flags while retaining
   all finite/dense/FP32/slot/norm/integral-step checks and unchanged equations.
   Freeze exact native parity/whole-update timing gates; retain the preceding

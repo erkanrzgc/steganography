@@ -230,14 +230,19 @@ def _finite_state(model, device):
     return all(bool(torch.isfinite(value).all()) for value in values)
 
 
-def fit(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None):
+def fit(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None,
+        stop_rows=PRESENTED_ROWS):
     """CUDA-only production entrypoint; tests exercise kernel explicitly on CPU."""
     srnet_cuda.inspect()  # Fail before opening data or starting any optimizer.
-    return kernel(root, manifest_sha256, out, arm, seed, rows, sources, resume=resume)
+    if type(stop_rows) is not int or stop_rows not in (16384, PRESENTED_ROWS):
+        raise ValueError("production study segment endpoint invalid")
+    return kernel(root, manifest_sha256, out, arm, seed, rows, sources, resume=resume,
+                  row_budget=stop_rows, evaluate_development=stop_rows == PRESENTED_ROWS)
 
 
 def kernel(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None,
-           device="cuda:0", factory=srnet_samepool.network, row_budget=PRESENTED_ROWS):
+           device="cuda:0", factory=srnet_samepool.network, row_budget=PRESENTED_ROWS,
+           evaluate_development=True):
     import torch
 
     manifest = document(root / "manifest.json", manifest_sha256)
@@ -248,7 +253,8 @@ def kernel(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None,
     if (type(row_budget) is not int or not 1 <= row_budget <= PRESENTED_ROWS
         or row_budget % rows):
         raise ValueError("study row budget invalid")
-    # Non-default budgets are test controls, not eligible real-study completion.
+    # A production half emits only a checkpoint, never evaluated completion.
+    # Smaller CPU test controls are also ineligible for real-study completion.
     binding = hashlib.sha256(json.dumps(
         {"recipe": selected, "manifest_sha256": manifest_sha256, "sources": sources,
          "torch_version": str(torch.__version__)}, sort_keys=True
@@ -324,19 +330,25 @@ def kernel(root, manifest_sha256, out, arm, seed, rows, sources, *, resume=None,
                         checkpoints.append({"path": f"rows-{presented}.npz", "sha256": digest,
                                             "presented_rows": presented})
                 reader.verify()
-            with data.Reader(root, manifest_sha256, "development", deadline=deadline) as reader:
-                scores = evaluate(model, reader, device)
+            evaluation = {}
+            if evaluate_development:
+                with data.Reader(root, manifest_sha256, "development", deadline=deadline) as reader:
+                    scores = evaluate(model, reader, device)
+                evaluation = {"scores": scores, "singleton_batch_parity": True,
+                              "cells": statistics(reader.samples, scores)}
             return {
-                "status": "completed", "recipe": selected, "binding": binding,
+                "status": "completed" if evaluate_development else "checkpointed",
+                "recipe": selected, "binding": binding,
                 "manifest_sha256": manifest_sha256, "execution": execution,
                 "initial_learned_sha256": initial_digest.hexdigest(),
                 "schedule_sha256": schedule_hash, "presented_rows": row_budget,
                 "resumed_from_rows": next_row, "optimizer_updates": len(records),
                 "total_optimizer_updates": row_budget // rows,
-                "mean_cross_entropy": float(np.mean(records)), "scores": scores,
-                "singleton_batch_parity": True, "cells": statistics(reader.samples, scores),
+                "mean_cross_entropy": float(np.mean(records)), **evaluation,
                 "checkpoints": checkpoints, "seconds": time.monotonic() - started,
-                "real_gpu_fit": device == "cuda:0" and row_budget == PRESENTED_ROWS,
+                "real_gpu_fit": (device == "cuda:0" and row_budget == PRESENTED_ROWS
+                                 and evaluate_development),
+                "real_gpu_segment": device == "cuda:0",
                 "process_peak_gpu_allocated_bytes": (
                     torch.cuda.max_memory_allocated(0) if device == "cuda:0" else None),
                 "process_peak_gpu_reserved_bytes": (

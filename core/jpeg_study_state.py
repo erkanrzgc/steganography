@@ -139,8 +139,14 @@ def restore(snapshot, model, optimizer, binding, rows):
     model.load_state_dict({k: torch.from_numpy(arrays["model/" + k].copy())
                           for k in srnet_model.SHAPES}, strict=True)
     for name, parameter in model.named_parameters():
+        # Noncapturable PyTorch Adamax creates its step scalar on CPU even for
+        # CUDA parameters. Preserve that placement on resume: identical numbers,
+        # without introducing one extra device-to-host scalar read per parameter.
+        step_device = ("cpu" if isinstance(optimizer, torch.optim.Adamax)
+                       and not optimizer.defaults.get("capturable", False) else parameter.device)
         optimizer.state[parameter] = {
-            slot: torch.from_numpy(arrays[f"optimizer/{name}/{slot}"].copy()).to(parameter.device)
+            slot: torch.from_numpy(arrays[f"optimizer/{name}/{slot}"].copy()).to(
+                step_device if slot == "step" else parameter.device)
             for slot in ("exp_avg", "exp_inf", "step")
         }
     return meta["presented_rows"]

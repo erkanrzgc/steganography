@@ -1,5 +1,29 @@
 # Implementation status — 2026-10-13
 
+Actual generated CUDA eight-update parity at `b37793d` passed all four arms:
+losses and all model/BatchNorm/optimizer arrays are bitwise equal to the pinned
+old validator, maximum difference zero. Whole-update means (seconds) are legacy
+.159203, reference .208184 and convolution-L2 .210910. Conservative full-trial
+estimates are 1,690.23 /2,191.80 /2,219.72 seconds: reference arms remain
+ineligible for the historical 1,800-second monolithic policy. All eight actual
+CI jobs at `b37793d` passed (run 38433316288), including unchanged coverage.
+
+The new opt-in `bounded-half-v1` policy executes the same complete exposure in
+two checkpoint-linked halves. Worker limits/learning gates stay unchanged;
+six-hour controls budget is explicitly separate, within the approved original
+eight-hour study envelope, with no additional later-stage authorization.
+Implementation verification, new source-bound audit and actual fitting are
+pending at this observation; no accuracy or completion claim. Old receipts,
+snapshots and failed matrices are retained. See `JPEG_SEGMENTED_CONTROL_PROTOCOL.md`.
+
+Segment implementation checks: 291 focused regression tests passed; 58
+continuation/guard tests independently measured the new core module at 98.77%
+coverage. Provisioned lint and type checks pass across 182 source files.
+One invocation through the unrelated system Python failed on old cryptography
+and absent Torch; it is not a verification pass. The correct provisioned
+`venv/bin/python` supplied the results above. Complete CI remains pending for
+this revision; unchanged full coverage gate is required before fresh fitting.
+
 Final receipt of the frozen eight-trial job was retrieved after tunnel renewal:
 `unavailable: incomplete_required_controls`, 13,766.60 monotonic seconds;
 five CPU-limit outcomes /one parent timeout and two completed genuine-16 fits.
