@@ -1,5 +1,10 @@
 # Changelog
 
+- Verify the JPEG worker repair with the complete CPU regression and a fresh
+  independent 50-source-bound audit of unchanged private JPEG carriers. Record
+  the new own-GPU preflight/control startup, retaining allocator-OOM and prior
+  failed runs. No accuracy, completion or deployment claim from startup.
+
 - Retain bounded JPEG worker exit/signal evidence and continue later capacity
   probes/fit trials after CPU-limit or other process failures. Preserve failed
   trials/checkpoints, secret-free reports, source/data fail-closed checks and

@@ -1,5 +1,41 @@
 # Implementation status — 2026-10-13
 
+Checkpoint `fb649d6` is now fully verified on the provisioned Kali CPU runtime:
+2,635 passed /one explicit actual-CUDA skip, 32 existing ONNX warnings,
+1,035.38 seconds, total coverage 96.44%. New core worker coverage is 98.59%;
+JPEG orchestration 96.49%. Ruff, 181-file type checking and whitespace pass.
+The 512,304-byte wheel includes the worker service, no model/cache/media.
+Only this completed invocation's regenerable fixtures were removed
+(6,048,128,019 apparent bytes); its log/coverage and all private corpora remain.
+These CPU checks do not qualify a GPU model or the remote Python-version matrix.
+
+The own-GPU tunnel was restored, and the clean WSL checkout fast-forwarded to
+`fb649d6` without changing historical runs. Existing five-view carriers received
+a fresh complete independent audit bound to all 50 current execution sources;
+all hashes also match the archived Git blobs. All 1,280 image rows /6,400 views
+passed unchanged 1e-4 IDCT checks; old unchanged-view counts and original
+identities are preserved. A fresh bounded generated GPU/CPU probe passed.
+Generated batches 8/16 completed; 32 remains allocator-OOM/unavailable, no retry
+or larger cap. No old audit/checkpoint was rebound and no corpus regenerated.
+
+The new service `steg-jpeg-five-controls-20261013` started at 10:53:00 UTC.
+At 10:54:30 UTC its first actual four-row `legacy` fit (seed 20261012) was
+running. No completed trial or snapshot was observed, and update counts are
+not inferred from utilization. Eight freshly initialized controls retain
+32,768 presented view rows each, 1800/1801 CPU-second limits, 30-minute trial,
+four-hour control, 4 GiB allocator and 8 GiB host caps. Failed worker exits now
+retain portable unavailable evidence while later controls can continue within
+the existing budget. Private files: `.benchmark/jpeg-own-gpu-session-20261013`.
+Portable startup evidence: `benchmarks/jpeg-five-view-gpu-restart-20261013.json`.
+This is a dated running observation, not completion or accuracy improvement.
+Keep the laptop awake, ventilated and plugged in; the SSH listener expires
+four hours after its creation, independently of the training service.
+WIFD/reserved sources remain unscored and nothing is deployed.
+The subsequent three startup/diagnosis evidence guards pass separately
+(0.55 seconds); the new portable source closure is self-contained for shallow
+CI clones/source archives. No executable training source changed after the
+complete regression, audit or GPU startup.
+
 The 2026-10-12 own-GPU controls stopped at 18:35:07 UTC: two of eight trial
 reports completed, and the third (`convolution-l2`, seed 20261012) retained its
 32,768-row /8,192-update numeric snapshot but no completed report. Kernel

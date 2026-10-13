@@ -1,5 +1,13 @@
 # Roadmap and status
 
+2026-10-13 verification/startup: the complete `fb649d6` CPU regression passed
+2,635 tests /one actual-CUDA skip, coverage 96.44% and new worker 98.59%.
+The unchanged private JPEG data passed a fresh 50-source-bound independent
+audit. New own-GPU preflight passed and fresh controls started at 10:53 UTC;
+this is not a learning result. Historical failed runs stay failed and reserved
+sources untouched. See `STATUS.md` and
+`benchmarks/jpeg-five-view-gpu-restart-20261013.json`.
+
 2026-10-13 JPEG runner repair: the previous own-GPU study stopped after two
 completed trial reports. Kernel records establish a CPU-limit event in the
 third arm, after its final numeric snapshot. Read-only evaluation of that
