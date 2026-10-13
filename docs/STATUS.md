@@ -1,5 +1,31 @@
 # Implementation status — 2026-10-13
 
+USER-REQUESTED STOP at 18:40 UTC: do not restart anything until the user asks
+to continue. Training received SIGINT and wrote `cancelled: user_cancelled`;
+the service's exit code 2 is expected cancellation, not a CPU/GPU failure.
+Both remote observer/final-check services and the local SSH watcher were
+stopped. CUDA compute-process inventory is empty, utilization 0%. No data,
+reports or checkpoints were deleted. The latest publication CI run 38446034109
+was also requested cancelled; older verified successful CI results remain.
+
+Resume handoff: legacy seed 20261012 is fully complete; reference-Adamax seed
+20261012 has its owned 16,384-row /4,096-update first-half snapshot. Its SHA-256
+is `71b89cc56c30b4b745c89724134127fe1d32884b961fb54679e034ffd76af4ed`, binding
+`2562e5ed5dfa6c7cd12fb034e178f14a4cb508155e2ad421b15dabc52ab8de8a`.
+The incomplete second half must be repeated from that snapshot, not claimed
+as saved/completed. All three real snapshots remain on the own-GPU host.
+Preserve execution `16a2c69` /52-source mapping
+`c440553cbe100023d79d666564ee19910ac758e547e2114e1587f6d8b4e06c17`
+and the existing bound audit/config. Do not overwrite the cancelled job or
+rebind/import historical failed snapshots. The existing segmented launcher is
+fresh-only: safe owned-job continuation orchestration still needs explicit
+implementation/verification before resuming; never silently reset budgets.
+Useful elapsed controls time before cancellation was 3,688.12 seconds.
+The cancelled report is retained privately with SHA-256
+`5785d91f1769ee577fc5506665f3507b69c314e28e0c61274a6adf67f0c2f477`.
+No new tests, training, automatic restart or CI-triggering push is authorized
+during this pause. Earlier running observations below are historical.
+
 At 18:11 UTC the first actual segmented logical control completed: legacy,
 seed 20261012, all 32,768 rows /8,192 updates. Kernel durations 830.67 and
 1,073.06 seconds stay below unchanged worker limits, aggregate 1,903.73

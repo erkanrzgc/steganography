@@ -1,5 +1,11 @@
 # Roadmap and status
 
+PAUSED BY USER, 2026-10-13 18:40 UTC. Training and all accompanying watchers /
+final checkers stopped; GPU has no compute process. Keep the complete legacy
+control and the source-bound reference-Adamax first-half checkpoint. Only
+resume on an explicit user request; safe own-job continuation must retain the
+existing bindings, budget accounting and cancelled receipts. See `STATUS.md`.
+
 First real segmented control completed at 18:11 UTC: full 32,768-row legacy
 fit, two workers each below its old limit. All 498 model/BN/optimizer arrays
 and development results match the preserved uninterrupted baseline exactly;
