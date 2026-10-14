@@ -1,5 +1,11 @@
 # Benchmark protocol
 
+`JPEG_PAIRED_SCORE_DIAGNOSTICS.md` defines descriptive already-scored pair
+audits, not a new training/evaluation gate. Known-cover direction, midpoint
+dispersion and standalone detection answer different questions. Never convert
+an all-positive paired fraction into a standalone accuracy claim or use it to
+tune development thresholds, promote models or reclassify failed learning.
+
 `JPEG_OWNED_CONTINUATION.md` defines explicit continuation of a user-cancelled
 owned segmented job. Keep parent evidence immutable and fitting hashes fixed;
 the new orchestrator/protocol have their own recorded source closure. Reused

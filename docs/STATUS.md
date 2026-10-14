@@ -1,5 +1,25 @@
 # Implementation status — 2026-10-14
 
+Paired-score diagnostic slice verified: 2,861 full tests /one actual-CUDA skip,
+96.48% total coverage, 3,752.50 seconds on the CPU regression host. New core
+diagnostic coverage 100%; lint/type/diff checks pass. The active 52 fitting and
+three controller source files stay unchanged. The first two preserved controls
+show stronger within-pair score direction than cross-image discrimination:
+reference scores increase in all 64 matched pairs per source, but standalone
+AUC stays .594482/.536377 and learning gates fail. This is NOT 100% standalone
+accuracy or confirmed evidence of a causal content/BatchNorm defect. See
+`JPEG_PAIRED_SCORE_DIAGNOSTICS.md` and
+`benchmarks/jpeg-paired-score-diagnosis-20261014.json`.
+
+Live matrix progress: first seed fully completed; second-seed legacy complete,
+five controls total. Convolution-L2 first-seed AUC .528564/.518311 does not
+improve baseline. Genuine-16 first-seed AUC .770508/.679199 matches all 256
+development probabilities and standalone metrics of the historical genuine
+control exactly; the historical incomplete matrix remains unavailable with its
+distinct binding. Current matched baseline now permits paired improvements,
+but BOWS still fails the .7 research learning gate. Remaining three controls
+are running/pending, no production qualification or new algorithmic gain yet.
+
 USER-REQUESTED RESUME at 08:58:01 UTC (11:58 local Oct 14): fresh own-GPU
 attempt at the unchanged `c218e5e` fitting/controller implementation, following
 numeric validation of all four saved snapshots and verified success of all

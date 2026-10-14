@@ -1,5 +1,9 @@
 # Changelog
 
+- Add bounded CPU-only paired-score diagnostics with ancestry/privacy/numeric
+  rejection tests. Separate known-cover score direction from standalone
+  classification; preserve live training hashes, thresholds and qualification.
+
 - Resume the remaining six JPEG controls after actual four-snapshot validation
   and all eight passed CI jobs. Keep original fitting/controller hashes,
   two inherited complete controls and cumulative spent/discarded work; no

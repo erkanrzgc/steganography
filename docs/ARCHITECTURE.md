@@ -720,6 +720,13 @@ closure without modifying/rebinding the frozen fitting implementation. Parent
 reports/snapshots remain immutable and only missing halves are newly fitted;
 see `JPEG_OWNED_CONTINUATION.md`.
 
+`core/jpeg_score_diagnostics.py` is a separate bounded, CPU-only descriptive
+service over already-scored matched development pairs. It emits no paths or
+identities and cannot select thresholds, adjust scores, qualify a detector or
+change live fitting/controller source closures. See
+`JPEG_PAIRED_SCORE_DIAGNOSTICS.md` for why paired direction is not standalone
+classification quality and midpoint dispersion is not a causal diagnosis.
+
 The shared optimizer consolidates finite-gradient scalar synchronization only
 for explicit CUDA execution; CPU short-circuit checks remain unchanged. All
 gradient elements, missing-gradient rejection and full per-update numeric-state

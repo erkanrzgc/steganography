@@ -1,5 +1,12 @@
 # Roadmap and status
 
+Paired-score diagnostic slice passed 2,861 full tests /96.48% total coverage,
+100% new core coverage. Its known-cover direction and midpoint dispersion are
+descriptive, not standalone accuracy or causal proof; see
+`JPEG_PAIRED_SCORE_DIAGNOSTICS.md`. Live fitting/controller sources untouched.
+Five controls complete; second-seed reference/L2/genuine pending. No candidate
+passes all first-seed source gates, so no model qualification is claimed.
+
 Resumed by user at 11:58 local Oct 14, retaining the two completed controls and
 four numerically verified snapshots. Original fitting/controller source hashes
 unchanged; all eight prior CI jobs passed. Third control (convolution-L2) now
