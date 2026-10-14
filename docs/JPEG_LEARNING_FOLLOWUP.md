@@ -1,5 +1,12 @@
 # JPEG learning follow-up: evidence before another training run
 
+The matrix and both read-only diagnoses have now completed; see
+`JPEG_CONTROL_RESULTS.md`. Small fit/development AUC gaps and measured
+small-batch normalization-mode sensitivity narrow the investigation, but do
+not authorize a normalization fix, another fit or model promotion. The weak
+second-seed genuine-batch model and prior failed population-BN control must
+also constrain any subsequent matched intervention.
+
 This note does not change live fitting/controller sources, thresholds or
 qualification gates, and does not authorize another dataset download or
 training stage. The frozen four-arm/two-seed control matrix and its independent

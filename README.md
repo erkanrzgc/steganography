@@ -110,6 +110,10 @@ synthetic regression results are not an overall accuracy score. Research code
 and failed experiments remain available for reproducibility, separate from
 advertised capabilities; no model is downloaded or deployed automatically.
 
+The latest [eight-control JPEG study](docs/JPEG_CONTROL_RESULTS.md) is complete,
+including both seeds, failed gates and read-only learning diagnoses. It does
+not qualify a model or change shipped detection.
+
 Read [Known limitations](docs/LIMITATIONS.md), [Measured results](docs/BENCHMARK_RESULTS.md),
 and [Dataset sources and licenses](docs/DATASET_CATALOG.md) before relying on a verdict.
 

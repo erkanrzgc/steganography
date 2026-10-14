@@ -49,11 +49,23 @@ dependency skips are expected. The separate CPU `research` job provisions
 `requirements-research-ci.txt` and runs the complete unchanged coverage gate.
 Quality checks also need Torch/ONNX to check the source-bound export contracts.
 
+If `/tmp` is a small tmpfs, use a fresh disk-backed pytest `--basetemp` and
+`TMPDIR`. Preserve the first failed run's log; filesystem exhaustion is an
+unavailable verification attempt, not a code pass. Do not delete datasets or
+checkpoints to fix a full temporary filesystem.
+
 ## Active milestone
 
 `v0.6`: shared analysis context, PNG/BMP native analysis, bounded CTF playbook,
 portable JSON/HTML/SARIF/bundle reporting, and initial CLI/API/TUI surfaces.
 See `docs/ROADMAP.md` for current status and later milestones.
+
+The dated JPEG four-arm/two-seed matrix and both read-only diagnoses are
+complete; see `docs/JPEG_CONTROL_RESULTS.md`. No candidate passed the combined
+learning rule; production qualification is unavailable and none was deployed.
+Preserve the 16 private snapshots and historical cancelled receipts; any next
+training intervention needs a
+separately frozen source/data/exposure protocol, not a blind restart.
 
 Full-image tool changes must update `tools/full-image.lock.json`, preserve
 upstream license notices and run the hardened checks in

@@ -40,14 +40,17 @@ coverage or parser limits:
 
 ```bash
 mkdir -p .benchmark
-steg_test_scratch=$(mktemp -d .benchmark/pytest-run.XXXXXXXX)
-pytest --basetemp "$steg_test_scratch/fixtures" --cov-report=json:"$steg_test_scratch/coverage.json"
+steg_test_scratch=$(mktemp -d "$PWD/.benchmark/pytest-run.XXXXXXXX")
+TMPDIR="$steg_test_scratch" pytest --basetemp "$steg_test_scratch/fixtures" \
+  --cov-report=json:"$steg_test_scratch/coverage.json"
 ```
 
 `--basetemp` clears its target; never point it at an existing corpus or caller
 directory. Remove only the owned fixture directory after pytest and its children
 exit, keeping logs/coverage and any failed research preparation for handoff.
 An out-of-space invocation is a failed verification, not an optional-data skip.
+Setting both locations keeps isolated workers' `tempfile` output off the small
+tmpfs as well; `--basetemp` alone only relocates pytest-managed fixtures.
 
 Before proposing a change, run:
 

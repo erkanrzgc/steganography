@@ -1,5 +1,13 @@
 # Changelog
 
+- Complete all eight matched own-GPU JPEG controls and verify 16 numeric
+  snapshots without source/budget changes or repeat inherited fitting.
+  Publish every source/seed result and both zero-update diagnoses: weak fit
+  separation and small-batch normalization sensitivity are measured, not a
+  proven detector fix. All learning/production failures remain visible.
+  Final gate: 2,871 tests /96.48% coverage; preserve the initial full-tmpfs
+  failure and complete the disk-backed retry without lowering any limits.
+
 - Add bounded CPU-only paired-score diagnostics with ancestry/privacy/numeric
   rejection tests. Separate known-cover score direction from standalone
   classification; preserve live training hashes, thresholds and qualification.

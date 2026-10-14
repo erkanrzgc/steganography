@@ -1,5 +1,15 @@
 # Benchmark protocol
 
+`JPEG_CONTROL_RESULTS.md` records the complete eight-control matrix, all 16
+development cells and source-specific uncertainty, not only its best seed.
+All candidate arms fail the combined learning rule; production qualification
+remains unavailable. Fixed-statistic fit scores are diagnostic, not held-out
+accuracy. `JPEG_NORMALIZATION_DIAGNOSTIC.md` fixes the separate post-hoc,
+train-only mode contrast: identical selection/learned states, zero updates,
+restored flags and unchanged buffer hashes. Known-cover batch statistics cannot
+become deployment scores. Both diagnoses consume the original remaining budget.
+Earlier startup observations below remain dated, not final job status.
+
 `JPEG_PAIRED_SCORE_DIAGNOSTICS.md` defines descriptive already-scored pair
 audits, not a new training/evaluation gate. Known-cover direction, midpoint
 dispersion and standalone detection answer different questions. Never convert

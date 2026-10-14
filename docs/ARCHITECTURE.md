@@ -727,6 +727,14 @@ change live fitting/controller source closures. See
 `JPEG_PAIRED_SCORE_DIAGNOSTICS.md` for why paired direction is not standalone
 classification quality and midpoint dispersion is not a causal diagnosis.
 
+The completed JPEG research receipts additionally use the existing shared
+data/state/model/evaluation services for bounded read-only fit/development
+and train-only normalization-mode comparisons. These private experiment
+harnesses are not CLI/API/TUI detector modes and create no optimizer or deployed
+model. All 26 BN flags are restored, learned state hashes remain identical and
+known-cover paired scores never enter primary verdicts. See
+`JPEG_CONTROL_RESULTS.md` and `JPEG_NORMALIZATION_DIAGNOSTIC.md`.
+
 The shared optimizer consolidates finite-gradient scalar synchronization only
 for explicit CUDA execution; CPU short-circuit checks remain unchanged. All
 gradient elements, missing-gradient rejection and full per-update numeric-state

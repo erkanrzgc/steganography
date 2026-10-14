@@ -1,5 +1,34 @@
 # Implementation status — 2026-10-14
 
+Final publication verification: 2,871 passed /one actual-CUDA skip, 96.48%
+total coverage, 852.69 s; all ten new portable-evidence checks pass. Ruff,
+185-file mypy and identity/diff checks pass. The first publication invocation
+failed when the 7.8 GiB `/tmp` tmpfs filled; its log is preserved, not reported
+as passed. A fresh disk-backed basetemp plus worker `TMPDIR` completed the full
+unchanged coverage gate. Contributing/project-memory guidance now covers both
+temporary locations. No datasets or GPU checkpoints were removed to fix it.
+
+COMPLETE: all eight matched JPEG controls and 16 numeric snapshots verified.
+Two complete controls were inherited, six newly fitted; all source closures,
+initialization/schedules, parent evidence and cumulative accounting preserved.
+No arm passes both sources/both seeds; production qualification unavailable,
+no deployed model. Genuine-16 development accuracy is 67.97%/63.28% in the
+first seed, 57.81%/57.03% in the second; both reproduce the old genuine scores
+exactly. Execution repair is not an algorithmic accuracy increase.
+
+Both read-only diagnoses complete for all eight models. Full fit/development
+AUC gaps are small (-.034317 to +.051026), weakening a pure-overfitting
+explanation. A fixed 16-original fit-only mode contrast establishes substantial
+stored/paired-BN loss sensitivity in all six small-batch controls, not a safe
+fix or standalone accuracy. All model/buffer digests unchanged, zero new
+optimizer updates, no threshold or reserved-source use. Total cumulative
+controls plus diagnoses 15,666.88 s within the original 21,600 s. Own-GPU
+services finished, snapshots retained. Post-diagnostic checks confirm all 16
+snapshot checksums, original parent and 52+3 source files remain unchanged;
+four services stopped successfully and CUDA compute inventory empty. See
+`JPEG_CONTROL_RESULTS.md` and its
+four portable records. Earlier progress/pause entries below are historical.
+
 Paired-score diagnostic slice verified: 2,861 full tests /one actual-CUDA skip,
 96.48% total coverage, 3,752.50 seconds on the CPU regression host. New core
 diagnostic coverage 100%; lint/type/diff checks pass. The active 52 fitting and

@@ -1,0 +1,1107 @@
+{
+  "schema_version": "jpeg-owned-controls-results-v1",
+  "status": "completed",
+  "execution_commit": "c218e5e3c3a44b507732c27a0ca0a79e4728235a",
+  "report_sha256": "09e8862627ea337c48d9591c16df128c9e638229d91dd356f769c61ba50e7883",
+  "native_verification_sha256": "eff3e82b50a6deb2f750a100b0a01da19a81c109a656a632330d142a91619480",
+  "parent_report_sha256": "da85544091ba0ff84d8074fc3b05e4576e2c9d2051735c7fed8e623bdbfc23e9",
+  "config_sha256": "a3b7ea7553dfcb309f4f5eed1a97f06b5e112bd4ed27cb81d35420598a182c10",
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b",
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "core/jpeg_timing_probe.py": "f1f78bc9fc6b279003637ad116f42cfcb4a1e09c1b7fb9c139333ecb01bd6777",
+    "core/srnet_diversity_sampling.py": "96c00eaf608fd3cb1192d14b8a5a2ac07faaad8e30e124bf6001c803373d1df3",
+    "steganography/research_jpeg_timing_probe.py": "b6dd2c95a9ca44b03d8d85d757122915cc71bd805a99c1e86206bc689e39c8a3",
+    "core/srnet_population_bn.py": "99ca45b4ece2736dbf981648db274bf259d5c832d1dda5d23c9084d8a7b581a8",
+    "core/jpeg_population_control.py": "83f9d21e38d36c19a90a1c9724c3ed407d382d7a4552170c54aba9ebb66435ba",
+    "steganography/research_jpeg_population_bn.py": "742ec92b579c98a4a893a978bb203c5ff43703b224d4d12c77b5f2f065921f19",
+    "docs/JPEG_POPULATION_BN_PROTOCOL.md": "1136f45698bf55c57aed8fcf8e3945d6a8e3b8c89696a0c12aaeb12e33bf9c39",
+    "core/srnet_groupnorm.py": "7bc350808062a2eb5dd6c3c6c289228f9eef97efa00ca1766b56fa89b522f1a4",
+    "core/srnet_norm_training.py": "b44b7dab5a2cb6fb3e63cc0dd9eb581d629988e064d41762b87937cf30b4b6db",
+    "core/jpeg_norm_learning.py": "3d5d91bbf597c90c06057294609c184afc416613fb17fb4e12f3ffd63460e443",
+    "steganography/research_jpeg_norm_learning.py": "d06540ee5dc074087258e256fd7d6ac4b86429eda517cbb40cf01eba9bfc5aab",
+    "docs/JPEG_NORM_LEARNING_PROTOCOL.md": "7c9f170805f0750b625e5cc026fbb0165ea92f9add31991295ea4eecfeb69658",
+    "core/srnet_samepool.py": "eeaf4b98b5dfa41a2a500812c107e33e76c16be50c2e5c330e8d74a74bf0089b",
+    "core/jpeg_learnability.py": "a691e05b7b6fffa48857bc56c55441a38e26f750cf0125aa47ec9f98cf9f45c0",
+    "steganography/research_jpeg_learnability.py": "14876735448e4f8cb134e58f64a6970a50ac0a09cfcc78dacc3f98e910337078",
+    "docs/JPEG_LEARNABILITY_PROTOCOL.md": "86926fff75edffc780e29ef821574a169366cbadd3009d794dc35342434ed06f",
+    "core/jpeg_curriculum.py": "269e556404b943142ef3058e756a1154a9ca5c8565b7fd617a0210063dca16d1",
+    "steganography/research_jpeg_curriculum.py": "e009ade8519dbb252161107759e37318dd0d47b971635f28950bc00b5b9e6359",
+    "docs/JPEG_CURRICULUM_PROTOCOL.md": "dd4fd187a25106c28e6f567c25c0994e4fea7ae7cb37afe9919690a781eddda6",
+    "core/srnet_batch_probe.py": "388a6930942d0e049840bcb4c421816b224ac999029a761b8f0aa643aa672126",
+    "steganography/research_batch_probe.py": "6013bce0dabe93fcff09916d8cb8870fb38d71fd3018ac23e3b970866385f723",
+    "docs/JPEG_BATCH_PROBE_PROTOCOL.md": "44435efa14af90899eed29f33be0ce7163f95e01a07ceb6d7bb8f4fed6a5a507",
+    "core/jpeg_study_optimizer.py": "41c9a3d76b6b31f916ed80d2e055a1d46d23758fe7ca52f7ac1544ab81e941a0",
+    "core/jpeg_study.py": "b782c8651e9d9107b2ca591d4856d59143e13bc471254df74c6eb54a26c479e8",
+    "core/jpeg_study_data.py": "1208aaac72f6b16e0851ea743beb4d6c55fa566f1eaea4a46f2819d86d7d58e5",
+    "core/jpeg_study_state.py": "6456f8cadbfe3290fd8edae2d3594204462cced496dd8e4c6982b1cd627757d5",
+    "core/jpeg_study_audit.py": "b7613f79f02ac90144e78ee951b71bbede0fee46df38cbcf96c1db1c6bf51a7f",
+    "core/jpeg_study_process.py": "dc888db327620a433ea21c7f184216629154ff07b834e4acb72c4a46aa002ca9",
+    "core/jpeg_study_segments.py": "e708d5ae478b4efe1dcbbb1f62cbbfc11b02141deb20a6fc574fa91c00f93a5d",
+    "docs/JPEG_SEGMENTED_CONTROL_PROTOCOL.md": "6f70a17fbd66a95ec5b6fef70e6b35530eb79bb43c2cffc4138198adb897d971",
+    "core/jpeg_study_entropy.py": "49ceec8e0b105bae08f53e4b97f9a5d7896d10aeebb8842fff7e52baad406be6",
+    "core/jpeg_study_views.py": "84a88e7bd985fa55af4bb78621a37471c3c9012a5ee78c4b5095bae9bd62ffe8",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "steganography/research_jpeg_study.py": "dd8003892cbab3f4d510c3ac2febed34223889aba3e2f2d69771a1676f865b4a",
+    "docs/JPEG_LEARNING_STUDY.md": "beda9c06699ca44044588d62366a4caa9a82c58f5dc3e303bf77f5fe6a7b4df3",
+    "docs/JPEG_FIVE_VIEW_STUDY.md": "8894214b0d40a0576e7d8705f324bf2bf0260ff49f5aba5d00255559ed245ee9",
+    "steganography/benchmarking/metrics.py": "7ce03697dc51672399c5f07f475d55d50f353aba45290229709ca49742d7a586"
+  },
+  "controller_sha256": {
+    "core/jpeg_study_continue.py": "04fbd6a41a5a10b9f6bd5e78d5597a2e23d74afe108099ee84fc33e256f1eda5",
+    "steganography/research_jpeg_continue.py": "4f040c1506378c14e65426326ba018c7f896b4eae1d160941e4477047d71fb36",
+    "docs/JPEG_OWNED_CONTINUATION.md": "174b82896d2ab963b3a65c45e7edb1ae6717b6789e4a739ea547c11f93abf953"
+  },
+  "originals": {
+    "fit": 512,
+    "development": 128,
+    "development_pairs_per_source": 64
+  },
+  "method": "JUNIWARD",
+  "positive_ground_truth": "embedding simulation",
+  "simulation_contract": "conseal-2025.11-juniward-bounded-entropy-refinement-v1",
+  "real_original_covers": true,
+  "quality_factor": 75,
+  "payload_rate": 0.4,
+  "representation": "jpeg-gray-five-view-phase0-unrounded-f32-v1",
+  "fixed_probability_threshold": 0.5,
+  "required_controls": 8,
+  "inherited_complete_controls": 2,
+  "newly_completed_controls": 6,
+  "verified_numeric_snapshots": 16,
+  "trials": [
+    {
+      "arm": "legacy",
+      "seed": 20261012,
+      "status": "completed",
+      "binding": "0f39657232757b095baaf1d9bcf765c89665a583b9fd9e094ddf956d43932a8c",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 8192,
+      "total_optimizer_updates": 8192,
+      "initial_learned_sha256": "5a4e309092b96a01c7c075623ec93d8152bd2117086c22f2e3732afebdf08eb4",
+      "schedule_sha256": "714e2188bf494a495ebef6815230e76e34e698989886909447dbd2363b8d3fa2",
+      "mean_cross_entropy": 0.6386265367345914,
+      "seconds": 1903.728788172004,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 57,
+              "tn": 12,
+              "fp": 52,
+              "fn": 7
+            },
+            "precision": 0.522936,
+            "recall": 0.890625,
+            "specificity": 0.1875,
+            "false_positive_rate": 0.8125,
+            "accuracy": 0.539062,
+            "balanced_accuracy": 0.539062,
+            "f1": 0.65896,
+            "roc_auc": 0.547241,
+            "average_precision": 0.53634,
+            "recommended_threshold": null
+          },
+          "ece": 0.27089580850442874,
+          "auc_ci95": [
+            0.538812255859375,
+            0.570806884765625
+          ],
+          "paired_auc_delta_ci95": null,
+          "learning_gate": false,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 55,
+              "tn": 10,
+              "fp": 54,
+              "fn": 9
+            },
+            "precision": 0.504587,
+            "recall": 0.859375,
+            "specificity": 0.15625,
+            "false_positive_rate": 0.84375,
+            "accuracy": 0.507812,
+            "balanced_accuracy": 0.507812,
+            "f1": 0.635838,
+            "roc_auc": 0.538818,
+            "average_precision": 0.530488,
+            "recommended_threshold": null
+          },
+          "ece": 0.2905668142950163,
+          "auc_ci95": [
+            0.529052734375,
+            0.565679931640625
+          ],
+          "paired_auc_delta_ci95": null,
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 4,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "fe9b171a22034b4840465a99cceb561334588f7f0ba509e21be1906e67f76b94"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "b73cc272a5e0f40271b841c5c40ed802dbe8620a9ab64939df3c4756d1d51c62"
+        }
+      ],
+      "inherited_complete_control": true
+    },
+    {
+      "arm": "reference-adamax",
+      "seed": 20261012,
+      "status": "completed",
+      "binding": "2562e5ed5dfa6c7cd12fb034e178f14a4cb508155e2ad421b15dabc52ab8de8a",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 8192,
+      "total_optimizer_updates": 8192,
+      "initial_learned_sha256": "5a4e309092b96a01c7c075623ec93d8152bd2117086c22f2e3732afebdf08eb4",
+      "schedule_sha256": "714e2188bf494a495ebef6815230e76e34e698989886909447dbd2363b8d3fa2",
+      "mean_cross_entropy": 0.6221439847104193,
+      "seconds": 2425.001871045004,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 37,
+              "tn": 41,
+              "fp": 23,
+              "fn": 27
+            },
+            "precision": 0.616667,
+            "recall": 0.578125,
+            "specificity": 0.640625,
+            "false_positive_rate": 0.359375,
+            "accuracy": 0.609375,
+            "balanced_accuracy": 0.609375,
+            "f1": 0.596774,
+            "roc_auc": 0.594482,
+            "average_precision": 0.608286,
+            "recommended_threshold": null
+          },
+          "ece": 0.15742472627579418,
+          "auc_ci95": [
+            0.567620849609375,
+            0.637457275390625
+          ],
+          "paired_auc_delta_ci95": [
+            0.0114715576171875,
+            0.087896728515625
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 13,
+              "tn": 53,
+              "fp": 11,
+              "fn": 51
+            },
+            "precision": 0.541667,
+            "recall": 0.203125,
+            "specificity": 0.828125,
+            "false_positive_rate": 0.171875,
+            "accuracy": 0.515625,
+            "balanced_accuracy": 0.515625,
+            "f1": 0.295455,
+            "roc_auc": 0.536377,
+            "average_precision": 0.556738,
+            "recommended_threshold": null
+          },
+          "ece": 0.2463796929239224,
+          "auc_ci95": [
+            0.531488037109375,
+            0.559326171875
+          ],
+          "paired_auc_delta_ci95": [
+            -0.02686767578125,
+            0.022589111328124994
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 4,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "71b89cc56c30b4b745c89724134127fe1d32884b961fb54679e034ffd76af4ed"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "8aa0713458a18831aaff2ba37307d6b85ffe50febcd6ae0818fbe19fb3e66a11"
+        }
+      ],
+      "inherited_complete_control": true
+    },
+    {
+      "arm": "convolution-l2",
+      "seed": 20261012,
+      "status": "completed",
+      "binding": "8a8765c6e0b87155324d39f1fd014de2fa550e539adf18da5ffe49fe6110f5de",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 8192,
+      "total_optimizer_updates": 8192,
+      "initial_learned_sha256": "5a4e309092b96a01c7c075623ec93d8152bd2117086c22f2e3732afebdf08eb4",
+      "schedule_sha256": "714e2188bf494a495ebef6815230e76e34e698989886909447dbd2363b8d3fa2",
+      "mean_cross_entropy": 0.6333457801028999,
+      "seconds": 1907.9823745939998,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 37,
+              "tn": 29,
+              "fp": 35,
+              "fn": 27
+            },
+            "precision": 0.513889,
+            "recall": 0.578125,
+            "specificity": 0.453125,
+            "false_positive_rate": 0.546875,
+            "accuracy": 0.515625,
+            "balanced_accuracy": 0.515625,
+            "f1": 0.544118,
+            "roc_auc": 0.528564,
+            "average_precision": 0.562778,
+            "recommended_threshold": null
+          },
+          "ece": 0.16346937308284304,
+          "auc_ci95": [
+            0.525146484375,
+            0.551025390625
+          ],
+          "paired_auc_delta_ci95": [
+            -0.0367431640625,
+            0.00244140625
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 14,
+              "tn": 50,
+              "fp": 14,
+              "fn": 50
+            },
+            "precision": 0.5,
+            "recall": 0.21875,
+            "specificity": 0.78125,
+            "false_positive_rate": 0.21875,
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "f1": 0.304348,
+            "roc_auc": 0.518311,
+            "average_precision": 0.551574,
+            "recommended_threshold": null
+          },
+          "ece": 0.3412215220929648,
+          "auc_ci95": [
+            0.518310546875,
+            0.533203125
+          ],
+          "paired_auc_delta_ci95": [
+            -0.04248046875,
+            -0.0019470214843750056
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 4,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "bc23bec3464d2bdb3c5a879236bda323b0433fdd2d43324ff0e0626d482041c3"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "520e12d4abd57bfe99d003fb5099cd07797dd833b40c10f6d17a3b91552b3a70"
+        }
+      ],
+      "inherited_complete_control": false
+    },
+    {
+      "arm": "genuine-batch",
+      "seed": 20261012,
+      "status": "completed",
+      "binding": "6dc6357d5ac10b7a115328feaa82bd2407b65960b401dd3c27afe21ab2e3a89e",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 2048,
+      "total_optimizer_updates": 2048,
+      "initial_learned_sha256": "5a4e309092b96a01c7c075623ec93d8152bd2117086c22f2e3732afebdf08eb4",
+      "schedule_sha256": "714e2188bf494a495ebef6815230e76e34e698989886909447dbd2363b8d3fa2",
+      "mean_cross_entropy": 0.6787466417008545,
+      "seconds": 1079.8759460229994,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 36,
+              "tn": 51,
+              "fp": 13,
+              "fn": 28
+            },
+            "precision": 0.734694,
+            "recall": 0.5625,
+            "specificity": 0.796875,
+            "false_positive_rate": 0.203125,
+            "accuracy": 0.679688,
+            "balanced_accuracy": 0.679688,
+            "f1": 0.637168,
+            "roc_auc": 0.770508,
+            "average_precision": 0.793081,
+            "recommended_threshold": null
+          },
+          "ece": 0.11123973164940248,
+          "auc_ci95": [
+            0.72801513671875,
+            0.8230224609375
+          ],
+          "paired_auc_delta_ci95": [
+            0.168450927734375,
+            0.273681640625
+          ],
+          "learning_gate": true,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 30,
+              "tn": 51,
+              "fp": 13,
+              "fn": 34
+            },
+            "precision": 0.697674,
+            "recall": 0.46875,
+            "specificity": 0.796875,
+            "false_positive_rate": 0.203125,
+            "accuracy": 0.632812,
+            "balanced_accuracy": 0.632812,
+            "f1": 0.560748,
+            "roc_auc": 0.679199,
+            "average_precision": 0.691435,
+            "recommended_threshold": null
+          },
+          "ece": 0.09334690382529519,
+          "auc_ci95": [
+            0.652581787109375,
+            0.721435546875
+          ],
+          "paired_auc_delta_ci95": [
+            0.1044891357421875,
+            0.173956298828125
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 16,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "c9d70ffae6f41a6c80bd800750dad08d5bde9d912453170accb1fa2b8bd1dd0a"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "d5e4ae0c64c8f12885a3f456518f0326525aaecaff26b50e71dec4ac6e7c60f3"
+        }
+      ],
+      "inherited_complete_control": false
+    },
+    {
+      "arm": "legacy",
+      "seed": 20261013,
+      "status": "completed",
+      "binding": "6c09cd3d3d87b3fe3802aebe155dfb57812bd3651c5874d2c51a59b29cb35a1f",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 8192,
+      "total_optimizer_updates": 8192,
+      "initial_learned_sha256": "64a9743cee793de7c239901fd29d1e766f5c27ca71e651c4ecaf67db30655b80",
+      "schedule_sha256": "e2eb40d59d37bf66494602df3242202ad0a6b0d07c95f12fc355b1941447494c",
+      "mean_cross_entropy": 0.6438212664943421,
+      "seconds": 1520.9547653739992,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 18,
+              "tn": 54,
+              "fp": 10,
+              "fn": 46
+            },
+            "precision": 0.642857,
+            "recall": 0.28125,
+            "specificity": 0.84375,
+            "false_positive_rate": 0.15625,
+            "accuracy": 0.5625,
+            "balanced_accuracy": 0.5625,
+            "f1": 0.391304,
+            "roc_auc": 0.611816,
+            "average_precision": 0.629416,
+            "recommended_threshold": null
+          },
+          "ece": 0.2416674639240785,
+          "auc_ci95": [
+            0.590570068359375,
+            0.648931884765625
+          ],
+          "paired_auc_delta_ci95": null,
+          "learning_gate": false,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 19,
+              "tn": 52,
+              "fp": 12,
+              "fn": 45
+            },
+            "precision": 0.612903,
+            "recall": 0.296875,
+            "specificity": 0.8125,
+            "false_positive_rate": 0.1875,
+            "accuracy": 0.554688,
+            "balanced_accuracy": 0.554688,
+            "f1": 0.4,
+            "roc_auc": 0.565918,
+            "average_precision": 0.600787,
+            "recommended_threshold": null
+          },
+          "ece": 0.18364376225518458,
+          "auc_ci95": [
+            0.548095703125,
+            0.599383544921875
+          ],
+          "paired_auc_delta_ci95": null,
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 4,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "d75ebf871ee83d8ea24a3d82057a73faefd8c94f8ff48ecd87fbfafd934d3359"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "ce77b79264d67d42bb159e6bab10f1ab0a684213e9074b380db416c106cb7534"
+        }
+      ],
+      "inherited_complete_control": false
+    },
+    {
+      "arm": "reference-adamax",
+      "seed": 20261013,
+      "status": "completed",
+      "binding": "f00e05fc52ed46fc9f0545a231ff999013f50ff01fbcca0348d2585bde19fb91",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 8192,
+      "total_optimizer_updates": 8192,
+      "initial_learned_sha256": "64a9743cee793de7c239901fd29d1e766f5c27ca71e651c4ecaf67db30655b80",
+      "schedule_sha256": "e2eb40d59d37bf66494602df3242202ad0a6b0d07c95f12fc355b1941447494c",
+      "mean_cross_entropy": 0.6244009034708142,
+      "seconds": 1867.0476828599994,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 45,
+              "tn": 29,
+              "fp": 35,
+              "fn": 19
+            },
+            "precision": 0.5625,
+            "recall": 0.703125,
+            "specificity": 0.453125,
+            "false_positive_rate": 0.546875,
+            "accuracy": 0.578125,
+            "balanced_accuracy": 0.578125,
+            "f1": 0.625,
+            "roc_auc": 0.611816,
+            "average_precision": 0.613138,
+            "recommended_threshold": null
+          },
+          "ece": 0.17434136591681315,
+          "auc_ci95": [
+            0.5859375,
+            0.650396728515625
+          ],
+          "paired_auc_delta_ci95": [
+            -0.043701171875,
+            0.044677734375
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 36,
+              "tn": 35,
+              "fp": 29,
+              "fn": 28
+            },
+            "precision": 0.553846,
+            "recall": 0.5625,
+            "specificity": 0.546875,
+            "false_positive_rate": 0.453125,
+            "accuracy": 0.554688,
+            "balanced_accuracy": 0.554688,
+            "f1": 0.55814,
+            "roc_auc": 0.581055,
+            "average_precision": 0.571726,
+            "recommended_threshold": null
+          },
+          "ece": 0.10923606715109266,
+          "auc_ci95": [
+            0.561749267578125,
+            0.619140625
+          ],
+          "paired_auc_delta_ci95": [
+            -0.028082275390625,
+            0.057373046875
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 4,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "807168a7b01bf4e928a04d13e8e2b2f999d95b0533dad43895a29c5373e1d671"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "0124d942f1880f9d2fe18b80cb88d2251ceae35e4fcdaa0e01c2b80cf6e11966"
+        }
+      ],
+      "inherited_complete_control": false
+    },
+    {
+      "arm": "convolution-l2",
+      "seed": 20261013,
+      "status": "completed",
+      "binding": "ea157ad0b2428295a673b41be3ddf28ead2e6a62174f464417f6116792348d45",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 8192,
+      "total_optimizer_updates": 8192,
+      "initial_learned_sha256": "64a9743cee793de7c239901fd29d1e766f5c27ca71e651c4ecaf67db30655b80",
+      "schedule_sha256": "e2eb40d59d37bf66494602df3242202ad0a6b0d07c95f12fc355b1941447494c",
+      "mean_cross_entropy": 0.6381603585596167,
+      "seconds": 1876.536380814,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 52,
+              "tn": 13,
+              "fp": 51,
+              "fn": 12
+            },
+            "precision": 0.504854,
+            "recall": 0.8125,
+            "specificity": 0.203125,
+            "false_positive_rate": 0.796875,
+            "accuracy": 0.507812,
+            "balanced_accuracy": 0.507812,
+            "f1": 0.622754,
+            "roc_auc": 0.546387,
+            "average_precision": 0.545238,
+            "recommended_threshold": null
+          },
+          "ece": 0.2635535132023506,
+          "auc_ci95": [
+            0.53709716796875,
+            0.5735107421875
+          ],
+          "paired_auc_delta_ci95": [
+            -0.10059814453125,
+            -0.02977294921875001
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 50,
+              "tn": 17,
+              "fp": 47,
+              "fn": 14
+            },
+            "precision": 0.515464,
+            "recall": 0.78125,
+            "specificity": 0.265625,
+            "false_positive_rate": 0.734375,
+            "accuracy": 0.523438,
+            "balanced_accuracy": 0.523438,
+            "f1": 0.621118,
+            "roc_auc": 0.552002,
+            "average_precision": 0.554198,
+            "recommended_threshold": null
+          },
+          "ece": 0.18031072311569013,
+          "auc_ci95": [
+            0.543695068359375,
+            0.580078125
+          ],
+          "paired_auc_delta_ci95": [
+            -0.0458984375,
+            0.018310546875
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 4,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "eb5ab8161f4d55d4fda2d2e9f13432bdde482722b94fd4a234b31f2c8e9770a3"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "b8db2534a202ab9b91ac5e62a477aa0f9f5edd48eb819b6faa7e5d9d1c3cf19c"
+        }
+      ],
+      "inherited_complete_control": false
+    },
+    {
+      "arm": "genuine-batch",
+      "seed": 20261013,
+      "status": "completed",
+      "binding": "dc91433218641ab3524050de958a9347236aa8bfab45b221b339701046553957",
+      "manifest_sha256": "87df666c9896cec3e1b4897ead54321af4b8f79f4a0ec02e397582e725638fb5",
+      "presented_rows": 32768,
+      "optimizer_updates": 2048,
+      "total_optimizer_updates": 2048,
+      "initial_learned_sha256": "64a9743cee793de7c239901fd29d1e766f5c27ca71e651c4ecaf67db30655b80",
+      "schedule_sha256": "e2eb40d59d37bf66494602df3242202ad0a6b0d07c95f12fc355b1941447494c",
+      "mean_cross_entropy": 0.6814334056107327,
+      "seconds": 1075.371211990001,
+      "execution": {
+        "device": "cuda:0",
+        "torch_version": "2.14.0+cu130",
+        "cuda_version": "13.0",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "compute_capability": [
+          12,
+          0
+        ],
+        "total_gpu_bytes": 8518041600,
+        "torch_allocator_limit_bytes": 4294967296,
+        "host_memory_max_bytes": 8589934592,
+        "precision": "float32-ieee",
+        "tf32": false,
+        "mixed_precision": false,
+        "deterministic_algorithms": true,
+        "cpu_fallback": false
+      },
+      "cells": [
+        {
+          "source_group": "BOSSbase-1.01",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 13,
+              "tn": 61,
+              "fp": 3,
+              "fn": 51
+            },
+            "precision": 0.8125,
+            "recall": 0.203125,
+            "specificity": 0.953125,
+            "false_positive_rate": 0.046875,
+            "accuracy": 0.578125,
+            "balanced_accuracy": 0.578125,
+            "f1": 0.325,
+            "roc_auc": 0.613037,
+            "average_precision": 0.653351,
+            "recommended_threshold": null
+          },
+          "ece": 0.12446202526043634,
+          "auc_ci95": [
+            0.598138427734375,
+            0.64111328125
+          ],
+          "paired_auc_delta_ci95": [
+            -0.032965087890625,
+            0.031500244140624994
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        },
+        {
+          "source_group": "BOWS2",
+          "method": "JUNIWARD",
+          "quality_factor": 75,
+          "payload_rate": 0.4,
+          "original_pairs": 64,
+          "metrics": {
+            "threshold": 50,
+            "samples": 128,
+            "positives": 64,
+            "negatives": 64,
+            "confusion": {
+              "tp": 16,
+              "tn": 57,
+              "fp": 7,
+              "fn": 48
+            },
+            "precision": 0.695652,
+            "recall": 0.25,
+            "specificity": 0.890625,
+            "false_positive_rate": 0.109375,
+            "accuracy": 0.570312,
+            "balanced_accuracy": 0.570312,
+            "f1": 0.367816,
+            "roc_auc": 0.574951,
+            "average_precision": 0.595683,
+            "recommended_threshold": null
+          },
+          "ece": 0.08754893166478725,
+          "auc_ci95": [
+            0.565423583984375,
+            0.602301025390625
+          ],
+          "paired_auc_delta_ci95": [
+            -0.013916015625,
+            0.034185791015624994
+          ],
+          "learning_gate": false,
+          "support_status": "experimental"
+        }
+      ],
+      "batch_rows": 16,
+      "checkpoints": [
+        {
+          "presented_rows": 16384,
+          "sha256": "891a576ed94c991ce42fef4fa1e4293e23083acdd7cf7d269a9e8cbd1e30a86f"
+        },
+        {
+          "presented_rows": 32768,
+          "sha256": "4b9c836d983d8cbed7541516786d1c0f40150030ad70b9d5ad8181ec86bd4e7d"
+        }
+      ],
+      "inherited_complete_control": false
+    }
+  ],
+  "capacity": {
+    "8": "completed",
+    "16": "completed",
+    "32": "unavailable: gpu_allocator_out_of_memory"
+  },
+  "budget": {
+    "controls_budget_seconds": 21600,
+    "prior_controls_seconds": 5403.521319699999,
+    "new_controls_seconds": 9404.685616956,
+    "seconds": 14808.206939572
+  },
+  "learning_gate": false,
+  "passing_arms": [],
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "cloud_spending": 0,
+  "limitations": [
+    "Completed execution is not a passed learning or production gate.",
+    "Development metrics only; no reserved independent-source evaluation.",
+    "Five views do not multiply independent original counts.",
+    "Two named source groups do not establish independent cameras or pipelines.",
+    "No threshold selection, calibration change or model promotion.",
+    "Earlier cancelled/limit-exceeded matrices retain their original status."
+  ]
+}

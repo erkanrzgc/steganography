@@ -1,0 +1,366 @@
+{
+  "schema_version": "jpeg-readonly-normalization-contrast-v1",
+  "status": "completed",
+  "study_report_sha256": "09e8862627ea337c48d9591c16df128c9e638229d91dd356f769c61ba50e7883",
+  "fit_evaluation_sha256": "4c48e69ba3b25266def6853543ce71840152b19b31607d5fc2d473d5c85877af",
+  "diagnostic_sha256": "7eb02408ae08c1b90b85a32e58083f4b597953f1e4b74b55f5efd36b13b84f76",
+  "source_sha256": {
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "core/srnet_sampling.py": "4dad17ad79f3361a5956d6a6cca5792a5f47fa24e2b97dc2eab090f71f4cccab",
+    "core/srnet_multibatch.py": "5b71cb50a2a84de436b89dfd6e14c65ebde15e4dec40dcb394af72f5600a7d79",
+    "core/srnet_scale_sampling.py": "ecf100734c637a97ab3579a16f1358802f513bd4ad02c2e6dc8c3c9655807244",
+    "core/srnet_stream.py": "c4c9a213b636dd221802ce19b62d713b66202f1e9404d2d21a77fd61b0276f6a",
+    "core/srnet_training.py": "f30b59400d85dc51265caf38834cdbd7a19312b6fe642cccd80c13a4273ccbc0",
+    "core/srnet_stream_training.py": "2a0068e4ab4be873de7cb26553086c8fc076d6b581461332e68ef71348c914a5",
+    "core/srnet_cuda.py": "2b8c2ac4f5de4ac36fd166b51cf9dd684d978ce28643081c1f98a90435cfe645",
+    "core/jpeg_float256.py": "5020d75b423d61657b5179d66d51896f9e93930bd820840ef04dfa4857f7c08b",
+    "core/jpeg_scale.py": "61145891c307614459e5884202eaae9ba099e727aa06a8e9e8cc88f68e4836fc",
+    "steganography/research_srnet_stream.py": "8311351663eae02fcd10e7abb117e66a3fcd6ae50dc72813613c21c82c341c3a",
+    "steganography/research_jpeg.py": "17c762886730388e684c697f20cb652ae4ce2212ea72cd7aecd4cbf87780fb32",
+    "steganography/research_cuda_probe.py": "c85d1e280a10e90eda7af53943ede76c1f3f3e60b9730859be3ae9b805c11d5b",
+    "core/jpeg_timing.py": "25fdad6c63c52af453fca8084ae680added953d27cf324d4c0b8735d2eaee57a",
+    "core/jpeg_timing_probe.py": "f1f78bc9fc6b279003637ad116f42cfcb4a1e09c1b7fb9c139333ecb01bd6777",
+    "core/srnet_diversity_sampling.py": "96c00eaf608fd3cb1192d14b8a5a2ac07faaad8e30e124bf6001c803373d1df3",
+    "steganography/research_jpeg_timing_probe.py": "b6dd2c95a9ca44b03d8d85d757122915cc71bd805a99c1e86206bc689e39c8a3",
+    "core/srnet_population_bn.py": "99ca45b4ece2736dbf981648db274bf259d5c832d1dda5d23c9084d8a7b581a8",
+    "core/jpeg_population_control.py": "83f9d21e38d36c19a90a1c9724c3ed407d382d7a4552170c54aba9ebb66435ba",
+    "steganography/research_jpeg_population_bn.py": "742ec92b579c98a4a893a978bb203c5ff43703b224d4d12c77b5f2f065921f19",
+    "docs/JPEG_POPULATION_BN_PROTOCOL.md": "1136f45698bf55c57aed8fcf8e3945d6a8e3b8c89696a0c12aaeb12e33bf9c39",
+    "core/srnet_groupnorm.py": "7bc350808062a2eb5dd6c3c6c289228f9eef97efa00ca1766b56fa89b522f1a4",
+    "core/srnet_norm_training.py": "b44b7dab5a2cb6fb3e63cc0dd9eb581d629988e064d41762b87937cf30b4b6db",
+    "core/jpeg_norm_learning.py": "3d5d91bbf597c90c06057294609c184afc416613fb17fb4e12f3ffd63460e443",
+    "steganography/research_jpeg_norm_learning.py": "d06540ee5dc074087258e256fd7d6ac4b86429eda517cbb40cf01eba9bfc5aab",
+    "docs/JPEG_NORM_LEARNING_PROTOCOL.md": "7c9f170805f0750b625e5cc026fbb0165ea92f9add31991295ea4eecfeb69658",
+    "core/srnet_samepool.py": "eeaf4b98b5dfa41a2a500812c107e33e76c16be50c2e5c330e8d74a74bf0089b",
+    "core/jpeg_learnability.py": "a691e05b7b6fffa48857bc56c55441a38e26f750cf0125aa47ec9f98cf9f45c0",
+    "steganography/research_jpeg_learnability.py": "14876735448e4f8cb134e58f64a6970a50ac0a09cfcc78dacc3f98e910337078",
+    "docs/JPEG_LEARNABILITY_PROTOCOL.md": "86926fff75edffc780e29ef821574a169366cbadd3009d794dc35342434ed06f",
+    "core/jpeg_curriculum.py": "269e556404b943142ef3058e756a1154a9ca5c8565b7fd617a0210063dca16d1",
+    "steganography/research_jpeg_curriculum.py": "e009ade8519dbb252161107759e37318dd0d47b971635f28950bc00b5b9e6359",
+    "docs/JPEG_CURRICULUM_PROTOCOL.md": "dd4fd187a25106c28e6f567c25c0994e4fea7ae7cb37afe9919690a781eddda6",
+    "core/srnet_batch_probe.py": "388a6930942d0e049840bcb4c421816b224ac999029a761b8f0aa643aa672126",
+    "steganography/research_batch_probe.py": "6013bce0dabe93fcff09916d8cb8870fb38d71fd3018ac23e3b970866385f723",
+    "docs/JPEG_BATCH_PROBE_PROTOCOL.md": "44435efa14af90899eed29f33be0ce7163f95e01a07ceb6d7bb8f4fed6a5a507",
+    "core/jpeg_study_optimizer.py": "41c9a3d76b6b31f916ed80d2e055a1d46d23758fe7ca52f7ac1544ab81e941a0",
+    "core/jpeg_study.py": "b782c8651e9d9107b2ca591d4856d59143e13bc471254df74c6eb54a26c479e8",
+    "core/jpeg_study_data.py": "1208aaac72f6b16e0851ea743beb4d6c55fa566f1eaea4a46f2819d86d7d58e5",
+    "core/jpeg_study_state.py": "6456f8cadbfe3290fd8edae2d3594204462cced496dd8e4c6982b1cd627757d5",
+    "core/jpeg_study_audit.py": "b7613f79f02ac90144e78ee951b71bbede0fee46df38cbcf96c1db1c6bf51a7f",
+    "core/jpeg_study_process.py": "dc888db327620a433ea21c7f184216629154ff07b834e4acb72c4a46aa002ca9",
+    "core/jpeg_study_segments.py": "e708d5ae478b4efe1dcbbb1f62cbbfc11b02141deb20a6fc574fa91c00f93a5d",
+    "docs/JPEG_SEGMENTED_CONTROL_PROTOCOL.md": "6f70a17fbd66a95ec5b6fef70e6b35530eb79bb43c2cffc4138198adb897d971",
+    "core/jpeg_study_entropy.py": "49ceec8e0b105bae08f53e4b97f9a5d7896d10aeebb8842fff7e52baad406be6",
+    "core/jpeg_study_views.py": "84a88e7bd985fa55af4bb78621a37471c3c9012a5ee78c4b5095bae9bd62ffe8",
+    "core/srnet_checkpoint.py": "bc58b54cc684b3a0ec286904ecb79ae3662288ca6919adf33a6135b2aac517e4",
+    "steganography/research_jpeg_study.py": "dd8003892cbab3f4d510c3ac2febed34223889aba3e2f2d69771a1676f865b4a",
+    "docs/JPEG_LEARNING_STUDY.md": "beda9c06699ca44044588d62366a4caa9a82c58f5dc3e303bf77f5fe6a7b4df3",
+    "docs/JPEG_FIVE_VIEW_STUDY.md": "8894214b0d40a0576e7d8705f324bf2bf0260ff49f5aba5d00255559ed245ee9",
+    "steganography/benchmarking/metrics.py": "7ce03697dc51672399c5f07f475d55d50f353aba45290229709ca49742d7a586"
+  },
+  "controller_sha256": {
+    "core/jpeg_study_continue.py": "04fbd6a41a5a10b9f6bd5e78d5597a2e23d74afe108099ee84fc33e256f1eda5",
+    "steganography/research_jpeg_continue.py": "4f040c1506378c14e65426326ba018c7f896b4eae1d160941e4477047d71fb36",
+    "docs/JPEG_OWNED_CONTINUATION.md": "174b82896d2ab963b3a65c45e7edb1ae6717b6789e4a739ea547c11f93abf953"
+  },
+  "execution": {
+    "device": "cuda:0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_gpu_bytes": 8518041600,
+    "torch_allocator_limit_bytes": 4294967296,
+    "host_memory_max_bytes": 8589934592,
+    "precision": "float32-ieee",
+    "tf32": false,
+    "mixed_precision": false,
+    "deterministic_algorithms": true,
+    "cpu_fallback": false
+  },
+  "results": [
+    {
+      "arm": "legacy",
+      "seed": 20261012,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 6.621002338296204,
+          "mean_absolute_logit_margin": 13.940840586539707,
+          "mean_cover_probability": 0.7996801231056452,
+          "mean_stego_probability": 0.8446912206709385,
+          "mean_within_pair_probability_difference": 0.04501109756529331
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.5396823717746884,
+          "mean_absolute_logit_margin": 0.7924861159990542,
+          "mean_cover_probability": 0.3894357323879376,
+          "mean_stego_probability": 0.60756113845855,
+          "mean_within_pair_probability_difference": 0.21812540607061237
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 4,
+      "snapshot_sha256": "b73cc272a5e0f40271b841c5c40ed802dbe8620a9ab64939df3c4756d1d51c62",
+      "snapshot_binding": "0f39657232757b095baaf1d9bcf765c89665a583b9fd9e094ddf956d43932a8c",
+      "model_digest_before": "e5aab7cac0148fa28938478d76f4270b69ac7769004c9103277531003c6fb896",
+      "model_digest_after": "e5aab7cac0148fa28938478d76f4270b69ac7769004c9103277531003c6fb896",
+      "seconds": 4.825949231000777,
+      "optimizer_updates_added": 0
+    },
+    {
+      "arm": "reference-adamax",
+      "seed": 20261012,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 3.377568634034361,
+          "mean_absolute_logit_margin": 6.6152383759617805,
+          "mean_cover_probability": 0.30145143596678164,
+          "mean_stego_probability": 0.31322483074933505,
+          "mean_within_pair_probability_difference": 0.011773394782553421
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.5610660614911467,
+          "mean_absolute_logit_margin": 1.1306733850506134,
+          "mean_cover_probability": 0.375556156039238,
+          "mean_stego_probability": 0.6279735062271357,
+          "mean_within_pair_probability_difference": 0.2524173501878977
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 4,
+      "snapshot_sha256": "8aa0713458a18831aaff2ba37307d6b85ffe50febcd6ae0818fbe19fb3e66a11",
+      "snapshot_binding": "2562e5ed5dfa6c7cd12fb034e178f14a4cb508155e2ad421b15dabc52ab8de8a",
+      "model_digest_before": "ee57ef720426f1ba962f549977f4e0327ef3e267c203535312e731e55d8e767e",
+      "model_digest_after": "ee57ef720426f1ba962f549977f4e0327ef3e267c203535312e731e55d8e767e",
+      "seconds": 2.5641942550009844,
+      "optimizer_updates_added": 0
+    },
+    {
+      "arm": "convolution-l2",
+      "seed": 20261012,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 8.89689586846725,
+          "mean_absolute_logit_margin": 17.82496342738159,
+          "mean_cover_probability": 0.26780324158747165,
+          "mean_stego_probability": 0.27236807932646473,
+          "mean_within_pair_probability_difference": 0.004564837738993093
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.7436353265075013,
+          "mean_absolute_logit_margin": 1.4902200709329918,
+          "mean_cover_probability": 0.42161868629045784,
+          "mean_stego_probability": 0.5890933414921165,
+          "mean_within_pair_probability_difference": 0.1674746552016586
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 4,
+      "snapshot_sha256": "520e12d4abd57bfe99d003fb5099cd07797dd833b40c10f6d17a3b91552b3a70",
+      "snapshot_binding": "8a8765c6e0b87155324d39f1fd014de2fa550e539adf18da5ffe49fe6110f5de",
+      "model_digest_before": "a1d3882fcf16ccd4a0a7f2af0d8668ba3895557b69a7dd173c3de560acca60af",
+      "model_digest_after": "a1d3882fcf16ccd4a0a7f2af0d8668ba3895557b69a7dd173c3de560acca60af",
+      "seconds": 2.6990426410011423,
+      "optimizer_updates_added": 0
+    },
+    {
+      "arm": "genuine-batch",
+      "seed": 20261012,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 0.6660022111609578,
+          "mean_absolute_logit_margin": 0.6049154129577801,
+          "mean_cover_probability": 0.42353196162730455,
+          "mean_stego_probability": 0.51027612388134,
+          "mean_within_pair_probability_difference": 0.08674416225403547
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.6686509810388088,
+          "mean_absolute_logit_margin": 0.6314380911644548,
+          "mean_cover_probability": 0.4622422568500042,
+          "mean_stego_probability": 0.5433286027982831,
+          "mean_within_pair_probability_difference": 0.0810863459482789
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 16,
+      "snapshot_sha256": "d5e4ae0c64c8f12885a3f456518f0326525aaecaff26b50e71dec4ac6e7c60f3",
+      "snapshot_binding": "6dc6357d5ac10b7a115328feaa82bd2407b65960b401dd3c27afe21ab2e3a89e",
+      "model_digest_before": "630cf31cfca6cd5d0994810e5a84862fa99db1cb55c686019ebd27c2b751cc79",
+      "model_digest_after": "630cf31cfca6cd5d0994810e5a84862fa99db1cb55c686019ebd27c2b751cc79",
+      "seconds": 2.5695097810003062,
+      "optimizer_updates_added": 0
+    },
+    {
+      "arm": "legacy",
+      "seed": 20261013,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 2.327997531558111,
+          "mean_absolute_logit_margin": 4.767854400910437,
+          "mean_cover_probability": 0.30475561718443434,
+          "mean_stego_probability": 0.39281683784438526,
+          "mean_within_pair_probability_difference": 0.08806122065995088
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.6074974600924179,
+          "mean_absolute_logit_margin": 0.7490844642743468,
+          "mean_cover_probability": 0.40922801615670323,
+          "mean_stego_probability": 0.5688210586085916,
+          "mean_within_pair_probability_difference": 0.15959304245188832
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 4,
+      "snapshot_sha256": "ce77b79264d67d42bb159e6bab10f1ab0a684213e9074b380db416c106cb7534",
+      "snapshot_binding": "6c09cd3d3d87b3fe3802aebe155dfb57812bd3651c5874d2c51a59b29cb35a1f",
+      "model_digest_before": "021b8d65731e9c5089683c6932eef9df85240a906af6b074cd7cfd2999be2c23",
+      "model_digest_after": "021b8d65731e9c5089683c6932eef9df85240a906af6b074cd7cfd2999be2c23",
+      "seconds": 2.4944889950002107,
+      "optimizer_updates_added": 0
+    },
+    {
+      "arm": "reference-adamax",
+      "seed": 20261013,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 1.23983114879411,
+          "mean_absolute_logit_margin": 2.8391080239671282,
+          "mean_cover_probability": 0.433363909698528,
+          "mean_stego_probability": 0.5984402996255085,
+          "mean_within_pair_probability_difference": 0.16507638992698048
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.5625375567760784,
+          "mean_absolute_logit_margin": 0.8692875171545893,
+          "mean_cover_probability": 0.37923926673829556,
+          "mean_stego_probability": 0.5911779571324587,
+          "mean_within_pair_probability_difference": 0.21193869039416313
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 4,
+      "snapshot_sha256": "0124d942f1880f9d2fe18b80cb88d2251ceae35e4fcdaa0e01c2b80cf6e11966",
+      "snapshot_binding": "f00e05fc52ed46fc9f0545a231ff999013f50ff01fbcca0348d2585bde19fb91",
+      "model_digest_before": "e30a8e0fada9f670b93b706cc6ea4d2bd81fc77c527bdaf35c5ccc5e552fdde9",
+      "model_digest_after": "e30a8e0fada9f670b93b706cc6ea4d2bd81fc77c527bdaf35c5ccc5e552fdde9",
+      "seconds": 2.596708483000839,
+      "optimizer_updates_added": 0
+    },
+    {
+      "arm": "convolution-l2",
+      "seed": 20261013,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 3.558511896525622,
+          "mean_absolute_logit_margin": 7.065401148982346,
+          "mean_cover_probability": 0.7479745727032423,
+          "mean_stego_probability": 0.7633460927754641,
+          "mean_within_pair_probability_difference": 0.015371520072221756
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.565597465261817,
+          "mean_absolute_logit_margin": 0.5593619030551054,
+          "mean_cover_probability": 0.4144253614358604,
+          "mean_stego_probability": 0.5830458607524633,
+          "mean_within_pair_probability_difference": 0.16862049931660295
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 4,
+      "snapshot_sha256": "b8db2534a202ab9b91ac5e62a477aa0f9f5edd48eb819b6faa7e5d9d1c3cf19c",
+      "snapshot_binding": "ea157ad0b2428295a673b41be3ddf28ead2e6a62174f464417f6116792348d45",
+      "model_digest_before": "99297ef8e5574bcde0d19e082138cab74be373c401720c9740456f3b204cc42b",
+      "model_digest_after": "99297ef8e5574bcde0d19e082138cab74be373c401720c9740456f3b204cc42b",
+      "seconds": 2.5608350670008804,
+      "optimizer_updates_added": 0
+    },
+    {
+      "arm": "genuine-batch",
+      "seed": 20261013,
+      "status": "completed",
+      "modes": {
+        "stored_statistics": {
+          "mean_cross_entropy": 0.6952470755204558,
+          "mean_absolute_logit_margin": 0.37888629495864734,
+          "mean_cover_probability": 0.4199896417558193,
+          "mean_stego_probability": 0.45507596619427204,
+          "mean_within_pair_probability_difference": 0.03508632443845272
+        },
+        "paired_batch_statistics": {
+          "mean_cross_entropy": 0.668793048709631,
+          "mean_absolute_logit_margin": 0.2912124208523892,
+          "mean_cover_probability": 0.4800934437662363,
+          "mean_stego_probability": 0.5244319764897227,
+          "mean_within_pair_probability_difference": 0.044338532723486423
+        }
+      },
+      "original_fit_pairs": 16,
+      "original_fit_pairs_per_source": 8,
+      "selection_sha256": "4f89013b6eb64e62968261b9c1c100fe9f8a8edfdff8c4951679e8683371c9aa",
+      "batch_rows": 16,
+      "snapshot_sha256": "4b9c836d983d8cbed7541516786d1c0f40150030ad70b9d5ad8181ec86bd4e7d",
+      "snapshot_binding": "dc91433218641ab3524050de958a9347236aa8bfab45b221b339701046553957",
+      "model_digest_before": "c461cb8d54bb6f43ad162b981a09a6346b4ecfed5e3521793855e33d9fd8027e",
+      "model_digest_after": "c461cb8d54bb6f43ad162b981a09a6346b4ecfed5e3521793855e33d9fd8027e",
+      "seconds": 2.5340185460008797,
+      "optimizer_updates_added": 0
+    }
+  ],
+  "seconds": 23.07485785800054,
+  "cumulative_controls_and_diagnostics_seconds": 15666.880866963998,
+  "optimizer_updates_added": 0,
+  "learned_state_modified": false,
+  "threshold_selected": false,
+  "development_source_used": false,
+  "reserved_source_used": false,
+  "requires_known_cover": true,
+  "standalone_accuracy_computed": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "limitations": [
+    "Post-hoc train-only mode contrast, not a new accuracy gate.",
+    "Only 16 original pairs, fixed center view; not full five-view evaluation.",
+    "Batch statistics depend on paired inputs and cannot be deployment scores.",
+    "A mode contrast does not prove a safe fix or sufficient training/data."
+  ],
+  "native_receipt_sha256": "93bf005229c37cca8fecea5c0a25a3ac1768388e79c8550f4189efde888eb0e6",
+  "protocol_boundary": {
+    "schema_version": "jpeg-normalization-diagnostic-start-v1",
+    "fixed_before_execution_at": "2026-10-14T11:50:55.001889+00:00",
+    "diagnostic_sha256": "7eb02408ae08c1b90b85a32e58083f4b597953f1e4b74b55f5efd36b13b84f76",
+    "protocol_sha256": "a6b4a73f420785d63c623d0932520c59c6e8dfb7b00ec9a3c4c437e7c377c8f1",
+    "fit_evaluation_sha256": "4c48e69ba3b25266def6853543ce71840152b19b31607d5fc2d473d5c85877af",
+    "mode": "post-hoc train-only zero-update diagnosis; not fitting or qualification",
+    "original_fit_pairs_per_source": 8,
+    "selection_seed": 20261014,
+    "selected_view": 0,
+    "maximum_seconds": 1200,
+    "per_model_seconds": 120,
+    "optimizer_updates_added": 0
+  }
+}

@@ -1,5 +1,11 @@
 # Measured results, not a global accuracy score
 
+[Complete matched JPEG controls](JPEG_CONTROL_RESULTS.md): all eight fits and
+16 snapshots verified. Genuine-16 first-seed development accuracy 67.97%/63.28%
+falls to 57.81%/57.03% in the second; no arm passes both source/seed gates.
+Full read-only fit/development comparison and train-only normalization contrast
+complete with unchanged states; measured sensitivity is not a qualified fix.
+
 [Paired CTF matrix](CTF_MATRIX_RESULTS.md): 17 generated challenges improve
 from 14/17 to 17/17 completed exact recovery after BMP trailer/stereo WAV fixes.
 One generated group and unchanged budgets; development regression, not a

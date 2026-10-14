@@ -1,5 +1,13 @@
 # Roadmap and status
 
+Completed JPEG control matrix: 8/8 full trials, 16 verified snapshots and both
+eight-model read-only diagnoses, within the original cumulative budget. No
+arm passes all source/seed learning gates or production qualification. Fit
+weakness and train-only normalization sensitivity replace speculation with
+measurements; no detector/threshold/model deployment changed. Next intervention
+requires a separately frozen matched protocol, not another blind restart.
+See `JPEG_CONTROL_RESULTS.md`; progress and pause records below are historical.
+
 Next JPEG investigation is evidence-led, not another blind restart:
 `JPEG_LEARNING_FOLLOWUP.md` contrasts the small native-crop study with the
 authors' training budget and defines bounded read-only fit/development checks.
@@ -10,8 +18,9 @@ Paired-score diagnostic slice passed 2,861 full tests /96.48% total coverage,
 100% new core coverage. Its known-cover direction and midpoint dispersion are
 descriptive, not standalone accuracy or causal proof; see
 `JPEG_PAIRED_SCORE_DIAGNOSTICS.md`. Live fitting/controller sources untouched.
-Five controls complete; second-seed reference/L2/genuine pending. No candidate
-passes all first-seed source gates, so no model qualification is claimed.
+At the earlier publication, five controls were complete and three pending;
+the matrix and diagnoses subsequently completed as recorded above. No model
+qualification is claimed.
 
 Resumed by user at 11:58 local Oct 14, retaining the two completed controls and
 four numerically verified snapshots. Original fitting/controller source hashes
