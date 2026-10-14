@@ -1,5 +1,11 @@
 # Roadmap and status
 
+Next JPEG investigation is evidence-led, not another blind restart:
+`JPEG_LEARNING_FOLLOWUP.md` contrasts the small native-crop study with the
+authors' training budget and defines bounded read-only fit/development checks.
+This planning note does not authorize new fitting/downloads, threshold tuning
+or source changes to the running matrix; production acceptance unchanged.
+
 Paired-score diagnostic slice passed 2,861 full tests /96.48% total coverage,
 100% new core coverage. Its known-cover direction and midpoint dispersion are
 descriptive, not standalone accuracy or causal proof; see
