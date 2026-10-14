@@ -1,5 +1,10 @@
 # Changelog
 
+- Resume the remaining six JPEG controls after actual four-snapshot validation
+  and all eight passed CI jobs. Keep original fitting/controller hashes,
+  two inherited complete controls and cumulative spent/discarded work; no
+  repeat fitting, budget reset or accuracy/qualification claim from startup.
+
 - Verify owned JPEG continuation with 2,830 full tests /96.47% total coverage,
   unchanged fitting-source hashes and three actual numeric snapshots. Start
   only the missing GPU halves under the remaining cumulative budget; keep

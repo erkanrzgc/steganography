@@ -1,5 +1,12 @@
 # Roadmap and status
 
+Resumed by user at 11:58 local Oct 14, retaining the two completed controls and
+four numerically verified snapshots. Original fitting/controller source hashes
+unchanged; all eight prior CI jobs passed. Third control (convolution-L2) now
+running in a fresh attempt with only 16,196.48 seconds useful budget remaining.
+Six controls and final learning checks pending; no accuracy/qualification claim.
+See `benchmarks/jpeg-owned-resume-start-20261014.json`. Pauses below historical.
+
 PAUSED BY USER at 00:56 local Oct 14. Two complete first-seed controls and four
 snapshots are preserved; training and its observer stopped, no CUDA compute
 process remains. Six controls pending. Reuse the exact verified owned prefix

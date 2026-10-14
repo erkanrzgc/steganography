@@ -1,0 +1,68 @@
+{
+  "schema_version": "jpeg-owned-continuation-observation-v1",
+  "observed_at": "2026-10-14T08:59:45Z",
+  "execution_commit": "c218e5e3c3a44b507732c27a0ca0a79e4728235a",
+  "status": "running",
+  "fitting_source_record": "jpeg-segmented-gpu-start-20261013.json",
+  "fitting_source_count": 52,
+  "fitting_sources_unchanged": true,
+  "controller_source_record": "jpeg-owned-continuation-start-20261014.json",
+  "controller_sources_unchanged": true,
+  "parent_report_sha256": "da85544091ba0ff84d8074fc3b05e4576e2c9d2051735c7fed8e623bdbfc23e9",
+  "parent_report_status": "cancelled:user_cancelled",
+  "verification": {
+    "physical_numeric_snapshots_verified": 4,
+    "physical_precheck_sha256": "4cd074b529b36a119cbb6a56b36a0e1d6652cfd2ffd1afa2485b8c2a2419c3f9",
+    "precheck_optimizer_updates_added": 0,
+    "unchanged_code_ci_run": 38471203584,
+    "ci_conclusion": "success",
+    "ci_successful_jobs": 8,
+    "python_matrix": ["3.11", "3.12", "3.13", "3.14"],
+    "full_local_regression_record": "jpeg-owned-continuation-start-20261014.json"
+  },
+  "inherited_completed_controls": 2,
+  "newly_completed_controls": 0,
+  "required_controls": 8,
+  "matrix_complete": false,
+  "active_control": {
+    "arm": "convolution-l2",
+    "seed": 20261012,
+    "start_rows": 0,
+    "first_checkpoint_rows": 16384,
+    "full_target_rows": 32768,
+    "status": "running"
+  },
+  "capacity": {
+    "8": "completed",
+    "16": "completed",
+    "32": "unavailable: gpu_allocator_out_of_memory"
+  },
+  "budget": {
+    "total_controls_seconds": 21600,
+    "prior_spent_seconds_including_discarded_work": 5403.521319699999,
+    "remaining_seconds_at_start": 16196.4786803,
+    "service_watchdog_seconds": 16317,
+    "worker_cpu_soft_seconds": 1800,
+    "worker_cpu_hard_seconds": 1801,
+    "worker_parent_wall_seconds_max": 1830,
+    "host_memory_max_bytes": 8589934592,
+    "gpu_allocator_limit_bytes": 4294967296
+  },
+  "observation": {
+    "training_service": "running",
+    "remote_bounded_observer": "running",
+    "gpu_utilization_percent": 49,
+    "gpu_memory_used_mib": 2444,
+    "automatic_restart": false
+  },
+  "accuracy_improvement_verified": false,
+  "accuracy_qualification": "unavailable",
+  "deployed": false,
+  "cloud_spending": 0,
+  "limitations": [
+    "Dated startup observation, not completed fitting or accuracy qualification.",
+    "Two completed first-seed controls are inherited without repeat GPU updates.",
+    "Third uncheckpointed partial work was discarded and its elapsed time retained.",
+    "No independent-source production evaluation or model promotion."
+  ]
+}

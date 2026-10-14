@@ -1,5 +1,20 @@
 # Implementation status — 2026-10-14
 
+USER-REQUESTED RESUME at 08:58:01 UTC (11:58 local Oct 14): fresh own-GPU
+attempt at the unchanged `c218e5e` fitting/controller implementation, following
+numeric validation of all four saved snapshots and verified success of all
+eight CI jobs in run 38471203584 (including Python 3.11–3.14). Replayed only
+the completed legacy/reference first-seed controls; no repeat GPU fitting.
+Convolution-L2 first half is running at 08:59:45 UTC; six full controls remain.
+Fresh capacity 8/16 passes; 32 remains allocator-OOM. Prior cancelled evidence
+and all source/recipe/Torch bindings stay unchanged. Remaining useful budget
+starts at 16,196.48 s, watchdog 16,317 s; no reset or later-stage extension.
+Separate bounded own-host observation/final verification survives temporary
+SSH expiry without automatic restart. User requested unattended completion;
+no paid compute, model promotion or source changes to the live fit authorized.
+See `benchmarks/jpeg-owned-resume-start-20261014.json`. Earlier pause/running
+records below are historical, not current activity or final results.
+
 USER-REQUESTED PAUSE, 2026-10-13 21:56:09 UTC (00:56 local Oct 14): training
 and its own-host observer are stopped. The runner wrote `cancelled:user_cancelled`;
 service exit 2 is expected cancellation. CUDA compute-process inventory is empty.
