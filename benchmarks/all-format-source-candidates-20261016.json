@@ -1,0 +1,59 @@
+{
+  "schema_version": "all-format-source-candidates-v1",
+  "status": "metadata_reviewed_not_acquired",
+  "raw_media_downloads": 0,
+  "opf_format_corpus": {
+    "repository": "https://github.com/openpreserve/format-corpus",
+    "commit": "366f068cec399d0cdfd61fa473de3ab6dc858098",
+    "readme_url": "https://github.com/openpreserve/format-corpus/blob/366f068cec399d0cdfd61fa473de3ab6dc858098/README.md",
+    "readme_sha256": "f964954263e78e3757394130d428ba6aa1fcfc9aee59d0580c39381d5cf4b9fb",
+    "root_license_declaration": "CC0 unless otherwise stated; file-level exceptions must be reviewed",
+    "tree_truncated": false,
+    "candidate_tiff_files_under_2mib": [
+      {
+        "path": "tiff-examples/old-style-jpeg-compression/old-style-jpeg-compression.tif",
+        "sha": "8d726c404922e2b866fad188af8c25a1a690050a",
+        "size": 213760
+      }
+    ],
+    "candidate_role": "format-regression examples; representative natural steganalysis dataset unavailable",
+    "accepted_files": 0
+  },
+  "commons_stereo_candidate": {
+    "metadata_page": "https://commons.wikimedia.org/wiki/File:Bsumusictech_bike-bell.wav",
+    "author_declared": "bsumusictech",
+    "declared_license": "CC0-1.0",
+    "declared_bytes": 312632,
+    "declared_sha1": "73834ca8be2ea1e75777f3e47ba83527ce6a772b",
+    "stereo_claim": "page description; native PCM/header validation unavailable",
+    "original_recording_parent": "freesound:81875; one recording, not multiple independent sources",
+    "accepted_files": 0,
+    "mp3_transcode": "not a native MP3 original; excluded from independent MP3 source count"
+  },
+  "mdn_mp3_candidate": {
+    "metadata_page": "https://github.com/mdn/interactive-examples/blob/main/live-examples/media/cc0-audio/t-rex-roar.mp3",
+    "claim": "file exists in cc0-audio example folder; origin, pinned commit, license linkage and native file headers remain unavailable",
+    "accepted_files": 0
+  },
+  "au_eml_and_natural_tar": "representative accepted source unavailable",
+  "raw_transfer_allowance": "legacy cumulative ledger incomplete; no reset or original-media retry",
+  "statistical_detection": "unavailable",
+  "retained_opf_metadata_bytes": 241728,
+  "local_metadata_scan": {
+    "root_kind": "system-shared resources; paths not published",
+    "names_visited": 283358,
+    "file_size_ceiling_bytes": 2097152,
+    "native_mp3_candidates": 153,
+    "application_installation_groups": 2,
+    "independent_original_count": "unavailable; duplicate bytes and recording ancestry not audited",
+    "accepted_mp3_files": 0,
+    "mp3_license_linkage": "unavailable; proprietary installation is not a file-level license grant",
+    "eml_candidates": 1,
+    "accepted_eml_files": 0,
+    "eml_exclusion": "exploit regression sample, not a natural benign email",
+    "tiff_candidates_under_ceiling": 0,
+    "au_candidates_under_ceiling": 0,
+    "media_bodies_opened": 0
+  },
+  "additional_live_metadata_queries": "browser review and one unretained VS Code directory response; not a cumulative transfer attestation"
+}

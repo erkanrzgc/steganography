@@ -1,0 +1,373 @@
+{
+  "schema_version": "all-format-dataset-readiness-v1",
+  "status": "partial_preparation_completed",
+  "explicit_extension_count": 23,
+  "extensions": [
+    {
+      "extension": ".au",
+      "format_family": "external_audio",
+      "dataset_state": "native_corpus_unavailable",
+      "training": "not_started",
+      "remaining_gap": "Optional external adapter only; native sources and method-specific extraction missing",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".bmp",
+      "format_family": "spatial",
+      "dataset_state": "controlled_experiments_completed",
+      "training": "linear_completed_deep_untrained",
+      "remaining_gap": "Additional licensed native RGB source and independent groups missing",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".bz2",
+      "format_family": "tar_archives",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Representative labeled natural corpus and opaque payload matrix missing; compressed streams must actually be TAR",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".csv",
+      "format_family": "text_anomalies",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Native text-anomaly dispatch exists; no accepted representative natural corpus or trained format-specific detector",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".eml",
+      "format_family": "mail",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Natural mail source/provenance and method-specific ground truth missing",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".gif",
+      "format_family": "gif",
+      "dataset_state": "partial_13_source_bound_native_files",
+      "training": "not_started",
+      "remaining_gap": "Independent ancestry and complete encoder/benign metadata matrix missing",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".gz",
+      "format_family": "tar_archives",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Representative labeled natural corpus and opaque payload matrix missing; compressed streams must actually be TAR",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".jpeg",
+      "format_family": "jpeg",
+      "dataset_state": "controlled_experiments_completed",
+      "training": "completed",
+      "remaining_gap": "No arm passes both source/seed gates; not all JPEG methods evaluated",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".jpg",
+      "format_family": "jpeg",
+      "dataset_state": "controlled_experiments_completed",
+      "training": "completed",
+      "remaining_gap": "No arm passes both source/seed gates; not all JPEG methods evaluated",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".log",
+      "format_family": "text_anomalies",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Native text-anomaly dispatch exists; no accepted representative natural corpus or trained format-specific detector",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".md",
+      "format_family": "local_documents",
+      "dataset_state": "controlled_local_pilot_prepared_unassigned",
+      "training": "not_started",
+      "remaining_gap": "Roles unassigned; narrow technical-document sources; representative dataset unavailable",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false,
+      "original_files": 2,
+      "controlled_variant_files": 6,
+      "declared_source_groups": [
+        "accountsservice",
+        "axel"
+      ],
+      "training_ready": false
+    },
+    {
+      "extension": ".mp3",
+      "format_family": "compressed_audio",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Native licensed MP3 and actual encoder/extraction corpus missing",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".pdf",
+      "format_family": "local_documents",
+      "dataset_state": "controlled_local_pilot_prepared_unassigned",
+      "training": "not_started",
+      "remaining_gap": "Roles unassigned; narrow technical-document sources; representative dataset unavailable",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false,
+      "original_files": 4,
+      "controlled_variant_files": 12,
+      "declared_source_groups": [
+        "python3-networkx"
+      ],
+      "training_ready": false
+    },
+    {
+      "extension": ".png",
+      "format_family": "spatial",
+      "dataset_state": "controlled_experiments_completed",
+      "training": "linear_completed_deep_untrained",
+      "remaining_gap": "Additional licensed native RGB source and independent groups missing",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".tar",
+      "format_family": "tar_archives",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Representative labeled natural corpus and opaque payload matrix missing; compressed streams must actually be TAR",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".tgz",
+      "format_family": "tar_archives",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Representative labeled natural corpus and opaque payload matrix missing; compressed streams must actually be TAR",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".tif",
+      "format_family": "tiff",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Native representative source missing; reviewed external format example not acquired",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".tiff",
+      "format_family": "tiff",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Native representative source missing; reviewed external format example not acquired",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".txt",
+      "format_family": "local_documents",
+      "dataset_state": "controlled_local_pilot_prepared_unassigned",
+      "training": "not_started",
+      "remaining_gap": "Roles unassigned; narrow technical-document sources; representative dataset unavailable",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false,
+      "original_files": 9,
+      "controlled_variant_files": 27,
+      "declared_source_groups": [
+        "alien",
+        "python3-networkx"
+      ],
+      "training_ready": false
+    },
+    {
+      "extension": ".wav",
+      "format_family": "pcm_audio",
+      "dataset_state": "controlled_mono_experiments_completed",
+      "training": "linear_completed_deep_untrained",
+      "remaining_gap": "Stereo/frequency-specific natural data and measured improvement missing",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".wave",
+      "format_family": "pcm_audio_alias",
+      "dataset_state": "suffix_dataset_unavailable",
+      "training": "not_separately_evaluated",
+      "remaining_gap": "Shares WAV content family; alias contributes no new original",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".xz",
+      "format_family": "tar_archives",
+      "dataset_state": "generated_fixtures_only",
+      "training": "not_started",
+      "remaining_gap": "Representative labeled natural corpus and opaque payload matrix missing; compressed streams must actually be TAR",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false
+    },
+    {
+      "extension": ".zip",
+      "format_family": "local_documents",
+      "dataset_state": "controlled_local_pilot_prepared_unassigned",
+      "training": "not_started",
+      "remaining_gap": "Roles unassigned; narrow technical-document sources; representative dataset unavailable",
+      "production_qualification": "unavailable",
+      "independent_originals_added_by_alias": false,
+      "original_files": 1,
+      "controlled_variant_files": 3,
+      "declared_source_groups": [
+        "python3-networkx"
+      ],
+      "training_ready": false
+    }
+  ],
+  "inventory": {
+    "schema_version": "builtin-extension-inventory-v1",
+    "explicit_extensions": [
+      ".au",
+      ".bmp",
+      ".bz2",
+      ".csv",
+      ".eml",
+      ".gif",
+      ".gz",
+      ".jpeg",
+      ".jpg",
+      ".log",
+      ".md",
+      ".mp3",
+      ".pdf",
+      ".png",
+      ".tar",
+      ".tgz",
+      ".tif",
+      ".tiff",
+      ".txt",
+      ".wav",
+      ".wave",
+      ".xz",
+      ".zip"
+    ],
+    "source_sha256": {
+      "modules/audio_mp3.py": "0a0eba03e01661a3868e19cdef10b70c092175dab224ea91d889502b5c3fe591",
+      "modules/text_zerowidth.py": "cfcdc5e2d43816b44654c684dcffe5bce760463edf930ce769396c377b88195a",
+      "modules/image_jpeg_dct.py": "f5d3f5fe82757781e33f6f045131165732beb502d1bf5afe7335357f4f5e1341",
+      "modules/archive_safe.py": "e49cafe86082d45aabe8361dc6cd1e0ce55190f1576cf9d7fb4db6165ff2822d",
+      "modules/external_tools.py": "8e19fa1b02a3bf977c33461447d9e5fef336a16620da0239ec4dbdd8f6062729",
+      "modules/image_bitplane.py": "e99a7d1fb1714bae7f60359f5658fdd52933c8c47438559ed794af4b5b0aa4eb",
+      "modules/image_gif.py": "17074b44307670f6423f11cf50c6c90109406c0d1116e4d408e85a57564e62f9",
+      "modules/filestruct_appended.py": "5ed7bcb95f6b517630004ecad959cabdd6d1b9348414452f22fd0612f399f533",
+      "modules/image_jpeg.py": "768ee3bd91a98f527c63f836d9e1812b431ed2da8fd4908835a181879a75d951",
+      "modules/file_pdf.py": "ce80add55c2bbb9e822259bac0ddd8595ddca73b352e13b844d38917526b6a92",
+      "modules/filestruct_trailer.py": "413024f217845df4ca19c72527bbdfdb58fff939b72117023631158c4a23a2f7",
+      "modules/file_structure.py": "af74a5be813aff45e203943f81b9385fb99218393d0df4a7244e5dc92f59a04a",
+      "modules/image_lsb_scatter.py": "2b871279d08cec406b6d84e763d23f6b740ab090710fb3822b531dff3ee88699",
+      "modules/text_anomalies.py": "ad8fbee0c278cbe088265f11e7c28ca9248cf10bae9cb3a5d000c9093a2d6bba",
+      "modules/image_lsb.py": "5b02fba1c9b4b7340f682bd71092da439dc0229db2328622aa95a710e67a5b15",
+      "modules/image_jpeg_dct_worker.py": "87bff79c9e7585679a7a03fb863db75d4b5ef7d8f5de1472ff022da80ac3ca24",
+      "modules/audio_wav.py": "34cd43ecfc314ccadf05975d634ed2f82939b55a50f6dd04bb1f4904954d5dc1",
+      "modules/filestruct_exif.py": "e38ba1bb0f39826c1b04e3094512530c0ccaf43dd484030c502f34c436e80059",
+      "modules/text_whitespace.py": "eb25bec5fcd1a1e19f8abd156fb670de2338320d26a84f5aeb5b008fb69ff7a5",
+      "core/filetype.py": "c8e0d7e784e53882d8a5fea973556f3d5e389b1809b0890e6c0cc3e2a9e2667d"
+    },
+    "zip_dispatch": "content-based zipfile.is_zipfile",
+    "compound_tar_aliases": [
+      ".tar.gz",
+      ".tar.bz2",
+      ".tar.xz"
+    ],
+    "signature_only_formats": [
+      "RAR",
+      "7z",
+      "PE",
+      "ELF"
+    ],
+    "dataset_source_only_formats": [
+      "PGM",
+      "MPO"
+    ],
+    "third_party_plugins": "outside this built-in inventory",
+    "generic_byte_analysis": "does not imply format-specific coverage",
+    "excluded_temporary_suffixes": [
+      ".bin"
+    ],
+    "inventory_check": "All extension-shaped source literals accounted for; .bin is a JPEG temporary output, ZIP uses content dispatch"
+  },
+  "local_original_files": 16,
+  "local_variant_files": 48,
+  "local_source_groups": 4,
+  "local_originals_per_extension": {
+    ".pdf": 4,
+    ".txt": 9,
+    ".md": 2,
+    ".zip": 1
+  },
+  "local_output_bytes_including_manifest_and_licenses": 519675,
+  "source_closures": {
+    "native_original": {
+      "receipt": "nonjpeg-linear-protocol-20261015.json",
+      "sha256": "378b6b37338b0b198c77407ac625b4e92a22fb342103f11d58e8a2b3ba5445a0",
+      "source_files": 18,
+      "status": "unchanged"
+    },
+    "native_amended": {
+      "receipt": "nonjpeg-process-protocol-20261015.json",
+      "sha256": "ea00b65103d62ca5a11663c96fc7745a06aa99be823fb7c61d62ba7d4b2fa84f",
+      "source_files": 27,
+      "status": "unchanged"
+    },
+    "jpeg_amended": {
+      "receipt": "jpeg-refine-numerics-launch-20261015.json",
+      "sha256": "004dcd43cbdb7fbafb031698826509bb0096c9da560212124f40c0ac8a9b549a",
+      "source_files": 35,
+      "status": "unchanged"
+    },
+    "wav_diagnostics": {
+      "receipt": "wav-readonly-protocol-20261016.json",
+      "sha256": "31afa93acaaeb219e2c85577adbeb4e7bcd65abe1d1a1d87eaaa2fb6f07ea773",
+      "source_files": 30,
+      "status": "unchanged"
+    },
+    "local_documents": {
+      "receipt": "all-format-local-protocol-20261016.json",
+      "sha256": "fe371ca3c579fa601e1761b1b1ba3b79aef55a12f5ada4cb0c89d54ac3dbeb97",
+      "source_files": 4,
+      "status": "unchanged"
+    }
+  },
+  "all_14_existing_models": "byte-identical",
+  "all_extensions_have_representative_dataset": false,
+  "source_group_independence": "declared package groups; independent authorship unavailable",
+  "downloaded_media_bytes": 0,
+  "optimizer_updates": 0,
+  "test_media_opened": false,
+  "training_ready": false,
+  "production_qualification": "unavailable",
+  "deployed": false,
+  "legacy_raw_transfer_attestation": "unavailable; no reset or retry",
+  "pending_acquisition_budget": "user preference requested; no answer is not authorization",
+  "evidence": {
+    "benchmarks/all-format-local-retry-results-20261016.json": "00fac5cca3774c179c58462bc426a95f043f3aa64c69cb18c3a947809b046bf0",
+    "benchmarks/all-format-local-retry-verification-20261016.json": "96ba9502ac024fb81195232e115bd5d895b2308991ef1c11cdbc2495e8e3b3f8",
+    "benchmarks/all-format-local-results-20261016.json": "e0575aabe5419439fd900587f7bf17ccd9dfdb74846767927999bec606b5a84c",
+    "benchmarks/all-format-local-readme-repair-20261016.json": "0be54d4afdd5f284bdfb422517c0635ce18a3fb3c51807a038ea09c12dab48bb",
+    "benchmarks/all-format-source-candidates-20261016.json": "c07a2ea3ed5393ac8970982a2fde402a128ccd6162479e8027eba99c9b65988d",
+    "benchmarks/all-format-extra-source-candidates-20261016.json": "1fee9f820b9a16a4b288ba80b6e83298461bb5a81197a9532a4eac2284932c6c"
+  }
+}

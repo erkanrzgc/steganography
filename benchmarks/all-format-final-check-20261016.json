@@ -1,0 +1,47 @@
+{
+  "schema_version": "all-format-final-check-v1",
+  "status": "passed",
+  "independent_actual_payload_oracles": {
+    "passed": 16,
+    "total": 16
+  },
+  "same_length_whitespace_controls": {
+    "passed": 16,
+    "total": 16
+  },
+  "readme_metrics_verified_rows": 8,
+  "published_readme_words": 864,
+  "published_readme_sha256": "2613e097ad11a2985a75d85d63a11495400d32dcd6f27cc6923455462ec6a3ce",
+  "post_documentation_checks_passed": 15,
+  "ruff": "passed",
+  "mypy": "passed",
+  "mypy_source_files": 210,
+  "diff_check": "passed",
+  "portable_json": "passed",
+  "links": "passed",
+  "untracked_whitespace": "passed",
+  "source_closures": "unchanged",
+  "existing_models": "all 14 byte-identical",
+  "owned_services": {
+    "steganography-all-format-gate-retry-20261016": {
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive"
+    },
+    "steganography-document-preparation-20261016": {
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive"
+    }
+  },
+  "optimizer_updates": 0,
+  "downloaded_media_bytes": 0,
+  "all_extensions_have_representative_dataset": false,
+  "evidence_sha256": {
+    "benchmarks/all-format-dataset-readiness-20261016.json": "cd35190bdb2a55c11640ad059c0d55893b23b3878a7e94c6297832acc0ae6471",
+    "benchmarks/all-format-local-retry-results-20261016.json": "00fac5cca3774c179c58462bc426a95f043f3aa64c69cb18c3a947809b046bf0",
+    "benchmarks/all-format-local-retry-verification-20261016.json": "96ba9502ac024fb81195232e115bd5d895b2308991ef1c11cdbc2495e8e3b3f8",
+    "docs/ALL_FORMAT_LOCAL_RESULTS.md": "3c428cd263b07b0c0733bd3892a676d69261e14507a42559f899e2545ca95c33",
+    "docs/ALL_FORMAT_DATA_STATUS.md": "7d698789ecc481dba07033322e230726c09e71ee942e530dedc35f62d694972e"
+  }
+}
