@@ -1,4 +1,15 @@
-# Implementation status — 2026-10-19
+# Implementation status — 2026-10-20
+
+AudioMNIST generated positive control: **v1 and draft v3 CNN both fail**. On
+quiet speech-like generated PCM (120 train /60 development files, 170 updates,
+about 15% of one real seed), v1 training AUC is 0.495. The draft v3 recipe
+(`core/wav_pilot_v3.py`: truncated residuals, bit planes, GroupNorm, AdamW)
+removes the train/eval normalization mismatch but reaches only 0.53/0.54 on the
+40% plane-0 cells against a preregistered 0.70; a classical pairs-of-values
+statistic reaches 0.73-0.76. Reduced exposure makes this non-decisive; a
+full-exposure GPU control is next. No v3 protocol is frozen and no real fit is
+authorized. See the
+[control receipt](../benchmarks/wav-audiomnist-positive-control-20261020.json).
 
 AudioMNIST generated CUDA preflight (receipt amendment v2): **passed,
 generated only**. All 19 amended bindings verified. Both CNN seeds completed
