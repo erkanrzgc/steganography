@@ -1,5 +1,63 @@
 # Roadmap and status
 
+2026-10-19: the AudioMNIST generated CUDA preflight first failed on a missing
+linear `seed` receipt key (preserved as unavailable). The separately versioned
+receipt amendment then passed: CNN pair 2,706/3,600 s, linear pair 42/600 s,
+182-MiB CUDA peak. Next: an explicitly authorized real AudioMNIST fit under the
+unchanged exposure; no accuracy is claimed yet. See [current status](STATUS.md).
+
+2026-10-17 training readiness: verified owned CUDA execution of the native
+gray/RGB/PCM skeletons using generated inputs only. Fresh full gate: 3,321 passed,
+two explicit local CUDA skips and 96.81% coverage. Frozen sources and all 14 old
+models are unchanged. New WAV media, acquisition/compute allowances, a matched
+trainer, frozen protocol and full capacity gate remain outstanding; no fitting
+or download. See [readiness results](TRAINING_READINESS_20261017.md).
+
+2026-10-16 format-wide preparation: inventory all 23 explicit built-in suffixes
+and compound TAR aliases. The source/license-bound local document pilot is
+complete: 16 original files /48 artifacts /four package groups; no downloads
+or training. Full gate: 3,321 passed /two CUDA skips, 96.81% total /100% new-code
+coverage. See [format-by-format status](ALL_FORMAT_DATA_STATUS.md) and
+[execution results](ALL_FORMAT_LOCAL_RESULTS.md). Missing
+representative natural datasets remain unavailable, including MP3/TIFF/AU/mail.
+
+2026-10-16: the separately bound read-only WAV diagnosis is complete. Four audio
+models /32 training cells replay without fitting; all 14 stored models remain
+byte-identical. Training AUC exceeds cached development AUC in many cells, but
+the cause is unproven and no detector qualifies. Full gate: 3,273 passed, two
+CUDA skips, 96.78% total /100% new-code coverage. See [results](WAV_READONLY_RESULTS.md).
+Next is the [speaker-grouped experiment draft](WAV_NEXT_PROTOCOL_DRAFT.md),
+not an executable training protocol: new media, file-level provenance, transfer
+allowance and a frozen trainer remain unavailable. Closed roles stay closed.
+
+2026-10-16: the native process preflight amendment and its two-seed comparison
+are complete: 14 models /480 replayed cells, 3,233 tests /96.75% coverage. WAV
+remains at 0.50 balanced accuracy; spatial extensions have mixed paired AUC
+changes. No detector is qualified or deployed. Future fitting needs a new
+frozen model/data/exposure protocol; the completed JPEG result is preserved.
+See [results](NONJPEG_PROCESS_PREFLIGHT_RESULTS.md).
+
+Latest outcome: JPEG refinement completed within budget without passing the combined learning rule. Native comparison software passes its full gate, but real fitting remains unavailable after the diagnosed trusted-process-path preflight failure (zero updates). Next: a separately bound preflight correction with a kernel integration check; no blind JPEG restart. See [current status](STATUS.md). Earlier entries below are historical.
+
+2026-10-15 current execution: the amended JPEG controller is running; the
+separately frozen native linear comparison awaits its full software gate.
+Verification and collection now survive terminal closure without restarting
+either experiment. Bounded one-shot supervisors publish final receipts;
+qualification remains unavailable. See [current status](STATUS.md),
+[native protocol](NONJPEG_LINEAR_COMPARISON_PROTOCOL.md) and
+[unattended execution](UNATTENDED_RESEARCH.md). Earlier entries below describe
+their respective historical checkpoints.
+
+2026-10-15: add the separately frozen second-round `research jpeg-refine`
+intervention: shared paired warm-ups, long paired/unpaired continuations,
+28,672 actual updates and 56 checkpoints. Physical execution is unavailable
+until the owned RTX 5060 passes secure connectivity, identity and preflight;
+no repeated learning gain or model qualification is claimed.
+Full verification: 3,012 tests /two actual-CUDA skips, 96.60% total coverage
+and 99.18% new-code coverage; the fresh audit passes all 6,400 views.
+See `JPEG_REFINE_PROTOCOL.md` and the dated readiness record. Historical records
+below are preserved.
+
 Completed JPEG control matrix: 8/8 full trials, 16 verified snapshots and both
 eight-model read-only diagnoses, within the original cumulative budget. No
 arm passes all source/seed learning gates or production qualification. Fit
@@ -864,3 +922,54 @@ No model is automatically deployed; installed native results remain unchanged.
 Release only when every advertised support cell passes the real-dataset gates,
 the blind CTF suite meets recovery/latency targets, and all sandbox/limit tests
 pass. Until then the package remains beta and claims are per-cell.
+
+## October 15 non-JPEG preparation
+
+Native local/RGB parity and PCM residual feature contracts, per-source/split
+artifacts, optional gray/RGB/PCM model skeletons and pinned Unicode controls
+are implemented. Existing 160-original/4,080-artifact custody was independently
+reaudited. New Commons pilots remain unavailable after rate limiting, with no
+qualified source-count increase. See `NONJPEG_EVENING_RESULTS.md` and the
+separate two-seed comparison drafts in `NONJPEG_EVENING_PROTOCOL.md`; future
+non-JPEG training requires its own frozen budgets and does not inherit JPEG's
+six-hour allowance. Production qualification and statistical detection remain
+unavailable for these new candidates.
+
+Follow-up comparison inputs are validated without fitting: four exact legacy
+feature prefixes give 14 artifacts with matched source/split row order. The
+FSDD speaker and ESC-50 recording-group counts constrain uncertainty estimates;
+freeze grouped fitting/thresholds, optimizer and an independent budget before
+the two-seed comparison. The JPEG runtime is staged and its local 6,400-view
+audit passes, but physical execution remains unavailable while the owned GPU
+reverse SSH tunnel is closed. See the portable
+[launch](../benchmarks/jpeg-refine-launch-readiness-20261015.json) and
+[comparison](../benchmarks/nonjpeg-comparison-readiness-20261015.json) receipts.
+
+Subsequent owned-GPU access was restored. The bounded physical attempt passed
+its fresh data audit but failed during generated CUDA preflight, before any
+real-data update. Preserve its 34.309597279 seconds of cumulative expenditure;
+there is no automatic retry. Bind diagnostic error reporting separately before
+further execution because the frozen supervisor retained only a nonzero-exit
+summary. See [the physical attempt](../benchmarks/jpeg-refine-physical-attempt-20261015.json).
+
+The separately frozen numerical amendment now passes actual generated CUDA
+validation: forward/gradient checks precede Adamax, an independent scalar oracle
+checks optimizer arithmetic and GPU save/resume stays exact. The full source/data/
+training recipe is bound prospectively; earlier failure and diagnostic costs are
+debited. Complete the unchanged full verification gate before its single amended
+physical attempt. See `JPEG_REFINE_NUMERICS_PROTOCOL.md`; no learning claim yet.
+
+The unchanged full gate subsequently passes 3,113 tests /two explicit CUDA
+skips, 96.67% total and >99% amended-module coverage. Preserve the first
+resource-observer failure; the retry independently records pytest exit zero.
+The single bounded amended GPU controller is running and final learning evidence
+remains unavailable until its whole-matrix verification completes. Its one-shot
+supervisor records final results without automatic training retries.
+
+The next native slice implements two-seed linear comparisons for all 14 bound
+feature artifacts, train-only grouped CV and thresholds, original/class-balanced
+weights, matched cell statistics and a freshly measured fixed native WAV reference.
+Its own 30-minute CPU /32-MiB output budget is frozen separately; the full software
+gate precedes real updates. Deep native model fitting remains future work.
+See `NONJPEG_LINEAR_COMPARISON_PROTOCOL.md` and the separately bound read-only
+model/prediction/metric replay. JPEG's source bindings and limits are unchanged.

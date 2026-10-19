@@ -1,0 +1,107 @@
+{
+ "amendment_sha256": "cd3679e43994b1edc8888236ed1645e782718a28878989ec4564dd8504051bf6",
+ "attempted_local_time": "2026-10-19T17:55:29+03:00",
+ "bundle_manifest_sha256": "76466a8fbcd7cb3bdf972b86c686cbcc153b060661f3b8565bc489cb14f4eb53",
+ "ceiling_use": {
+  "cnn_pair_ceiling_seconds": 3600,
+  "cnn_pair_seconds": 2705.869015157001,
+  "linear_pair_ceiling_seconds": 600,
+  "linear_pair_seconds": 42.211886693999986
+ },
+ "interpretation": "Generated execution capacity only; no accuracy, threshold or real-fit authorization.",
+ "observed_unit": {
+  "cpu_seconds": 2816.575,
+  "host_memory_peak": "2.2G",
+  "swap_peak_bytes": 0
+ },
+ "prior_attempt": {
+  "receipt": "benchmarks/wav-audiomnist-cuda-preflight-20261019.json",
+  "status": "unavailable_receipt_assembly_error",
+  "wall_seconds": 3081.372159646
+ },
+ "protocol_id": "wav-audiomnist-pilot-20261019-receipt-v2",
+ "real_fit_authorized": false,
+ "remote_result_sha256": "19e4fe856602d67e6f0fe85c1bad3441efc0467489a4063864ae1c8bb443f247",
+ "run": {
+  "automatic_retry": false,
+  "checkpoint_written": false,
+  "cublas_workspace_config": ":4096:8",
+  "cuda_device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "development_length_count": 200,
+  "preflight": {
+   "allocator_ceiling_bytes": 4294967296,
+   "checkpoint_written": false,
+   "cnn_pair_seconds": 2705.869015157001,
+   "cnn_seed_receipts": [
+    {
+     "epochs": 20,
+     "optimizer_updates": 1140,
+     "partial_batch_rows": 16,
+     "row_presentations": 72000,
+     "seconds": 1370.110262964,
+     "seed": 20261016,
+     "virtual_batch": 64
+    },
+    {
+     "epochs": 20,
+     "optimizer_updates": 1140,
+     "partial_batch_rows": 16,
+     "row_presentations": 72000,
+     "seconds": 1312.4636170250005,
+     "seed": 20261017,
+     "virtual_batch": 64
+    }
+   ],
+   "frame_count_max": 47478,
+   "frame_count_min": 17132,
+   "generated_bytes": 36335714,
+   "generated_cnn_optimizer_updates": 2280,
+   "generated_file_count": 600,
+   "generated_linear_optimizer_updates": 2280,
+   "generated_optimizer_updates": 4560,
+   "linear_pair_seconds": 42.211886693999986,
+   "linear_seed_receipts": [
+    {
+     "epochs": 20,
+     "exposure_sha256": "b1ed7bd64ecd05020876311341d5e9acd56f57d7c6bdf41892f6a668e9ff165d",
+     "optimizer_updates": 1140,
+     "row_presentations": 72000,
+     "seed": 20261016
+    },
+    {
+     "epochs": 20,
+     "exposure_sha256": "4f7c113abec1b5966f16ab81c66bd5dfe74b1367b99432976c9888aba4ffff07",
+     "optimizer_updates": 1140,
+     "row_presentations": 72000,
+     "seed": 20261017
+    }
+   ],
+   "peak_cuda_allocated_bytes": 190765056,
+   "real_media_opened": false,
+   "real_source_optimizer_updates": 0,
+   "reserved_media_opened": false,
+   "seconds_including_imports": 2748.3047826109996,
+   "status": "passed_generated_only"
+  },
+  "preparation_sha256": "9e51b5c6b9beaca93d3f76d3c4730b9103b2c09773bfef0ac2ee4c4d9d2b357f",
+  "protocol_id": "wav-audiomnist-pilot-20261019-receipt-v2",
+  "protocol_sha256": "cd3679e43994b1edc8888236ed1645e782718a28878989ec4564dd8504051bf6",
+  "real_media_opened": false,
+  "runner_seconds": 2751.9096673000004,
+  "schema_version": "wav-audiomnist-cuda-preflight-run-v2",
+  "source_closure_verified": 19,
+  "status": "passed_generated_only",
+  "torch_version": "2.14.0+cu130",
+  "train_length_count": 400
+ },
+ "runner_sha256": "aa5fb706faa840f68d2e8a738aba9b78c60b729d0fc67e8ba871a54be2284424",
+ "schema_version": "wav-audiomnist-cuda-preflight-v2-receipt-v1",
+ "stderr_bytes": 0,
+ "stdout_bytes": 0,
+ "unit_limits": {
+  "cuda_allocator_fraction_bytes": 4294967296,
+  "memory_max_bytes": 8589934592,
+  "memory_swap_max_bytes": 0,
+  "runtime_max_seconds": 4500
+ }
+}

@@ -1,5 +1,121 @@
 # Changelog
 
+- Version the AudioMNIST pilot with a receipt-only amendment: linear receipts
+  take their seed from the per-seed row, with a real-linear regression test.
+  The single amended generated CUDA preflight passed (CNN 2,705.9/3,600 s,
+  linear 42.2/600 s, 182-MiB CUDA and 2.2-GiB host peaks, zero swap). No real
+  media, checkpoint, fit or accuracy claim. Full gate: 3,421 passed /two CUDA
+  skips, 96.87% coverage.
+
+- Raise AudioMNIST pilot coverage with separate generated-only tests (100%,
+  98% and 98% for the pilot, trainer and acquisition modules) without editing
+  bound sources. Run the one-shot generated CUDA preflight on the owned RTX 5060
+  under 8-GiB/zero-swap/4-GiB-allocator limits: both CNN and linear pairs
+  returned within their ceilings (3,081 s wall, 2.3-GiB host peak, zero swap),
+  then receipt assembly raised `KeyError: 'seed'` because linear fits carry no
+  seed key. Record the attempt as unavailable, with no retry, real media,
+  checkpoint or fit. A fix needs a new protocol version. Full gate: 3,419
+  passed /two CUDA skips, 96.87% coverage; one README word-limit failure was
+  preserved and repaired.
+
+- Prepare the speaker-grouped AudioMNIST WAV follow-up from its pinned source:
+  acquire 400 train /200 development files under a separate 384-MiB ceiling,
+  verify all native PCM16 headers and eight controlled payload oracles per
+  source, and add bounded streaming/trainer/clustered-metric code. Keep reserved
+  speakers closed, preserve the incomplete historical transfer ledger, and do
+  not fit or create checkpoints. The full owned-GPU capacity gate remains open.
+  The generated linear preflight passed both seeds and all eight cells in
+  44.82 seconds (2,280 synthetic-only updates, no checkpoint or accuracy
+  claim). Fourteen focused tests and Ruff/targeted mypy pass. After installing
+  the missing cryptography/piexif packages, the full suite reached 119 passed
+  and 23 optional skips before a 194-second interrupted run. Focused WAV code
+  coverage is 38%; full coverage remains unmet. The generated CUDA preflight
+  remains unavailable because the pinned SSH endpoint refused connection; no
+  remote unit or source-data fit started.
+
+- Verify owned CUDA native model skeletons with generated-only FP32 gradients,
+  unchanged parameters and scalar PCM/LSB checks. Recheck frozen source/model
+  digests, train feature bindings and local payload oracles. Preserve the first
+  UUID-format audit failure and its separately bound correction. Verify 3,321
+  tests /96.81% coverage; record missing new WAV media/budgets/trainer/protocol
+  and the unestablished one-hour capacity without downloads or fitting.
+
+- Add a complete built-in extension/dataset inventory and bounded local
+  PDF/TXT/MD/ZIP preparation with declared file-scope license/hash bindings,
+  whole-package groups, opaque payloads and on-disk scalar oracles. Keep all
+  outputs unassigned and all missing natural-source datasets unavailable;
+  no download, fitting or detector qualification.
+  Complete 16 local documents /48 artifacts /four source groups with all payload
+  oracles passing. Verify 3,321 tests /96.81% total and 100% new-code coverage;
+  preserve the initial README-length failure and shorten documentation without
+  weakening its existing gate. Inventory includes CSV/LOG: 23 built-in suffixes.
+
+- Add bounded, source-bound WAV read-only diagnosis: final-fit normalization/BCE
+  replay, matched train metrics and feature/content contrasts, with immutable
+  model digests and closed validation/media inputs. Preserve missing OOF replay
+  as unavailable; no refitting or threshold selection.
+  Complete four audio models /32 train cells with zero updates and all 14
+  model hashes unchanged. Verify 3,273 tests /96.78% total and 100% new-code
+  coverage. Add a metadata-only source audit and non-executable speaker-grouped
+  WAV comparison draft; no media acquisition or detector qualification.
+
+- Add a separately bound own-PID native CPU preflight, preserving the original
+  frozen fitting code and generic no-symlink reader. Validate live kernel
+  bounds, isolated function dependencies and cumulative prior time/output
+  debits; keep all recipes, failed receipts and JPEG bindings unchanged.
+  Verify 3,233 tests /96.75% total coverage and 100% amended-code coverage;
+  complete 14 numeric models /480 replayed cells within the original CPU
+  allowance. WAV remains at chance balanced accuracy; no detector promotion.
+
+- Complete all 28,672 JPEG refinement updates and six endpoint evaluations within the frozen budget; no arm passes all source/seed learning gates. Verify 3,211 software tests /96.74% coverage, with 100% new comparison coverage. Preserve the zero-update CPU preflight failure and its read-only kernel-path diagnosis; no automatic fitting retry or deployment.
+
+- Move running research verification and result collectors out of the terminal
+  scope without restarting experiments. Add bounded receipt publication for
+  success/failure, preserving frozen sources, training budgets and no-retry
+  behavior; document the verified terminal independence.
+
+- Add a separately frozen CPU native linear comparison with original/class
+  balancing, train-only speaker/recording-group folds and thresholds, matched
+  cell cluster intervals and same-file native WAV reference scoring. Preserve
+  JPEG's live source bindings and allowance; no native deep fitting or production
+  integration. Bind read-only model/inference/metric replay before publication.
+
+- Diagnose the failed JPEG cross-backend post-Adamax state gate and add a
+  separately bound derivative/scalar-oracle preflight revision. Generated
+  owned-GPU validation passes with exact save/resume; preserve original source
+  hashes, failed receipts, training recipe and cumulative prior expenditure.
+  Handled unavailable worker responses retain portable allowlisted reasons.
+  Verify 3,113 tests /two CUDA skips, 96.67% total and >99% new-module coverage;
+  retain an unavailable resource-observer attempt and its verified retry.
+  Start the single amended bounded GPU controller and independently verify its
+  first 512-update numeric checkpoint; final learning is pending.
+
+- Restore owned-GPU access and record the bounded physical refinement attempt:
+  the fresh 6,400-view audit passed, generated CUDA preflight exited nonzero,
+  and no real-data training began. Preserve failure and cumulative expenditure;
+  no automatic retry or frozen-source change.
+
+- Record a fresh 6,400-view JPEG launch audit and isolated runtime staging;
+  physical execution remains unavailable because the owned GPU tunnel is
+  closed. Prepare four exact legacy feature baselines with matched comparison
+  rows and explicit speaker/recording-group limits. No training occurred.
+
+- Add native local/RGB parity and mono PCM16 feature contracts with bounded,
+  source/split-bound preparation; optional FP32 gray/RGB SRNet and raw/delta
+  audio residual skeletons run generated forward/backward checks only. Reaudit
+  existing non-JPEG data and prepare pinned Unicode controls. Record Commons
+  rate limiting and missing native pilot sources without a detection claim;
+  preserve JPEG source bindings, training budgets and production behavior.
+
+- Add opt-in `research jpeg-refine` with shared paired warm-ups, deterministic
+  exposure-matched unpaired batches, numeric v2 checkpoint ancestry, bounded
+  round-robin workers and explicit cumulative-budget resume. Evaluate only
+  frozen endpoints and require every source/seed for research selection;
+  preserve historical snapshots and production qualification boundaries.
+  Verify 3,012 tests /two CUDA skips, 96.60% total and 99.18% new-code coverage;
+  the 6,400-view audit passes. Secure GPU access remains unavailable; no new
+  real training, research success or production qualification is claimed.
+
 - Complete all eight matched own-GPU JPEG controls and verify 16 numeric
   snapshots without source/budget changes or repeat inherited fitting.
   Publish every source/seed result and both zero-update diagnoses: weak fit

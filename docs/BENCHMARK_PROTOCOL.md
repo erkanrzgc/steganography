@@ -1,5 +1,42 @@
 # Benchmark protocol
 
+[Local document preparation](ALL_FORMAT_DATA_PROTOCOL.md) adds no detector
+score or fitting. The complete [extension inventory](ALL_FORMAT_DATA_STATUS.md)
+distinguishes representative datasets from controlled local pilots, synthetic
+fixtures and missing native sources. Keep all package-related originals and
+derivatives grouped and unassigned; exact recovery with known original extent
+is an oracle, not autonomous recovery. No header/parser success certifies clean
+inputs. Source/license hashes and file-scope declarations must bind before
+copying; no cumulative download allowance is inferred from this preparation.
+
+The WAV read-only diagnostic in [`WAV_READONLY_PROTOCOL.md`](WAV_READONLY_PROTOCOL.md)
+adds train-only inference/feature contrasts with zero fitting. Bind all completed
+model hashes and source/data receipts before access. Missing OOF score/fold
+snapshots remain unavailable; cached development metrics cannot drive threshold
+sweeps or feature/model selection. No qualification follows from diagnosis.
+The completed diagnostic replayed four audio models /32 training cells and
+preserved all 14 model hashes; see [results](WAV_READONLY_RESULTS.md).
+The [next WAV draft](WAV_NEXT_PROTOCOL_DRAFT.md) fixes proposed speaker roles,
+two seeds and matched exposure before media access, but is not executable.
+AudioMNIST filenames identify recording cuts, not independent parent recordings;
+all cuts from each speaker stay in one role. File hashes/headers, accepted
+licenses, reconciled transfer allowance, trainer and resource preflight must
+be bound before a separate protocol can authorize acquisition or fitting.
+
+The native CPU process-path amendment in
+[`NONJPEG_PROCESS_PREFLIGHT_PROTOCOL.md`](NONJPEG_PROCESS_PREFLIGHT_PROTOCOL.md)
+preserves its failed zero-update attempt and all original comparison sources.
+One amended attempt must debit 21 seconds /64 KiB, retain the same data,
+exposure and metrics, pass actual kernel-service checks and the full gate,
+then replay all numeric models/cells before publication. Generic carrier
+symlink rejection and JPEG's completed experiment remain unchanged.
+
+The amended pilot completed all 14 models and 480 numerical replay cells;
+see [`NONJPEG_PROCESS_PREFLIGHT_RESULTS.md`](NONJPEG_PROCESS_PREFLIGHT_RESULTS.md).
+WAV balanced accuracy remains 0.50 and spatial AUC differences are mixed.
+Execution completion does not qualify a detector or authorize validation-driven
+recipe changes or another automatic fitting round.
+
 `JPEG_CONTROL_RESULTS.md` records the complete eight-control matrix, all 16
 development cells and source-specific uncertainty, not only its best seed.
 All candidate arms fail the combined learning rule; production qualification
@@ -676,3 +713,31 @@ The first fixed CUDA throughput gate is completed, not a learning pass:
 under the unchanged conservative estimate and job cap. Preserve this failure
 when comparing a separately preregistered execution optimization; do not
 retroactively change the safety factor, exposure, ceiling or original evidence.
+
+## October 15 native non-JPEG preparation boundary
+
+See `NONJPEG_EVENING_PROTOCOL.md` for source/split-bound local/RGB/PCM features,
+generated model checks and the proposed two-seed original-exposure comparison.
+Reaudit/payload recovery, Unicode conformance and fixture/parser success are
+preparation evidence only. Native pilot shortages, HTTP rate limiting and
+unknown recording/author ancestry remain unavailable, never an accuracy pass.
+No new data enters the frozen JPEG experiment and no non-JPEG training consumes
+its budget automatically. Existing blind production gates remain unchanged.
+
+## Separately bound JPEG numerical preflight amendment
+
+`JPEG_REFINE_NUMERICS_PROTOCOL.md` replaces the invalid cross-backend
+post-Adamax-state gate with pre-optimizer derivative/state parity, an independent
+scalar optimizer oracle and exact GPU save/resume. Its generated GPU validation
+passes; this does not change the original failed receipt or establish learning.
+Use the amended closure and explicit earlier expenditure, never a fresh six-hour
+allowance. Training, data, exposure, endpoints and research/production gates stay
+unchanged. The complete local verification gate precedes any real-data update.
+
+The separate native linear comparison is frozen in
+`NONJPEG_LINEAR_COMPARISON_PROTOCOL.md`. Use source/split-bound cached descriptors,
+identical per-arm exposure, original/class-balanced weights and grouped train-only
+OOF thresholds. Compare each native WAV cell with an actual same-file reference
+measurement at fixed threshold 70; do not substitute historical scores. Preserve
+all source/seed/cell outcomes and underpowered speaker/recording-cluster intervals.
+Its 30-minute CPU allowance does not extend the running JPEG experiment.

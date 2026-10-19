@@ -1,5 +1,12 @@
 # Dataset catalog and publication policy
 
+The [complete built-in extension inventory](ALL_FORMAT_DATA_STATUS.md) includes
+formats without a representative dataset. The completed local document pilot uses
+16 installed PDF/TXT/MD/ZIP files from four whole-package groups, pinning exact
+file/version and declared copyright/license hashes. All controlled payload and
+artifact checks pass; outputs remain unassigned, with no fitting or clean certification.
+No new media download occurs and the legacy transfer ledger is not reset.
+
 This inventory records what is actually acquired or measured, not a list of
 advertised supported methods. Raw corpora remain in ignored `.benchmark/`.
 Use [benchmark results](BENCHMARK_RESULTS.md) for scores and limitations.
