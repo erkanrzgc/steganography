@@ -1,0 +1,67 @@
+{
+  "schema_version": "wav-readonly-final-integrity-v1",
+  "status": "passed",
+  "source_closures": {
+    "native_original": {
+      "receipt": "nonjpeg-linear-protocol-20261015.json",
+      "receipt_sha256": "378b6b37338b0b198c77407ac625b4e92a22fb342103f11d58e8a2b3ba5445a0",
+      "source_files": 18,
+      "status": "unchanged"
+    },
+    "native_amended": {
+      "receipt": "nonjpeg-process-protocol-20261015.json",
+      "receipt_sha256": "ea00b65103d62ca5a11663c96fc7745a06aa99be823fb7c61d62ba7d4b2fa84f",
+      "source_files": 27,
+      "status": "unchanged"
+    },
+    "jpeg_amended": {
+      "receipt": "jpeg-refine-numerics-launch-20261015.json",
+      "receipt_sha256": "004dcd43cbdb7fbafb031698826509bb0096c9da560212124f40c0ac8a9b549a",
+      "source_files": 35,
+      "status": "unchanged"
+    },
+    "wav_readonly": {
+      "receipt": "wav-readonly-protocol-20261016.json",
+      "receipt_sha256": "31afa93acaaeb219e2c85577adbeb4e7bcd65abe1d1a1d87eaaa2fb6f07ea773",
+      "source_files": 30,
+      "status": "unchanged"
+    }
+  },
+  "model_files_verified": 14,
+  "model_hashes": "unchanged",
+  "actual_diagnosis_output_bytes": 842326,
+  "current_tracked_native_footprint_bytes": 680747864,
+  "native_ceiling_bytes": 4294967296,
+  "jpeg_reserved_bytes": 6442450944,
+  "recorded_new_source_metadata_bytes": 82859,
+  "new_media_downloaded_bytes": 0,
+  "cumulative_legacy_raw_transfer_attestation": "unavailable; not reset",
+  "new_optimizer_updates": 0,
+  "validation_features_opened": false,
+  "test_media_opened": false,
+  "ruff": "passed",
+  "mypy_source_files": 208,
+  "mypy": "passed",
+  "diff_check": "passed",
+  "untracked_whitespace_check": "passed",
+  "local_python_matrix": "3.11 only; 3.12-3.14 unavailable locally",
+  "owned_services": {
+    "steganography-wav-readonly-gate-20261016": {
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive"
+    },
+    "steganography-wav-readonly-20261016": {
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive"
+    }
+  },
+  "artifact_sha256": {
+    "benchmarks/wav-readonly-results-20261016.json": "79801b1958292122f83912796213e64ae2f6548f6d34fafa4811b191606e704b",
+    "benchmarks/wav-readonly-verification-20261016.json": "afe4b19bc0f18619e432a0d853c1a64a24e9def787c4bd4476ca3cd0349cfe5f",
+    "benchmarks/wav-next-experiment-draft-20261016.json": "06b0df7a3c8a21b62a9134d5600c12d00808e11b633e70857f0f8bf0fa687244",
+    "benchmarks/native-source-gaps-20261016.json": "5fa027de6a8cd9fbe565b878ad9f89ba1c2b38dc5934a63c72ef8e9a63e1edec"
+  },
+  "deployed": false
+}
