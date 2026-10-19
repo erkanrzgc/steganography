@@ -1,0 +1,27 @@
+{
+  "schema_version": "nonjpeg-linear-preflight-diagnosis-v1",
+  "status": "diagnosed",
+  "failed_results_sha256": "75b78dda08e24eab068484eff4a6aaf63179a26d5a9be3380a88414ecccced41",
+  "phase": "resource_preflight",
+  "default_probe": {
+    "status": "failed",
+    "exception": "ValueError",
+    "allowlisted_reason": "symlink input"
+  },
+  "cause": "trusted proc self reference is a kernel symlink rejected by the general no-symlink reader",
+  "numeric_own_pid_probe": {
+    "status": "passed",
+    "memory_max_bytes": 134217728,
+    "cpu_quota": 1.0,
+    "swap_max_bytes": 0,
+    "numpy_version": "2.4.6",
+    "python_version": "3.11.14"
+  },
+  "real_media_opened": false,
+  "optimizer_updates": 0,
+  "diagnostic_watchdog_seconds": 20,
+  "training_restarted": false,
+  "frozen_recipe_or_sources_changed": false,
+  "next_requirement": "separately bound trusted-process preflight correction and actual kernel integration test; preserve generic untrusted-input symlink rejection and failed receipt",
+  "deployed": false
+}

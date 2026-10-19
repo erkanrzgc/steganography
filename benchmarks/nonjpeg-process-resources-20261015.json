@@ -1,0 +1,28 @@
+{
+  "schema_version": "nonjpeg-process-kernel-resources-v1",
+  "status": "observed",
+  "samples": 10,
+  "observed_kernel_memory_peak_bytes": 343969792,
+  "observed_kernel_cpu_usage_usec": 18928207,
+  "last_observed_memory_events": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "interpretation": "read-only kernel observations through the last sample; CPU usage is a lower bound",
+  "experiment_started_or_retried_by_observer": false,
+  "deployed": false,
+  "result_sha256": "9910e030f9827f08db175d39100061f555725cf9aeb8b5684121272cb2488748",
+  "amended_retained_output_bytes": 2739143,
+  "reserved_prior_output_bytes": 65536,
+  "cumulative_experiment_output_bytes_with_reserve": 2804679,
+  "actual_wall_seconds_including_fit_and_replay": 19.798807420997036,
+  "cumulative_seconds_with_prior_debit": 40.79881252099949,
+  "private_native_task_bytes_at_audit": 678546724,
+  "native_allocation_bytes": 4294967296,
+  "jpeg_reserved_bytes": 6442450944,
+  "source_bindings_unchanged": true
+}

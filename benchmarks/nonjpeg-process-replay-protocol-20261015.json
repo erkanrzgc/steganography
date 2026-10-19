@@ -1,0 +1,13 @@
+{
+  "schema_version": "nonjpeg-process-replay-protocol-v1",
+  "status": "frozen",
+  "parent_protocol_sha256": "ea00b65103d62ca5a11663c96fc7745a06aa99be823fb7c61d62ba7d4b2fa84f",
+  "worker_source_sha256": "ede3f150249635122add80f65b81d3ba5f7172ca2287711abf559de3c73cbf09",
+  "expected_models": 14,
+  "expected_cells": 480,
+  "optimizer_updates_during_replay": 0,
+  "fit_and_replay_share_remaining_seconds": 1779,
+  "prior_debit_seconds": 21,
+  "automatic_retry": false,
+  "deployed": false
+}

@@ -562,6 +562,14 @@ def cmd_research_jpeg_study(args: argparse.Namespace) -> int:
     return 0 if result["status"] == "completed" else 2
 
 
+def cmd_research_jpeg_refine(args: argparse.Namespace) -> int:
+    from steganography.research_jpeg_refine import run
+
+    result = run(Path(args.config), Path(args.out))
+    print(json.dumps({"status": result["status"], "reason": result.get("reason")}))
+    return 0 if result["status"] == "completed" else 2
+
+
 def cmd_research_nonjpeg(args: argparse.Namespace) -> int:
     from steganography.research_nonjpeg import run
 
@@ -962,6 +970,10 @@ def build_parser() -> argparse.ArgumentParser:
     research_study.add_argument("--config", required=True)
     research_study.add_argument("--out", required=True)
     research_study.set_defaults(fn=cmd_research_jpeg_study)
+    research_refine = research_commands.add_parser("jpeg-refine")
+    research_refine.add_argument("--config", required=True)
+    research_refine.add_argument("--out", required=True)
+    research_refine.set_defaults(fn=cmd_research_jpeg_refine)
     research_nonjpeg = research_commands.add_parser("nonjpeg-prepare")
     research_nonjpeg.add_argument("--config", required=True)
     research_nonjpeg.add_argument("--out", required=True)
@@ -1022,6 +1034,9 @@ def build_parser() -> argparse.ArgumentParser:
             "jpeg-dct-residual-parity-v1",
             "spatial-cooccurrence-v1",
             "spatial-parity-residual-v1",
+            "spatial-local-parity-v2",
+            "spatial-rgb-parity-v2",
+            "audio-pcm16-parity-residual-v1",
         ),
         default="spatial-summary-v1",
     )

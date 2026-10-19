@@ -1,0 +1,35 @@
+{
+  "schema_version": "nonjpeg-linear-handoff-v1",
+  "status": "unavailable",
+  "reason": null,
+  "source_bindings_unchanged": true,
+  "real_data_optimizer_updates": 0,
+  "models_replayed": 0,
+  "cells_replayed": 0,
+  "training_started_or_retried_by_publisher": false,
+  "production_qualification": "unavailable",
+  "deployed": false,
+  "verification": {
+    "status": "passed",
+    "exit_code": 0,
+    "independent_pytest_exit": {
+      "exit_code": 0,
+      "seconds": 2777.703961266001
+    },
+    "seconds": 2778.252681754,
+    "peak_task_output_bytes": 128042924,
+    "nonjpeg_ceiling_bytes": 4294967296,
+    "jpeg_reserved_bytes": 6442450944,
+    "child_maxrss_kib": 2635956,
+    "observer_policy": "race-tolerant traversal and independent atomic pytest exit"
+  },
+  "coverage_percent": 96.74205050554389,
+  "new_code_coverage": {
+    "core/nonjpeg_linear.py": 100.0,
+    "core/nonjpeg_compare_metrics.py": 100.0,
+    "core/nonjpeg_comparison.py": 100.0,
+    "steganography/research_nonjpeg_compare.py": 100.0
+  },
+  "result_sha256": "75b78dda08e24eab068484eff4a6aaf63179a26d5a9be3380a88414ecccced41",
+  "status_doc_update": "published"
+}

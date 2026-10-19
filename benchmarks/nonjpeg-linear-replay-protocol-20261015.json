@@ -1,0 +1,15 @@
+{
+  "schema_version": "nonjpeg-linear-replay-protocol-v1",
+  "status": "frozen",
+  "parent_protocol_sha256": "378b6b37338b0b198c77407ac625b4e92a22fb342103f11d58e8a2b3ba5445a0",
+  "worker_source_sha256": "a126e30998cf1676035037b2c18f395b3dec0d8c32edad16c222f5ce21da1c74",
+  "methods": "shared core loader/predictor/metrics only; NPZ finite dtype/shape/hash checks and exact prediction/cell/exposure replay",
+  "expected_models": 14,
+  "expected_cells": 480,
+  "optimizer_updates_during_replay": 0,
+  "same_cpu_budget_seconds": 1800,
+  "same_output_budget_bytes": 33554432,
+  "same_cgroup_memory_bytes": 2147483648,
+  "gpu_used": false,
+  "deployed": false
+}

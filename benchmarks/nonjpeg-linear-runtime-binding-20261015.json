@@ -1,0 +1,19 @@
+{
+  "schema_version": "nonjpeg-linear-runtime-binding-v1",
+  "status": "bound_before_real_updates",
+  "parent_protocol_sha256": "378b6b37338b0b198c77407ac625b4e92a22fb342103f11d58e8a2b3ba5445a0",
+  "additional_source_sha256": {
+    "core/filetype.py": "c8e0d7e784e53882d8a5fea973556f3d5e389b1809b0890e6c0cc3e2a9e2667d",
+    "core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/__init__.py": "b43f4fc5e41068ad7255a87b4c9122158f29f1ae1c493564578d0742dcac1af4"
+  },
+  "runtime": {
+    "python": "3.11.14",
+    "numpy": "2.4.6",
+    "Pillow": "12.2.0",
+    "cryptography": "48.0.0"
+  },
+  "real_native_optimizer_updates_at_binding": 0,
+  "training_recipe_changed": false,
+  "deployed": false
+}

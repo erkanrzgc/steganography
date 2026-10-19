@@ -1,0 +1,25 @@
+{
+  "schema_version": "research-terminal-independence-v1",
+  "status": "verified",
+  "terminal_scope_removed": true,
+  "already_running_processes_restarted": false,
+  "training_recipe_changed": false,
+  "jpeg_budget_changed": false,
+  "units": [
+    {
+      "unit": "steganography-native-verification-20261015.scope",
+      "watchdog_seconds": 7200,
+      "processes_verified": 4
+    },
+    {
+      "unit": "steganography-jpeg-collector-20261015.scope",
+      "watchdog_seconds": 21600,
+      "processes_verified": 1
+    }
+  ],
+  "gpu_training": "existing remote owned service",
+  "cpu_training": "one-shot separate owned service after full gate",
+  "session_logout_survival": "unavailable; user lingering is not enabled",
+  "power_loss_survival": "unavailable",
+  "deployed": false
+}
