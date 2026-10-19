@@ -8,6 +8,7 @@ import tempfile
 import time
 import wave
 from collections.abc import Callable
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,39 @@ EPOCHS = 20
 VIRTUAL_BATCH = 64
 LEARNING_RATE = 0.01
 WEIGHT_DECAY = 0.0001
+
+
+def _v1_optimizer(torch: Any, model):
+    decay: list[Any] = []
+    no_decay: list[Any] = []
+    for name, parameter in model.named_parameters():
+        (decay if parameter.ndim > 1 and not name.endswith("bias") else no_decay).append(parameter)
+    return torch.optim.SGD(
+        [
+            {"params": decay, "weight_decay": WEIGHT_DECAY},
+            {"params": no_decay, "weight_decay": 0.0},
+        ],
+        lr=LEARNING_RATE,
+    )
+
+
+@dataclass(frozen=True)
+class CNNRecipe:
+    """CNN inputs/network/optimizer; rows, seeds, exposure and metrics stay shared."""
+
+    domain: str
+    inputs: Callable[[bytes], np.ndarray]
+    network: Callable[[], Any]
+    optimizer: Callable[[Any, Any], Any]
+
+
+# Attributes resolve at call time so the bound v1 skeleton stays replaceable in tests.
+V1_RECIPE = CNNRecipe(
+    nonjpeg_models.AUDIO_DOMAIN,
+    lambda data: nonjpeg_models.inputs(data, nonjpeg_models.AUDIO_DOMAIN),
+    lambda: nonjpeg_models.network(nonjpeg_models.AUDIO_DOMAIN),
+    _v1_optimizer,
+)
 
 
 def balanced_row_weight(label: int, *, row_count: int = 3600, originals: int = 400) -> float:
@@ -48,9 +82,9 @@ def epoch_schedule(row_count: int, batch_size: int = VIRTUAL_BATCH) -> list[int]
     return [min(batch_size, row_count - start) for start in range(0, row_count, batch_size)]
 
 
-def _model_inputs(torch, root: Path, row: dict[str, Any], device: str):
+def _model_inputs(torch, root: Path, row: dict[str, Any], device: str, recipe: CNNRecipe):
     data = materialize(root, row["source"], row["recipe"])
-    value = nonjpeg_models.inputs(data, nonjpeg_models.AUDIO_DOMAIN)
+    value = recipe.inputs(data)
     return torch.from_numpy(value).to(device=device, dtype=torch.float32)
 
 
@@ -147,6 +181,7 @@ def fit_seed(
     deadline_seconds: float = 3600,
     deadline_at: float | None = None,
     on_update: Callable[[], None] = lambda: None,
+    recipe: CNNRecipe = V1_RECIPE,
 ):
     """Run one seed with isolated RNG and strict FP32/deterministic backend policy."""
     if seed not in SEEDS or len(rows) != 3600 or deadline_seconds <= 0:
@@ -184,6 +219,7 @@ def fit_seed(
                 deadline_seconds=deadline_seconds,
                 deadline_at=deadline_at,
                 on_update=on_update,
+                recipe=recipe,
             )
     finally:
         torch.backends.cuda.matmul.allow_tf32 = prior[0]
@@ -203,6 +239,7 @@ def _fit_seed_impl(
     deadline_seconds: float = 3600,
     deadline_at: float | None = None,
     on_update: Callable[[], None] = lambda: None,
+    recipe: CNNRecipe = V1_RECIPE,
 ):
     """Fit one frozen seed; caller must separately authorize a real experiment."""
     if any(row.get("source", {}).get("role") != "train" for row in rows):
@@ -226,20 +263,8 @@ def _fit_seed_impl(
     torch.manual_seed(seed)
     if device.startswith("cuda"):
         torch.cuda.manual_seed_all(seed)
-    model = nonjpeg_models.network(nonjpeg_models.AUDIO_DOMAIN).to(
-        device=device, dtype=torch.float32
-    )
-    decay: list[Any] = []
-    no_decay: list[Any] = []
-    for name, parameter in model.named_parameters():
-        (decay if parameter.ndim > 1 and not name.endswith("bias") else no_decay).append(parameter)
-    optimizer = torch.optim.SGD(
-        [
-            {"params": decay, "weight_decay": WEIGHT_DECAY},
-            {"params": no_decay, "weight_decay": 0.0},
-        ],
-        lr=LEARNING_RATE,
-    )
+    model = recipe.network().to(device=device, dtype=torch.float32)
+    optimizer = recipe.optimizer(torch, model)
     started = time.monotonic()
     expires = started + deadline_seconds
     if deadline_at is not None:
@@ -258,7 +283,7 @@ def _fit_seed_impl(
             optimizer.zero_grad(set_to_none=True)
             batch_loss = 0.0
             for row in batch:
-                values = _model_inputs(torch, root, row, device)
+                values = _model_inputs(torch, root, row, device, recipe)
                 label = int(row["label"] == "stego")
                 logits = model(values)
                 raw_loss = torch.nn.functional.cross_entropy(
@@ -293,6 +318,7 @@ def _fit_seed_impl(
         "mean_batch_loss": float(np.mean(losses)),
         "checkpoint_written": False,
         "device": device,
+        "architecture": recipe.domain,
     }
 
 
@@ -303,6 +329,7 @@ def development_scores(
     *,
     device: str = "cuda",
     deadline_at: float | None = None,
+    recipe: CNNRecipe = V1_RECIPE,
 ):
     """Score only fixed development rows at the prespecified probability threshold."""
     if len(rows) != 1800 or any(row.get("source", {}).get("role") != "development" for row in rows):
@@ -325,7 +352,7 @@ def development_scores(
             for row in rows:
                 if deadline_at is not None and time.monotonic() >= deadline_at:
                     raise TimeoutError("AudioMNIST shared GPU ceiling reached")
-                values = _model_inputs(torch, root, row, device)
+                values = _model_inputs(torch, root, row, device, recipe)
                 probability = torch.softmax(model(values), dim=1)[0, 1]
                 score = float(probability.cpu())
                 if not np.isfinite(score) or not 0 <= score <= 1:
@@ -459,6 +486,7 @@ def run_cnn_pair(
     *,
     device: str = "cuda",
     ceiling_seconds: float = 3600,
+    recipe: CNNRecipe = V1_RECIPE,
 ) -> dict[str, Any]:
     """Fit/evaluate both CNN seeds within one shared wall-clock ceiling."""
     if ceiling_seconds <= 0:
@@ -477,9 +505,10 @@ def run_cnn_pair(
             device=device,
             deadline_seconds=remaining,
             deadline_at=expires,
+            recipe=recipe,
         )
         scores = development_scores(
-            root, development_rows, model, device=device, deadline_at=expires
+            root, development_rows, model, device=device, deadline_at=expires, recipe=recipe
         )
         results.append(
             {"seed": seed, "fit": fit, "cells": development_metrics(development_rows, scores)}
@@ -488,6 +517,7 @@ def run_cnn_pair(
     _check_deadline(expires, "AudioMNIST shared GPU ceiling reached")
     return {
         "status": "completed_cnn_pair",
+        "architecture": recipe.domain,
         "seconds": time.monotonic() - started,
         "ceiling_seconds": ceiling_seconds,
         "seeds": results,
@@ -502,6 +532,7 @@ def generated_cnn_preflight(
     *,
     device: str = "cuda",
     ceiling_seconds: float = 3600,
+    recipe: CNNRecipe = V1_RECIPE,
 ) -> dict[str, Any]:
     """Exercise the complete CNN schedule on generated WAVs at real file lengths."""
     if (
@@ -574,6 +605,7 @@ def generated_cnn_preflight(
             development_rows,
             device=device,
             ceiling_seconds=ceiling_seconds,
+            recipe=recipe,
         )
         linear = run_linear_pair(root, train_rows, development_rows, ceiling_seconds=600)
         result: dict[str, Any] = {}
@@ -613,6 +645,7 @@ def generated_cnn_preflight(
         result.update(
             {
                 "status": "passed_generated_only",
+                "cnn_architecture": recipe.domain,
                 "generated_cnn_optimizer_updates": cnn["optimizer_updates"],
                 "generated_linear_optimizer_updates": linear["optimizer_updates"],
                 "generated_optimizer_updates": cnn["optimizer_updates"]
