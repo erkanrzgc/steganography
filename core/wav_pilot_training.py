@@ -597,11 +597,12 @@ def generated_cnn_preflight(
         linear_seeds = []
         for row in linear["seeds"]:
             fit = row["fit"]
+            # Linear fits carry no seed; it lives on the per-seed row.
             linear_seeds.append(
-                {
+                {"seed": row["seed"]}
+                | {
                     key: fit[key]
                     for key in (
-                        "seed",
                         "epochs",
                         "row_presentations",
                         "optimizer_updates",
