@@ -1,0 +1,148 @@
+{
+  "arms": [
+    "760-feature-linear",
+    "native-pcm-residual-1d-cnn"
+  ],
+  "dataset": {
+    "acquisition_manifest_sha256": "911996a4f4768b69590e2711d67f643a54325d4dca96e24bb1ab56074d899c34",
+    "development_files": 200,
+    "development_speaker_groups": 10,
+    "exact_raw_and_decoded_pcm_hashes_unique": true,
+    "historical_transfer_ledger_reset": false,
+    "pcm_validation_manifest_sha256": "6a7f87d5e117ca6c12b30a0a080d1e94d82109dc0ebc10a783701992d6093922",
+    "raw_bytes_acquired": 36335714,
+    "reserved_media_accessed": false,
+    "reserved_speaker_groups": 30,
+    "selected_files": 600,
+    "separate_raw_transfer_ceiling_bytes": 402653184,
+    "train_files": 400,
+    "train_speaker_groups": 20
+  },
+  "evaluation": {
+    "metrics": [
+      "ROC-AUC",
+      "balanced accuracy",
+      "recall",
+      "false-positive rate",
+      "ECE"
+    ],
+    "oof_refit": false,
+    "pairing": "original cover to its controlled variants",
+    "reserved_media_accessed": false,
+    "threshold": 0.5,
+    "threshold_search": false,
+    "uncertainty": "bootstrap clustered by ten development speaker groups"
+  },
+  "execution": {
+    "accuracy": "unavailable",
+    "blocker": "Pinned SSH loopback endpoint 127.0.0.1:22240 refused connection; no remote unit started.",
+    "checkpoint_written": false,
+    "optimizer_updates": 0,
+    "status": "not_started"
+  },
+  "exposure": {
+    "class_mass": "half cover, half stego; equal total mass per original",
+    "cnn_input": "signed PCM16 raw/first/second differences, FP32, no padding/resampling/AMP/TF32",
+    "epochs_per_seed": 20,
+    "final_batch_rows": 16,
+    "learning_rate": 0.01,
+    "linear_normalization": "train rows only",
+    "optimizer": "SGD",
+    "presentations_both_arms": 288000,
+    "presentations_per_arm": 144000,
+    "presentations_per_seed_per_arm": 72000,
+    "row_permutations_matched_across_arms": true,
+    "seeds": [
+      20261016,
+      20261017
+    ],
+    "updates_both_arms": 4560,
+    "updates_per_arm": 2280,
+    "updates_per_seed_per_arm": 1140,
+    "virtual_batch": 64,
+    "weight_decay": 0.0001,
+    "weight_decay_scope": "weights only"
+  },
+  "preflight": {
+    "checkpoint_written": false,
+    "last_attempt": "benchmarks/wav-audiomnist-preflight-attempt-20261017.json",
+    "old_skeleton_smoke_satisfies": false,
+    "real_optimizer_updates": 0,
+    "required": "Generated source-bound preflight of both arms: all 144,000 CNN presentations/2,280 updates and dev metrics within the shared 3,600-second CUDA cap; generated 760-feature extraction/2,280 linear updates within 600 seconds CPU; 4-GiB allocator/host memory and zero swap.",
+    "status": "unavailable_connection_refused",
+    "torch_local": "unavailable"
+  },
+  "proposed_compute_caps": {
+    "cnn_cap_includes": "both seed fits and development scoring",
+    "cnn_shared_gpu_seconds": 3600,
+    "fit_execution_authorized": false,
+    "linear_pair_cpu_seconds": 600
+  },
+  "protocol_id": "wav-audiomnist-pilot-20261017",
+  "rows": {
+    "bit_planes": [
+      0,
+      1
+    ],
+    "development_rows": 1800,
+    "feature_artifact_written": false,
+    "feature_dimension": 760,
+    "feature_version": "audio-pcm16-parity-residual-v1",
+    "independent_payload_oracles_passed": 4800,
+    "payload_rates_percent": [
+      5,
+      40
+    ],
+    "recipe_method": [
+      "sequential",
+      "scattered"
+    ],
+    "train_feature_shape": [
+      3600,
+      760
+    ],
+    "train_rows": 3600,
+    "variants_per_original": 8
+  },
+  "schema_version": "wav-audiomnist-training-protocol-v1",
+  "source": {
+    "commit": "630d7dab4c040882834de6fa21baf9a60372accd",
+    "license": "MIT",
+    "license_sha256": "35b1c571b8ddbbe2887fecbc7169956f38e36d0da2863b812f8a2fda62d77583",
+    "paper_doi": "10.1016/j.jfranklin.2023.11.038",
+    "repository": "soerenab/AudioMNIST",
+    "written_participant_consent_reported": true
+  },
+  "source_closure_sha256": {
+    "benchmarks/wav-next-experiment-draft-20261016.json": "06b0df7a3c8a21b62a9134d5600c12d00808e11b633e70857f0f8bf0fa687244",
+    "core/features.py": "7078c26f158d24b6ae81b42931d6a8dcd54981395fee2c6a8960854e8d689199",
+    "core/nonjpeg_compare_metrics.py": "26b325b420d68ea99ad7cff713c9c2d8aac786e3cd3e52fd4021a22a90aaf460",
+    "core/nonjpeg_data.py": "fcc2eb52807c3146aa19c623b836023344165f7e4cf5b0ac23097efc050ccfaf",
+    "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+    "core/nonjpeg_linear.py": "ac13d73189cba07a71c2e5290a2cf7d29741ec50d116c0471d5752a0dac89010",
+    "core/nonjpeg_models.py": "ea2e4cca67498a0d1018485e56867cc0c402b49cb3f4d99bc0a3be8f120a90c8",
+    "core/spatial_cooccurrence.py": "93d3909e96aaae7b0554a2e52c39d9904bd456282eb1db22e4cdfb004c5c3a1d",
+    "core/spatial_parity.py": "2e27e64197d24805c3156859ebaa96d4989a2ae3d803c401d30c2707f4a18f46",
+    "core/wav_pilot.py": "b8f7136ef559e623d460b76515b1d2d28f321a46a1c01aceb385b258ae6741e0",
+    "core/wav_pilot_training.py": "5694860193b9c426f7f216474bab7830695f5a878bb272bcecbd68f5b5728cf4",
+    "docs/WAV_PILOT_TRAINING_PROTOCOL_20261017.md": "6a264d85a23643e8aa04d6ac651babb4cac3663c20769606cc0c249c9dff3eca",
+    "pyproject.toml": "4c6bc4075680a2b60de23b43a774f59ce8cf507874a7c3ce4ee40c862c914ae7",
+    "requirements-research-ci.txt": "12cc79f3509d9f43e0725c9ee1039700369f2c2a2576bb44e12d53c37a0bab92",
+    "steganography/research_wav_prepare.py": "2b0fe3b173e34d972f761da0bf2cd8ac6cdb2d5be130ba77f50522b0b6620a20",
+    "tests/test_wav_pilot.py": "a16391368136d32d365c1078edf1c7535ddff434d60c849f0acaade6948ab834"
+  },
+  "status": "preflight_required_not_train_authorized",
+  "storage_caps": {
+    "jpeg_reserved_bytes": 6442450944,
+    "native_allocation_bytes": 4294967296,
+    "overall_additional_bytes": 10737418240,
+    "source_download_bytes_charged_to_new_separate_ceiling": true
+  },
+  "verification": {
+    "focused_tests": "14 passed",
+    "full_mypy": "unavailable_due_missing_ONNX/Argon2_stubs_and_existing_NumPy_type_errors",
+    "full_pytest": "unavailable_due_missing_cryptography_argon2_and_piexif",
+    "ruff": "pass",
+    "targeted_mypy": "pass"
+  }
+}

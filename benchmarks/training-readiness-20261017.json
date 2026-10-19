@@ -1,0 +1,528 @@
+{
+  "schema_version": "training-readiness-v1",
+  "checked_utc": "2026-10-16T21:46:34.985453+00:00",
+  "status": "checks_completed_training_not_ready",
+  "training_ready": false,
+  "source_closures": {
+    "native_original": {
+      "status": "unchanged",
+      "receipt": "benchmarks/nonjpeg-linear-protocol-20261015.json",
+      "receipt_sha256": "378b6b37338b0b198c77407ac625b4e92a22fb342103f11d58e8a2b3ba5445a0",
+      "source_files": 18,
+      "additional_runtime_bindings": 0
+    },
+    "native_amended": {
+      "status": "unchanged",
+      "receipt": "benchmarks/nonjpeg-process-protocol-20261015.json",
+      "receipt_sha256": "ea00b65103d62ca5a11663c96fc7745a06aa99be823fb7c61d62ba7d4b2fa84f",
+      "source_files": 27,
+      "additional_runtime_bindings": 0
+    },
+    "jpeg_amended": {
+      "status": "unchanged",
+      "receipt": "benchmarks/jpeg-refine-numerics-launch-20261015.json",
+      "receipt_sha256": "004dcd43cbdb7fbafb031698826509bb0096c9da560212124f40c0ac8a9b549a",
+      "source_files": 35,
+      "additional_runtime_bindings": 0
+    },
+    "wav_readonly": {
+      "status": "unchanged",
+      "receipt": "benchmarks/wav-readonly-protocol-20261016.json",
+      "receipt_sha256": "31afa93acaaeb219e2c85577adbeb4e7bcd65abe1d1a1d87eaaa2fb6f07ea773",
+      "source_files": 30,
+      "additional_runtime_bindings": 0
+    },
+    "local_documents": {
+      "status": "unchanged",
+      "receipt": "benchmarks/all-format-local-protocol-20261016.json",
+      "receipt_sha256": "fe371ca3c579fa601e1761b1b1ba3b79aef55a12f5ada4cb0c89d54ac3dbeb97",
+      "source_files": 4,
+      "additional_runtime_bindings": 27
+    }
+  },
+  "existing_model_digests": {
+    "status": "unchanged",
+    "files": 14
+  },
+  "existing_train_features": {
+    "schema_version": "training-readiness-train-features-v1",
+    "status": "passed",
+    "artifacts": [
+      {
+        "source": "BOWS2",
+        "feature_version": "spatial-local-parity-v2",
+        "rows": 576,
+        "features": 1548,
+        "original_lineages": 32,
+        "independent_train_groups": 32,
+        "grouped_fold_count": 4,
+        "finite_unit_interval": true,
+        "all_controlled_cells": true,
+        "sha256_source_split_domain_and_rows": "passed",
+        "split_metadata_overlap": false,
+        "artifact_sha256": "84e0abff492e412eaba4626410e0eb4b9c0b111337b1717235ba36fe3ba66e97",
+        "manifest_sha256": "65d2a1a553bbc90e51d4f059d7dcc40b1c1516fbad411fe0fb6aa2c35e093938"
+      },
+      {
+        "source": "BOWS2",
+        "feature_version": "spatial-parity-residual-v1",
+        "rows": 576,
+        "features": 684,
+        "original_lineages": 32,
+        "independent_train_groups": 32,
+        "grouped_fold_count": 4,
+        "finite_unit_interval": true,
+        "all_controlled_cells": true,
+        "sha256_source_split_domain_and_rows": "passed",
+        "split_metadata_overlap": false,
+        "artifact_sha256": "6ec7c83f135849c3ce5b761d49616677971edf4e339a6dc535ae6f2adae1d98e",
+        "manifest_sha256": "65d2a1a553bbc90e51d4f059d7dcc40b1c1516fbad411fe0fb6aa2c35e093938"
+      },
+      {
+        "source": "DIV2K",
+        "feature_version": "spatial-local-parity-v2",
+        "rows": 2112,
+        "features": 1548,
+        "original_lineages": 32,
+        "independent_train_groups": 32,
+        "grouped_fold_count": 4,
+        "finite_unit_interval": true,
+        "all_controlled_cells": true,
+        "sha256_source_split_domain_and_rows": "passed",
+        "split_metadata_overlap": false,
+        "artifact_sha256": "6e80bee75721015b7a7a5c88f007ecb4ebacd63c2f276f2141dfeea4fba8d081",
+        "manifest_sha256": "d2bc5d2aab5a6a78ff67d06e62afc6b789ab7d0074752696286f2aa7e138fb2e"
+      },
+      {
+        "source": "DIV2K",
+        "feature_version": "spatial-parity-residual-v1",
+        "rows": 2112,
+        "features": 684,
+        "original_lineages": 32,
+        "independent_train_groups": 32,
+        "grouped_fold_count": 4,
+        "finite_unit_interval": true,
+        "all_controlled_cells": true,
+        "sha256_source_split_domain_and_rows": "passed",
+        "split_metadata_overlap": false,
+        "artifact_sha256": "3e1a6d2ede0a27d52600b3ad5a0b2e72bb0c52133922f9c6e753053d26e066f6",
+        "manifest_sha256": "d2bc5d2aab5a6a78ff67d06e62afc6b789ab7d0074752696286f2aa7e138fb2e"
+      },
+      {
+        "source": "DIV2K",
+        "feature_version": "spatial-rgb-parity-v2",
+        "rows": 2112,
+        "features": 1332,
+        "original_lineages": 32,
+        "independent_train_groups": 32,
+        "grouped_fold_count": 4,
+        "finite_unit_interval": true,
+        "all_controlled_cells": true,
+        "sha256_source_split_domain_and_rows": "passed",
+        "split_metadata_overlap": false,
+        "artifact_sha256": "0c42caff56818a9144b6aafed3bb057cc830eab4b32540b362a80764295ccd87",
+        "manifest_sha256": "d2bc5d2aab5a6a78ff67d06e62afc6b789ab7d0074752696286f2aa7e138fb2e"
+      },
+      {
+        "source": "ESC-50",
+        "feature_version": "audio-pcm16-parity-residual-v1",
+        "rows": 288,
+        "features": 760,
+        "original_lineages": 32,
+        "independent_train_groups": 31,
+        "grouped_fold_count": 4,
+        "finite_unit_interval": true,
+        "all_controlled_cells": true,
+        "sha256_source_split_domain_and_rows": "passed",
+        "split_metadata_overlap": false,
+        "artifact_sha256": "e3fe01e3899a004c4030c1c05bb8d1e79c17775dc486f887d52bee174c02832b",
+        "manifest_sha256": "e600eaaa1eecd47431727243d0ae1440894d62a2766e491cb8a5e750944ffa23"
+      },
+      {
+        "source": "FSDD-v1.0.10",
+        "feature_version": "audio-pcm16-parity-residual-v1",
+        "rows": 288,
+        "features": 760,
+        "original_lineages": 32,
+        "independent_train_groups": 2,
+        "grouped_fold_count": 2,
+        "finite_unit_interval": true,
+        "all_controlled_cells": true,
+        "sha256_source_split_domain_and_rows": "passed",
+        "split_metadata_overlap": false,
+        "artifact_sha256": "1e970a30eefdb0376803f08159a30c58cbe22ea46108363fdc5e122921a02cb8",
+        "manifest_sha256": "a467c974432e23eb98c109c1928c39b7f546357f18a61053cbca1e99fe281ea9"
+      }
+    ],
+    "matched_684_prefixes": "passed",
+    "train_feature_artifacts_opened": 7,
+    "validation_feature_artifacts_opened": 0,
+    "validation_manifest_metadata_only": true,
+    "raw_media_opened": false,
+    "reserved_media_opened": false,
+    "optimizer_updates": 0,
+    "oof_refits": 0,
+    "threshold_sweeps": 0,
+    "elapsed_seconds": 1.948444968998956,
+    "script_sha256": "539736d4f586bee518c1b8659e247dc4cab4811157dfb1f8a71de781eaf724d9"
+  },
+  "local_documents": {
+    "status": "passed",
+    "originals": 16,
+    "variants": 48,
+    "source_groups": 4,
+    "licenses_verified": 4,
+    "independent_payload_oracles": 16,
+    "equal_length_controls": 16,
+    "split": "development_unassigned",
+    "training_ready": false,
+    "oracle_requires_original_extent": true
+  },
+  "extension_inventory": {
+    "explicit_suffixes": 23,
+    "all_representative_datasets_ready": false
+  },
+  "wav_draft": {
+    "status": "structural_checks_passed_not_executable",
+    "draft_sha256": "06b0df7a3c8a21b62a9134d5600c12d00808e11b633e70857f0f8bf0fa687244",
+    "speaker_groups": {
+      "train": 20,
+      "development": 10,
+      "reserved": 30
+    },
+    "role_overlap": false,
+    "proposed_files": {
+      "train": 400,
+      "development": 200
+    },
+    "proposed_media_headers_and_hashes": "unavailable; no media acquired",
+    "parent_recording_ancestry": "unavailable; grouping remains by speaker",
+    "license_acceptance": "unavailable; metadata review does not accept media",
+    "new_source_trainer_implemented": false,
+    "raw_acquisition_budget_granted": false,
+    "training_budget_granted": false
+  },
+  "wav_source_metadata": {
+    "schema_version": "training-readiness-source-metadata-v1",
+    "status": "cached_metadata_hashes_passed",
+    "source": "AudioMNIST",
+    "commit": "630d7dab4c040882834de6fa21baf9a60372accd",
+    "cached_files": [
+      {
+        "source_relative_path": "README.md",
+        "bytes": 2595,
+        "sha256": "23ba82be4951ed5dd9487b9358f027ab88120f93f30e0bfb5861ba2f0b3611da"
+      },
+      {
+        "source_relative_path": "LICENSE",
+        "bytes": 1065,
+        "sha256": "35b1c571b8ddbbe2887fecbc7169956f38e36d0da2863b812f8a2fda62d77583"
+      },
+      {
+        "source_relative_path": "data/audioMNIST_meta.txt",
+        "bytes": 15620,
+        "sha256": "034c1e4ee78edf65823faa6bb6d60bd0d55c88469f90f4b582f16bd5798e0841"
+      }
+    ],
+    "speaker_entries": 60,
+    "root_license": "MIT declared at pinned repository root",
+    "file_headers_and_file_specific_acceptance": "unavailable; media absent",
+    "native_media_files_acquired": 0,
+    "new_download_bytes": 0,
+    "historical_transfer_ledger": "incomplete; not reset",
+    "raw_acquisition_budget_granted": false
+  },
+  "gpu_generated_preflight": {
+    "schema_version": "training-readiness-generated-cuda-v1",
+    "checked_utc": "2026-10-16T21:28:25.774600+00:00",
+    "status": "passed_generated_only",
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "uuid_sha256": "0e032a6754c3b87b7403f4d6fa009e62d6487d40af72b4895d108c2edb6f1e00",
+      "uuid_binding": "sha256(str(torch.cuda.get_device_properties(0).uuid))",
+      "matches_historical_identity": true,
+      "total_mib": 8151,
+      "free_mib_at_probe": 6843,
+      "driver": "617.42"
+    },
+    "torch": "2.14.0+cu130",
+    "torch_cuda": "13.0",
+    "cuda_available": true,
+    "precision": "float32",
+    "tf32": false,
+    "amp": false,
+    "optimizer_updates": 0,
+    "optimizers_constructed": 0,
+    "checkpoints_written": false,
+    "model_downloads": false,
+    "real_media_opened": false,
+    "generated_only": true,
+    "source_sha256": {
+      "core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "core/features.py": "7078c26f158d24b6ae81b42931d6a8dcd54981395fee2c6a8960854e8d689199",
+      "core/spatial_cooccurrence.py": "93d3909e96aaae7b0554a2e52c39d9904bd456282eb1db22e4cdfb004c5c3a1d",
+      "core/spatial_parity.py": "2e27e64197d24805c3156859ebaa96d4989a2ae3d803c401d30c2707f4a18f46",
+      "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+      "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+      "core/nonjpeg_models.py": "ea2e4cca67498a0d1018485e56867cc0c402b49cb3f4d99bc0a3be8f120a90c8"
+    },
+    "bounds": {
+      "wall_seconds": 180,
+      "host_memory_bytes": 4294967296,
+      "gpu_allocator_bytes": 4294967296,
+      "swap_bytes": 0
+    },
+    "cases": [
+      {
+        "domain": "spatial-native-gray-srnet-v1",
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "float32",
+        "forward_backward_repetitions": 3,
+        "finite_gradients": true,
+        "parameters_unchanged": true,
+        "peak_cuda_allocated_bytes": 546443776,
+        "peak_cuda_reserved_bytes": 801112064,
+        "forward_backward_only_seconds": [
+          1.6216165559999354,
+          0.026862401002290426,
+          0.020732761000544997
+        ],
+        "batchnorm_buffers": "ephemeral generated model only; no state persisted"
+      },
+      {
+        "domain": "spatial-native-rgb-srnet-v1",
+        "shape": [
+          1,
+          3,
+          256,
+          256
+        ],
+        "dtype": "float32",
+        "forward_backward_repetitions": 3,
+        "finite_gradients": true,
+        "parameters_unchanged": true,
+        "peak_cuda_allocated_bytes": 546972672,
+        "peak_cuda_reserved_bytes": 624951296,
+        "forward_backward_only_seconds": [
+          0.029847030997188995,
+          0.021571410998149076,
+          0.02181899599963799
+        ],
+        "batchnorm_buffers": "ephemeral generated model only; no state persisted"
+      },
+      {
+        "domain": "audio-native-pcm16-resnet1d-v1",
+        "shape": [
+          1,
+          3,
+          160
+        ],
+        "dtype": "float32",
+        "forward_backward_repetitions": 3,
+        "finite_gradients": true,
+        "parameters_unchanged": true,
+        "peak_cuda_allocated_bytes": 70535168,
+        "peak_cuda_reserved_bytes": 308281344,
+        "forward_backward_only_seconds": [
+          0.44222892800098634,
+          0.0027745789993787184,
+          0.0023578950022056233
+        ],
+        "batchnorm_buffers": "ephemeral generated model only; no state persisted"
+      },
+      {
+        "domain": "audio-native-pcm16-resnet1d-v1",
+        "shape": [
+          1,
+          3,
+          48000
+        ],
+        "dtype": "float32",
+        "forward_backward_repetitions": 3,
+        "finite_gradients": true,
+        "parameters_unchanged": true,
+        "peak_cuda_allocated_bytes": 191381504,
+        "peak_cuda_reserved_bytes": 308281344,
+        "forward_backward_only_seconds": [
+          0.017403224999725353,
+          0.013502779002010357,
+          0.01432470800136798
+        ],
+        "batchnorm_buffers": "ephemeral generated model only; no state persisted"
+      },
+      {
+        "domain": "audio-native-pcm16-resnet1d-v1",
+        "shape": [
+          1,
+          3,
+          220500
+        ],
+        "dtype": "float32",
+        "forward_backward_repetitions": 3,
+        "finite_gradients": true,
+        "parameters_unchanged": true,
+        "peak_cuda_allocated_bytes": 635751936,
+        "peak_cuda_reserved_bytes": 660602880,
+        "forward_backward_only_seconds": [
+          0.040822765997290844,
+          0.039679625999269774,
+          0.0399103850031679
+        ],
+        "batchnorm_buffers": "ephemeral generated model only; no state persisted"
+      }
+    ],
+    "pcm_transform": {
+      "independent_scalar_differences": "passed",
+      "single_lsb_preserved_on_cuda": true,
+      "signed_overflow_extremes": "passed"
+    },
+    "wav_capacity": {
+      "status": "not_established",
+      "proposed_cnn_row_presentations_both_seeds": 144000,
+      "proposed_virtual_optimizer_updates_both_seeds": 2280,
+      "synthetic_max_length_forward_backward_seconds_per_row": 0.0399103850031679,
+      "synthetic_max_length_projection_seconds": 5747.095440456178,
+      "proposed_gpu_ceiling_seconds": 3600,
+      "max_length_scenario_within_proposed_ceiling": false,
+      "reason": "synthetic timing is not a complete trainer/data/exposure capacity gate; optimizer, transfer, feature, evaluation and checkpoint costs not included"
+    },
+    "host_peak_rss_kib": 1647284,
+    "elapsed_seconds_including_imports": 5.965454098000919,
+    "bounded_owned_unit": "steganography-readiness-gpu-v2-20261017",
+    "probe_source_sha256": "faac341b7eda43f1762754606316c5fce36bc5e27a2f4d20429745e539f6197d",
+    "launcher_source_sha256": "999d022d9c19011f1843ec24c56733d93e2538b067371c4245ee1370c6c2938e"
+  },
+  "preserved_failed_gpu_probe": {
+    "schema_version": "training-readiness-probe-correction-v1",
+    "checked_utc": "2026-10-16T21:28:23.579676+00:00",
+    "status": "prior_failed_check_preserved",
+    "first_probe": "unavailable; assertion before generated model cases",
+    "reason": "probe hashed nvidia-smi GPU-prefixed UUID; frozen inspector hashes str(PyTorch device UUID)",
+    "diagnosis": "read-only PyTorch UUID hash equals existing frozen historical identity",
+    "expected_torch_gpu_uuid_sha256": "0e032a6754c3b87b7403f4d6fa009e62d6487d40af72b4895d108c2edb6f1e00",
+    "prior_probe_source_sha256": "44ed085b49e5984050ed4eaf7916e90f260f00830dc3d5dff4a25520e4c81882",
+    "prior_launcher_source_sha256": "c533986a61ad3ce93adcad262cca6801cd94ed0329afb49ab67c9dbfd1124f58",
+    "prior_stderr_sha256": "e88c4abe398e4bfe40f3fd19dd9a2842b52bc64638fe3854e7e09821e6588638",
+    "corrected_probe_source_sha256": "faac341b7eda43f1762754606316c5fce36bc5e27a2f4d20429745e539f6197d",
+    "corrected_launcher_source_sha256": "999d022d9c19011f1843ec24c56733d93e2538b067371c4245ee1370c6c2938e",
+    "historical_source_or_gpu_binding_changed": false,
+    "optimizer_updates": 0,
+    "model_cases_before_prior_assertion": 0,
+    "new_generated_only_attempt_wall_limit_seconds": 180,
+    "automatic_retry": false
+  },
+  "software_verification": {
+    "full_suite": {
+      "status": "passed",
+      "test_counts": {
+        "passed": 3321,
+        "skipped": 2
+      },
+      "total_coverage_percent": 96.80968096809681,
+      "local_python": "3.11",
+      "python_3_12_through_3_14": "unavailable locally",
+      "cuda_skips": "CPU-host JPEG CUDA/export contracts remain unavailable; generated remote native checks are separate",
+      "resource": {
+        "status": "passed",
+        "exit_code": 0,
+        "independent_pytest_exit": {
+          "exit_code": 0,
+          "seconds": 1013.2639758869955
+        },
+        "seconds": 1013.6219549599991,
+        "peak_task_output_bytes": 126029429,
+        "nonjpeg_ceiling_bytes": 4294967296,
+        "jpeg_reserved_bytes": 6442450944,
+        "child_maxrss_kib": 2673420,
+        "observer_policy": "race-tolerant traversal and independent atomic pytest exit"
+      }
+    },
+    "focused_tests": {
+      "status": "passed",
+      "passed": 149,
+      "coverage": "not measured in focused --no-cov run"
+    },
+    "quality": {
+      "ruff": {
+        "status": "passed",
+        "exit_code": 0,
+        "elapsed_seconds": 0.016695475002052262
+      },
+      "mypy": {
+        "status": "passed",
+        "exit_code": 0,
+        "elapsed_seconds": 0.3760555760018178
+      },
+      "diff_check": {
+        "status": "passed",
+        "exit_code": 0,
+        "elapsed_seconds": 0.009477808998781256
+      }
+    },
+    "new_production_analysis_code": false
+  },
+  "resources": {
+    "current_tracked_native_bytes": 812464344,
+    "native_ceiling_bytes": 4294967296,
+    "jpeg_reserved_bytes": 6442450944,
+    "gpu_generated_probe_elapsed_seconds": 5.965454098000919,
+    "prior_failed_probe_elapsed_seconds": "unavailable; original owned unit bounded by 180 seconds",
+    "exact_cumulative_control_time_attestation": "unavailable; per-check timings do not certify total control time",
+    "full_suite_peak_output_bytes": 126029429,
+    "local_gate_unit": "steganography-training-readiness-gate-20261017",
+    "local_gate_service": {
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "MemoryMax": "4294967296",
+      "MemorySwapMax": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead"
+    },
+    "legacy_raw_transfer_attestation": "incomplete; not reset"
+  },
+  "remaining_before_new_training": [
+    "Separately account for or grant new acquisition scope; no raw media allowance is established by this check.",
+    "Accept native source media with per-file hashes, headers, license linkage and speaker-group disjoint roles.",
+    "Implement and verify the proposed source-specific matched trainer and complete exposure accounting.",
+    "Freeze a separate source/data/exposure/compute protocol; JPEG completed allowances are unchanged.",
+    "Establish full-update and evaluation capacity; maximum-length synthetic scenario exceeds the proposed one-hour GPU ceiling."
+  ],
+  "optimizer_updates": 0,
+  "new_checkpoints": 0,
+  "media_downloaded_bytes": 0,
+  "reserved_media_opened": false,
+  "validation_features_opened": false,
+  "production_qualification": "unavailable",
+  "deployed": false,
+  "evidence_sha256": {
+    ".benchmark/training-readiness-20261017/local_checks.py": "7e6e54e95eba7b93a4d5974792ffce697cb9600dfc0b7b49cdb5b2b7de6e99c9",
+    ".benchmark/training-readiness-20261017/local-checks.json": "ea3f129621f9351df652db6f73a62e4fd74dd5304e5c568b1a61f1ce1d9bed22",
+    ".benchmark/training-readiness-20261017/train_artifact_checks.py": "539736d4f586bee518c1b8659e247dc4cab4811157dfb1f8a71de781eaf724d9",
+    ".benchmark/training-readiness-20261017/train-artifact-checks.json": "0217cf50d270bf93da9db004a13be6116ac80cf324c36cf9d2d0dd35951c4983",
+    ".benchmark/training-readiness-20261017/gpu_probe.py": "44ed085b49e5984050ed4eaf7916e90f260f00830dc3d5dff4a25520e4c81882",
+    ".benchmark/training-readiness-20261017/run_gpu_probe.py": "c533986a61ad3ce93adcad262cca6801cd94ed0329afb49ab67c9dbfd1124f58",
+    ".benchmark/training-readiness-20261017/gpu-probe.stderr": "e88c4abe398e4bfe40f3fd19dd9a2842b52bc64638fe3854e7e09821e6588638",
+    ".benchmark/training-readiness-20261017/gpu_probe_v2.py": "faac341b7eda43f1762754606316c5fce36bc5e27a2f4d20429745e539f6197d",
+    ".benchmark/training-readiness-20261017/run_gpu_probe_v2.py": "999d022d9c19011f1843ec24c56733d93e2538b067371c4245ee1370c6c2938e",
+    ".benchmark/training-readiness-20261017/gpu-checks-v2.json": "4e790f04581707ac76ab587940587a3894d36a2bb34a706a89bc3caf79313408",
+    ".benchmark/training-readiness-20261017/gpu-probe-correction.json": "356533dde4eba11ed5283d49c19dcc16b42e7bcfcae5ca931146a76cac81bc4c",
+    ".benchmark/training-readiness-20261017/source-metadata-checks.json": "d47d75dcb2208aab9e7dd21fcfa76481cf7d7ee27167ce24187148a4b8e301f7",
+    ".benchmark/training-readiness-20261017/focused-tests.log": "a43c017d2982f84debab587d838a3f67a5e35663f2cab2111589d2f94be33431",
+    ".benchmark/training-readiness-20261017/focused-tests.json": "f22a860ca0bdf59a067119fff6c08fa841c395e958a382ae74d41122c396a9b6",
+    ".benchmark/training-readiness-20261017/quality-checks.json": "723c045aa895722a205156c6f4563b6c260c2e37deb5927ef98677a3c6b49623",
+    ".benchmark/training-readiness-20261017/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".benchmark/training-readiness-20261017/mypy.log": "86903a61a92237d8dd52f0d7acaec822fc3c8b0257e183097a492fd2320879e0",
+    ".benchmark/training-readiness-20261017/diff_check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".benchmark/training-readiness-20261017/full-verification/verify_full.py": "ae4cc5d80c9540022d71ef93f885e7b3ea70bed908e2878b890bb19c8d8b4605",
+    ".benchmark/training-readiness-20261017/full-verification/pytest-second-exit.json": "024b89764077f018fa3ce150a2ce5b202d899044d15df9ad29f46b52a568aa72",
+    ".benchmark/training-readiness-20261017/full-verification/full-second.log": "2428de95bf36a20d162fb4aad94dc10142d942ed93241bdfe72ef0ee98c240ee",
+    ".benchmark/training-readiness-20261017/full-verification/full-second-coverage.json": "2c0f84b4d48be7b88d6c0cc9ed9aea1485c041e52236f90888b138c4893bb14d",
+    ".benchmark/training-readiness-20261017/full-verification/verification-resource-second.json": "6757839982d30dcc3311ca708b6e09f5355d790a5dcda4a7249044d38ae0ad4f",
+    ".benchmark/training-readiness-20261017/publish.py": "654e62fb4c7ef8352b05f9ad14c2480bfc4704c20533bdeff2c00d04e2903e66"
+  }
+}
