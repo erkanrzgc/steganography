@@ -1,0 +1,41 @@
+{
+  "schema_version": "native-source-gap-audit-v1",
+  "status": "metadata_reviewed_pilots_incomplete",
+  "media_files_opened": 0,
+  "kodak_cached": {
+    "metadata_sha256": "a81fb50acdf989fe3cb37c6ac88316140e611d5f1da3046962426498ac1a7728",
+    "files": 24,
+    "source_group": "Kodak-PCD0992-r0k",
+    "licensed_native_pilot_status": "unavailable; cached source explicitly lacks a verified formal license grant",
+    "added_to_training": false
+  },
+  "wifd_cached": {
+    "metadata_sha256": "303995e90fbeb90a52e5a6ee99063741092690b5b47d50c2703c66bdf0959f9c",
+    "files": 200,
+    "role_counts": {
+      "test": 200
+    },
+    "format_counts": {
+      "JPEG": 120,
+      "MPO": 80
+    },
+    "added_to_training": false,
+    "policy": "reserved test roles stay closed"
+  },
+  "commons_prior": {
+    "accepted_gif_files": 13,
+    "independent_original_ancestry": "unavailable",
+    "native_png_accepted": 0,
+    "native_stereo_wav_accepted": 0,
+    "native_mp3_accepted": 0,
+    "http_retry_started": false,
+    "cumulative_raw_transfer_attestation": "unavailable; initial byte ledger incomplete"
+  },
+  "audiomnist_candidate": {
+    "commit": "630d7dab4c040882834de6fa21baf9a60372accd",
+    "media_acquired": false,
+    "file_headers": "unavailable",
+    "candidate_type": "speaker-grouped mono PCM; does not fill stereo/MP3/RGB targets"
+  },
+  "new_independent_native_pilot_completed": false
+}

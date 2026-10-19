@@ -1,0 +1,4934 @@
+{
+  "schema_version": "wav-next-experiment-draft-v1",
+  "status": "draft_not_executable",
+  "source_commit": "630d7dab4c040882834de6fa21baf9a60372accd",
+  "speaker_assignment_namespace": "wav-audiomnist-pilot-20261016",
+  "speaker_roles": {
+    "train": [
+      "42",
+      "05",
+      "39",
+      "54",
+      "07",
+      "06",
+      "19",
+      "35",
+      "24",
+      "10",
+      "53",
+      "26",
+      "21",
+      "33",
+      "12",
+      "08",
+      "18",
+      "30",
+      "23",
+      "32"
+    ],
+    "development": [
+      "16",
+      "17",
+      "57",
+      "43",
+      "38",
+      "40",
+      "15",
+      "56",
+      "01",
+      "34"
+    ],
+    "reserved": [
+      "44",
+      "55",
+      "36",
+      "20",
+      "46",
+      "41",
+      "60",
+      "31",
+      "58",
+      "59",
+      "22",
+      "03",
+      "09",
+      "13",
+      "04",
+      "45",
+      "49",
+      "14",
+      "11",
+      "29",
+      "25",
+      "47",
+      "28",
+      "27",
+      "52",
+      "50",
+      "02",
+      "48",
+      "37",
+      "51"
+    ]
+  },
+  "proposed_files": [
+    {
+      "relative_source_path": "data/42/0_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/0_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/1_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/1_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/2_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/2_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/3_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/3_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/4_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/4_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/5_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/5_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/6_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/6_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/7_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/7_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/8_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/8_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/9_42_0.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/42/9_42_1.wav",
+      "speaker_group": "42",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/0_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/0_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/1_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/1_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/2_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/2_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/3_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/3_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/4_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/4_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/5_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/5_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/6_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/6_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/7_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/7_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/8_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/8_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/9_05_0.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/05/9_05_1.wav",
+      "speaker_group": "05",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/0_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/0_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/1_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/1_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/2_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/2_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/3_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/3_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/4_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/4_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/5_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/5_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/6_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/6_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/7_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/7_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/8_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/8_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/9_39_0.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/39/9_39_1.wav",
+      "speaker_group": "39",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/0_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/0_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/1_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/1_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/2_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/2_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/3_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/3_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/4_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/4_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/5_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/5_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/6_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/6_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/7_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/7_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/8_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/8_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/9_54_0.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/54/9_54_1.wav",
+      "speaker_group": "54",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/0_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/0_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/1_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/1_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/2_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/2_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/3_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/3_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/4_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/4_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/5_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/5_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/6_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/6_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/7_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/7_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/8_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/8_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/9_07_0.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/07/9_07_1.wav",
+      "speaker_group": "07",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/0_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/0_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/1_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/1_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/2_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/2_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/3_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/3_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/4_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/4_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/5_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/5_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/6_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/6_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/7_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/7_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/8_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/8_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/9_06_0.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/06/9_06_1.wav",
+      "speaker_group": "06",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/0_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/0_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/1_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/1_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/2_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/2_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/3_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/3_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/4_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/4_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/5_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/5_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/6_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/6_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/7_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/7_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/8_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/8_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/9_19_0.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/19/9_19_1.wav",
+      "speaker_group": "19",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/0_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/0_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/1_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/1_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/2_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/2_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/3_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/3_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/4_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/4_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/5_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/5_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/6_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/6_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/7_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/7_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/8_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/8_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/9_35_0.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/35/9_35_1.wav",
+      "speaker_group": "35",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/0_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/0_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/1_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/1_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/2_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/2_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/3_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/3_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/4_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/4_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/5_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/5_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/6_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/6_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/7_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/7_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/8_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/8_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/9_24_0.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/24/9_24_1.wav",
+      "speaker_group": "24",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/0_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/0_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/1_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/1_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/2_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/2_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/3_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/3_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/4_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/4_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/5_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/5_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/6_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/6_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/7_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/7_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/8_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/8_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/9_10_0.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/10/9_10_1.wav",
+      "speaker_group": "10",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/0_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/0_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/1_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/1_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/2_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/2_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/3_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/3_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/4_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/4_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/5_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/5_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/6_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/6_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/7_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/7_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/8_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/8_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/9_53_0.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/53/9_53_1.wav",
+      "speaker_group": "53",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/0_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/0_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/1_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/1_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/2_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/2_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/3_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/3_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/4_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/4_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/5_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/5_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/6_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/6_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/7_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/7_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/8_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/8_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/9_26_0.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/26/9_26_1.wav",
+      "speaker_group": "26",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/0_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/0_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/1_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/1_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/2_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/2_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/3_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/3_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/4_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/4_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/5_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/5_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/6_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/6_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/7_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/7_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/8_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/8_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/9_21_0.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/21/9_21_1.wav",
+      "speaker_group": "21",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/0_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/0_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/1_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/1_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/2_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/2_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/3_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/3_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/4_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/4_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/5_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/5_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/6_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/6_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/7_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/7_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/8_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/8_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/9_33_0.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/33/9_33_1.wav",
+      "speaker_group": "33",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/0_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/0_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/1_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/1_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/2_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/2_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/3_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/3_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/4_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/4_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/5_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/5_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/6_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/6_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/7_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/7_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/8_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/8_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/9_12_0.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/12/9_12_1.wav",
+      "speaker_group": "12",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/0_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/0_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/1_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/1_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/2_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/2_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/3_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/3_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/4_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/4_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/5_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/5_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/6_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/6_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/7_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/7_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/8_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/8_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/9_08_0.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/08/9_08_1.wav",
+      "speaker_group": "08",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/0_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/0_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/1_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/1_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/2_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/2_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/3_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/3_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/4_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/4_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/5_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/5_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/6_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/6_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/7_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/7_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/8_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/8_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/9_18_0.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/18/9_18_1.wav",
+      "speaker_group": "18",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/0_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/0_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/1_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/1_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/2_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/2_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/3_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/3_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/4_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/4_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/5_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/5_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/6_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/6_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/7_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/7_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/8_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/8_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/9_30_0.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/30/9_30_1.wav",
+      "speaker_group": "30",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/0_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/0_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/1_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/1_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/2_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/2_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/3_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/3_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/4_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/4_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/5_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/5_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/6_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/6_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/7_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/7_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/8_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/8_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/9_23_0.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/23/9_23_1.wav",
+      "speaker_group": "23",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/0_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/0_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/1_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/1_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/2_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/2_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/3_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/3_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/4_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/4_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/5_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/5_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/6_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/6_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/7_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/7_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/8_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/8_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/9_32_0.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/32/9_32_1.wav",
+      "speaker_group": "32",
+      "role": "train",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/0_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/0_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/1_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/1_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/2_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/2_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/3_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/3_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/4_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/4_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/5_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/5_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/6_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/6_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/7_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/7_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/8_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/8_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/9_16_0.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/16/9_16_1.wav",
+      "speaker_group": "16",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/0_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/0_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/1_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/1_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/2_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/2_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/3_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/3_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/4_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/4_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/5_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/5_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/6_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/6_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/7_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/7_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/8_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/8_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/9_17_0.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/17/9_17_1.wav",
+      "speaker_group": "17",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/0_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/0_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/1_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/1_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/2_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/2_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/3_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/3_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/4_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/4_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/5_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/5_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/6_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/6_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/7_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/7_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/8_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/8_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/9_57_0.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/57/9_57_1.wav",
+      "speaker_group": "57",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/0_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/0_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/1_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/1_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/2_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/2_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/3_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/3_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/4_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/4_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/5_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/5_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/6_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/6_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/7_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/7_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/8_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/8_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/9_43_0.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/43/9_43_1.wav",
+      "speaker_group": "43",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/0_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/0_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/1_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/1_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/2_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/2_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/3_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/3_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/4_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/4_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/5_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/5_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/6_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/6_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/7_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/7_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/8_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/8_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/9_38_0.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/38/9_38_1.wav",
+      "speaker_group": "38",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/0_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/0_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/1_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/1_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/2_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/2_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/3_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/3_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/4_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/4_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/5_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/5_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/6_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/6_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/7_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/7_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/8_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/8_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/9_40_0.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/40/9_40_1.wav",
+      "speaker_group": "40",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/0_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/0_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/1_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/1_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/2_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/2_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/3_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/3_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/4_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/4_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/5_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/5_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/6_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/6_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/7_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/7_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/8_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/8_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/9_15_0.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/15/9_15_1.wav",
+      "speaker_group": "15",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/0_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/0_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/1_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/1_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/2_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/2_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/3_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/3_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/4_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/4_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/5_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/5_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/6_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/6_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/7_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/7_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/8_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/8_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/9_56_0.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/56/9_56_1.wav",
+      "speaker_group": "56",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/0_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/0_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/1_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/1_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/2_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/2_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/3_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/3_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/4_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/4_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/5_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/5_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/6_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/6_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/7_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/7_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/8_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/8_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/9_01_0.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/01/9_01_1.wav",
+      "speaker_group": "01",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/0_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/0_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/1_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/1_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/2_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/2_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/3_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/3_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/4_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/4_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/5_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/5_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/6_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/6_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/7_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/7_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/8_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/8_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/9_34_0.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    },
+    {
+      "relative_source_path": "data/34/9_34_1.wav",
+      "speaker_group": "34",
+      "role": "development",
+      "parent_recording_id": null,
+      "original_sha256": null,
+      "acceptance": "unavailable; path and file headers not inspected"
+    }
+  ],
+  "proposed_file_counts": {
+    "train": 400,
+    "development": 200
+  },
+  "independent_speaker_groups": {
+    "train": 20,
+    "development": 10
+  },
+  "independent_original_recording_count": "unavailable",
+  "reserved_media_access": false,
+  "required_native_format": {
+    "channels": 1,
+    "pcm_bits": 16,
+    "max_frames": 220500,
+    "resampling": false
+  },
+  "max_file_bytes": 524288,
+  "proposed_raw_byte_ceiling": 402653184,
+  "raw_budget_authorization": "unavailable; legacy cumulative one-GiB ledger cannot be reset or certified",
+  "media_requests_made": 0,
+  "training_authorized_by_draft": false,
+  "model_candidates": [
+    "frozen 760-feature linear reference",
+    "existing raw/first-/second-difference FP32 PCM residual skeleton"
+  ],
+  "production_qualification": "unavailable",
+  "deployed": false,
+  "model_design": {
+    "seeds": [
+      20261016,
+      20261017
+    ],
+    "epochs": 20,
+    "train_rows_all_controlled_cells": 3600,
+    "row_presentations_per_seed_arm": 72000,
+    "linear_reference_features": 760,
+    "cnn_skeleton_source_sha256": "ea2e4cca67498a0d1018485e56867cc0c402b49cb3f4d99bc0a3be8f120a90c8",
+    "optimizer": "plain SGD",
+    "learning_rate": 0.01,
+    "weight_only_l2": 0.0001,
+    "virtual_batch": 64,
+    "cnn_microbatch": 1,
+    "cnn_input": "whole native raw/first-/second-difference PCM; FP32 preserves LSB",
+    "threshold": 0.5,
+    "threshold_search": false,
+    "oof_refitting": false,
+    "uncertainty_group": "speaker",
+    "training_implemented_for_this_new_source": false
+  },
+  "planning_compute_ceilings": {
+    "gpu_total_seconds_both_seeds": 3600,
+    "gpu_allocator_bytes": 4294967296,
+    "host_bytes": 8589934592,
+    "swap_bytes": 0,
+    "cpu_reference_seconds": 600,
+    "owned_gpu_preflight": "unavailable; not attempted by draft",
+    "budget_granted_by_draft": false
+  }
+}

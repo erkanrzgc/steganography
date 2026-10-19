@@ -1,0 +1,41 @@
+{
+  "schema_version": "wav-source-format-metadata-v1",
+  "status": "source_code_reviewed_headers_unavailable",
+  "commit": "630d7dab4c040882834de6fa21baf9a60372accd",
+  "source_files": {
+    "main.py": {
+      "url": "https://raw.githubusercontent.com/soerenab/AudioMNIST/630d7dab4c040882834de6fa21baf9a60372accd/recording_scripts/main.py",
+      "sha256": "086716e03c63782fd7595ff4ad647b3941c5d3fb64903a82f2e4a9dae593fe2f",
+      "bytes": 4523
+    },
+    "recording_gui.py": {
+      "url": "https://raw.githubusercontent.com/soerenab/AudioMNIST/630d7dab4c040882834de6fa21baf9a60372accd/recording_scripts/recording_gui.py",
+      "sha256": "cf6185ae463e59e2f4cc1f76e02766633a111284c9b74a42b0f13393789f66b7",
+      "bytes": 20922
+    },
+    "util.py": {
+      "url": "https://raw.githubusercontent.com/soerenab/AudioMNIST/630d7dab4c040882834de6fa21baf9a60372accd/recording_scripts/util.py",
+      "sha256": "90d012bb713e0100a010949bcc84d73b2a01a4b4c406d0ab6097182c54afde44",
+      "bytes": 18724
+    },
+    "adjustCuts.py": {
+      "url": "https://raw.githubusercontent.com/soerenab/AudioMNIST/630d7dab4c040882834de6fa21baf9a60372accd/recording_scripts/adjustCuts.py",
+      "sha256": "4b64b9e2f6f1aa6ed7ae42fb213877d12c96454ffd34b6f03f9e2cd5358201f6",
+      "bytes": 8656
+    }
+  },
+  "source_code_declared_capture": {
+    "sample_rate_hz": 48000,
+    "channels": 1,
+    "dtype": "int16"
+  },
+  "file_header_verification": "unavailable; no media download",
+  "parent_recording_mapping": "unavailable; shuffled multi-digit recordings are cut into files",
+  "repetition_number_is_recording_id": false,
+  "conservative_group": "entire source-provided speaker, including all recording cuts",
+  "media_files_downloaded": 0,
+  "recording_list_sha256": "de7d4913fae6743399578cd04d1f4484e6ed0575fe85bc8e0986181c0bf95787",
+  "new_metadata_bytes_this_stage": 57001,
+  "accepted_native_stereo_files": 0,
+  "accepted_native_mono_files": 0
+}

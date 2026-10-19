@@ -1,0 +1,32 @@
+{
+  "schema_version": "wav-source-candidate-review-v1",
+  "status": "metadata_reviewed_not_acquired",
+  "source": "AudioMNIST",
+  "commit": "630d7dab4c040882834de6fa21baf9a60372accd",
+  "files": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/soerenab/AudioMNIST/630d7dab4c040882834de6fa21baf9a60372accd/README.md",
+      "bytes": 2595,
+      "sha256": "23ba82be4951ed5dd9487b9358f027ab88120f93f30e0bfb5861ba2f0b3611da"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/soerenab/AudioMNIST/630d7dab4c040882834de6fa21baf9a60372accd/LICENSE",
+      "bytes": 1065,
+      "sha256": "35b1c571b8ddbbe2887fecbc7169956f38e36d0da2863b812f8a2fda62d77583"
+    },
+    "data/audioMNIST_meta.txt": {
+      "url": "https://raw.githubusercontent.com/soerenab/AudioMNIST/630d7dab4c040882834de6fa21baf9a60372accd/data/audioMNIST_meta.txt",
+      "bytes": 15620,
+      "sha256": "034c1e4ee78edf65823faa6bb6d60bd0d55c88469f90f4b582f16bd5798e0841"
+    }
+  },
+  "speaker_entries": 60,
+  "repository_license_declared": "MIT",
+  "downloaded_media_files": 0,
+  "media_hashes": "unavailable; media not acquired",
+  "native_pcm_format": "unavailable; file headers not inspected",
+  "mono_or_stereo": "unavailable; file headers not inspected",
+  "independent_pilot_accepted": false,
+  "new_data_added_to_models": false,
+  "total_completed_metadata_bytes": 25858
+}
