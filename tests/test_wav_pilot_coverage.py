@@ -16,6 +16,7 @@ import pytest
 from core import nonjpeg_features, nonjpeg_linear, wav_pilot, wav_pilot_training
 
 SEEDS = wav_pilot_training.SEEDS
+REAL_RUN_LINEAR_PAIR = wav_pilot_training.run_linear_pair
 
 
 def wav_bytes(samples):
@@ -688,8 +689,9 @@ def _fake_pairs(monkeypatch, updates=1140):
             "optimizer_updates": 1140,
             "exposure_sha256": "e" * 64,
         }
+        # Mirror run_linear_pair: core.nonjpeg_linear.fit has no "seed" key.
         return {
-            "seeds": [{"fit": dict(fit, seed=seed)} for seed in SEEDS],
+            "seeds": [{"seed": seed, "fit": dict(fit)} for seed in SEEDS],
             "optimizer_updates": 2280,
             "seconds": 3.0,
         }
@@ -731,3 +733,18 @@ def test_generated_preflight_reports_missing_cuda(monkeypatch):
     monkeypatch.setattr(torch.cuda, "is_available", lambda: False)
     with pytest.raises(RuntimeError, match="CUDA missing"):
         wav_pilot_training.generated_cnn_preflight([160] * 400, [160] * 200)
+
+
+def test_generated_preflight_receipt_accepts_real_linear_pair(monkeypatch, cached_rows):
+    """Regression for the 2026-10-19 attempt: real linear fits carry no seed key."""
+    torch = pytest.importorskip("torch")
+    _fake_cuda(monkeypatch, torch, peak=1)
+    seen = _fake_pairs(monkeypatch)
+    monkeypatch.setattr(wav_pilot_training, "run_linear_pair", REAL_RUN_LINEAR_PAIR)
+    result = wav_pilot_training.generated_cnn_preflight([480] * 400, [480] * 200)
+    assert seen["cnn"][1:] == (3600, 1800, "cuda")
+    assert result["generated_linear_optimizer_updates"] == 2280
+    receipts = result["linear_seed_receipts"]
+    assert [row["seed"] for row in receipts] == list(SEEDS)
+    assert all(row["row_presentations"] == 72000 for row in receipts)
+    assert all(len(row["exposure_sha256"]) == 64 for row in receipts)
