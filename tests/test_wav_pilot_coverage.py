@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from core import nonjpeg_features, nonjpeg_linear, wav_pilot, wav_pilot_training
+from core import nonjpeg_features, nonjpeg_linear, wav_pilot, wav_pilot_training, wav_pilot_v3
 
 SEEDS = wav_pilot_training.SEEDS
 REAL_RUN_LINEAR_PAIR = wav_pilot_training.run_linear_pair
@@ -530,6 +530,27 @@ def test_cnn_seed_fit_runs_frozen_schedule_on_generated_rows(corpus, cached_rows
     assert len(cells) == 8
 
 
+def test_v3_recipe_runs_the_same_schedule_and_scores_on_generated_rows(corpus, monkeypatch):
+    torch = pytest.importorskip("torch")
+    root, records = corpus
+    rows = wav_pilot.rows_for_role(records, "train")
+    monkeypatch.setattr(wav_pilot_training, "EPOCHS", 1)
+    torch.manual_seed(1)
+    model, fit = wav_pilot_training._fit_seed_impl(
+        torch, root, rows, SEEDS[0], device="cpu", recipe=wav_pilot_v3.V3_RECIPE
+    )
+    assert fit["architecture"] == wav_pilot_v3.AUDIO_V3_DOMAIN
+    assert fit["optimizer_updates"] == 57 and fit["row_presentations"] == 3600
+    assert model.architecture == wav_pilot_v3.AUDIO_V3_DOMAIN and np.isfinite(
+        fit["mean_batch_loss"]
+    )
+    development = wav_pilot.rows_for_role(records, "development")
+    scores = wav_pilot_training.development_scores(
+        root, development, model, device="cpu", recipe=wav_pilot_v3.V3_RECIPE
+    )
+    assert scores.shape == (1800,) and np.all((scores >= 0) & (scores <= 1))
+
+
 def _impl_rows(corpus):
     return [dict(row) for row in wav_pilot.rows_for_role(corpus[1], "train")]
 
@@ -664,8 +685,9 @@ def _fake_cuda(monkeypatch, torch, peak):
 def _fake_pairs(monkeypatch, updates=1140):
     seen = {}
 
-    def cnn(root, train_rows, development_rows, *, device, ceiling_seconds):
+    def cnn(root, train_rows, development_rows, *, device, ceiling_seconds, recipe):
         seen["cnn"] = (Path(root), len(train_rows), len(development_rows), device)
+        seen["recipe"] = recipe.domain
         seen["files"] = len(list(Path(root).rglob("*.wav")))
         fit = {
             "epochs": 20,
@@ -711,6 +733,7 @@ def test_generated_preflight_reports_complete_generated_only_receipt(monkeypatch
     assert seen["cnn"][1:] == (3600, 1800, "cuda") and seen["files"] == 600
     assert seen["linear"] == 600 and not seen["cnn"][0].exists()
     assert result["status"] == "passed_generated_only"
+    assert seen["recipe"] == result["cnn_architecture"] == "audio-native-pcm16-resnet1d-v1"
     assert result["generated_optimizer_updates"] == 4560
     assert result["real_source_optimizer_updates"] == 0 and result["real_media_opened"] is False
     assert result["generated_file_count"] == 600
@@ -748,3 +771,13 @@ def test_generated_preflight_receipt_accepts_real_linear_pair(monkeypatch, cache
     assert [row["seed"] for row in receipts] == list(SEEDS)
     assert all(row["row_presentations"] == 72000 for row in receipts)
     assert all(len(row["exposure_sha256"]) == 64 for row in receipts)
+
+
+def test_generated_preflight_passes_v3_recipe_to_the_cnn_pair(monkeypatch):
+    torch = pytest.importorskip("torch")
+    _fake_cuda(monkeypatch, torch, peak=1)
+    seen = _fake_pairs(monkeypatch)
+    result = wav_pilot_training.generated_cnn_preflight(
+        [480] * 400, [480] * 200, recipe=wav_pilot_v3.V3_RECIPE
+    )
+    assert seen["recipe"] == result["cnn_architecture"] == wav_pilot_v3.AUDIO_V3_DOMAIN
