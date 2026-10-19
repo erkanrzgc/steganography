@@ -13,6 +13,7 @@ import numpy as np
 
 from core import jpeg_context, jpeg_residual
 from core import jpeg_features as jpeg
+from core import nonjpeg_features as native
 from core import spatial_cooccurrence as cooccurrence
 from core import spatial_parity as parity
 from core.feature_model import LINEAR, RESIDUAL_MLP, feature_model
@@ -28,6 +29,9 @@ MODEL_DOMAINS = {
     jpeg_residual.FEATURE_VERSION: "jpeg-dct-residual-parity-linear-v1",
     cooccurrence.FEATURE_VERSION: "spatial-cooccurrence-linear-v1",
     parity.FEATURE_VERSION: "spatial-parity-residual-linear-v1",
+    native.LOCAL_VERSION: "spatial-local-parity-linear-v2",
+    native.RGB_VERSION: "spatial-rgb-parity-linear-v2",
+    native.AUDIO_VERSION: "audio-pcm16-parity-residual-linear-v1",
 }
 
 
@@ -180,6 +184,8 @@ def training_inputs(config: dict[str, Any]) -> tuple[np.ndarray, np.ndarray, dic
 
 
 def feature_contract(version: str):
+    if version in native.CONTRACTS:
+        return native.CONTRACTS[version]
     if version == FEATURE_VERSION:
         return FEATURE_NAMES, spatial_features
     if version == jpeg.FEATURE_VERSION:
