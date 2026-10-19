@@ -16,17 +16,12 @@ Analysis uses native detectors and optional local tools—not cloud AI services.
 
 ## What you can do
 
-- **Inspect suspicious files:** structure, metadata, known markers, statistical
-  indicators, Unicode anomalies, and appended data, with explicit analyzer coverage.
-- **Work through CTF challenges:** bounded decoding, carving, extraction, and
-  recursive artifact inspection with provenance and user-supplied wordlists.
-- **Hide and recover payloads:** compatible payload v2/v3 workflows, optional
-  password encryption, compression, and error correction.
-- **Preserve evidence:** encrypted local vault, cases, SHA-256 identities,
-  custody events, and JSON, HTML, SARIF, or evidence-bundle exports.
+- **Inspect files:** metadata, markers, statistical indicators, Unicode and appended data.
+- **Solve CTF challenges:** bounded decoding, carving and extraction with provenance.
+- **Hide/recover payloads:** v2/v3 compatibility, password encryption, compression and error correction.
+- **Preserve evidence:** encrypted vault, cases, SHA-256 identities, custody and portable reports.
 
-Use the CLI, guided TUI, or optional browser/API workspace. They share the same
-application services; optional executables are not required by the base package.
+CLI, TUI and optional browser/API share application services.
 
 ## Quick start
 
@@ -41,8 +36,8 @@ python -m pip install .
 steganography tui
 ```
 
-On Windows, activate with `.\.venv\Scripts\Activate.ps1`. The package distribution
-is `steganography-dfir`; the command and Python import are `steganography`.
+Windows: `.\.venv\Scripts\Activate.ps1`. Distribution: `steganography-dfir`;
+command/import: `steganography`.
 
 For the optional browser workspace and API:
 
@@ -51,45 +46,42 @@ python -m pip install '.[api]'
 steganography ui
 ```
 
-Keep the service on loopback unless you have configured authentication and
-deployment controls. See [Getting started](docs/GETTING_STARTED.md) for Docker,
-vault setup, and first-run details.
+Keep the service on loopback unless authentication/deployment controls are configured.
+See [Getting started](docs/GETTING_STARTED.md) for Docker and vault setup.
 
 ## Common workflows
 
 ```bash
-# Inspect one file and produce a structured report.
+# Inspect a file.
 steganography analyze --in suspect.png --format json-v2 --profile balanced
 
-# Run the bounded CTF playbook into a new output directory.
+# Run CTF recovery.
 steganography ctf challenge.png --out ./ctf-result --report bundle
 
-# Scan a directory for integration with security tooling.
+# Scan a directory.
 steganography scan --dir ./evidence --report sarif --out findings.sarif
 
-# Hide an encrypted payload; enter its password through stdin.
+# Hide a payload; password via stdin.
 steganography embed --in secret.bin --carrier cover.png --out stego.png \
   --payload-version 3 --password-stdin --no-clobber
 
-# Recover without overwriting an existing file.
+# Recover without overwriting.
 steganography extract --in stego.png --out recovered.bin \
   --password-stdin --no-clobber
 ```
 
-In the TUI, start with **Scan suspicious files**, **Hide data**, **Recover hidden
-data**, or **Manage evidence**. Press `?` for help. The [CLI reference](docs/CLI.md)
-covers limits, optional tools, cases, and advanced options.
+Press `?` in the TUI for help. See the [CLI reference](docs/CLI.md)
+for limits, optional tools and advanced options.
 
 ## Format coverage
 
 | Carrier | Hide / recover | Available analysis |
 |---|---|---|
-| PNG, BMP | RGB LSB, sequential or keyed | LSB statistics, bit planes, markers, trailing data |
-| JPEG | EXIF and marker payloads; experimental DCT | Metadata, structure, markers; optional DCT/tools |
-| TIFF | EXIF | Metadata and structure |
+| PNG, BMP | Sequential/keyed RGB LSB | Statistics, bit planes, markers, trailers |
+| JPEG, TIFF | EXIF; experimental JPEG DCT | Metadata, structure; optional tools |
 | WAV PCM16 | Sample LSB | Sample-plane indicators and markers |
 | TXT, MD | Whitespace and zero-width encoding | Whitespace and Unicode anomalies |
-| GIF, PDF | Checksummed structural trailer | Structure and trailing data |
+| GIF, PDF | Checksummed trailer | Structure and trailers |
 | ZIP and supported archives | — | Bounded member and compression inspection |
 
 This describes implemented features, **not validated detection accuracy**.
@@ -99,35 +91,67 @@ coverage makes a low-score result inconclusive. See the
 
 ## Know what a result means
 
-`confirmed` requires a verified project marker or successful extraction.
-`likely` and `suspicious` are evidence for further investigation.
-`no_indicators` is not proof that a file is clean; `inconclusive` means the
-required analysis could not be completed. Scores are not calibrated probabilities.
+`confirmed` requires a verified marker or successful extraction.
+`likely`/`suspicious` need investigation; `no_indicators` does not establish clean
+content. `inconclusive` means required coverage is missing. Scores are uncalibrated.
 
-**Real-world statistical detection remains experimental.** No research model has
-passed the project's cross-source support gates. Small development gains and
-synthetic regression results are not an overall accuracy score. Research code
-and failed experiments remain available for reproducibility, separate from
-advertised capabilities; no model is downloaded or deployed automatically.
+**Detection remains experimental.** No research model has passed cross-source
+support gates; synthetic regression results are not an overall accuracy score.
+Models are never downloaded or deployed automatically. See
+[limitations](docs/LIMITATIONS.md), [measurements](docs/BENCHMARK_RESULTS.md) and
+[dataset licenses](docs/DATASET_CATALOG.md).
 
-The latest [eight-control JPEG study](docs/JPEG_CONTROL_RESULTS.md) is complete,
-including both seeds, failed gates and read-only learning diagnoses. It does
-not qualify a model or change shipped detection.
+## Early training results
 
-Read [Known limitations](docs/LIMITATIONS.md), [Measured results](docs/BENCHMARK_RESULTS.md),
-and [Dataset sources and licenses](docs/DATASET_CATALOG.md) before relying on a verdict.
+Development evaluations, **2026-10-14–16**, with controlled payloads.
+**Balanced accuracy** averages recall and specificity; it equals accuracy here.
+**ROC-AUC measures ranking, not accuracy**; 0.50 indicates chance-level ranking.
+
+| Experiment / model | Development source | Balanced accuracy | ROC-AUC |
+|---|---|---:|---:|
+| JPEG SRNet-style, initial four arms | BOSSbase | 50.78–67.97% | 0.529–0.771 |
+| JPEG SRNet-style, initial four arms | BOWS2 | 50.00–63.28% | 0.518–0.679 |
+| JPEG refinement, all arms | BOSSbase | 50.00–76.56% | 0.502–0.848 |
+| JPEG refinement, all arms | BOWS2 | 50.00–71.09% | 0.502–0.787 |
+| PNG/BMP linear, all variants | BOWS2 | 50.00–100.00% | 0.609–1.000 |
+| PNG/BMP linear, all variants | DIV2K | 50.00–93.75% | 0.547–1.000 |
+| WAV linear, parity/residual | ESC-50 | 50.00% | 0.484–0.547 |
+| WAV linear, parity/residual | FSDD | 50.00% | 0.359–0.656 |
+
+Ranges cover both seeds and all evaluated arms/cells, not confidence intervals.
+Native pilots have only **eight development originals/source** (two FSDD
+speakers); JPEG has **64 pairs/source**. A 100% cell does not establish reliable
+detection. No model qualified or deployed; native deep skeletons remain untrained.
+AudioMNIST WAV has no accuracy yet; its generated GPU preflight passed.
+See the [preparation report](docs/WAV_PILOT_PREPARATION_20261017.md).
+Per-seed results and limitations: [initial JPEG](docs/JPEG_CONTROL_RESULTS.md),
+[refinement](docs/JPEG_REFINE_NUMERICS_RESULTS.md),
+[native pilot](docs/NONJPEG_PROCESS_PREFLIGHT_RESULTS.md),
+[WAV diagnosis](docs/WAV_READONLY_RESULTS.md).
+
+## Dataset preparation by format
+
+| Extension(s) | Dataset state |
+|---|---|
+| `.jpg/.jpeg`, `.png`, `.bmp`, historical mono `.wav` | Controlled datasets; completed research fits |
+| AudioMNIST `.wav` follow-up | 600 source-bound files; GPU preflight passed, no training accuracy yet |
+| `.gif` | 13 licensed files; ancestry/pilot incomplete |
+| `.pdf`, `.txt/.md`, `.zip` | Prepared local pilot; training roles unassigned |
+| `.tif/.tiff`, `.mp3`, `.au`, `.eml`, `.csv/.log` | Representative datasets unavailable |
+| `.tar`, `.tgz`, TAR `.gz/.bz2/.xz` | Generated fixtures; representative corpus unavailable |
+| `.wave`, compound TAR aliases | Shared families; no independent data added |
+
+The [complete inventory](docs/ALL_FORMAT_DATA_STATUS.md) covers every built-in
+suffix. Fixtures/parser success do not establish dataset or detection quality.
 
 ## Local by design
 
-- Built-in analysis does not upload files or signals to cloud providers.
-- External tools run with resource limits; extracted artifacts are never executed.
-- Payload v3 supports Argon2id and AES-256-GCM. The evidence vault uses
-  Argon2id and XChaCha20 secretstream. **Hiding is not encryption.**
-- Model installation and dataset acquisition are explicit operations. The base
-  wheel contains no model weights or datasets.
+- No cloud uploads; external tools are bounded and extracted artifacts never execute.
+- Payload v3: Argon2id/AES-256-GCM. Vault: Argon2id/XChaCha20 secretstream.
+  **Hiding is not encryption.**
+- Explicit model/dataset acquisition; the base wheel includes neither.
 
-Third-party plug-ins and executables have their own trust boundaries. Review
-the [threat model](docs/THREAT_MODEL.md) before handling sensitive evidence.
+Review the [threat model](docs/THREAT_MODEL.md) for third-party tool boundaries.
 
 ## Contribute
 

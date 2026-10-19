@@ -1,4 +1,204 @@
-# Implementation status — 2026-10-14
+# Implementation status — 2026-10-19
+
+AudioMNIST generated CUDA preflight (receipt amendment v2): **passed,
+generated only**. All 19 amended bindings verified. Both CNN seeds completed
+72,000 presentations /1,140 updates each in 2,705.9 s of the shared 3,600-s
+ceiling; both linear seeds completed 1,140 updates each in 42.2 s of 600 s.
+Peak CUDA allocation was 182 MiB (four-GiB fraction); host peak 2.2 GiB, zero
+swap. No real or reserved media, checkpoint or retry. This establishes
+generated execution capacity only: no accuracy is claimed and a real
+AudioMNIST fit still needs separate authorization. See the
+[amendment](WAV_PILOT_RECEIPT_AMENDMENT_20261019.md) and
+[v2 receipt](../benchmarks/wav-audiomnist-cuda-preflight-v2-20261019.json).
+Amended full gate: **3,421 passed /two CUDA skips, 96.87%** coverage; Ruff and
+213-file mypy pass.
+
+The first attempt below remains the preserved `unavailable` record.
+
+AudioMNIST generated CUDA preflight: **unavailable** (receipt defect). The
+single bounded attempt on the owned RTX 5060 verified all 16 bound sources,
+then ran both generated CNN and linear pairs without reaching their 3,600/600-
+second ceilings (3,081 s wall, 2.3-GiB host peak, zero swap). Receipt assembly
+then failed with `KeyError: 'seed'`: `generated_cnn_preflight` reads a seed
+key that `core.nonjpeg_linear.fit` never returns. Per-arm timings, update
+counts and CUDA peak were therefore not recorded. No retry, real media,
+checkpoint or AudioMNIST fit occurred. Fixing the key changes a bound source
+and needs a new protocol version before one new generated preflight. See
+[the attempt receipt](../benchmarks/wav-audiomnist-cuda-preflight-20261019.json).
+
+New generated-only tests raise focused coverage to 100% (`wav_pilot`), 98%
+(`wav_pilot_training`) and 98% (`research_wav_prepare`) without editing bound
+files; three strict xfails document the receipt defect. Full gate: **3,419
+passed /two CUDA skips, 96.87%** coverage, Ruff and 213-file mypy pass. Its
+first run failed only the README 900-word limit (908); that log is preserved
+and the README sentence was shortened.
+
+Earlier 2026-10-17 status follows.
+
+Training readiness audit: owned RTX 5060/PyTorch CUDA access and five generated
+gray/RGB/PCM skeleton forward/backward cases pass; that earlier check made no
+optimizer updates or checkpoints. The prior full gate passed **3,321 tests /two
+local CUDA skips, 96.81% coverage**; those results predate the newest WAV slice.
+
+New WAV pilot preparation acquired and verified **600 AudioMNIST files** (400
+train /200 development, 30 speaker groups) under a separate 384-MiB raw transfer
+ceiling; the historical cumulative ledger remains incomplete and unchanged.
+The PCM controlled-row generator, payload oracle, two-seed trainer and clustered
+metrics are implemented. The synthetic linear preflight passed 2,280 updates,
+all eight cells, and both seeds in 44.82 seconds, with no checkpoint or accuracy
+claim. No real AudioMNIST fit or reserved-speaker access occurred. Fourteen WAV
+focused tests pass. After the missing cryptography/piexif packages were installed,
+a fresh full pytest run reached 119 passed /23 optional skips without reported
+failures, then was interrupted at 194 seconds; full coverage remains unverified
+and focused WAV coverage is 38%. Full mypy reports 25 dependency/NumPy typing
+errors in 14 files; Ruff and targeted new-module mypy pass.
+
+Execution is still **not ready** until the complete trainer passes its
+source-bound generated CUDA preflight. The pinned SSH attempt was unavailable
+because port 22240 refused the connection; no remote unit started, and this
+interpreter has no Torch/CUDA. See [reconnect instructions](WSL_GPU_RECONNECT.md),
+[WAV pilot preparation](WAV_PILOT_PREPARATION_20261017.md), and the
+[machine-readable readiness receipt](../benchmarks/wav-audiomnist-readiness-20261017.json).
+
+All-format data follow-up: [23 built-in extensions](ALL_FORMAT_DATA_STATUS.md)
+are inventoried individually. Local PDF/TXT/MD/ZIP preparation is **completed**:
+16 documents /four package groups, source/license hashes and 48 controlled
+artifacts. All 16 payload oracles and on-disk checksums pass; outputs remain
+unassigned. **3,321 tests pass /two CUDA skips**, **96.81%** total /100% new-code
+coverage; Ruff and 210-file mypy pass. Source closures and all 14 old model hashes
+remain unchanged. No download or fitting occurred; MP3/TIFF/AU/mail/natural
+archive and CSV/LOG gaps remain. See [results](ALL_FORMAT_LOCAL_RESULTS.md).
+The first README-length failure and its explicit repair remain separately
+preserved; the complete unchanged full gate passed after the repair.
+
+WAV read-only diagnosis: **completed**; 4 audio models and 32 train cells, zero optimizer updates. All 14 snapshot digests remain unchanged; validation artifacts and test media stayed closed. See [results](WAV_READONLY_RESULTS.md).
+
+Full gate: **3,273 passed /2 actual-CUDA skips**, **96.78%** total coverage and **100%** for both diagnosis modules. Ruff and mypy pass.
+
+Training AUC ranges from 0.513–0.915 across sources/seeds/cells, while cached development AUC ranges from 0.359–0.656. This is evidence of limited generalization, not a demonstrated root cause. The FSDD seed with threshold 1.00 also predicts no positives on training data; missing OOF snapshots prevent threshold replay. No threshold was retuned.
+
+The next [speaker-grouped WAV draft](WAV_NEXT_PROTOCOL_DRAFT.md) specifies two seeds and matched exposure, but is not executable. AudioMNIST has only pinned metadata/code review; no media or accepted native pilot was added. The prior cumulative raw-transfer ledger remains incomplete. See [source gaps](../benchmarks/native-source-gaps-20261016.json).
+
+Native process preflight amendment: **completed**; 14 models and 480 cells replayed. Production qualification remains unavailable; no deployment or native deep fitting. See [results](NONJPEG_PROCESS_PREFLIGHT_RESULTS.md).
+
+Full gate: **3,233 passed /two actual-CUDA skips**, **96.75%** total coverage and **100%** for both amended modules. Ruff and 206-file mypy pass. All 14 numeric models and 480 cells replay exactly, with 20,200 real optimizer updates including CV; replay adds zero updates. Fitting/replay takes 19.80 seconds, or 40.80 seconds with prior debit. Original sources/failed receipts and JPEG results remain unchanged.
+
+WAV balanced accuracy remains 0.50 in all cells. Spatial extensions have mixed paired AUC changes, with no consistently better source/seed arm. These are underpowered development pilots, not qualified detectors. Resources and every cell remain in the [dated result report](NONJPEG_PROCESS_PREFLIGHT_RESULTS.md). Earlier records below are historical.
+
+JPEG refinement is **completed**: 28,672 verified updates, 56 segments and six evaluation endpoints. No arm passes the combined source/seed learning gate; no model was selected or deployed. See [results](JPEG_REFINE_NUMERICS_RESULTS.md).
+
+Native software verification passes **3,211 tests /two explicit CUDA skips**, **96.74%** total coverage and **100%** for all four new comparison modules; Ruff and 204-file mypy pass. The CPU comparison is **unavailable**: its resource gate rejects the trusted kernel self-process symlink before any media or optimizer update. A numeric own-PID read-only probe passes the same memory/CPU/swap checks. The failed attempt is retained; a separately bound preflight correction and kernel integration check are required before any new fitting. See [diagnosis](../benchmarks/nonjpeg-linear-preflight-diagnosis-20261015.json). No automatic retry occurred.
+
+Earlier execution checkpoints below are historical.
+
+Native linear follow-up: **unavailable**; 0 numeric models and 0 cells replayed read-only. Production qualification remains **unavailable**; no deployment. Deep native models remain untrained. See [the execution receipt](../benchmarks/nonjpeg-linear-handoff-20261015.json) and [the frozen protocol](NONJPEG_LINEAR_COMPARISON_PROTOCOL.md).
+
+The amended GPU controller started after a fully observed unchanged gate:
+3,113 tests passed /two explicit CPU-host CUDA skips, 96.67% total coverage,
+>99% for both new modules, Ruff and 200-file mypy pass. Independent child exit
+status is zero. Resource observer retry passes with a 157,889,989-byte peak;
+the first observer failure remains unavailable and its original log is retained.
+The owned service enforces 8-GiB resident memory, zero swap and a 5h 50m 56s
+watchdog after the conservative prior debit. Final learning results remain
+unavailable while the matrix runs. A one-shot supervisor collects its final
+portable report without restarting training. See the
+[verification](../benchmarks/jpeg-refine-numerics-verification-20261015.json) and
+[launch](../benchmarks/jpeg-refine-numerics-launch-20261015.json) receipts.
+The first real GPU segment completed 512 updates and its numeric checkpoint
+checksum was independently replayed. Its 174.55-second segment and both loss
+records remain evidence of execution only; final learning is still pending.
+See [the first checkpoint](../benchmarks/jpeg-refine-numerics-first-checkpoint-20261015.json).
+
+Numerical preflight diagnosis: CPU/CUDA logits differ by at most 2.7567e-7;
+independently rounded gradients produce post-Adamax weight differences near
+2e-4, failing the original state comparison. The separately bound amendment
+checks forward/derivative/state parity before optimization, independent scalar
+optimizer equations and exact GPU save/resume. Actual owned-GPU validation
+passes at 0.320273 seconds maximum generated update time. Forty focused tests
+pass with >99% coverage for both new modules. The first full log reports 3,113
+passed /two CUDA skips and 96.67% coverage, but its resource observer crashed
+on a concurrently removed pytest directory before recording the child exit.
+That observer attempt is unavailable, with its log retained. The unchanged
+gate was rerun with a race-tolerant walker and independent atomic exit record,
+as recorded above. No real-data update occurred before that completed gate.
+The original 31 source hashes stay identical,
+and 604.309597279 seconds /256 MiB are conservatively debited before an amended
+physical attempt. See [the amendment](JPEG_REFINE_NUMERICS_PROTOCOL.md) and
+[generated evidence](../benchmarks/jpeg-refine-numerical-evidence-20261015.json).
+
+Latest physical attempt: the existing SSH tunnel is restored and the physical
+RTX 5060/CUDA identity is verified. A fresh isolated runtime ran under the
+8-GiB resident /zero-swap bound and six-hour-plus-shutdown watchdog. Its fresh
+6,400-view audit passed; the generated CUDA preflight worker then exited 2.
+Execution is **unavailable**, with zero real-data updates, training segments
+or checkpoints. The controller spent 34.309597279 seconds; 21,565.690402721
+seconds remain in the cumulative budget. No automatic retry occurred. The
+frozen supervisor discarded worker stderr and did not preserve failed stdout,
+so the underlying exception is unavailable. Further execution needs separately
+bound diagnostic error reporting, preserving this attempt and its spent budget.
+See [the physical-attempt receipt](../benchmarks/jpeg-refine-physical-attempt-20261015.json).
+
+Earlier follow-up launch readiness: the owned GPU reverse SSH tunnel had no listener
+and connection attempts return refused. JPEG execution remains **unavailable**;
+the controller has not started. A fresh local audit passes all 6,400 views and
+31 frozen source hashes. The complete 203-file runtime bundle passes isolated
+imports but has not been transferred. CUDA identity, bounded preflight and
+the in-budget GPU audit remain required; the six-hour/ten-GiB budget is unchanged.
+See [the launch receipt](../benchmarks/jpeg-refine-launch-readiness-20261015.json).
+
+Non-JPEG comparison inputs now include four exact 684-value reference prefixes,
+giving 14 validated feature artifacts across eight source/split groups. Ordered
+rows match across feature arms. FSDD has only two training speakers; ESC-50's
+32 training originals represent 31 recording groups. Grouped fitting/threshold,
+optimizer and separate budget contracts remain to be frozen before training.
+No fitting occurred. See [the input receipt](../benchmarks/nonjpeg-comparison-readiness-20261015.json).
+
+Native non-JPEG preparation is available: 1,548/1,332-value spatial contracts,
+760-value PCM descriptors, ten source/split-bound artifacts and generated-only
+gray/RGB/PCM model skeleton checks. The 160-original/4,080-artifact corpus passes
+fresh checksum and 3,840 scalar payload-oracle checks; test media stayed closed.
+Unicode 17 controls cover six categories. A metadata-only hash recovery binds
+13 native GIFs to file-level licenses; the complete new-media pilot and
+independent original ancestry remain unavailable after original-file HTTP 429.
+
+Final gate: 3,073 passed /two actual-CUDA skips, 96.64% total coverage and
+98.37% scoped new-core coverage (features/models each 100%). Ruff, 198-file
+mypy and diff checks pass. The first full attempt is unavailable after exceeding
+the non-JPEG temporary-output allocation; its log/resource receipt is retained.
+The unchanged gate passes with pytest's normal failed-only temporary retention,
+with a 793,377,955-byte peak task footprint. Historical data/checkpoints were
+not removed. No real-data training, new model checkpoint or deployment occurred;
+all 31 frozen JPEG source hashes and its training recipe/budget stay unchanged.
+See [the readiness report](NONJPEG_EVENING_RESULTS.md) and
+[portable evidence](../benchmarks/nonjpeg-evening-readiness-20261015.json).
+
+The following JPEG-specific verification records describe the earlier slice.
+
+The separately frozen second-round `research jpeg-refine` implementation is
+available: shared paired warm-ups, paired/unpaired continuations, numeric v2
+branch ancestry, bounded round-robin execution and explicit cumulative-budget
+resume. See [the protocol](JPEG_REFINE_PROTOCOL.md).
+
+At that earlier verification, physical execution was **unavailable**: the existing host-key-verified SSH
+connection is reset by its peer and local Torch is CPU-only. No second-round
+training updates or models have been produced; no learning or production
+qualification is claimed. All historical snapshots and receipts are preserved.
+
+The final-source read-only data audit passes all 6,400 cached views (5,120 fit,
+1,280 development) and native JPEG checks. The unchanged full gate passes
+3,012 tests /two actual-CUDA skips in 1,156.63 s, with 96.60% total coverage
+and 99.18% new-code coverage. Ruff, 192-file mypy, identity and diff
+checks pass. Optional Torch absence is checked separately: 27 tests pass and
+115 skip explicitly. Python 3.11 is locally verified; the configured CI matrix
+remains 3.11–3.14 and has not been executed for this working-tree change.
+Earlier sandbox-stalled/interrupted verification logs are retained. Owned
+generated test scratch is cleaned; data and historical checkpoints are not.
+
+Portable evidence: [frozen protocol](../benchmarks/jpeg-refine-protocol-20261015.json)
+and [implementation/data readiness](../benchmarks/jpeg-refine-readiness-20261015.json).
+Readiness is not physical training or learning success.
+
+## Historical status — 2026-10-14
 
 Final publication verification: 2,871 passed /one actual-CUDA skip, 96.48%
 total coverage, 852.69 s; all ten new portable-evidence checks pass. Ruff,

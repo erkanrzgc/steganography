@@ -1,5 +1,52 @@
 # Architecture
 
+`core/document_corpus.py` owns explicit local PDF/TXT/MD/ZIP preparation;
+`steganography.research_documents` is a thin configuration/CLI adapter. The
+service bounds regular-file/license reads, archive inventory, artifact writes
+and independent scalar payload checks. No decoder body or source ZIP member is
+executed. Natural sources remain benign candidates in whole-package
+`development_unassigned` groups. No detector, download or training path is added.
+See [the protocol](ALL_FORMAT_DATA_PROTOCOL.md).
+
+Read-only native WAV diagnosis belongs to `core/wav_diagnostics.py`, with a thin
+explicit module CLI. It reuses shared train-manifest validation, inference and
+paired metrics; validates bounded numeric snapshots and replays train-only
+normalization/BCE. Validation artifacts stay closed and cached development
+metrics retain their original thresholds. See
+[`WAV_READONLY_PROTOCOL.md`](WAV_READONLY_PROTOCOL.md).
+
+The optional native CPU comparison now has a separately bound own-process
+preflight adapter in `core/nonjpeg_process_preflight.py`; its explicit module
+CLI remains thin. Private function dependency maps reuse frozen fitting and
+output bodies without changing their original module globals. Numeric PID
+selection applies only to trusted kernel identity, while untrusted carrier
+symlink/FIFO rejection remains unchanged. See
+[`NONJPEG_PROCESS_PREFLIGHT_PROTOCOL.md`](NONJPEG_PROCESS_PREFLIGHT_PROTOCOL.md).
+
+`core.nonjpeg_linear`, `nonjpeg_compare_metrics` and `nonjpeg_comparison` own
+the bounded native linear comparison. Original-balanced SGD, train-only grouped
+normalization/thresholds and paired cluster statistics stay in shared services.
+The thin module adapter only parses paths and applies process limits. Native WAV
+reference scoring calls the unchanged plug-in on verified bounded copies; tests,
+new sources, deep training and production model installation remain outside this
+slice. See `NONJPEG_LINEAR_COMPARISON_PROTOCOL.md` for its independent CPU budget.
+
+`core.jpeg_refine_preflight_v2` separately checks generated CPU/CUDA derivatives,
+independent scalar Adamax arithmetic and exact same-device save/resume. The
+opt-in `research_jpeg_refine_numerics` adapter binds a new source closure while
+calling the immutable original controller, training and evaluation kernels.
+Its explicit charged clock and per-worker storage reservation include earlier
+failed/diagnostic expenditure. Handled unavailable worker JSON uses allowlisted
+codes; unexpected exit/signal evidence stays distinct. See
+`JPEG_REFINE_NUMERICS_PROTOCOL.md`; the failed original gate stays failed.
+
+`core.jpeg_refine` owns a separate frozen two-seed paired/unpaired research
+controller. Shared 2,048-update warm-ups branch into 6,144-update continuations;
+512-update round-robin workers use numeric v2 ancestry-bound snapshots,
+original-pair metrics, cumulative six-hour/ten-GiB limits and final verification.
+The CLI is an adapter; old study/snapshot/production contracts are unchanged.
+See `JPEG_REFINE_PROTOCOL.md`; actual GPU execution is separately qualified.
+
 `core.jpeg_study_segments` owns opt-in `bounded-half-v1` continuation. Each
 logical control executes two isolated source-bound halves with unchanged
 per-worker CPU/wall/RAM/GPU limits. Partial workers never load development
@@ -746,3 +793,16 @@ but its prospective five-epoch real fit as ineligible. Source-bound portable
 evidence is immutable historical data, not a live-source equality requirement
 when execution changes later. Timing never changes primary detector verdicts,
 calibration, dataset splits, model deployment or existing safety ceilings.
+
+## Native non-JPEG research preparation
+
+`core.nonjpeg_features` owns versioned native spatial-local/RGB and mono PCM16
+descriptor calculations. `core.nonjpeg_models` exposes optional FP32 gray/RGB
+SRNet and PCM residual skeletons with generated-only gradient checks. Shared
+feature manifests retain hash/split/domain binding and the 64-MiB artifact cap.
+`core.nonjpeg_readiness` prepares source/split artifacts after a fresh independent
+corpus audit; `core.research_acquisition` provides explicitly invoked bounded
+Commons/Unicode acquisition, and `core.nonjpeg_unicode` builds pinned controls.
+The acquisition adapter contains no detection or extraction logic. None of
+these services runs training, modifies production analyzers or changes the
+frozen JPEG source closure. See `NONJPEG_EVENING_PROTOCOL.md`.
