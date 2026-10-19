@@ -1,0 +1,94 @@
+{
+  "cnn_generated_preflight": {
+    "attempt_receipt": "benchmarks/wav-audiomnist-preflight-attempt-20261017.json",
+    "attempt_receipt_sha256": "7dfc1900e38dbca3592aee63bb79eeeb3c0fd474d0a178872605dde629368140",
+    "endpoint": "127.0.0.1:22240",
+    "local_cuda": "unavailable",
+    "local_torch": "unavailable",
+    "real_source_optimizer_updates": 0,
+    "remote_unit_started": false,
+    "status": "unavailable_connection_refused"
+  },
+  "date": "2026-10-17",
+  "linear_generated_preflight": {
+    "checkpoint_written": false,
+    "optimizer_updates": 2280,
+    "receipt": "benchmarks/wav-audiomnist-linear-generated-preflight-20261017.json",
+    "receipt_sha256": "e9bc513b4f7d778095441d920bd9307cc8be49549379f6b916939f620a97742e",
+    "row_presentations": 144000,
+    "seconds": 44.82010397400154,
+    "seeds": 2,
+    "source_media_opened": false,
+    "status": "passed_generated_only",
+    "synthetic_accuracy_claimed": false
+  },
+  "preparation_receipt_sha256": "9e51b5c6b9beaca93d3f76d3c4730b9103b2c09773bfef0ac2ee4c4d9d2b357f",
+  "protocol_id": "wav-audiomnist-pilot-20261017",
+  "real_training": {
+    "accuracy": "unavailable",
+    "checkpoint_written": false,
+    "optimizer_updates": 0,
+    "status": "not_authorized_by_protocol"
+  },
+  "resource_accounting": {
+    "cnn_generated_preflight_attempts": 1,
+    "jpeg_budget_charged": false,
+    "jpeg_training_time_charged": false,
+    "linear_data_transient_only": true,
+    "linear_generated_bytes": 36335714,
+    "linear_generated_files": 600,
+    "source_data_fits": 0
+  },
+  "schema_version": "wav-audiomnist-readiness-status-v1",
+  "source_closure_sha256": {
+    "CHANGELOG.md": "ba696d79c5f603551ae03bc62e49c6da2fd64f006eea5dda937615e658960b9f",
+    "benchmarks/wav-audiomnist-preparation-20261017.json": "9e51b5c6b9beaca93d3f76d3c4730b9103b2c09773bfef0ac2ee4c4d9d2b357f",
+    "benchmarks/wav-audiomnist-training-protocol-20261017.json": "be9b29a0d7d4432edadd6b91446a5599e76e8e928f71cb076e0010ca8cef983c",
+    "benchmarks/wav-next-experiment-draft-20261016.json": "06b0df7a3c8a21b62a9134d5600c12d00808e11b633e70857f0f8bf0fa687244",
+    "core/nonjpeg_compare_metrics.py": "26b325b420d68ea99ad7cff713c9c2d8aac786e3cd3e52fd4021a22a90aaf460",
+    "core/nonjpeg_data.py": "fcc2eb52807c3146aa19c623b836023344165f7e4cf5b0ac23097efc050ccfaf",
+    "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+    "core/nonjpeg_linear.py": "ac13d73189cba07a71c2e5290a2cf7d29741ec50d116c0471d5752a0dac89010",
+    "core/nonjpeg_models.py": "ea2e4cca67498a0d1018485e56867cc0c402b49cb3f4d99bc0a3be8f120a90c8",
+    "core/wav_pilot.py": "b8f7136ef559e623d460b76515b1d2d28f321a46a1c01aceb385b258ae6741e0",
+    "core/wav_pilot_training.py": "5694860193b9c426f7f216474bab7830695f5a878bb272bcecbd68f5b5728cf4",
+    "docs/STATUS.md": "10988997b81790a64dbee7ce97cd757a164d2c519bb6abf9f16450de79a4ef27",
+    "docs/WAV_PILOT_PREPARATION_20261017.md": "8e58db7e2c45a9e862061dd3178150590a555c60978ebd0d99042aaecd3ccfbf",
+    "docs/WAV_PILOT_TRAINING_PROTOCOL_20261017.md": "6a264d85a23643e8aa04d6ac651babb4cac3663c20769606cc0c249c9dff3eca",
+    "pyproject.toml": "4c6bc4075680a2b60de23b43a774f59ce8cf507874a7c3ce4ee40c862c914ae7",
+    "requirements-research-ci.txt": "12cc79f3509d9f43e0725c9ee1039700369f2c2a2576bb44e12d53c37a0bab92",
+    "steganography/research_wav_prepare.py": "2b0fe3b173e34d972f761da0bf2cd8ac6cdb2d5be130ba77f50522b0b6620a20",
+    "tests/test_wav_pilot.py": "a16391368136d32d365c1078edf1c7535ddff434d60c849f0acaade6948ab834"
+  },
+  "status": "partial_preflight_only_training_not_ready",
+  "verification": {
+    "focused_wav_coverage_log": {
+      "path": ".benchmark/wav-wavpilot-focused-coverage-latest-20261017.log",
+      "sha256": "e6bdfcf02a36f9e1fc835c5f01d45b83ce509b7757cfd821f2220b0754dac038"
+    },
+    "focused_wav_statement_coverage": {
+      "core.wav_pilot_percent": 65,
+      "core.wav_pilot_training_percent": 27,
+      "target_95_percent": "not met; CUDA-dependent trainer paths unavailable",
+      "total_percent": 37.56
+    },
+    "focused_wav_test_log": {
+      "path": ".benchmark/wav-wavpilot-focused-tests-final-20261017.log",
+      "sha256": "30c7e70fea595ad4c42bac94a50b79c28c5b6c451ba0a645680eacf0cd83aafc"
+    },
+    "focused_wav_tests": "14 passed",
+    "full_mypy": "23 errors in 12 files (optional ONNX/Torch imports, existing NumPy API annotations and pre-existing unused ignores)",
+    "full_mypy_log": {
+      "path": ".benchmark/wav-mypy-final-20261017.log",
+      "sha256": "beca44c3ed3559135f506f734895d3dbf02d8129ec28ae7f62a6cc26f18f675c"
+    },
+    "full_pytest": "interrupted after 194.03 seconds: 119 passed, 23 optional skips, no failures reported before interruption; full gate incomplete",
+    "full_pytest_log": {
+      "path": ".benchmark/wav-full-pytest-retry-20261017.log",
+      "sha256": "4f6ee9f6432f9e9198e18d35167acbabb7f463d7fa1267b750f2d9d8828020d6"
+    },
+    "git_diff_check": "pass",
+    "mypy_new_core": "pass",
+    "ruff": "pass"
+  }
+}

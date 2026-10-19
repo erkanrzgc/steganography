@@ -1,0 +1,39 @@
+{
+  "accuracy_claimed": false,
+  "cell_count_per_seed": [
+    8,
+    8
+  ],
+  "checkpoint_written": false,
+  "code_sha256": {
+    "core/nonjpeg_compare_metrics.py": "26b325b420d68ea99ad7cff713c9c2d8aac786e3cd3e52fd4021a22a90aaf460",
+    "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+    "core/nonjpeg_linear.py": "ac13d73189cba07a71c2e5290a2cf7d29741ec50d116c0471d5752a0dac89010",
+    "core/wav_pilot.py": "b8f7136ef559e623d460b76515b1d2d28f321a46a1c01aceb385b258ae6741e0",
+    "core/wav_pilot_training.py": "5694860193b9c426f7f216474bab7830695f5a878bb272bcecbd68f5b5728cf4"
+  },
+  "cpu_ceiling_seconds": 600,
+  "frame_count_max": 47478,
+  "frame_count_min": 17132,
+  "frame_counts_from": "metadata-only preparation receipt; no source media read",
+  "generated_bytes": 36335714,
+  "generated_files": 600,
+  "linear_pair_seconds": 44.82010397400154,
+  "optimizer_updates": 2280,
+  "protocol_id": "wav-audiomnist-pilot-20261017",
+  "real_source_media_opened": false,
+  "reserved_speakers_opened": false,
+  "row_presentations": [
+    72000,
+    72000
+  ],
+  "run_script_sha256": "27f70cbf5f8137c2f30f60645f7873eebb06e83296e2a7859a1b8408f37bfe71",
+  "schema_version": "wav-audiomnist-generated-linear-preflight-v1",
+  "seed_updates": [
+    1140,
+    1140
+  ],
+  "source_preparation_receipt_sha256": "9e51b5c6b9beaca93d3f76d3c4730b9103b2c09773bfef0ac2ee4c4d9d2b357f",
+  "status": "passed_generated_only",
+  "total_seconds_including_generation": 45.055981733996305
+}
