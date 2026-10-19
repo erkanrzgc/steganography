@@ -111,6 +111,9 @@ first failed its generated CUDA preflight on a missing linear `seed` receipt
 key (keep that record `unavailable`). The receipt amendment
 (`docs/WAV_PILOT_RECEIPT_AMENDMENT_20261019.md`) passed one generated preflight
 within all limits. Real fitting stays unauthorized until explicitly approved.
+A generated positive control then showed the v1 CNN does not learn; draft v3
+(`core/wav_pilot_v3.py`) also failed its preregistered gate at reduced exposure.
+Do not fit real AudioMNIST until a recipe passes a full-exposure control.
 
 All built-in extension data states are recorded in
 `docs/ALL_FORMAT_DATA_STATUS.md`. The local PDF/TXT/MD/ZIP preparation protocol
