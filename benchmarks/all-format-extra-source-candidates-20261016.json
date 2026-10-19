@@ -1,0 +1,77 @@
+{
+  "schema_version": "all-format-extra-source-review-v1",
+  "status": "metadata_only_generated_candidates",
+  "sources": [
+    {
+      "repository": "Tliens/audio-inspector",
+      "commit": "7ddfaac6a795d23fef09529076bc21b07fb493d5",
+      "metadata_only": true,
+      "tree_truncated": false,
+      "root_readme_url": "https://github.com/Tliens/audio-inspector/blob/7ddfaac6a795d23fef09529076bc21b07fb493d5/README.md",
+      "candidate_entries": [],
+      "matching_tree_entries": 0,
+      "accepted_files": 0,
+      "source_kind": "upstream-generated regression fixtures; not natural corpus",
+      "declared_audio_or_mail_license": "CC0 per README; per-file exception/header acceptance remains unavailable",
+      "downloaded_media_bytes": 0
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://api.github.com/repos/mirage/hamlet/commits/HEAD",
+      "file": "hamlet-commit.json",
+      "bytes": 6175,
+      "sha256": "f4bf9a4d847ce8e14f4a5ceb241b6e2363723c1b4666f44b74a60b9f43739378",
+      "status": "completed"
+    },
+    {
+      "url": "https://api.github.com/repos/mirage/hamlet/git/trees/e5bf9e661020667f7c0174061155baae0dc7c6e0?recursive=1",
+      "file": "hamlet-tree.json",
+      "status": "unavailable",
+      "reason_category": "AssertionError"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mirage/hamlet/e5bf9e661020667f7c0174061155baae0dc7c6e0/README.md",
+      "file": "hamlet-readme.txt",
+      "bytes": 2676,
+      "sha256": "eee7dac9db8e0508cd607a3b18579e95b54b7f67483e33d13b21777521567519",
+      "status": "completed"
+    },
+    {
+      "url": "https://api.github.com/repos/Tliens/audio-inspector/commits/HEAD",
+      "file": "audio-inspector-commit.json",
+      "bytes": 5657,
+      "sha256": "d3906e9a989c732738b851511d3bedf0726d1dcca931446dff41a24fe4e84486",
+      "status": "completed"
+    },
+    {
+      "url": "https://api.github.com/repos/Tliens/audio-inspector/git/trees/7ddfaac6a795d23fef09529076bc21b07fb493d5?recursive=1",
+      "file": "audio-inspector-tree.json",
+      "bytes": 2001,
+      "sha256": "50bde3817ee347210867d673bd1336736f6b117882cd8968db1ca841b4d0f57a",
+      "status": "completed"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Tliens/audio-inspector/7ddfaac6a795d23fef09529076bc21b07fb493d5/README.md",
+      "file": "audio-inspector-readme.txt",
+      "bytes": 1797,
+      "sha256": "4fc90e16d5ff81cbcc56d1dfa64c8914f8553fbf05bcf88f9fb57d95e2b8015c",
+      "status": "completed"
+    }
+  ],
+  "retained_metadata_bytes": 18306,
+  "downloaded_media_bytes": 0,
+  "natural_corpus_completed": false,
+  "unavailable_sources": [
+    {
+      "repository": "mirage/hamlet",
+      "commit": "e5bf9e661020667f7c0174061155baae0dc7c6e0",
+      "root_readme_url": "https://github.com/mirage/hamlet/blob/e5bf9e661020667f7c0174061155baae0dc7c6e0/README.md",
+      "source_kind": "randomly generated email corpus per README",
+      "declared_license": "CC0 per README",
+      "file_inventory": "unavailable; bounded tree request failed, no complete count claimed",
+      "accepted_files": 0,
+      "downloaded_media_bytes": 0
+    }
+  ]
+}

@@ -1,0 +1,832 @@
+{
+  "schema_version": "all-format-local-results-v1",
+  "status": "completed",
+  "reason_category": null,
+  "source_sha256": {
+    "core/document_corpus.py": "091aef31ffa1531279cad8f72533a3fa4e3d68b3943697e6913a1e8725bd46b3",
+    "steganography/research_documents.py": "fe81e82f305821cb5c8813e91dcaac6b450e1029a8b2dfa0b0281ea34c8eccf7",
+    "tests/test_document_corpus.py": "1c7c665b715e59fe8f10ecf66780aedf67eaa6d3cb9db45ed186661823d03720",
+    "docs/ALL_FORMAT_DATA_PROTOCOL.md": "849bf5b7c38dfb919f0b8874201f4bf4a62bfc3586bc518b02eede097a8e4b00"
+  },
+  "protocol_sha256": "fe371ca3c579fa601e1761b1b1ba3b79aef55a12f5ada4cb0c89d54ac3dbeb97",
+  "source_review": {
+    "schema_version": "local-document-source-review-v1",
+    "samples": [
+      {
+        "source_id": "python3-networkx:3.2.1-4:9e761c116267",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "html/tutorial-34.pdf",
+        "bytes": 8318,
+        "sha256": "435832a9af08edf10d8559504ee5af9d599bdae53c0c94639a4ac6b8d4075323",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:7868cdfaf61c",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "html/tutorial-35.pdf",
+        "bytes": 3625,
+        "sha256": "4d6b88187476170885ba6158e556ba7a6534918b2eea1091c46ec84bc75296ea",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:9a8db1b734b5",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "html/tutorial-36.pdf",
+        "bytes": 2220,
+        "sha256": "04b3e84863e3c7009d105184b790b781202451cc0f8c721f2b367e611c73954a",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:caf934857f5c",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "html/reference/introduction-7.pdf",
+        "bytes": 2498,
+        "sha256": "ba09f818f4384f596e2bdca4ca681027bab8e1f37ff9398c3ff7b73a77cee382",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:c350faad3a05",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/basic/README.txt",
+        "bytes": 12,
+        "sha256": "499a0588fedc4005ec39cd33096453ecdb06ce76356a2024fb4cc3f1d5ec68f6",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:e975f9497860",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/drawing/README.txt",
+        "bytes": 16,
+        "sha256": "0e858c703082fd34e3444a81a9cfd831ab484cfd7fda51e9ed1bf9231accd9b0",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:153816c3cef9",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/graphviz_layout/README.txt",
+        "bytes": 183,
+        "sha256": "2078267bdee4bc11c0f17e436400a75064d6a884f20bd72aa3082c8836ad8fe6",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:8ae4e4c1dffc",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/3d_drawing/README.txt",
+        "bytes": 22,
+        "sha256": "b39fadd42f5547bc6e19ee88e8ba001f22d9ca9831b7a9da731aa194557f72ad",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:9bb30223b7a8",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/graphviz_drawing/README.txt",
+        "bytes": 188,
+        "sha256": "2d02d73e68f20d417fec2ad3fdc87f790d98e773b935d4492d97d723cc69494b",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:06045218e100",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/geospatial/README.txt",
+        "bytes": 317,
+        "sha256": "f0d214fe0bb6079cadb015df987cd654c18cb1dfbaedc974fe93d299bda399f0",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:3ec2c424b5ba",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/subclass/README.txt",
+        "bytes": 18,
+        "sha256": "f432d77ad60eeb4d2c2de398fdf15cf0cb27962f3ea90ad56c60767f980fdb48",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:464a5e10c86c",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "examples/graph/README.txt",
+        "bytes": 12,
+        "sha256": "7ad46f701406df415be9d2224196981db9e5d5ae93cffa5e92ce0ca972b04618",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "alien:8.95.7:cdc376f97bd3",
+        "source_group": "alien",
+        "installed_version": "8.95.7",
+        "package_relative_document": "gendiff.txt",
+        "bytes": 739,
+        "sha256": "e5ba4c45461e3a92eebd22513bb206f5cd903c226d855e3047734e7c1aa3756d",
+        "declared_license": "GPL-2.0-or-later",
+        "license_sha256": "262a21caa465f0b8eb1e02a0cbcbb78d9d732f4eb2e4b44e6d12c66583eb8044",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "accountsservice:23.13.9-6.1:b33563055168",
+        "source_group": "accountsservice",
+        "installed_version": "23.13.9-6.1",
+        "package_relative_document": "README.md",
+        "bytes": 1068,
+        "sha256": "ed91d6f1445da4a17e2800493c3be2a18a52e47134439294fdbe29de49b4073f",
+        "declared_license": "GPL-3.0-or-later",
+        "license_sha256": "0decc3634b22a82f39039a5f4459c85070899599fbfcc8320bef36b3d8bce2d2",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "axel:2.17.13-1+b1:b33563055168",
+        "source_group": "axel",
+        "installed_version": "2.17.13-1+b1",
+        "package_relative_document": "README.md",
+        "bytes": 3816,
+        "sha256": "3a2db605f278811926ecde99d9c0c189bdcc6f76d1f8f103da86ea7b6093cb34",
+        "declared_license": "LicenseRef-GPL-2plus-OpenSSL",
+        "license_sha256": "12b5034221f7157e94230ddb0bc9d78a3e7bcf930a4bab284c604a5fd9fd5a00",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:39db17899231",
+        "source_group": "python3-networkx",
+        "installed_version": "3.2.1-4",
+        "package_relative_document": "html/_downloads/07fcc19ba03226cd3d83d4e40ec44385/auto_examples_python.zip",
+        "bytes": 129349,
+        "sha256": "907bf8f1482ee8a90b1dcd20f8c4ccc369b1acaf8fae79e652e1b50f17818027",
+        "declared_license": "BSD-3-Clause",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "license_scope": "installed copyright Files: *; applicable exceptions reviewed",
+        "package_archive_authenticity": "unavailable",
+        "role": "development_unassigned"
+      }
+    ],
+    "downloaded_bytes": 0
+  },
+  "manifest": {
+    "schema_version": "local-document-pilot-v1",
+    "status": "prepared_unassigned",
+    "original_files": 16,
+    "source_groups": 4,
+    "samples": [
+      {
+        "source_id": "python3-networkx:3.2.1-4:9e761c116267",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "435832a9af08edf10d8559504ee5af9d599bdae53c0c94639a4ac6b8d4075323",
+        "extension": ".pdf",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "pdf",
+          "full_parser_validation": "unavailable"
+        },
+        "method": "opaque-append32-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "77748068157dba7b57318470ca3f6cd2110f6308512196f2aeedbdcb969d51e2",
+        "variants": {
+          "original": {
+            "artifact": "document-000-original.pdf",
+            "sha256": "435832a9af08edf10d8559504ee5af9d599bdae53c0c94639a4ac6b8d4075323",
+            "bytes": 8318
+          },
+          "controlled_positive": {
+            "artifact": "document-000-controlled_positive.pdf",
+            "sha256": "e25b7c63557343f4b874f5a87d02fb4709a02388477ab359d4a41945d4b9bfb2",
+            "bytes": 8350
+          },
+          "whitespace_control": {
+            "artifact": "document-000-whitespace_control.pdf",
+            "sha256": "279e90b6ca4a894cae73e234e650c572c4f460052a931c365c228ee650a192c6",
+            "bytes": 8350
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:7868cdfaf61c",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "4d6b88187476170885ba6158e556ba7a6534918b2eea1091c46ec84bc75296ea",
+        "extension": ".pdf",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "pdf",
+          "full_parser_validation": "unavailable"
+        },
+        "method": "opaque-append32-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "ecbb4f83e8dffce87b1e648f21528e6eeb3893df67c05755accdc481550a4c27",
+        "variants": {
+          "original": {
+            "artifact": "document-001-original.pdf",
+            "sha256": "4d6b88187476170885ba6158e556ba7a6534918b2eea1091c46ec84bc75296ea",
+            "bytes": 3625
+          },
+          "controlled_positive": {
+            "artifact": "document-001-controlled_positive.pdf",
+            "sha256": "81aaf387a646bbda9bc319c5120b2b336de9579c4335c75e32fcbe1376f60eb3",
+            "bytes": 3657
+          },
+          "whitespace_control": {
+            "artifact": "document-001-whitespace_control.pdf",
+            "sha256": "feff94847e68c9eab061dcac9349086cbb24f99a72bec8ab1c81ea861b0f7c39",
+            "bytes": 3657
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:9a8db1b734b5",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "04b3e84863e3c7009d105184b790b781202451cc0f8c721f2b367e611c73954a",
+        "extension": ".pdf",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "pdf",
+          "full_parser_validation": "unavailable"
+        },
+        "method": "opaque-append32-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "2405ff898516c23e88366b8f202bc0bc64f884b3656dade68529281d3a98a175",
+        "variants": {
+          "original": {
+            "artifact": "document-002-original.pdf",
+            "sha256": "04b3e84863e3c7009d105184b790b781202451cc0f8c721f2b367e611c73954a",
+            "bytes": 2220
+          },
+          "controlled_positive": {
+            "artifact": "document-002-controlled_positive.pdf",
+            "sha256": "fb595224a407c390f85d494bd3b61a97a0ff5c6449304980711dce045a5ede9c",
+            "bytes": 2252
+          },
+          "whitespace_control": {
+            "artifact": "document-002-whitespace_control.pdf",
+            "sha256": "3ca768709b3971f4f72e85d6ce1d6e46eb354ebc853035d3ab008dabe393e77f",
+            "bytes": 2252
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:caf934857f5c",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "ba09f818f4384f596e2bdca4ca681027bab8e1f37ff9398c3ff7b73a77cee382",
+        "extension": ".pdf",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "pdf",
+          "full_parser_validation": "unavailable"
+        },
+        "method": "opaque-append32-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "5363ed1c1e1cba63b98af278420bb1631b1961e70d074ed690612d0e77d11c96",
+        "variants": {
+          "original": {
+            "artifact": "document-003-original.pdf",
+            "sha256": "ba09f818f4384f596e2bdca4ca681027bab8e1f37ff9398c3ff7b73a77cee382",
+            "bytes": 2498
+          },
+          "controlled_positive": {
+            "artifact": "document-003-controlled_positive.pdf",
+            "sha256": "1c1e23490651a93b791b5fea1b666584485e9165e5ff0fde490b3065f23cb28d",
+            "bytes": 2530
+          },
+          "whitespace_control": {
+            "artifact": "document-003-whitespace_control.pdf",
+            "sha256": "012ceca51cfa3d8ff103d9a0c4ba4518a99214f5f331ec450c42557d08153ac6",
+            "bytes": 2530
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:c350faad3a05",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "499a0588fedc4005ec39cd33096453ecdb06ce76356a2024fb4cc3f1d5ec68f6",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 12
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "8a75733d9e0c6192634074379fde9e8fa51de80ae87a7a0742c7f94747e7571c",
+        "variants": {
+          "original": {
+            "artifact": "document-004-original.txt",
+            "sha256": "499a0588fedc4005ec39cd33096453ecdb06ce76356a2024fb4cc3f1d5ec68f6",
+            "bytes": 12
+          },
+          "controlled_positive": {
+            "artifact": "document-004-controlled_positive.txt",
+            "sha256": "07cf94e14fabbf3799689e6688126f2ca01e72d0e886f8438d4401c0d90af472",
+            "bytes": 780
+          },
+          "whitespace_control": {
+            "artifact": "document-004-whitespace_control.txt",
+            "sha256": "f02922effc5b54e918f8e41a5b9447ca6c6657b04b4b4e75eea9096105e40daa",
+            "bytes": 780
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:e975f9497860",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "0e858c703082fd34e3444a81a9cfd831ab484cfd7fda51e9ed1bf9231accd9b0",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 16
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "9b63fb69fc6ccf6870a7fc8fbd1465a5890c1afb0c388893185da89b84c619fc",
+        "variants": {
+          "original": {
+            "artifact": "document-005-original.txt",
+            "sha256": "0e858c703082fd34e3444a81a9cfd831ab484cfd7fda51e9ed1bf9231accd9b0",
+            "bytes": 16
+          },
+          "controlled_positive": {
+            "artifact": "document-005-controlled_positive.txt",
+            "sha256": "27c6dc7a151d80b3524cf7ab42de1c248339428fcd7421ebb5d5d6c652959c66",
+            "bytes": 784
+          },
+          "whitespace_control": {
+            "artifact": "document-005-whitespace_control.txt",
+            "sha256": "4d0102e885b3a18345ffc959dacb14571ed6c770516dd400222706865e3242d7",
+            "bytes": 784
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:153816c3cef9",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "2078267bdee4bc11c0f17e436400a75064d6a884f20bd72aa3082c8836ad8fe6",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 183
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "04d3415c51af89b2db6a74eebbdf5e2e8bc645904c650b75fdd9ed586786f7db",
+        "variants": {
+          "original": {
+            "artifact": "document-006-original.txt",
+            "sha256": "2078267bdee4bc11c0f17e436400a75064d6a884f20bd72aa3082c8836ad8fe6",
+            "bytes": 183
+          },
+          "controlled_positive": {
+            "artifact": "document-006-controlled_positive.txt",
+            "sha256": "2d33b92d1bfb8a013533f0a8e1857c827b34e90f8b88ddcc760c9ae0fe3dd022",
+            "bytes": 951
+          },
+          "whitespace_control": {
+            "artifact": "document-006-whitespace_control.txt",
+            "sha256": "949db46364931ad5cb431a093511e246b50a8a72477efc66857ebfe5f5ba0fc8",
+            "bytes": 951
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:8ae4e4c1dffc",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "b39fadd42f5547bc6e19ee88e8ba001f22d9ca9831b7a9da731aa194557f72ad",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 22
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "f64a11c17917605db349dc045a3d3b3a89aed4b6bfce0b87b3c919a21a91dbbe",
+        "variants": {
+          "original": {
+            "artifact": "document-007-original.txt",
+            "sha256": "b39fadd42f5547bc6e19ee88e8ba001f22d9ca9831b7a9da731aa194557f72ad",
+            "bytes": 22
+          },
+          "controlled_positive": {
+            "artifact": "document-007-controlled_positive.txt",
+            "sha256": "e85f917294215e262d38b988d83977a88d30d55999abb80be146006ce688a559",
+            "bytes": 790
+          },
+          "whitespace_control": {
+            "artifact": "document-007-whitespace_control.txt",
+            "sha256": "62938bc604f91eb88c9c7ae779ef8f99341946ea9e7268d4611f89eb1967d4f8",
+            "bytes": 790
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:9bb30223b7a8",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "2d02d73e68f20d417fec2ad3fdc87f790d98e773b935d4492d97d723cc69494b",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 188
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "df15e1d2ec7436cd16faf0d121a7c9dcc32d749ae8b964d423e4ce79fafce66b",
+        "variants": {
+          "original": {
+            "artifact": "document-008-original.txt",
+            "sha256": "2d02d73e68f20d417fec2ad3fdc87f790d98e773b935d4492d97d723cc69494b",
+            "bytes": 188
+          },
+          "controlled_positive": {
+            "artifact": "document-008-controlled_positive.txt",
+            "sha256": "7db393c8023a963612f275d05573718ad3a3af82702fbc33b46010237b5d8b79",
+            "bytes": 956
+          },
+          "whitespace_control": {
+            "artifact": "document-008-whitespace_control.txt",
+            "sha256": "d9bab43505c8fefc8bad20262e5b2086a014049b68437858a9f2e52ad9dd4991",
+            "bytes": 956
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:06045218e100",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "f0d214fe0bb6079cadb015df987cd654c18cb1dfbaedc974fe93d299bda399f0",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 317
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "4d618bc867e15b0cc64527db145a2c74dfd77b082692a85208285edfecfbffa0",
+        "variants": {
+          "original": {
+            "artifact": "document-009-original.txt",
+            "sha256": "f0d214fe0bb6079cadb015df987cd654c18cb1dfbaedc974fe93d299bda399f0",
+            "bytes": 317
+          },
+          "controlled_positive": {
+            "artifact": "document-009-controlled_positive.txt",
+            "sha256": "cd4da830a244a85ed88619976bc27ec67811b2719f21201ad266e8190e87f024",
+            "bytes": 1085
+          },
+          "whitespace_control": {
+            "artifact": "document-009-whitespace_control.txt",
+            "sha256": "c5c47d3f5bee85665b1b636414317258a2df8d3c35fc2fbb1943466a8d63e9d7",
+            "bytes": 1085
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:3ec2c424b5ba",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "f432d77ad60eeb4d2c2de398fdf15cf0cb27962f3ea90ad56c60767f980fdb48",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 18
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "48b3a261402010ff56c96c877ea4eab87d5db2e0b4322299c1b18028238db732",
+        "variants": {
+          "original": {
+            "artifact": "document-010-original.txt",
+            "sha256": "f432d77ad60eeb4d2c2de398fdf15cf0cb27962f3ea90ad56c60767f980fdb48",
+            "bytes": 18
+          },
+          "controlled_positive": {
+            "artifact": "document-010-controlled_positive.txt",
+            "sha256": "ebce9aee8dc76031c9b809d16dbba9e4d06de072269d6ec955864d590f048d2d",
+            "bytes": 786
+          },
+          "whitespace_control": {
+            "artifact": "document-010-whitespace_control.txt",
+            "sha256": "2314021c356c72b0d0d902d1211a3c7d0b3b09d750717839ebc71da5113d63f8",
+            "bytes": 786
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:464a5e10c86c",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "7ad46f701406df415be9d2224196981db9e5d5ae93cffa5e92ce0ca972b04618",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 12
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "0ca8dfc9371c9510c6ad74080a73161a01eefbab25f523763d8d91140bc0755c",
+        "variants": {
+          "original": {
+            "artifact": "document-011-original.txt",
+            "sha256": "7ad46f701406df415be9d2224196981db9e5d5ae93cffa5e92ce0ca972b04618",
+            "bytes": 12
+          },
+          "controlled_positive": {
+            "artifact": "document-011-controlled_positive.txt",
+            "sha256": "0440282907c72bab8eddc66614a6c8a56766d748f0c4c6f574a174d8e484f5d7",
+            "bytes": 780
+          },
+          "whitespace_control": {
+            "artifact": "document-011-whitespace_control.txt",
+            "sha256": "19efeb85459ffe95f1c567e9bc17b79e99baec2bcb1f6739e13b0da403202b23",
+            "bytes": 780
+          }
+        }
+      },
+      {
+        "source_id": "alien:8.95.7:cdc376f97bd3",
+        "source_group": "alien",
+        "license": "GPL-2.0-or-later",
+        "license_artifact": "license-262a21caa465f0b8eb1e02a0cbcbb78d9d732f4eb2e4b44e6d12c66583eb8044.txt",
+        "license_sha256": "262a21caa465f0b8eb1e02a0cbcbb78d9d732f4eb2e4b44e6d12c66583eb8044",
+        "original_sha256": "e5ba4c45461e3a92eebd22513bb206f5cd903c226d855e3047734e7c1aa3756d",
+        "extension": ".txt",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 739
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "5c4fce95e98d6667d179e1bec5dcb0bed701f75eb7fd7a5c127a18c9b815fdbe",
+        "variants": {
+          "original": {
+            "artifact": "document-012-original.txt",
+            "sha256": "e5ba4c45461e3a92eebd22513bb206f5cd903c226d855e3047734e7c1aa3756d",
+            "bytes": 739
+          },
+          "controlled_positive": {
+            "artifact": "document-012-controlled_positive.txt",
+            "sha256": "13d078dd48bcf5df62f5ef91eb18001819aa8e180859244f832f25436c24c9e9",
+            "bytes": 1507
+          },
+          "whitespace_control": {
+            "artifact": "document-012-whitespace_control.txt",
+            "sha256": "5c85663f2dfa3f36b44cc5255fdc46bb7998656c447b511e0f38e6fcc3385863",
+            "bytes": 1507
+          }
+        }
+      },
+      {
+        "source_id": "accountsservice:23.13.9-6.1:b33563055168",
+        "source_group": "accountsservice",
+        "license": "GPL-3.0-or-later",
+        "license_artifact": "license-0decc3634b22a82f39039a5f4459c85070899599fbfcc8320bef36b3d8bce2d2.txt",
+        "license_sha256": "0decc3634b22a82f39039a5f4459c85070899599fbfcc8320bef36b3d8bce2d2",
+        "original_sha256": "ed91d6f1445da4a17e2800493c3be2a18a52e47134439294fdbe29de49b4073f",
+        "extension": ".md",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 1068
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "c51d84e79c772c96751dca1ffb26c808b247c84071192bcd8d13d663a0b727d5",
+        "variants": {
+          "original": {
+            "artifact": "document-013-original.md",
+            "sha256": "ed91d6f1445da4a17e2800493c3be2a18a52e47134439294fdbe29de49b4073f",
+            "bytes": 1068
+          },
+          "controlled_positive": {
+            "artifact": "document-013-controlled_positive.md",
+            "sha256": "f1949b0b5502f44e40fb55c31746dd80ebffbb452ac0ffd71b8dbdcaf1a559e0",
+            "bytes": 1836
+          },
+          "whitespace_control": {
+            "artifact": "document-013-whitespace_control.md",
+            "sha256": "3b15e4ee7614e2bac76a5f101086648a43b311de466cf6b10873896772dc11e7",
+            "bytes": 1836
+          }
+        }
+      },
+      {
+        "source_id": "axel:2.17.13-1+b1:b33563055168",
+        "source_group": "axel",
+        "license": "LicenseRef-GPL-2plus-OpenSSL",
+        "license_artifact": "license-12b5034221f7157e94230ddb0bc9d78a3e7bcf930a4bab284c604a5fd9fd5a00.txt",
+        "license_sha256": "12b5034221f7157e94230ddb0bc9d78a3e7bcf930a4bab284c604a5fd9fd5a00",
+        "original_sha256": "3a2db605f278811926ecde99d9c0c189bdcc6f76d1f8f103da86ea7b6093cb34",
+        "extension": ".md",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "utf8_text",
+          "characters": 3816
+        },
+        "method": "unicode-suffix-bitpair-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "0bebfe4544d3adc161c4c600773eea071f40e4051a94d768c3f62f4acf93a2c1",
+        "variants": {
+          "original": {
+            "artifact": "document-014-original.md",
+            "sha256": "3a2db605f278811926ecde99d9c0c189bdcc6f76d1f8f103da86ea7b6093cb34",
+            "bytes": 3816
+          },
+          "controlled_positive": {
+            "artifact": "document-014-controlled_positive.md",
+            "sha256": "c73d26bf2bac1f9683312fc565ec20254ddc6ab52a8dc68654508beccf588176",
+            "bytes": 4584
+          },
+          "whitespace_control": {
+            "artifact": "document-014-whitespace_control.md",
+            "sha256": "42281ab86eb7ef1789f096f33469724b9c18ca08fc9d1307ab3b7dc89c11287a",
+            "bytes": 4584
+          }
+        }
+      },
+      {
+        "source_id": "python3-networkx:3.2.1-4:39db17899231",
+        "source_group": "python3-networkx",
+        "license": "BSD-3-Clause",
+        "license_artifact": "license-32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a.txt",
+        "license_sha256": "32ffab3be5ce8e730dd611348f1b8e3b551cb170e2a8c857213d313d03e3047a",
+        "original_sha256": "907bf8f1482ee8a90b1dcd20f8c4ccc369b1acaf8fae79e652e1b50f17818027",
+        "extension": ".zip",
+        "split": "development_unassigned",
+        "cover_certification": "unavailable; natural source is a benign candidate",
+        "inventory": {
+          "kind": "zip",
+          "members": 71,
+          "member_extraction": "not_performed"
+        },
+        "method": "opaque-append32-v1",
+        "payload_bytes": 32,
+        "payload_sha256": "b9220623196177d16c9f7f5c9fc62fe27e1dbd13f2b6adeb3092f5cb888c0307",
+        "variants": {
+          "original": {
+            "artifact": "document-015-original.zip",
+            "sha256": "907bf8f1482ee8a90b1dcd20f8c4ccc369b1acaf8fae79e652e1b50f17818027",
+            "bytes": 129349
+          },
+          "controlled_positive": {
+            "artifact": "document-015-controlled_positive.zip",
+            "sha256": "a1370f380b57a1d054126d524ae243535270e07ab98a94ffd91cf288c5ee9eae",
+            "bytes": 129381
+          },
+          "whitespace_control": {
+            "artifact": "document-015-whitespace_control.zip",
+            "sha256": "45994c1d13ebbe4328bf4a489a64ac97e1699b85fb055c64b2c8af6b3c559eac",
+            "bytes": 129381
+          }
+        }
+      }
+    ],
+    "training_ready": false,
+    "optimizer_updates": 0,
+    "statistical_detection": "unavailable",
+    "downloaded_bytes": 0,
+    "test_media_opened": false,
+    "independent_recording_count": "unavailable",
+    "autonomous_recovery": "unavailable; oracle needs original extent",
+    "artifact_bytes_excluding_manifest": 495274
+  },
+  "manifest_sha256": "d00fe88e286ac24bbfd0bd5c68708e8ce08a25da49fa9da09ad4f2252c7a0af7",
+  "execution": {
+    "schema_version": "local-document-execution-v1",
+    "status": "completed",
+    "reason_category": null,
+    "seconds_including_imports": 0.10449078900001041,
+    "self_peak_rss_kib": 40404,
+    "optimizer_updates": 0,
+    "downloaded_bytes": 0,
+    "production_qualification": "unavailable",
+    "deployed": false
+  },
+  "service_properties": {
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "MemoryMax": "536870912",
+    "MemorySwapMax": "0",
+    "ActiveState": "active",
+    "SubState": "exited"
+  },
+  "verification_receipt": "all-format-local-retry-verification-20261016.json",
+  "current_tracked_native_footprint_bytes": 684623343,
+  "native_ceiling_bytes": 4294967296,
+  "jpeg_reserved_bytes": 6442450944,
+  "downloaded_bytes": 0,
+  "optimizer_updates": 0,
+  "training_ready": false,
+  "production_qualification": "unavailable",
+  "deployed": false
+}

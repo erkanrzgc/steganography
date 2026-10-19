@@ -1,0 +1,13 @@
+{
+  "schema_version": "all-format-local-focused-verification-v1",
+  "status": "passed",
+  "test_count": 48,
+  "new_code_coverage": {
+    "core/document_corpus.py": 100.0,
+    "steganography/research_documents.py": 100.0
+  },
+  "coverage_sha256": "dc225b694accd43ed7f6b3b65d0f3e454c91b264da3c9ad465afd715ec6c71ce",
+  "scope": "directory-source measurement; 95% gate independently enforced for each new module",
+  "initial_attempts": "teardown and coverage-source harness failures retained; no coverage success claimed for those attempts",
+  "production_qualification": "unavailable"
+}

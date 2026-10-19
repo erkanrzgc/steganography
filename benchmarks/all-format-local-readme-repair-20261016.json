@@ -1,0 +1,24 @@
+{
+  "schema_version": "all-format-local-readme-repair-v1",
+  "status": "explicit_resume_after_document_fix",
+  "parent_protocol_sha256": "fe371ca3c579fa601e1761b1b1ba3b79aef55a12f5ada4cb0c89d54ac3dbeb97",
+  "failed_results_sha256": "e0575aabe5419439fd900587f7bf17ccd9dfdb74846767927999bec606b5a84c",
+  "first_full_log_sha256": "466e90ccd3a92870b38470c0d90de28570ef76994b1bb7944badc99b70be52e1",
+  "first_full_test_counts": {
+    "passed": 3320,
+    "failed": 1,
+    "skipped": 2
+  },
+  "failure": "README exceeded unchanged 400..900-word documentation contract",
+  "repair": "Shorten README while preserving all eight measured result rows and every format status link; test unchanged",
+  "readme_words": 864,
+  "readme_sha256": "1ed4c98aaeb9cc980fef4c3672b66b94fdadca36a57ffac39930a2ade428f332",
+  "focused_repair_tests_passed": 63,
+  "frozen_preparation_sources": "unchanged",
+  "actual_preparation_attempts_before_resume": 0,
+  "downloaded_bytes": 0,
+  "optimizer_updates": 0,
+  "automatic_retry": false,
+  "full_gate_retry": "fresh disk-backed directory with unchanged tests and coverage gate",
+  "controller_sha256": "70dedbdff69152e951d487069a8ad6daa53dcea1d129914d61def69595de48d8"
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "all-format-local-verification-v1",
+  "status": "passed",
+  "source_sha256": {
+    "core/document_corpus.py": "091aef31ffa1531279cad8f72533a3fa4e3d68b3943697e6913a1e8725bd46b3",
+    "steganography/research_documents.py": "fe81e82f305821cb5c8813e91dcaac6b450e1029a8b2dfa0b0281ea34c8eccf7",
+    "tests/test_document_corpus.py": "1c7c665b715e59fe8f10ecf66780aedf67eaa6d3cb9db45ed186661823d03720",
+    "docs/ALL_FORMAT_DATA_PROTOCOL.md": "849bf5b7c38dfb919f0b8874201f4bf4a62bfc3586bc518b02eede097a8e4b00"
+  },
+  "test_counts": {
+    "passed": 3321,
+    "skipped": 2
+  },
+  "total_coverage_percent": 96.80968096809681,
+  "new_code_coverage": {
+    "core/document_corpus.py": 100.0,
+    "steganography/research_documents.py": 100.0
+  },
+  "resource": {
+    "status": "passed",
+    "exit_code": 0,
+    "independent_pytest_exit": {
+      "exit_code": 0,
+      "seconds": 1008.930125126
+    },
+    "seconds": 1009.448244854,
+    "peak_task_output_bytes": 155845096,
+    "nonjpeg_ceiling_bytes": 4294967296,
+    "jpeg_reserved_bytes": 6442450944,
+    "child_maxrss_kib": 2656628,
+    "observer_policy": "race-tolerant traversal and independent atomic pytest exit"
+  },
+  "ruff": "passed",
+  "mypy": "passed",
+  "diff": "passed",
+  "full_log_sha256": "f21bd3c92b08e0d7f86ad69e0c5597649b718e5082944391365ea64eec396691",
+  "coverage_sha256": "6ce82eb9521ddf06b05deaa6e8d0376a0d73bf4c7d7a94d674fc00f3e84c1919"
+}
