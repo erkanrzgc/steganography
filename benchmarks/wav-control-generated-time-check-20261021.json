@@ -1,0 +1,29 @@
+{
+  "automatic_retry": false,
+  "difference_seconds": 0.026089321002473298,
+  "early_stop_due_to_clock_bug_established": false,
+  "human_wall_timestamp_difference_seconds": 3418,
+  "live_clock_probe": {
+    "age_using_monotonic_basis_seconds": 0.03136245700443396,
+    "age_using_runner_boottime_basis_seconds": 0.0313633860059781,
+    "boottime_minus_monotonic_seconds": 9.29001544136554e-07,
+    "clock_boottime_seconds": 56442.051363386,
+    "clock_monotonic_seconds": 56442.051362457,
+    "optimizer_updates": 0,
+    "proc_start_ticks_seconds": 56442.02,
+    "read_only": true,
+    "schema_version": "wav-control-wsl-clock-diagnosis-v1",
+    "unix_seconds": 1792613802.6046357
+  },
+  "optimizer_updates_in_check": 0,
+  "protocol_monotonic_ceiling_seconds": 3600,
+  "real_media_opened": false,
+  "schema_version": "wav-control-independent-time-check-v1",
+  "status": "matched_monotonic_budget",
+  "supervisor_elapsed_monotonic_seconds": 3593.8358776789973,
+  "systemd_elapsed_monotonic_seconds": 3593.861967,
+  "systemd_end_wall_timestamp": "Wed 2026-10-21 23:15:41 +03",
+  "systemd_start_wall_timestamp": "Wed 2026-10-21 22:18:43 +03",
+  "wall_clock_discrepancy_cause": "unavailable; not inferred from timestamps",
+  "wall_vs_monotonic_discrepancy_seconds": 175.86196699999982
+}

@@ -1,0 +1,16 @@
+{
+  "generated_bytes": 36335714,
+  "generated_files": 600,
+  "generated_manifest_sha256": "49af2ee187f0a272f3cf88ce7b69745c6eaaedd3e23956f32b337c227bf39699",
+  "generated_only": true,
+  "generator_source_sha256": "545841046d20907ad9ce738c7fa11281f46982c8abc109dc02f997473f54968d",
+  "optimizer_updates": 0,
+  "parent_protocol_sha256": "1d8b9f98229732f1fc77904e69c006e0b8d25076063adab985ac7299c85c3844",
+  "payload_oracles_passed": 4800,
+  "preparation_script_sha256": "44fed130a43ca453bb098fe237956f1d6641567c316f1af255fb7bff8f50973e",
+  "real_media_opened": false,
+  "reserved_media_opened": false,
+  "schema_version": "wav-generated-corpus-preparation-v1",
+  "seconds": 16.16057831099988,
+  "torch_imported": false
+}

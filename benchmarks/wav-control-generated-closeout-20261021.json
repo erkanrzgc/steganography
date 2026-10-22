@@ -1,0 +1,18 @@
+{
+  "attempt_directories": 1,
+  "attempt_files": 9,
+  "attempt_largest_file_bytes": 1696,
+  "attempt_retained_bytes": 4326,
+  "check_script_sha256": "4486d75fac5b3865989c980b78d2ef193cdaf7d720e5f62f368a1ce0ac40cc0f",
+  "generated_temporary_corpus_removed": true,
+  "local_verification_allocated_bytes": 8720764928,
+  "model_or_dataset_downloaded": false,
+  "optimizer_updates_in_check": 0,
+  "real_media_opened": false,
+  "reserved_media_opened": false,
+  "schema_version": "wav-control-generated-closeout-v1",
+  "source_bundle_bytes": 668941,
+  "source_bundle_files_verified": 31,
+  "status": "passed_readonly_source_and_storage_check",
+  "unit_running": false
+}

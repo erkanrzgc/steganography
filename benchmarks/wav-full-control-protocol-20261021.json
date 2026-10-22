@@ -1,0 +1,55 @@
+{
+  "attempt_started": false,
+  "historical_controls": {
+    "benchmarks/wav-audiomnist-cuda-preflight-v2-20261019.json": "7f22058722bf9852150c4c8689b0f0d1e38096fa969035c9d8d8d06cc9c00e12",
+    "benchmarks/wav-audiomnist-positive-control-20261020.json": "f15b4eca9ba4adecd0f5a2475adc20b368d72b7bed4da96250de137a6c7c53d7"
+  },
+  "next_step": "Freeze a full-exposure generated-only producer/supervisor and complete both seeds; the old 120-file diagnostic cannot satisfy this contract.",
+  "protocol_id": "wav-generated-full-control-20261021-v1",
+  "real_fit_authorized": false,
+  "schema_version": "wav-full-control-protocol-v1",
+  "source_closure_sha256": {
+    "benchmarks/wav-audiomnist-preparation-20261017.json": "9e51b5c6b9beaca93d3f76d3c4730b9103b2c09773bfef0ac2ee4c4d9d2b357f",
+    "core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "core/features.py": "7078c26f158d24b6ae81b42931d6a8dcd54981395fee2c6a8960854e8d689199",
+    "core/nonjpeg_compare_metrics.py": "26b325b420d68ea99ad7cff713c9c2d8aac786e3cd3e52fd4021a22a90aaf460",
+    "core/nonjpeg_data.py": "fcc2eb52807c3146aa19c623b836023344165f7e4cf5b0ac23097efc050ccfaf",
+    "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+    "core/nonjpeg_linear.py": "ac13d73189cba07a71c2e5290a2cf7d29741ec50d116c0471d5752a0dac89010",
+    "core/nonjpeg_models.py": "ea2e4cca67498a0d1018485e56867cc0c402b49cb3f4d99bc0a3be8f120a90c8",
+    "core/spatial_cooccurrence.py": "93d3909e96aaae7b0554a2e52c39d9904bd456282eb1db22e4cdfb004c5c3a1d",
+    "core/spatial_parity.py": "2e27e64197d24805c3156859ebaa96d4989a2ae3d803c401d30c2707f4a18f46",
+    "core/wav_control_gate.py": "88ba18f97dbc8625edc53e9f338c032c1e15af807d6901677d68e92476cf7267",
+    "core/wav_pilot.py": "b8f7136ef559e623d460b76515b1d2d28f321a46a1c01aceb385b258ae6741e0",
+    "core/wav_pilot_training.py": "176c1e42d058127eef1d1922e6d97aacfbded05d075f6acff78fa176838c4f24",
+    "core/wav_pilot_v3.py": "0addc0175d3127622d5e98ba82772983ded37f642b4f679d74143f5a6b8123ec",
+    "docs/WAV_FULL_CONTROL_PROTOCOL_20261021.md": "057955e3ea26d327f2a47b51632a99a48e9f2fd3d0981c5c94827bea25f3004b",
+    "pyproject.toml": "4c6bc4075680a2b60de23b43a774f59ce8cf507874a7c3ce4ee40c862c914ae7",
+    "requirements-research-ci.txt": "12cc79f3509d9f43e0725c9ee1039700369f2c2a2576bb44e12d53c37a0bab92",
+    "scripts/audit-wav-positive-control.py": "8e52e6ed12500187e22a52cc9a10369e74307b5fd35256e2f208ba9ec5616478",
+    "steganography/research_wav_control.py": "5cbc66d0d780a57d192c0b1709fee3ffa4b8984fb3dbb734141f8250e4a41a18",
+    "tests/test_wav_control_gate.py": "60aa27c8ae5ec01881793ca0bb454afe5e3baa0d2fdfd0a83d9c55de82bc49b1",
+    "tests/test_wav_pilot_v3.py": "9928dae6b7a27f0ef4b0bf4df731890eaa503dcdd96f59e085bc3c789045ee85"
+  },
+  "spec": {
+    "cuda_bytes_max": 4294967296,
+    "development_auc_min": 0.7,
+    "development_files": 200,
+    "epochs": 20,
+    "final_batch_rows": 16,
+    "host_bytes_max": 8589934592,
+    "presentations_per_seed": 72000,
+    "recipe": "audio-pcm16-tlu-parity-gn1d-v3",
+    "seeds": [
+      20261016,
+      20261017
+    ],
+    "swap_bytes_max": 0,
+    "train_auc_min": 0.6,
+    "train_files": 400,
+    "updates_per_seed": 1140,
+    "virtual_batch": 64,
+    "wall_seconds_max": 3600
+  },
+  "status": "acceptance_contract_prepared_full_runner_missing"
+}

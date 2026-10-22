@@ -1,0 +1,49 @@
+{
+  "automatic_retry": false,
+  "documentation_sha256": {
+    "AGENTS.md": "125d7b2c9a2d5aa66db27b73892ac436f9dd640d29a71268993a2cb9604711a5",
+    "CHANGELOG.md": "3f4cdf8ab194a3019703eb45a2c3e3335af7b2c0a64dbcc157302a812929b3a5",
+    "README.md": "b0f733866245945f0762b3b56256cb7375d04db2533fee7cd07a708afd62dd27",
+    "docs/ARCHITECTURE.md": "2bef6b6aecbf1835c376c5d3e1542622610e856ef9b91c113b292bde46b0b630",
+    "docs/BENCHMARK_PROTOCOL.md": "c924023de7e7329e5cc298daf734cf693e4b86cec406b66849146f95a2339b1f",
+    "docs/ROADMAP.md": "946f8e475ac9451c2ea4a8efb0b19a6856d484e54373fb15462beab589961af7",
+    "docs/STATUS.md": "935e70843a5b6fefa2ca14bdd465a2e4daac885b955bbe923d84035c4b141e8a",
+    "docs/WAV_FULL_CONTROL_RESULTS_20261021.md": "078b733a29d4ce8b7b4e96736fbf082770044795f71cfe1595e172c646533cbd"
+  },
+  "final_mypy": "passed: 218 source files",
+  "final_ruff": "passed",
+  "full_software_gate": {
+    "checks": {
+      "git_diff_check": "passed",
+      "mypy": "passed",
+      "ruff": "passed"
+    },
+    "coverage_json_sha256": "c18f3d807152828e99d837fec768dec8b0f1f571988628ef3341a550dc8b4770",
+    "focused_tests": 31,
+    "log_sha256": "ed40c80114d9f5814a09829ee9ef290dfd93e040ef2bc2cacf643ee43222034a",
+    "matrix_python_312_to_314": "not_run_locally; CI matrix remains required",
+    "new_runner_coverage_percent": 100.0,
+    "passed": 3528,
+    "seconds": 1323.47,
+    "skipped": 2,
+    "status": "passed",
+    "total_coverage_percent": 96.9345862603777,
+    "warnings": 32
+  },
+  "full_suite_repeated_after_docs_only": "not needed: bound analysis/test sources unchanged",
+  "git_diff_check": "passed",
+  "gpu_experiment_is_software_gate": false,
+  "gpu_experiment_status": "unavailable",
+  "local_document_links": "passed",
+  "post_documentation_tests": {
+    "no_cov": true,
+    "passed": 15,
+    "seconds": 0.67
+  },
+  "production_qualified": false,
+  "readme_words": 897,
+  "real_fit_authorized": false,
+  "schema_version": "wav-control-final-verification-v1",
+  "source_bindings_unchanged_after_full_gate": 28,
+  "status": "passed_software_checks"
+}
