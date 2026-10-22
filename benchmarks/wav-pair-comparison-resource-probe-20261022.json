@@ -1,0 +1,29 @@
+{
+  "ActiveState": "active",
+  "CPUQuotaPerSecUSec": "2s",
+  "CPUUsageNSec": "[not set]",
+  "ExecMainCode": "1",
+  "ExecMainExitTimestampMonotonic": "31373006582",
+  "ExecMainStartTimestampMonotonic": "31372946393",
+  "ExecMainStatus": "0",
+  "KillMode": "control-group",
+  "LoadState": "loaded",
+  "MainPID": "0",
+  "MemoryMax": "2147483648",
+  "MemoryPeak": "[not set]",
+  "MemorySwapMax": "0",
+  "MemorySwapPeak": "[not set]",
+  "Restart": "no",
+  "Result": "success",
+  "RuntimeMaxUSec": "20s",
+  "SubState": "exited",
+  "TimeoutStopUSec": "5s",
+  "UMask": "0077",
+  "independent_seconds": 0.060189,
+  "kernel_caps": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0"
+  },
+  "optimizer_updates": 0,
+  "purpose": "stdlib supervisor/cgroup deployment probe; no model/corpus"
+}

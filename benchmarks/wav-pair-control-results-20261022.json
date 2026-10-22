@@ -1,0 +1,422 @@
+{
+  "automatic_retry": false,
+  "confirmed_updates": 2280,
+  "conservative_storage_peak_upper_bound_bytes": 40160162,
+  "decision": "failed_learning_gate",
+  "final_source_and_cache_checks": "passed",
+  "fit_systemd": {
+    "ActiveState": "failed",
+    "CPUQuotaPerSecUSec": "2s",
+    "CPUUsageNSec": "[not set]",
+    "ExecMainCode": "1",
+    "ExecMainExitTimestampMonotonic": "20080737608",
+    "ExecMainStartTimestampMonotonic": "20077181316",
+    "ExecMainStatus": "2",
+    "KillMode": "control-group",
+    "LoadState": "loaded",
+    "MainPID": "0",
+    "MemoryMax": "2147483648",
+    "MemoryPeak": "[not set]",
+    "MemorySwapMax": "0",
+    "MemorySwapPeak": "[not set]",
+    "Restart": "no",
+    "Result": "exit-code",
+    "RuntimeMaxUSec": "29min 43s",
+    "SubState": "failed",
+    "TimeoutStopUSec": "5s",
+    "UMask": "0077",
+    "independent_seconds": 3.556292
+  },
+  "independent_total_seconds": 30.556292,
+  "production_qualified": false,
+  "profile_binding_sha256": "f6f39ae73759b2bd2189c3600d9ff550953f9fa11981157ea396f950442fca77",
+  "profile_systemd": {
+    "ActiveState": "active",
+    "CPUQuotaPerSecUSec": "2s",
+    "CPUUsageNSec": "[not set]",
+    "ExecMainCode": "1",
+    "ExecMainExitTimestampMonotonic": "20076722144",
+    "ExecMainStartTimestampMonotonic": "20051693463",
+    "ExecMainStatus": "0",
+    "KillMode": "control-group",
+    "LoadState": "loaded",
+    "MainPID": "0",
+    "MemoryMax": "2147483648",
+    "MemoryPeak": "[not set]",
+    "MemorySwapMax": "0",
+    "MemorySwapPeak": "[not set]",
+    "Restart": "no",
+    "Result": "success",
+    "RuntimeMaxUSec": "5min 10s",
+    "SubState": "exited",
+    "TimeoutStopUSec": "5s",
+    "UMask": "0077",
+    "independent_seconds": 25.028681
+  },
+  "protocol_sha256": "deaeddf4ef54fcc6e9bdb8583c0896b61aec4d2bc6c8caa4e7a56c2eff0b2a35",
+  "real_fit_authorized": false,
+  "result": {
+    "checkpoint_written": false,
+    "decision": "failed_learning_gate",
+    "domain": "audio-pcm16-pair-energy-mlp-draft-v1",
+    "fit_wall_seconds": 3.0343365379994793,
+    "fixed_global_plane0": {
+      "development": {
+        "auc_all": 0.574109375,
+        "cells": [
+          {
+            "method": "sequential",
+            "plane": 0,
+            "rate_percent": 5,
+            "roc_auc": 0.556825
+          },
+          {
+            "method": "sequential",
+            "plane": 1,
+            "rate_percent": 5,
+            "roc_auc": 0.51325
+          },
+          {
+            "method": "sequential",
+            "plane": 0,
+            "rate_percent": 40,
+            "roc_auc": 0.728675
+          },
+          {
+            "method": "sequential",
+            "plane": 1,
+            "rate_percent": 40,
+            "roc_auc": 0.534775
+          },
+          {
+            "method": "scattered",
+            "plane": 0,
+            "rate_percent": 5,
+            "roc_auc": 0.52695
+          },
+          {
+            "method": "scattered",
+            "plane": 1,
+            "rate_percent": 5,
+            "roc_auc": 0.506625
+          },
+          {
+            "method": "scattered",
+            "plane": 0,
+            "rate_percent": 40,
+            "roc_auc": 0.69535
+          },
+          {
+            "method": "scattered",
+            "plane": 1,
+            "rate_percent": 40,
+            "roc_auc": 0.530425
+          }
+        ]
+      },
+      "train": {
+        "auc_all": 0.577640234375,
+        "cells": [
+          {
+            "method": "sequential",
+            "plane": 0,
+            "rate_percent": 5,
+            "roc_auc": 0.557671875
+          },
+          {
+            "method": "sequential",
+            "plane": 1,
+            "rate_percent": 5,
+            "roc_auc": 0.51330625
+          },
+          {
+            "method": "sequential",
+            "plane": 0,
+            "rate_percent": 40,
+            "roc_auc": 0.74429375
+          },
+          {
+            "method": "sequential",
+            "plane": 1,
+            "rate_percent": 40,
+            "roc_auc": 0.53584375
+          },
+          {
+            "method": "scattered",
+            "plane": 0,
+            "rate_percent": 5,
+            "roc_auc": 0.5265625
+          },
+          {
+            "method": "scattered",
+            "plane": 1,
+            "rate_percent": 5,
+            "roc_auc": 0.5074
+          },
+          {
+            "method": "scattered",
+            "plane": 0,
+            "rate_percent": 40,
+            "roc_auc": 0.7038625
+          },
+          {
+            "method": "scattered",
+            "plane": 1,
+            "rate_percent": 40,
+            "roc_auc": 0.53218125
+          }
+        ]
+      }
+    },
+    "generated_only": true,
+    "generator_seed": 2026102201,
+    "production_qualified": false,
+    "profile_debit_seconds": 27,
+    "profile_sha256": "6570e864701f5f9d7da9bde8dd71c65f1661586964b9e60b56f587b6bfb4d2b3",
+    "protocol_sha256": "deaeddf4ef54fcc6e9bdb8583c0896b61aec4d2bc6c8caa4e7a56c2eff0b2a35",
+    "real_fit_authorized": false,
+    "real_media_opened": false,
+    "reserved_media_opened": false,
+    "resources": {
+      "host_peak_bytes": 235089920,
+      "process_rss_peak_bytes": 331325440,
+      "swap_bytes": 0
+    },
+    "seeds": [
+      {
+        "development": {
+          "auc_all": 0.6439625,
+          "cells": [
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.51895
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.738775
+            },
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.54175
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 1.0
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.503775
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.537175
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.520375
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 0.7909
+            }
+          ],
+          "scores_sha256": "d219cd97304aca85eb1086a62715f7b216df3db7535e72053e228ffe2872fbe7"
+        },
+        "epochs": 20,
+        "fit_seconds": 0.7732025889999932,
+        "optimizer_updates": 1140,
+        "row_presentations": 72000,
+        "seed": 20261016,
+        "train": {
+          "auc_all": 0.64308125,
+          "cells": [
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.51721875
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.7385375
+            },
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.54076875
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 0.99978125
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.50288125
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.53776875
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.5176625
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 0.79003125
+            }
+          ],
+          "scores_sha256": "2bcf8deedc352c7af3e852a2ec3999503c1174ecae0560918c8dd2e2d4bed36c"
+        }
+      },
+      {
+        "development": {
+          "auc_all": 0.6388703125,
+          "cells": [
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.520375
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.71505
+            },
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.546025
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 0.996625
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.4990375
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.5367
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.4958
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 0.80135
+            }
+          ],
+          "scores_sha256": "8224ee6484282d4ae51f457bbea347cedf4273cebc6062cd302eb3c0c944525f"
+        },
+        "epochs": 20,
+        "fit_seconds": 0.7834310719990754,
+        "optimizer_updates": 1140,
+        "row_presentations": 72000,
+        "seed": 20261017,
+        "train": {
+          "auc_all": 0.6384828125,
+          "cells": [
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.5202375
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.71425625
+            },
+            {
+              "method": "sequential",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.54581875
+            },
+            {
+              "method": "sequential",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 0.99650625
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 5,
+              "roc_auc": 0.4992125
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 5,
+              "roc_auc": 0.53716875
+            },
+            {
+              "method": "scattered",
+              "plane": 0,
+              "rate_percent": 40,
+              "roc_auc": 0.4954875
+            },
+            {
+              "method": "scattered",
+              "plane": 1,
+              "rate_percent": 40,
+              "roc_auc": 0.799175
+            }
+          ],
+          "scores_sha256": "90ff63fbc030bddc64aaeeea5ba5ebced83406c0d3db69672cb6c39464b6df13"
+        }
+      }
+    ],
+    "status": "completed_generated_pair_control",
+    "total_wall_seconds": 30.034336998996878
+  },
+  "retained_experiment_bytes": 678720,
+  "schema_version": "wav-pair-control-attempt-v1"
+}

@@ -1,0 +1,84 @@
+{
+  "arithmetic_only_runtime_projection": {
+    "hardware_bottleneck_identified": false,
+    "includes_generation_inference_or_receipts": false,
+    "measured_second_seed_duration": false,
+    "old_total_seconds_ceiling": 3600,
+    "two_first_seed_fit_durations_seconds": 4236.976273635999
+  },
+  "bit_planes": [
+    0,
+    1
+  ],
+  "cached_first_seed": {
+    "development_40_plane0": {
+      "scattered": 0.549725,
+      "sequential": 0.557425
+    },
+    "fit_seconds": 2118.4881368179995,
+    "optimizer_updates": 1140,
+    "seed": 20261016,
+    "train_auc_all": 0.58510078125
+  },
+  "cached_prior_result_replay": "matched_unavailable",
+  "candidate_accuracy": "unavailable; untrained",
+  "candidate_module_coverage_percent": 100,
+  "candidate_throughput": "unavailable; not profiled",
+  "checkpoint_written": false,
+  "domain": "audio-pcm16-pair-energy-mlp-draft-v1",
+  "feature_count": 10,
+  "feature_names": [
+    "global.pair_equalization.p0",
+    "global.pair_equalization.p1",
+    "q0.pair_equalization.p0",
+    "q0.pair_equalization.p1",
+    "q1.pair_equalization.p0",
+    "q1.pair_equalization.p1",
+    "q2.pair_equalization.p0",
+    "q2.pair_equalization.p1",
+    "q3.pair_equalization.p0",
+    "q3.pair_equalization.p1"
+  ],
+  "formula": "1 - sum((a-b)^2/(a+b))/window_sample_count; ignore empty pairs",
+  "frozen_executable_protocol": false,
+  "full_software_gate": "pending; recorded separately after completion",
+  "generated_fit_attempts_allowed": 0,
+  "generated_unit_tests": 26,
+  "gpu_attempts_allowed": 0,
+  "head": {
+    "activation": "ReLU",
+    "dtype": "float32",
+    "hidden": 32,
+    "input": 10,
+    "output": 2,
+    "parameters": 418
+  },
+  "histogram_bins": 65536,
+  "historical_ledger_reset": false,
+  "jpeg_budget_changed": false,
+  "model_or_dataset_downloaded": false,
+  "optimizer_specification": "not frozen",
+  "optimizer_updates_this_preparation": 0,
+  "preserved_old_runner_protocol_sha256": "e7f2ea18240db12f56c1a05f6a0e001867dd4f84b506c485ce0f9c33c0e936fe",
+  "preserved_old_source_bindings_verified": 28,
+  "prior_artifacts_modified": false,
+  "production_qualified": false,
+  "quarter_boundaries": "floor(i*N/4), i=0..4",
+  "real_fit_authorized": false,
+  "real_media_opened": false,
+  "reserved_media_opened": false,
+  "schema_version": "wav-pair-candidate-design-v1",
+  "source_sha256": {
+    "benchmarks/wav-control-generated-results-20261021.json": "55a34d076d85552b66362324aada5618a42fb9d335b68164b2aada5e7f91dfe5",
+    "benchmarks/wav-control-generated-time-check-20261021.json": "8367e3084a679caaff7c239e4bb06d794639aca22697f3ea57d67f4f6b4a5c00",
+    "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+    "core/wav_pair_candidate.py": "eb9a371b29d11235ce8a371cc06ed45f54f0e69c720db1b82e6283bab7ccac0b",
+    "core/wav_pilot_training.py": "176c1e42d058127eef1d1922e6d97aacfbded05d075f6acff78fa176838c4f24",
+    "core/wav_pilot_v3.py": "0addc0175d3127622d5e98ba82772983ded37f642b4f679d74143f5a6b8123ec",
+    "docs/WAV_PAIR_CANDIDATE_DRAFT_20261022.md": "3f71595936fb4b52b84d173b34d3c6e8b8a5cd318ff5787947ae90a04ce12c6a",
+    "scripts/audit-wav-positive-control.py": "8e52e6ed12500187e22a52cc9a10369e74307b5fd35256e2f208ba9ec5616478",
+    "tests/test_wav_pair_candidate.py": "c10b2aa27285be9f607719eb9b089b893e2758b64dfcd27f25237c06bd4f48c1"
+  },
+  "status": "untrained_non_executable_design",
+  "training_authorized": false
+}

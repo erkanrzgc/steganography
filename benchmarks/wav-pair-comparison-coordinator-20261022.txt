@@ -1,0 +1,271 @@
+"""One-shot local coordinator; no dataset download or real-media access."""
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import subprocess
+import sys
+import time
+import traceback
+
+ROOT = Path(__file__).resolve().parents[2]
+PRIVATE = ROOT / '.benchmark/wav-pair-comparison-20261022'
+ATTEMPT = PRIVATE / 'attempt-v1'
+CACHE = ATTEMPT / 'cache'
+PROTOCOL = ROOT / 'benchmarks/wav-pair-comparison-protocol-20261022.json'
+EXPECTED = '7a0edfe63971c294c86c84c159ab26bdecd5e70c8eaaaf1d22cb0679136d47f5'
+PYTHON = ROOT / '.benchmark/ci-minimal-env-20261010/bin/python'
+MIB = 1024**2
+
+
+def raw(path):
+    if any(p.is_symlink() for p in (path, *path.parents)):
+        raise ValueError('symlink')
+    if path.stat().st_size > MIB:
+        raise ValueError('artifact size limit')
+    return path.read_bytes()
+
+
+def read(path):
+    return json.loads(raw(path))
+
+
+def sha(path):
+    return hashlib.sha256(raw(path)).hexdigest()
+
+
+def save(path, value):
+    data = (json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + '\n').encode()
+    assert len(data) <= MIB
+    with path.open('xb') as stream:
+        stream.write(data)
+
+
+def command(args):
+    return subprocess.run(args, text=True, capture_output=True, check=True).stdout
+
+
+def show(unit):
+    keys = ('LoadState', 'ActiveState', 'SubState', 'MainPID', 'Result',
+            'ExecMainCode', 'ExecMainStatus', 'ExecMainStartTimestampMonotonic',
+            'ExecMainExitTimestampMonotonic', 'MemoryMax', 'MemorySwapMax',
+            'MemoryPeak', 'MemorySwapPeak', 'CPUUsageNSec', 'CPUQuotaPerSecUSec',
+            'RuntimeMaxUSec', 'Restart', 'KillMode', 'TimeoutStopUSec', 'UMask')
+    output = command(['systemctl', '--user', 'show', unit, *['--property=' + k for k in keys]])
+    return dict(line.split('=', 1) for line in output.splitlines() if '=' in line)
+
+
+def phase(name, seconds, binding=None):
+    unit = f'steganography-wav-pair-comparison-{name}-20261022-v1.service'
+    assert show(unit)['LoadState'] == 'not-found', 'unit already exists'
+    for stream in ('stdout', 'stderr'):
+        (ATTEMPT / f'{name}-{stream}.log').touch(mode=0o600, exist_ok=False)
+    args = ['systemd-run', '--user', '--unit=' + unit, '--service-type=exec',
+            '--property=RemainAfterExit=yes', '--property=MemoryMax=2G',
+            '--property=MemorySwapMax=0', '--property=CPUQuota=200%',
+            '--property=MemoryAccounting=yes', '--property=CPUAccounting=yes',
+            '--property=Restart=no', '--property=KillMode=control-group',
+            '--property=TimeoutStopSec=5', '--property=UMask=0077',
+            '--property=RuntimeMaxSec=' + str(seconds),
+            '--property=WorkingDirectory=' + str(ROOT),
+            '--property=StandardOutput=append:' + str(ATTEMPT / f'{name}-stdout.log'),
+            '--property=StandardError=append:' + str(ATTEMPT / f'{name}-stderr.log'),
+            '--setenv=PYTHONPATH=' + str(ROOT), '--setenv=PYTHONNOUSERSITE=1',
+            '--setenv=PYTHONDONTWRITEBYTECODE=1', '--setenv=OMP_NUM_THREADS=2',
+            '--setenv=OPENBLAS_NUM_THREADS=2', str(PYTHON), '-B',
+            str(ROOT / 'steganography/research_wav_pair_comparison.py'), name,
+            '--protocol', str(PROTOCOL), '--cache', str(CACHE)]
+    if binding is not None:
+        args += ['--binding', str(binding)]
+    # Private exact argv retained before execution; no secrets occur in argv.
+    save(ATTEMPT / f'{name}-command.json', {'argv': args, 'automatic_retry': False})
+    result = subprocess.run(args, capture_output=True, text=True)
+    save(ATTEMPT / f'{name}-launch.json', {'returncode': result.returncode,
+         'stdout': result.stdout, 'stderr': result.stderr})
+    if result.returncode:
+        raise RuntimeError('unit launch failed; no retry')
+    until = time.monotonic() + seconds + 20
+    while True:
+        evidence = show(unit)
+        if (int(evidence.get('ExecMainExitTimestampMonotonic', '0')) > 0
+                and evidence.get('MainPID') == '0'):
+            break
+        if time.monotonic() > until:
+            save(ATTEMPT / f'{name}-supervisor-expired.json', evidence)
+            raise RuntimeError('external observation expired; watchdog owns termination')
+        time.sleep(0.5)
+    start = int(evidence['ExecMainStartTimestampMonotonic'])
+    end = int(evidence['ExecMainExitTimestampMonotonic'])
+    assert end > start > 0
+    evidence['independent_seconds'] = (end - start) / 1e6
+    save(ATTEMPT / f'{name}-systemd.json', evidence)
+    # Only a completed process is stopped; prevents a late RemainAfterExit timeout.
+    command(['systemctl', '--user', 'stop', unit])
+    return evidence
+
+
+def replay(c, result, profile, manifest):
+    import io
+    import numpy as np
+    selected = c.records(ROOT, manifest)
+    state = read(CACHE/'normalization.json')
+    assert c.base.old.encoded(state) == c.base.old.encoded(c.normalization(c.base.read_array(CACHE/'train.npy',3600)))
+    checked = 0
+
+    def area(negative, positive):
+        half_wins = 0
+        for start in range(0,len(positive),128):
+            part = positive[start:start+128,None]
+            half_wins += 2*int(np.count_nonzero(part>negative[None,:]))
+            half_wins += int(np.count_nonzero(part==negative[None,:]))
+        return half_wins/(2*len(positive)*len(negative))
+
+    # Independent all-pairs scorer is checked on tied and reversed examples.
+    assert area(np.array([0.,1.]),np.array([1.,2.])) == .875
+    assert area(np.array([1.,1.]),np.array([1.,1.])) == .5
+    assert area(np.array([2.,3.]),np.array([0.,1.])) == 0
+    for run in result['runs']:
+        folder = CACHE/'fit'/f"{run['arm']}-{run['seed']}"
+        assert read(folder/'seed.json') == run
+        for epoch in run['epoch_telemetry']:
+            assert read(folder/f"epoch-{epoch['epoch']:02d}.json") == epoch
+        fit_only = read(folder/'fit.json')
+        assert {k:v for k,v in run.items() if k not in ('train','development')} == fit_only
+        for role, rows in selected.items():
+            path=folder/f'{role}-scores.npy'
+            assert sha(path)==run[role]['scores_sha256']
+            data=raw(path)
+            header=io.BytesIO(data)
+            assert np.lib.format.read_magic(header)==(1,0)
+            shape,fortran,dtype=np.lib.format.read_array_header_1_0(header,max_header_size=512)
+            assert shape==(len(rows),) and fortran is False and dtype==np.float64
+            assert len(data)==header.tell()+len(rows)*8
+            scores=np.frombuffer(data,dtype=dtype,offset=header.tell(),count=len(rows)).copy()
+            assert isinstance(scores,np.ndarray) and scores.dtype==np.float64 and scores.shape==(len(rows),)
+            assert np.isfinite(scores).all() and not np.any((scores<0)|(scores>1))
+            overall,cells=c.base.old.metrics(rows,scores)
+            assert overall==run[role]['auc_all'] and cells==run[role]['cells']
+            count=len(rows)//9
+            cube=scores.reshape(count,9)
+            negatives=cube[:,0]
+            positives=cube[:,1:].ravel()
+            assert area(negatives,positives)==overall
+            checked+=1
+            for index,cell in enumerate(cells,1):
+                assert area(negatives,cube[:,index])==cell['roc_auc']
+                checked+=1
+            if role=='train':
+                last=run['epoch_telemetry'][-1]
+                assert last['auc_all']==overall
+                assert [v['roc_auc'] for v in last['cells']]==[v['roc_auc'] for v in cells]
+    assert checked==72
+    return checked
+
+
+def main():
+    sys.path.insert(0, str(ROOT))
+    from core import wav_pair_comparison as c
+
+    os.umask(0o077)
+    assert sha(PROTOCOL) == EXPECTED
+    c.load(ROOT, PROTOCOL)
+    qa = read(PRIVATE / 'full-pytest.json')
+    assert qa['returncode'] == 0 and qa['full_unchanged_gate'] is True
+    coverage = read(PRIVATE / 'full-coverage.json')
+    assert coverage['totals']['percent_covered'] >= 90
+    focused = read(PRIVATE / 'focused-coverage.json')
+    for name in ('core/wav_pair_comparison.py', 'steganography/research_wav_pair_comparison.py'):
+        assert focused['files'][name]['summary']['percent_covered'] >= 95
+        assert coverage['files'][name]['summary']['percent_covered'] >= 95
+    for name in ('ruff.json', 'mypy.json'):
+        assert read(PRIVATE / name)['returncode'] == 0
+    ATTEMPT.mkdir(mode=0o700)  # Exclusive claim; never reused after any failure.
+    launch = {'schema_version': 'wav-pair-comparison-launch-v1', 'protocol_sha256': EXPECTED,
+              'coordinator_sha256': sha(Path(__file__)),
+              'coordinator_source_artifact': 'benchmarks/wav-pair-comparison-coordinator-20261022.txt',
+              'profile_attempts_allowed': 1,
+              'fit_attempts_allowed': 1, 'fit_conditional_on_profile': True,
+              'full_qa_log_sha256': hashlib.sha256((PRIVATE/'full-pytest.log').read_bytes()).hexdigest(),
+              'full_coverage_percent': coverage['totals']['percent_covered'],
+              'qa_receipts_sha256': {n: sha(PRIVATE/n) for n in (
+                  'full-pytest.json', 'full-coverage.json', 'focused-coverage.json', 'ruff.json', 'mypy.json')},
+              'memory_max_bytes': 2*1024**3, 'swap_max_bytes': 0, 'cpu_quota_percent': 200,
+              'memory_accounting': True, 'cpu_accounting': True,
+              'profile_watchdog_seconds': 310, 'total_eligible_seconds': 1800,
+              'automatic_retry': False, 'real_fit_authorized': False,
+              'downloads_authorized': False, 'old_v3_restart_authorized': False, 'all_previous_runs_restart_authorized': False,
+              'command': '<cpu-python> -B steganography/research_wav_pair_comparison.py <phase> --protocol <frozen-protocol> --cache <exclusive-cache> [--binding <frozen-fit-binding>]',
+              'unit': {'remain_after_exit': True, 'restart': 'no', 'kill_mode': 'control-group',
+                       'timeout_stop_seconds': 5, 'umask': '0077'}}
+    with (ROOT/'benchmarks/wav-pair-comparison-coordinator-20261022.txt').open('xb') as archive:
+        archive.write(raw(Path(__file__)))
+    save(ROOT/'benchmarks/wav-pair-comparison-launch-20261022.json', launch)
+    outcome = {'schema_version': 'wav-pair-comparison-attempt-v1', 'protocol_sha256': EXPECTED,
+               'decision': 'unavailable', 'automatic_retry': False,
+               'real_fit_authorized': False, 'production_qualified': False}
+    try:
+        p = phase('profile', 310)
+        outcome['profile_systemd'] = p
+        assert p['ExecMainStatus'] == '0' and p['Result'] == 'success'
+        assert int(p['MemoryMax']) == 2*1024**3 and p['MemorySwapMax'] == '0'
+        assert p['independent_seconds'] <= 300
+        profile = read(CACHE/'profile.json')
+        assert profile['status'] == 'passed_zero_update_profile'
+        debit = math.ceil(p['independent_seconds']) + 1
+        assert profile['profile_wall_seconds'] <= debit <= 300
+        assert c.profile_proof(profile) and profile['optimizer_updates'] == 0
+        assert profile['conservative_total_projection_seconds'] <= 1800
+        manifest = read(CACHE/'manifest.json')
+        assert sha(CACHE/'manifest.json') == profile['manifest_sha256']
+        assert manifest['payload_oracles_passed'] == 4800
+        save(ROOT/'benchmarks/wav-pair-comparison-manifest-20261022.json', manifest)
+        save(ROOT/'benchmarks/wav-pair-comparison-profile-20261022.json', profile)
+        save(ROOT/'benchmarks/wav-pair-comparison-normalization-20261022.json', read(CACHE/'normalization.json'))
+        binding = ROOT/'benchmarks/wav-pair-comparison-fit-binding-20261022.json'
+        save(binding, {'protocol_sha256': EXPECTED, 'profile_sha256': sha(CACHE/'profile.json'),
+                       'fit_attempts_allowed': 1, 'profile_debit_seconds': debit})
+        outcome['profile_binding_sha256'] = sha(binding)
+        c.load(ROOT, PROTOCOL)
+        f = phase('fit', math.ceil(1800-debit)+10, binding)
+        outcome['fit_systemd'] = f
+        assert f['Result'] == 'success' or (f['Result'] == 'exit-code' and f['ExecMainStatus'] == '2')
+        assert int(f['MemoryMax']) == 2*1024**3 and f['MemorySwapMax'] == '0'
+        result = read(CACHE/'fit/result.json')
+        c.load(ROOT, PROTOCOL)
+        assert result['profile_sha256'] == sha(CACHE/'profile.json')
+        assert sha(CACHE/'normalization.json') == profile['normalization_sha256']
+        assert sha(CACHE/'manifest.json') == profile['manifest_sha256']
+        for role in ('train', 'development'):
+            assert sha(CACHE/f'{role}.npy') == profile['arrays_sha256'][role]
+        external = debit + f['independent_seconds']
+        decision = c.decide(result, EXPECTED, external)
+        assert 'unavailable' not in decision.values()
+        assert decision == result['decisions']
+        replay_count = replay(c, result, profile, manifest)
+        files = [x for x in ATTEMPT.rglob('*') if x.is_file()]
+        assert not any(x.is_symlink() or x.stat().st_size > MIB for x in files)
+        public_files = sorted((ROOT/'benchmarks').glob('wav-pair-comparison-*20261022*.json'))
+        retained = sum(x.stat().st_size for x in files+public_files)
+        conservative_peak = retained + manifest['generated_bytes'] + 3*MIB
+        assert conservative_peak < 64*MIB
+        assert not list(CACHE.glob('fresh-comparison-*'))
+        outcome.update({'decision': 'completed_generated_comparison', 'arm_decisions': decision, 'independent_score_auc_replays': replay_count, 'independent_total_seconds': external,
+                        'confirmed_updates': sum(x['optimizer_updates'] for x in result['runs']),
+                        'retained_experiment_bytes': retained,
+                        'conservative_storage_peak_upper_bound_bytes': conservative_peak,
+                        'final_source_and_cache_checks': 'passed', 'result': result})
+    except Exception:
+        with (ATTEMPT/'coordinator-error.log').open('x') as stream:
+            traceback.print_exc(file=stream)
+        outcome['failure'] = 'one-shot control unavailable; private diagnostic retained; no retry'
+        progress = CACHE/'fit/progress.json'
+        if progress.exists():
+            outcome['partial_progress'] = read(progress)
+    save(ROOT/'benchmarks/wav-pair-comparison-results-20261022.json', outcome)
+    print(json.dumps({'decision': outcome['decision'], 'confirmed_updates': outcome.get('confirmed_updates'), 'arms': outcome.get('arm_decisions'),
+                      'failure': outcome.get('failure')}), flush=True)
+
+
+if __name__ == '__main__':
+    main()

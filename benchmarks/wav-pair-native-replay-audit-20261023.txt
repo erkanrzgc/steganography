@@ -1,0 +1,105 @@
+"""Read-only independent native scores/cluster replay; no optimizer or native media."""
+from pathlib import Path
+import json
+import math
+import subprocess
+import numpy as np
+from core import wav_pair_native as n
+
+ROOT=Path.cwd()
+PRIVATE=ROOT/'.benchmark/wav-pair-native-20261022'
+CACHE=PRIVATE/'attempt-v1/cache'
+
+
+def clustered(pairs, groups):
+    unique=sorted(set(groups));index=[unique.index(g) for g in groups]
+    membership=np.eye(len(unique),dtype=np.int64)[index]
+    rng=np.random.default_rng(20261018)
+    draws=rng.integers(len(unique),size=(2000,len(unique)))
+    counts=np.vstack([np.ones(len(unique),dtype=np.int64),np.array([(draws==i).sum(axis=1) for i in range(len(unique))]).T])
+    total=counts@membership.sum(axis=0)
+    neg,pos=pairs[:,0],pairs[:,1]
+    half=(2*(pos[:,None]>neg[None,:]).astype(np.int64)+(pos[:,None]==neg[None,:]).astype(np.int64))
+    grouped=membership.T@half@membership
+    numerator=np.sum((counts@grouped)*counts,axis=1)
+    recall=counts@(membership.T@(pos>=.5).astype(np.int64))/total
+    fpr=counts@(membership.T@(neg>=.5).astype(np.int64))/total
+    errors=np.zeros((len(unique),10),dtype=np.float64)
+    for i,group in enumerate(index):
+        for label in (0,1):
+            probability=float(pairs[i,label]);bin_id=min(int(probability*10),9)
+            errors[group,bin_id]+=probability-label
+    return {'roc_auc':numerator/(2*total**2),'balanced_accuracy':(recall+1-fpr)/2,
+            'recall':recall,'false_positive_rate':fpr,'ece':np.abs(counts@errors).sum(axis=1)/(2*total)}
+
+
+def same(actual,expected):
+    assert np.allclose(actual,expected,rtol=0,atol=2e-12),(actual,expected)
+
+
+def main():
+    protocol=ROOT/'benchmarks/wav-pair-native-protocol-20261022.json'
+    binding=n.quality(ROOT,protocol,ROOT/'benchmarks/wav-pair-native-qa-20261022.json')
+    accepted,_=n.base.old.gate.read_document(PRIVATE/'attempt-v1/fit-accepted.json')
+    result,_=n.base.old.gate.read_document(CACHE/'fit/result.json')
+    approval=PRIVATE/'attempt-v1/approval.json';profile,_=n.base.old.gate.read_document(CACHE/'profile.json')
+    assert n.authorize(approval,binding,n.base.digest(CACHE/'profile.json'),profile['profile_wall_seconds'])==24
+    assert accepted['confirmed_updates']==result['confirmed_updates']==2280
+    assert accepted['learning_target']==result['learning_target']=='failed_exploratory_target'
+    _,rows=n.records(ROOT)
+    arrays={role:n.read_array(CACHE/f'{role}.npy',len(selected)) for role,selected in rows.items()}
+    state,_=n.base.old.gate.read_document(CACHE/'normalization.json')
+    assert state==n.comparison.normalization(arrays['train'])
+    auc_checks=point_checks=ci_checks=delta_checks=baseline_checks=0
+    runs=[]
+    for run,seed in zip(result['runs'],n.SPEC['seeds'],strict=True):
+        n.verify_run(run,seed)
+        for role,count in (('train',3600),('development',1800)):
+            target=CACHE/f'fit/{seed}/{role}-scores.npy'
+            assert n.base.digest(target)==run[role]['scores_sha256']
+            scores=n.read_array(target,count,scores=True)
+            auc_checks+=n.replay_auc(scores,run[role])
+            if role=='development':
+                groups=[r['group'] for r in rows[role][::9]]
+                assert len(set(groups))==10 and {groups.count(g) for g in set(groups)}=={20}
+                reference=arrays[role][:,0]
+                for index,cell in enumerate(run[role]['speaker_cluster_metrics'],1):
+                    assert (cell['method'],cell['rate_percent'],cell['plane'])==n.base.wav_pilot.RECIPES[index-1]
+                    actual=clustered(np.column_stack((scores[::9],scores[index::9])),groups)
+                    baseline=clustered(np.column_stack((reference[::9],reference[index::9])),groups)
+                    for name,values in actual.items():
+                        same(values[0],cell['metrics'][name]);point_checks+=1
+                        same(np.quantile(values[1:],[.025,.975]),cell['ci95'][name]);ci_checks+=1
+                        same(baseline[name][0],cell['fixed_global_plane0'][name]);baseline_checks+=1
+                        same(np.quantile((values-baseline[name])[1:],[.025,.975]),cell['paired_delta_ci95'][name]);delta_checks+=1
+        for epoch in run['epoch_telemetry']:
+            artifact,_=n.base.old.gate.read_document(CACHE/f"fit/{seed}/epoch-{epoch['epoch']:02d}.json")
+            assert artifact==epoch
+        fit,_=n.base.old.gate.read_document(CACHE/f'fit/{seed}/fit.json')
+        seed_receipt,_=n.base.old.gate.read_document(CACHE/f'fit/{seed}/seed.json')
+        assert seed_receipt==run
+        assert {key:run[key] for key in fit}==fit
+        runs.append({'seed':seed,'train_auc':run['train']['auc_all'],'development_auc':run['development']['auc_all'],
+                     'updates':run['optimizer_updates'],'presentations':run['row_presentations'],
+                     'target_cells':[c for c in run['development']['cells'] if c['plane']==0 and c['rate_percent']==40]})
+    history=json.loads(subprocess.check_output([str(ROOT/'.benchmark/ci-minimal-env-20261010/bin/python'),str(PRIVATE/'audit_history.py')],text=True))
+    assert history==json.loads((PRIVATE/'history-before.json').read_text())
+    assert accepted['independent_total_seconds']<=1800 and accepted['independent_total_seconds']>=result['total_wall_seconds']
+    for phase in ('profile','fit'):
+        systemd,_=n.base.old.gate.read_document(PRIVATE/f'attempt-v1/{phase}-systemd.json')
+        assert systemd['MemoryMax']=='2147483648' and systemd['MemorySwapMax']=='0'
+        assert systemd['CPUQuotaPerSecUSec']=='2s' and systemd['ExecMainStatus']=='0' and systemd['MainPID']=='0'
+    assert sum(r['row_presentations'] for r in result['runs'])==144000
+    proof={'schema_version':'wav-pair-native-independent-replay-v1','status':'passed','protocol_sha256':binding,
+           'optimizer_updates_during_replay':0,'native_media_opened_during_replay':False,
+           'independent_auc_checks':auc_checks,'independent_point_metric_checks':point_checks,
+           'independent_cluster_ci_checks':ci_checks,'independent_fixed_baseline_checks':baseline_checks,
+           'independent_paired_delta_ci_checks':delta_checks,'whole_development_speakers':10,
+           'cuts_per_speaker':20,'bootstrap_draws':2000,'epoch_artifacts_verified':40,
+           'actual_optimizer_updates':2280,'actual_presentations':144000,'learning_target':result['learning_target'],
+           'runs':runs,'historical_integrity':history,'audit_source_sha256':n.base.digest(Path(__file__))}
+    n.base.old.save(ROOT/'benchmarks/wav-pair-native-replay-20261023.json',proof)
+    print(json.dumps({k:proof[k] for k in ('status','independent_auc_checks','independent_point_metric_checks','independent_cluster_ci_checks','independent_paired_delta_ci_checks','actual_optimizer_updates')},sort_keys=True))
+
+
+if __name__=='__main__':main()
