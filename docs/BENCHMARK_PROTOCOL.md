@@ -741,3 +741,112 @@ OOF thresholds. Compare each native WAV cell with an actual same-file reference
 measurement at fixed threshold 70; do not substitute historical scores. Preserve
 all source/seed/cell outcomes and underpowered speaker/recording-cluster intervals.
 Its 30-minute CPU allowance does not extend the running JPEG experiment.
+
+
+## Full-exposure generated WAV learning control acceptance
+
+`WAV_FULL_CONTROL_PROTOCOL_20261021.md` binds a new read-only acceptance contract
+to the current draft-v3/shared-trainer source. Both seeds need their complete
+20-epoch /1,140-update /72,000-presentation exposure, distinct generated splits,
+all eight metrics cells and in-bound runtime/resource evidence. The learning
+rule requires train AUC >=0.60 and both sequential/scattered-40%-p0 development
+AUCs >=0.70 in each seed. A complete failed rule is preserved as failure; an
+incomplete run is unavailable. A pass never authorizes real AudioMNIST fitting
+or production qualification. A separately bound producer/supervisor is still
+required before execution. Historical receipt-amendment and reduced-control
+records are immutable.
+
+
+## Generated WAV producer/supervisor binding
+
+`WAV_CONTROL_RUNNER_PROTOCOL_20261021.md` adds the separately frozen producer
+and one-shot supervisor missing from the acceptance contract. An independent
+corpus seed and exact per-role metadata lengths generate the full 600-file
+corpus; its manifest is frozen and reproduced before fitting. The original
+v3 recipe, full exposures and combined learning rule are unchanged. A
+3,600-second total wall ceiling includes startup, generation, fits, scoring
+and receipts, with a ten-second internal finalization reserve and an outer
+15-second termination-only watchdog grace. Cgroup memory/swap enforcement,
+CUDA allocation bounds and confirmed partial-update evidence are required;
+there is no automatic restart or real AudioMNIST fit authorization.
+
+The separately frozen v2 evidence amendment retains a completed seed's fit
+and all cell metrics even if the next seed fails. It changes no numerical
+function, recipe, corpus, exposure, learning rule or resource allowance; the
+unexecuted v1 binding and interrupted QA log remain preserved. The complete
+software gate passes before launch. A transport reset before the launch claim
+is not a GPU attempt or learning result. See
+`WAV_CONTROL_RUNNER_EVIDENCE_AMENDMENT_20261021.md` and the v2 launch receipt.
+
+The one source-bound attempt is unavailable; preserve its full/partial evidence
+and do not restart it automatically. See [WAV_FULL_CONTROL_RESULTS_20261021.md](WAV_FULL_CONTROL_RESULTS_20261021.md).
+Real fitting remains unauthorized and a further fit requires a new frozen intervention.
+
+
+## Untrained PCM pair-energy candidate — design only
+
+`WAV_PAIR_CANDIDATE_DRAFT_20261022.md` specifies ten complete-alphabet pair
+statistics and an optional small head. Scalar and zero-update gradient tests
+are computation checks, not learning evidence. This new family has no frozen
+optimizer/execution contract and cannot be accepted by the old v3-only gate.
+Any future cache and fit need a new complete source/data/exposure/resource
+binding; preserve all eight cells, full seed schedules, independent payload
+checks and the plane-0 target. Neither a CUDA retry nor real AudioMNIST fit,
+reserved-media access, new download or dataset-role assignment is authorized.
+
+## Separately frozen fresh generated PCM pair control
+
+The later [CPU contract](WAV_PAIR_CONTROL_PROTOCOL_20261022.md) separately
+binds the 34-file source closure, generator seed 2026102201, all 600 new
+sources and both complete 20-epoch head schedules. It preserves the earlier
+non-executable design and the unavailable v3 experiment. It authorizes one
+zero-update profile and one conditional generated fit, without native media
+access, downloads, role assignment, checkpoints, old v3 restart or real fit.
+
+All 4,800 payload recoveries, cross-split/old-corpus non-overlap, cache hashes,
+row order and runtime/resource checks precede fitting. Each seed requires
+1,140 updates /72,000 row presentations; eight cells per split remain visible.
+The fixed global plane-0 statistic is an untrained comparator and cannot
+rescue a failed learned head. Training AUC >=0.60 and each 40%-plane-0
+development AUC >=0.70 must hold separately in both seeds. Independent
+monotonic profile debit plus full fit duration must stay within 1,800 seconds,
+with 2-GiB memory, zero swap and 64-MiB experiment-output caps. A generated
+pass establishes neither natural-speech accuracy nor production qualification.
+
+The subsequent [read-only diagnosis](WAV_PAIR_DIAGNOSIS_PROTOCOL_20261022.md)
+binds the successful profile's train cache and fixed original metrics. It
+permits all ten features /eight train cells, independent AUC methods,
+initialization-only gradient contrasts and arithmetic schedule replay, with
+zero updates. It forbids new development scoring, fitted normalization,
+threshold/direction selection and reconstruction by refitting. This is
+post-hoc explanatory evidence, not an independent acceptance pass. Completed
+[findings](WAV_PAIR_DIAGNOSIS_RESULTS_20261022.md) support investigating scale/
+competition but do not prove a full-training cause; the matched-comparison
+draft grants no new execution or real-data permission.
+
+The later [matched scaling contract](WAV_PAIR_COMPARISON_PROTOCOL_20261022.md)
+separately freezes the 42-file source closure and fresh generator seed
+2026102204. One zero-update profile may precede one four-fit CPU comparison:
+two original model seeds × raw versus train-only population-standardized
+inputs, with equal initialization/order and full 4,560-update exposure.
+This changes one recipe factor; it does not rewrite the earlier failed run
+or authorize native fitting. All 20 train epochs and four fixed actual update
+points have numeric telemetry; final bounded score arrays require independent
+all-pairs AUC replay. Both complete arms retain the original per-seed learning
+rule, all eight cells, 30-minute /2-GiB /zero-swap /64-MiB limits and no retry.
+
+
+## Native standardized PCM pair pilot
+
+The [separate native contract](WAV_PAIR_NATIVE_PROTOCOL_20261022.md) fixes
+the cached AudioMNIST source, original 20/10 speaker assignment, pair-z-score
+domain, two full seeds /2,280 updates and fixed-threshold clustered metrics.
+The 2026-10-22 preparation completed with zero updates. The user's later
+2026-10-23 explicit approval bound the protocol, profile and independent debit
+for one fit. Both seeds completed all 2,280 updates, but every required 40%-p0
+cell missed .70. All 36 AUCs and 80 speaker-cluster/paired intervals replay
+independently; see [results](WAV_PAIR_NATIVE_RESULTS_20261023.md). This one fit
+is consumed; the previous pending-approval snapshots remain immutable.
+Further fitting requires a distinct frozen intervention and approval.
+No old-CNN approval, new transfer allowance, reserved access or deployment
+follows from the generated pass.

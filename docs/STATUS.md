@@ -1,4 +1,114 @@
-# Implementation status — 2026-10-20
+# Implementation status — 2026-10-23
+
+The **explicitly approved native AudioMNIST standardized pair pilot completed**:
+both full seeds, **2,280 real optimizer updates /144,000 presentations**. It
+**failed the exploratory target**: sequential/scattered 40%-p0 development
+AUCs are 0.478800/0.486625 and 0.466650/0.468700, against .70. Pooled development
+AUCs are 0.616641/0.622978; fixed-threshold cover FPR is 55%/42%. Higher p1
+cells do not rescue the required p0 failures. All 36 score AUCs, 80 metric
+points, 80 speaker-cluster intervals and 80 paired-delta intervals replay
+independently. The one fit took 6.059356 s; charged profile+fit time is
+30.059356/1,800 s. All limits, 49 source bindings and 14 old-model digests
+pass. The prior source-bound full gate remains 3,729 passed /two CUDA skips,
+97.00% coverage; no training/application source changed. No checkpoint or
+production deployment; all 30 reserved speakers stay closed. See
+[all native results and curves](WAV_PAIR_NATIVE_RESULTS_20261023.md).
+This approved attempt is consumed. No automatic retry or further fitting;
+a new fitting intervention needs its own frozen contract and approval.
+
+Earlier preparation and generated-control records follow.
+
+The **native standardized pair-head preparation completed with zero optimizer updates**: 600 cached AudioMNIST files, 4,800 payload checks and 20 unchanged-parameter backward batches. Full QA passes 3,729 tests /two CUDA skips, 97.00% coverage; Ruff and 225-file mypy pass. Both new modules exceed 95% coverage. The CPU recipe is ready for a separately approved two-seed /2,280-update pilot; no GPU/SSH connection is needed. Real fitting remains pending explicit approval. All 30 reserved groups and 14 old models remain unchanged. See [preparation evidence](WAV_PAIR_NATIVE_PREPARATION_20261022.md).
+
+The **matched raw/train-z-score generated comparison completed**: all four
+fits /4,560 updates /288,000 presentations, matching per-seed initialization
+and minibatch order. **Train_zscore passes the frozen generated learning rule;
+raw fails.** Target development AUCs are 0.984600/0.950725 and
+0.979150/0.945625, versus raw 0.543000/0.519975 and 0.550825/0.498425.
+All 4,800 payload checks, 72 independent score-AUC replays and resource gates
+pass; charged time is 31.407780 seconds. Full QA: **3,662 passed /two CUDA
+skips, 96.99% coverage**, Ruff and 223-file mypy pass. New service/adapter
+coverage exceeds 95%. Scattered 5%-p1 remains weak and regresses; this is not
+general audio qualification. See [all results and curves](WAV_PAIR_COMPARISON_RESULTS_20261022.md).
+The pass applies to the standardized pair head, not the earlier raw CNN or
+its native pilot protocol. A native trial needs a separately frozen protocol
+and explicit approval; no native accuracy or production deployment follows.
+
+The **pair-control read-only diagnosis completed with zero updates**. All
+80 train feature/cell AUCs replay independently; the first-quarter plane-0
+feature has train AUC 0.909031/0.753063 while the learned heads remain near
+chance in those cells. At the original initializations, plane-1 contributes
+93.67%/89.57% of the signal-gradient sum-direction projection. This supports
+scale/competition as a hypothesis; historical trained gradients, losses and
+weights are unavailable, so a causal optimization diagnosis is not established.
+Source/order/exposure checks pass; no new development features or media were
+opened. See [findings](WAV_PAIR_DIAGNOSIS_RESULTS_20261022.md) and the
+[non-executable next comparison](WAV_PAIR_NEXT_INTERVENTION_DRAFT_20261022.md).
+The failed control remains failed; real AudioMNIST fitting is unauthorized.
+
+The separately frozen **fresh generated CPU pair control completed and failed
+its learning gate**: both seeds ran 1,140 updates /72,000 presentations.
+Train AUCs are 0.643081/0.638483; sequential/scattered 40%-plane-0 development
+AUCs are 0.541750/0.520375 and 0.546025/0.495800, below 0.70.
+The zero-update profile passed all 4,800 payload checks on 600 fresh sources.
+Independent charged time is 30.556292/1,800 seconds; conservative output peak
+is 40,160,162/67,108,864 bytes, with 2-GiB memory and zero swap enforced.
+The full unchanged gate passes **3,598 tests /two CUDA skips, 96.97% coverage**;
+44 new tests, Ruff and 221-file mypy pass. No real data, download, checkpoint,
+deployment or automatic retry. Real AudioMNIST fitting remains unauthorized.
+See [complete results](WAV_PAIR_CONTROL_RESULTS_20261022.md).
+
+Earlier candidate-only verification follows.
+
+2026-10-22: prepare an **untrained pair-energy candidate**, independently of
+the preserved v3 attempt. Ten global/quarter, plane-0/1 statistics feed an
+optional 418-parameter FP32 head. Twenty-six generated-only checks pass with
+100% candidate-code coverage; Ruff and 219-file mypy pass. The full unchanged gate passes **3,554 tests /two explicit CUDA skips,
+96.94% total coverage**. No optimizer update, CUDA attempt, checkpoint, real-media
+access, download or candidate accuracy measurement occurred. A generated counterexample also confirms that
+the histogram summary can merge distinct one-bit inputs; no universal raw-PCM
+equivalence is claimed. See [checks](WAV_PAIR_CANDIDATE_VERIFICATION_20261022.md). Its
+[design](WAV_PAIR_CANDIDATE_DRAFT_20261022.md) is non-executable: another fit
+needs its own frozen source/data/exposure/acceptance and resource contract.
+
+Earlier full-control results follow.
+
+The separately bound full-exposure generated WAV attempt is **unavailable**.
+It retained a confirmed **1,937** optimizer-update lower bound and
+**one** complete scored seed, without a restart, real media,
+checkpoint or additional JPEG time. The first full seed has training AUC 0.585101;
+its sequential/scattered 40%-plane-0 development AUCs are
+0.557425/0.549725, below the frozen 0.70 target.
+See the [complete results](WAV_FULL_CONTROL_RESULTS_20261021.md) and
+[machine receipt](../benchmarks/wav-control-generated-results-20261021.json).
+Real AudioMNIST fitting and production qualification remain unauthorized;
+another generated attempt needs a separately frozen intervention.
+
+Software verification passes **3,528 tests /two explicit CUDA skips,
+96.93% total coverage**. Thirty-one generated-only runner tests cover both
+new modules completely; Ruff, 218-file mypy and diff checks pass.
+The owned RTX 5060 separately passed actual zero-update CUDA QA and
+8-GiB/zero-swap cgroup enforcement. The frozen 600-WAV /36,335,714-byte
+manifest reproduces with all 4,800 independent payload checks.
+Unexecuted v1 sources, interrupted QA and pre-launch transport failures remain
+preserved separately; none is a full-exposure learning result.
+
+Earlier acceptance preparation follows.
+
+The next WAV slice adds a read-only, source-bound full-exposure control
+acceptance contract. It rejects reduced exposure, missing/duplicate seeds or
+cells, split overlap, stale code and incomplete resource evidence. Every
+outcome keeps real fitting and production qualification unauthorized. The
+current 21-file binding replaces no historical receipt; the older CUDA pass
+remains evidence for its original commit. The full-exposure generated runner
+is still missing and no new experiment or source-data fit was started. See the
+[acceptance protocol](WAV_FULL_CONTROL_PROTOCOL_20261021.md). The 67 new tests
+pass with 100% coverage of the verifier and adapter. The full unchanged gate
+passes **3,497 tests /two explicit CUDA skips, 96.89% total coverage**; Ruff and
+216-file mypy pass. See the
+[verification receipt](../benchmarks/wav-full-control-readiness-20261021.json).
+
+Earlier 2026-10-20 results follow.
 
 AudioMNIST generated positive control: **v1 and draft v3 CNN both fail**. On
 quiet speech-like generated PCM (120 train /60 development files, 170 updates,
