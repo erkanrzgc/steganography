@@ -1,0 +1,19 @@
+{
+  "checkpoint_written": false,
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "finite_gradients": true,
+  "numpy_version": "2.4.6",
+  "optimizer_updates": 0,
+  "parameters_unchanged": true,
+  "peak_cuda_allocated_bytes": 71392256,
+  "qa_script_sha256": "f5d2c6cfca20f7a58a9e4f3d635cd364f7794fc1f9b3e92fe54b57ba6322316f",
+  "real_media_opened": false,
+  "reserved_media_opened": false,
+  "runner_protocol_sha256": "2dc453866f04163cb40c6aead232b42b05351a7652f5771bfdae15c05aa0c3fe",
+  "schema_version": "wav-control-v3-generated-cuda-qa-v1",
+  "seconds": 8.399069378999911,
+  "single_lsb_input_delta_max": 2.0,
+  "status": "passed_generated_only",
+  "torch_version": "2.14.0+cu130",
+  "train_eval_logits_equal": true
+}

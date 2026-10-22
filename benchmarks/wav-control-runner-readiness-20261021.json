@@ -1,0 +1,82 @@
+{
+  "checkpoint_written": false,
+  "cuda_forward_backward_qa": {
+    "checkpoint_written": false,
+    "cuda_cache_disable": "1",
+    "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "file_bytes_limit": 1048576,
+    "finite_gradients": true,
+    "numpy_version": "2.4.6",
+    "optimizer_updates": 0,
+    "parameters_unchanged": true,
+    "peak_cuda_allocated_bytes": 71392256,
+    "qa_script_sha256": "35a1739480fa22e470e23e3e55abb493a55e1a6557d3775203eaab8d8a9f1743",
+    "real_media_opened": false,
+    "reserved_media_opened": false,
+    "runner_protocol_sha256": "e7f2ea18240db12f56c1a05f6a0e001867dd4f84b506c485ce0f9c33c0e936fe",
+    "schema_version": "wav-control-v3-generated-cuda-qa-v1",
+    "seconds": 21.54071624700009,
+    "single_lsb_input_delta_max": 2.0,
+    "status": "passed_generated_only",
+    "torch_version": "2.14.0+cu130",
+    "train_eval_logits_equal": true
+  },
+  "generated_corpus": {
+    "files": 600,
+    "manifest_sha256": "49af2ee187f0a272f3cf88ce7b69745c6eaaedd3e23956f32b337c227bf39699",
+    "payload_oracles_passed": 4800,
+    "replay_receipt_sha256": "3b609ff13e76243b95d6df716dcb850911e1aa46d3a242eec95471d2c035882e",
+    "wav_bytes": 36335714
+  },
+  "generated_full_attempts_started": 0,
+  "historical_ledger_reset": false,
+  "jpeg_budget_changed": false,
+  "launch_receipt_sha256": "426973512ff1909ddc0fff2d0e6d06c090d07ed51bfa108009b05b39ec5b65eb",
+  "license_changed": false,
+  "model_or_dataset_downloaded": false,
+  "new_full_control_optimizer_updates": 0,
+  "parent_protocol_sha256": "1d8b9f98229732f1fc77904e69c006e0b8d25076063adab985ac7299c85c3844",
+  "prelaunch_transport_failures": {
+    "generated_full_attempts_started": 0,
+    "learning_evidence": false,
+    "refused_after_service_renewal": true,
+    "reset_before_deployment": true
+  },
+  "prior_interrupted_software_verification": {
+    "full_gate_pass": false,
+    "log_sha256": "8bb77f42573d8a76490b0050c30412383bfae73205c98f7526e018fbadfec06d",
+    "passed": 1747,
+    "seconds": 482.21,
+    "skipped": 1,
+    "status": "interrupted_for_evidence_retention_fix"
+  },
+  "production_qualified": false,
+  "real_fit_authorized": false,
+  "real_media_opened": false,
+  "real_optimizer_updates": 0,
+  "reserved_media_opened": false,
+  "runner_protocol_sha256": "e7f2ea18240db12f56c1a05f6a0e001867dd4f84b506c485ce0f9c33c0e936fe",
+  "schema_version": "wav-control-runner-readiness-v1",
+  "software_gate": {
+    "checks": {
+      "git_diff_check": "passed",
+      "mypy": "passed",
+      "ruff": "passed"
+    },
+    "coverage_json_sha256": "c18f3d807152828e99d837fec768dec8b0f1f571988628ef3341a550dc8b4770",
+    "focused_tests": 31,
+    "log_sha256": "ed40c80114d9f5814a09829ee9ef290dfd93e040ef2bc2cacf643ee43222034a",
+    "matrix_python_312_to_314": "not_run_locally; CI matrix remains required",
+    "new_runner_coverage_percent": 100.0,
+    "passed": 3528,
+    "seconds": 1323.47,
+    "skipped": 2,
+    "status": "passed",
+    "total_coverage_percent": 96.9345862603777,
+    "warnings": 32
+  },
+  "source_bindings_verified": 28,
+  "status": "software_and_generated_cuda_qa_passed_transport_pending",
+  "verification_scratch_allocated_bytes_at_readiness": 8716374016,
+  "verification_scratch_is_experiment_output": false
+}

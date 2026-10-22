@@ -1,0 +1,27 @@
+{
+  "automatic_retry": false,
+  "bundle_sha256": "257d516c08bec474c8b443b845ac42bdea2bb2ddb91cc3f49610c34243c5015a",
+  "checkpoint_written": false,
+  "full_exposure_result": "pending",
+  "generated_attempt_ordinal": 1,
+  "historical_ledger_reset": false,
+  "jpeg_budget_changed": false,
+  "launch_claim_sha256": "071a2f0764c93c0b78c2f1d0126efc706baf30d328383e673a4141662c85c1d2",
+  "launch_receipt_sha256": "426973512ff1909ddc0fff2d0e6d06c090d07ed51bfa108009b05b39ec5b65eb",
+  "limits": {
+    "cuda_bytes": 4294967296,
+    "host_bytes": 8589934592,
+    "swap_bytes": 0,
+    "wall_seconds": 3600
+  },
+  "model_or_dataset_downloaded": false,
+  "production_qualified": false,
+  "real_fit_authorized": false,
+  "real_media_opened": false,
+  "reserved_media_opened": false,
+  "runner_protocol_sha256": "e7f2ea18240db12f56c1a05f6a0e001867dd4f84b506c485ce0f9c33c0e936fe",
+  "schema_version": "wav-control-generated-attempt-v1",
+  "started_unix_seconds": 1792610323.535511,
+  "status": "running_generated_only",
+  "systemd_run_exit_code": 0
+}

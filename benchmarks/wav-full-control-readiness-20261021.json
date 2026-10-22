@@ -1,0 +1,55 @@
+{
+  "documentation_sha256": {
+    "AGENTS.md": "619aa526ad9b30136a79865206d1cfb2647d733b9fa847fcdef6464c648a355a",
+    "CHANGELOG.md": "9c719133efb6d9a0bc6b644c324f540a3f1f6aceecf9e4e341baec804a45b6d5",
+    "docs/ARCHITECTURE.md": "4ccdf329413117fb69349e11b6e3f4ce5cf287c592f6d9731a1605a3a64fecd7",
+    "docs/BENCHMARK_PROTOCOL.md": "321255f60cdbcc5fd45ca7de2dc98d3d0b64292fb96cb19eebc8f7fdb7a793fe",
+    "docs/ROADMAP.md": "3a4d083a0a4ec1d410c4c6043e1d64e1cba284647a68cf70ef1328cf4cc1f494",
+    "docs/STATUS.md": "01027f9acfeafef224036d9c298d571e5de2695032da8c2712ba07d021c376b0"
+  },
+  "legacy_reduced_control_check": {
+    "decision": {
+      "production_qualified": false,
+      "protocol_id": "wav-generated-full-control-20261021-v1",
+      "protocol_sha256": "1d8b9f98229732f1fc77904e69c006e0b8d25076063adab985ac7299c85c3844",
+      "real_fit_authorized": false,
+      "reason": "provenance_or_recipe_mismatch",
+      "schema_version": "wav-full-control-decision-v1",
+      "status": "unavailable"
+    },
+    "expected_exit_code": 2,
+    "receipt": "benchmarks/wav-audiomnist-positive-control-20261020.json",
+    "sha256": "f15b4eca9ba4adecd0f5a2475adc20b368d72b7bed4da96250de137a6c7c53d7"
+  },
+  "license_changed": false,
+  "license_sha256": "78bd6e0d36825256c63c69fee1d10ef8a8e733e478079d73f82467d9c4e28142",
+  "model_or_dataset_downloaded": false,
+  "new_experiment_started": false,
+  "protocol_sha256": "1d8b9f98229732f1fc77904e69c006e0b8d25076063adab985ac7299c85c3844",
+  "real_data_fit_started": false,
+  "schema_version": "wav-full-control-readiness-v1",
+  "source_bindings_verified": 21,
+  "status": "acceptance_contract_tested_full_runner_missing",
+  "verification": {
+    "focused_tests": 67,
+    "full_coverage_json_sha256": "230fd948e0086bc85fd714de71fd7208c307223e8a57883c5940e712b136016d",
+    "full_pytest": {
+      "log": ".benchmark/wav-control-review-20261021/full-pytest-efcf6fc5.log",
+      "log_sha256": "bb357608b85a336ca5894ad6aea61a72101af8e0cc1787e6223a3c91f726ddfd",
+      "passed": 3497,
+      "seconds": 1407.68,
+      "skip_reason": "actual CUDA unavailable on the CPU verification host",
+      "skipped": 2,
+      "status": "passed",
+      "warnings": 32
+    },
+    "git_diff_check": "passed",
+    "matrix_python_312_to_314": "not_run_locally; CI matrix remains required",
+    "mypy": "passed: 216 source files",
+    "new_module_coverage_percent": 100,
+    "python_version": "3.11.9",
+    "ruff": "passed",
+    "total_statement_coverage_percent": 96.89349112426035
+  },
+  "verification_scratch_allocated_bytes": 6711619584
+}
