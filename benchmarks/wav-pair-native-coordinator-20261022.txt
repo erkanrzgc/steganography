@@ -1,0 +1,167 @@
+"""One-shot native preparation supervisor; fit requires a later bound approval."""
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+import subprocess
+import time
+
+from core import wav_pair_native as n
+
+ROOT = Path(__file__).absolute().parents[2]
+PRIVATE = ROOT / '.benchmark/wav-pair-native-20261022'
+ATTEMPT = PRIVATE / 'attempt-v1'
+CACHE = ATTEMPT / 'cache'
+PROTOCOL = ROOT / 'benchmarks/wav-pair-native-protocol-20261022.json'
+QA = ROOT / 'benchmarks/wav-pair-native-qa-20261022.json'
+LAUNCH = ROOT / 'benchmarks/wav-pair-native-launch-20261022.json'
+EXPECTED = '6f4f6d79bc35401dd2234f08bbe53f8764aff5e0414a92e5d4b726ef461f9e6c'
+PYTHON = ROOT / '.benchmark/ci-minimal-env-20261010/bin/python'
+
+
+def read(path):
+    return n.base.old.gate.read_document(path)[0]
+
+
+def save(path, value):
+    n.base.old.save(path, value)
+
+
+def command(args):
+    return subprocess.run(args, text=True, capture_output=True, check=True).stdout
+
+
+def show(unit):
+    keys = ('LoadState', 'ActiveState', 'SubState', 'MainPID', 'Result',
+            'ExecMainCode', 'ExecMainStatus', 'ExecMainStartTimestampMonotonic',
+            'ExecMainExitTimestampMonotonic', 'MemoryMax', 'MemorySwapMax',
+            'CPUQuotaPerSecUSec', 'RuntimeMaxUSec', 'Restart', 'KillMode',
+            'TimeoutStopUSec', 'UMask')
+    output = command(['systemctl', '--user', 'show', unit, *['--property=' + k for k in keys]])
+    return dict(line.split('=', 1) for line in output.splitlines() if '=' in line)
+
+
+def verify_unit(evidence, eligible_seconds):
+    assert all(evidence.get(k) == value for k, value in {
+        'MainPID': '0', 'Result': 'success', 'ExecMainCode': '1', 'ExecMainStatus': '0',
+        'MemoryMax': str(2 * 1024**3), 'MemorySwapMax': '0', 'CPUQuotaPerSecUSec': '2s',
+        'Restart': 'no', 'KillMode': 'control-group', 'TimeoutStopUSec': '5s', 'UMask': '0077',
+    }.items()), 'unit exit/resource contract'
+    start = int(evidence['ExecMainStartTimestampMonotonic'])
+    end = int(evidence['ExecMainExitTimestampMonotonic'])
+    elapsed = (end - start) / 1e6
+    assert end > start > 0 and 0 < elapsed <= eligible_seconds, 'independent time limit'
+    return elapsed
+
+
+def run(phase, approval=None):
+    assert phase in ('profile', 'fit')
+    assert n.base.digest(PROTOCOL) == EXPECTED
+    n.quality(ROOT, PROTOCOL, QA)
+    launch = read(LAUNCH)
+    assert launch['protocol_sha256'] == EXPECTED and launch['qa_sha256'] == n.base.digest(QA)
+    assert launch['coordinator_sha256'] == n.base.digest(Path(__file__))
+    probe = read(ROOT / 'benchmarks/wav-pair-native-resource-probe-20261022.json')
+    assert launch['probe_sha256'] == n.base.digest(ROOT / 'benchmarks/wav-pair-native-resource-probe-20261022.json')
+    assert probe['status'] == 'passed_resource_deployment' and probe['optimizer_updates'] == 0
+    debit = 0
+    if phase == 'profile':
+        ATTEMPT.mkdir(mode=0o700)
+        assert not CACHE.exists()
+        maximum, eligible = 310, 300
+    else:
+        assert approval is not None and not (CACHE / 'fit').exists()
+        profile = read(CACHE / 'profile.json')
+        debit = n.authorize(approval, EXPECTED, n.base.digest(CACHE / 'profile.json'), profile['profile_wall_seconds'])
+        external_profile = read(ATTEMPT / 'profile-systemd.json')
+        assert debit >= math.ceil(external_profile['independent_seconds']) + 1
+        maximum, eligible = math.ceil(1800 - debit) + 10, 1800 - debit
+    unit = f'steganography-wav-pair-native-{phase}-20261022-v1.service'
+    assert show(unit)['LoadState'] == 'not-found', 'unit already exists; no automatic retry'
+    args = ['systemd-run', '--user', '--unit=' + unit, '--service-type=exec',
+            '--property=RemainAfterExit=yes', '--property=MemoryMax=2G',
+            '--property=MemorySwapMax=0', '--property=CPUQuota=200%',
+            '--property=MemoryAccounting=yes', '--property=CPUAccounting=yes',
+            '--property=Restart=no', '--property=KillMode=control-group',
+            '--property=TimeoutStopSec=5', '--property=UMask=0077',
+            '--property=LimitCORE=0', '--property=LimitFSIZE=1048576',
+            '--property=RuntimeMaxSec=' + str(maximum),
+            '--property=WorkingDirectory=' + str(ROOT),
+            '--setenv=PYTHONPATH=' + str(ROOT), '--setenv=PYTHONNOUSERSITE=1',
+            '--setenv=PYTHONDONTWRITEBYTECODE=1', '--setenv=OMP_NUM_THREADS=2',
+            '--setenv=OPENBLAS_NUM_THREADS=2']
+    for stream in ('stdout', 'stderr'):
+        target = ATTEMPT / f'{phase}-{stream}.log'
+        target.touch(mode=0o600, exist_ok=False)
+        label = {"stdout": "Output", "stderr": "Error"}[stream]
+        args.append(f"--property=Standard{label}=append:{target}")
+    args += [str(PYTHON), '-B', '-m', 'steganography.research_wav_pair_native', phase,
+             '--protocol', str(PROTOCOL), '--cache', str(CACHE), '--qa', str(QA)]
+    if phase == 'profile':
+        args += ['--media', str(ROOT / '.benchmark/wav-pilot-data-20261017')]
+    else:
+        args += ['--approval', str(approval)]
+    save(ATTEMPT / f'{phase}-command.json', {'argv': args, 'automatic_retry': False})
+    completed = subprocess.run(args, capture_output=True, text=True)
+    save(ATTEMPT / f'{phase}-launch.json', {'returncode': completed.returncode,
+         'stdout': completed.stdout, 'stderr': completed.stderr})
+    assert completed.returncode == 0, 'launch failed; no retry'
+    expires = time.monotonic() + maximum + 20
+    while True:
+        evidence = show(unit)
+        if int(evidence.get('ExecMainExitTimestampMonotonic', '0')) and evidence.get('MainPID') == '0':
+            break
+        if time.monotonic() >= expires:
+            save(ATTEMPT / f'{phase}-observer-expired.json', evidence)
+            raise RuntimeError('external observer unavailable; watchdog owns termination')
+        time.sleep(.5)
+    # Preserve all evidence before validation, including any failed attempt.
+    save(ATTEMPT / f'{phase}-systemd-original.json', evidence)
+    command(['systemctl', '--user', 'stop', unit])
+    elapsed = verify_unit(evidence, eligible)
+    evidence['independent_seconds'] = elapsed
+    save(ATTEMPT / f'{phase}-systemd.json', evidence)
+    profile = read(CACHE / 'profile.json')
+    assert profile['protocol_sha256'] == EXPECTED and profile['optimizer_updates'] == 0
+    assert profile['originals_verified'] == 600 and profile['payload_oracles_passed'] == 4800
+    assert profile['parameters_unchanged'] is True and profile['backward_batches'] == 20
+    assert profile['reserved_media_opened'] is False and profile['real_fit_authorized'] is False
+    if phase == 'profile':
+        assert profile['profile_wall_seconds'] <= elapsed
+        assert math.ceil(elapsed) + 1 <= 300
+        assert profile['conservative_total_projection_seconds'] <= 1800
+        result = {'status': 'native_prepared_pending_explicit_approval',
+                  'profile_debit_seconds': math.ceil(elapsed) + 1, 'optimizer_updates': 0,
+                  'native_accuracy': 'unavailable; no fitting authorized'}
+    else:
+        worker = read(CACHE / 'fit/result.json')
+        assert worker['confirmed_updates'] == 2280 and len(worker['runs']) == 2
+        checked = 0
+        for run, seed in zip(worker['runs'], n.SPEC['seeds'], strict=True):
+            n.verify_run(run, seed)
+            for role, count in (('train', 3600), ('development', 1800)):
+                target = CACHE / f'fit/{seed}/{role}-scores.npy'
+                assert n.base.digest(target) == run[role]['scores_sha256']
+                checked += n.replay_auc(n.read_array(target, count, scores=True), run[role])
+        assert checked == 36 and debit + elapsed <= 1800
+        result = {'status': 'completed_native_exploratory_pilot', 'confirmed_updates': 2280,
+                  'independent_auc_checks': checked, 'learning_target': worker['learning_target'],
+                  'independent_total_seconds': debit + elapsed}
+    assert n.base.digest(PROTOCOL) == EXPECTED
+    n.quality(ROOT, PROTOCOL, QA)
+    result.update({'protocol_sha256': EXPECTED, 'profile_sha256': n.base.digest(CACHE / 'profile.json'),
+                   'independent_unit_seconds': elapsed, 'experiment_file_bytes': n.storage(ATTEMPT),
+                   'reserved_media_opened': False, 'checkpoint_written': False,
+                   'production_qualified': False, 'automatic_retry': False})
+    save(ATTEMPT / f'{phase}-accepted.json', result)
+    print(json.dumps(result, sort_keys=True))
+    return result
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('phase', choices=('profile', 'fit'))
+    parser.add_argument('--approval', type=Path)
+    options = parser.parse_args()
+    run(options.phase, options.approval)

@@ -1,0 +1,225 @@
+"""Post-hoc train-cache-only pair diagnosis, zero optimizer updates."""
+import hashlib
+import json
+from pathlib import Path
+import resource
+import time
+
+import numpy as np
+
+from core import wav_pair_candidate as candidate
+from core import wav_pair_control as control
+
+ROOT = Path(__file__).resolve().parents[2]
+PRIVATE = ROOT / '.benchmark/wav-pair-diagnosis-20261022'
+PARENT = ROOT / '.benchmark/wav-pair-control-20261022/attempt-v1/cache'
+CONTRACT = ROOT / 'benchmarks/wav-pair-diagnosis-protocol-20261022.json'
+
+
+def read(path):
+    return control.old.gate.read_document(path)[0]
+
+
+def digest(path):
+    return control.old.gate.source_hash(path)
+
+
+def auc(negative, positive):
+    """Independent all-pairs half-tie AUC, no threshold or direction selection."""
+    n = np.asarray(negative, dtype=np.float64)
+    p = np.asarray(positive, dtype=np.float64)
+    assert n.ndim == p.ndim == 1 and len(n) and len(p)
+    assert np.isfinite(n).all() and np.isfinite(p).all()
+    difference = p[:, None] - n[None, :]
+    return float((np.sum(difference > 0) + 0.5*np.sum(difference == 0))/(len(n)*len(p)))
+
+
+def independent_rank_auc(negative, positive):
+    values = np.concatenate([negative, positive])
+    order = np.argsort(values, kind='stable')
+    ranks = np.empty(len(values), dtype=np.float64)
+    i = 0
+    while i < len(order):
+        j = i+1
+        while j < len(order) and values[order[j]] == values[order[i]]:
+            j += 1
+        ranks[order[i:j]] = (i+1+j)/2
+        i = j
+    count = len(positive)
+    return float((ranks[len(negative):].sum()-count*(count+1)/2)/(len(negative)*count))
+
+
+def summary(values):
+    return {'mean': float(np.mean(values)), 'std_population': float(np.std(values)),
+            'min': float(np.min(values)), 'q25': float(np.quantile(values,.25)),
+            'median': float(np.median(values)), 'q75': float(np.quantile(values,.75)),
+            'max': float(np.max(values))}
+
+
+def correlation(a,b):
+    a=np.asarray(a,dtype=np.float64); b=np.asarray(b,dtype=np.float64)
+    a=a-a.mean(); b=b-b.mean()
+    denominator=np.linalg.norm(a)*np.linalg.norm(b)
+    return None if denominator==0 else float(np.dot(a,b)/denominator)
+
+
+def gradients(torch, model, inputs, labels):
+    loss=torch.nn.functional.cross_entropy(model(inputs), labels)
+    return np.concatenate([g.detach().numpy().ravel().astype(np.float64)
+                           for g in torch.autograd.grad(loss, tuple(model.parameters()))])
+
+
+def norms(vector):
+    return float(np.linalg.norm(vector))
+
+
+def cosine(a,b):
+    denominator=norms(a)*norms(b)
+    return None if denominator==0 else float(np.dot(a,b)/denominator)
+
+
+def main():
+    resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+    resource.setrlimit(resource.RLIMIT_FSIZE,(control.MIB,control.MIB))
+    started=control.old.process_started()
+    contract=read(CONTRACT)
+    assert digest(Path(__file__))==contract['audit_sha256']
+    for name,sha in contract['input_sha256'].items():
+        assert digest(ROOT/name)==sha,name
+    control.load(ROOT,ROOT/'benchmarks/wav-pair-control-protocol-20261022.json')
+    control.resources()
+    torch=control.runtime()
+    # No fitting entry point or optimizer construction is used by this audit.
+    def forbidden(*args,**kwargs):
+        raise AssertionError('diagnosis must never construct an optimizer or fit')
+    torch.optim.AdamW=forbidden
+    control.fit=control.fit_seed=forbidden
+    profile=read(PARENT/'profile.json')
+    manifest=read(PARENT/'manifest.json')
+    rows=control.validate_records(manifest['files'],read(ROOT/control.old.CORPUS))['train']
+    assert control.row_sha(rows)==profile['row_order_sha256']['train']
+    assert digest(PARENT/'train.npy')==profile['arrays_sha256']['train']
+    x=control.read_array(PARENT/'train.npy',3600)
+    # Fixed cover + eight-recipe ordering, checked against the bound metadata.
+    for index,row in enumerate(rows):
+        expected=None if index%9==0 else control.wav_pilot.RECIPES[index%9-1]
+        assert row['recipe']==expected
+        assert row['lineage']==rows[index//9*9]['lineage']
+    cube=x.astype(np.float64).reshape(400,9,10)
+    covers=cube[:,0,:]
+    frames=np.array([r['frames'] for r in manifest['files'] if r['role']=='train'])
+    assert len(frames)==400
+    # Explicit tied, reversed and perfect examples validate both AUC methods.
+    fixture_checks=0
+    for negative,positive,expected in [([0,0],[0,0],.5),([0,1],[1,2],.875),
+                                      ([2,3],[0,1],0),([0,1],[2,3],1)]:
+        assert auc(negative,positive)==independent_rank_auc(negative,positive)==expected
+        fixture_checks+=1
+    original=read(ROOT/'benchmarks/wav-pair-control-results-20261022.json')['result']
+    features=[]
+    scalar_checks=0
+    for column,name in enumerate(candidate.NAMES):
+        cells=[]
+        for index,(method,rate,plane) in enumerate(control.wav_pilot.RECIPES,1):
+            positive=cube[:,index,column]
+            delta=positive-covers[:,column]
+            area=auc(covers[:,column],positive)
+            assert area==independent_rank_auc(covers[:,column],positive)
+            scalar_checks+=1
+            if column==0:
+                assert area==original['fixed_global_plane0']['train']['cells'][index-1]['roc_auc']
+            cells.append({'method':method,'rate_percent':rate,'plane':plane,
+                          'roc_auc':area,'paired_delta':summary(delta),
+                          'positive_delta_fraction':float(np.mean(delta>0)),
+                          'zero_delta_fraction':float(np.mean(delta==0)),
+                          'paired_mean_over_cover_std':None if np.std(covers[:,column])==0 else float(np.mean(delta)/np.std(covers[:,column]))})
+        features.append({'column':column,'name':name,'cover':summary(covers[:,column]),
+                         'cover_frame_correlation':correlation(covers[:,column],frames),
+                         'cells':cells})
+    cell_vectors=[]
+    for index,recipe in enumerate(control.wav_pilot.RECIPES,1):
+        delta=np.mean(cube[:,index]-covers,axis=0)
+        cell_vectors.append({'recipe':list(recipe),'mean_delta':delta.tolist(),
+                             'plane0_delta_norm':norms(delta[::2]),
+                             'plane1_delta_norm':norms(delta[1::2])})
+    initial=[]
+    tcover=torch.from_numpy(x[::9].copy())
+    labels=torch.tensor([int(r['recipe'] is not None) for r in rows])
+    for seed in control.SPEC['seeds']:
+        with torch.random.fork_rng():
+            torch.manual_seed(seed)
+            model=candidate.network()
+        before=[p.detach().clone() for p in model.parameters()]
+        combined=torch.cat((tcover,tcover))
+        balanced_labels=torch.cat((torch.zeros(400,dtype=torch.long),torch.ones(400,dtype=torch.long)))
+        null=gradients(torch,model,combined,balanced_labels)
+        all_gradients=[];contrasts=[];cells=[]
+        with torch.inference_mode():
+            scores=torch.softmax(model(torch.from_numpy(x)),1)[:,1].numpy().reshape(400,9)
+            active=model[0](torch.from_numpy(x))>0
+            varying=int(torch.any(active!=active[0],dim=0).sum())
+        for index,recipe in enumerate(control.wav_pilot.RECIPES,1):
+            g=gradients(torch,model,torch.cat((tcover,torch.from_numpy(x[index::9].copy()))),balanced_labels)
+            contrast=g-null
+            assert np.isfinite(g).all()
+            all_gradients.append(g);contrasts.append(contrast)
+            cells.append({'recipe':list(recipe),'initial_train_auc':auc(scores[:,0],scores[:,index]),
+                          'balanced_gradient_norm':norms(g),'signal_contrast_gradient_norm':norms(contrast)})
+        losses=torch.nn.functional.cross_entropy(model(torch.from_numpy(x)),labels,reduction='none')
+        objective=(losses*torch.where(labels==0,4.5,.5625).to(torch.float32)).sum()/3600
+        full=np.concatenate([g.detach().numpy().ravel().astype(np.float64) for g in torch.autograd.grad(objective,tuple(model.parameters()))])
+        error=float(np.max(np.abs(full-np.mean(all_gradients,axis=0))))
+        assert error<2e-6
+        total=np.sum(contrasts,axis=0)
+        denominator=float(np.dot(total,total))
+        for cell,contrast in zip(cells,contrasts,strict=True):
+            cell['dot_share_of_total_initial_signal']=None if denominator==0 else float(np.dot(contrast,total)/denominator)
+        alignment=[{'left_recipe':list(control.wav_pilot.RECIPES[i]),'right_recipe':list(control.wav_pilot.RECIPES[j]),
+                    'signal_contrast_cosine':cosine(contrasts[i],contrasts[j])}
+                   for i in range(8) for j in range(i+1,8)]
+        assert all(torch.equal(a,b) for a,b in zip(before,model.parameters(),strict=True))
+        initial.append({'seed':seed,'parameter_count':sum(a.numel() for a in model.parameters()),
+                        'parameters_unchanged':True,'optimizer_updates':0,'hidden_units_with_varying_activation':varying,
+                        'null_balanced_gradient_norm':norms(null),'full_gradient_decomposition_max_abs_error':error,
+                        'cells':cells,'pairwise_gradient_alignment':alignment})
+    schedules=[]
+    for seed in control.SPEC['seeds']:
+        rng=np.random.default_rng(seed^0x4E4A5047)
+        batch_covers=[];last_covers=[];exposure=np.zeros(9,dtype=np.int64)
+        for epoch in range(20):
+            order=rng.permutation(3600)
+            for start in range(0,3600,64):
+                batch=order[start:start+64]
+                batch_covers.append(int(np.sum(batch%9==0)))
+                if len(batch)==16:last_covers.append(batch_covers[-1])
+                exposure+=np.bincount(batch%9,minlength=9)
+        assert len(batch_covers)==1140 and len(last_covers)==20
+        assert (exposure==8000).all()
+        schedules.append({'seed':seed,'updates':len(batch_covers),'row_presentations':int(exposure.sum()),
+                          'presentations_per_recipe_including_cover':exposure.tolist(),
+                          'cover_weighted_mass_per_epoch':400*4.5,
+                          'stego_weighted_mass_per_epoch':3200*.5625,
+                          'batch_cover_count':summary(batch_covers),
+                          'batches_without_cover':sum(c==0 for c in batch_covers),
+                          'last_batch_cover_counts':last_covers})
+    for name,sha in contract['input_sha256'].items():assert digest(ROOT/name)==sha,name
+    control.load(ROOT,ROOT/'benchmarks/wav-pair-control-protocol-20261022.json')
+    result={'schema_version':'wav-pair-readonly-diagnosis-v1','status':'completed_readonly',
+            'contract_sha256':digest(CONTRACT),'audit_sha256':digest(Path(__file__)),
+            'optimizer_updates':0,'parameters_unchanged':True,'train_feature_rows_opened':3600,
+            'development_features_opened':False,'native_media_opened':False,'reserved_media_opened':False,
+            'model_or_dataset_downloaded':False,'checkpoint_written':False,
+            'trained_weights_available':False,'trained_loss_history_available':False,
+            'full_gradient_history_available':False,'initial_gradients_are_trained_gradients':False,
+            'threshold_or_direction_search':False,'new_fitting_authorized':False,
+            'auc_fixture_checks':fixture_checks,'feature_auc_independent_checks':scalar_checks,
+            'features':features,'cell_mean_deltas':cell_vectors,'initialization_checks':initial,
+            'schedule_replay':schedules,'wall_seconds':time.monotonic()-started,
+            'resources':control.resources(),'input_and_parent_bindings_unchanged':True}
+    assert result['wall_seconds']<115
+    control.old.save(ROOT/'benchmarks/wav-pair-diagnosis-results-20261022.json',result)
+    print('completed_readonly; zero optimizer updates; train cache only',flush=True)
+
+
+if __name__=='__main__':
+    main()

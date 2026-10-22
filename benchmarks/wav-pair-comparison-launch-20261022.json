@@ -1,0 +1,38 @@
+{
+  "all_previous_runs_restart_authorized": false,
+  "automatic_retry": false,
+  "command": "<cpu-python> -B steganography/research_wav_pair_comparison.py <phase> --protocol <frozen-protocol> --cache <exclusive-cache> [--binding <frozen-fit-binding>]",
+  "coordinator_sha256": "7fd92b8e39cb6fdd88cc93f4a8f6d98b95f0f0f7413f5039dd2fdb9fcc81d6fd",
+  "coordinator_source_artifact": "benchmarks/wav-pair-comparison-coordinator-20261022.txt",
+  "cpu_accounting": true,
+  "cpu_quota_percent": 200,
+  "downloads_authorized": false,
+  "fit_attempts_allowed": 1,
+  "fit_conditional_on_profile": true,
+  "full_coverage_percent": 96.99101730165052,
+  "full_qa_log_sha256": "49a3fc7d3ff042a651859cf7fa146c82ac41ea4fa484c3b285c990d8bcba0982",
+  "memory_accounting": true,
+  "memory_max_bytes": 2147483648,
+  "old_v3_restart_authorized": false,
+  "profile_attempts_allowed": 1,
+  "profile_watchdog_seconds": 310,
+  "protocol_sha256": "7a0edfe63971c294c86c84c159ab26bdecd5e70c8eaaaf1d22cb0679136d47f5",
+  "qa_receipts_sha256": {
+    "focused-coverage.json": "2be19e1ffdf048ad8f30dd435274469e562c623c1c7befb6fb00c56d9cd4433c",
+    "full-coverage.json": "e3f64b3f52d66f869933da6cf548cfb4197cbb7dc2f3d5cd13b8493d5040240c",
+    "full-pytest.json": "c2471f7d7583de6a9fc2b646dd544e9eef6700604f11f6a51e6b3fdb04c5353a",
+    "mypy.json": "1eb34774676af9415c9c2c0c8bcddadbc4ecd42d2c95c196145ef6dcaf62c0fd",
+    "ruff.json": "c3e2d692c5eb361a14c0bcc8bc2abf6a7c52cfdc9ca7ad089d61839626a7904d"
+  },
+  "real_fit_authorized": false,
+  "schema_version": "wav-pair-comparison-launch-v1",
+  "swap_max_bytes": 0,
+  "total_eligible_seconds": 1800,
+  "unit": {
+    "kill_mode": "control-group",
+    "remain_after_exit": true,
+    "restart": "no",
+    "timeout_stop_seconds": 5,
+    "umask": "0077"
+  }
+}

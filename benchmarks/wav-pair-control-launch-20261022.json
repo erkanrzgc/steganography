@@ -1,0 +1,36 @@
+{
+  "automatic_retry": false,
+  "command": "<cpu-python> -B steganography/research_wav_pair_control.py <phase> --protocol <frozen-protocol> --cache <exclusive-cache> [--binding <frozen-fit-binding>]",
+  "coordinator_sha256": "117ef69ad8d21a51b25805309f07d8a2c6f87dcdf05a447434f220cb230cd104",
+  "cpu_accounting": true,
+  "cpu_quota_percent": 200,
+  "downloads_authorized": false,
+  "fit_attempts_allowed": 1,
+  "fit_conditional_on_profile": true,
+  "full_coverage_percent": 96.9684721099434,
+  "full_qa_log_sha256": "d38be0c2fb8db49fc756f949e558e2e39953179eefcaef7178384ef52ad029a2",
+  "memory_accounting": true,
+  "memory_max_bytes": 2147483648,
+  "old_v3_restart_authorized": false,
+  "profile_attempts_allowed": 1,
+  "profile_watchdog_seconds": 310,
+  "protocol_sha256": "deaeddf4ef54fcc6e9bdb8583c0896b61aec4d2bc6c8caa4e7a56c2eff0b2a35",
+  "qa_receipts_sha256": {
+    "focused-coverage.json": "cbed8bf8484fbd26a5eb75611b71366c980b1ca8f414f78555316ce5a71eceed",
+    "full-coverage.json": "d016948b33bd0cf3210553a30e19017e998353e2768ce21fc2ebfc841ac4a466",
+    "full-pytest.json": "d3ba448f222e295c61599875f98c03e81c8955348823963ed2639fb118c342f4",
+    "mypy.json": "bfa22549c6b1c3b1dd9c9ae841a5d2e09d5f73f6174c9f3fb69630f9b28eb800",
+    "ruff.json": "bb61b2bbbe4ae780ffe4134366c633303efdf96fad056d31e40f3c768a498559"
+  },
+  "real_fit_authorized": false,
+  "schema_version": "wav-pair-control-launch-v1",
+  "swap_max_bytes": 0,
+  "total_eligible_seconds": 1800,
+  "unit": {
+    "kill_mode": "control-group",
+    "remain_after_exit": true,
+    "restart": "no",
+    "timeout_stop_seconds": 5,
+    "umask": "0077"
+  }
+}

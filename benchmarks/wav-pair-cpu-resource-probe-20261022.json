@@ -1,0 +1,9 @@
+{
+  "cpu_quota_percent": 200,
+  "generated_fit_attempt": false,
+  "memory_max_bytes": 2147483648,
+  "optimizer_updates": 0,
+  "service_runtime_milliseconds": 22,
+  "status": "passed_resource_only",
+  "swap_max_bytes": 0
+}
