@@ -17,13 +17,18 @@ instructions so that implementation readiness is not mistaken for accuracy.
 
 ## Evaluate the evidence
 
+- [Current research status](STATUS.md): completed experiments, unavailable checks, and deployment limits.
+- [Native AudioMNIST results](WAV_PAIR_NATIVE_RESULTS_20261023.md): both seeds completed;
+  required LSB-plane-0 target failed, with every cell and speaker-cluster interval retained.
+- [Matched generated comparison](WAV_PAIR_COMPARISON_RESULTS_20261022.md): standardized
+  inputs passed the generated control; this did not qualify native speech detection.
 - [Measured results](BENCHMARK_RESULTS.md): method-specific results, including failures.
 - [Benchmark protocol](BENCHMARK_PROTOCOL.md): splits, qualification gates, and reproducibility.
 - [CTF evaluation](CTF_EVALUATION.md): frozen payload-hash recovery, timings and honest qualification.
 - [Dataset catalog](DATASET_CATALOG.md): sources, provenance, and acquisition conditions.
 - [Non-JPEG preparation](NONJPEG_PREPARATION_PROTOCOL.md) and
   [method readiness](NONJPEG_METHOD_READINESS.md): CPU data/oracle preparation and remaining gaps.
-- [Latest JPEG curriculum results](JPEG_CURRICULUM_RESULTS.md): small inspected-development
+- [Historical JPEG curriculum results](JPEG_CURRICULUM_RESULTS.md): small inspected-development
   changes, not qualified real-world accuracy.
 - [Model guide](MODELS.md): explicit installation and verification of optional local models.
 

@@ -1,5 +1,73 @@
 # Roadmap and status
 
+2026-10-23: complete the explicitly approved native standardized pair-head
+pilot: two seeds /2,280 updates /144,000 presentations. The required 40%-p0
+cells fail at AUC .466650–.486625 despite stronger p1 cells; no detector is
+qualified. All scores and speaker-cluster intervals replay independently;
+resources and old source/model bindings pass. This one fit is consumed; no
+automatic retry or further training. See [results](WAV_PAIR_NATIVE_RESULTS_20261023.md).
+
+2026-10-22: complete the separately bound native standardized pair-head
+preparation: 600 cached files /4,800 payload checks /zero optimizer updates.
+Next: explicitly approved CPU fitting, two seeds /2,280 updates; no GPU/SSH
+dependency. All reserved groups remain closed. See
+[preparation results](WAV_PAIR_NATIVE_PREPARATION_20261022.md).
+
+2026-10-22: finish the separately frozen matched scaling intervention: two
+seeds ×two arms, all 4,560 updates. The train-only standardized head passes
+the generated rule; raw fails. Target development AUCs rise from
+0.498425–0.550825 to 0.945625–0.984600, with identical initialization/order.
+All 72 score AUCs replay independently; full QA passes 3,662 tests /two CUDA
+skips, 96.99% coverage. Preserve every cell, including low-payload p1
+regressions. See [results](WAV_PAIR_COMPARISON_RESULTS_20261022.md).
+Next: a distinct source/data/domain/exposure/grouping protocol for any native
+trial; the generated pass is not old-CNN acceptance or real-fit approval.
+
+2026-10-22: complete a source-bound train-cache-only pair-control diagnosis:
+80 independently checked feature/cell AUCs, both initialization gradient
+identities and exact two-seed schedule replay, zero optimizer updates.
+Useful plane-0 feature signal exists; plane-1 dominates the initial shared
+gradient. The scale/competition explanation remains a hypothesis because no
+trained-state loss/gradient trajectory was retained. Next is a separately
+frozen matched raw/standardized comparison with numeric telemetry; its
+[draft](WAV_PAIR_NEXT_INTERVENTION_DRAFT_20261022.md) is not executable.
+See [diagnosis](WAV_PAIR_DIAGNOSIS_RESULTS_20261022.md). No real fit authorized.
+
+2026-10-22: the separate fresh generated CPU pair-control contract completed
+both full seeds (2,280 updates /144,000 row presentations) after a successful
+zero-update profile. It **failed the learning gate**: target plane-0
+development AUCs range 0.495800–0.546025 against 0.70. All 4,800 payload
+recoveries, source/cache bindings and resource limits pass; independent charged
+time is 30.556292 seconds. Full QA: 3,598 tests /two CUDA skips, 96.97% coverage.
+Preserve this result and all older attempts. Next fitting needs a separate
+frozen intervention; real AudioMNIST fitting remains unauthorized.
+See [all cells and limitations](WAV_PAIR_CONTROL_RESULTS_20261022.md).
+
+2026-10-22: implement the untrained ten-feature PCM pair-energy /418-parameter
+head candidate. Independent scalar and generated forward/backward checks
+pass without optimizer updates. Full software verification passes 3,554 tests /two CUDA skips,
+96.94% coverage; no
+new fit or GPU attempt is authorized by the
+[draft](WAV_PAIR_CANDIDATE_DRAFT_20261022.md). The previous v3 full-control
+attempt stays unavailable and must not be restarted.
+
+2026-10-21: implement and separately bind the generated WAV full-exposure
+producer/supervisor. The exact 600-file synthetic manifest and all 4,800
+payload checks are frozen with zero updates. The full software gate passes
+3,528 tests /two CUDA skips with 96.93% coverage; the one bounded CUDA control
+is unavailable, with 1,937 confirmed updates as a lower bound and
+one complete scored seed; no automatic retry.
+See [results](WAV_FULL_CONTROL_RESULTS_20261021.md).
+The v2 evidence amendment retains each completed
+seed before another seed starts. No real-data fit is authorized.
+See [the runner protocol](WAV_CONTROL_RUNNER_PROTOCOL_20261021.md).
+
+2026-10-21: add a source-bound, read-only acceptance contract for the next
+full-exposure generated WAV control. Reduced exposure, incomplete measurements
+and either failing seed cannot count as a pass. The full-exposure producer and
+supervisor remain to be implemented/frozen; no real-data fit is authorized.
+See [the contract](WAV_FULL_CONTROL_PROTOCOL_20261021.md).
+
 2026-10-19: the AudioMNIST generated CUDA preflight first failed on a missing
 linear `seed` receipt key (preserved as unavailable). The separately versioned
 receipt amendment then passed: CNN pair 2,706/3,600 s, linear pair 42/600 s,

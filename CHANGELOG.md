@@ -1,5 +1,83 @@
 # Changelog
 
+- Reorganize README around installation, verified CLI workflows, format coverage,
+  verdict semantics and measured research results. Link actual AudioMNIST curves,
+  complete failure context and verification evidence; refresh research navigation.
+
+- Complete the explicitly approved native AudioMNIST pair-z-score CPU pilot:
+  both full seeds /2,280 updates. The 40%-p0 learning target fails; retain
+  all cells, 40 train epochs, gradient telemetry and score arrays. Replay
+  all 36 AUCs and 80 speaker-cluster/paired intervals independently. Publish
+  balanced accuracy and AUC with failure context in README and result curves.
+  No checkpoint, deployment, reserved-source access or automatic retry.
+
+- Add separately bound native AudioMNIST standardized pair-head preparation
+  and a CPU fit adapter requiring explicit, profile-bound user approval.
+  Preserve speaker roles and all old controls; validate 600 cached originals
+  and 4,800 payloads without optimizer updates. Fix two-seed exposure,
+  train-only normalization, threshold and speaker-cluster uncertainty before
+  native features; reject unsafe NPY headers and partial fit evidence.
+
+- Complete native preparation with zero optimizer updates: 600 cached WAVs,
+  4,800 payload checks and an unchanged-parameter CPU profile. Full QA:
+  3,729 passed /two CUDA skips, 97.00% coverage; new modules >95%.
+  Real fitting remains pending explicit approval; preserve all old evidence.
+
+- Complete a separately frozen matched raw/train-z-score PCM pair comparison:
+  all four fits /4,560 updates after 4,800 payload checks and a zero-update
+  resource profile. The standardized head passes the two-seed generated rule;
+  raw fails. Preserve all cells and low-payload regressions, 80 epoch records,
+  actual gradient/step telemetry and independently replayed score arrays.
+  Full gate: 3,662 passed /two CUDA skips, 96.99% coverage; Ruff and 223-file
+  mypy pass. New modules exceed 95% coverage. No model checkpoint, native
+  accuracy, old-CNN qualification or real-fit authorization follows.
+
+- Diagnose the failed generated pair head using only its bound train cache:
+  80 independently checked feature/cell AUCs, unchanged initialization
+  gradients and exact exposure replay, zero updates. Plane-0 feature signal
+  remains useful; plane-1 dominates the initial signal-gradient projection.
+  Record scale/competition as a hypothesis and missing trained-state telemetry
+  as unavailable. Archive the exact audit source and a non-executable matched
+  raw/standardized comparison draft; no retry, new development scoring or fit.
+
+- Add a separately frozen fresh generated PCM pair-control service and thin
+  CPU adapter. Hash-bind 600 sources, 4,800 payload checks and feature caches;
+  profile with zero updates before one conditional two-seed fit. Both full
+  schedules completed (2,280 updates) but failed the plane-0 development gate.
+  Preserve all cells, fixed-statistic comparator and independent systemd time:
+  30.556292 charged seconds; no real media, checkpoint or retry. Full gate:
+  3,598 passed /two CUDA skips, 96.97% coverage; new service/adapter >95%.
+  Ruff and 221-file mypy pass. See the 2026-10-22 pair-control results.
+
+- Prepare a separate, untrained PCM pair-energy candidate: ten bounded
+  global/quarter statistics with an optional 418-parameter FP32 head. Reuse
+  the native PCM decoder and preserve frozen v3 sources. Twenty-six scalar,
+  domain/limit and generated gradient tests cover the new module completely;
+  no optimizer, training adapter, GPU attempt or native accuracy claim.
+  Full gate: 3,554 passed /two actual-CUDA skips, 96.94% coverage.
+  See the non-executable 2026-10-22 design.
+
+- Add a separately bound generated WAV full-exposure producer and one-shot
+  supervisor using the unchanged v3/shared trainer. Freeze the independent
+  600-file corpus and 4,800 payload checks before fitting. Enforce memory, swap,
+  CUDA allocation and wall limits; retain confirmed partial updates and never
+  restart automatically. Thirty-one new tests cover both modules completely; Ruff
+  and 218-file mypy pass. Full gate: 3,528 passed /two explicit CUDA skips,
+  96.93% coverage. Preserve the unexecuted v1 binding and interrupted QA; v2
+  persists completed per-seed evidence before the next seed. Generated CUDA
+  control is unavailable: 1,937 confirmed updates as a lower bound,
+  one complete scored seed, no restart. See the full-control results.
+  No real-data fit, download or checkpoint.
+
+- Add a source-bound, read-only WAV full-exposure evidence verifier and module
+  adapter. Require both complete seeds, disjoint generated splits, all eight
+  cells, valid AUCs and bounded resource measurements; preserve completed
+  learning failures and report incomplete evidence as unavailable. Bind the
+  current source separately from historical CUDA receipts. No real-data fit,
+  model download or license change. The 67 new tests cover both modules
+  completely. Full gate: 3,497 passed /two explicit CUDA skips, 96.89% coverage;
+  Ruff and 216-file mypy pass.
+
 - Version the AudioMNIST pilot with a receipt-only amendment: linear receipts
   take their seed from the per-seed row, with a real-linear regression test.
   The single amended generated CUDA preflight passed (CNN 2,705.9/3,600 s,

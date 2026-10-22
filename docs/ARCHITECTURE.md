@@ -1,5 +1,70 @@
 # Architecture
 
+`core.wav_pair_native` owns separately bound cached AudioMNIST preparation
+and the explicit-approval CPU fit adapter. It reuses frozen pair statistics,
+train-only normalization and the generated head recipe without modifying
+completed control sources. Only allowlisted media are read; source, split,
+PCM, cache, software, profile and approval bindings precede optimization.
+Small NPY headers are checked before allocation. The service retains numeric
+telemetry and speaker-cluster metrics, with no checkpoint or production
+registration. See [native contract](WAV_PAIR_NATIVE_PROTOCOL_20261022.md). The
+explicitly approved two-seed native pilot completed; its required p0 target
+failed. All score/cluster intervals replay independently; see
+[complete numeric evidence](WAV_PAIR_NATIVE_RESULTS_20261023.md).
+
+`core.wav_pair_comparison` owns the separate matched raw/train-z-score CPU
+research intervention. It binds a fresh generated corpus, all payload checks,
+unchanged raw feature caches and a float64 train-only normalizer before the
+conditional four-fit attempt. Domains distinguish raw [0,1] features from
+finite, potentially unbounded standardized model inputs. Both arms preserve
+the same 418-parameter head, initialization, minibatch order and exposure.
+Numeric epoch/step telemetry and bounded score arrays support independent
+replay without model checkpoints; the thin explicit adapter applies file
+limits and the separately bound coordinator enforces systemd resources/time.
+See [the comparison contract](WAV_PAIR_COMPARISON_PROTOCOL_20261022.md).
+
+`core.wav_pair_candidate` is a research-only representation: ten
+bounded PCM pair-equalization statistics and an optional 418-parameter FP32
+head. It reuses the native decoder, consumes bytes only and has no optimizer,
+training adapter or analyzer registration within that module. Generated scalar/gradient checks
+are computation evidence only. See the
+[non-executable candidate design](WAV_PAIR_CANDIDATE_DRAFT_20261022.md).
+
+`core.wav_pair_control` is a separate, explicitly invoked CPU research service.
+Its zero-update profile creates a fresh generated corpus, independently checks
+payload recovery and binds finite FP32 feature caches and split order. Only a
+successful profile and separately frozen binding permit the one-shot two-seed
+AdamW control. The thin `research_wav_pair_control.py` adapter applies file/core
+limits; detached systemd units enforce memory, swap, CPU and time bounds.
+Completed seed receipts and atomic update counts survive later failure;
+independent systemd monotonic durations gate final acceptance. No original
+media, download, checkpoint or production analyzer is involved. See the
+[separate CPU contract](WAV_PAIR_CONTROL_PROTOCOL_20261022.md).
+
+The subsequent pair diagnosis is a separately hash-bound one-shot research
+audit over the train cache and metadata. It performs independent AUC and
+initialization-only derivative checks without constructing an optimizer,
+opening development features or changing application services. Numeric
+evidence and the exact audit text are archived; missing trained-state telemetry
+stays unavailable. See [diagnosis](WAV_PAIR_DIAGNOSIS_RESULTS_20261022.md).
+
+`core.wav_control_runner` owns deterministic generated WAV construction,
+source/corpus checks, inference/AUC and a one-shot child-process supervisor.
+The explicit adapter applies per-file/core-dump limits; deployment uses a
+detached memory/swap/time-bounded systemd unit. Source binding and numeric-PID
+cgroup checks precede the shared v3 trainer. Progress is an atomic confirmed
+update lower bound; interrupted work is unavailable, with no automatic retry.
+The v2 evidence amendment retains each completed fit and seed metrics before
+starting the next seed. The worker never opens original media or saves a model. See the
+[runner protocol](WAV_CONTROL_RUNNER_PROTOCOL_20261021.md).
+
+`core.wav_control_gate` owns read-only validation of full-exposure generated
+WAV evidence. Its explicit `steganography.research_wav_control` adapter only
+reads bounded protocol/receipt documents and prints a decision; neither path
+starts fitting or imports Torch. Historical source bindings are preserved,
+and every decision leaves real fitting and production qualification false.
+See [the acceptance contract](WAV_FULL_CONTROL_PROTOCOL_20261021.md).
+
 `core/document_corpus.py` owns explicit local PDF/TXT/MD/ZIP preparation;
 `steganography.research_documents` is a thin configuration/CLI adapter. The
 service bounds regular-file/license reads, archive inventory, artifact writes

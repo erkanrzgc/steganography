@@ -1,4 +1,4 @@
-# Dataset preparation for every built-in extension — 2026-10-17
+# Dataset preparation for every built-in extension — 2026-10-23
 
 Format support, test fixtures, prepared controlled data, training and qualified
 detection are separate states. This inventory covers the **23 explicitly handled
@@ -10,7 +10,7 @@ add others. Generic byte inspection is not format-specific dataset coverage.
 | `.jpg`, `.jpeg` | BOSS/BOWS/ALASKA controlled JPEG experiments; both seeds and failures retained | JPEG fits completed; no qualified detector; not every JPEG embedding method evaluated |
 | `.png`, `.bmp` | Controlled original-bound spatial pilot, BOWS gray /DIV2K RGB; PNG/BMP derivatives share ancestry | Linear fits completed; deep skeletons untrained; missing additional licensed native RGB origin |
 | `.wav` | FSDD speech /ESC environmental mono PCM16; scalar payload oracles and source roles | Linear fits completed, 50% development balanced accuracy; stereo/frequency-specific data missing |
-| `.wav` AudioMNIST follow-up | 600 source-bound mono PCM16 files (400 train /200 development); eight controlled bit-plane recipes and model trainer prepared | No fit or accuracy result; shared owned-GPU capacity preflight remains |
+| `.wav` AudioMNIST follow-up | 600 source-bound mono PCM16 cuts (400 train /200 development), grouped by 20/10 speakers; eight controlled recipes | Standardized pair-head CPU fit completed, both seeds /2,280 updates; required p0 target failed; [all metrics](WAV_PAIR_NATIVE_RESULTS_20261023.md); no qualification |
 | `.wave` | Explicit WAV trailing-data dispatch; existing `.wav` corpus is one format family | No separately measured suffix corpus; renaming WAVs does not add originals |
 | `.gif` | 13 source-bound licensed native files, unassigned; existing structural/recovery fixtures | Incomplete 20-file target; independent ancestry and palette/timing encoder/oracle missing |
 | `.txt` | Unicode 17 controls; nine prepared local document candidates from two package groups | Controlled payload/oracles pass; roles unassigned; technical English is not representative multilingual text |
