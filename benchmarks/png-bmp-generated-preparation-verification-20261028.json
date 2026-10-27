@@ -1,0 +1,52 @@
+{
+  "checked_utc_unix": 1793136909.1448874,
+  "cuda_hardware_tests_are_not_passed": true,
+  "cuda_skipped_unavailable": 2,
+  "files_sha256": {
+    "benchmarks/png-bmp-generated-corpus-20261028.json": "c3f20480053dd32473ee8631ba767ff9e4760957d04e6f7a00cde14dc940ec98",
+    "benchmarks/png-bmp-wsl-connection-20261028.json": "944aaffa524ec78a42c99b90849a7439a004b0882e4a8cb5ed5bad203839864d",
+    "core/spatial_generated_training.py": "4ea5a63e59d4a5de512b4770189063acdc4f4275981f9f85899bb4e350c27197",
+    "core/spatial_training_data.py": "0341d06d816d8194fcb92a6535e1da8fc178510fd70d475badce950295eaf15e",
+    "tests/test_spatial_generated_training.py": "d22d73fdb78289eb63bec13af5c10bdecf997bc96b52032d95228da040860ee8",
+    "tests/test_spatial_training_data.py": "d33aba4f529d829ecb5c75346181fc645104c35b1d684d0619022d28b4b6b276"
+  },
+  "first_focused_fixture_failure_preserved": true,
+  "focused_coverage_percent": 99.57081545064378,
+  "focused_tests_passed": 57,
+  "full_generated_learning_experiments": 0,
+  "full_pytest_elapsed_seconds": 1289.68,
+  "full_pytest_passed": 3945,
+  "historical_source_bindings_verified_unchanged": true,
+  "historical_transfer_ledgers_reset": false,
+  "log_sha256": {
+    ".benchmark/png-bmp-generated-preparation-20261028/focused-amended.log": "1f11582f628c9e924d6429e0343314d4c09902bc2db4159599ab266dca85df34",
+    ".benchmark/png-bmp-generated-preparation-20261028/focused-final-coverage.json": "f2e8846f6e5e869940601a8c48df971b251e8ed601ddde824ee1356fcd7829ca",
+    ".benchmark/png-bmp-generated-preparation-20261028/focused-final.log": "fdce2b774ab48c838da33e158a2670f3a49ce07f3b70862a69bd7cefc7cd3228",
+    ".benchmark/png-bmp-generated-preparation-20261028/focused-first.log": "88bf07cfdaa21bb288b18898cdfdd7f1465169f3b0e99676ceae842b03984cad",
+    ".benchmark/png-bmp-generated-preparation-20261028/full-coverage.json": "b7f6b8ab3768682c9efb63b611652270b9e59fee74fb9ead600cd86800a7d34e",
+    ".benchmark/png-bmp-generated-preparation-20261028/full-qa.log": "8da0b5c3accc35d7b252067d6cf05b92fe8ee6ab0cf809270bc3dc625ba89cdc",
+    ".benchmark/png-bmp-generated-preparation-20261028/mypy.log": "89d4ed4af1dadaf62fffaaaf50de4bfaeeca59fb13275d90d6ea84ff43e0fd68",
+    ".benchmark/png-bmp-generated-preparation-20261028/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "missing": [
+    "source_bound_generated_experiment_supervisor_and_external_debit_contract",
+    "generated_png_bmp_transport_cost_adapter",
+    "complete_native_corpus_and_group_feasible_roles",
+    "native_media_fit_adapter_and_frozen_exposure_budget"
+  ],
+  "mypy": "passed_233_source_files",
+  "native_roles": "unassigned",
+  "new_downloads": 0,
+  "new_gpu_profiles": 0,
+  "new_module_coverage_percent": {
+    "core/spatial_generated_training.py": 99.33774834437087,
+    "core/spatial_training_data.py": 100.0
+  },
+  "new_native_fits": 0,
+  "ruff": "passed",
+  "schema": "spatial-generated-preparation-verification-v1",
+  "software_resume_parity": "exact_model_and_optimizer_same_cpu_runtime_reconstructed_instances",
+  "software_tests_include_actual_generated_cpu_optimizer_steps": true,
+  "status": "ready_generated_software_only",
+  "total_coverage_percent": 97.07327314717615
+}

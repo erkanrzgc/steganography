@@ -1,0 +1,40 @@
+{
+  "checked_utc_unix": 1793137034.3797092,
+  "cuda_skipped_unavailable": 2,
+  "diff_check": "passed",
+  "documentation_sha256": {
+    "AGENTS.md": "e94fc99892da4d2ac2bb314fb6d019b73a14baf78b8097482296dfd779690675",
+    "CHANGELOG.md": "35a74b998b31c2f83f46a242dc64dfd18db010de7461b701de85223b7f403e20",
+    "docs/ARCHITECTURE.md": "b8d07a7b650ee5bbad41506e938ce40bd1db3016ee3cc6789f8d74a62f3e1e68",
+    "docs/PNG_BMP_LOCAL_READINESS_20261026.md": "097646bffaad2a3cd261172c3619c4e79569a298ca095d58da0755d20553f116",
+    "docs/ROADMAP.md": "6bf6d1e9c297a8fef3bb66eb981b847ae33003b603ea2400e0ea39fd5fd5f2d3"
+  },
+  "evidence_sha256": {
+    "benchmarks/png-bmp-generated-corpus-20261028.json": "c3f20480053dd32473ee8631ba767ff9e4760957d04e6f7a00cde14dc940ec98",
+    "benchmarks/png-bmp-generated-preparation-sources-20261028.json": "67e77dc45070a8e9e15665572f344bb3d885390740782287bb0e43886ce286b3",
+    "benchmarks/png-bmp-generated-preparation-verification-20261028.json": "a839e10bf51b52e029d206943fc2b43c033935cdb3f35ec3c13929c7bae0690e",
+    "benchmarks/png-bmp-wsl-connection-20261028.json": "944aaffa524ec78a42c99b90849a7439a004b0882e4a8cb5ed5bad203839864d"
+  },
+  "focused_passed": 57,
+  "full_generated_learning_control_executed": false,
+  "full_passed": 3945,
+  "generated_manifest_payload_checks": 220,
+  "generated_manifest_sources": 220,
+  "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "historical_attempts_restarted": false,
+  "native_fitting_executed": false,
+  "native_roles": "unassigned",
+  "new_acquisition_executed": false,
+  "new_gpu_experiments": 0,
+  "remaining_work": [
+    "source_bound_generated_experiment_supervisor_and_external_debit_contract",
+    "generated_png_bmp_transport_cost_adapter",
+    "complete_native_corpus_and_group_feasible_roles",
+    "native_media_fit_adapter_and_frozen_exposure_budget"
+  ],
+  "schema": "spatial-generated-preparation-delivery-v1",
+  "source_and_document_links": "passed",
+  "status": "ready_software_preparation_only",
+  "total_coverage_percent": 97.07327314717615,
+  "wsl_connection": "verified_readonly"
+}

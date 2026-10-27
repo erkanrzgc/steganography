@@ -1,0 +1,48 @@
+{
+  "coverage_percent": 97.12641315519014,
+  "cuda_skips": 2,
+  "earlier_attempts": [
+    {
+      "logs": [
+        "focused-first.log",
+        "focused-second.log"
+      ],
+      "reason": "direct_pytest_numpy_import_bootstrap",
+      "status": "unavailable"
+    },
+    {
+      "log": "focused-third.log",
+      "reason": "transport_verify_exif_order_and_missing_errno_fixture",
+      "status": "failed"
+    },
+    {
+      "log": "full-qa.log",
+      "reason": "interrupted_to_include_closing_verifier_memory_peak",
+      "status": "unavailable"
+    }
+  ],
+  "focused_coverage_percent": 99.6078431372549,
+  "focused_passed": 63,
+  "gpu_experiment_started": false,
+  "logs": {
+    "focused-final.log": "b4d5391f911b030459cb7e0728161146c03247c04e48e740ee69d580385a1f83",
+    "full-qa-final.log": "2a1b29a7c4427b47647ad3ce1eea6edebedb8a8d247e3885b4f1e8dba17320a7",
+    "full-qa.log": "d80e8d7568aaa3bfa75e875cc7f473f9940622d61c211391c7deb0f3a468f6b3",
+    "mypy-gate.log": "af568164d339b47161f00593aba12ae08dc59191cc57d10fe4b11c3e35c95255",
+    "ruff-gate.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "mypy_files": 237,
+  "new_module_coverage": {
+    "core/spatial_control.py": 100.0,
+    "core/spatial_control_io.py": 100.0,
+    "core/spatial_control_supervisor.py": 99.04761904761905,
+    "steganography/research_spatial_control.py": 97.29729729729729
+  },
+  "passed": 4008,
+  "protocol_sha256": "b3b23c0b2e62fd31dc63fd60ca530d19d5e7ccaa484d0cb358d9a09e5a234593",
+  "real_fit_authorized": false,
+  "ruff": "passed",
+  "schema": "spatial-generated-control-software-verification-v1",
+  "source_inputs": 241,
+  "status": "passed_software_only"
+}
