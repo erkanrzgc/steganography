@@ -1,0 +1,31 @@
+{
+  "checked_utc_unix": 1793135723.0057616,
+  "cuda_available": true,
+  "cuda_runtime": "13.0",
+  "driver": "617.42",
+  "full_generated_learning_experiments": 0,
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "gpu_compute_capability": [
+    12,
+    0
+  ],
+  "historical_attempts_restarted": false,
+  "host_os_user_confirmed": "Windows 11",
+  "linux_release": "6.6.87.2-microsoft-standard-WSL2",
+  "native_media_opened": false,
+  "new_downloads": 0,
+  "new_gpu_benchmarks": 0,
+  "nvidia_smi_memory_total_mib": 8151,
+  "nvidia_smi_standard_wsl_location_used": true,
+  "package_or_driver_installation": false,
+  "pinned_host_key_checking": true,
+  "public_key_authentication": true,
+  "python": "3.12.3",
+  "real_media_optimizer_updates": 0,
+  "schema": "spatial-wsl-readonly-connection-v1",
+  "ssh_alias": "steganography-wsl",
+  "status": "ready_readonly_environment_only",
+  "torch": "2.14.0+cu130",
+  "torch_total_device_bytes": 8518041600,
+  "wsl_distribution": "Ubuntu-24.04"
+}
