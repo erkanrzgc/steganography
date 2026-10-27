@@ -1,0 +1,105 @@
+{
+  "completed_native_originals": 6,
+  "date": "2026-10-23",
+  "distinct_file_pages": 237,
+  "false_gray_example": "Black and white photograph by Allen Diba.png is truecolour8; not a native-L original",
+  "http_requests": 12,
+  "max_response_bytes": 2097152,
+  "metadata_is_admission": false,
+  "metadata_png_mode_counts": {
+    "greyscale-alpha/8": 3,
+    "greyscale/2": 1,
+    "greyscale/4": 1,
+    "greyscale/8": 14,
+    "index-coloured/1": 2,
+    "index-coloured/2": 1,
+    "index-coloured/8": 8,
+    "truecolour-alpha/16": 5,
+    "truecolour-alpha/8": 105,
+    "truecolour/16": 1,
+    "truecolour/8": 71,
+    "unknown/unknown": 25
+  },
+  "optimizer_updates": 0,
+  "original_candidate_findings": {
+    "commons-example-png": "excluded_not_natural_photograph",
+    "commons-volleyball-landscape": "excluded_truecolour_alpha_8; no media downloaded"
+  },
+  "requests": [
+    {
+      "query": "cc0-photos",
+      "response_bytes": 63115,
+      "sha256": "b35d3d4b17d88c088d53dba302b4e213b1c825d5544577bf812bca42ac3e4ae2",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-Zero%22+photograph+-drawing+-diagram+-logo+-map&gsrnamespace=6&gsrlimit=20&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-by2",
+      "response_bytes": 126867,
+      "sha256": "6bb84be038ab0e8a0846c3502459939612589a11188fd8b21b3bc6a508a3e44a",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-BY-2.0%22+%22black+and+white%22&gsrnamespace=6&gsrlimit=30&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-by3",
+      "response_bytes": 128240,
+      "sha256": "cf7bc239424df9e83e7fc3e975f8a5e0588beff7d57581ab1081905506059d8f",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-BY-3.0%22+%22black+and+white%22&gsrnamespace=6&gsrlimit=30&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-category",
+      "response_bytes": 118589,
+      "sha256": "ad05d990f902b393a4100421127b5edd9b132d971e69625cc1d7a1fe848d5fe2",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22Black+and+white+photographs%22&gsrnamespace=6&gsrlimit=30&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-cc0",
+      "response_bytes": 110374,
+      "sha256": "7bb15d69de8a29901bdd7ee1afb61c0ed27bf17a503307ba70e75586a0115793",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-Zero%22+%22black+and+white%22&gsrnamespace=6&gsrlimit=30&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-hyphen",
+      "response_bytes": 107960,
+      "sha256": "f0fb280d08528043f523968a64e0a4d229b114939edd1be8bac27b742b17fced",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-BY-4.0%22+%22black-and-white%22&gsrnamespace=6&gsrlimit=30&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-mono",
+      "response_bytes": 102957,
+      "sha256": "db7a25080b98eadc5cf100aee6e39c9729f0c9c76b33492f4c87abb8e4032663",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-BY-4.0%22+monochrome&gsrnamespace=6&gsrlimit=30&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-own",
+      "response_bytes": 72163,
+      "sha256": "a8cafe86d3dab5cd90ef7e8d9235491f628a7bb0878196f2778f1e9e70e69b6c",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+grayscale+%22own+work%22&gsrnamespace=6&gsrlimit=20&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-phrase",
+      "response_bytes": 107960,
+      "sha256": "511b2da2c5eff0f4b1a694288a36107a2116bc4778764e327c11189bb2340cee",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-BY-4.0%22+%22black+and+white%22&gsrnamespace=6&gsrlimit=30&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "gray-search",
+      "response_bytes": 85632,
+      "sha256": "b9d0f99f218a382865e5923fced033f2b006f3ed2e67dcc8c7191e8b82014c8f",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-BY-4.0%22+%28%22black+and+white%22+OR+grayscale+OR+monochrome%29&gsrnamespace=6&gsrlimit=20&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "initial",
+      "response_bytes": 6320,
+      "sha256": "34290e58845fcb04d08367fdd7cf5f236c29c49a0549b9edcb48e5045711de98",
+      "url": "https://commons.wikimedia.org/w/api.php?titles=File%3AFemale+Back.png%7CFile%3AVolleyball+game+brings+the+landscape+to+life.png&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    },
+    {
+      "query": "rgb-photos",
+      "response_bytes": 72692,
+      "sha256": "2c231c501138c5ddc35a41b7764eef98c8026b8599fc7a492efbf5094cb69e70",
+      "url": "https://commons.wikimedia.org/w/api.php?generator=search&gsrsearch=filemime%3Aimage%2Fpng+incategory%3A%22CC-BY-4.0%22+landscape+%22own+work%22&gsrnamespace=6&gsrlimit=20&prop=imageinfo%7Crevisions&iiprop=url%7Csize%7Csha1%7Cmime%7Cextmetadata%7Cmetadata&rvprop=ids%7Ccontent&rvslots=main&action=query&format=json&formatversion=2"
+    }
+  ],
+  "response_bytes": 1102869,
+  "schema": "spatial-native-metadata-discovery-v1",
+  "selected_for_first_acquisition": 9
+}

@@ -1,0 +1,17 @@
+{
+  "artifact": "benchmarks/png-bmp-native-user-resume-tools-20261026.json",
+  "execution_protocol_changed": false,
+  "original_retained_privately": true,
+  "original_snapshot_sha256": "7e87a5dad77bbe6191726c655045af8f0a7e8e49f305e7fead06290eabe87210",
+  "published_snapshot_sha256": "6934ece32781a0884282fbf06fce099e80977a84dd6169f0c220fe4cd0a8318f",
+  "redactions": [
+    {
+      "change": "redact_absolute_repository_path_from_embedded_qa_log",
+      "original_sha256": "6e14b7c56ac7cee2c98c4b4a388d96565ce96768ac20e912879b30e092869ff7",
+      "path": ".benchmark/png-bmp-native-expansion-20261023/user-resume-qa-20261026.log",
+      "published_sha256": "52b988e8daa66e5a932f262ecb7ac2bbe7a5bc76079de1be52092fa77d995a2b"
+    }
+  ],
+  "schema": "spatial-publication-redaction-v1",
+  "status": "public_log_view_redacted"
+}

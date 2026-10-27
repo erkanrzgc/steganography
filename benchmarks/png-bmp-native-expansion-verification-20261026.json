@@ -1,0 +1,36 @@
+{
+  "additional_generated_tests_passed": 59,
+  "artifact_sha256": {
+    ".benchmark/png-bmp-native-expansion-20261023/full-qa-20261026.log": "257f7d53c23bff16ef9d101b07c1d2f83ea4c2d43a72cd8981d50b00c6edb1ad",
+    ".benchmark/png-bmp-native-expansion-20261023/full-qa-coverage-20261026.json": "fe34a171a07f980fa9ec9b1eb64f4165f75e6aa13d407ad964cf7ca0834b9531",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-combined-qa-20261026.log": "0458d7006260ef9b579d8107c368bc10fca1449c022c54c8a008b20240664606",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-mypy-20261026.log": "a1fe9f5a2086d3d2dae98819d45d57f1dbce3495813fbd43cbffc178faab37cc",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-qa-20261026.log": "6e14b7c56ac7cee2c98c4b4a388d96565ce96768ac20e912879b30e092869ff7",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-ruff-20261026.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "checked_utc_unix": 1792973943.0602334,
+  "cuda_skipped_unavailable": 2,
+  "cuda_skips_are_not_passes": true,
+  "full_pytest_elapsed_seconds": 1128.04,
+  "full_pytest_passed": 3888,
+  "full_total_statement_coverage": 97.0485963870749,
+  "mypy": "passed_231_files",
+  "new_application_module_coverage": {
+    "core/colab_artifacts.py": 100.0,
+    "core/spatial_colab.py": 96.75324675324676,
+    "core/spatial_colab_bundle.py": 100.0,
+    "core/spatial_colab_data.py": 100.0,
+    "core/spatial_colab_state.py": 97.04433497536945,
+    "core/spatial_commons_native.py": 100.0
+  },
+  "new_gpu_attempts": 0,
+  "optimizer_updates": 0,
+  "previous_failed_or_passed_verifications_overwritten": false,
+  "real_training_authorized": false,
+  "resume_generated_passed": 16,
+  "resume_parent_statement_coverage": 100.0,
+  "roles": "unassigned",
+  "ruff": "passed",
+  "schema": "spatial-native-expansion-full-verification-v1",
+  "status": "passed_software_checks_only"
+}

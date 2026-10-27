@@ -1,0 +1,1927 @@
+{
+  "all_native_texture_candidates_accounted_for": true,
+  "artifacts": [
+    {
+      "name": "fountains-abbey-cover.png",
+      "sha256": "7e1f6e92f44ac8399f2b025d0ddc6562ebd55ac2be1f3db582848e58ebbd5ee0"
+    },
+    {
+      "name": "fountains-abbey-lsb-control.png",
+      "sha256": "823f117c562c4f7c583ed04a41d5294eb892d5746634d73e3ab903173a375b46"
+    },
+    {
+      "name": "fountains-abbey-cover.bmp",
+      "sha256": "395554c23adcb50fb8da347422a69c9e85a2d99be7901e69f845b9d0f3cb17a2"
+    },
+    {
+      "name": "fountains-abbey-lsb-control.bmp",
+      "sha256": "49096d6d0ef7cbbd85f4878efc1249797fe980a705b03f2af5a28af0c7ebd907"
+    },
+    {
+      "name": "cusco-corao-cover.png",
+      "sha256": "1437d51ba69681b9d99ade94f85ea8ba0a2b9251fb014b72e21f424889741d9d"
+    },
+    {
+      "name": "cusco-corao-lsb-control.png",
+      "sha256": "7cb1e4810d4bddb9d0f05450e896188a0a12b2365a80d8720087e472760ab860"
+    },
+    {
+      "name": "cusco-corao-cover.bmp",
+      "sha256": "483734fe4ff438963d424d27bef0f920afa6786d7191ca4abf66fcdf3e3b98c7"
+    },
+    {
+      "name": "cusco-corao-lsb-control.bmp",
+      "sha256": "65073f4eaa0794b592a672d6410f405df5f7adaaa5cc27edf508ecf644f7df29"
+    },
+    {
+      "name": "vigna-sanzioni-cover.png",
+      "sha256": "55a8f6505969524fc6ccd1885ea1dff31a3f1796b6c3cbfedd5e5e446bb3ca2f"
+    },
+    {
+      "name": "vigna-sanzioni-lsb-control.png",
+      "sha256": "223c7813d0b69a36ad3c786fc978ec7336cbf128ab7269ee3021d641e8f7f509"
+    },
+    {
+      "name": "vigna-sanzioni-cover.bmp",
+      "sha256": "1e3a01b71292b2bcd48436bead23e6ff41c598c35c08bf0b71cfd91fa56db5e8"
+    },
+    {
+      "name": "vigna-sanzioni-lsb-control.bmp",
+      "sha256": "578d9ed6170b8f01fdb6c523a31540f786fa0a4b247392f5b77a2ed01e630b6a"
+    },
+    {
+      "name": "jatindrapur-path-cover.png",
+      "sha256": "2531a9569fc36a751e998c623c29bd049ae61805284314b2fbf074305d8c257b"
+    },
+    {
+      "name": "jatindrapur-path-lsb-control.png",
+      "sha256": "164ab86f8f13fa946840f1101d685a6ad2696a9127dbb68e9c12281c26056e80"
+    },
+    {
+      "name": "jatindrapur-path-cover.bmp",
+      "sha256": "3dcb49287d0be4f4c6310098b30d0be2c2d286ec425fe99e9f3787fc6daaf3ee"
+    },
+    {
+      "name": "jatindrapur-path-lsb-control.bmp",
+      "sha256": "13c7cd8aba2784ffaaeeb191c29909e18f656911d71d147ffa5284dba6bd9f76"
+    },
+    {
+      "name": "commons-104167435-cover.png",
+      "sha256": "9560db863903a4765ae8b3023e6f39ae7ced26732f8c8ecbf1bc64a991fdc0da"
+    },
+    {
+      "name": "commons-104167435-lsb-control.png",
+      "sha256": "7dfe258115f844d5ca300e4af15ca2b93be2f1f893f2432bddee095b3a67093e"
+    },
+    {
+      "name": "commons-104167435-cover.bmp",
+      "sha256": "9be6b904dcbffcec6a18c0623c7e62d1b8c6634dfb4c7720f2bace35f2400cfe"
+    },
+    {
+      "name": "commons-104167435-lsb-control.bmp",
+      "sha256": "238e84697ec2e3c72d4603bbc4e04a7f240e6cd307f3967f5c6c67377f31e67c"
+    },
+    {
+      "name": "commons-104599670-cover.png",
+      "sha256": "a347fdbb15ccbd7b8032a3fa9002c32a461eb22e644aac1327d4616fdc453e66"
+    },
+    {
+      "name": "commons-104599670-lsb-control.png",
+      "sha256": "76aba5ad00c544306ab051c9d74f375c3963ea74b1380072793c015e8c5da1bf"
+    },
+    {
+      "name": "commons-104599670-cover.bmp",
+      "sha256": "bdfdc22100c598f47298ac52cd0cfe2506ca8b83b933a1b41b484fc5cf330a85"
+    },
+    {
+      "name": "commons-104599670-lsb-control.bmp",
+      "sha256": "6a5473d361e0dcf53a0002e046b155d5ed991275f74aacf5fa149e9933086fec"
+    },
+    {
+      "name": "commons-128141099-cover.png",
+      "sha256": "98fa8c48c97c7d5dfc3f8acc5ccb469a11d6de89a25ab7a3e8e1d19da0f86b8e"
+    },
+    {
+      "name": "commons-128141099-lsb-control.png",
+      "sha256": "26e6182a4fa429b631ee9ab96433fe873fd5382f85e264ac66e4270ca60826fe"
+    },
+    {
+      "name": "commons-128141099-cover.bmp",
+      "sha256": "17ab0216d7ed9c5d9fcd17263ca61a1302518ca90b171b874fd02baef6be9608"
+    },
+    {
+      "name": "commons-128141099-lsb-control.bmp",
+      "sha256": "05ddc7a8ae9fd3f3a50f4169ed32e364e8b22e42318902796f5263bdefd29c79"
+    },
+    {
+      "name": "commons-128141839-cover.png",
+      "sha256": "74128feb76fa056be470cccc42b38d1db1ce08bafec741514a8edb7e59d699d1"
+    },
+    {
+      "name": "commons-128141839-lsb-control.png",
+      "sha256": "63e1b08239865e0c06d987937f5cf5759c9efff21d50d9a7670aa3c6f61d8d28"
+    },
+    {
+      "name": "commons-128141839-cover.bmp",
+      "sha256": "f1b14ad1141aa2776202f50988002a97ede7ee31efebf7ca48cd651694be8d7b"
+    },
+    {
+      "name": "commons-128141839-lsb-control.bmp",
+      "sha256": "a1d7c17f07b5abcf4cd7a231f39b2ecfd4dcd402e8384d74472dac96fb1c8ee4"
+    },
+    {
+      "name": "commons-128141920-cover.png",
+      "sha256": "dcf161ed65e34b36693a7e5c1ccbb8255916275982c46e6105f84b98de6b5e50"
+    },
+    {
+      "name": "commons-128141920-lsb-control.png",
+      "sha256": "92dcea1b200800a7d3aa323b8ab7f9497822799496e7bfbaf718b3984b744c2a"
+    },
+    {
+      "name": "commons-128141920-cover.bmp",
+      "sha256": "2551f989f8db67d9db6dc69191bdbf1679a4e81bcfc9c81124af4b63383c6085"
+    },
+    {
+      "name": "commons-128141920-lsb-control.bmp",
+      "sha256": "c9c220727ae8f094d3a5f5657370117e1ce977ab27c2f06e66f207268ab945d6"
+    },
+    {
+      "name": "commons-128142849-cover.png",
+      "sha256": "d05a23fac83882a5cb200f5b74ffbf979cf322983b4c07fd6de939901cd4326a"
+    },
+    {
+      "name": "commons-128142849-lsb-control.png",
+      "sha256": "63d12901abc0407932120f11334adad82ba332cbb0cfd91c22ee383eff2a7352"
+    },
+    {
+      "name": "commons-128142849-cover.bmp",
+      "sha256": "104dcd94d349c851baa9408b4a842399c994d5d68c08523c16ba6478a3995ad0"
+    },
+    {
+      "name": "commons-128142849-lsb-control.bmp",
+      "sha256": "98d28090993315fe6da6ce6c3458574fad5f572a14fdd2fc91b27d3a81d6d177"
+    },
+    {
+      "name": "commons-128142962-cover.png",
+      "sha256": "f36755ba35485b749f0e679d275e8c3bcca45458d9ec55451a55b21c9920322e"
+    },
+    {
+      "name": "commons-128142962-lsb-control.png",
+      "sha256": "0b3d898c08d032cca69c837701cd28c7caea0c86656dfb45feda146556b65472"
+    },
+    {
+      "name": "commons-128142962-cover.bmp",
+      "sha256": "a9301962c6212440d6a94d7336893b73a2aab41642d87e6970a0d8d58410223a"
+    },
+    {
+      "name": "commons-128142962-lsb-control.bmp",
+      "sha256": "3cacab453dfcfc50d32c001c4bdc83446c52f133ad2ce7c99c3e5f00da46f067"
+    },
+    {
+      "name": "commons-128143369-cover.png",
+      "sha256": "173152af19f23a8001eed5a612e298775268fb9122639efc254828dc34855c51"
+    },
+    {
+      "name": "commons-128143369-lsb-control.png",
+      "sha256": "1e233302d319d8b2b8c03f31cd40a4f677af6349fd1cc4e9d32ce3fde7c80ba0"
+    },
+    {
+      "name": "commons-128143369-cover.bmp",
+      "sha256": "76d0c8bdbd75d39a9b7f84a007b6d9ae3751ed64f35a39b4238d878536493c70"
+    },
+    {
+      "name": "commons-128143369-lsb-control.bmp",
+      "sha256": "2c3ad5479afa4bed72af6ae847cded6b444260825945b96305d56898583b0cf0"
+    },
+    {
+      "name": "commons-128144071-cover.png",
+      "sha256": "db43b67ecd4c6cd142a54f535dc0515391f0e7b311b804603842ed5afa410695"
+    },
+    {
+      "name": "commons-128144071-lsb-control.png",
+      "sha256": "e30d8c4c9ece1f8428e0b5334a6fe16d8dabe5622885808e0dfa221c986aac50"
+    },
+    {
+      "name": "commons-128144071-cover.bmp",
+      "sha256": "f0c3221429245a63e76b320971f018484ea4f78d7a952d67af6ac741d2f30f86"
+    },
+    {
+      "name": "commons-128144071-lsb-control.bmp",
+      "sha256": "bdba1740abb826cd81151f6e6beded8bbe4eade78a111949fea60ae43ec5051c"
+    },
+    {
+      "name": "commons-128145265-cover.png",
+      "sha256": "659a4563c144d06acbeb6708d75c40c8474b27291e925ca7872576c30df92ace"
+    },
+    {
+      "name": "commons-128145265-lsb-control.png",
+      "sha256": "1a4f6ac611db4a4bbe4febf3c60b86cd35aec92e29b37a8dcca59870828d8f5b"
+    },
+    {
+      "name": "commons-128145265-cover.bmp",
+      "sha256": "6e4ac546ba60e4300688837d36afa44ddb88059356389bbbb39470724c4be211"
+    },
+    {
+      "name": "commons-128145265-lsb-control.bmp",
+      "sha256": "b3b614420f17864458afab762c8f51b8b09bdd34487f15b7be7062badd0da1dc"
+    },
+    {
+      "name": "commons-131600127-cover.png",
+      "sha256": "bfda33eb1ea457d46ff32ee21d78802b7f84c9b901ed212fb07412397bff646d"
+    },
+    {
+      "name": "commons-131600127-lsb-control.png",
+      "sha256": "68ae3a1014e03d14359c4b8b98dfa33560d87143166bc07d36e736954782bcb1"
+    },
+    {
+      "name": "commons-131600127-cover.bmp",
+      "sha256": "8970679d6e79b08978bf4c5fdb0e603f003285d3e99c7bafa6e62e5e17edd476"
+    },
+    {
+      "name": "commons-131600127-lsb-control.bmp",
+      "sha256": "61d9d07b507483752101cbc18251613de73ca802f89f445dc4ab12066ab27a1c"
+    },
+    {
+      "name": "commons-146462727-cover.png",
+      "sha256": "f095bbaa3a6d1743cbf8fcafd62361d40f2e8fd0d0b52f376d9fbbd499d67aa2"
+    },
+    {
+      "name": "commons-146462727-lsb-control.png",
+      "sha256": "e5b43a6157ea8773acb195d4acbff37e3a79188459cbcf6c10c6e48cee418b5e"
+    },
+    {
+      "name": "commons-146462727-cover.bmp",
+      "sha256": "965d485af9bbdf172e7ec50cd2d8b70263928e343c858942a8f03595222f2823"
+    },
+    {
+      "name": "commons-146462727-lsb-control.bmp",
+      "sha256": "0fd4d43ce6483368e204993602dc49fd1c4d19b430c2fd8d7eb1ad75e2362899"
+    },
+    {
+      "name": "commons-147988731-cover.png",
+      "sha256": "9f6f351fbfa052f6ab06b9eb8b4be75430547c47941fa4ce4566f17413b490de"
+    },
+    {
+      "name": "commons-147988731-lsb-control.png",
+      "sha256": "ba4ca0a9c376aa4a98a7c25c5d2d4d4fc271d5dea7efa82a412e09fd3472a37e"
+    },
+    {
+      "name": "commons-147988731-cover.bmp",
+      "sha256": "dc2d8812c772c98a26668d7df8cfbde9e7caab80f3bf70e4697ed5c1b98202ca"
+    },
+    {
+      "name": "commons-147988731-lsb-control.bmp",
+      "sha256": "76607d319b7aa2e73fcf998e3a1256dbe513d187662737b5c0cfb4e89c370282"
+    },
+    {
+      "name": "commons-156610857-cover.png",
+      "sha256": "5312135c95d3543c87244588207ed328af0dce24b3001808cd1bacd891436dfa"
+    },
+    {
+      "name": "commons-156610857-lsb-control.png",
+      "sha256": "9d1cb8d5197f07f4f7e31d56933b7d48adab1dafe7379a7b1470301b6614e1ba"
+    },
+    {
+      "name": "commons-156610857-cover.bmp",
+      "sha256": "7c3b09845664341cf3d1ff01d25c4a47ebc84f110d43f1e93fec3cc684c3cb3f"
+    },
+    {
+      "name": "commons-156610857-lsb-control.bmp",
+      "sha256": "e7288d13ce416f9b68f39ef5713c84db3b8822645b02792a3fd2b334ffb9bbd3"
+    },
+    {
+      "name": "commons-180329929-cover.png",
+      "sha256": "c97aba9f438e8ecf609a57f1a73e655f6ee80c5616fd89b232091e154535f9ef"
+    },
+    {
+      "name": "commons-180329929-lsb-control.png",
+      "sha256": "c8957969f5a2d2f7976eb1c592db4ff0bc0ef6af06d4760991a3f777a94f80d5"
+    },
+    {
+      "name": "commons-180329929-cover.bmp",
+      "sha256": "d7476513b551b7d27f365fb429cd66e55cfe91cbe6a296b633e27831fb506754"
+    },
+    {
+      "name": "commons-180329929-lsb-control.bmp",
+      "sha256": "15de6a5a6a29d3138074eb3500821c12b46209dd36d1e4541bcc7eea99adb799"
+    },
+    {
+      "name": "commons-182502101-cover.png",
+      "sha256": "629a4900b268538948337340edcd9141c6dfb447bcc380186f36db11cc5ef820"
+    },
+    {
+      "name": "commons-182502101-lsb-control.png",
+      "sha256": "ae481062c64e3e7d4e407b2843b4667b960921ad328193980a8ab8cfcb3126bb"
+    },
+    {
+      "name": "commons-182502101-cover.bmp",
+      "sha256": "91d8167ed881719249aab7292ccfab115c95a2bb64233fd25747cd934f7ebd50"
+    },
+    {
+      "name": "commons-182502101-lsb-control.bmp",
+      "sha256": "3b2cecc5ac90f2584c2a289974392f04b27773c05b5632db74ac4ac34b215ae1"
+    },
+    {
+      "name": "commons-18674452-cover.png",
+      "sha256": "4b8aad7eb5838ef4b750c88ab302de9917f18565b12fbeec7454e5f70b4fed03"
+    },
+    {
+      "name": "commons-18674452-lsb-control.png",
+      "sha256": "1c42d5588cc421866e234bf3350d60cf3e53f0bb88cb22a828010c96952592eb"
+    },
+    {
+      "name": "commons-18674452-cover.bmp",
+      "sha256": "d947807e182eae954b44fe94b3867577deda826ba0f3b2a73da2b568a44c3675"
+    },
+    {
+      "name": "commons-18674452-lsb-control.bmp",
+      "sha256": "d4372e2009dc01fd14981e4937585062f9f58f8c7e8b3118c13ad795911ac71e"
+    },
+    {
+      "name": "commons-31877393-cover.png",
+      "sha256": "37ae753354ccf18dfe3c1e903a78d5c96c6849e55c0164dc7be5b6058495267c"
+    },
+    {
+      "name": "commons-31877393-lsb-control.png",
+      "sha256": "1c66c46ea5924ed23d1d2e1109ba87ae30201fae0a937d1e19b90e5739d7d198"
+    },
+    {
+      "name": "commons-31877393-cover.bmp",
+      "sha256": "1045c99fbc4ff9e198883685663f9f2fda466212c8132b614229db5a86ccf471"
+    },
+    {
+      "name": "commons-31877393-lsb-control.bmp",
+      "sha256": "5b2ec9fadd53e6771879159263cbc54d4bb8252d2017784b1abc4a85410f0f03"
+    },
+    {
+      "name": "commons-32688434-cover.png",
+      "sha256": "d1b079123a89f2517b17888cf7efbb1a5ca853cecb9a9358eabf0e4bf9d18f64"
+    },
+    {
+      "name": "commons-32688434-lsb-control.png",
+      "sha256": "5232582f3cea2b254d5b26b8412bd12de91f6336b30715ec7b1949e96728b076"
+    },
+    {
+      "name": "commons-32688434-cover.bmp",
+      "sha256": "16783d328f4f16b276beab8174ff29c7d2f76873042d88b2eca5f026d3e14cd7"
+    },
+    {
+      "name": "commons-32688434-lsb-control.bmp",
+      "sha256": "bed11c72198dcfc9a4a9434f9c06b22dfbd565142404d73939326979af1e4e56"
+    },
+    {
+      "name": "commons-34983854-cover.png",
+      "sha256": "dcd0e73aa4db2f736238a9260d25b55a312a67329ac2d04141bfd1716e81ba01"
+    },
+    {
+      "name": "commons-34983854-lsb-control.png",
+      "sha256": "ac8691829c7dd13b4ff325a379f34d77e714e3c4389b931a92d59e1decaa345f"
+    },
+    {
+      "name": "commons-34983854-cover.bmp",
+      "sha256": "f1cc26f39bb2816aed435d512e2871b0c2bae77480127252ef45229c6cf4e4e6"
+    },
+    {
+      "name": "commons-34983854-lsb-control.bmp",
+      "sha256": "7a43244ea3bf08d7da3a1fbea1a359785ca325f1e22c90504d2deb90ae9bc347"
+    },
+    {
+      "name": "commons-36814358-cover.png",
+      "sha256": "eac1b100d66e43d71784ff55a65eb30ae2496f7b94ac5c4bdd5e513f305e6be6"
+    },
+    {
+      "name": "commons-36814358-lsb-control.png",
+      "sha256": "83995678082bbece3d3f4de6004bf08eb86bb809ced54aeac879ee2ae1049479"
+    },
+    {
+      "name": "commons-36814358-cover.bmp",
+      "sha256": "539e847efce584134b8ba536d0d12b8d5e8d8f2bc94b6af4b96e40dff87b88b2"
+    },
+    {
+      "name": "commons-36814358-lsb-control.bmp",
+      "sha256": "4b66fc1273c29f9cbbf505fa3ca51ccca877c7d5d23a9f57cf53a52c7f86c43d"
+    },
+    {
+      "name": "commons-74830706-cover.png",
+      "sha256": "4aea8d512767075879da0b6f56eefaf4f95d9dc5ce0f07e099302517dda07736"
+    },
+    {
+      "name": "commons-74830706-lsb-control.png",
+      "sha256": "a7b820c49ab47c480c805e86d10635f036aa26fc912ed31f7c0a8c166f4db0f6"
+    },
+    {
+      "name": "commons-74830706-cover.bmp",
+      "sha256": "08e01e6411d0c4cfc2a1cc470208d104efcb9557422253edafec3e74251c6fb5"
+    },
+    {
+      "name": "commons-74830706-lsb-control.bmp",
+      "sha256": "8614ab72c4a9532d8c7abdf98efb99669cc2f16e30d26f0081cdf9017174ae69"
+    },
+    {
+      "name": "commons-74830732-cover.png",
+      "sha256": "fa42862515ee5751fdec57b50a34fdc766501b95d7ce8d5c5b9f8e48c6a51c50"
+    },
+    {
+      "name": "commons-74830732-lsb-control.png",
+      "sha256": "b8f2529c7d456fcb73d01c83ada81771e3a8812f14a1ba94d5aa9fbdf0754aa7"
+    },
+    {
+      "name": "commons-74830732-cover.bmp",
+      "sha256": "8120404383fa019010a0e37b8f501988c5b1a56637896e75347bb83651b880c8"
+    },
+    {
+      "name": "commons-74830732-lsb-control.bmp",
+      "sha256": "aa8f3e1e5056fe0ccd66ec1f775140eacfaa24a0dbac15e00b0632df011fe6cd"
+    },
+    {
+      "name": "commons-74832342-cover.png",
+      "sha256": "7841b4a12d28d252f40bc5a356472d2351e9ea1f14ef150d30651d892f555769"
+    },
+    {
+      "name": "commons-74832342-lsb-control.png",
+      "sha256": "279ff051f4257343fb8b5c6e28aeaf2ceeb766c3356fabf51ea452d7f55e54ad"
+    },
+    {
+      "name": "commons-74832342-cover.bmp",
+      "sha256": "6806a08c7e1ddfcce371ce0330c26698f73b44f3b9f7a3fd5e00907e5f4117fd"
+    },
+    {
+      "name": "commons-74832342-lsb-control.bmp",
+      "sha256": "d1b05d0732e77318ce715213668bc2a847050026151583c88ece446a7a1fae42"
+    },
+    {
+      "name": "commons-80870504-cover.png",
+      "sha256": "c415e72c71ca600143c367aa0111a5ac3a96113607273536c956001ffc911758"
+    },
+    {
+      "name": "commons-80870504-lsb-control.png",
+      "sha256": "a14eb1f5118e3b4b3847256aedc74b88301dea0fb06da209e5f72595f213afa4"
+    },
+    {
+      "name": "commons-80870504-cover.bmp",
+      "sha256": "e81bdffceec9ba9d35ef8e8fea470478fdbdd44acbfb6983c4582625a1177a8c"
+    },
+    {
+      "name": "commons-80870504-lsb-control.bmp",
+      "sha256": "9c40c4ecb78d3e08185268c5db48f8f2263f29fde112063fc8c63fae1e772b20"
+    },
+    {
+      "name": "commons-85770196-cover.png",
+      "sha256": "37f797003b9deba575bc0c414e287bf2d0851ba0cdfb72ac566f7994755fdb71"
+    },
+    {
+      "name": "commons-85770196-lsb-control.png",
+      "sha256": "57ca5f3d9db5dee2f22a29b761efa473a264517013c603a83542f3cb493011d4"
+    },
+    {
+      "name": "commons-85770196-cover.bmp",
+      "sha256": "4d3ecdf941856ee0287a34797daa0b21cffd9615797f884f6e74a09350842213"
+    },
+    {
+      "name": "commons-85770196-lsb-control.bmp",
+      "sha256": "72988f006f71d91f399960ecbf7ffa4fccf70a0fbc3196926257cc0c6c932b65"
+    },
+    {
+      "name": "commons-139152961-cover.png",
+      "sha256": "103d625f276b2125bbf34cf148fb020f91bce2f5468d99c74ce1e6e6fa73b6bf"
+    },
+    {
+      "name": "commons-139152961-lsb-control.png",
+      "sha256": "ecebc2281986d217118cf1e6e29c2946dd50c0a03bd60a3bd41cf2fca84fa157"
+    },
+    {
+      "name": "commons-139152961-cover.bmp",
+      "sha256": "caf64fc609eecaf6432ff6ce24f8a6528f244f6bfbd9ee0383c813448e2453e1"
+    },
+    {
+      "name": "commons-139152961-lsb-control.bmp",
+      "sha256": "65fc0cbeab0a790a4fceb65a41ebdcacab696d6bdfdd07720da75e28365758c0"
+    },
+    {
+      "name": "commons-147720715-cover.png",
+      "sha256": "9868030e0c5da7151d0a2eefa3e7cca794b13b83b0d7e9187cb59edc6c3b6a36"
+    },
+    {
+      "name": "commons-147720715-lsb-control.png",
+      "sha256": "1f1427c759038199fcb724ca649bad81a201a6f8e9aa74711797b5c5172409e4"
+    },
+    {
+      "name": "commons-147720715-cover.bmp",
+      "sha256": "eab11c209f9cf7f3695e3a5e056208a87e5e13d0dbbd1e55b13d29cd9b68513c"
+    },
+    {
+      "name": "commons-147720715-lsb-control.bmp",
+      "sha256": "1dbea3ecfc75c11fd357dfd4fdf7f7c7a547dc1c9ea684090e395b9cab13fd28"
+    },
+    {
+      "name": "commons-168434746-cover.png",
+      "sha256": "a21a75bdafb20c91471818f65fb71b63e9225e330a4d90f3a5114c582fe497db"
+    },
+    {
+      "name": "commons-168434746-lsb-control.png",
+      "sha256": "299df5ee1e70dcb48d226dff29984f1eb606ee73ff3e44e7d6d9c5be97f53a92"
+    },
+    {
+      "name": "commons-168434746-cover.bmp",
+      "sha256": "979985f21f44b2a6f24db581d27da89215424669eece724556990f0308855882"
+    },
+    {
+      "name": "commons-168434746-lsb-control.bmp",
+      "sha256": "f698f8bc9adbcf4e5de4bac2d74188c1b8f8aa7ad93ddb4ace799d03eebe56ab"
+    },
+    {
+      "name": "commons-179360654-cover.png",
+      "sha256": "bff4c9cc746e7c367d4cdff0c1edd62b878dbffe439651e2ea52fbdb1445bbd5"
+    },
+    {
+      "name": "commons-179360654-lsb-control.png",
+      "sha256": "c80fb94c4f5e7b931dbe52e5c6281c893d995bc47e37190154e7201e92295f73"
+    },
+    {
+      "name": "commons-179360654-cover.bmp",
+      "sha256": "2ca975a24e07d5159378c9e393754bd40e9fbee52bf6496fc6b9ea4c26372b60"
+    },
+    {
+      "name": "commons-179360654-lsb-control.bmp",
+      "sha256": "869ba8c8051c89245848ac9d1af7e2c9dbfe12777968e379602d04773e8dac79"
+    },
+    {
+      "name": "commons-187609387-cover.png",
+      "sha256": "08b534eb145f5fc9df96ad8dd8358a93a12ba5cac1e18824c940dde315fa9f40"
+    },
+    {
+      "name": "commons-187609387-lsb-control.png",
+      "sha256": "8979a6646898295f90a6e9d202c8682b8a91be3d1bdb766989711ee9a15e32ca"
+    },
+    {
+      "name": "commons-187609387-cover.bmp",
+      "sha256": "00e0ec9fdcff02a92a67ec3c2af341a54845f1efc515f09321800be6ec5c9875"
+    },
+    {
+      "name": "commons-187609387-lsb-control.bmp",
+      "sha256": "3ee296e5a982b2836162b2c637fea0a41a0a7b526eb3d08d02cc3d1f2a1ff19e"
+    },
+    {
+      "name": "commons-192744160-cover.png",
+      "sha256": "9a13138fee5dbd0838fe0a3cf506f68a5f5d78804cd4b046c6bf24833bf4e37c"
+    },
+    {
+      "name": "commons-192744160-lsb-control.png",
+      "sha256": "314edcbf438384a0603f7e5f5817007ff885871986e6182e995dcbdd7ab09816"
+    },
+    {
+      "name": "commons-192744160-cover.bmp",
+      "sha256": "a1dc5f5c1386028c1aec9c47b145c0122608d4817115c298111dae81441d7fd5"
+    },
+    {
+      "name": "commons-192744160-lsb-control.bmp",
+      "sha256": "35eee1f44c09b04d80c76fd80ccf7087d2223b7f3c4c76898bc2e21a18099fe7"
+    },
+    {
+      "name": "commons-6948628-cover.png",
+      "sha256": "d6fcec83178591de83ce9439d4490d223160c9dc05e01d8c9b98163267aefd8b"
+    },
+    {
+      "name": "commons-6948628-lsb-control.png",
+      "sha256": "e22a6e650e4150ef02d80f9b2d3bd20f64a672db9b1c251548bfeda5c9c76379"
+    },
+    {
+      "name": "commons-6948628-cover.bmp",
+      "sha256": "5eb3d6993e387696a323925e7611980674597a44d50ec29b18be14f896dea2bd"
+    },
+    {
+      "name": "commons-6948628-lsb-control.bmp",
+      "sha256": "1a9d6d519b5eb6385ae673258588ac2e32e8e24d324f54875a543e1436fe5d15"
+    },
+    {
+      "name": "commons-70553392-cover.png",
+      "sha256": "3007685e9d4740a7a0f9203269a2f8533247945f2520562b46037f4668b09c3e"
+    },
+    {
+      "name": "commons-70553392-lsb-control.png",
+      "sha256": "c5b2129e9cfdaaa4f29e02d0e9ddb9ec3167d164bdb74cf5001454bcf74138cc"
+    },
+    {
+      "name": "commons-70553392-cover.bmp",
+      "sha256": "684f4af97508b13b30ea787b68945ddfd0fc2253e445c72d3013a3d2d138661c"
+    },
+    {
+      "name": "commons-70553392-lsb-control.bmp",
+      "sha256": "2f7f08a37187ded705afb9768039fe04003ebb026c9b275299f6dccb3cb29fc0"
+    },
+    {
+      "name": "commons-125830584-cover.png",
+      "sha256": "7ee20cf8410e5643d4e1f59fa045e8924c3a862b400d26c76e8359bf01710859"
+    },
+    {
+      "name": "commons-125830584-lsb-control.png",
+      "sha256": "75aa5ecf928cd80f0a0c331c64c3a99307b0fae7ced608826be06bea4fd88abf"
+    },
+    {
+      "name": "commons-125830584-cover.bmp",
+      "sha256": "53f76bc37ed18ca8ee7b75812be97a2aa2b4eaf62db130058ee25d551e2d10e6"
+    },
+    {
+      "name": "commons-125830584-lsb-control.bmp",
+      "sha256": "576d39750471618275dd7811ca0e1cbed81ba3415f6c264758c99bd0376c72d5"
+    },
+    {
+      "name": "commons-150602967-cover.png",
+      "sha256": "d7d28966ab6e0bb7c29a4e1ee37fc90269c14387e3930b871fd9a9739d0662b2"
+    },
+    {
+      "name": "commons-150602967-lsb-control.png",
+      "sha256": "e73b928be6e55bbafcfa6f22659b53aa0feed2e17782d65fe0b07c02c8ac7ef5"
+    },
+    {
+      "name": "commons-150602967-cover.bmp",
+      "sha256": "c046f3e5146e5872b6969ae49d9b3875b84ace3f680f6c0b161063aefe3fb926"
+    },
+    {
+      "name": "commons-150602967-lsb-control.bmp",
+      "sha256": "b6d79e3183385c2454a252ae43b82bc917e07e8acba069e088612d595f4fb40c"
+    },
+    {
+      "name": "commons-155525137-cover.png",
+      "sha256": "f1fdd34e91df180c55dc929567a9c02da4540d89c00651fd5d9425feb4d078c8"
+    },
+    {
+      "name": "commons-155525137-lsb-control.png",
+      "sha256": "d4b90a164f53b4d79ad864055a42eb594d1adde5f93729ff8f79e68b2f364538"
+    },
+    {
+      "name": "commons-155525137-cover.bmp",
+      "sha256": "8244e3b6cf99f40f395c5bbc4322210b14ed0717c1b9293ee25b873abd000af1"
+    },
+    {
+      "name": "commons-155525137-lsb-control.bmp",
+      "sha256": "4a094ef2bce6524e3a49f628c8a452fdf354e880d9f2689bd73b2a97970582be"
+    },
+    {
+      "name": "commons-158214706-cover.png",
+      "sha256": "97ef6f4507d9948e0d7000ced0240d67ff86cd5f28737e3b4b7bf0b8906b3134"
+    },
+    {
+      "name": "commons-158214706-lsb-control.png",
+      "sha256": "906d854eb909c85672c2cd3776a9b9710d67c4681a06b7bcdb57cb9a2480632e"
+    },
+    {
+      "name": "commons-158214706-cover.bmp",
+      "sha256": "5da4fe59933b5ae88a07164cffd10f1562ea08ee804986e54042ec6800796015"
+    },
+    {
+      "name": "commons-158214706-lsb-control.bmp",
+      "sha256": "b7f1be412a9fb9dde8232721117d14a7a067a188dc41e5043c892e0155e9304d"
+    },
+    {
+      "name": "commons-18380946-cover.png",
+      "sha256": "31ced92b433baabe55e1998d1ed64b06ae78d6699b827558b0feba3877ed4830"
+    },
+    {
+      "name": "commons-18380946-lsb-control.png",
+      "sha256": "920125b856ce39306de3bd2bca09c97c1d65f057c6fa0b5cb1b0604c39a2c737"
+    },
+    {
+      "name": "commons-18380946-cover.bmp",
+      "sha256": "c8faeb6adfedbc9683d46e48395c1a6bcbcd5756cb622a4d1e079647616cab56"
+    },
+    {
+      "name": "commons-18380946-lsb-control.bmp",
+      "sha256": "8b91fdf3c369e682511675577f9970546c849feed0da829da8f3e3bcd081a34c"
+    },
+    {
+      "name": "commons-19097098-cover.png",
+      "sha256": "a8e895f3742f54644c61ac2aa327c91dbe350e4164af2cd717f0a7261a0c9280"
+    },
+    {
+      "name": "commons-19097098-lsb-control.png",
+      "sha256": "d530141bd81a95fa8c3c6662f96a8dbbc21c1302d97fc422c857349f375f8242"
+    },
+    {
+      "name": "commons-19097098-cover.bmp",
+      "sha256": "3a7ea2ef87c0d5e4b6166a4ac3f34892520ab1bd53fb11055586729537f3454f"
+    },
+    {
+      "name": "commons-19097098-lsb-control.bmp",
+      "sha256": "d49da1e49c84f4c0fcafcf596fd62289e37ecc0f95e4e4e4dc1af2d56fd55d22"
+    },
+    {
+      "name": "commons-150678740-cover.png",
+      "sha256": "ab61b6832bcd85361e397b349f599b5fb54b553adc0a13dee801ddc4edf7e993"
+    },
+    {
+      "name": "commons-150678740-lsb-control.png",
+      "sha256": "f0e0fd0e8f9fbf6264b5c6cdc5ee9084e6536ed693e1236c54cd06bacb2e8d70"
+    },
+    {
+      "name": "commons-150678740-cover.bmp",
+      "sha256": "31d8a10ddbe5ff3f5ca8ca3872cbb16e46798c80efec3dfc7a3c07587fc889cd"
+    },
+    {
+      "name": "commons-150678740-lsb-control.bmp",
+      "sha256": "d4a278112daafe05d8032d5b5bb82b9877a85e5e318a8070c2ccdf7f92f08ea1"
+    },
+    {
+      "name": "commons-169310599-cover.png",
+      "sha256": "4e682ad7fd19ac6baa65a48bdb9fca53bf0952f5b7dd27df4a8161b7ec25063b"
+    },
+    {
+      "name": "commons-169310599-lsb-control.png",
+      "sha256": "b3b1b2be3602f7dba23e628001d42af322f01812e184426533b6532ac18c352c"
+    },
+    {
+      "name": "commons-169310599-cover.bmp",
+      "sha256": "26827958df47bc0154ed46a82f7564fde7a4f6f3e502bdcf0338dc07074e7100"
+    },
+    {
+      "name": "commons-169310599-lsb-control.bmp",
+      "sha256": "0924e40a8d729dd3a4479b0567afaaf1c5f29b42ef3eecdf4dac5652d424549d"
+    },
+    {
+      "name": "commons-174187463-cover.png",
+      "sha256": "fe8dc2a2b84003a4b074468926d091b69bfe58cd2ade33685025f4f3a82236fb"
+    },
+    {
+      "name": "commons-174187463-lsb-control.png",
+      "sha256": "6240bc3e233733ba38761d85b384eab5a66646a3bff37dd6c129965b4a23b619"
+    },
+    {
+      "name": "commons-174187463-cover.bmp",
+      "sha256": "95ee090855a6aff5814b99ec37172ea304548bb7565d50ec5610eaeba0bcd3ab"
+    },
+    {
+      "name": "commons-174187463-lsb-control.bmp",
+      "sha256": "699e19878e2506d748db524024f84c06a8870c7a2f706e2d43be93b23374f905"
+    },
+    {
+      "name": "commons-70553052-cover.png",
+      "sha256": "c83805f1c011a12a4472179ab2e94c4b9998b8b5186faad790250f485ef33113"
+    },
+    {
+      "name": "commons-70553052-lsb-control.png",
+      "sha256": "98f8eff5456d0863752ac89d497d2c4d98ff9b0d9972dc2dcd3e3a23e721ceb5"
+    },
+    {
+      "name": "commons-70553052-cover.bmp",
+      "sha256": "b41e256e02867f105aca77de99ff7b05e7e24cda3a4a777b029c4e011ea2fc3c"
+    },
+    {
+      "name": "commons-70553052-lsb-control.bmp",
+      "sha256": "4432c31b6714cd34b16ea69b308c187d7ec740961eaf0acb5f6c70fbbd1f2067"
+    },
+    {
+      "name": "commons-70553391-cover.png",
+      "sha256": "fda72eebbe8772be2a32ca7ea1c59e3c59b6e61d2caf8fab88f890dab8d019d0"
+    },
+    {
+      "name": "commons-70553391-lsb-control.png",
+      "sha256": "0258b9d004a8d397271f3ea741b9cb143c0030cbef6d4956716679441a214cd2"
+    },
+    {
+      "name": "commons-70553391-cover.bmp",
+      "sha256": "90ff7fc0091d58b64ee84d76e59de3f148d619ccc95d095e63a15059a0743e1f"
+    },
+    {
+      "name": "commons-70553391-lsb-control.bmp",
+      "sha256": "715a07c95c1e22fee7cf7d0409d0e332d983989d4b88b921eb343c9f9b08ef3f"
+    },
+    {
+      "name": "commons-70553394-cover.png",
+      "sha256": "481409422243038d7a691e369c779de2e92b4b1e8128d3c1c5521e2ef51ab6b7"
+    },
+    {
+      "name": "commons-70553394-lsb-control.png",
+      "sha256": "0157adb80ebe0a987d254e656bac03978e1399886e4c7a7bd5e30bcfe23b2571"
+    },
+    {
+      "name": "commons-70553394-cover.bmp",
+      "sha256": "c6eeef1919f876c58b6533c8882d1ba9e259c83e2bd8ffa9dba38f713eae7103"
+    },
+    {
+      "name": "commons-70553394-lsb-control.bmp",
+      "sha256": "384f33f1f1a73f069ddc2c0f891066b4ecc5f7632281fe6c9ca24baa80b2f74a"
+    },
+    {
+      "name": "commons-70553395-cover.png",
+      "sha256": "747b59b67b47a2feb6ae24719d64bf5fc0d9e6e11968cb2566715552a7b22cfa"
+    },
+    {
+      "name": "commons-70553395-lsb-control.png",
+      "sha256": "265f8a83e4686f2c11e301a22981c4dcfc40b0cf053f143d053089f9fd2f1d73"
+    },
+    {
+      "name": "commons-70553395-cover.bmp",
+      "sha256": "52bc86ca2d4752ef48a4ef1e2bb3bc970bb3f9fcf27d90e424c3c15ce935bf43"
+    },
+    {
+      "name": "commons-70553395-lsb-control.bmp",
+      "sha256": "918839de298d5f90a9317743fadce9b40b57162c133778b10b529b2a22100ba1"
+    },
+    {
+      "name": "commons-74832336-cover.png",
+      "sha256": "3003e168818b0999f7155b0b38f1f6f4272cf71bcf2df3b442a4e8785c01e290"
+    },
+    {
+      "name": "commons-74832336-lsb-control.png",
+      "sha256": "9c06039491dee42accd72d927986f925d01b7d0c6dc55107219d32ba4064ceeb"
+    },
+    {
+      "name": "commons-74832336-cover.bmp",
+      "sha256": "62f3b5b23a7a878840bcc03efa982e57d539ef9f0fcee49ac98fe492ad118b3a"
+    },
+    {
+      "name": "commons-74832336-lsb-control.bmp",
+      "sha256": "c1cb33aff0f0c02050cb86886b58fcfdfd546b8a36e2e9f953a8e8c39a967760"
+    },
+    {
+      "name": "commons-74832337-cover.png",
+      "sha256": "cd9f82aad451463b4ce4e270196edeacbea00ce19415699406c0e299d556409a"
+    },
+    {
+      "name": "commons-74832337-lsb-control.png",
+      "sha256": "dcc2d5d64ad4a11aab4fef8774a7e8bfe91c7de1e3b976209688e980f540cbe5"
+    },
+    {
+      "name": "commons-74832337-cover.bmp",
+      "sha256": "7468fa9d9e34ab6d4d1addf1b44062d820c59e28bf6d6999d3b57180c4fd1fbd"
+    },
+    {
+      "name": "commons-74832337-lsb-control.bmp",
+      "sha256": "3947c5d10971f932d2eb6475bb5b826dd03e65c2553c5cc1f5c0a240c8a43609"
+    },
+    {
+      "name": "commons-147988712-cover.png",
+      "sha256": "8f0a41bdfcfee67464d20dace1fd96149e331682e15568dfa1052b7c4b5b332a"
+    },
+    {
+      "name": "commons-147988712-lsb-control.png",
+      "sha256": "b2b1c4cd92d11cd7868c18a8bf771a696a295dfcdf71ecdf6b04dcf7579d97fe"
+    },
+    {
+      "name": "commons-147988712-cover.bmp",
+      "sha256": "4dd486ae9a7da99c717f7b2a144a2285ee73dc58ebce3ea6b3e8f1b4e6db9395"
+    },
+    {
+      "name": "commons-147988712-lsb-control.bmp",
+      "sha256": "15c79f62819d2949a6ecde8e4790c9cad3f528d386df56a6ad638c0b46d5cc70"
+    },
+    {
+      "name": "commons-164791431-cover.png",
+      "sha256": "ff86d4c826d6202db0a90131f0a2ce4f82595f0ac601cc69233f6f4efa5619d0"
+    },
+    {
+      "name": "commons-164791431-lsb-control.png",
+      "sha256": "3e1e4a9c46a84423ea85081cc9a2efb52e87bda3f442362e972d8a5beb0d4abf"
+    },
+    {
+      "name": "commons-164791431-cover.bmp",
+      "sha256": "e680bbf876ea9c90f74cbeb530d270d661fefba460d2a106dc1856fe4683e34a"
+    },
+    {
+      "name": "commons-164791431-lsb-control.bmp",
+      "sha256": "3b8d5f89e806f44c14d16b445a5b1acb9e391141347d1c2b0d771172272f9a2a"
+    },
+    {
+      "name": "commons-166597021-cover.png",
+      "sha256": "ec496e4e66b855c5d009042b575596bd48b8a68a8a1f51a267714e136fb66a99"
+    },
+    {
+      "name": "commons-166597021-lsb-control.png",
+      "sha256": "c45218edd4ff9dfad194edca01060877a300fbcf17f93ca6d722e4b4281f4280"
+    },
+    {
+      "name": "commons-166597021-cover.bmp",
+      "sha256": "34c578f83cdc86f3615428e271f3c07ab975909530017e4411644bea5bafb297"
+    },
+    {
+      "name": "commons-166597021-lsb-control.bmp",
+      "sha256": "d9ac84667aa002ee22449cee5733b129bf2087f0a2f129092367f7d9747601e6"
+    },
+    {
+      "name": "commons-64866235-cover.png",
+      "sha256": "d61f3f53aafa1d482218f036cc60a4c198fb60a6422b54f477c2ebc3ef498ac8"
+    },
+    {
+      "name": "commons-64866235-lsb-control.png",
+      "sha256": "568794e13ffe34d881da18c21cea6042dd0f7fdde9ae3c15d04717b10dada23e"
+    },
+    {
+      "name": "commons-64866235-cover.bmp",
+      "sha256": "3a38b3001a2ec49eb48d5e37e318984acb2e68cf87d110e5f2fb41a8e3a6dd57"
+    },
+    {
+      "name": "commons-64866235-lsb-control.bmp",
+      "sha256": "878bc57d6b6482c6f5b95905738d1a8f8df22f10fa8e388d8fb079f68f821c50"
+    },
+    {
+      "name": "commons-68195814-cover.png",
+      "sha256": "e5c4875a694d79e070eee4c528e063b3a61e8b7515528a7ee8ef9ac5317fca93"
+    },
+    {
+      "name": "commons-68195814-lsb-control.png",
+      "sha256": "1e38e875dd8d2cc74e9f47f0685c57069bce8d618545058b439bbf2ae549b313"
+    },
+    {
+      "name": "commons-68195814-cover.bmp",
+      "sha256": "f30aecced11b6c894c2fff92e39807b8311f30aaacbdfde4b775b37ef729bf1c"
+    },
+    {
+      "name": "commons-68195814-lsb-control.bmp",
+      "sha256": "37df9999e303452c44c3c945eab00f36ad941d2e7d3c1fc6d911f76f51af1cb8"
+    },
+    {
+      "name": "commons-69929873-cover.png",
+      "sha256": "7bc8cbc3b1e9e94039d54b0e2a0978a964b1577cc0277b1a3223d7376494f628"
+    },
+    {
+      "name": "commons-69929873-lsb-control.png",
+      "sha256": "a89a33ca6f85d2168316f581c02e1797a269fad4d14615d5018cbc5462711cbe"
+    },
+    {
+      "name": "commons-69929873-cover.bmp",
+      "sha256": "e49069051db3964aa2b6c8b3df5aa824fa34c48f2199f4e5cb545dee37fa879d"
+    },
+    {
+      "name": "commons-69929873-lsb-control.bmp",
+      "sha256": "7547f3ff2df9981048eb5f935235f0ae1dfa16f7a7ec547cd74ba1bed74f189a"
+    },
+    {
+      "name": "commons-70553053-cover.png",
+      "sha256": "d43cee95f50a54770905248750ccfd4318dda93966a5d3ea98068528c089576a"
+    },
+    {
+      "name": "commons-70553053-lsb-control.png",
+      "sha256": "14157cbef9746ee9d678ef7d732679182935f368de6a7521eb819b1d6fccc1c4"
+    },
+    {
+      "name": "commons-70553053-cover.bmp",
+      "sha256": "b29ce55397cb5aab4d366786b2125985199bf3e6fc19bf14d5184b16a30cb2d4"
+    },
+    {
+      "name": "commons-70553053-lsb-control.bmp",
+      "sha256": "5a76c932c9500104b8ebfe23b8a8494ba4695d817e07f0254f8f3ba1cfb55767"
+    },
+    {
+      "name": "commons-70553054-cover.png",
+      "sha256": "1c2ef66bbfe06e4d1290e071b69a9c78f25e532284910a13208a70aba2cc0dba"
+    },
+    {
+      "name": "commons-70553054-lsb-control.png",
+      "sha256": "9e5af3f8579e876981440605e57b662511bc459cfffd570ea5606ef089cbd7d9"
+    },
+    {
+      "name": "commons-70553054-cover.bmp",
+      "sha256": "b1ac2120584ac9bd7f4e856929aa4649a46566acb58a0479db8d9f2f2c1f3b41"
+    },
+    {
+      "name": "commons-70553054-lsb-control.bmp",
+      "sha256": "b498f4327ae127e7e4800d39882d8b77e5acfe47b19d3e08a203b2cb7bfe5089"
+    },
+    {
+      "name": "commons-70553056-cover.png",
+      "sha256": "f0443a2375e23c859ae8b8bbe5d4b642d7cd1296682731cca62bfec770b762fb"
+    },
+    {
+      "name": "commons-70553056-lsb-control.png",
+      "sha256": "7af831476021bc7ea005a3dd3c8859eedba7054a05862799f7013b51f0b661f8"
+    },
+    {
+      "name": "commons-70553056-cover.bmp",
+      "sha256": "8cd4f0453d25277a78c5154b22d8137e038e6a878788c5682909527c0ae0090b"
+    },
+    {
+      "name": "commons-70553056-lsb-control.bmp",
+      "sha256": "cea4d410533373f6fc3ddea76f6f5d74f77c63c7dceec3913136ba557b1b9ad0"
+    },
+    {
+      "name": "commons-74832349-cover.png",
+      "sha256": "364603e02ba49d24a22152719b8c9e82ca635c583a2dae7865ee82fb23370fff"
+    },
+    {
+      "name": "commons-74832349-lsb-control.png",
+      "sha256": "075a107d912a1fa57982648fa022cb41260b6fdf6e8b384ea005dd16cc71540b"
+    },
+    {
+      "name": "commons-74832349-cover.bmp",
+      "sha256": "f762fea3c85a51fbaadfcf91259e54ab219e49895fe91386035147665a2a9eaf"
+    },
+    {
+      "name": "commons-74832349-lsb-control.bmp",
+      "sha256": "de3d078abe3382b63b46b9e787739c240b41bfcb8d6f88fef84df1099e90661f"
+    },
+    {
+      "name": "commons-118232058-cover.png",
+      "sha256": "dfd4b5db8c87360f4b03516d68f7c1e9c31938e5cf8ee1054dc6672c589c62c7"
+    },
+    {
+      "name": "commons-118232058-lsb-control.png",
+      "sha256": "b48bdbec40912d5b5502d47b13a8908865f798355dea31ba4a4272a80a369411"
+    },
+    {
+      "name": "commons-118232058-cover.bmp",
+      "sha256": "f6b68f1e1366dd1cb76b1814fe74ee5308ff04e8697900e75aa8d459b340a821"
+    },
+    {
+      "name": "commons-118232058-lsb-control.bmp",
+      "sha256": "8986be030b93545fc4fe225ef4f80b082a689b34256cb011c142adca1a8476fd"
+    },
+    {
+      "name": "commons-64866012-cover.png",
+      "sha256": "81b969b714637023c9fc127163b5d4f5fbdf91b435de655c79c1f20872cccd9e"
+    },
+    {
+      "name": "commons-64866012-lsb-control.png",
+      "sha256": "3f6db07d743e55372bfce30e02f4850c921269b8233ad6e43859db2431de512a"
+    },
+    {
+      "name": "commons-64866012-cover.bmp",
+      "sha256": "9114145f24aa7c4e7a66fa2911bbf03d95148fd7f1f3d83a4ca7ffbcdc4d7b75"
+    },
+    {
+      "name": "commons-64866012-lsb-control.bmp",
+      "sha256": "aedbef125774aba5e5e49f782d97a8d0e8c984780f6eed38b36c3cf8eaa4183c"
+    },
+    {
+      "name": "commons-9761445-cover.png",
+      "sha256": "d8e137ffe80cd749698b32bc50bc438a9defbd95d507d960ffc05d3da48d7b03"
+    },
+    {
+      "name": "commons-9761445-lsb-control.png",
+      "sha256": "04b3b673fa35217b1393496b62cd1a5db8cacafb7c5e8cf8d1d59eccc2ef7db7"
+    },
+    {
+      "name": "commons-9761445-cover.bmp",
+      "sha256": "af9e9427f04c6c0ffd78a6b38f97c48cf23c7367e63c47336ef451dc74a4d90f"
+    },
+    {
+      "name": "commons-9761445-lsb-control.bmp",
+      "sha256": "ef05956615cc3c7802e046a3dd1312e0d1cc8919a55c4e492c29df3f17a4f2a8"
+    },
+    {
+      "name": "commons-143055739-cover.png",
+      "sha256": "1308bc6a36c237b00b572d4d0f566605e9bdb5610b4ada6a1c5054e4c272e9dc"
+    },
+    {
+      "name": "commons-143055739-lsb-control.png",
+      "sha256": "0b3a4775b67c046d4cdd4a1429265249e86d393b165c89f376e51af7d8759642"
+    },
+    {
+      "name": "commons-143055739-cover.bmp",
+      "sha256": "f36b2d64b8f4bea602274afdbd0af42b6cf9f1c89dfb153a025008ed0ea659fe"
+    },
+    {
+      "name": "commons-143055739-lsb-control.bmp",
+      "sha256": "31a3321c86390d1332b102ad029a2e978cce9e8db7819697f0a1087fb8809796"
+    },
+    {
+      "name": "commons-150032201-cover.png",
+      "sha256": "2c9ebd42d321e2631684185cc8ddf04f320605c1b6118e03b494aad41fd924ea"
+    },
+    {
+      "name": "commons-150032201-lsb-control.png",
+      "sha256": "2ce01cd00db894358b13910c48578ad268de8b650ea6a1ddd46e3750d79cd07e"
+    },
+    {
+      "name": "commons-150032201-cover.bmp",
+      "sha256": "a0fc1ad474e248c0fbc096573355ccfb360a7acc6ac345ff52dfc613aed3fc2e"
+    },
+    {
+      "name": "commons-150032201-lsb-control.bmp",
+      "sha256": "511cf5fc9b7929be442d65ae7b6207476ed079741224704bdeffacac9c1a9d39"
+    },
+    {
+      "name": "commons-172012011-cover.png",
+      "sha256": "edb14c4f8da760af6751b6cb732b71ab72182db8f465dddb9c12565051a6c2da"
+    },
+    {
+      "name": "commons-172012011-lsb-control.png",
+      "sha256": "bf9e618f13ca315adf39ace704941c6b51f1ff2f4dc74537d946811435b687fb"
+    },
+    {
+      "name": "commons-172012011-cover.bmp",
+      "sha256": "2221d76a22efa26d72f4626669f285985f8ceb2ccca1e9815d1d466d0644c561"
+    },
+    {
+      "name": "commons-172012011-lsb-control.bmp",
+      "sha256": "51413bb678a312c77ec9e508ca956116de9505dec3206977de177ce2dbe9655f"
+    },
+    {
+      "name": "commons-172012012-cover.png",
+      "sha256": "2ca9e51299056a274494574d7037f058df2c67f9f45c1cc3377075c57724317c"
+    },
+    {
+      "name": "commons-172012012-lsb-control.png",
+      "sha256": "60ced7da8000c18aa7693fec0c72b73d917a5986bc6bed0d8dcf4ab73ef7aef6"
+    },
+    {
+      "name": "commons-172012012-cover.bmp",
+      "sha256": "0f9ecd5f827582983ca615ccd80ca2ab7f6421ec0d285d500a37c3e8d0790109"
+    },
+    {
+      "name": "commons-172012012-lsb-control.bmp",
+      "sha256": "7b9fb400aad5a19c6c7163dc518006affa3575cdda910f523e45a38dd54580ef"
+    },
+    {
+      "name": "commons-172012013-cover.png",
+      "sha256": "c8039d0c7480ab8b20feb8d0c1a4d4236e46dbbde8d3ae8a9805c25c0cb4dbf3"
+    },
+    {
+      "name": "commons-172012013-lsb-control.png",
+      "sha256": "894445e74262d89417b4b9fd6ccbe8fa805a1b4c48c408cb54923b7ba4366c3f"
+    },
+    {
+      "name": "commons-172012013-cover.bmp",
+      "sha256": "a221c217acd942d65a7d8c9e5b8e6d0347c59a2b6b7ec84499793e52037cfaad"
+    },
+    {
+      "name": "commons-172012013-lsb-control.bmp",
+      "sha256": "f798a9dd0c21fab90e81b1ca0c306605f220506bbd61263fb3dc08aa85e1d0e5"
+    },
+    {
+      "name": "commons-182605103-cover.png",
+      "sha256": "42b0b345c4b030ce8195fbc4aeaa3d640cffbb6b731b34f723235a200e741359"
+    },
+    {
+      "name": "commons-182605103-lsb-control.png",
+      "sha256": "1e0668133d57aa97cb24c8218960a9386b5530a812700dd89f450c720d680cc3"
+    },
+    {
+      "name": "commons-182605103-cover.bmp",
+      "sha256": "710a3b96487d5258fbd61b61a8f2b0b7725ff5839a1fc3890868808c3f3552a7"
+    },
+    {
+      "name": "commons-182605103-lsb-control.bmp",
+      "sha256": "cbe8c561b8dc02ee2df9f610febd9ba87fd270d7c12808e45f7db54edf37ea48"
+    },
+    {
+      "name": "commons-48691654-cover.png",
+      "sha256": "991c3b0574e943ccf25ef9c4129833098072e73922831e4a904936c2380aa9a0"
+    },
+    {
+      "name": "commons-48691654-lsb-control.png",
+      "sha256": "92aa90d6e73b1952175cbe84776389cda435d4444429ab6f6ea0a20b5a6f1644"
+    },
+    {
+      "name": "commons-48691654-cover.bmp",
+      "sha256": "eb7979c2357bbd7b7ff5b9a4ae8697093da5d6fe0f8370f44b893144a8510e8c"
+    },
+    {
+      "name": "commons-48691654-lsb-control.bmp",
+      "sha256": "2ef1097a77109bdb266bc85549bfb2447de7d08c29827b566cb462aceff7b24a"
+    },
+    {
+      "name": "commons-64866000-cover.png",
+      "sha256": "e5d71c1a9f8a6d815275d4650f91b91bb5f971cb0f8c838c37399096efe19fe8"
+    },
+    {
+      "name": "commons-64866000-lsb-control.png",
+      "sha256": "d74693427576c53e03973bbd8098e279d5a5616b5e817cffdf5c0594b969c31e"
+    },
+    {
+      "name": "commons-64866000-cover.bmp",
+      "sha256": "2232f28dbcc3eaccd3c27ad28159ad354f4e58e2294d38eefdd3030593241696"
+    },
+    {
+      "name": "commons-64866000-lsb-control.bmp",
+      "sha256": "3deb5e17e2efd1fb6dec1dff909b65891e2f80eacada1190ee0f664d234ecee1"
+    },
+    {
+      "name": "commons-64866001-cover.png",
+      "sha256": "88e4133b6a6d2605485c93250c0cb312286f4beb98a51a546d44347fab57f019"
+    },
+    {
+      "name": "commons-64866001-lsb-control.png",
+      "sha256": "c27931ca88097c4dca11e4d6ce1135cd171f981eecf6cc21dca6b30f0b384a7d"
+    },
+    {
+      "name": "commons-64866001-cover.bmp",
+      "sha256": "384a4551084cc7057af9e1008db79f365e3d28aace55cf30f924ca2107b78603"
+    },
+    {
+      "name": "commons-64866001-lsb-control.bmp",
+      "sha256": "4e7152d5fc13a5a1d67ac0870d877cedf168bdcdbe20d024075e7cd706711653"
+    },
+    {
+      "name": "commons-64866198-cover.png",
+      "sha256": "47d5c2fdd41ead7955c1cf358adcbb61f557ae297c1c6326cca9ac48cac11c31"
+    },
+    {
+      "name": "commons-64866198-lsb-control.png",
+      "sha256": "2fe52c0a578ed3c2fb51cf5a4098a6b2146d8ba02b31a9007d3394e4758a5ab1"
+    },
+    {
+      "name": "commons-64866198-cover.bmp",
+      "sha256": "96ee1c909369f31cf6b6d22904f5f7567690d33f61677c41ce22943247789ef5"
+    },
+    {
+      "name": "commons-64866198-lsb-control.bmp",
+      "sha256": "ffd08bdad608fac4ff9e03cf44933c9e9a18d407b39ec52e4b74f3878011d5a5"
+    },
+    {
+      "name": "commons-69953046-cover.png",
+      "sha256": "93b84fbaef893fd9edd46cc2d4f5edd628434f1159b1786bfc9af40c4ebb6b89"
+    },
+    {
+      "name": "commons-69953046-lsb-control.png",
+      "sha256": "a0613b2fa755e8fe2100b0f453b87461fe3462531fc97fe4d582b88f2363316c"
+    },
+    {
+      "name": "commons-69953046-cover.bmp",
+      "sha256": "54d02f99f021548048e9042b3f59ab713a4bb377ffa4e2a3aaec932d121c27f7"
+    },
+    {
+      "name": "commons-69953046-lsb-control.bmp",
+      "sha256": "71ce6f47d3ff1328934fba6a739b3c93819ec01fdc87aec7abe1b174fa338b77"
+    },
+    {
+      "name": "commons-69989873-cover.png",
+      "sha256": "988c5f51c7e2292b30a29ccaa6734bbe5f47d515e0b3ccf672892fc9f45a8f53"
+    },
+    {
+      "name": "commons-69989873-lsb-control.png",
+      "sha256": "ac76e0cb725ac694dd3bb85c7d92f7def1b3fe004e00b5ec6578532e934062b6"
+    },
+    {
+      "name": "commons-69989873-cover.bmp",
+      "sha256": "ced12683f11562d74c65ca80d4217c6b035d505b2c1d56fcf70f10c3179219c3"
+    },
+    {
+      "name": "commons-69989873-lsb-control.bmp",
+      "sha256": "791e32c676341bdc23abfd4a44db9ce326623316c2e813a4b3367da1966730b9"
+    },
+    {
+      "name": "commons-69994838-cover.png",
+      "sha256": "7106dc5d07c0b92d6627ece36ef8d81e833af93132eddead22c7a32ae1ec3f4a"
+    },
+    {
+      "name": "commons-69994838-lsb-control.png",
+      "sha256": "107ac31b6122a2c9c8d8eb0dfd848b5e73acad161c76630273d60bd34e464ee0"
+    },
+    {
+      "name": "commons-69994838-cover.bmp",
+      "sha256": "50fbf6d6bffac32cf5723d09331ed2407a1459f12e2732c7af0f0bdce8834c67"
+    },
+    {
+      "name": "commons-69994838-lsb-control.bmp",
+      "sha256": "5cd3c8d00f6761e9a3f2e0f3d454b2d67af1aca433670b1d1a9d4fb55c073449"
+    },
+    {
+      "name": "commons-70180740-cover.png",
+      "sha256": "983e0d08527c9259ba8e5faa0a695d171d7d7651d68b26fdc0ec88ad249498f6"
+    },
+    {
+      "name": "commons-70180740-lsb-control.png",
+      "sha256": "91fc95554ab6ebfad0c5d467a7ec2d664d802e20072bcd159d4b880f43182621"
+    },
+    {
+      "name": "commons-70180740-cover.bmp",
+      "sha256": "1326fb53f02f1c2e82c42ba160cd32887b1d80ae27a92f0e306116598fa21e2b"
+    },
+    {
+      "name": "commons-70180740-lsb-control.bmp",
+      "sha256": "a030816a4b36281674775c4331355f97760b1272e3fc33150d9764e9bbed5e20"
+    },
+    {
+      "name": "commons-78933559-cover.png",
+      "sha256": "cba66bc3b24f8cf45545cba2012ae916b8e6907aa364ecbb6939aceba8d87ec7"
+    },
+    {
+      "name": "commons-78933559-lsb-control.png",
+      "sha256": "4983906d2832d7d294f11a4092a1e4f253a6cf5161383bcc06b57721be30c0dc"
+    },
+    {
+      "name": "commons-78933559-cover.bmp",
+      "sha256": "cc07f52665fd1b6282c8a827283e49719c94fd3979cc1a0b8fed8f5bbb0fb908"
+    },
+    {
+      "name": "commons-78933559-lsb-control.bmp",
+      "sha256": "458a4cccda732a8f7b686d7f0a69bec6e595e7511657b30339bc24b610fe9e6e"
+    },
+    {
+      "name": "commons-81018620-cover.png",
+      "sha256": "bcc0ad4af4f5debd0d8aeb6d563f4ce04a9e38c475c78b40b929fdd15a9197da"
+    },
+    {
+      "name": "commons-81018620-lsb-control.png",
+      "sha256": "43eb139eaffa0e0f266bb27f7cc68c5e96e5910950fbf1473ba6e3d633e41117"
+    },
+    {
+      "name": "commons-81018620-cover.bmp",
+      "sha256": "c16aad19ca4daf40b4668680718d20ceddbc0056f391bf9310d6bb808fde15ec"
+    },
+    {
+      "name": "commons-81018620-lsb-control.bmp",
+      "sha256": "cdd3240f48b776ba1099fc179b62fb94ac4e3f13026d814a5ab2327675779dcc"
+    },
+    {
+      "name": "commons-116188200-cover.png",
+      "sha256": "e355ec3faefbb30823cfe77648ab4d23cc5b36555a3890305ce34db3a94c2f4c"
+    },
+    {
+      "name": "commons-116188200-lsb-control.png",
+      "sha256": "bfce455d3a7e3c4dfa4f7531de75365b1c45b1c00949f008dba47b2c054b4310"
+    },
+    {
+      "name": "commons-116188200-cover.bmp",
+      "sha256": "9302c4989b1e9de5d1e72eddb62e3426290bb232961f6f19cb25f2ffd0d83718"
+    },
+    {
+      "name": "commons-116188200-lsb-control.bmp",
+      "sha256": "044b9f0207233a9ad02ea7591f6e73bc2a822b984e7c690fd77ab1742fa7919e"
+    },
+    {
+      "name": "commons-116188204-cover.png",
+      "sha256": "9de5d6b67a0f4ff5d27dafc0cecff5d16486882281e165aecc5db0c115bef73d"
+    },
+    {
+      "name": "commons-116188204-lsb-control.png",
+      "sha256": "7912e9df19ee71340b0f8f2f0ded55db70c178cd7686b9f9c746406db92b34ae"
+    },
+    {
+      "name": "commons-116188204-cover.bmp",
+      "sha256": "81f16734c6695c68476130d89224a44ef6bc22c2fc4b7cb304f767a010abb318"
+    },
+    {
+      "name": "commons-116188204-lsb-control.bmp",
+      "sha256": "b0f96b21b740ae0ce1e3efa0a64eb3014af0c2e549783050229076aec9418a31"
+    },
+    {
+      "name": "commons-121661626-cover.png",
+      "sha256": "e0080b4ef020afa661f3d31d50513c83e2287b30f538c3329874166e1890a44d"
+    },
+    {
+      "name": "commons-121661626-lsb-control.png",
+      "sha256": "d6a91ecda94c7d7979a62756c0722c81a69183ab14a028212c4c00e612ecf368"
+    },
+    {
+      "name": "commons-121661626-cover.bmp",
+      "sha256": "4d1577e0e61b0200ed08d78be86c019521230aeb6034c413a20a19f00f1f8f7d"
+    },
+    {
+      "name": "commons-121661626-lsb-control.bmp",
+      "sha256": "a448e559d4cbee31273fdf290390c4eb80e5ba9bb7ab2d94f98194011f3d90f4"
+    },
+    {
+      "name": "commons-131600126-cover.png",
+      "sha256": "e387dddcbb305f648667513b5d4eef452e10f5d58dceba296908c239256de0dc"
+    },
+    {
+      "name": "commons-131600126-lsb-control.png",
+      "sha256": "f6573fb83f0674dfab36c68dd210a25e9055d2878305d42129eec4537a375b36"
+    },
+    {
+      "name": "commons-131600126-cover.bmp",
+      "sha256": "0e3322b0850743efda300ef36985ea4d133cf879dc44e55e7f77d3d61aa3f3b4"
+    },
+    {
+      "name": "commons-131600126-lsb-control.bmp",
+      "sha256": "9e01888e1f5dc195661362308630710342fdea9dd13dce4a055de94207ca97d9"
+    },
+    {
+      "name": "commons-157893833-cover.png",
+      "sha256": "e3aaa7ec1fc2967ad51d9ee454d90d68d746ab712592b4e997d2e8559d893830"
+    },
+    {
+      "name": "commons-157893833-lsb-control.png",
+      "sha256": "27f658c94d747eb2e10105bd6a90a3674a5a2742b660cf4418a5c401f10dec08"
+    },
+    {
+      "name": "commons-157893833-cover.bmp",
+      "sha256": "34b7470b7ecb7a6b3240782f4f710e3786d16de29b90c2b63463bbde0e6a7c38"
+    },
+    {
+      "name": "commons-157893833-lsb-control.bmp",
+      "sha256": "72b37e730ce7f39da1629b552d6191165bc1998a13b5c3a053f37619ff4f0312"
+    },
+    {
+      "name": "commons-166020200-cover.png",
+      "sha256": "07f50053b7c7dae73c235af1620bf2d23ca2f56405ebfb8be59630edcafe2d71"
+    },
+    {
+      "name": "commons-166020200-lsb-control.png",
+      "sha256": "834239060e8e1c3f18b39dac6dbd7a627758fc4d30507f96fc6a0ef6b82e2dea"
+    },
+    {
+      "name": "commons-166020200-cover.bmp",
+      "sha256": "e618130b389bfad5b6c76a16b4724567e2510e825510f6ede640a64b0c82c535"
+    },
+    {
+      "name": "commons-166020200-lsb-control.bmp",
+      "sha256": "87ae23d5733d8c18b4eb75f9f782f8763d2d43066f1c20169575c4cec89caf55"
+    },
+    {
+      "name": "commons-196249843-cover.png",
+      "sha256": "bfdfaf9d72ce8e3e799ffc930c0f87d4e472c5185aea7c22dac46f68387b61f6"
+    },
+    {
+      "name": "commons-196249843-lsb-control.png",
+      "sha256": "e2147e05d0b3ce23b4725644a5f14be12c005b5aef3fe73abf20d172b66e1210"
+    },
+    {
+      "name": "commons-196249843-cover.bmp",
+      "sha256": "33748041e7ebe4f1f352a0005ba88c8c0d9f8a7f5ebaceeea6fb6e80f29004f0"
+    },
+    {
+      "name": "commons-196249843-lsb-control.bmp",
+      "sha256": "b84e4d966aec4d98e605a06918bb4aef5b5d67d68d7abf2cf650fb61aab1e98d"
+    },
+    {
+      "name": "commons-196249846-cover.png",
+      "sha256": "039d93bc5f7bc831ce744c22a22dadd5ff922061e289e7e001ed273b85c467ce"
+    },
+    {
+      "name": "commons-196249846-lsb-control.png",
+      "sha256": "b98f258f9e52a0383827594f8390e06891f190028b7b786e1d0c2aed8dc188c3"
+    },
+    {
+      "name": "commons-196249846-cover.bmp",
+      "sha256": "a4348b3b03670b6670d153f743c4bf40697e41eca2a64993e21f2cc0302d0dd3"
+    },
+    {
+      "name": "commons-196249846-lsb-control.bmp",
+      "sha256": "23ad1ed5d3dc013cf9be42116af153ab412b771a4ea89fc185fa41f4aff3e24a"
+    },
+    {
+      "name": "commons-22400202-cover.png",
+      "sha256": "7d7dc70606c9018173a589cdfa38939fc32da2dc5a814438984b0af4cf2ccb4e"
+    },
+    {
+      "name": "commons-22400202-lsb-control.png",
+      "sha256": "807e78894058c83a486f3ca74af12aeddf4059c68dda4d59fa45dd9bcb974ecc"
+    },
+    {
+      "name": "commons-22400202-cover.bmp",
+      "sha256": "4d82f8d7cf730e62cdcc1eb95524a889e75332a3ff5f86281bb8e2e91928a720"
+    },
+    {
+      "name": "commons-22400202-lsb-control.bmp",
+      "sha256": "53a827ae69b6f9d5fcc9eb823cad141cf619d47e7ef7e8b416ef990061d30e1f"
+    },
+    {
+      "name": "commons-22542177-cover.png",
+      "sha256": "922097b0fe06842f8b904e0c67f9dbc84dcb92ff95bc884535f627df1deea49c"
+    },
+    {
+      "name": "commons-22542177-lsb-control.png",
+      "sha256": "fe43925e27515c4ba161e67e519fe879174b0edb7d6ec8c07d2741a5e4368cae"
+    },
+    {
+      "name": "commons-22542177-cover.bmp",
+      "sha256": "fd5f4c80f881e67e750152d0fdcb1a617e7f83a2c1a5b3b9d80f751b69c27c3a"
+    },
+    {
+      "name": "commons-22542177-lsb-control.bmp",
+      "sha256": "0591977ee07667c0fd9e2c405509f38c782149e84ac2440c55cbbc5416595fcc"
+    },
+    {
+      "name": "commons-116188199-cover.png",
+      "sha256": "6c70c41a22e42aa1de74b02a1d67b7e5723f349769e1c60eab327ff6adfe8e3a"
+    },
+    {
+      "name": "commons-116188199-lsb-control.png",
+      "sha256": "76c8a5db5f22a78506d42a04021c1b523168f9ebd3f490cb003986b959ef0807"
+    },
+    {
+      "name": "commons-116188199-cover.bmp",
+      "sha256": "279a5b2fc6682a9c411b45ef8affb286393e241b59b53456830ce35f13f2f733"
+    },
+    {
+      "name": "commons-116188199-lsb-control.bmp",
+      "sha256": "190c8177a4bc4d9219a85cb02e0752525438de11309c0c1528be5e95e458cde8"
+    },
+    {
+      "name": "commons-140529898-cover.png",
+      "sha256": "9051a3d7280387a145e49d5fc3231c26e998a62e6bd64770de1f072f8da158ba"
+    },
+    {
+      "name": "commons-140529898-lsb-control.png",
+      "sha256": "ce688224a4b764e51c856b215411f7c46b7b6a707fb8b39108828bd47a77eec0"
+    },
+    {
+      "name": "commons-140529898-cover.bmp",
+      "sha256": "fdae223b0aa221d36ffcd95d20fcaed4b6d3ec67cfcadcb1930db1e35e9d3dd0"
+    },
+    {
+      "name": "commons-140529898-lsb-control.bmp",
+      "sha256": "b2432c4328738ac57334a4ccd71adf913d730698162b336d1fa7764d00c25f98"
+    },
+    {
+      "name": "commons-152169941-cover.png",
+      "sha256": "5744673a6de23505f53576e7654e9cd934b55722826582168f3aad3127b78940"
+    },
+    {
+      "name": "commons-152169941-lsb-control.png",
+      "sha256": "a56d4d5ebb116e324a38f02c59eb8e3a12868c44cc2d07e5491883c267272095"
+    },
+    {
+      "name": "commons-152169941-cover.bmp",
+      "sha256": "f0f99ec1570ba712f2cddbf7b6cfa73766bae8227019b5714d76b62f90ebe25d"
+    },
+    {
+      "name": "commons-152169941-lsb-control.bmp",
+      "sha256": "0e45d4ba26706808656a681dc33347617aa5750309aa79ced830a7cbf42def3d"
+    },
+    {
+      "name": "commons-152892292-cover.png",
+      "sha256": "5a623a62f7baabb77b1e6e06a1e901d04abd54d328ee3c590d5dd536b59ea521"
+    },
+    {
+      "name": "commons-152892292-lsb-control.png",
+      "sha256": "83b4f7c42cf7b9864c30edc9948dd975f8d9eba486db69f3c5609c08ffb3277b"
+    },
+    {
+      "name": "commons-152892292-cover.bmp",
+      "sha256": "2bc30cb7777d38da3faefaa9f6594e03c79d21b10b06cc8c7258fa5b6605b3f0"
+    },
+    {
+      "name": "commons-152892292-lsb-control.bmp",
+      "sha256": "c4a5ad0d62053c2e11ab954fa67a1bbfa424e54a2c4fe4c3bc70fde506677fc3"
+    },
+    {
+      "name": "commons-154191649-cover.png",
+      "sha256": "ce0602436f1aaa508e0336528db14608b47a78047e667f9a9e469a816a35748a"
+    },
+    {
+      "name": "commons-154191649-lsb-control.png",
+      "sha256": "3489adf372fd8050e438371ee5a4f3859e9a4eb6e3f9a72f79bbf4d24115ee70"
+    },
+    {
+      "name": "commons-154191649-cover.bmp",
+      "sha256": "19e0d96180e09bf4ce827729825cf9f566cefbb0a3c426560705cbb64efe3e0f"
+    },
+    {
+      "name": "commons-154191649-lsb-control.bmp",
+      "sha256": "3acfb98655109daf24313c855c767bea83d8ff4089579534ebfa943eec6c1fee"
+    },
+    {
+      "name": "commons-177291720-cover.png",
+      "sha256": "05e7bb4490b377b8966b96002ba944f0348e077308fbe40dbc91170ad42f26a6"
+    },
+    {
+      "name": "commons-177291720-lsb-control.png",
+      "sha256": "0fa7a44b7885702431dd2c6dd91aa00ab1aed66c743d151e6eed1869d10dfa42"
+    },
+    {
+      "name": "commons-177291720-cover.bmp",
+      "sha256": "6b0f24e11acac262813c02b7aa1485c57e6c74211e860be1c06b7ce58acc8599"
+    },
+    {
+      "name": "commons-177291720-lsb-control.bmp",
+      "sha256": "1d324520d53e1b34bf8cc7efe87da31ade65042ee27d9134447ca57fba03a5c2"
+    },
+    {
+      "name": "commons-181038556-cover.png",
+      "sha256": "94326e23321808c72fff36d8efe3c1e86df76fbd7f70fd048418f9713e80cf33"
+    },
+    {
+      "name": "commons-181038556-lsb-control.png",
+      "sha256": "6078f86fe604e85518c00db3290b569f74c8bfd9382dfce73e0341852358b66d"
+    },
+    {
+      "name": "commons-181038556-cover.bmp",
+      "sha256": "7a592be17cf20d91989704583e47d0809abec9cb99cd7be90c1aa0553d97714b"
+    },
+    {
+      "name": "commons-181038556-lsb-control.bmp",
+      "sha256": "5be35c58c9bbea0554b8a16a0a8d288b3e913c89c95910b85ae072fef623c0cf"
+    },
+    {
+      "name": "commons-46061077-cover.png",
+      "sha256": "f606dacaf63a1054fb61fe34196d38009b0f14eaed3b86a2df982bde856844af"
+    },
+    {
+      "name": "commons-46061077-lsb-control.png",
+      "sha256": "4fd02b9c68574b476fc597278dba9122cc8ab6349aa55b97597029a9b50fbe05"
+    },
+    {
+      "name": "commons-46061077-cover.bmp",
+      "sha256": "636150815d0dd3435c17353592190f4cc5c2b1c617e26cf3c6352ee9823295b4"
+    },
+    {
+      "name": "commons-46061077-lsb-control.bmp",
+      "sha256": "0891e69e046c5095bb1fcc67b9370e55fa22b93a7d8d7675747dd74555fd38cb"
+    },
+    {
+      "name": "commons-31877406-cover.png",
+      "sha256": "4e11730bf9a9942c7dc017e43d880e258597894d43a6ee85a0c8ab8fd97c27f9"
+    },
+    {
+      "name": "commons-31877406-lsb-control.png",
+      "sha256": "33b75a29e75a2880d1f9a28e13471483a44683b4b9c1b3fda6ff38f628a6b410"
+    },
+    {
+      "name": "commons-31877406-cover.bmp",
+      "sha256": "eb0813adf0b65a5e3d0b94c77c44caa425c9190a4b689763d1c5a8b06f67fb88"
+    },
+    {
+      "name": "commons-31877406-lsb-control.bmp",
+      "sha256": "ddc650fce0c65f0b7a776070c41a4c892efacdac46b50db5905bca2b250e3325"
+    },
+    {
+      "name": "commons-4104668-cover.png",
+      "sha256": "4c11f342d57fce7398f49a46bbcbd6ee2027b4336bb32b0c9c9c35670b85986a"
+    },
+    {
+      "name": "commons-4104668-lsb-control.png",
+      "sha256": "75af8a4205efa58a6558f8f35c586e1b7a1eb1dd3de2766049dc1205b94e63f6"
+    },
+    {
+      "name": "commons-4104668-cover.bmp",
+      "sha256": "e93d4a155887e5a88173bcd1a71e74324db34d829f80a933aee0b3c832b6040e"
+    },
+    {
+      "name": "commons-4104668-lsb-control.bmp",
+      "sha256": "04789f985e2bd1ca310e7111978fb41d24870b28f5c4db9002dfbc49d03ea8b0"
+    },
+    {
+      "name": "commons-95043709-cover.png",
+      "sha256": "83a10638250a9c62db04cf3fba60abed5d45c271eb818615dfd5bead58eaee5c"
+    },
+    {
+      "name": "commons-95043709-lsb-control.png",
+      "sha256": "eb7bc89fc37cd885c54c1a2419157b074cc8200e8fc447ecb2ea14a0ba3ef1bf"
+    },
+    {
+      "name": "commons-95043709-cover.bmp",
+      "sha256": "307f0f87849d1967dcee6ee50d6358fb520b333a8cd989c18d24ca66f73840ce"
+    },
+    {
+      "name": "commons-95043709-lsb-control.bmp",
+      "sha256": "a0b2431268833792591623354b50d517c96b68d03ca58e5766f42a3c82544cab"
+    },
+    {
+      "name": "commons-124492411-cover.png",
+      "sha256": "f039ebebc4a2a362e008d9c22a983e50ef76bfd5b165528ec1b31f6056b3cdfa"
+    },
+    {
+      "name": "commons-124492411-lsb-control.png",
+      "sha256": "0222d1ece68f38c78f47fe5945707580d12f336e8ccbb9a5ad00f89e19a74b14"
+    },
+    {
+      "name": "commons-124492411-cover.bmp",
+      "sha256": "1c48b848dac77646e542e7d798433c4dcc4ed81a98b704c7d07a57ff60fac4fd"
+    },
+    {
+      "name": "commons-124492411-lsb-control.bmp",
+      "sha256": "beedf95554a553f935b3fb653d7cea14037ad9bb3231bdfd3d358d1c9788156f"
+    },
+    {
+      "name": "commons-200692598-cover.png",
+      "sha256": "a483cb7a2ddc540f441959e3db0b7727970fb0fecce14c74d70cc11790b6c2fc"
+    },
+    {
+      "name": "commons-200692598-lsb-control.png",
+      "sha256": "4b1524876021a00e115c3479b831de55a8a34ea1f4d850832aac12b2037abf8d"
+    },
+    {
+      "name": "commons-200692598-cover.bmp",
+      "sha256": "6d5ca4dc95608fcdb1159f62e9227b71ef7d7d3eb7cfa8f64065eaccfccf9afe"
+    },
+    {
+      "name": "commons-200692598-lsb-control.bmp",
+      "sha256": "c1e02b6cc259162300f81b54ddf2edb96bf03342cc4c55bfa8036102a9889801"
+    },
+    {
+      "name": "commons-37320259-cover.png",
+      "sha256": "e51aee6701d82517ee393ed3a5f6ba571a323dc2b1f159640fb92abbee348116"
+    },
+    {
+      "name": "commons-37320259-lsb-control.png",
+      "sha256": "b5910dbfc9ddaf57e607e210d5c3f0c0dc75bdbc980113d806c4f34598e6c7b8"
+    },
+    {
+      "name": "commons-37320259-cover.bmp",
+      "sha256": "d5d27f4b81e115a6b2b5c3f49e1fce400598fd31bef27f5ef9f62d2a22a1ddcd"
+    },
+    {
+      "name": "commons-37320259-lsb-control.bmp",
+      "sha256": "552c8c84f6d15ce659cf96279b6beb1d9382c89cdae0532b333659cb758f0aec"
+    },
+    {
+      "name": "commons-141496139-cover.png",
+      "sha256": "55ee27203bba8fb3ee7e57cb86f7e7c4300d23c97703d25ab73216881c16e450"
+    },
+    {
+      "name": "commons-141496139-lsb-control.png",
+      "sha256": "d33170ccccd5a5d5df57b095cf12aee724185ed1423a165ece08dd4ce6cfdac7"
+    },
+    {
+      "name": "commons-141496139-cover.bmp",
+      "sha256": "7e6c51b6cea8212e9d34da4f1386970aa79dca76867f86355fa6308f24c23f67"
+    },
+    {
+      "name": "commons-141496139-lsb-control.bmp",
+      "sha256": "f8e7ecadff44d83da6bff388b92606b498dff670a53437c98f00084dcf7e4281"
+    },
+    {
+      "name": "commons-153767504-cover.png",
+      "sha256": "3f898b028155323b15aaccbb81ea0c6cd9295778c7a3f63a2def40694998bd74"
+    },
+    {
+      "name": "commons-153767504-lsb-control.png",
+      "sha256": "ff51ede50cb8dc20eb1d0a537d66b735f8e5373ed1ea1eba1cd845e1358d3a8b"
+    },
+    {
+      "name": "commons-153767504-cover.bmp",
+      "sha256": "4f17339c9be681b664ca751acf478df5d5345ddc79309f99f5053708bf3e1878"
+    },
+    {
+      "name": "commons-153767504-lsb-control.bmp",
+      "sha256": "3b3b82a228f88606205402f4c8b80eed9bcf5aeaf0f8fd7af997ff4eb3a6510d"
+    },
+    {
+      "name": "commons-154229158-cover.png",
+      "sha256": "d78c83d6d05890eafe8751e92cf0eb2f69a41c2b3a667c0a5289f432b21a55fb"
+    },
+    {
+      "name": "commons-154229158-lsb-control.png",
+      "sha256": "72c46e45147355aef84a6eaf38fc9146c45589bfc5d6de52176cc16553c3584d"
+    },
+    {
+      "name": "commons-154229158-cover.bmp",
+      "sha256": "22401536f7647105249ab4ca0a8e8152f90a53437bb6df5deaf81d80e033b361"
+    },
+    {
+      "name": "commons-154229158-lsb-control.bmp",
+      "sha256": "32ba6aa6af423eaea70066f996694b34ff7fe4ff71e8bb3faf510907fd937a33"
+    },
+    {
+      "name": "commons-38960349-cover.png",
+      "sha256": "3bcbb84d18e66821351c19af1ea896e73cff2ee1471e354ed4efadb8ba0152c9"
+    },
+    {
+      "name": "commons-38960349-lsb-control.png",
+      "sha256": "675aa009d67f394848610cd8b0b61f55c1c3a844958490c46b2c52614a865d0a"
+    },
+    {
+      "name": "commons-38960349-cover.bmp",
+      "sha256": "0d748c9651b6cb884ec04820bfa1b9ed8dd1cacdee47fe8522505b7b9427a706"
+    },
+    {
+      "name": "commons-38960349-lsb-control.bmp",
+      "sha256": "2eca7cad63344d8af840fdbe55d08884e6cef0f4f7b033222ddabf20d342a721"
+    },
+    {
+      "name": "commons-138784220-cover.png",
+      "sha256": "8b7560fefaee4095b118f70bc59f51d56cc40fd0ac092e4bfbb7b347ba77d0ae"
+    },
+    {
+      "name": "commons-138784220-lsb-control.png",
+      "sha256": "c1f85fb9e70eab639e28548e9addbd34fbe360fba26ab1ae54e35f82b397daa2"
+    },
+    {
+      "name": "commons-138784220-cover.bmp",
+      "sha256": "5d291c3c98a238b0f35f90284487736fca86f4abfb99cd123ea8c36deefd4270"
+    },
+    {
+      "name": "commons-138784220-lsb-control.bmp",
+      "sha256": "f90f252bc4581a740e710fe38fb75daecd0090ad01dc7c2d81f5d44399671f11"
+    },
+    {
+      "name": "commons-132641919-cover.png",
+      "sha256": "5ad3e6571cc37b15431668ca7c109903dac04fa0680436aedb5ddddf837f0c25"
+    },
+    {
+      "name": "commons-132641919-lsb-control.png",
+      "sha256": "bc4198ac5de1cdd28e057d28658564d53a5355265f031b01012ee209b19d958f"
+    },
+    {
+      "name": "commons-132641919-cover.bmp",
+      "sha256": "d86288e5d7dc9c1680e27706bab96ea76ffb276f4b1e3e158b697ac20c9c0ee3"
+    },
+    {
+      "name": "commons-132641919-lsb-control.bmp",
+      "sha256": "a8f127a9e2cdf0a01f0425422574482b10e54316efe5f2be8cb659625333a3ac"
+    },
+    {
+      "name": "commons-185103662-cover.png",
+      "sha256": "2f29904eecd37a5af55a0f388f8ce5b079dd761a115b867c3f6dbdf1a83b4359"
+    },
+    {
+      "name": "commons-185103662-lsb-control.png",
+      "sha256": "fdc5daca2b65e2822f201809bee07078baa14845489dbf29ce30228d545bd1e7"
+    },
+    {
+      "name": "commons-185103662-cover.bmp",
+      "sha256": "7fce82ee2a8ea1b7ff2cd10fe280dd149ee27161c6ce0156da8a78d9c12a7d3b"
+    },
+    {
+      "name": "commons-185103662-lsb-control.bmp",
+      "sha256": "88e12fa80f126cce5f6e274cfaa719f75064ba713f069d18f929050f956b093f"
+    },
+    {
+      "name": "commons-98030350-cover.png",
+      "sha256": "24aa2a532dd598c4a64156638b6ed71fcfce27a03e8f54185e5c2d55095d263f"
+    },
+    {
+      "name": "commons-98030350-lsb-control.png",
+      "sha256": "3b2dcb324f482986eb6f1852855a9e3b811b30ed67c32002586c86b1a72fb0b9"
+    },
+    {
+      "name": "commons-98030350-cover.bmp",
+      "sha256": "d3d1841571e374bc33eeb724971e35afdedab899ce7958242aea6c27e3bf1620"
+    },
+    {
+      "name": "commons-98030350-lsb-control.bmp",
+      "sha256": "94d1d9e873befb8f6a00e8a3dda353d7a7debe2500ae8f436c774b0a8701347d"
+    },
+    {
+      "name": "commons-69630220-cover.png",
+      "sha256": "41868b1221da105fc3691126b5d7771020f8a2b24677a20424bcc17d5f0445fb"
+    },
+    {
+      "name": "commons-69630220-lsb-control.png",
+      "sha256": "c514bf339a9112dea6d5852ba62f58978eed15c30352e6c2f0bba6a2187d13f3"
+    },
+    {
+      "name": "commons-69630220-cover.bmp",
+      "sha256": "ae953719092ea4bb2d98b003aa444ed0944583a97ffadf0b51d61e588f7f47c1"
+    },
+    {
+      "name": "commons-69630220-lsb-control.bmp",
+      "sha256": "7afe3142364c4233c6e7f94ad3daed2fa81334d1424aff7e69894849b04db1b5"
+    },
+    {
+      "name": "commons-173243205-cover.png",
+      "sha256": "a73d0040bf2a261bd91cf402a6cac0032dcb0421f5af0b40bd77b8a12f13570e"
+    },
+    {
+      "name": "commons-173243205-lsb-control.png",
+      "sha256": "aea71cace11894522b576039d2eee5bbe765a18cd6915d0abb53a0396746ba87"
+    },
+    {
+      "name": "commons-173243205-cover.bmp",
+      "sha256": "f43e64b50ce30d6c5f996829f24f8fb48c2b3ec5b285c952fb11e578d3dfc018"
+    },
+    {
+      "name": "commons-173243205-lsb-control.bmp",
+      "sha256": "50c62bfa71228ff9b49597ef6c31b3b846969fca66e0b150b2ab1988ee1a6778"
+    },
+    {
+      "name": "commons-178236864-cover.png",
+      "sha256": "6dd0345fc83dbad91593721720e4924befb9304146d10c4e37851536cdd9104a"
+    },
+    {
+      "name": "commons-178236864-lsb-control.png",
+      "sha256": "0c063582ffe9a201b4043f53c910a44ecb3107991b7133219a470faf5aeee686"
+    },
+    {
+      "name": "commons-178236864-cover.bmp",
+      "sha256": "b8c6958a68cf11286492b49a5d122745f79791d4e716879e5c0e79bb76847d9b"
+    },
+    {
+      "name": "commons-178236864-lsb-control.bmp",
+      "sha256": "fdcc86a71f1d8a4d0c48a86912ddb0e96eff4792df4f877d1946eb2043c39344"
+    },
+    {
+      "name": "commons-95043710-cover.png",
+      "sha256": "c4315339ffd9cca223475ae438f21728074eedd62409a51767f7b5d983594470"
+    },
+    {
+      "name": "commons-95043710-lsb-control.png",
+      "sha256": "1a63ac9d27216878928ab081e60cb547acc5a37b7648648f99d72acedac7b896"
+    },
+    {
+      "name": "commons-95043710-cover.bmp",
+      "sha256": "7601edeffbae7f8079315799ba2985482e5d9f6665c0df2b0b95fb72e5f6cd41"
+    },
+    {
+      "name": "commons-95043710-lsb-control.bmp",
+      "sha256": "614b012583c2e966313fb120911245add032accabca9275b10dab05bb8f12646"
+    }
+  ],
+  "author_groups": 75,
+  "checked_utc_unix": 1792974699.3889723,
+  "covers_match_fixed_source_crop_hash": true,
+  "held_ids": {
+    "commons-166262038": "Cached Commons category explicitly says License review needed; source license remains unresolved.",
+    "commons-174627764": "Photographic origin unresolved after visual inspection; image appears heavily processed or synthetic. AI origin is not proven; hold rather than certify photographic appearance.",
+    "commons-176122210": "Photographic origin unresolved: visibly processed portrait with a four-point sparkle mark; cached metadata does not establish its processing history. Synthetic origin is not asserted."
+  },
+  "image_hash_and_crc_checks": 472,
+  "independent_scalar_payload_checks": 236,
+  "maximum_sample_delta": 1,
+  "mode_groups": {
+    "L": 6,
+    "RGB": 69
+  },
+  "native_modes": {
+    "L": 13,
+    "RGB": 105
+  },
+  "new_gpu_attempts": 0,
+  "optimizer_updates": 0,
+  "originals": 118,
+  "png_bmp_pixels_identical": true,
+  "rejected_ids": {
+    "commons-171401330": "Excluded by the unchanged ordinary-photograph policy: the full warehouse scene and fixed crop visibly use watercolor/illustration rendering. The own-work license assertion does not establish a photographic original; no recropping or relabeling is performed.",
+    "commons-187584445": "Excluded by the fixed ordinary-photo source policy: the full file is a multi-photo montage. Do not extract one panel or treat its crop as a new admitted original."
+  },
+  "roles": "unassigned",
+  "samples_after_payload_unchanged": true,
+  "schema": "spatial-native-expansion-final-artifact-replay-v1",
+  "snapshot_sha256": "9f22a91dcc57046931d87c51586f9f13d70c80d988d6b9bad4153905c35acc19",
+  "status": "ready_prepared_subset_only",
+  "true_unreviewed_candidates": [],
+  "upper_seven_bits_unchanged": true
+}

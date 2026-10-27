@@ -1,0 +1,22 @@
+{
+  "automatic_execution": false,
+  "files": [
+    {
+      "path": ".benchmark/png-bmp-native-expansion-20261023/new_contact_sheet.py",
+      "sha256": "2e28fa78c88f23a6d507dc75e42affdbb67bf79c9cd6b1ead40cdc11c4fcc304",
+      "utf8": "\"\"\"Select new cells from the already verified scientific contact figures.\"\"\"\nimport io\nimport sys\nfrom pathlib import Path\nfrom PIL import Image\nfrom core import colab_artifacts as a\n\nf=Path('.benchmark/png-bmp-native-expansion-20261023')\ncurrent,previous=sys.argv[1:]\nassert current.isdigit() and previous.isdigit()\ntarget=f/'inspection-snapshots'/current\nchecks=a.document(target/'inspection.json')['checks']\nold=a.document(f/'inspection-snapshots'/previous/'inspection.json')['checks']\nprior={r['id']:r for r in old}\nnew={r['id'] for r in checks if r['id'] not in prior}\nfor row in checks:\n if row['id'] in prior:assert row['crop_sha256']==prior[row['id']]['crop_sha256'] and row['original_sha256']==prior[row['id']]['original_sha256']\nfor pair in a.document(target/'inspection.json')['similarity_flags']:\n if pair['left'] in new or pair['right'] in new:new.update([pair['left'],pair['right']])\nselected=[(i,r) for i,r in enumerate(checks) if r['id'] in new]\nassert 0<len(selected)<=24\nfigure=Image.new('RGB',(1200,300*((len(selected)+2)//3)),'white')\nfor cell,(index,row) in enumerate(selected):\n source=target/('full-and-crop-%02d.png'%(index//12))\n with Image.open(io.BytesIO(a.read(source,4*a.MIB))) as page:\n  x,y=(index%3)*400,(index%12//3)*300\n  figure.paste(page.crop((x,y,x+400,y+300)),((cell%3)*400,(cell//3)*300))\nbuffer=io.BytesIO();figure.save(buffer,format='PNG')\nsha=a.put(target/'new-and-flagged-contact-sheet.png',buffer.getvalue(),8*a.MIB)\na.put(target/'new-contact-selection.json',a.encode({'ids':[r['id'] for _,r in selected],'figure_sha256':sha,'selector_sha256':a.digest(a.read(Path(__file__),a.MIB)),'unchanged_prior_hashes_verified':True,'previous_snapshot':previous}))\nprint('new/flagged cells',len(selected))\n"
+    },
+    {
+      "path": ".benchmark/png-bmp-native-expansion-20261023/test_contact_selection.py",
+      "sha256": "879166ef25901adf6b2f64291f8e0a27fed2daec9524c28fd1138b2b7da43567",
+      "utf8": "\"\"\"Generated visual-regression checks of new/flagged contact selection.\"\"\"\nimport runpy\nimport sys\nfrom pathlib import Path\nimport pytest\nfrom PIL import Image\nfrom core import colab_artifacts as a\n\nSELECTOR=Path(__file__).with_name('new_contact_sheet.py').absolute()\n\n@pytest.fixture\ndef scene(tmp_path,monkeypatch):\n monkeypatch.chdir(tmp_path)\n f=tmp_path/'.benchmark/png-bmp-native-expansion-20261023/inspection-snapshots'\n for name in ['000','001']:(f/name).mkdir(parents=True)\n old={'id':'old','original_sha256':'a'*64,'crop_sha256':'b'*64}\n new={'id':'new','original_sha256':'c'*64,'crop_sha256':'d'*64}\n (f/'000/inspection.json').write_bytes(a.encode({'checks':[old]}))\n current={'checks':[old,new],'similarity_flags':[{'left':'old','right':'new'}]}\n (f/'001/inspection.json').write_bytes(a.encode(current))\n figure=Image.new('RGB',(1200,1200),'white')\n figure.paste(Image.new('RGB',(400,300),'red'),(0,0))\n figure.paste(Image.new('RGB',(400,300),'blue'),(400,0))\n figure.save(f/'001/full-and-crop-00.png')\n monkeypatch.setattr(sys,'argv',[str(SELECTOR),'001','000'])\n return f,current\n\n\ndef test_flagged_prior_cell_is_shown_with_new_source(scene):\n f,current=scene\n runpy.run_path(str(SELECTOR),run_name='__main__')\n receipt=a.document(f/'001/new-contact-selection.json')\n assert receipt['ids']==['old','new']\n with Image.open(f/'001/new-and-flagged-contact-sheet.png') as output:\n  assert output.getpixel((200,150))==(255,0,0)\n  assert output.getpixel((600,150))==(0,0,255)\n\n\ndef test_changed_prior_source_cannot_inherit_visual_review(scene):\n f,current=scene\n current['checks'][0]['crop_sha256']='e'*64\n (f/'001/inspection.json').write_bytes(a.encode(current))\n with pytest.raises(AssertionError):runpy.run_path(str(SELECTOR),run_name='__main__')\n assert not (f/'001/new-and-flagged-contact-sheet.png').exists()\n"
+    },
+    {
+      "path": ".benchmark/png-bmp-native-expansion-20261023/contact.coveragerc",
+      "sha256": "8eeb85efcae295ded9088667a62353de71174f258d57df48a71f12d18ffe9578",
+      "utf8": "[run]\ninclude = */png-bmp-native-expansion-20261023/new_contact_sheet.py\n[report]\nfail_under = 95\nshow_missing = True\n"
+    }
+  ],
+  "includes_media": false,
+  "schema": "spatial-expansion-readable-contact-tools-v1"
+}

@@ -1,0 +1,398 @@
+{
+  "cells": [
+    {
+      "batch": 2,
+      "cell_seconds": 3.7156302419999747,
+      "domain": "spatial-native-gray-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.07991882600003919,
+        0.069129074999978,
+        0.06678291100001843
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4779616,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 467633152,
+      "peak_vram_reserved_bytes": 555745280,
+      "process_peak_ram_bytes": 1177165824,
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "cell_seconds": 0.49235488700003316,
+      "domain": "spatial-native-gray-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.08415133899995908,
+        0.0881928029999699,
+        0.0902270189999399
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4779616,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 835159040,
+      "peak_vram_reserved_bytes": 947912704,
+      "process_peak_ram_bytes": 1196171264,
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "cell_seconds": 0.9054981980000321,
+      "domain": "spatial-native-gray-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.19276322500002152,
+        0.19315006500005438,
+        0.19028032000005624
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4779616,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 1680259072,
+      "peak_vram_reserved_bytes": 2204106752,
+      "process_peak_ram_bytes": 1205514240,
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 2,
+      "cell_seconds": 0.2757181760000549,
+      "domain": "spatial-native-gray-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.042680366999888975,
+        0.04415276999998241,
+        0.042222666999919056
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4779616,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 468026368,
+      "peak_vram_reserved_bytes": 570425344,
+      "process_peak_ram_bytes": 1207742464,
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "cell_seconds": 0.468926697000029,
+      "domain": "spatial-native-gray-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.08908235499995953,
+        0.0873504569999568,
+        0.08751508799991825
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4779616,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 835159040,
+      "peak_vram_reserved_bytes": 947912704,
+      "process_peak_ram_bytes": 1207857152,
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "cell_seconds": 0.8962314340000148,
+      "domain": "spatial-native-gray-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.191342168999995,
+        0.19263217599996096,
+        0.19243897399996968
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4779616,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 1680259072,
+      "peak_vram_reserved_bytes": 2204106752,
+      "process_peak_ram_bytes": 1207975936,
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 2,
+      "cell_seconds": 0.34462042399991333,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.04275677500004349,
+        0.04290876999993998,
+        0.04232196300006308
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4780768,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 469346304,
+      "peak_vram_reserved_bytes": 570425344,
+      "process_peak_ram_bytes": 1207975936,
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "cell_seconds": 0.5347710199999938,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.08857437200003915,
+        0.09309537499996168,
+        0.0888307510000459
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4780768,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 837396480,
+      "peak_vram_reserved_bytes": 960495616,
+      "process_peak_ram_bytes": 1207992320,
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "cell_seconds": 0.9418454880000127,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.19108203900009357,
+        0.19137859099998877,
+        0.19336067699998694
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4780768,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 1686297600,
+      "peak_vram_reserved_bytes": 2202009600,
+      "process_peak_ram_bytes": 1208049664,
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 2,
+      "cell_seconds": 0.2904568000000154,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.04299121400003969,
+        0.04331613599993034,
+        0.04335568300007253
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4780768,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 469346304,
+      "peak_vram_reserved_bytes": 570425344,
+      "process_peak_ram_bytes": 1208115200,
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "cell_seconds": 0.47323873400000593,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.08978086299998722,
+        0.08940933899998527,
+        0.09081935500000782
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4780768,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 837396480,
+      "peak_vram_reserved_bytes": 960495616,
+      "process_peak_ram_bytes": 1208160256,
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "cell_seconds": 0.8923915320000333,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "finite_gradients": true,
+      "forward_backward_seconds": [
+        0.19288586600009694,
+        0.1925555360000999,
+        0.19318582899995818
+      ],
+      "lsb_preserved": true,
+      "optimizer_updates": 0,
+      "parameters": 4780768,
+      "parameters_unchanged": true,
+      "peak_vram_allocated_bytes": 1686297600,
+      "peak_vram_reserved_bytes": 2202009600,
+      "process_peak_ram_bytes": 1208213504,
+      "seed": 2026102302,
+      "status": "ready"
+    }
+  ],
+  "cost_table": [
+    {
+      "batch": 2,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.069129074999978,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.0881928029999699,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.19276322500002152,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 2,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.042680366999888975,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.08751508799991825,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.19243897399996968,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 2,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.04275677500004349,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.0888307510000459,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.19137859099998877,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102301,
+      "status": "ready"
+    },
+    {
+      "batch": 2,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.04331613599993034,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 4,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.08978086299998722,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102302,
+      "status": "ready"
+    },
+    {
+      "batch": 8,
+      "data_io_cost": "unmeasured",
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "median_forward_backward_seconds": 0.19288586600009694,
+      "optimizer_cost": "unmeasured",
+      "seed": 2026102302,
+      "status": "ready"
+    }
+  ],
+  "elapsed_seconds": 16.034615744999996,
+  "environment": {
+    "cuda": "12.8",
+    "cudnn": 91900,
+    "gpu": "Tesla T4",
+    "numpy": "2.0.2",
+    "pillow": "11.3.0",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128"
+  },
+  "full_training_budget": "missing",
+  "max_seconds": 600,
+  "optimizer_updates": 0,
+  "output_bytes": 18566,
+  "output_bytes_before_receipt": 6750,
+  "protocol_sha256": "27623ddd6a6248634b305720a7754a7215ae614c1232fca6f304375e79a8f837",
+  "real_media_opened": false,
+  "retry": false,
+  "schema": "spatial-colab-measurement-v1",
+  "status": "ready"
+}

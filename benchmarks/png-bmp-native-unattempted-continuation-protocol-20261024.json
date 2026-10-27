@@ -1,0 +1,30 @@
+{
+  "automatic_restart": false,
+  "historical_total_bytes": null,
+  "memory_max_bytes": 2147483648,
+  "memory_swap_max_bytes": 0,
+  "metadata_requests_consumed": 80,
+  "new_gpu_attempts": 0,
+  "new_transfer_limit_bytes": 536870912,
+  "old_expansion_debit_bytes": 84115935,
+  "old_prior_debit_bytes": 55307394,
+  "optimizer_updates": 0,
+  "real_training_authorized": false,
+  "roles": "unassigned",
+  "schema": "spatial-native-unattempted-continuation-v1",
+  "service_runtime_max_seconds": 14400,
+  "software_qa": {
+    "continuation_statement_coverage": 100.0,
+    "generated_passed": 11,
+    "initial_fixture_setup_failure_preserved": true
+  },
+  "source_sha256": {
+    ".benchmark/png-bmp-native-expansion-20261023/continuation-qa-amended.log": "d2cae40f11889a378aad2edcf2dee14c5177cd78605a37e293cd95ecbd7344de",
+    ".benchmark/png-bmp-native-expansion-20261023/interrupted-schedule.json": "b7096813584ebe964c114bc564f64c34af81e037eedbacc294e4111b47bc80ae",
+    ".benchmark/png-bmp-native-expansion-20261023/paced-schedule-contract.json": "8f1328d2c7ed147e0a7ae6b1bbe41d5a16e6667ad95200e72eba9afca5e7e088",
+    ".benchmark/png-bmp-native-expansion-20261023/run_paced_schedule.py": "73912c3ba2b7bf15970ad575da48311da5fea4319bea6e7917c047fc32c13007",
+    ".benchmark/png-bmp-native-expansion-20261023/run_paced_schedule_unattempted.py": "561fd4f660a9b48b01e28a747df879aa9c7b9ef154c67e06e41016716d610e09",
+    ".benchmark/png-bmp-native-expansion-20261023/test_unattempted_continuation.py": "bb3072a46c2a2b887ed5a352b1cbe422989cdedd1f567992253dd4f1099af891",
+    "docs/PNG_BMP_NATIVE_UNATTEMPTED_CONTINUATION_20261024.md": "6845da7beb02a1eea73fd8229c334d96fa31664dedeb1c87e1617f7dde2fb480"
+  }
+}

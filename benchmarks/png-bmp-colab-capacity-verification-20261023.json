@@ -1,0 +1,116 @@
+{
+  "active_sessions_in_ui": 0,
+  "amp": false,
+  "artifacts": {
+    "first_preflight": {
+      "path": "benchmarks/png-bmp-colab-first-preflight-20261023.json",
+      "sha256": "f1c4382c71e7abd583cfc956783c023d5e81bef435281de8197a7db4ca76daf7"
+    },
+    "measurement": {
+      "path": "benchmarks/png-bmp-colab-capacity-20261023.json",
+      "sha256": "83815416bb1fb2277c46f3d92631502a02c679f039e37d41f2f52ff9ff38da99"
+    },
+    "receipts": {
+      "path": "benchmarks/png-bmp-colab-capacity-receipts-20261023.json",
+      "sha256": "31bce1a611bd2e0e6aaee97218a81640e40aa2b1b06dc469bcfcde22fa88e85c"
+    },
+    "remote_protocol": {
+      "path": "benchmarks/png-bmp-colab-capacity-protocol-20261023.json",
+      "sha256": "27623ddd6a6248634b305720a7754a7215ae614c1232fca6f304375e79a8f837"
+    }
+  },
+  "automatic_retry_authorized": false,
+  "base_commit": "2be950e8af0984bc012bc89d3ca072cea01c24f3",
+  "checks": {
+    "all_36_timed_intervals_finite_positive": true,
+    "all_receipt_hashes": true,
+    "all_source_hashes": true,
+    "environment_receipts_agree": true,
+    "exact_12_cells": true,
+    "exported_receipt_bytes_replayed": true,
+    "finite_gradients_all_cells": true,
+    "independent_cell_receipts_agree": true,
+    "median_costs_replayed": true,
+    "parameters_unchanged_all_cells": true,
+    "reported_output_extent_arithmetic": true,
+    "single_lsb_preserved_all_cells": true,
+    "worker_log_content_independently_verified": false
+  },
+  "components": {
+    "actual_colab_session": "ready",
+    "approved_native_gray_rgb_corpus": "missing",
+    "full_training_budget": "missing",
+    "gpu_capacity_measurement": "ready",
+    "optimizer_evaluation_media_io_cost": "missing",
+    "two_model_two_seed_batch_cost_table": "ready"
+  },
+  "date": "2026-10-23",
+  "deployed": false,
+  "environment": {
+    "cuda": "12.8",
+    "cudnn": 91900,
+    "gpu": "Tesla T4",
+    "numpy": "2.0.2",
+    "pillow": "11.3.0",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128"
+  },
+  "executed_protocol_encoding": "json.dumps(local_protocol).encode(); exact semantics and source bindings verified",
+  "executed_protocol_sha256": "27623ddd6a6248634b305720a7754a7215ae614c1232fca6f304375e79a8f837",
+  "first_preflight": {
+    "capacity_attempts_consumed": 0,
+    "capacity_started": false,
+    "reason": "wrong_account_and_pinned_environment_mismatch",
+    "status": "unavailable"
+  },
+  "historical_budgets_or_ledgers_reset": false,
+  "historical_software_qa_receipt": "benchmarks/png-bmp-colab-verification-20261023.json",
+  "local_protocol_sha256": "accfe40e8560a9245d3b3e2723bae37ada75220c307a68070441eced1aa250fd",
+  "new_media_downloaded": 0,
+  "optimizer_updates": 0,
+  "pro_badge_verified_in_ui": true,
+  "profile_attempts_consumed": 1,
+  "real_media_opened": false,
+  "real_training_authorized": false,
+  "real_training_performed": false,
+  "remote_notebook_measurement_toggle": false,
+  "resources": {
+    "colab_compute_units": "unmeasured",
+    "elapsed_seconds": 16.034615744999996,
+    "exported_receipt_bytes": 18356,
+    "max_output_bytes": 1048576,
+    "max_seconds": 600,
+    "output_bytes": 18566,
+    "peak_vram_allocated_bytes": 1686297600,
+    "peak_vram_reserved_bytes": 2204106752,
+    "process_peak_ram_bytes": 1208213504,
+    "receipt_package_bytes": 22259,
+    "setup_and_idle_time_included": false,
+    "unexported_worker_log_bytes": 210
+  },
+  "runtime_termination": "already_disconnected_no_active_sessions_on_final_inspection",
+  "runtime_version_selected_in_ui": "2026.07",
+  "schema": "png-bmp-colab-capacity-verification-v1",
+  "source_files_verified": 16,
+  "source_package_sha256": "aacf402ba829f7ee6843c1695873ebe4ab96f060f21767bc511b6682874b408f",
+  "source_sha256": {
+    "core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "core/colab_artifacts.py": "c81f9d09873083490a80f9c21ac9e01618754c4054f7be0f18f1b47833d927df",
+    "core/features.py": "7078c26f158d24b6ae81b42931d6a8dcd54981395fee2c6a8960854e8d689199",
+    "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+    "core/nonjpeg_models.py": "ea2e4cca67498a0d1018485e56867cc0c402b49cb3f4d99bc0a3be8f120a90c8",
+    "core/spatial_colab.py": "f324f12d190ffe5c7553e814da159fac7848981625741b387b914ed492fe839b",
+    "core/spatial_colab_bundle.py": "51ebc60e7652eb736037516d7988cb14017982cbd037bd9124e84d1fac8fec28",
+    "core/spatial_colab_data.py": "6027284f8ddcaefa73de83fcce880d69c06494a9bafc8de125b9ded04009b542",
+    "core/spatial_colab_state.py": "17a1d4422446115af7aa7f43e45479cafcace19a6ce087d6e35b3ff65212a212",
+    "core/spatial_cooccurrence.py": "93d3909e96aaae7b0554a2e52c39d9904bd456282eb1db22e4cdfb004c5c3a1d",
+    "core/spatial_parity.py": "2e27e64197d24805c3156859ebaa96d4989a2ae3d803c401d30c2707f4a18f46",
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "docs/PNG_BMP_COLAB_PROTOCOL_20261023.md": "745e66cdd422534cb692bd0b8451cbd5da9c1dad72ee13828362429781192086",
+    "requirements-colab-gpu.txt": "b67200fa4f4e3ac0f02a55f3ebe6cf6624d71555d76df02943999305853069ae",
+    "scripts/spatial-colab.py": "5eccbb172bc99670c3da22465b4e097f7021cf637079270f5f5c68ecd69dda30"
+  },
+  "status": "ready",
+  "tf32": false
+}

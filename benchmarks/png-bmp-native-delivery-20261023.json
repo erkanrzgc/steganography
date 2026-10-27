@@ -1,0 +1,16 @@
+{
+  "artifact_and_log_digests_replayed": true,
+  "data_preparation_status": "ready_small_unassigned_pilot",
+  "diff_check": "passed",
+  "final_readme_replay": "passed",
+  "local_document_links_checked": 89,
+  "new_gpu_attempts": 0,
+  "optimizer_updates": 0,
+  "original_capacity_sources_unchanged": true,
+  "readme_replay_log_sha256": "dcdbfac8b04617aeff8ae85fea95ac822584e2a6231b4d0ff72e2ef0f03844a6",
+  "real_training_status": "not_ready",
+  "schema": "spatial-native-delivery-check-v1",
+  "status": "ready",
+  "tracked_frozen_jpeg_wav_sources_unchanged": true,
+  "verification_sha256": "d851b53b9290c92835e59b8f02d56c5bbdfa98c9337ab99a9c413213d74a84f4"
+}

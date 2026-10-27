@@ -1,0 +1,33 @@
+{
+  "schema": "spatial-commons-v1",
+  "sources": [
+    {
+      "id": "commons-example-png",
+      "page": "https://commons.wikimedia.org/wiki/File:Example_png.png",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Example_png.png",
+      "author": "Mvolz",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "original_sha1": "cf060bfa6d45366c3c85f4d7fd9ae2290a6a0299",
+      "original_bytes": 12270,
+      "ancestry_group": "commons-mvolz-example-png",
+      "ancestry_review": "pending",
+      "role": "unassigned",
+      "media_status": "not_downloaded"
+    },
+    {
+      "id": "commons-volleyball-landscape",
+      "page": "https://commons.wikimedia.org/wiki/File:Volleyball_game_brings_the_landscape_to_life.png",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Volleyball_game_brings_the_landscape_to_life.png",
+      "author": "Chettriabhimanyu",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "original_sha1": "c32daa1c5675dc8a9943d60328bf5f29d7e9b41d",
+      "original_bytes": 3052547,
+      "ancestry_group": "commons-chettriabhimanyu-volleyball-landscape",
+      "ancestry_review": "pending",
+      "role": "unassigned",
+      "media_status": "not_downloaded"
+    }
+  ]
+}

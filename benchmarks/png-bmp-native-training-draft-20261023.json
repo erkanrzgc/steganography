@@ -1,0 +1,135 @@
+{
+  "additional_originals_needed": {
+    "L": 125,
+    "RGB": 125
+  },
+  "additional_originals_needed_is_inventory_gap_only": true,
+  "batch_images": 8,
+  "ceiling_is_cost_estimate": false,
+  "completed_admission_originals_per_domain": {
+    "L": 3,
+    "RGB": 3
+  },
+  "current_generated_optimizer_updates": 0,
+  "current_native_optimizer_updates": 0,
+  "current_pilot_training_suitability_verified": false,
+  "epochs": 20,
+  "fixed_crop_texture_review": "Michael Birkin is mostly white background; Female Back is mostly pale wall; no filtering or recropping was performed",
+  "full_training_budget_status": "unavailable_until_optimizer_eval_io_profile_and_source_bound_recipe",
+  "future_acquisition_authorized": false,
+  "generated_learning_control_completed": false,
+  "image_shape": [
+    256,
+    256
+  ],
+  "max_originals_per_group_per_domain": 8,
+  "minimum_ancestry_groups_per_domain": 16,
+  "models": 2,
+  "optimizer_proposal": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "foreach": false,
+    "fused": false,
+    "lr": 0.0001,
+    "name": "AdamW",
+    "weight_decay": 0.0
+  },
+  "paired_originals_per_batch": 4,
+  "proposed_future_acquisition_ceiling_bytes": 536870912,
+  "proposed_group_counts_per_domain": {
+    "development": 3,
+    "future_reserved": 3,
+    "train": 10
+  },
+  "proposed_hard_wall_clock_ceiling_seconds": 1800,
+  "proposed_numeric_output_ceiling_bytes": 536870912,
+  "proposed_original_counts_per_domain": {
+    "development": 24,
+    "future_reserved": 24,
+    "train": 80
+  },
+  "proposed_originals_per_domain": 128,
+  "proposed_total_train_presentations": 12800,
+  "proposed_total_updates": 1600,
+  "recipe_validated": false,
+  "roles_assigned": false,
+  "rows": [
+    {
+      "arithmetic_forward_backward_projection_seconds": 77.10529000000861,
+      "batch": 8,
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "measured_synthetic_forward_backward_seconds": 0.19276322500002152,
+      "media_io_cost": "unmeasured",
+      "optimizer_cost": "unmeasured",
+      "proposed_epochs": 20,
+      "proposed_updates_per_fit": 400,
+      "seed": 2026102301,
+      "steps_per_epoch": 20,
+      "training_images_per_epoch": 160,
+      "training_originals": 80
+    },
+    {
+      "arithmetic_forward_backward_projection_seconds": 76.97558959998787,
+      "batch": 8,
+      "domain": "spatial-native-gray-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "measured_synthetic_forward_backward_seconds": 0.19243897399996968,
+      "media_io_cost": "unmeasured",
+      "optimizer_cost": "unmeasured",
+      "proposed_epochs": 20,
+      "proposed_updates_per_fit": 400,
+      "seed": 2026102302,
+      "steps_per_epoch": 20,
+      "training_images_per_epoch": 160,
+      "training_originals": 80
+    },
+    {
+      "arithmetic_forward_backward_projection_seconds": 76.55143639999551,
+      "batch": 8,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "measured_synthetic_forward_backward_seconds": 0.19137859099998877,
+      "media_io_cost": "unmeasured",
+      "optimizer_cost": "unmeasured",
+      "proposed_epochs": 20,
+      "proposed_updates_per_fit": 400,
+      "seed": 2026102301,
+      "steps_per_epoch": 20,
+      "training_images_per_epoch": 160,
+      "training_originals": 80
+    },
+    {
+      "arithmetic_forward_backward_projection_seconds": 77.15434640003878,
+      "batch": 8,
+      "domain": "spatial-native-rgb-srnet-v1",
+      "evaluation_cost": "unmeasured",
+      "full_training_seconds": null,
+      "measured_synthetic_forward_backward_seconds": 0.19288586600009694,
+      "media_io_cost": "unmeasured",
+      "optimizer_cost": "unmeasured",
+      "proposed_epochs": 20,
+      "proposed_updates_per_fit": 400,
+      "seed": 2026102302,
+      "steps_per_epoch": 20,
+      "training_images_per_epoch": 160,
+      "training_originals": 80
+    }
+  ],
+  "schema": "spatial-native-training-draft-v1",
+  "seeds": [
+    2026102301,
+    2026102302
+  ],
+  "source_capacity_receipt_sha256": "83815416bb1fb2277c46f3d92631502a02c679f039e37d41f2f52ff9ff38da99",
+  "status": "draft_not_executable",
+  "sum_arithmetic_forward_backward_projection_seconds": 307.78666240003076,
+  "training_adapter_implemented": false,
+  "training_authorized": false
+}

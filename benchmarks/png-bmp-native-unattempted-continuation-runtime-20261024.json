@@ -1,0 +1,26 @@
+{
+  "automatic_restart": false,
+  "checked_utc_unix": 1792798366.4011378,
+  "contract_sha256": "4a5face1759e30d49abc10c0e15eaa113b53b7f484877de9c1a1f263b2364a3e",
+  "gpu_visibility_disabled": true,
+  "kernel_limits": {
+    "memory_max": "2147483648",
+    "swap_max": "0"
+  },
+  "new_gpu_attempts": 0,
+  "optimizer_updates": 0,
+  "properties": {
+    "ActiveState": "active",
+    "ExecMainStartTimestampMonotonic": "498372555",
+    "KillMode": "control-group",
+    "MemoryMax": "2147483648",
+    "MemorySwapMax": "0",
+    "Restart": "no",
+    "Result": "success",
+    "RuntimeMaxUSec": "4h",
+    "SubState": "running"
+  },
+  "schema": "spatial-native-continuation-runtime-v1",
+  "status": "active_collection_only",
+  "unit": "png-bmp-native-unattempted-20261024.service"
+}
