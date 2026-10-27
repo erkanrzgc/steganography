@@ -1,5 +1,107 @@
 # Roadmap and status
 
+2026-10-28: complete the separately frozen
+[local generated gray/RGB control](PNG_BMP_GENERATED_CONTROL_RESULTS_20261028.md)
+on the existing WSL RTX 5060. All four full cells pass their generated-only
+learning rule: development AUCs .723958 /.706597 /.763889 /.769097;
+1,600 learning plus sixteen profile updates, eight numeric checkpoints.
+Replay all sixteen AUCs, 3,232 events and 1,533 parent observations, including
+all 1,528 nonnull progress anchors, independently.
+Kernel execution is 1,356.435690 seconds; conservative independent closeout
+uses 1,598.898706 /1,800 seconds. Keep the unit inactive /PID zero with no
+retry; preserve the failed direct post-exit cgroup observer and retained peaks.
+Full QA passes 4,008 tests /two CUDA skips, 97.13% coverage; new modules exceed
+95%. Actual native fitting, cache adapter, feasible grouped roles and complete
+native I/O/training budget remain unavailable. No acquisition or deployment.
+
+2026-10-28: reconnect the existing WSL2 /RTX 5060 endpoint and verify identity
+read-only: Python 3.12.3 /Torch 2.14.0+cu130, driver 617.42, capability 12.0.
+Add [generated spatial software preparation](PNG_BMP_GENERATED_PREPARATION_20261028.md):
+scattered payloads, paired FP32 batches, scalar recovery and generated-only
+step/scoring/numeric-resume API. Fifty-seven focused CPU tests pass, with
+100% data /99.34% training-core coverage; full software QA is recorded in the
+dated verification receipt. No GPU benchmark or native fitting ran.
+Full gate: 3,945 passed /two explicit Kali-CUDA skips, 97.07% total coverage;
+Ruff and 233-file mypy pass. The generated metadata manifest freezes 220
+sources/payload checks without persisting images or models.
+The [new control](PNG_BMP_GENERATED_CONTROL_DRAFT_20261028.md) and
+[data-gap plan](PNG_BMP_DATA_GAP_DRAFT_20261028.md) are non-executable drafts.
+The ten largest RGB groups currently hold 41 originals; another 23 cannot
+produce the historical ten-group /80-original training split. Keep all roles,
+old budgets, reserved data and consumed experiments unchanged.
+
+2026-10-26: recover the already installed Windows 11 /Ubuntu-24.04 WSL2
+RTX 5060 Laptop /8-GB local setup from its verified project records. The
+Kali VMware guest remains CPU-only; the existing SSH configuration/key are
+retained and its reverse listener is currently absent. Correct
+[local readiness](PNG_BMP_LOCAL_READINESS_20261026.md) to reuse that setup,
+with read-only host revalidation after reconnect. Preserve all completed
+local fits; no new Colab profile, fitting or acquisition. New-domain costs,
+training adapter/control and the corpus deficit remain unresolved.
+
+2026-10-26: complete the resumed bounded native collection/preparation at its
+transfer ceiling. Snapshot 016 has 13 L /105 RGB originals, 472 PNG/BMP
+artifacts and 236 independent payload checks, across 75 author groups; no
+unreviewed candidates remain. Replay all 192 requests /189 raw files and
+the complete 536,421,895-byte expansion debit, preserving the separate old
+55,307,394 bytes and null historical total. Service inactive /no restart;
+all holds/exclusions persist. Fresh full gate: 3,888 passed /two CUDA skips,
+97.05% coverage; 59 additional generated checks pass. Exact post-exit
+collector peak memory remains unavailable; no telemetry retry. The draft
+target still lacks 115 L /23 RGB originals and ten L groups. No training,
+role assignment or further download follows. See the
+[closeout](../benchmarks/png-bmp-native-expansion-closeout-20261026.json) and
+[updated results](PNG_BMP_NATIVE_EXPANSION_RESULTS_20261023.md).
+
+2026-10-26: explicitly resume data-only native preparation. Review the stopped
+backlog first: snapshot 008 has 13 L /87 RGB originals, 400 artifacts and
+200 independent payload checks. Preserve all holds/exclusions and charges.
+The [fresh resume](PNG_BMP_NATIVE_USER_RESUME_20261026.md) skips every prior
+attempt/log and source intent, with sixteen generated tests /100% coverage.
+Debit 4,143 seconds of the old four hours; the new bounded service has
+10,257 seconds, 2-GiB memory /zero swap and no restart. No fitting or GPU retry.
+
+2026-10-24: stop native collection at the user’s request, with no automatic
+resume. Preserve the [stop receipt](../benchmarks/png-bmp-native-expansion-user-stop-20261024.json)
+and the last reviewed subset: 13 L /79 RGB originals, 368 artifacts and 184
+payload checks. Later acquisitions remain unreviewed; no real fit occurred.
+
+2026-10-24: resume only unattempted native sources after the expansion parent
+was interrupted. Preserve batch-1058 before-network failure and skip its
+source, with no transfer reset. The separately bound continuation passes
+eleven generated tests /100% coverage and runs independently of the tool
+session with a four-hour /2-GiB /zero-swap ceiling and no restart. See the
+[continuation amendment](PNG_BMP_NATIVE_UNATTEMPTED_CONTINUATION_20261024.md).
+
+2026-10-23: continue native photographic data collection under a separate
+[512-MiB expansion contract](PNG_BMP_NATIVE_EXPANSION_PROTOCOL_20261023.md).
+Preserve failed sources and full reservations, honor server cooldowns and
+keep all roles unassigned. The 128-originals-per-domain inventory target is
+not training qualification; native L quantity and source diversity remain
+missing. No training or new GPU attempt is authorized by this collection.
+
+2026-10-23: complete separate Commons native admission: three L /three RGB
+originals, six conservative author groups and 24 PNG/BMP artifacts; all twelve
+independent payload recoveries pass. Keep the partial acquisition and HTTP
+429 unavailable, with the full cumulative debit and no failed-source retry.
+All roles remain unassigned. The next 128-originals-per-domain training plan
+is a concrete non-executable draft, with missing data, training adapter and
+full cost evidence. See [admission results](PNG_BMP_NATIVE_ADMISSION_RESULTS_20261023.md)
+and [training draft](PNG_BMP_NATIVE_TRAINING_DRAFT_20261023.md).
+
+2026-10-23: prepare a portable Colab notebook and source-bound PNG/BMP SRNet
+capacity service, preserving both native model skeletons and frozen JPEG
+records. Native admission retains whole-origin unassigned groups; the numeric
+resume format is exercised only with generated states. Commons candidates
+have per-file source/license/upstream hashes, with ancestry and native-mode
+review pending. The one actual Pro/T4 profile completed all twelve cells in
+16.034616 seconds with zero updates; batch 8 passed for both models. This
+attempt is consumed; no automatic retry. Optimizer/evaluation/I/O and full
+training costs remain unmeasured; no media download or real fit occurred. See
+[capacity results](PNG_BMP_COLAB_CAPACITY_RESULTS_20261023.md),
+[preparation status](PNG_BMP_COLAB_PREPARATION_20261023.md) and the
+[600-second zero-update contract](PNG_BMP_COLAB_PROTOCOL_20261023.md).
+
 2026-10-23: complete the explicitly approved native standardized pair-head
 pilot: two seeds /2,280 updates /144,000 presentations. The required 40%-p0
 cells fail at AUC .466650–.486625 despite stronger p1 cells; no detector is

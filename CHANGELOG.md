@@ -1,5 +1,61 @@
 # Changelog
 
+- Add a separately bound generated gray/RGB control: conservative optimizer,
+  evaluation, transport and numeric-checkpoint profiling before four full fits.
+  Independently replay AUCs, exact exposures, fresh initialization and immutable
+  intent/commit evidence under one-attempt wall/RAM/VRAM/output limits. Keep
+  native fitting, data acquisition and historical retries disabled.
+  Complete all four local GPU fits: **passed_generated_only**, 1,600 learning
+  plus sixteen profile updates, eight verified states, sixteen independent AUC
+  replays and all parent progress anchors. Preserve the failed post-exit cgroup
+  observer and matching retained memory peaks. Consume the attempt and close
+  its unit; full QA passes 4,008 tests /two CUDA skips, 97.13% coverage.
+
+- Add generated-only spatial training preparation: native-shaped FP32 pair
+  batching, forty-percent scattered plane-0 payloads with scalar recovery,
+  finite/deadline-checked AdamW steps and exact numeric checkpoint continuation.
+  Scope RNG/thread/precision state and reject forged schedules/debits, symlinks
+  and output overwrite. Verify the restored WSL identity without a GPU job.
+  Record separate non-executable learning-control and group-feasible acquisition
+  drafts; no native fitting, download, role assignment or historical retry.
+  Full gate: 3,945 passed /two CUDA skips, 97.07% coverage; new modules exceed
+  95%. All 220 proposed generated-corpus payload checks pass without fitting.
+
+- Complete the explicitly resumed native preparation at its cumulative
+  transfer ceiling: 118 originals (13 L /105 RGB), 472 artifacts and 236
+  independently replayed payloads. Preserve holds/exclusions, all 192 source
+  requests, reservation ancestry and prior time/transfer debits. Keep the
+  service inactive; retain unavailable post-exit memory telemetry without
+  retrying acquisition. Fresh full gate: 3,888 passed /two CUDA skips, 97.05%
+  coverage; all 59 generated research checks pass. No fitting or GPU attempt.
+
+- Preserve the interrupted native expansion and add a separately bound,
+  unattempted-only continuation. Skip every old attempt/log and upstream
+  SHA-1 intent, retain all charges and run with independent process limits;
+  no source retry, metadata allowance, GPU attempt or fitting is added.
+
+- Add a separate source-bound native Commons expansion contract with a
+  512-MiB ceiling, immutable pre-I/O intent/reservations, server cooldowns,
+  fixed texture gates, author quotas and independent offline preparation QA.
+  Preserve earlier transfers and failures; keep roles unassigned and fitting
+  disabled.
+
+- Complete a separate native Commons admission pilot: three L /three RGB
+  originals, six author groups and 24 attributed PNG/BMP artifacts with twelve
+  independent payload checks. Add bounded CC BY 2.0/3.0 admission without
+  changing the frozen capacity sources, including RGB16 rejection before
+  decoding. Preserve partial/HTTP-429 acquisition failures and cumulative
+  debit. Keep every role unassigned and the concrete training draft non-executable.
+
+- Prepare a pinned-runtime Colab handoff for the existing gray/RGB SRNet
+  skeletons, with a 600-second generated-only, zero-optimizer capacity command.
+  Add bounded Commons provenance/admission, exclusive numeric resume states,
+  source bindings and verified portable receipts. Keep media acquisition and
+  real fitting disabled. Complete the one Pro/T4 capacity profile: all twelve
+  cells in 16.034616 seconds, zero updates; preserve original receipts and
+  the earlier unavailable preflight. No automatic retry or training budget
+  follows from forward/backward timings.
+
 - Reorganize README around installation, verified CLI workflows, format coverage,
   verdict semantics and measured research results. Link actual AudioMNIST curves,
   complete failure context and verification evidence; refresh research navigation.

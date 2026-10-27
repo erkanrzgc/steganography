@@ -156,10 +156,17 @@ Protocols, source bindings, failures, and per-seed evidence:
 [native linear pilots](docs/NONJPEG_PROCESS_PREFLIGHT_RESULTS.md),
 [generated comparison](docs/WAV_PAIR_COMPARISON_RESULTS_20261022.md).
 
+[PNG/BMP Colab](notebooks/png-bmp-colab/png_bmp_capacity.ipynb) ·
+[native preparation](docs/PNG_BMP_NATIVE_EXPANSION_RESULTS_20261023.md) ·
+[local generated SRNet control](docs/PNG_BMP_GENERATED_CONTROL_RESULTS_20261028.md).
+The four local gray/RGB cells pass their generated-only learning rule;
+native deep-model accuracy and a native fitting allowance remain unavailable.
+
 ## Development and licensing
 
-Recorded CPU gate: **3,729 tests passed**, two explicit CUDA skips,
-**97.00% coverage**. [Verification evidence](benchmarks/wav-pair-native-fit-verification-20261023.json).
+Recorded CPU gate: **4,008 tests passed**, two explicit CUDA skips,
+**97.13% coverage**.
+[Verification evidence](benchmarks/png-bmp-generated-control-verification-20261028.json).
 Setup, checks, and contribution rules: [CONTRIBUTING.md](CONTRIBUTING.md).
 Report vulnerabilities through [SECURITY.md](SECURITY.md).
 
