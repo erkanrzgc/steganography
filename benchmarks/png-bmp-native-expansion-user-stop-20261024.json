@@ -1,0 +1,40 @@
+{
+  "additional_unreviewed_sources_not_admitted": true,
+  "automatic_resume": false,
+  "checked_utc_unix": 1792802461.521223,
+  "collection_results": 154,
+  "collection_states": {
+    "quality_passed_pending_visual_review": 101,
+    "rejected_crop_quality": 40,
+    "unavailable": 13
+  },
+  "collector_completion_receipt_present": false,
+  "historical_total_bytes": null,
+  "incomplete_result_records": [],
+  "interrupted_source_ids": [],
+  "known_combined_reserved_bytes": 303720033,
+  "last_verified_artifacts": 368,
+  "last_verified_modes": {
+    "L": 13,
+    "RGB": 79
+  },
+  "last_verified_originals": 92,
+  "last_verified_payload_checks": 184,
+  "last_verified_snapshot": "benchmarks/png-bmp-native-expansion-snapshot-007-20261023.json",
+  "last_verified_snapshot_sha256": "80e34aefb74a59a978a7b4ee26d5ca7b303ba78ceb445ece316c916f96f5568b",
+  "main_pid_zero_verified": true,
+  "new_gpu_attempts": 0,
+  "new_reserved_transfer_bytes": 248412639,
+  "old_reserved_transfer_bytes": 55307394,
+  "optimizer_updates": 0,
+  "prior_budgets_or_receipts_reset": false,
+  "real_training_performed": false,
+  "roles": "unassigned",
+  "schema": "spatial-native-expansion-user-stop-v1",
+  "service_state": {
+    "ActiveState": "inactive",
+    "Restart": "no",
+    "SubState": "dead"
+  },
+  "status": "stopped_by_user"
+}

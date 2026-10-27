@@ -1,0 +1,29 @@
+{
+  "automatic_restart": false,
+  "checked_monotonic_seconds": 852.829250038,
+  "checked_utc_unix": 1792971929.6417968,
+  "contract_sha256": "81d60f8c4fa76f4878ea5b99335b73d1d7bef7288833cac9be6f967e51874648",
+  "gpu_visibility_disabled": true,
+  "kernel_limits": {
+    "memory_max": "2147483648",
+    "swap_max": "0"
+  },
+  "new_gpu_attempts": 0,
+  "old_continuation_charged_seconds": 4143,
+  "optimizer_updates": 0,
+  "properties": {
+    "ActiveState": "active",
+    "ExecMainStartTimestampMonotonic": "814325531",
+    "KillMode": "control-group",
+    "MemoryMax": "2147483648",
+    "MemorySwapMax": "0",
+    "Restart": "no",
+    "Result": "success",
+    "RuntimeMaxUSec": "2h 50min 57s",
+    "SubState": "running"
+  },
+  "schema": "spatial-native-user-resume-runtime-v1",
+  "service_runtime_max_seconds": 10257,
+  "status": "active_collection_only",
+  "unit": "png-bmp-native-user-resume-20261026.service"
+}

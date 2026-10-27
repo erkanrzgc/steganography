@@ -1,0 +1,29 @@
+{
+  "artifact_count": 400,
+  "automatic_restart": false,
+  "checked_utc_unix": 1792971861.2799752,
+  "historical_total_bytes": null,
+  "independent_payload_checks": 200,
+  "native_modes": {
+    "L": 13,
+    "RGB": 87
+  },
+  "new_gpu_attempts": 0,
+  "new_reserved_transfer_bytes": 248412639,
+  "new_transfer_ceiling_bytes": 536870912,
+  "old_continuation_charged_seconds": 4143,
+  "old_continuation_elapsed_seconds": 4142.146255970001,
+  "old_continuation_journal_start_utc_unix": 1792798254.31852,
+  "old_continuation_journal_stop_utc_unix": 1792802396.464776,
+  "old_reserved_transfer_bytes": 55307394,
+  "optimizer_updates": 0,
+  "original_continuation_ceiling_seconds": 14400,
+  "prior_stop_sha256": "fdfaac32b2f76582fb40bd9b5a59e62d13bad935211724d218c9e5f5da791574",
+  "remaining_continuation_seconds": 10257,
+  "roles": "unassigned",
+  "schema": "spatial-native-user-resume-baseline-v1",
+  "snapshot_sha256": "39238792d4d3480c326cbd6b16d75c71ae58de0a41c08a2ea7f88b84cfdfee4e",
+  "status": "ready_offline_baseline_only",
+  "user_requested_resume": true,
+  "verified_originals": 100
+}

@@ -1,0 +1,6 @@
+# Colab Runtime Version 2026.07, Python 3.12.13, GPU runtime.
+# Verify the preinstalled environment; do not apply requirements-research-ci.txt.
+# Official snapshot: googlecolab/backend-info@ec53f93fe44a9cab118dc5451527b18e36e1a643
+numpy==2.0.2
+pillow==11.3.0
+torch==2.11.0+cu128

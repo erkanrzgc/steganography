@@ -1,0 +1,190 @@
+{
+  "cover_cleanliness_verified": false,
+  "date": "2026-10-23",
+  "native_capture_history_verified": false,
+  "raw_transfer_authorized_limit_bytes": 67108864,
+  "representative_training_corpus": false,
+  "schema": "spatial-native-source-review-v1",
+  "sources": [
+    {
+      "author": "Elements Of This World",
+      "dimensions": [
+        2592,
+        3872
+      ],
+      "evidence_sha256": "0ee3e7b7bf4618e0472219d320846092ee7ad0b2333a180337377a9328481f16",
+      "license": "CC-BY-2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "greyscale",
+      "native_capture_history_verified": false,
+      "original_bytes": 4560306,
+      "original_sha1": "72ea3825bae97a39d3dc4df50d94a4ea7b460ce3",
+      "page": "https://commons.wikimedia.org/wiki/File:Female_Back.png",
+      "review_note": "Flickr photo 50251446196; CC BY 2.0 review passed on Commons. Whole photographer stream grouped.",
+      "revision": 996380180,
+      "source_id": "female-back",
+      "title": "File:Female Back.png"
+    },
+    {
+      "author": "Rob Ellis from Leeds, England",
+      "dimensions": [
+        3768,
+        2522
+      ],
+      "evidence_sha256": "0b7852bea7376e155e1ce0b320858ac1245741efdf2dab31850992aac9c8f29d",
+      "license": "CC-BY-2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "greyscale",
+      "native_capture_history_verified": false,
+      "original_bytes": 5986291,
+      "original_sha1": "a5dcc7ecb6625818ac3d013143439c6d9f514ede",
+      "page": "https://commons.wikimedia.org/wiki/File:Leading_lines_at_fountains_abbey._(4805417217).png",
+      "review_note": "Flickr photo 4805417217; CC BY 2.0 review passed on Commons. Whole photographer stream grouped.",
+      "revision": 1200196010,
+      "source_id": "fountains-abbey",
+      "title": "File:Leading lines at fountains abbey. (4805417217).png"
+    },
+    {
+      "author": "Red Peak Group",
+      "dimensions": [
+        951,
+        1068
+      ],
+      "evidence_sha256": "e73219339f97ec64a47d6a726fb3a9b814e9a450c3900ae851181167ca3f41a0",
+      "license": "CC-BY-3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "greyscale",
+      "native_capture_history_verified": false,
+      "original_bytes": 393441,
+      "original_sha1": "3127ce2cfa707a10c21a072ca3d834fbb720083f",
+      "page": "https://commons.wikimedia.org/wiki/File:MichaelBirkin_Profile2015.png",
+      "review_note": "Source Red Peak Group; public Commons permission-ticket marker 2015083110022911. Private ticket not accessed or independently verified.",
+      "revision": 1247433534,
+      "source_id": "michael-birkin",
+      "title": "File:MichaelBirkin Profile2015.png"
+    },
+    {
+      "author": "RS599",
+      "dimensions": [
+        1080,
+        1217
+      ],
+      "evidence_sha256": "9e7645c65adc6c390d927464c9d685d7e0240e5d3f50e74e3c7da391317cd21b",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "truecolour",
+      "native_capture_history_verified": false,
+      "original_bytes": 1962739,
+      "original_sha1": "f94efc42fd98bff24263ecbb47d348bd678baaf1",
+      "page": "https://commons.wikimedia.org/wiki/File:UNE_CUNDINAMARCA_FOTOGRAFIA_EN_EL_PARQUE.png",
+      "review_note": "Own-work photograph declaration; whole author collection grouped.",
+      "revision": 1227308710,
+      "source_id": "une-park",
+      "title": "File:UNE CUNDINAMARCA FOTOGRAFIA EN EL PARQUE.png"
+    },
+    {
+      "author": "Naturegia",
+      "dimensions": [
+        1184,
+        864
+      ],
+      "evidence_sha256": "aa3c3d6d5ab9f0e1a285932a039e841ed22f5dad350ec0d566dd9a38b5478826",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "truecolour",
+      "native_capture_history_verified": false,
+      "original_bytes": 1249137,
+      "original_sha1": "e90eb10db03743a5a7fd21206985e6ec4f834397",
+      "page": "https://commons.wikimedia.org/wiki/File:Vista_del_atardecer_de_Cusco_desde_el_Abra_Corao.png",
+      "review_note": "Own-work photograph declaration; whole author collection grouped.",
+      "revision": 1177131373,
+      "source_id": "cusco-corao",
+      "title": "File:Vista del atardecer de Cusco desde el Abra Corao.png"
+    },
+    {
+      "author": "Vigna delle Sanzioni",
+      "dimensions": [
+        2000,
+        1125
+      ],
+      "evidence_sha256": "af77ba1e0cc3d27fdea6e900f1a094102048a1b00e804f35de6c758c5ed21f92",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "truecolour",
+      "native_capture_history_verified": false,
+      "original_bytes": 4247704,
+      "original_sha1": "5b7347239f04c588a3463424dde69dfdb6de6f53",
+      "page": "https://commons.wikimedia.org/wiki/File:Vigna_delle_Sanzioni.png",
+      "review_note": "Own-work aerial photograph declaration; whole author collection grouped.",
+      "revision": 1279675743,
+      "source_id": "vigna-sanzioni",
+      "title": "File:Vigna delle Sanzioni.png"
+    },
+    {
+      "author": "Mary Lennon Mendez",
+      "dimensions": [
+        4288,
+        2848
+      ],
+      "evidence_sha256": "e7c3b2e2b8e50911c0251774b2c6d671f8b4d42753611baf65fde728e9b78886",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "truecolour",
+      "native_capture_history_verified": false,
+      "original_bytes": 12172140,
+      "original_sha1": "6f17bbe442a4724aaa184fff4f53d8bfbe9a00b0",
+      "page": "https://commons.wikimedia.org/wiki/File:Huancar_Rock,_sandboard_en_el_cerro_del_Huancar,_Abra_Pampa,_Jujuy.png",
+      "review_note": "Own-work photograph declaration; whole author collection grouped.",
+      "revision": 1234851034,
+      "source_id": "huancar-sandboard",
+      "title": "File:Huancar Rock, sandboard en el cerro del Huancar, Abra Pampa, Jujuy.png"
+    },
+    {
+      "author": "AkdAnnoy",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "evidence_sha256": "d64a6220674dd21e685ecfd0d490a0c35bcb33fd31acac7f22803c421e54b63d",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "truecolour",
+      "native_capture_history_verified": false,
+      "original_bytes": 3109935,
+      "original_sha1": "4305f8f11ce3921fb9a17dde50d9b48c1d760205",
+      "page": "https://commons.wikimedia.org/wiki/File:Jatindrapur_karac_bagan.png",
+      "review_note": "Own-work photograph declaration; whole author collection grouped.",
+      "revision": 1238394028,
+      "source_id": "jatindrapur-path",
+      "title": "File:Jatindrapur karac bagan.png"
+    },
+    {
+      "author": "P feliciati",
+      "dimensions": [
+        2939,
+        737
+      ],
+      "evidence_sha256": "f41b6b6ff0b8d283cfed729b29c6a91a503076f40ab6f4dd59324173265a541f",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_bit_depth": 8,
+      "metadata_mode": "truecolour",
+      "native_capture_history_verified": false,
+      "original_bytes": 6509456,
+      "original_sha1": "6cc5d3e74e1b11e036dc51f206b6e40705d9959c",
+      "page": "https://commons.wikimedia.org/wiki/File:Monti_Sibillini_da_Smerillo-banner.png",
+      "review_note": "Own-work panorama declaration; whole author collection grouped.",
+      "revision": 1242475410,
+      "source_id": "monti-sibillini",
+      "title": "File:Monti Sibillini da Smerillo-banner.png"
+    }
+  ]
+}

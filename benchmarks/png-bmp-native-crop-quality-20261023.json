@@ -1,0 +1,75 @@
+{
+  "filtering_performed": false,
+  "learning_evidence": false,
+  "optimizer_updates": 0,
+  "roles": "unassigned",
+  "rows": [
+    {
+      "crop_sha256": "45686733413c9f3217213573bc5fb3b5ac3574392e51101ec788281fa15cafa0",
+      "native_mode": "L",
+      "plane0_one_fraction": 0.49755859375,
+      "pooled_sample_entropy_bits": 4.639476197900425,
+      "sample_max": 255,
+      "sample_min": 204,
+      "sample_std": 6.42987706221007,
+      "source_id": "female-back",
+      "used_to_filter_sources": false
+    },
+    {
+      "crop_sha256": "7304b8da40600324e78b0caadeb245ed0049940a1eaecf14b43aa15dca575e96",
+      "native_mode": "L",
+      "plane0_one_fraction": 0.49896240234375,
+      "pooled_sample_entropy_bits": 6.733742340237538,
+      "sample_max": 252,
+      "sample_min": 0,
+      "sample_std": 33.07522328076355,
+      "source_id": "fountains-abbey",
+      "used_to_filter_sources": false
+    },
+    {
+      "crop_sha256": "f7200382f9a9394ba7827a9fecdae554ac27da3d04478360c8162605b131796c",
+      "native_mode": "L",
+      "plane0_one_fraction": 0.385009765625,
+      "pooled_sample_entropy_bits": 2.0247860496223673,
+      "sample_max": 255,
+      "sample_min": 59,
+      "sample_std": 3.2329562789871797,
+      "source_id": "michael-birkin",
+      "used_to_filter_sources": false
+    },
+    {
+      "crop_sha256": "fd0eb95d724e8b4c7238aa744e05d76961cf498b002a027421c7286415ee68e3",
+      "native_mode": "RGB",
+      "plane0_one_fraction": 0.5004781087239584,
+      "pooled_sample_entropy_bits": 6.236944591530968,
+      "sample_max": 173,
+      "sample_min": 46,
+      "sample_std": 19.455185172378986,
+      "source_id": "cusco-corao",
+      "used_to_filter_sources": false
+    },
+    {
+      "crop_sha256": "ccaa0d0c004d4b3aea2c9d211537c823e74795e3a5bc748103699726d752ab7b",
+      "native_mode": "RGB",
+      "plane0_one_fraction": 0.517913818359375,
+      "pooled_sample_entropy_bits": 6.844148407510739,
+      "sample_max": 255,
+      "sample_min": 65,
+      "sample_std": 48.58093671316323,
+      "source_id": "vigna-sanzioni",
+      "used_to_filter_sources": false
+    },
+    {
+      "crop_sha256": "3cbcd228564e580fe652d9a89169c614eecba2c955ed71bb0ee1ed2e426780d8",
+      "native_mode": "RGB",
+      "plane0_one_fraction": 0.4946950276692708,
+      "pooled_sample_entropy_bits": 7.006668045869172,
+      "sample_max": 196,
+      "sample_min": 0,
+      "sample_std": 48.03137687811478,
+      "source_id": "jatindrapur-path",
+      "used_to_filter_sources": false
+    }
+  ],
+  "schema": "spatial-native-crop-quality-v1"
+}

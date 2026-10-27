@@ -1,0 +1,72 @@
+{
+  "cumulative_reserved_bytes": 55307394,
+  "historical_bytes": null,
+  "max_session_transfer_bytes": 67108864,
+  "optimizer_updates": 0,
+  "originals": [
+    {
+      "acquired": true,
+      "bytes": 4560306,
+      "group": "commons-author-elements-of-this-world",
+      "id": "female-back",
+      "native_mode": "L",
+      "role": "unassigned",
+      "sha1": "72ea3825bae97a39d3dc4df50d94a4ea7b460ce3",
+      "sha256": "6dd4953470e2ac2106740f95f8aa2a9193793c9c58e48ce22600a862dc7affa9"
+    },
+    {
+      "acquired": true,
+      "bytes": 5986291,
+      "group": "commons-author-rob-ellis",
+      "id": "fountains-abbey",
+      "native_mode": "L",
+      "role": "unassigned",
+      "sha1": "a5dcc7ecb6625818ac3d013143439c6d9f514ede",
+      "sha256": "e604a4fcc8ee0be4e49d43449b1140d154998da931c8cd8f5459aea1d4d4dbbe"
+    },
+    {
+      "acquired": true,
+      "bytes": 393441,
+      "group": "commons-author-red-peak-group",
+      "id": "michael-birkin",
+      "native_mode": "L",
+      "role": "unassigned",
+      "sha1": "3127ce2cfa707a10c21a072ca3d834fbb720083f",
+      "sha256": "6d6370d391d545921e684e52e6a57e3a974774f653eaf75f52db1e9739376734"
+    },
+    {
+      "acquired": true,
+      "bytes": 1249137,
+      "group": "commons-author-naturegia",
+      "id": "cusco-corao",
+      "native_mode": "RGB",
+      "role": "unassigned",
+      "sha1": "e90eb10db03743a5a7fd21206985e6ec4f834397",
+      "sha256": "8fe539924470ce0ae800a0354d4a14e36341620ae5830b7218bd491d029febe9"
+    },
+    {
+      "acquired": true,
+      "bytes": 4247704,
+      "group": "commons-author-vigna-delle-sanzioni",
+      "id": "vigna-sanzioni",
+      "native_mode": "RGB",
+      "role": "unassigned",
+      "sha1": "5b7347239f04c588a3463424dde69dfdb6de6f53",
+      "sha256": "c4f1a2d2e571129d7e0bc6f317631201882b64d24907c03b3ccc6745bc07e416"
+    },
+    {
+      "acquired": true,
+      "bytes": 3109935,
+      "group": "commons-author-akdannoy",
+      "id": "jatindrapur-path",
+      "native_mode": "RGB",
+      "role": "unassigned",
+      "sha1": "4305f8f11ce3921fb9a17dde50d9b48c1d760205",
+      "sha256": "91460a545598e679c8a7366f7eaf32ed428fb240d8a680fb9372887f85ca5660"
+    }
+  ],
+  "raw_original_bytes": 19546814,
+  "representative_training_corpus": false,
+  "schema": "spatial-native-inventory-v1",
+  "status": "ready"
+}

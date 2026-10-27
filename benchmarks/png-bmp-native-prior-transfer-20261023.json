@@ -1,0 +1,15 @@
+{
+  "historical_bytes": null,
+  "historical_total_complete": false,
+  "known_prior_receipt_sha256": {
+    "benchmarks/alaska2-acquisition-20261004.json": "e13d46e308ad2a866d883102ce661d6222a7e8b422067a629a28efecf8b2519f",
+    "benchmarks/boss-development-acquisition-20261005.json": "fbe90ac30d99e1fc3f722541e3f8882e2de035ff4194f49cfa10e6e863465d49",
+    "benchmarks/bows-diversity-acquisition-20261010.json": "9b64ee28ef81819927343476862c8acaf5d7b61421b578309ab98fa68873d7a0",
+    "benchmarks/bows-first-acquisition-failure-20261010.json": "f5b13093bf7536e6c1f3e058ce17b23dd10fc8ad727e90231ccd5fac179cae88",
+    "benchmarks/fsdd-acquisition-20261004.json": "3ee37060762b51d5356f0610848ea94b85b6923c9503153997a1f5fe35b3065b",
+    "benchmarks/media-diversity-acquisition-20261010.json": "45d8ecc3c2a3c41e85b607dd49ba5f4430dedfb117980c436f6092e9413b81ce",
+    "benchmarks/png-bmp-colab-verification-20261023.json": "5d49c2b07dadde7d3e5376e10991dbebb3e8e921d96e05dbeb60cf056eabce5e",
+    "benchmarks/wifd-acquisition-20261008.json": "5730d446618a6e4322ecb8521302665486c7649834bbf8154bfe1307215624aa"
+  },
+  "schema": "spatial-native-prior-transfer-anchor-v1"
+}

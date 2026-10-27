@@ -1,0 +1,56 @@
+{
+  "schema": "spatial-commons-reviewed-v2",
+  "sources": [
+    {
+      "ancestry_group": "commons-author-elements-of-this-world",
+      "ancestry_review": "conservative-author-group-reviewed",
+      "author": "Elements Of This World",
+      "evidence_sha256": "0ee3e7b7bf4618e0472219d320846092ee7ad0b2333a180337377a9328481f16",
+      "id": "female-back",
+      "license": "CC-BY-2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "media_status": "not_downloaded",
+      "native_mode": "L",
+      "original_bytes": 4560306,
+      "original_sha1": "72ea3825bae97a39d3dc4df50d94a4ea7b460ce3",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Female_Back.png",
+      "page": "https://commons.wikimedia.org/wiki/File:Female_Back.png",
+      "page_revision": 996380180,
+      "role": "unassigned"
+    },
+    {
+      "ancestry_group": "commons-author-rob-ellis",
+      "ancestry_review": "conservative-author-group-reviewed",
+      "author": "Rob Ellis from Leeds, England",
+      "evidence_sha256": "0b7852bea7376e155e1ce0b320858ac1245741efdf2dab31850992aac9c8f29d",
+      "id": "fountains-abbey",
+      "license": "CC-BY-2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "media_status": "not_downloaded",
+      "native_mode": "L",
+      "original_bytes": 5986291,
+      "original_sha1": "a5dcc7ecb6625818ac3d013143439c6d9f514ede",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Leading_lines_at_fountains_abbey._%284805417217%29.png",
+      "page": "https://commons.wikimedia.org/wiki/File:Leading_lines_at_fountains_abbey._(4805417217).png",
+      "page_revision": 1200196010,
+      "role": "unassigned"
+    },
+    {
+      "ancestry_group": "commons-author-red-peak-group",
+      "ancestry_review": "conservative-author-group-reviewed",
+      "author": "Red Peak Group",
+      "evidence_sha256": "e73219339f97ec64a47d6a726fb3a9b814e9a450c3900ae851181167ca3f41a0",
+      "id": "michael-birkin",
+      "license": "CC-BY-3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "media_status": "not_downloaded",
+      "native_mode": "L",
+      "original_bytes": 393441,
+      "original_sha1": "3127ce2cfa707a10c21a072ca3d834fbb720083f",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/MichaelBirkin_Profile2015.png",
+      "page": "https://commons.wikimedia.org/wiki/File:MichaelBirkin_Profile2015.png",
+      "page_revision": 1247433534,
+      "role": "unassigned"
+    }
+  ]
+}

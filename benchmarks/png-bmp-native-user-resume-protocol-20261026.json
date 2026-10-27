@@ -1,0 +1,36 @@
+{
+  "automatic_restart": false,
+  "historical_total_bytes": null,
+  "memory_max_bytes": 2147483648,
+  "memory_swap_max_bytes": 0,
+  "metadata_requests_consumed": 80,
+  "new_gpu_attempts": 0,
+  "new_transfer_limit_bytes": 536870912,
+  "old_continuation_charged_seconds": 4143,
+  "old_expansion_debit_bytes": 248412639,
+  "old_prior_debit_bytes": 55307394,
+  "optimizer_updates": 0,
+  "original_continuation_ceiling_seconds": 14400,
+  "real_training_authorized": false,
+  "roles": "unassigned",
+  "schema": "spatial-native-user-resume-contract-v1",
+  "service_runtime_max_seconds": 10257,
+  "software_qa": {
+    "generated_passed": 16,
+    "resume_statement_coverage": 100.0
+  },
+  "source_sha256": {
+    ".benchmark/png-bmp-native-expansion-20261023/paced-schedule-contract.json": "8f1328d2c7ed147e0a7ae6b1bbe41d5a16e6667ad95200e72eba9afca5e7e088",
+    ".benchmark/png-bmp-native-expansion-20261023/run_user_resume_20261026.py": "a9424639628d18766edd3b3504f4f46dc347a685e59c28d8bb5396584186dfa2",
+    ".benchmark/png-bmp-native-expansion-20261023/test_paced_metadata.py": "ae720f80cee05fe75db3da30c027fdc51bf2bb8b16c8d150c22190248a674b51",
+    ".benchmark/png-bmp-native-expansion-20261023/test_user_resume_20261026.py": "7cfe73717fdf69607f8c8e25dcabe0c5c3b3a571fc598d6c4a14906fdb796b80",
+    ".benchmark/png-bmp-native-expansion-20261023/unattempted-continuation-contract.json": "4a5face1759e30d49abc10c0e15eaa113b53b7f484877de9c1a1f263b2364a3e",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-20261026.coveragerc": "efb8327fbf2c2ef94b0d44bdaa7953634c94bdf7bbf716a47e7860e45250a767",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-qa-20261026.log": "6e14b7c56ac7cee2c98c4b4a388d96565ce96768ac20e912879b30e092869ff7",
+    "benchmarks/png-bmp-native-expansion-acquisition-replay-003-20261026.json": "679c628f89fcc05e5ea5c018e7a2c15a79d1b7f92d50f9d9a6dd6a6a399bcb86",
+    "benchmarks/png-bmp-native-expansion-snapshot-008-20261023.json": "39238792d4d3480c326cbd6b16d75c71ae58de0a41c08a2ea7f88b84cfdfee4e",
+    "benchmarks/png-bmp-native-expansion-user-stop-20261024.json": "fdfaac32b2f76582fb40bd9b5a59e62d13bad935211724d218c9e5f5da791574",
+    "benchmarks/png-bmp-native-user-resume-baseline-20261026.json": "8e170b6f98f73f3201920957e7e3d689c3d621ebd07773088aa4329b8e4d6c36",
+    "docs/PNG_BMP_NATIVE_USER_RESUME_20261026.md": "c0a00de2734e0ff3407c08db2ffc4a7cc208c2a9159434c86f81ce5a232cbc8b"
+  }
+}

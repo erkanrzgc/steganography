@@ -1,0 +1,60 @@
+{
+  "acquisition_repeated": false,
+  "active_observations": [
+    {
+      "checked_monotonic_seconds": 1564.290839769,
+      "checked_utc_unix": 1792972641.1033862,
+      "gpu_attempts": 0,
+      "optimizer_updates": 0,
+      "properties": {
+        "ActiveState": "active",
+        "CPUUsageNSec": "4790093000",
+        "ExecMainStartTimestampMonotonic": "814325531",
+        "IOReadBytes": "[not set]",
+        "IOWriteBytes": "[not set]",
+        "MemoryCurrent": "72667136",
+        "MemoryPeak": "147406848",
+        "RuntimeMaxUSec": "2h 50min 57s",
+        "SubState": "running"
+      },
+      "schema": "spatial-native-active-resource-observation-v1",
+      "unit": "png-bmp-native-user-resume-20261026.service"
+    },
+    {
+      "checked_monotonic_seconds": 2895.62128764,
+      "checked_utc_unix": 1792973972.433835,
+      "gpu_attempts": 0,
+      "optimizer_updates": 0,
+      "properties": {
+        "ActiveState": "active",
+        "CPUUsageNSec": "16586524000",
+        "ExecMainStartTimestampMonotonic": "814325531",
+        "MemoryCurrent": "226926592",
+        "MemoryPeak": "317587456",
+        "RuntimeMaxUSec": "2h 50min 57s",
+        "SubState": "running"
+      },
+      "schema": "spatial-native-active-resource-observation-v1",
+      "unit": "png-bmp-native-user-resume-20261026.service"
+    }
+  ],
+  "exact_final_peak_status": "unavailable",
+  "kernel_memory_limit_bytes": 2147483648,
+  "kernel_swap_limit_bytes": 0,
+  "new_gpu_attempts": 0,
+  "optimizer_updates": 0,
+  "post_exit_observer": {
+    "collection_rerun": false,
+    "earlier_active_kernel_samples_retained": true,
+    "error_type": "ValueError",
+    "exact_final_peak_available": false,
+    "new_gpu_attempts": 0,
+    "optimizer_updates": 0,
+    "reason": "No numeric MemoryPeak remains after the transient service exits; the unguarded maximum of empty samples failed before writing any resource receipt.",
+    "scope": "post-exit memory peak observer only",
+    "status": "unavailable"
+  },
+  "profile_repeated": false,
+  "schema": "spatial-native-expansion-resource-evidence-v1",
+  "status": "partial_resource_evidence"
+}

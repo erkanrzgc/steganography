@@ -1,0 +1,32 @@
+{
+  "actual_training": "not_authorized_not_performed",
+  "additional_generated_checks_passed": 59,
+  "artifacts": 472,
+  "automatic_restart": false,
+  "checked_utc_unix": 1792974952.2686434,
+  "closeout_sha256": "af45eb7c2b2f36104392d83c2733e46cf3076a98389b6dab14a99c788e8756fe",
+  "collection_state": "inactive_stopped_transfer_ceiling",
+  "cuda_skipped_unavailable": 2,
+  "diff_check": "passed",
+  "documentation_sha256": {
+    "AGENTS.md": "6a144e042adc9cc5678d7b831bf5542e80ec624e3c8432e1fbfe13ea93f76ede",
+    "CHANGELOG.md": "fb11ab4ad79db92b6e797ce50cf026c2906e7e12211326296e090eaae94c57c4",
+    "docs/ARCHITECTURE.md": "e19eafdaeb9623d94d116d27322c926afaa8cd8bbb5e524c0ca922bae046e3c3",
+    "docs/PNG_BMP_NATIVE_EXPANSION_RESULTS_20261023.md": "fe6092b8925b7f3e88b9bfe32deb2f651ce1f2ecc9ecd586d23483a40f7ee376",
+    "docs/ROADMAP.md": "31651fbf790d2f5bb4a34b013071d79b2cf164aaa98751f71940ac7026d01c47"
+  },
+  "exact_post_exit_memory_peak": "unavailable",
+  "final_report_local_links": "passed",
+  "full_pytest_passed": 3888,
+  "immutable_source_closures": "passed",
+  "independent_scalar_payload_checks": 236,
+  "native_modes": {
+    "L": 13,
+    "RGB": 105
+  },
+  "reviewed_originals": 118,
+  "roles": "unassigned",
+  "schema": "spatial-native-expansion-final-delivery-v1",
+  "status": "ready_completed_bounded_preparation_only",
+  "total_coverage_percent": 97.0485963870749
+}

@@ -1,0 +1,19 @@
+{
+  "command_exit_code": 2,
+  "completed_original_ids": [
+    "female-back",
+    "fountains-abbey",
+    "michael-birkin"
+  ],
+  "confirmed_original_bytes": 10940038,
+  "first_not_stored_source_id": "une-park",
+  "historical_bytes": null,
+  "network_exception_cause_verified": false,
+  "optimizer_updates": 0,
+  "reason": "acquisition_stopped_before_storing_fourth_original; adapter did not retain exception detail",
+  "reservation_sha256": "3f462bd15901b15295af339638f959e0dbfe2b7e9e2c9f9be0f19c0ab78a7340",
+  "reserved_transfer_bytes": 40191158,
+  "retry_performed": false,
+  "schema": "spatial-native-acquisition-failure-v1",
+  "status": "unavailable"
+}

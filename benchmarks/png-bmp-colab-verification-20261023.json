@@ -1,0 +1,307 @@
+{
+  "base_commit": "2be950e8af0984bc012bc89d3ca072cea01c24f3",
+  "capacity_measurement": {
+    "attempted": false,
+    "cost_table": [
+      {
+        "batch": 2,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-gray-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102301,
+        "status": "unavailable"
+      },
+      {
+        "batch": 4,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-gray-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102301,
+        "status": "unavailable"
+      },
+      {
+        "batch": 8,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-gray-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102301,
+        "status": "unavailable"
+      },
+      {
+        "batch": 2,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-gray-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102302,
+        "status": "unavailable"
+      },
+      {
+        "batch": 4,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-gray-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102302,
+        "status": "unavailable"
+      },
+      {
+        "batch": 8,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-gray-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102302,
+        "status": "unavailable"
+      },
+      {
+        "batch": 2,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-rgb-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102301,
+        "status": "unavailable"
+      },
+      {
+        "batch": 4,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-rgb-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102301,
+        "status": "unavailable"
+      },
+      {
+        "batch": 8,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-rgb-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102301,
+        "status": "unavailable"
+      },
+      {
+        "batch": 2,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-rgb-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102302,
+        "status": "unavailable"
+      },
+      {
+        "batch": 4,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-rgb-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102302,
+        "status": "unavailable"
+      },
+      {
+        "batch": 8,
+        "data_io_cost": "unmeasured",
+        "domain": "spatial-native-rgb-srnet-v1",
+        "evaluation_cost": "unmeasured",
+        "full_training_seconds": null,
+        "median_forward_backward_seconds": null,
+        "optimizer_cost": "unmeasured",
+        "seed": 2026102302,
+        "status": "unavailable"
+      }
+    ],
+    "full_training_seconds": null,
+    "max_seconds": 600,
+    "optimizer_updates": 0,
+    "profile_attempts_consumed": 0,
+    "reason": "local_gpu_missing",
+    "status": "unavailable"
+  },
+  "components": {
+    "actual_colab_session": "unavailable",
+    "approved_native_gray_rgb_corpus": "missing",
+    "commons_source_license_metadata": "ready",
+    "full_training_budget": "missing",
+    "generated_numeric_checkpoint_format": "ready",
+    "gpu_capacity_measurement": "unavailable",
+    "native_admission_service": "ready",
+    "notebook_source_handoff": "ready"
+  },
+  "data": {
+    "ancestry_review": "pending",
+    "downloaded_media_files": 0,
+    "historical_ledgers_reset": false,
+    "historical_transfer_total_complete": false,
+    "metadata_candidates": 2,
+    "raw_media_transfer_bytes": 0,
+    "representative_benchmark": false,
+    "reserved_media_opened": false,
+    "roles": "unassigned"
+  },
+  "date": "2026-10-23",
+  "deliverable_sha256": {
+    "benchmarks/png-bmp-commons-candidates-20261023.json": "31dd6805e1339be2f39789f3e0b27254c0d8688201d92f0430651700fc9e261d",
+    "notebooks/png-bmp-colab/png_bmp_capacity.ipynb": "0bef2ff087375655f1c6f2671cbbfd75b2ae3763c64ba0a76ff13871656697d4",
+    "notebooks/png-bmp-colab/protocol.json": "accfe40e8560a9245d3b3e2723bae37ada75220c307a68070441eced1aa250fd",
+    "notebooks/png-bmp-colab/sources.json": "aacf402ba829f7ee6843c1695873ebe4ab96f060f21767bc511b6682874b408f"
+  },
+  "deployed": false,
+  "jpeg_wav_budgets_reset": false,
+  "local_environment": {
+    "cuda": null,
+    "cudnn": null,
+    "gpu": null,
+    "numpy": "2.4.6",
+    "pillow": "12.2.0",
+    "python": "3.11.14",
+    "torch": "2.14.0+cpu"
+  },
+  "portable_source_smoke": {
+    "base_commit": "2be950e8af0984bc012bc89d3ca072cea01c24f3",
+    "frozen_base_files_matched": 8,
+    "independent_overlay_verify": true,
+    "source_files": 16,
+    "source_package_sha256": "aacf402ba829f7ee6843c1695873ebe4ab96f060f21767bc511b6682874b408f",
+    "status": "ready"
+  },
+  "preserved_prior_qa_attempts": [
+    {
+      "log": ".benchmark/png-bmp-colab-20261023/full-first.log",
+      "reason": "sandbox_API_stall_interrupted",
+      "status": "unavailable"
+    },
+    {
+      "log": ".benchmark/png-bmp-colab-20261023/full-unrestricted.log",
+      "reason": "interrupted_for_final_state_hardening",
+      "status": "unavailable"
+    },
+    {
+      "log": ".benchmark/png-bmp-colab-20261023/full-final.log",
+      "reason": "server_restart_before_completion",
+      "status": "unavailable"
+    },
+    {
+      "log": ".benchmark/png-bmp-colab-20261023/readme-repaired.log",
+      "reason": "README_word_limit_preserved_and_link_shortened",
+      "status": "failed"
+    },
+    {
+      "log": ".benchmark/png-bmp-colab-20261023/ruff-notebook-first.log",
+      "old_source_package_preserved": ".benchmark/png-bmp-colab-20261023/pre-notebook-lint-bundle/sources.json",
+      "reason": "generated_notebook_lint_repaired_in_template_and_covered_by_regression_check",
+      "status": "failed"
+    }
+  ],
+  "real_training_authorized": false,
+  "real_training_performed": false,
+  "schema": "png-bmp-colab-preparation-verification-v1",
+  "software_gate": {
+    "diff_check": "passed",
+    "focused_pytest": {
+      "new_modules_coverage_percent": 98.18181818181819,
+      "passed": 107,
+      "status": "passed"
+    },
+    "full_pytest": {
+      "affected_template_tests_replayed": 107,
+      "changed_template_old_coverage_purged_before_replay": true,
+      "collected": 3838,
+      "coverage_append_used_for_replay": true,
+      "coverage_percent": 97.0348911515358,
+      "failed_only_replay_exit_code": 0,
+      "failed_only_replay_passed": 1,
+      "full_run_seconds": 1259.55,
+      "initial_run_exit_code": 1,
+      "initial_run_failed": 1,
+      "initial_run_passed": 3835,
+      "passed": 3836,
+      "remaining_collected_failures": [],
+      "repaired_failure": "tests/test_cloud_removal.py::test_readme_has_restrained_badges_and_honest_scope",
+      "skipped": 2,
+      "status": "passed_after_targeted_replays"
+    },
+    "mypy": "passed",
+    "new_module_coverage_percent": {
+      "core/colab_artifacts.py": 100.0,
+      "core/spatial_colab.py": 96.75324675324676,
+      "core/spatial_colab_bundle.py": 100.0,
+      "core/spatial_colab_data.py": 100.0,
+      "core/spatial_colab_state.py": 97.04433497536945
+    },
+    "python_312_314_matrix": "unavailable_local_runtimes",
+    "python_versions_locally_exercised": [
+      "3.11"
+    ],
+    "ruff": "passed"
+  },
+  "software_qa_watchdog": {
+    "capacity_profile_budget_changed": false,
+    "completion_observed_by": "final_verification_reader",
+    "kernel_receipt": "7386 (pytest) Z 7385 7385 7383 0 -1 4227084 3054326 3913010 247 6 147847 4975 14901 1907 25 5 1 0 55211 0 0 18446744073709551615 0 0 0 0 0 0 0 16781312 134217728 1 0 0 17 4 0 0 0 0 0 0 0 0 0 0 0 0 256",
+    "new_watchdog_seconds_from_extension": 3600,
+    "original_watchdog_pid": 7385,
+    "proc_stat_field": 52,
+    "pytest_exit_code": 1,
+    "pytest_pid": 7386,
+    "pytest_restarted": false,
+    "raw_kernel_wait_status": 256,
+    "reason": "prior_full_QA_took_1212.28_seconds_exceeding_the_1200_second_wrapper",
+    "schema": "software-qa-watchdog-extension-v1",
+    "status": "complete",
+    "tests_or_coverage_gate_changed": false
+  },
+  "source_sha256": {
+    "core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "core/colab_artifacts.py": "c81f9d09873083490a80f9c21ac9e01618754c4054f7be0f18f1b47833d927df",
+    "core/features.py": "7078c26f158d24b6ae81b42931d6a8dcd54981395fee2c6a8960854e8d689199",
+    "core/nonjpeg_features.py": "919884bfc2990dd0d76aa89663639e1907407b08a75ed257e14e769edf357c80",
+    "core/nonjpeg_models.py": "ea2e4cca67498a0d1018485e56867cc0c402b49cb3f4d99bc0a3be8f120a90c8",
+    "core/spatial_colab.py": "f324f12d190ffe5c7553e814da159fac7848981625741b387b914ed492fe839b",
+    "core/spatial_colab_bundle.py": "51ebc60e7652eb736037516d7988cb14017982cbd037bd9124e84d1fac8fec28",
+    "core/spatial_colab_data.py": "6027284f8ddcaefa73de83fcce880d69c06494a9bafc8de125b9ded04009b542",
+    "core/spatial_colab_state.py": "17a1d4422446115af7aa7f43e45479cafcace19a6ce087d6e35b3ff65212a212",
+    "core/spatial_cooccurrence.py": "93d3909e96aaae7b0554a2e52c39d9904bd456282eb1db22e4cdfb004c5c3a1d",
+    "core/spatial_parity.py": "2e27e64197d24805c3156859ebaa96d4989a2ae3d803c401d30c2707f4a18f46",
+    "core/srnet.py": "11a69761d691b2291eccf83d8ba449ff122b1e6db49580c46817f649053c3345",
+    "core/srnet_model.py": "c737e37e51b335ada86a17721227002cf96db82b83a4e24fc19651b00b5cce1e",
+    "docs/PNG_BMP_COLAB_PROTOCOL_20261023.md": "745e66cdd422534cb692bd0b8451cbd5da9c1dad72ee13828362429781192086",
+    "requirements-colab-gpu.txt": "b67200fa4f4e3ac0f02a55f3ebe6cf6624d71555d76df02943999305853069ae",
+    "scripts/spatial-colab.py": "5eccbb172bc99670c3da22465b4e097f7021cf637079270f5f5c68ecd69dda30"
+  },
+  "status": "ready",
+  "verification_log_sha256": {
+    "final-replay.log": "10f83d411b93cd2e752ba05137cb5f055aa31f69b036eebd8d9844f079b2a1d6",
+    "focused-final.log": "502e52ed26aaefcad6bf2ee25817bb92ba74dd42a5b8170cde8b7c102879f0d6",
+    "full-recovery.log": "27591176671e9201ab007def48b1aab1c4b12f944acb6f8bd7d4a737521bc512",
+    "mypy-final.log": "7a9771fa149280a943fe917324b1a67bdcf232e3a259d3350d995e641b7c08ab",
+    "post-notebook-lint.log": "13e0ef7ebbae39c998fe8a6a4e45911623fe7771bb4754e4bd4d02e6203aa43e",
+    "readme-final.log": "91eb7251eeee51f87d2b3889fa1aad927177276f19509aa4bda0655657c3cf0c",
+    "ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "capacity_attempts_consumed": 0,
+  "capacity_measurement_started": false,
+  "observed_environment": {
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "gpu": "Tesla T4",
+    "numpy": "2.0.2",
+    "pillow": "11.3.0",
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128"
+  },
+  "optimizer_updates": 0,
+  "phase": "environment_check_before_capacity",
+  "reason": "wrong_account_and_pinned_environment_mismatch",
+  "runtime_disconnected": true,
+  "source_package_sha256": "aacf402ba829f7ee6843c1695873ebe4ab96f060f21767bc511b6682874b408f",
+  "status": "unavailable"
+}

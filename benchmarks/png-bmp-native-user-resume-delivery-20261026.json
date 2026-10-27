@@ -1,0 +1,41 @@
+{
+  "application_source_unchanged": true,
+  "checked_utc_unix": 1792971988.9433122,
+  "diff_check": "passed",
+  "expansion_reservation_bytes_at_check": 253581454,
+  "first_new_source_admitted": false,
+  "first_new_source_id": "commons-95043709",
+  "first_new_source_state": "quality_passed_pending_visual_review",
+  "full_application_suite_rerun": false,
+  "full_application_verification": "prior_unchanged_3888_passed_two_cuda_skips_97.05_percent",
+  "generated_tests_passed": 59,
+  "historical_total_bytes": null,
+  "independent_payload_checks": 200,
+  "log_sha256": {
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-combined-qa-20261026.log": "0458d7006260ef9b579d8107c368bc10fca1449c022c54c8a008b20240664606",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-mypy-20261026.log": "a1fe9f5a2086d3d2dae98819d45d57f1dbce3495813fbd43cbffc178faab37cc",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-qa-20261026.log": "6e14b7c56ac7cee2c98c4b4a388d96565ce96768ac20e912879b30e092869ff7",
+    ".benchmark/png-bmp-native-expansion-20261023/user-resume-ruff-20261026.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "mypy": "passed_231_source_files",
+  "new_gpu_attempts": 0,
+  "new_resume_generated_tests_passed": 16,
+  "new_resume_statement_coverage": 100.0,
+  "old_continuation_time_debit_seconds": 4143,
+  "old_prior_reserved_bytes": 55307394,
+  "optimizer_updates": 0,
+  "prepared_artifacts": 400,
+  "prepared_native_modes": {
+    "L": 13,
+    "RGB": 87
+  },
+  "prepared_originals": 100,
+  "real_training_authorized": false,
+  "remaining_continuation_ceiling_seconds": 10257,
+  "roles": "unassigned",
+  "ruff": "passed",
+  "schema": "spatial-native-user-resume-delivery-v1",
+  "service_state": "active",
+  "snapshot": "benchmarks/png-bmp-native-expansion-snapshot-008-20261023.json",
+  "status": "ready_preparation_with_active_collection"
+}

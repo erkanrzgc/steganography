@@ -1,0 +1,17 @@
+{
+  "cumulative_reserved_bytes": 55307394,
+  "max_session_transfer_bytes": 67108864,
+  "optimizer_updates": 0,
+  "prior_contract_sha256": "e10695627efa824ac85a9d9f6dafa09dbf88186ab16d7ecd60ead3c1f9ca9832",
+  "retry_failed_source": false,
+  "schema": "spatial-native-unattempted-source-contract-v1",
+  "source_sha256": {
+    ".benchmark/png-bmp-native-admission-20261023/acquire_unattempted.py": "862a6aa493f46a0a2205059a3ad4ce1663bbc5674277c39079a52d44912c2c7d",
+    "benchmarks/png-bmp-native-first-acquisition-failure-20261023.json": "2b501f700260d3162c8f434e509ceca13b416944d9c1dee94e76b9876627fbd9",
+    "benchmarks/png-bmp-native-unattempted-rgb-20261023.json": "96988edf8ac69d668d78186f79cf66e61c059a79b08e5a63a5b3db61bf2c014c",
+    "core/colab_artifacts.py": "c81f9d09873083490a80f9c21ac9e01618754c4054f7be0f18f1b47833d927df",
+    "core/spatial_colab_data.py": "6027284f8ddcaefa73de83fcce880d69c06494a9bafc8de125b9ded04009b542",
+    "core/spatial_commons_native.py": "6798fe8a575a9e119ca72497eb243fea07e1a96d75984b8682ea062218dabf26",
+    "docs/PNG_BMP_NATIVE_UNATTEMPTED_AMENDMENT_20261023.md": "70655ba48e7332d185d8fa955b002c5ed487377fa5494021fa5d7d789a47078c"
+  }
+}

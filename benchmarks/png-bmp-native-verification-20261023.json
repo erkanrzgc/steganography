@@ -1,0 +1,92 @@
+{
+  "artifact_sha256": {
+    "benchmarks/png-bmp-native-admission-protocol-20261023.json": "e10695627efa824ac85a9d9f6dafa09dbf88186ab16d7ecd60ead3c1f9ca9832",
+    "benchmarks/png-bmp-native-completed-subset-20261023.json": "b381e3147045e71c6396b47a9443baecd9c70793c80ca7d010bd501ab22fa012",
+    "benchmarks/png-bmp-native-crop-quality-20261023.json": "5f1b86fa5fe2ad9f0523264bc7524e408379e57a86f964463cfe4f6eb033e01a",
+    "benchmarks/png-bmp-native-first-acquisition-failure-20261023.json": "2b501f700260d3162c8f434e509ceca13b416944d9c1dee94e76b9876627fbd9",
+    "benchmarks/png-bmp-native-gray-completed-20261023.json": "b9ee7c3c15bf113f205518411a903b621823ddaec2d4ef858d542b2a1f364471",
+    "benchmarks/png-bmp-native-independent-inspection-20261023.json": "7af30617ae710bc48a603e0360286b0ce7e75fda3412022ce66d267fb4eae17d",
+    "benchmarks/png-bmp-native-metadata-discovery-20261023.json": "43680ab270b2822cd93268c387b8cd3573acea0c1d2f821f774db2d1bfb80b7a",
+    "benchmarks/png-bmp-native-original-inventory-20261023.json": "c9133b63f0eb63cf114d3d75f86b241968024843955e1f22db23fa3fd3dc3346",
+    "benchmarks/png-bmp-native-prepared-20261023.json": "9c9e500b963069bcbfead2d375e0590016503cc901e676823ba3a40454fa0398",
+    "benchmarks/png-bmp-native-prior-transfer-20261023.json": "4b9d8141969f339b738c027954d6c2c4a914f37786340f0a3b790d01612c6cc1",
+    "benchmarks/png-bmp-native-reviewed-20261023.json": "38f2ae8555f4d3e08dd15f69bbd79fafdc30114b230fd46afeada4a87823940d",
+    "benchmarks/png-bmp-native-source-review-20261023.json": "252f76e5feb3922d44378b0afde29185e4466e6b61c78915dc544c745ff6c881",
+    "benchmarks/png-bmp-native-training-draft-20261023.json": "a809c97134ef11a588bdff4d1cf51c0ee3c86bcc1268fa9bd5f1221ee427e613",
+    "benchmarks/png-bmp-native-unattempted-protocol-20261023.json": "c73c0127b78e2b01b5ab52f2a71a6c55b7d24052d331faddb7a15576d44cc325",
+    "benchmarks/png-bmp-native-unattempted-rgb-20261023.json": "96988edf8ac69d668d78186f79cf66e61c059a79b08e5a63a5b3db61bf2c014c",
+    "core/spatial_commons_native.py": "6798fe8a575a9e119ca72497eb243fea07e1a96d75984b8682ea062218dabf26",
+    "scripts/spatial-native-admit.py": "735dfedf92cc73fcc2732081b88d4388edf226ae80f41c9240d634567389c32e",
+    "tests/test_spatial_commons_native.py": "f84acac2aac653631cd740bee3a3eb4b42fd10a672e182ced4c99724030d255b"
+  },
+  "components": {
+    "full_training_cost": "unavailable",
+    "nine_original_acquisition": "unavailable",
+    "representative_training_corpus": "missing",
+    "six_original_admission_pilot": "ready",
+    "software_gate": "ready",
+    "training_adapter": "missing",
+    "validated_learning_recipe": "missing"
+  },
+  "data": {
+    "author_groups": 6,
+    "cover_cleanliness_verified": false,
+    "cumulative_reserved_transfer_bytes": 55307394,
+    "distinct_metadata_file_pages": 237,
+    "failed_source_retries": 0,
+    "first_acquisition_status": "unavailable_partial",
+    "historical_bytes": null,
+    "independent_payload_checks": 12,
+    "later_http_status": 429,
+    "max_session_transfer_bytes": 67108864,
+    "metadata_bytes": 1102869,
+    "metadata_requests": 12,
+    "native_capture_history_verified": false,
+    "native_modes": {
+      "L": 3,
+      "RGB": 3
+    },
+    "originals": 6,
+    "pairwise_similarity_checks": 15,
+    "prepared_artifacts": 24,
+    "prepared_image_bytes": 2323003,
+    "raw_original_bytes": 19546814,
+    "roles": "unassigned"
+  },
+  "date": "2026-10-23",
+  "historical_ledgers_or_budgets_reset": false,
+  "local_environment": {
+    "numpy": "2.4.6",
+    "pillow": "12.3.0",
+    "python": "3.11.9"
+  },
+  "new_gpu_attempts": 0,
+  "old_capacity_profile_sources_unchanged": true,
+  "optimizer_updates": 0,
+  "real_training_performed": false,
+  "reserved_media_opened": false,
+  "schema": "spatial-native-admission-verification-v1",
+  "software_gate": {
+    "coverage_percent": 97.0485963870749,
+    "diff_check": "passed",
+    "focused_tests_passed": 52,
+    "full_pytest": "passed",
+    "mypy": "passed",
+    "new_service_coverage_percent": 100.0,
+    "passed": 3888,
+    "python_312_314_full_matrix": "unavailable_local_runtimes",
+    "ruff": "passed",
+    "seconds": 1462.6,
+    "skipped": 2
+  },
+  "status": "ready_admission_pilot_only",
+  "verification_log_sha256": {
+    "acquisition-command.log": "a1d489d0e735bb405e509270405f33fdb521f6d9dc60bfa2d0bbeb1f16053a36",
+    "focused-coverage.log": "6d8f15005a80be43c6cfd96efcdc4b843c2bd09ec21379487ead3bc466f48e68",
+    "focused.log": "f14809d1d3ebb184997a8bb1b5627183ec3581951b68130caceffc666c5a95e2",
+    "full-qa.log": "62444d1a3e7b8c323c99a74616026ce4df402eb69859437b6ff46b5b738e7dab",
+    "mypy-final.log": "a1fe9f5a2086d3d2dae98819d45d57f1dbce3495813fbd43cbffc178faab37cc",
+    "ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "unattempted-command.log": "d3c8f83c64814b937790bf1273347fb8526abff59845bb0939366ddb9a0b9914"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "spatial-commons-reviewed-v2",
+  "sources": [
+    {
+      "ancestry_group": "commons-author-naturegia",
+      "ancestry_review": "conservative-author-group-reviewed",
+      "author": "Naturegia",
+      "evidence_sha256": "aa3c3d6d5ab9f0e1a285932a039e841ed22f5dad350ec0d566dd9a38b5478826",
+      "id": "cusco-corao",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "media_status": "not_downloaded",
+      "native_mode": "RGB",
+      "original_bytes": 1249137,
+      "original_sha1": "e90eb10db03743a5a7fd21206985e6ec4f834397",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Vista_del_atardecer_de_Cusco_desde_el_Abra_Corao.png",
+      "page": "https://commons.wikimedia.org/wiki/File:Vista_del_atardecer_de_Cusco_desde_el_Abra_Corao.png",
+      "page_revision": 1177131373,
+      "role": "unassigned"
+    },
+    {
+      "ancestry_group": "commons-author-vigna-delle-sanzioni",
+      "ancestry_review": "conservative-author-group-reviewed",
+      "author": "Vigna delle Sanzioni",
+      "evidence_sha256": "af77ba1e0cc3d27fdea6e900f1a094102048a1b00e804f35de6c758c5ed21f92",
+      "id": "vigna-sanzioni",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "media_status": "not_downloaded",
+      "native_mode": "RGB",
+      "original_bytes": 4247704,
+      "original_sha1": "5b7347239f04c588a3463424dde69dfdb6de6f53",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Vigna_delle_Sanzioni.png",
+      "page": "https://commons.wikimedia.org/wiki/File:Vigna_delle_Sanzioni.png",
+      "page_revision": 1279675743,
+      "role": "unassigned"
+    },
+    {
+      "ancestry_group": "commons-author-akdannoy",
+      "ancestry_review": "conservative-author-group-reviewed",
+      "author": "AkdAnnoy",
+      "evidence_sha256": "d64a6220674dd21e685ecfd0d490a0c35bcb33fd31acac7f22803c421e54b63d",
+      "id": "jatindrapur-path",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "media_status": "not_downloaded",
+      "native_mode": "RGB",
+      "original_bytes": 3109935,
+      "original_sha1": "4305f8f11ce3921fb9a17dde50d9b48c1d760205",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Jatindrapur_karac_bagan.png",
+      "page": "https://commons.wikimedia.org/wiki/File:Jatindrapur_karac_bagan.png",
+      "page_revision": 1238394028,
+      "role": "unassigned"
+    },
+    {
+      "ancestry_group": "commons-author-p-feliciati",
+      "ancestry_review": "conservative-author-group-reviewed",
+      "author": "P feliciati",
+      "evidence_sha256": "f41b6b6ff0b8d283cfed729b29c6a91a503076f40ab6f4dd59324173265a541f",
+      "id": "monti-sibillini",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "media_status": "not_downloaded",
+      "native_mode": "RGB",
+      "original_bytes": 6509456,
+      "original_sha1": "6cc5d3e74e1b11e036dc51f206b6e40705d9959c",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Monti_Sibillini_da_Smerillo-banner.png",
+      "page": "https://commons.wikimedia.org/wiki/File:Monti_Sibillini_da_Smerillo-banner.png",
+      "page_revision": 1242475410,
+      "role": "unassigned"
+    }
+  ]
+}

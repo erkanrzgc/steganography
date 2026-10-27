@@ -1,0 +1,180 @@
+{
+  "common_ancestry_absence_proven": false,
+  "cover_cleanliness_verified": false,
+  "dhash_review_threshold": 8,
+  "independent_payload_recoveries": 12,
+  "native_capture_history_verified": false,
+  "optimizer_updates": 0,
+  "original_checks": [
+    {
+      "crc_verification": true,
+      "crop_sha256": "45686733413c9f3217213573bc5fb3b5ac3574392e51101ec788281fa15cafa0",
+      "depth": 8,
+      "dh64": "ded6eef87061f196",
+      "dimensions": [
+        2592,
+        3872
+      ],
+      "native_mode": "L",
+      "original_sha256": "6dd4953470e2ac2106740f95f8aa2a9193793c9c58e48ce22600a862dc7affa9",
+      "png_color_type": 0,
+      "source_id": "female-back"
+    },
+    {
+      "crc_verification": true,
+      "crop_sha256": "7304b8da40600324e78b0caadeb245ed0049940a1eaecf14b43aa15dca575e96",
+      "depth": 8,
+      "dh64": "87273f3667c58703",
+      "dimensions": [
+        3768,
+        2522
+      ],
+      "native_mode": "L",
+      "original_sha256": "e604a4fcc8ee0be4e49d43449b1140d154998da931c8cd8f5459aea1d4d4dbbe",
+      "png_color_type": 0,
+      "source_id": "fountains-abbey"
+    },
+    {
+      "crc_verification": true,
+      "crop_sha256": "f7200382f9a9394ba7827a9fecdae554ac27da3d04478360c8162605b131796c",
+      "depth": 8,
+      "dh64": "8c98c4ec79b9b111",
+      "dimensions": [
+        951,
+        1068
+      ],
+      "native_mode": "L",
+      "original_sha256": "6d6370d391d545921e684e52e6a57e3a974774f653eaf75f52db1e9739376734",
+      "png_color_type": 0,
+      "source_id": "michael-birkin"
+    },
+    {
+      "crc_verification": true,
+      "crop_sha256": "fd0eb95d724e8b4c7238aa744e05d76961cf498b002a027421c7286415ee68e3",
+      "depth": 8,
+      "dh64": "13061b1f070f1b9f",
+      "dimensions": [
+        1184,
+        864
+      ],
+      "native_mode": "RGB",
+      "original_sha256": "8fe539924470ce0ae800a0354d4a14e36341620ae5830b7218bd491d029febe9",
+      "png_color_type": 2,
+      "source_id": "cusco-corao"
+    },
+    {
+      "crc_verification": true,
+      "crop_sha256": "ccaa0d0c004d4b3aea2c9d211537c823e74795e3a5bc748103699726d752ab7b",
+      "depth": 8,
+      "dh64": "36328e994f1a1e34",
+      "dimensions": [
+        2000,
+        1125
+      ],
+      "native_mode": "RGB",
+      "original_sha256": "c4f1a2d2e571129d7e0bc6f317631201882b64d24907c03b3ccc6745bc07e416",
+      "png_color_type": 2,
+      "source_id": "vigna-sanzioni"
+    },
+    {
+      "crc_verification": true,
+      "crop_sha256": "3cbcd228564e580fe652d9a89169c614eecba2c955ed71bb0ee1ed2e426780d8",
+      "depth": 8,
+      "dh64": "330f591d0f0f9f97",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "native_mode": "RGB",
+      "original_sha256": "91460a545598e679c8a7366f7eaf32ed428fb240d8a680fb9372887f85ca5660",
+      "png_color_type": 2,
+      "source_id": "jatindrapur-path"
+    }
+  ],
+  "pairwise_full_image_dhash": [
+    {
+      "dhash_hamming": 34,
+      "left": "female-back",
+      "right": "fountains-abbey"
+    },
+    {
+      "dhash_hamming": 23,
+      "left": "female-back",
+      "right": "michael-birkin"
+    },
+    {
+      "dhash_hamming": 38,
+      "left": "female-back",
+      "right": "cusco-corao"
+    },
+    {
+      "dhash_hamming": 35,
+      "left": "female-back",
+      "right": "vigna-sanzioni"
+    },
+    {
+      "dhash_hamming": 40,
+      "left": "female-back",
+      "right": "jatindrapur-path"
+    },
+    {
+      "dhash_hamming": 37,
+      "left": "fountains-abbey",
+      "right": "michael-birkin"
+    },
+    {
+      "dhash_hamming": 24,
+      "left": "fountains-abbey",
+      "right": "cusco-corao"
+    },
+    {
+      "dhash_hamming": 35,
+      "left": "fountains-abbey",
+      "right": "vigna-sanzioni"
+    },
+    {
+      "dhash_hamming": 26,
+      "left": "fountains-abbey",
+      "right": "jatindrapur-path"
+    },
+    {
+      "dhash_hamming": 43,
+      "left": "michael-birkin",
+      "right": "cusco-corao"
+    },
+    {
+      "dhash_hamming": 34,
+      "left": "michael-birkin",
+      "right": "vigna-sanzioni"
+    },
+    {
+      "dhash_hamming": 39,
+      "left": "michael-birkin",
+      "right": "jatindrapur-path"
+    },
+    {
+      "dhash_hamming": 25,
+      "left": "cusco-corao",
+      "right": "vigna-sanzioni"
+    },
+    {
+      "dhash_hamming": 10,
+      "left": "cusco-corao",
+      "right": "jatindrapur-path"
+    },
+    {
+      "dhash_hamming": 25,
+      "left": "vigna-sanzioni",
+      "right": "jatindrapur-path"
+    }
+  ],
+  "prepared_artifact_hashes_verified": 24,
+  "raw_and_crop_hashes_unique": true,
+  "roles": "unassigned",
+  "schema": "spatial-native-independent-inspection-v1",
+  "similarity_flags": [],
+  "single_lsb_checks": 12,
+  "status": "ready_admission_pilot_only",
+  "training_qualification": "unavailable_small_unassigned_pilot",
+  "visual_review": "six-image contact sheet inspected; distinct visible subjects/scenes; no obvious duplicate found"
+}

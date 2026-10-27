@@ -1,0 +1,33 @@
+{
+  "capacity_profile": "12/12 ready; one attempt consumed; zero optimizer updates",
+  "checks": {
+    "mypy-final.log": {
+      "sha256": "7a9771fa149280a943fe917324b1a67bdcf232e3a259d3350d995e641b7c08ab",
+      "status": "passed"
+    },
+    "pytest-final.log": {
+      "sha256": "ba922e0ebbcaf50f404e8221dc5ed4bcc24c8c902d460d0b308228a3964ef3b3",
+      "status": "passed"
+    },
+    "readme-final.log": {
+      "sha256": "fbd6bd498476738301fe109f84bda08cec0dc2980f2292e3a71b4f16fdfe5651",
+      "status": "passed"
+    },
+    "ruff-final.log": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "status": "passed"
+    }
+  },
+  "date": "2026-10-23",
+  "diff_check": "passed",
+  "final_tests": "108 focused tests passed; final README edit separately replayed",
+  "full_software_gate": "3836 passed, 2 CUDA skips, 97.0348911515358%; historical complete run plus documented targeted replays",
+  "gpu_session": "no active sessions observed; measurement toggle saved false",
+  "local_document_links_verified": 83,
+  "original_software_qa_logs_and_deliverables_unchanged": true,
+  "python": "3.11.9",
+  "real_training_performed": false,
+  "schema": "png-bmp-colab-delivery-verification-v1",
+  "status": "ready",
+  "unchanged_bound_sources": 16
+}
