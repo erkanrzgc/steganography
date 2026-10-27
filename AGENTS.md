@@ -56,6 +56,175 @@ checkpoints to fix a full temporary filesystem.
 
 ## Active milestone
 
+PNG/BMP Colab preparation is separate from the frozen JPEG/WAV experiments.
+See `docs/PNG_BMP_COLAB_PROTOCOL_20261023.md` and its preparation status.
+The portable notebook binds the existing gray/RGB SRNet skeletons, Runtime
+Version 2026.07 and a generated 600-second zero-optimizer profile. Native
+Commons candidates remain unassigned with pending ancestry/native review.
+No new media was downloaded and no real fitting is authorized. Numeric
+checkpoint QA uses generated states only; it does not authorize a recipe.
+The one actual Pro/T4 capacity profile completed all twelve cells in
+16.034616 seconds with zero updates; see
+`docs/PNG_BMP_COLAB_CAPACITY_RESULTS_20261023.md`. This attempt is consumed;
+do not rerun it automatically. Optimizer/evaluation/I/O and full-training
+budgets remain unmeasured; no real fit follows from this capacity result.
+Keep all historical budgets, reserved data and consumed attempts unchanged.
+
+A later explicit continuation permits the separate native Commons admission
+pilot, bound by `docs/PNG_BMP_NATIVE_ADMISSION_PROTOCOL_20261023.md` and its
+unattempted-source amendment. Six originals (three L /three RGB), six author
+groups and 24 PNG/BMP artifacts pass twelve independent payload checks;
+all roles remain unassigned. Preserve the first partial unavailable acquisition
+and later HTTP 429, with no retries. Conservative cumulative raw-transfer
+debit is 55,307,394 /67,108,864 bytes; the older historical total stays null.
+See `docs/PNG_BMP_NATIVE_ADMISSION_RESULTS_20261023.md`. No further download,
+GPU attempt or real fit follows from the completed pilot. The 128-originals
+per-domain training plan is a non-executable draft with missing data, adapter,
+learning control and optimizer/evaluation/I/O cost; it does not grant fitting.
+The native admission full software gate passes 3,888 tests /two CUDA skips,
+97.05% total coverage; the new admission service has 100% coverage.
+
+A later continuation permits data-only expansion under
+`docs/PNG_BMP_NATIVE_EXPANSION_PROTOCOL_20261023.md`: a separate 512-MiB
+reservation ceiling, native photographic L/RGB PNG sources, fixed crop
+texture gates and at most eight originals per author group per mode.
+The private source-bound paced schedule preserves every intent/reservation,
+respects server cooldowns and never retries a previously requested SHA-1.
+Keep actual roles unassigned, microscopy excluded pending the user's
+preference, existing reserved data closed and both historical ledgers intact.
+This is collection/preparation only; no new GPU attempt or real fitting.
+
+The original expansion parent was interrupted after batch-1057. Batch-1058
+has an attempt marker but no source intent/reservation; keep it unavailable
+and skip that source. The user's 2026-10-24 continuation permits the bound
+unattempted-only parent in
+`docs/PNG_BMP_NATIVE_UNATTEMPTED_CONTINUATION_20261024.md`, not a retry.
+Its user service `png-bmp-native-unattempted-20261024.service` has a four-hour
+deadline, 2-GiB memory /zero swap and no restart. Preserve all 84,115,935
+previously reserved expansion bytes and the old 55,307,394-byte prior debit.
+All eighty metadata requests are consumed. Original source code, the frozen
+catalogue, source holds and all fitting restrictions remain unchanged.
+The user subsequently requested a stop. The continuation service is inactive
+with no automatic resume. Preserve the stop receipt in
+`benchmarks/png-bmp-native-expansion-user-stop-20261024.json`. The last fully
+reviewed subset is snapshot 007: 13 L /79 RGB originals, 368 PNG/BMP artifacts
+and 184 scalar payload checks. Later acquisitions remain unreviewed and
+unassigned; do not admit them or restart collection automatically.
+
+The user's 2026-10-26 explicit continuation supersedes that stop for data-only
+preparation. Offline snapshot 008 reviews the backlog: 13 L /87 RGB originals,
+400 PNG/BMP artifacts and 200 independent payload checks. Preserve the three
+holds and both montage/illustration exclusions. The fresh source-bound parent
+and service are documented in `docs/PNG_BMP_NATIVE_USER_RESUME_20261026.md`.
+They skip every prior attempt/log and SHA-1 intent/result, keeping all
+248,412,639 expansion bytes and the separate 55,307,394-byte debit at resume.
+Debit 4,143 seconds from the old continuation: the new service allows at most
+10,257 seconds of the original four hours, with 2-GiB memory /zero swap and
+no restart. The original 512-MiB ceiling and exhausted metadata budget remain.
+Sixteen generated resume checks pass with 100% coverage. New acquisitions
+still require independent review; no role assignment, GPU attempt or fitting.
+
+This resumed collection/preparation is now complete at its transfer ceiling.
+The service is inactive /PID zero with no restart. Snapshot 016 has 118
+reviewed originals (13 L /105 RGB), 472 PNG/BMP artifacts and 236 independent
+scalar payload checks; no unreviewed candidate remains. Preserve all three
+holds and both exclusions. Final replay closes 192 requests /189 raw files
+with the complete reservation chain. Expansion debit is 536,421,895 of
+536,870,912 bytes, plus the separate old 55,307,394 bytes; the older total
+stays null. The unused 449,017 bytes cannot fit the next bound source.
+Conservative old-plus-new continuation time is 7,035 /14,400 seconds; none
+of the remaining time grants a retry or new download. Exact post-exit peak
+memory is unavailable after transient-unit unloading; preserve the failed
+observer and earlier kernel samples instead of rerunning collection.
+See `benchmarks/png-bmp-native-expansion-closeout-20261026.json` and the
+updated results. Fresh full QA passes 3,888 tests /two CUDA skips, 97.05%
+coverage; all 59 additional generated checks pass. The corpus still lacks
+115 L /23 RGB originals and ten L groups for the draft target. Keep roles
+unassigned, reserved data closed, metadata exhausted and fitting unauthorized.
+This attempt is consumed; no automatic collection, GPU attempt or real fit.
+
+The existing local GPU host is Windows 11 /Ubuntu-24.04 WSL2 with the user's
+RTX 5060 Laptop /8-GB VRAM. `docs/WSL_GPU_READINESS_RESULTS.md` already records
+physical CUDA verification with Python 3.12.3 /Torch 2.14.0+cu130 on 2026-10-09;
+later local probes and real JPEG fits are complete historical experiments.
+Read that record, `docs/WINDOWS_GPU_TRAINING.md` and `docs/WSL_GPU_RECONNECT.md`
+before proposing GPU/WSL installation. This Kali workspace is the separate
+CPU-only VMware guest; its missing CUDA device says nothing about existing
+host installation. The dedicated `steganography-wsl` SSH alias/key/known-host
+files remain; the initial 2026-10-26 check found the port-22240 listener absent.
+Restore the existing connection rather than reinstalling Ubuntu, replacing
+keys or rerunning a consumed experiment. Current host driver/package state
+needs read-only revalidation after reconnect. See the corrected
+`docs/PNG_BMP_LOCAL_READINESS_20261026.md`. No new PNG/BMP GPU profile, media
+acquisition or fitting was executed by this hardware assessment. Preserve
+the CPU CI, frozen Colab environment and every previous local result/budget.
+
+On 2026-10-28 the user restored the existing WSL tunnel. Read-only inventory
+confirms RTX 5060 Laptop /capability 12.0, driver 617.42, Python 3.12.3 and
+Torch 2.14.0+cu130; see `benchmarks/png-bmp-wsl-connection-20261028.json`.
+This is not a new GPU profile. New generated-only software lives in
+`core/spatial_training_data.py` and `core/spatial_generated_training.py`:
+byte-rounded forty-percent scattered plane-0 controls, paired FP32 batches,
+bounded AdamW step/scoring and numeric checkpoint continuation. Fifty-seven
+focused software tests pass, including actual small CPU optimizer steps and
+exact gray/RGB interrupted-state parity. These are QA, not a full learning
+control or native accuracy result. See the dated preparation document.
+The new generated-control and data-gap documents are non-executable drafts;
+the actual source-bound supervisor/acceptance/independent debit contract is
+still missing. Do not run a GPU profile, full generated control or native fit
+from these drafts or rerun any old job. Existing real media stays unassigned.
+The largest ten RGB groups hold only 41 originals; 23 more images cannot
+produce the old ten-group /80-original training partition. A future split
+needs independent group-feasibility review, without changing historical data
+or assigning real roles. All prior transfer/metadata ceilings remain consumed.
+The new preparation full gate passes 3,945 tests /two explicit Kali-CUDA
+skips, 97.07% total coverage; Ruff and 233-file mypy pass. New data/training
+modules have 100% /99.34% statement coverage. The proposed generated manifest
+contains 220 sources /220 payload checks with disjoint source/group namespaces;
+no image/model was persisted by manifest generation. See
+`benchmarks/png-bmp-generated-preparation-verification-20261028.json` and
+`benchmarks/png-bmp-generated-corpus-20261028.json`. Preserve the first focused
+fixture failure. This is generated CPU software QA, not a full learning gate,
+physical CUDA execution or permission to fit or acquire real media.
+
+A later user continuation permits the separate generated-only intervention in
+`docs/PNG_BMP_GENERATED_CONTROL_PROTOCOL_20261028.md`, conditional on its full
+software gate, source/environment freeze and deployment checks. The new
+`spatial_control` /`spatial_control_io` /`spatial_control_supervisor` services
+implement four fresh profile cells (sixteen generated updates), conservative
+cost projection and, only if eligible, four fresh fits (1,600 updates).
+Its separate allowance is 1,800 seconds /8-GiB RAM /zero swap /4-GiB allocator
+and 512-MiB output, with one exclusive attempt marker and no retry. All actual
+learning inputs remain generated in memory; PNG/BMP transport is separately
+measured. The earlier draft and preparation results remain historical snapshots.
+This conditional continuation never authorizes native fitting or acquisition.
+Record the actual outcome before any later action; never relaunch a consumed
+attempt or treat generated-only accuracy as native qualification.
+
+That one generated intervention is now complete: **passed_generated_only**.
+All four cells completed 1,600 learning updates /12,800 presentations, plus
+sixteen profile updates; 1,616 commits and eight numeric checkpoints verify.
+Final generated development AUCs are .723958 /.706597 (L) and .763889 /.769097
+(RGB), with train AUC 1.0 in every cell. All sixteen AUCs also replay through
+an independent pairwise calculation; 1,533 parent observations and all 1,528
+nonnull progress anchors verify.
+Kernel execution is 1,356.435690 seconds; conservative time through independent
+closeout is 1,598.898706 /1,800 seconds. Peak host memory is 3,182,301,184 bytes;
+allocator allocated/reserved peaks are 3,849,946,112 /4,089,446,400 bytes.
+The complete private WSL package is 469,630,247 logical bytes, below 512 MiB.
+Preserve the failed direct post-exit cgroup observer: the released empty
+cgroup is unavailable, while retained systemd and parent memory peaks agree.
+All eight checkpoint hashes and 243 staged files pass a separate closing
+audit. Numeric models remain private in WSL; the unit is inactive /PID zero,
+with no restart. This attempt is consumed; no remaining time grants a retry.
+See `docs/PNG_BMP_GENERATED_CONTROL_RESULTS_20261028.md` and its full receipts.
+Full software QA passes 4,008 tests /two explicit CUDA skips, 97.13% coverage;
+63 focused tests pass, and all four new modules exceed 95%. No native media,
+download, role assignment, real fit or deployment follows from this pass.
+The corpus deficit, RGB group feasibility and native cache/training adapter
+remain unresolved. Native integrated I/O and its full-training allowance are
+unavailable; any native fit needs a separately frozen contract and approval.
+
 `v0.6`: shared analysis context, PNG/BMP native analysis, bounded CTF playbook,
 portable JSON/HTML/SARIF/bundle reporting, and initial CLI/API/TUI surfaces.
 See `docs/ROADMAP.md` for current status and later milestones.

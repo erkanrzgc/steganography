@@ -1,5 +1,71 @@
 # Architecture
 
+`core.spatial_training_data` owns bounded generated gray/RGB pairs, the
+byte-rounded forty-percent scattered plane-0 candidate and its independent
+scalar decoder. `core.spatial_generated_training` reuses the unchanged
+SRNet models, numeric AdamW checkpoint service, shared AUC and strict CUDA
+policy for generated-only step/scoring/resume semantics. Frozen domain specs
+and plans bind seed/split/order/device; this API accepts no native media paths.
+Its paired epoch tails, finite/deadline checks and cumulative checkpoint debit
+are software QA. The separate `core.spatial_control` service now binds the
+generated corpus, four-cell cost projection and complete learning acceptance.
+`spatial_control_io` independently checks bounded PNG/BMP transport; actual
+training retains the original in-memory generator. `spatial_control_supervisor`
+owns one-attempt execution, immutable update intents/commits, kernel-time and
+cgroup/output limits. The CLI only dispatches these services. Native integrated
+streaming and native fitting still need their own contract.
+See [generated preparation](PNG_BMP_GENERATED_PREPARATION_20261028.md).
+The [generated execution contract](PNG_BMP_GENERATED_CONTROL_PROTOCOL_20261028.md)
+requires full software QA, source/environment freeze and deployment verification
+before its one conditional generated intervention. A generated pass cannot
+qualify real images or reopen any historical experiment.
+The [completed local control](PNG_BMP_GENERATED_CONTROL_RESULTS_20261028.md)
+passes all four generated cells /1,616 total updates, with eight verified
+numeric states and independent score/ledger/progress-anchor replay. The
+consumed unit is inactive; native data/cache/split/cost preparation remains
+separate. Full QA passes 4,008 tests /two CUDA skips, 97.13% coverage.
+
+`core.spatial_commons_native` owns the separately reviewed native admission
+extension for CC0 and CC BY 2.0/3.0/4.0. It preserves frozen capacity sources,
+checks native 8-bit PNG IHDR before decoding, enforces conservative author
+groups and bounded, explicitly opted-in acquisition with prior-ledger debit,
+and reuses shared crop/embedding/independent decoding services. Its thin
+`scripts/spatial-native-admit.py` adapter performs no fitting or analysis.
+The [completed pilot](PNG_BMP_NATIVE_ADMISSION_RESULTS_20261023.md) keeps
+media private, all roles unassigned and every failed receipt unchanged.
+
+The separate [data expansion contract](PNG_BMP_NATIVE_EXPANSION_PROTOCOL_20261023.md)
+reuses these unchanged admission services with source-bound research wrappers.
+Immutable per-source intent, prior-ledger anchor and full-extent reservation
+precede network I/O. Global author quotas, fixed-crop texture and duplicate
+checks precede visual review; PNG/BMP preparation delegates to the shared
+service and is independently replayed with a scalar payload decoder.
+Collection grants neither roles nor fitting permission.
+An [explicit user resume](PNG_BMP_NATIVE_USER_RESUME_20261026.md) uses a fresh,
+source-bound parent and exclusive attempt/log/completion records. It verifies
+the exact prior transfer baseline, skips both older log directories and all
+consumed source intents, and subtracts prior service runtime before launch.
+The frozen application services and earlier evidence remain unchanged.
+The completed [expansion closeout](PNG_BMP_NATIVE_EXPANSION_RESULTS_20261023.md)
+keeps the collector inactive at its reservation ceiling and all corpus roles
+unassigned. Final source/debit and prepared-artifact replays are independent
+of acquisition success labels; unavailable post-exit telemetry is preserved
+without repeating a source or changing the frozen collector.
+
+`core.spatial_colab` owns the separate generated PNG/BMP Colab capacity
+service, reusing the unchanged grayscale/RGB native SRNet skeletons.
+`spatial_colab_data` bounds explicit Commons acquisition and unassigned native
+admission; `spatial_colab_state` provides numeric model/AdamW/RNG/order/debit
+persistence, tested with generated states only. `spatial_colab_bundle` creates
+a fixed-base, hash-verified source handoff and notebook. The thin
+`scripts/spatial-colab.py` adapter has no detection or training logic.
+The profile constructs no optimizer and enforces a single 600-second
+generated attempt; actual GPU availability is reported separately from QA.
+See [the independent contract](PNG_BMP_COLAB_PROTOCOL_20261023.md). The one
+actual Pro/T4 profile is complete and consumed; its
+[verified results](PNG_BMP_COLAB_CAPACITY_RESULTS_20261023.md) keep full
+training costs unmeasured and grant no real-fit or retry authorization.
+
 `core.wav_pair_native` owns separately bound cached AudioMNIST preparation
 and the explicit-approval CPU fit adapter. It reuses frozen pair statistics,
 train-only normalization and the generated head recipe without modifying
