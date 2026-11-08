@@ -17,6 +17,7 @@ import random
 import time
 from collections.abc import Callable
 from contextlib import nullcontext
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -24,7 +25,6 @@ import numpy as np
 from core import colab_artifacts as a
 from core import nonjpeg_models as models
 from core import spatial_native_data as data
-from core import spatial_native_training as engine
 from modules import lsb_replacement as ws
 
 ARCHITECTURE = "srnet-rgb-parity-input-v1"
@@ -32,6 +32,9 @@ MODEL_SEED = 2026102301
 MODEL_SEEDS = (2026102301, 2026102302)
 PAYLOAD_SEED = 2026102805
 EPOCHS = 20
+MAX_EPOCHS = 60
+MAX_SECONDS = 7200
+DECAY_FACTOR = 0.1
 BATCH_IMAGES = 8
 PARITY_SCALE = 64.0
 PARITY_INIT_SEED = 2026110801
@@ -45,11 +48,18 @@ def binding(
     fresh_payload: bool = False,
     learning_rate: float = LEARNING_RATE,
     model_seed: int = MODEL_SEED,
+    epochs: int = EPOCHS,
+    decay_epoch: int | None = None,
 ) -> str:
     """Bind the recipe; the original fixed-payload 1e-4 binding is unchanged."""
     extra: dict[str, Any] = {"training_payload": "fresh-per-epoch-v1"} if fresh_payload else {}
     if learning_rate != LEARNING_RATE:
         extra["learning_rate"] = learning_rate
+    if epochs != EPOCHS:
+        extra["epochs"] = epochs
+    if decay_epoch is not None:
+        extra["decay_epoch"] = decay_epoch
+        extra["decay_factor"] = DECAY_FACTOR
     return a.digest(
         a.encode(
             {
@@ -105,6 +115,12 @@ def pairwise_auc(values) -> float:
     return float(np.mean((difference > 0) + 0.5 * (difference == 0)))
 
 
+def order(model_seed: int, count: int, epochs: int) -> np.ndarray:
+    """The native engine's per-epoch permutation order, extended beyond twenty epochs."""
+    rng = np.random.Generator(np.random.PCG64(model_seed))
+    return np.concatenate([rng.permutation(count) + epoch * count for epoch in range(epochs)])
+
+
 def training_seed(epoch_index: int, fresh_payload: bool) -> int:
     """Fixed payload seed, or a fresh payload/position seed for every epoch."""
     return (PAYLOAD_SEED + 1 + epoch_index) % 2**32 if fresh_payload else PAYLOAD_SEED
@@ -123,11 +139,7 @@ class _Probe:
         self.cache, self.split, self.device = cache, split, device
         self.lookup = {row.id: i for i, row in enumerate(cache.rows)}
         self.fresh_payload = fresh_payload
-        self.plan = engine.Plan(
-            split, model_seed, PAYLOAD_SEED, epochs, BATCH_IMAGES,
-            binding(fresh_payload, learning_rate, model_seed),
-        )
-        self.schedule = engine.order(self.plan)
+        self.schedule = order(model_seed, len(split.train), epochs)
         self.model = build().to(device).train()
         self.optimizer = torch.optim.AdamW(
             self.model.parameters(),
@@ -233,14 +245,28 @@ def _policy(device: str):
     return profile.cuda_policy()
 
 
+def _save_state(model, path: Path) -> str:
+    """Write the final CPU state dict exclusively and return its SHA-256."""
+    import io
+
+    import torch
+
+    buffer = io.BytesIO()
+    torch.save({k: v.detach().cpu() for k, v in model.state_dict().items()}, buffer)
+    raw = buffer.getvalue()
+    with path.open("xb") as stream:
+        stream.write(raw)
+    return a.digest(raw)
+
+
 def _validate(cache, split, device: str, epochs: int, max_seconds: float) -> None:
     if device not in ("cpu", "cuda:0"):
         raise ValueError("explicit cpu or cuda:0 device required")
-    if type(epochs) is not int or not 1 <= epochs <= EPOCHS:
+    if type(epochs) is not int or not 1 <= epochs <= MAX_EPOCHS:
         raise ValueError("bounded epoch count required")
-    if device == "cuda:0" and epochs != EPOCHS:
-        raise ValueError("physical runs must keep all twenty epochs")
-    if not isinstance(max_seconds, (int, float)) or not 0 < max_seconds <= 1800:
+    if device == "cuda:0" and epochs < EPOCHS:
+        raise ValueError("physical runs must keep at least twenty epochs")
+    if not isinstance(max_seconds, (int, float)) or not 0 < max_seconds <= MAX_SECONDS:
         raise ValueError("bounded deadline required")
     if split.mode != "RGB":
         raise ValueError("RGB split required")
@@ -258,6 +284,8 @@ def run(
     fresh_payload: bool = False,
     learning_rate: float = LEARNING_RATE,
     model_seed: int = MODEL_SEED,
+    decay_epoch: int | None = None,
+    state_path: Path | None = None,
 ) -> dict[str, Any]:
     """Train one seed under the original recipe with parity inputs; return all scores."""
     import torch
@@ -267,6 +295,10 @@ def run(
         raise ValueError("bounded learning rate required")
     if model_seed not in MODEL_SEEDS:
         raise ValueError("original model seed required")
+    if decay_epoch is not None and (type(decay_epoch) is not int or not 1 <= decay_epoch < epochs):
+        raise ValueError("decay epoch must precede the final epoch")
+    if state_path is not None and state_path.exists():
+        raise FileExistsError("model state path already exists")
     with _policy(device), torch.random.fork_rng(devices=[0] if device == "cuda:0" else []):
         torch.random.default_generator.manual_seed(model_seed)
         if device == "cuda:0":
@@ -279,8 +311,12 @@ def run(
         )
         initial = {role: state.scores(role) for role in ("train", "development")}
         steps = math.ceil(len(split.train) / (BATCH_IMAGES // 2))
-        losses, rows = [], []
+        losses, rows, rates = [], [], []
         for epoch in range(1, epochs + 1):
+            rate = learning_rate * (DECAY_FACTOR if decay_epoch and epoch > decay_epoch else 1.0)
+            for group in state.optimizer.param_groups:
+                group["lr"] = rate
+            rates.append(rate)
             epoch_losses = [state.step() for _ in range(steps)]
             losses.extend(epoch_losses)
             development = state.scores("development")
@@ -296,6 +332,7 @@ def run(
         final = {"train": state.scores("train"), "development": development}
         elapsed = time.monotonic() - state.started
         environment = _environment(device)
+        state_sha256 = _save_state(state.model, state_path) if state_path is not None else None
     first, last = float(np.mean(losses[:steps])), float(np.mean(losses[-steps:]))
     gate = {
         "train_auc": final["train"]["auc"],
@@ -309,7 +346,11 @@ def run(
     )
     return {
         "schema": "rgb-parity-probe-result-v1",
-        "binding_sha256": binding(fresh_payload, learning_rate, model_seed),
+        "binding_sha256": binding(fresh_payload, learning_rate, model_seed, epochs, decay_epoch),
+        "epoch_count": epochs,
+        "decay_epoch": decay_epoch,
+        "learning_rates": rates,
+        "state_sha256": state_sha256,
         "model_seed": model_seed,
         "learning_rate": learning_rate,
         "fresh_payload": fresh_payload,
@@ -328,6 +369,6 @@ def run(
         "optimizer_updates": state.updates,
         "presentations": state.presentations,
         "elapsed_seconds": elapsed,
-        "checkpoints": 0,
+        "checkpoints": 0 if state_sha256 is None else 1,
         "future_reserved_opened": False,
     }

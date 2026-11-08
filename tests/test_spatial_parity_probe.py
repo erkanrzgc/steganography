@@ -185,7 +185,7 @@ def test_learning_rate_is_bounded_bound_and_recorded(tmp_path):
     result = probe.run(cache, split, device="cpu", epochs=1, max_seconds=60, build=toy,
                        fresh_payload=True, learning_rate=1e-3)
     assert result["learning_rate"] == 1e-3
-    assert result["binding_sha256"] == probe.binding(True, 1e-3)
+    assert result["binding_sha256"] == probe.binding(True, 1e-3, probe.MODEL_SEED, 1)
 
 
 def test_second_original_seed_changes_order_and_only_original_seeds_allowed(tmp_path):
@@ -200,7 +200,7 @@ def test_second_original_seed_changes_order_and_only_original_seeds_allowed(tmp_
     assert probe.binding(model_seed=probe.MODEL_SEEDS[1]) != probe.binding()
 
 
-@pytest.mark.parametrize(("epochs", "seconds"), [(0, 60), (21, 60), ("2", 60), (1, 0), (1, 1801)])
+@pytest.mark.parametrize(("epochs", "seconds"), [(0, 60), (61, 60), ("2", 60), (1, 0), (1, 7201)])
 def test_epoch_and_deadline_bounds_fail_closed(tmp_path, epochs, seconds):
     cache, split = prepare(tmp_path)
     with pytest.raises(ValueError, match="bounded"):
@@ -230,3 +230,40 @@ def test_unbiased_first_convolution_is_rejected(monkeypatch):
     monkeypatch.setattr(probe.models, "network", lambda _domain: Stub())
     with pytest.raises(ValueError, match="biased"):
         probe.network()
+
+
+def test_extended_order_matches_native_engine_for_twenty_epochs():
+    split = t.Split("a" * 64, "RGB", 13, ("x", "y", "z"), ("d",), ("r",), ())
+    plan = t.Plan(split, 2026102302, 1, 20, 8, "b" * 64)
+    assert np.array_equal(probe.order(2026102302, 3, 20), t.order(plan))
+    longer = probe.order(2026102302, 3, 40)
+    assert len(longer) == 120 and np.array_equal(longer[:60], t.order(plan))
+
+
+def test_step_decay_saves_exclusive_state_and_binds_new_recipe(tmp_path):
+    cache, split = prepare(tmp_path)
+    for bad in (0, 3, "1", True):
+        with pytest.raises(ValueError, match="decay"):
+            probe.run(cache, split, device="cpu", epochs=3, max_seconds=60, build=toy,
+                      decay_epoch=bad)
+    path = tmp_path / "state.pt"
+    result = probe.run(cache, split, device="cpu", epochs=3, max_seconds=60, build=toy,
+                       learning_rate=1e-3, decay_epoch=2, state_path=path)
+    assert result["learning_rates"] == [1e-3, 1e-3, pytest.approx(1e-4)]
+    assert result["epoch_count"] == 3 and result["decay_epoch"] == 2
+    assert result["checkpoints"] == 1
+    assert result["state_sha256"] == a.digest(path.read_bytes())
+    assert set(torch.load(path, weights_only=True)) == set(toy().state_dict())
+    assert result["binding_sha256"] == probe.binding(False, 1e-3, probe.MODEL_SEED, 3, 2)
+    assert probe.binding(False, 1e-3, probe.MODEL_SEED, 3, 2) != probe.binding(False, 1e-3)
+    with pytest.raises(FileExistsError):
+        probe.run(cache, split, device="cpu", epochs=1, max_seconds=60, build=toy, state_path=path)
+    plain = probe.run(cache, split, device="cpu", epochs=1, max_seconds=60, build=toy)
+    assert plain["state_sha256"] is None and plain["checkpoints"] == 0
+    assert plain["learning_rates"] == [probe.LEARNING_RATE]
+
+
+def test_cuda_requires_at_least_twenty_epochs(tmp_path):
+    cache, split = prepare(tmp_path)
+    with pytest.raises(ValueError, match="twenty"):
+        probe.run(cache, split, device="cuda:0", epochs=19, max_seconds=60, build=toy)

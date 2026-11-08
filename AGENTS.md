@@ -1221,7 +1221,11 @@ GPU) adds only three LSB-parity channels: train AUC .51 -> .98, loss .63 -> .14,
 but development AUC .62 with chance pair ordering, so the gate fails on
 overfitting. Follow-up runs (fresh payload per epoch, lr 1e-3, both original seeds)
 reach development AUC .74/.77; seed 2 misses train AUC .85, so the two-seed
-gate is not passed. All four CPU attempts are consumed; see the results doc. `modules/lsb_replacement.py`
+gate is not passed. All four CPU attempts are consumed; see the results doc.
+Forty epochs with a 1e-3 -> 1e-4 decay after epoch 30 then pass the gate on
+both seeds (train .91/.98, development .82/.81); private final states are
+saved. The 21 reserved RGB originals stay closed until the user decides on
+the one-time unbiased evaluation. All six CPU attempts are consumed. `modules/lsb_replacement.py`
 now feeds a heuristic `weighted_stego_payload` signal in `image_bitplane`.
 The consumed Colab budget tests reject any added or changed `core/` or
 `steganography/` source (frozen closure). Put post-freeze experiments in the

@@ -8,6 +8,8 @@
   Fresh per-epoch payloads remove memorization and learning rate 1e-3 lifts
   development AUC to .74/.77 on two seeds; seed 2 misses train AUC .85, so the
   two-seed gate is not yet passed. New code lives in `research/`/`modules/`.
+  Forty epochs with a 1e-3 -> 1e-4 step decay pass the gate on both seeds
+  (train .91/.98, development .82/.81); reserved originals remain closed.
 
 - Replay eight existing native RGB checkpoints with train-only CPU inference;
   verify 32,768 AUC comparisons and retain near-chance ranking at every saved

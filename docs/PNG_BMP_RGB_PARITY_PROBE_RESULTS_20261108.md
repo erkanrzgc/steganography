@@ -110,3 +110,31 @@ Executed sources (private copies, SHA-256): fresh
 `c83c8fa2fdb9db15a3012b02719c53a1ff3c3bc53f441a06e0466e7f8c8c182d`,
 `beae8fe19408212c6f561c39f90538a95a4ea26afd82627f9527faa13ade3e51`,
 `1f3d3c9e60ab290755e9455e8a3f2e7311f024e87de0fc74ca7a7ddbb1b24d7f`.
+
+## Two-seed pass: 40 epochs with step decay
+
+Same recipe (parity input, fresh payload per epoch, AdamW 1e-3) for forty
+epochs, decaying the rate to 1e-4 after epoch 30 as in the original SRNet
+schedule; 640 updates per seed. The executed source equals
+`research/spatial_parity_probe.py` (SHA-256
+`376846dffdcc9766b59b85281fee08c1756b213ed1d44b10cbefba5c3523894e`). Final CPU
+states were saved privately for a later reserved evaluation.
+
+| Seed | Train AUC | Dev AUC | Train pairs | Dev pairs | Loss first → last | Gate | Seconds |
+| --- | ---: | ---: | ---: | ---: | --- | --- | ---: |
+| 2026102301 | 0.9097 | 0.8175 | 58/64 | 18/20 | .692 → .262 | pass | 3882 |
+| 2026102302 | 0.9753 | 0.8125 | 64/64 | 17/20 | .740 → .108 | pass | 4844 |
+
+**Both original seeds pass the fixed three-part gate for the first time.**
+After the decay, development AUC stays within .78–.83 for both seeds instead of
+swinging between .54 and .80. The CNN still trails the parameter-free WS
+estimator (development AUC .9525), and development AUC remains optimistically
+biased by five sequential decisions on the same twenty originals.
+
+Results (SHA-256): seed 1
+`49c00bfb9698af01b5fe2f4b585168de83c281f7958d0a234fb6bb912f91a93b`, seed 2
+`12dd0794a93fb8071cb40fb730bfc67f570c4625ff799d609556c00e4e308393`; states
+`eca75b069795333816325bb69b677d2b625efcd6a6cc88f97dc918c1218feef9` and
+`8580dfdacd905adcb68bd21ba46c60f396e28a7f70f732661eb763946e849059`. An unbiased
+estimate needs one evaluation of these frozen states on the 21 closed reserved
+RGB originals; that one-time use requires an explicit user decision.
