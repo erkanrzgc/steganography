@@ -1,0 +1,88 @@
+{
+  "schema": "commit-hash-map-v1",
+  "date": "2026-11-08",
+  "reason": "commit messages rewritten to drop co-author trailers; trees, authors and dates unchanged",
+  "note": "historical receipts, docs and BASE_COMMIT constants keep their original hashes; resolve them with this map",
+  "commits": [
+    {
+      "old": "1c2258325cdf543194a44ea2d8b7ae11c925758d",
+      "new": "d2df648fd49f81cf66a2c9e640fee577aa6aacfe",
+      "subject": "feat: add second-round JPEG refinement and numerics amendment"
+    },
+    {
+      "old": "efd39f9bd02b3610e48da2964017b297ffd80062",
+      "new": "5f299fabad8de5f04b90ad58c83f0546a7e769fc",
+      "subject": "feat: add native non-JPEG features, linear comparison and process preflight"
+    },
+    {
+      "old": "95079a083945cd33d755e97824fa5fbe6df3b6e6",
+      "new": "875bcd9435c775736ca19cfd0aed186c8f910494",
+      "subject": "feat: add read-only WAV diagnosis and speaker-grouped draft"
+    },
+    {
+      "old": "11cff3eceb4ea041e2e503f887d8076d70ec06a0",
+      "new": "2421ae9740f72e422749e0660c6f563feae728a7",
+      "subject": "feat: add local all-format document corpus preparation"
+    },
+    {
+      "old": "5c7af44448df1e11ef3b0e773b52a7cef7de0e27",
+      "new": "bbc2e7ab0d8c8fa9f6ccf971bdcde1e7aac83373",
+      "subject": "feat: add AudioMNIST WAV pilot preparation and matched trainer"
+    },
+    {
+      "old": "5ddffadef14b4d15aa2b7dd8854933b435637556",
+      "new": "40eb9f218bff00947a581646eef01d99f378813d",
+      "subject": "test: raise WAV pilot coverage without changing bound sources"
+    },
+    {
+      "old": "59e0200dda9e53b58b7392d7507a82f16d5cb072",
+      "new": "f1fe405304876558943b72e6e951c9dfca87fc80",
+      "subject": "fix: take AudioMNIST linear receipt seed from per-seed row"
+    },
+    {
+      "old": "bbe185831ae2caf1a3aaf30f3a47ee11f490021e",
+      "new": "3b63917011f0a23c9fe0d70931a2c9b2c32dd56f",
+      "subject": "docs: record passed AudioMNIST CUDA preflight and research status"
+    },
+    {
+      "old": "26c5b6344de1c17435bd5ad89006669dd5afd7ec",
+      "new": "9f72a258fe1bb102ef078c535568e495d388d2ed",
+      "subject": "feat: add draft v3 AudioMNIST CNN recipe behind a pluggable CNN recipe"
+    },
+    {
+      "old": "fbc7258413797a3611ab2dcf3f33bc2ca5b8574e",
+      "new": "8d1d9f738c72eef74e98e1c41f361e5bb6db4ca1",
+      "subject": "docs: record failed AudioMNIST generated CNN positive controls"
+    },
+    {
+      "old": "9bdd170f32a6f3ec15d925076e7aa261e7daa7f4",
+      "new": "4a2af79c41fe24f3ee2fae9c0681dc7056da91a6",
+      "subject": "feat: add bounded full-exposure WAV control verification"
+    },
+    {
+      "old": "a357c0455a6d4fa3d5d79de1e24d46bc8933005d",
+      "new": "f31806362e1cfe8e9d59bfc125eca587c9071c41",
+      "subject": "feat: add pair-feature controls and native AudioMNIST pilot"
+    },
+    {
+      "old": "2be950e8af0984bc012bc89d3ca072cea01c24f3",
+      "new": "9627e3740cf76802fe7fe3721f4f5a7ef0adade6",
+      "subject": "docs: publish research status and rebuild README"
+    },
+    {
+      "old": "a0d70c7fcd709e0855ee7cd4f05dc8506d76389b",
+      "new": "648ee582c3b41bbbfb38eb9bf071bba57d939af4",
+      "subject": "feat: prepare bounded PNG/BMP Colab and Commons admission"
+    },
+    {
+      "old": "ee47ca4b295c410187ce487ea108b22f0bcfaf46",
+      "new": "72b63cc1e793f47c7087ed9d160e2cc901418e60",
+      "subject": "feat: verify generated gray/RGB SRNet controls on local GPU"
+    },
+    {
+      "old": "2f41bfe2e95febcaab80f80ab4875c72073c3a32",
+      "new": "c3b1731673f3f202a8ee6a05d14a476a22d1ec21",
+      "subject": "docs: record PNG/BMP preparation and generated control status"
+    }
+  ]
+}

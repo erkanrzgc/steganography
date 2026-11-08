@@ -10,6 +10,7 @@ from core.analyzer import Analyzer
 from core.context import AnalysisContext
 from core.payload import MAGIC
 from core.result import AnalysisResult, Signal
+from modules import lsb_replacement
 
 
 class ImageBitplaneAnalyzer(Analyzer):
@@ -111,6 +112,21 @@ class ImageBitplaneAnalyzer(Analyzer):
                 f"smooth/textured LSB flip rates={smooth_flip_rate:.4f}/{textured_flip_rate:.4f}",
                 category="image_weighted_stego",
                 evidence="heuristic" if weighted_score >= 45 else "informational",
+            )
+        )
+        # Full WS payload estimator; it shares the approximation's category so
+        # the two are never fused as independent evidence.
+        estimate = lsb_replacement.weighted_stego(rgb)
+        ws_score = lsb_replacement.score(estimate)
+        reliability = "reliable" if estimate.reliable else "unreliable (unpredictable cover)"
+        signals.append(
+            Signal(
+                "weighted_stego_payload",
+                ws_score,
+                f"WS payload estimate={estimate.payload:.4f}; "
+                f"prediction RMS={estimate.prediction_rms:.2f}; {reliability}",
+                category="image_weighted_stego",
+                evidence="heuristic" if ws_score >= 45 else "informational",
             )
         )
         # Keep the existing signal name for report consumers, without computing

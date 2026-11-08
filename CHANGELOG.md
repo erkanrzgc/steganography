@@ -1,5 +1,14 @@
 # Changelog
 
+- Add a full Weighted Stego LSB-replacement estimator (`modules/lsb_replacement.py`)
+  to the PNG/BMP bitplane analyzer as a heuristic signal; unpredictable covers
+  are reported but never scored. Run one approved parity-input SRNet diagnosis
+  (local CPU, one seed /320 updates): train AUC .51 -> .98 confirms the missing
+  parity representation; development AUC .62 (gate fails) exposes overfitting.
+  Fresh per-epoch payloads remove memorization and learning rate 1e-3 lifts
+  development AUC to .74/.77 on two seeds; seed 2 misses train AUC .85, so the
+  two-seed gate is not yet passed. New code lives in `research/`/`modules/`.
+
 - Replay eight existing native RGB checkpoints with train-only CPU inference;
   verify 32,768 AUC comparisons and retain near-chance ranking at every saved
   endpoint. Freeze a metadata-only nested 8/64-original, 320/1,280-update

@@ -92,10 +92,10 @@ exclude = ["tests*", "venv*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra --strict-markers --cov=config --cov=ui --cov=core --cov=registry --cov=modules --cov=report --cov=api --cov=steganography --cov=cli --cov-report=term-missing"
+addopts = "-ra --strict-markers --cov=config --cov=ui --cov=core --cov=registry --cov=modules --cov=research --cov=report --cov=api --cov=steganography --cov=cli --cov-report=term-missing"
 
 [tool.coverage.run]
-source = ["api", "core", "modules", "ui", "report", "steganography", "registry", "config", "cli"]
+source = ["api", "core", "modules", "research", "ui", "report", "steganography", "registry", "config", "cli"]
 omit = ["tests/*", "modules/image_jpeg_dct_worker.py"]
 
 [tool.coverage.report]

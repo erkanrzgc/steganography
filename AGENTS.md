@@ -1205,3 +1205,25 @@ Never publish Stegseek wordlist cracking stdout (it can expose recovered keys).
 * Sorun yoksa final cevabını mümkünse 5 satırdan kısa tut.
 * Bir hata varsa yalnızca hatanın nedenini ve gerekli çözümü açıkla.
 * Kod yazarken veya düzenlerken açıklama yerine uygulamaya öncelik ver.
+
+On 2026-11-08, at the user's request, `main` history was rewritten to drop
+co-author trailers from ten commit messages; trees, authors and dates are
+unchanged. Sixteen hashes changed (1c22583 onward, e.g. 2be950e→9627e37,
+2f41bfe→c3b1731). Historical receipts, docs and `BASE_COMMIT` constants keep
+their original hashes as executed records; resolve them with
+`benchmarks/commit-hash-map-20261108.json`. Never add co-author trailers.
+
+The 2026-11-08 parity-input diagnosis is complete; see
+`docs/PNG_BMP_RGB_PARITY_PROBE_RESULTS_20261108.md`. A training-free WS
+estimator separates all 64 train pairs (AUC 1.0) and dev pairs (.9525). The
+one approved seed-2026102301 run (Colab unavailable, executed on local CPU, no
+GPU) adds only three LSB-parity channels: train AUC .51 -> .98, loss .63 -> .14,
+but development AUC .62 with chance pair ordering, so the gate fails on
+overfitting. Follow-up runs (fresh payload per epoch, lr 1e-3, both original seeds)
+reach development AUC .74/.77; seed 2 misses train AUC .85, so the two-seed
+gate is not passed. All four CPU attempts are consumed; see the results doc. `modules/lsb_replacement.py`
+now feeds a heuristic `weighted_stego_payload` signal in `image_bitplane`.
+The consumed Colab budget tests reject any added or changed `core/` or
+`steganography/` source (frozen closure). Put post-freeze experiments in the
+new `research/` package and analysis helpers in `modules/`; type-check with
+`mypy research` as well. Retiring that live-tree freeze needs user approval.
