@@ -1,0 +1,62 @@
+{
+  "code_cells_exactly_matched": 2,
+  "gpu_requests": 0,
+  "initial_gpu_inventory_relaunched": false,
+  "native_media_model_uploads": 0,
+  "nvidia_queries": 0,
+  "observation_ceiling_seconds": 300,
+  "observed_request_to_close_seconds": 197.48704048099899,
+  "receipt": {
+    "gpu": {
+      "driver": null,
+      "name": null,
+      "reason": "cpu_default",
+      "status": "not_requested",
+      "vram_mib": null
+    },
+    "models_created": 0,
+    "optimizer_updates": 0,
+    "package_metadata_matches": true,
+    "packages": {
+      "Pillow": "11.3.0",
+      "numpy": "2.0.2",
+      "onnx": "unavailable",
+      "onnxruntime": "unavailable",
+      "torch": "2.11.0+cpu"
+    },
+    "process_limits": {
+      "address_space": [
+        -1,
+        -1
+      ],
+      "cpu_seconds": [
+        -1,
+        -1
+      ],
+      "file_bytes": [
+        -1,
+        -1
+      ]
+    },
+    "profile_attempt_started": false,
+    "python": "3.12.13",
+    "resource_enforcement": "unverified",
+    "resources": {
+      "counters": [],
+      "reason": "parent_identity",
+      "status": "unavailable",
+      "version": "v2"
+    },
+    "schema": "spatial-colab-readiness-v3",
+    "seconds": 0.057466599999997925,
+    "status": "partial_resources_unavailable",
+    "tensor_operations": 0,
+    "torch_imported_by_service": false
+  },
+  "receipt_hash_verified": true,
+  "receipt_sha256": "466143690b497aa756dd63bf3e76ec24c8cbeab57eeb3efbdb8e3d4372caa2ab",
+  "runtime_closed": true,
+  "schema": "spatial-colab-readiness-v3-cpu-validation-v1",
+  "source_package_sha256": "3836567a8108e41df80ce5f30bcc392ceee568337e3e462d15aa14741875e47c",
+  "status": "software_control_completed_resources_unavailable"
+}

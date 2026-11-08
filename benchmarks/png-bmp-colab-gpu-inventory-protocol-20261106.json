@@ -1,0 +1,18 @@
+{
+  "schema": "colab-gpu-inventory-source-v1",
+  "purpose": "single_read_only_gpu_environment_inventory",
+  "cell_sha256": "c3a75ac79f17fcbcb584e9f79a6309edac9890b666198c8acd68575f14ae5725",
+  "notebook_sha256": "161804bee371234e3cc2103e1921505bcef65fceacaf657b1edc7c8a0b11ccdf",
+  "runtime_version": "2026.07",
+  "max_cell_seconds": 60,
+  "nvidia_command_seconds": 10,
+  "nvidia_output_bytes": 8192,
+  "max_output_bytes": 65536,
+  "gpu_allocation_requests": 1,
+  "max_allocation_observation_seconds": 300,
+  "optimizer_updates": 0,
+  "models": 0,
+  "torch_import": false,
+  "native_uploads": 0,
+  "retry": false
+}

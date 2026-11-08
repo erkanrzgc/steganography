@@ -1,0 +1,59 @@
+{
+  "components": {
+    "actual_unassigned_cache_contents": "ready",
+    "data_adapter_software": "ready",
+    "known_group_capacity_review": "ready_metadata_only",
+    "native_fit_approval": "missing",
+    "native_integrated_model_io_gpu_costs": "unavailable",
+    "native_optimizer_supervisor": "missing",
+    "native_train_split": "missing",
+    "strict_final_memory_peak_acceptance": "unavailable"
+  },
+  "documentation_replay_tests": 15,
+  "first_full_command_exit_code": 1,
+  "frozen_files_unchanged": 244,
+  "full_coverage_percent": 97.15007950421985,
+  "native_fit_executed": false,
+  "network_requests": 0,
+  "new_gpu_attempts": 0,
+  "new_module_coverage_percent": 100.0,
+  "new_tests": 37,
+  "originals": {
+    "L": 13,
+    "RGB": 105
+  },
+  "public_receipts": {
+    "png-bmp-native-adapter-tools-20261028.json": "4b5e166773d0054ca7069400f06a0a7e0090634aabc779e499dd485ba974cb4f",
+    "png-bmp-native-adapter-verification-20261028.json": "1ef734e3589c9fdfc734f957214fdf4103f68278345a9a3730798c50ee1e63a9",
+    "png-bmp-native-cache-closeout-20261028.json": "a84816857423499d4541709c2ea4df574a3e12569bcf2fe8aa35b4cbcd73f9ef",
+    "png-bmp-native-cache-independent-20261028.json": "3bd22b1e4236c9cf3d8b529f8219f77475c1367d18e449afda24fe2e7a2d75d4",
+    "png-bmp-native-cache-preparation-20261028.json": "7fa4632f87477e669277871c79a48d884ed12293f3c37f79ff596a7ff4c8caa3",
+    "png-bmp-native-cache-source-bindings-20261028.json": "92ddef59034f0a03678fcdbcb03ac2f30df5209f9672693bf4b57a85216a7dc4",
+    "png-bmp-native-group-feasibility-20261028.json": "344d61d0906386f716b111736316e055c458c9f55d9f4532ec4c8fb81a164fb7"
+  },
+  "raw_data_or_models_published": false,
+  "raw_native_cache_remains_private": true,
+  "role_assignment": false,
+  "schema": "spatial-native-adapter-delivery-v1",
+  "software_gate": "passed_after_documentation_replay",
+  "status": "verified_cache_final_peak_unavailable",
+  "temporary_cleanup": {
+    "actual_native_cache_files_preserved": 119,
+    "actual_native_cache_hashes_unchanged": true,
+    "allocated_bytes_removed_estimate": 7824191488,
+    "failed_run_logs_coverage_and_first_preflight_sources_preserved": true,
+    "removed_generated_test_roots": [
+      ".benchmark/png-bmp-native-adapter-20261028/pytest-full",
+      ".benchmark/png-bmp-native-adapter-20261028/focused-tmp",
+      ".benchmark/png-bmp-native-adapter-20261028/focused-final-tmp",
+      ".benchmark/png-bmp-native-adapter-20261028/readme-replay-tmp",
+      ".benchmark/png-bmp-native-adapter-20261028/tmp-full",
+      ".benchmark/png-bmp-native-adapter-20261028/generated-worker-preflight",
+      ".benchmark/png-bmp-native-adapter-20261028/generated-worker-preflight-v2",
+      ".pytest_cache",
+      ".mypy_cache",
+      ".ruff_cache"
+    ]
+  },
+  "unique_verified_tests": 4045
+}

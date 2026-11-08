@@ -1,0 +1,91 @@
+{
+  "coverage_sha256": "73bc5a9d942b90dc4c85a7c0c9fbfcf77c14d9a975f926cc326b44b491e70efb",
+  "current_wsl_connection": "unavailable_listener_absent",
+  "final_focused": {
+    "exit_code": 0,
+    "log_sha256": "3a5a7f962899b6ea0192ecf5c1df491aeeba0debb6531134e33021504584f395",
+    "passed": 51
+  },
+  "final_memory_peak_status": "unavailable_after_exit; software gate does not claim a measured resource peak",
+  "first_failures_preserved": true,
+  "full_log_sha256": "5ae2abb18f37f553828ee2e028d98162eeea7e776c63e17aa5e40eaeb152077c",
+  "historical_native_cache_bindings_verified": 244,
+  "kernel_execution_seconds": 6226.853165,
+  "modules": {
+    "core/spatial_native_data.py": {
+      "covered_lines": 202,
+      "excluded_lines": 0,
+      "missing_lines": 0,
+      "num_statements": 202,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "core/spatial_native_pilot.py": {
+      "covered_lines": 250,
+      "excluded_lines": 0,
+      "missing_lines": 8,
+      "num_statements": 258,
+      "percent_covered": 96.89922480620154,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 96.89922480620154,
+      "percent_statements_covered_display": "97"
+    },
+    "core/spatial_native_supervisor.py": {
+      "covered_lines": 137,
+      "excluded_lines": 0,
+      "missing_lines": 2,
+      "num_statements": 139,
+      "percent_covered": 98.56115107913669,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 98.56115107913669,
+      "percent_statements_covered_display": "99"
+    },
+    "core/spatial_native_training.py": {
+      "covered_lines": 238,
+      "excluded_lines": 0,
+      "missing_lines": 1,
+      "num_statements": 239,
+      "percent_covered": 99.581589958159,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 99.581589958159,
+      "percent_statements_covered_display": "99"
+    },
+    "steganography/research_spatial_native.py": {
+      "covered_lines": 52,
+      "excluded_lines": 0,
+      "missing_lines": 1,
+      "num_statements": 53,
+      "percent_covered": 98.11320754716981,
+      "percent_covered_display": "98",
+      "percent_statements_covered": 98.11320754716981,
+      "percent_statements_covered_display": "98"
+    }
+  },
+  "mypy_log_sha256": "bb3cfd828c840f1864eea0c7351876ca6bab51b41cbbf5cda24969c16d123afe",
+  "new_native_fit_updates": 0,
+  "passed": 4092,
+  "physical_profile_attempted": false,
+  "ruff_log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+  "schema": "spatial-rgb-pilot-software-verification-v1",
+  "seconds": 6215.73,
+  "skip_reason": "two explicit CPU-only Kali CUDA absences",
+  "skipped": 2,
+  "source_files_checked": 464,
+  "source_files_unchanged": true,
+  "status": "passed_generated_software_only",
+  "total_coverage_percent": 97.1803616751269,
+  "unit": {
+    "ActiveState": "active",
+    "ExecMainExitTimestampMonotonic": "7120015028",
+    "ExecMainStartTimestampMonotonic": "893161863",
+    "ExecMainStatus": "0",
+    "MainPID": "0",
+    "MemoryPeak": "[not set]",
+    "Restart": "no",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "warnings": 32
+}

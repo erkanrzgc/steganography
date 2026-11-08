@@ -1,0 +1,388 @@
+{
+  "domains": {
+    "L": {
+      "group_sizes_descending": [
+        8,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "known_ancestry_groups": 6,
+      "minimum_known_groups_covering_80": null,
+      "missing_groups_to_16": 10,
+      "missing_originals_to_128": 115,
+      "originals": 13,
+      "target_128_inventory_count_met": false,
+      "ten_group_80_train_capacity_met": false,
+      "ten_group_train_capacity_upper_bound": 13
+    },
+    "RGB": {
+      "group_sizes_descending": [
+        8,
+        8,
+        5,
+        5,
+        3,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "known_ancestry_groups": 69,
+      "minimum_known_groups_covering_80": 44,
+      "missing_groups_to_16": 0,
+      "missing_originals_to_128": 23,
+      "originals": 105,
+      "target_128_inventory_count_met": false,
+      "ten_group_80_train_capacity_met": false,
+      "ten_group_train_capacity_upper_bound": 41
+    }
+  },
+  "independent_pairwise_graph_replay": true,
+  "joint_partition_feasibility_proven": false,
+  "known_components": [
+    [
+      "commons-104167435"
+    ],
+    [
+      "commons-104599670"
+    ],
+    [
+      "commons-116188199",
+      "commons-116188200",
+      "commons-116188204"
+    ],
+    [
+      "commons-118232058"
+    ],
+    [
+      "commons-121661626"
+    ],
+    [
+      "commons-124492411",
+      "commons-140529898"
+    ],
+    [
+      "commons-125830584"
+    ],
+    [
+      "commons-128141099",
+      "commons-128141839",
+      "commons-128141920",
+      "commons-128142849",
+      "commons-128142962",
+      "commons-128143369",
+      "commons-128144071",
+      "commons-128145265"
+    ],
+    [
+      "commons-131600126",
+      "commons-131600127"
+    ],
+    [
+      "commons-132641919"
+    ],
+    [
+      "commons-138784220",
+      "commons-139152961"
+    ],
+    [
+      "commons-141496139"
+    ],
+    [
+      "commons-143055739"
+    ],
+    [
+      "commons-146462727"
+    ],
+    [
+      "commons-147720715"
+    ],
+    [
+      "commons-147988712",
+      "commons-147988731"
+    ],
+    [
+      "commons-150032201"
+    ],
+    [
+      "commons-150602967"
+    ],
+    [
+      "commons-150678740"
+    ],
+    [
+      "commons-152169941"
+    ],
+    [
+      "commons-152892292"
+    ],
+    [
+      "commons-153767504",
+      "commons-154191649",
+      "commons-154229158"
+    ],
+    [
+      "commons-155525137"
+    ],
+    [
+      "commons-156610857"
+    ],
+    [
+      "commons-157893833"
+    ],
+    [
+      "commons-158214706"
+    ],
+    [
+      "commons-164791431"
+    ],
+    [
+      "commons-166020200"
+    ],
+    [
+      "commons-166597021"
+    ],
+    [
+      "commons-168434746"
+    ],
+    [
+      "commons-169310599"
+    ],
+    [
+      "commons-172012011",
+      "commons-172012012",
+      "commons-172012013"
+    ],
+    [
+      "commons-173243205"
+    ],
+    [
+      "commons-174187463"
+    ],
+    [
+      "commons-177291720"
+    ],
+    [
+      "commons-178236864"
+    ],
+    [
+      "commons-179360654"
+    ],
+    [
+      "commons-180329929",
+      "commons-74830706",
+      "commons-74830732",
+      "commons-74832336",
+      "commons-74832337",
+      "commons-74832342",
+      "commons-74832349",
+      "commons-85770196"
+    ],
+    [
+      "commons-181038556"
+    ],
+    [
+      "commons-182502101"
+    ],
+    [
+      "commons-182605103"
+    ],
+    [
+      "commons-18380946"
+    ],
+    [
+      "commons-185103662"
+    ],
+    [
+      "commons-18674452"
+    ],
+    [
+      "commons-187609387"
+    ],
+    [
+      "commons-19097098"
+    ],
+    [
+      "commons-192744160"
+    ],
+    [
+      "commons-196249843",
+      "commons-196249846"
+    ],
+    [
+      "commons-200692598"
+    ],
+    [
+      "commons-22400202",
+      "commons-22542177"
+    ],
+    [
+      "commons-31877393",
+      "commons-31877406"
+    ],
+    [
+      "commons-32688434"
+    ],
+    [
+      "commons-34983854"
+    ],
+    [
+      "commons-36814358"
+    ],
+    [
+      "commons-37320259"
+    ],
+    [
+      "commons-38960349"
+    ],
+    [
+      "commons-4104668"
+    ],
+    [
+      "commons-46061077"
+    ],
+    [
+      "commons-48691654"
+    ],
+    [
+      "commons-64866000",
+      "commons-64866001",
+      "commons-64866012",
+      "commons-64866198",
+      "commons-64866235"
+    ],
+    [
+      "commons-68195814"
+    ],
+    [
+      "commons-6948628"
+    ],
+    [
+      "commons-69630220"
+    ],
+    [
+      "commons-69929873",
+      "commons-69953046",
+      "commons-69989873",
+      "commons-69994838",
+      "commons-70180740"
+    ],
+    [
+      "commons-70553052",
+      "commons-70553053",
+      "commons-70553054",
+      "commons-70553056",
+      "commons-70553391",
+      "commons-70553392",
+      "commons-70553394",
+      "commons-70553395"
+    ],
+    [
+      "commons-78933559"
+    ],
+    [
+      "commons-80870504"
+    ],
+    [
+      "commons-81018620"
+    ],
+    [
+      "commons-95043709",
+      "commons-95043710"
+    ],
+    [
+      "commons-9761445"
+    ],
+    [
+      "commons-98030350"
+    ],
+    [
+      "cusco-corao"
+    ],
+    [
+      "fountains-abbey"
+    ],
+    [
+      "jatindrapur-path"
+    ],
+    [
+      "vigna-sanzioni"
+    ]
+  ],
+  "native_images_opened": 0,
+  "network_requests": 0,
+  "new_gpu_attempts": 0,
+  "optimizer_updates": 0,
+  "originals": 118,
+  "proposal_applied": false,
+  "roles": "unassigned",
+  "schema": "spatial-native-group-feasibility-v1",
+  "service_sha256": "7d24498550e5d91462d774f9f7150b138c2769f9dbead14ba07bf22855969419",
+  "shared_mode_components": 0,
+  "snapshot_sha256": "9f22a91dcc57046931d87c51586f9f13d70c80d988d6b9bad4153905c35acc19",
+  "status": "inventory_bounds_only",
+  "unknown_common_ancestry_ruled_out": false
+}

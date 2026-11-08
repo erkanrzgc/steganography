@@ -1,0 +1,41 @@
+{
+  "destination_relative_to_home": "steganography-gpu/.benchmark/png-bmp-native-cache-handoff-20261028",
+  "external_acquisition_requests": 0,
+  "historical_budgets_reset": false,
+  "host_inventory": {
+    "cuda_available": true,
+    "cuda_runtime": "13.0",
+    "default_nvidia_smi_command": "unavailable_in_nonlogin_PATH; existing WSL binary used",
+    "driver": "617.42",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "python": "3.12.3",
+    "torch": "2.14.0+cu130",
+    "vram_mib": 8151,
+    "vram_used_mib_at_observation": 1869
+  },
+  "old_source_bindings_unchanged": 244,
+  "original_cache_regenerated": false,
+  "privacy": "private same-computer WSL transfer; raw arrays not published",
+  "schema": "spatial-native-wsl-private-handoff-v1",
+  "status": "verified_private_copy",
+  "verification": {
+    "files": 119,
+    "index_sha256": "384b7cbd24d2b3227c3f0f5a2b027f8628daf6885a4205a45139b49eee7d99af",
+    "logical_bytes": 21591572,
+    "manifest_sha256": "8da0ac4ac98b7b0e9e3613b02b58c3cb076adb9456c74ef29c90f6a70ee1dfd2",
+    "native_images_decoded": 0,
+    "new_gpu_attempts": 0,
+    "optimizer_updates": 0,
+    "originals": {
+      "L": 13,
+      "RGB": 105
+    },
+    "roles": "unassigned",
+    "schema": "spatial-native-private-handoff-verification-v1",
+    "source_cache_acceptance": "unavailable_final_memory_peak",
+    "status": "verified_private_copy"
+  },
+  "verification_source": "\"\"\"Read bounded existing bytes; never decode media or construct a model.\"\"\"\nimport hashlib\nimport json\nimport os\nimport stat\nfrom collections import Counter\nfrom pathlib import Path\n\nINDEX_SHA256 = \"384b7cbd24d2b3227c3f0f5a2b027f8628daf6885a4205a45139b49eee7d99af\"\nMANIFEST_SHA256 = \"8da0ac4ac98b7b0e9e3613b02b58c3cb076adb9456c74ef29c90f6a70ee1dfd2\"\n\n\ndef require(condition):\n    if not condition:\n        raise ValueError(\"private cache handoff integrity\")\n\n\ndef bounded(path, limit):\n    require(not any(p.is_symlink() for p in (path, *path.parents)))\n    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)\n    with os.fdopen(fd, \"rb\") as stream:\n        info = os.fstat(stream.fileno())\n        require(stat.S_ISREG(info.st_mode) and 0 < info.st_size <= limit)\n        require(info.st_uid == os.geteuid() and info.st_mode & 0o077 == 0)\n        raw = stream.read(limit + 1)\n    require(0 < len(raw) <= limit)\n    return raw\n\n\nindex_raw = bounded(Path(\"wsl-handoff-files.json\"), 128 * 1024)\nrequire(hashlib.sha256(index_raw).hexdigest() == INDEX_SHA256)\nindex = json.loads(index_raw)\ncache = Path(\"cache\")\nrequire(cache.stat().st_mode & 0o077 == 0)\nrequire(len(index[\"files\"]) == 119)\nrequire({p.name for p in cache.iterdir()} == set(index[\"files\"]))\ntotal = 0\nfor name, expected in index[\"files\"].items():\n    require(Path(name).name == name and name not in (\".\", \"..\"))\n    raw = bounded(cache / name, 256 * 256 * 3)\n    require(len(raw) == expected[\"bytes\"])\n    require(hashlib.sha256(raw).hexdigest() == expected[\"sha256\"])\n    total += len(raw)\nmanifest_raw = bounded(cache / \"cache.json\", 256 * 256 * 3)\nrequire(hashlib.sha256(manifest_raw).hexdigest() == MANIFEST_SHA256)\nmanifest = json.loads(manifest_raw)\nrequire(manifest[\"roles\"] == \"unassigned\" and manifest[\"optimizer_updates\"] == 0)\nfor record in manifest[\"sources\"]:\n    row = record[\"source\"]\n    require(row[\"role\"] == \"unassigned\")\n    data = index[\"files\"][row[\"id\"] + \".u8\"]\n    require(data[\"sha256\"] == row[\"crop_sha256\"])\n    require(data[\"bytes\"] == 256 * 256 * (1 if row[\"mode\"] == \"L\" else 3))\nrequire(total == index[\"logical_bytes\"] == 21591572)\nrequire(Counter(row[\"source\"][\"mode\"] for row in manifest[\"sources\"]) == {\"L\": 13, \"RGB\": 105})\nresult = {\"schema\": \"spatial-native-private-handoff-verification-v1\",\n          \"status\": \"verified_private_copy\", \"files\": 119, \"logical_bytes\": total,\n          \"manifest_sha256\": MANIFEST_SHA256, \"index_sha256\": INDEX_SHA256,\n          \"originals\": {\"L\": 13, \"RGB\": 105}, \"roles\": \"unassigned\",\n          \"native_images_decoded\": 0, \"new_gpu_attempts\": 0, \"optimizer_updates\": 0,\n          \"source_cache_acceptance\": \"unavailable_final_memory_peak\"}\nwith Path(\"verified.json\").open(\"x\") as stream:\n    json.dump(result, stream, sort_keys=True, indent=2)\n    stream.write(\"\\n\")\nprint(json.dumps(result))\n",
+  "verification_source_sha256": "5c55fdeb769cfec7e3ec691bf095cd0ab6c2558ad9d8eade11eb569be201bf5c"
+}

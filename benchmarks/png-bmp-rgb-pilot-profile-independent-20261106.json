@@ -1,0 +1,50 @@
+{
+  "auditor_source_sha256": "a7968db1902a2ba3d8cbf494a96ae02dfc0807faf72569be0e302831d2ca3adb",
+  "checkpoints": [
+    {
+      "bytes": 57405636,
+      "name": "generated-0.numeric",
+      "numeric_arrays_verified": 503,
+      "order_replayed": true,
+      "sha256": "60197893c080524eb2e463d7ba5b2d1b13c7c7f38f82494543ce02385448a7b8",
+      "updates": 3
+    },
+    {
+      "bytes": 57405636,
+      "name": "generated-1.numeric",
+      "numeric_arrays_verified": 503,
+      "order_replayed": true,
+      "sha256": "f24a40519eb2c99eae6c5850c3ca4f99e1bb0d8ae1681c27804f553742599212",
+      "updates": 3
+    }
+  ],
+  "closed_sha256": "10451b458524bddc28f94c39ef8ac7e87f82ea479db1669d3f034262078dbc41",
+  "conservative_additional_debit_seconds": 4,
+  "cuda_calls": 0,
+  "fit_projection_seconds": 1717.2984932069169,
+  "generated_updates": 6,
+  "native_updates": 0,
+  "parent_execution_seconds": 1.2813568389992724,
+  "per_seed_costs": [
+    {
+      "conservative_fit_seconds": 414.66152713646375,
+      "seed": 2026102301
+    },
+    {
+      "conservative_fit_seconds": 1302.6369660704531,
+      "seed": 2026102302
+    }
+  ],
+  "private_package_files": 354,
+  "private_package_logical_bytes": 119847933,
+  "protocol_sha256": "024f575186008867d66ab9e4760c858faa53f516d6fd85f4771e8ae20494a618",
+  "reserved_pixels_opened": 0,
+  "schema": "spatial-rgb-profile-independent-replay-v1",
+  "status": "passed_read_only",
+  "unit": {
+    "ActiveState": "inactive",
+    "MainPID": "0",
+    "Restart": "no"
+  },
+  "worker_seconds": 0.6301627859993459
+}

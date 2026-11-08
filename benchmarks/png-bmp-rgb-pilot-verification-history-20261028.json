@@ -1,0 +1,48 @@
+{
+  "failed_sources_preserved": true,
+  "physical_profile_attempted": false,
+  "raw_logs_private": true,
+  "records": [
+    {
+      "name": "engine-focused-first.log",
+      "sha256": "9655ba64eb400825c2ff91483614c88298f179089db5333b4b8d30ac221920b0",
+      "status": "preserved_fixture_identity_failure"
+    },
+    {
+      "name": "engine-focused-v2.log",
+      "sha256": "9927e0daa46400ad302028d8b3c119a8b15ef414835a479dffb57c933b25b315",
+      "status": "passed_generated_cpu"
+    },
+    {
+      "name": "pilot-focused-first.log",
+      "sha256": "83b30fa9906aac6eeb52fc1d3deb591df4a1a152b2968633651ec2b1eb92a959",
+      "status": "preserved_observer_fixture_failure"
+    },
+    {
+      "name": "pilot-focused-v2.log",
+      "sha256": "8f8eeafa7b18ceb9de1194d19cc10bf720ecc4d7e6f5b7fcb935bcd5c026e8e1",
+      "status": "tests_passed_but_module_coverage_failed"
+    },
+    {
+      "name": "focused-v3.log",
+      "sha256": "28e4b59d1def0ef3e0f20167c2be43e5b6cd8b9fb8070c3bffd6c0fdf3fec21f",
+      "status": "passed_generated_cpu_before_optional_skip_repair"
+    },
+    {
+      "name": "full.log",
+      "sha256": "a4c4e54e54d7a0f2ed903b4e1bdb8a8d5989fee5c655f35f915c0f383711e2c9",
+      "status": "unavailable_server_restart"
+    },
+    {
+      "name": "full-v2.log",
+      "sha256": "5bb36a55af929768d503eca61932f19a7062eec8f50aeca2bcb950ef453963c0",
+      "status": "failed_ci_contract_then_interrupted"
+    },
+    {
+      "name": "ci-repair.log",
+      "sha256": "279b63fd5cf60419c52e1f012243432db650f9d640231a71b4c7ab43dae960bd",
+      "status": "passed_optional_dependency_contract"
+    }
+  ],
+  "schema": "spatial-rgb-pilot-verification-history-v1"
+}

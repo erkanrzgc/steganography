@@ -1,0 +1,34 @@
+{
+  "actual_data_opened_or_uploaded": false,
+  "changed": [
+    "core/colab_execution.py",
+    "tests/test_colab_execution.py",
+    "tests/test_spatial_colab_profile.py"
+  ],
+  "first_full_command": {
+    "failed": 1,
+    "not_relabelled": true,
+    "passed": 4267,
+    "pytest_exit": 1,
+    "skipped": 2
+  },
+  "first_full_log_sha256": "a8fe60ba204388d9a3ed9c876fa0043dc7def450c8a1f4b73c0e295c22ccd4cd",
+  "new_binding": {
+    "data_or_gpu_execution": false,
+    "permission_created": false,
+    "prospective_contract_sha256": "cce2cdce2623db31d872867f9e9d79450620ec6816e57740dec579111650302b",
+    "source_package_sha256": "4d3fccc4d9893e1030452a1c855d766e76bcc98201fc846daff786c19d052fce"
+  },
+  "old_contract_sha256": "7d5550729a9ba777ca8658fc0374e206967fdb0ca4e15856526198ac37d1aa0f",
+  "old_gpu_attempt_consumed": false,
+  "physical_gpu_attempt_consumed": false,
+  "repaired_focused_unique_tests_passed": 134,
+  "repaired_full_gate": {
+    "passed": 4270,
+    "pytest_exit": 0,
+    "skipped": 2
+  },
+  "schema": "colab-native-profile-verification-source-amendment-v1",
+  "scope": "exiting-process ESRCH handling and strict boolean permission validation; no recipe/data/resource change",
+  "status": "repaired_full_software_gate_passed"
+}

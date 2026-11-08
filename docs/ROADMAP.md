@@ -1,5 +1,192 @@
 # Roadmap and status
 
+2026-11-08: replay all eight native RGB states on fitted train data with zero
+backward/optimizer/GPU operations. Train AUC stays near chance at every saved
+endpoint; one seed's paired sensitivity improves while the other is unstable.
+Independently verify 32,768 AUC comparisons, eight hashes and 522 unchanged
+software bindings. Prepare a metadata-only nested 8/64-original study with
+320/1,280-update endpoints, four fresh trajectories and exact ancestry/order/
+exposure checks. The proposed runner, new measured cost and execution contract
+remain missing; the historical 113.85-minute proxy is not an allowance. See
+[trajectory results](PNG_BMP_NATIVE_CHECKPOINT_TRAJECTORY_20261108.md) and
+[non-executable comparison](PNG_BMP_NATIVE_DATA_UPDATE_STUDY_20261108.md).
+
+2026-11-07 native RGB read-only diagnosis: verify train bytes/labels/payloads,
+all eight states and changes in all 105 parameter tensors. Saved development
+pairs order correctly 15/20 and 20/20, but between-image offsets dominate and
+global AUC remains failed. CPU inference reproduces saved GPU scores within
+3.58e-7; current-batch BatchNorm alone does not recover useful ranking. The
+generated even-cover control permits an artificial cue. Data size and the
+320-update recipe remain confounded; more data alone is not established as
+the fix. No optimizer/GPU/network use, reserved pixels or source changes.
+See [diagnosis and next experimental design](PNG_BMP_NATIVE_RGB_DIAGNOSIS_20261107.md).
+
+2026-11-07 corrected native RGB Colab fit: complete both seeds /twenty epochs /
+640 updates, 5,120 training rows and eight numeric states. The fixed learning
+rule fails: train AUC .5056 /.5146, development .5175 /.5275. Independently
+replay 640 commits, eight states and 48 AUC records; all 1,329 archive members
+verify. Command debit is 569.256510 seconds; retain previous costs for a total
+2,330.554050 /5,400 seconds. Runtime deleted, no active sessions; all outputs
+preserved privately and all 522 software hashes unchanged. The attempted recipe
+is consumed, with no tuning, profile retry, qualification or deployment. See
+[full native RGB results](PNG_BMP_COLAB_NATIVE_RGB_RESULTS_20261107.md).
+
+2026-11-07 approved native Colab deployment: unavailable before worker launch.
+The 150-second setup reservation is too short for T4 provisioning and ordinary
+browser source/data transfer; the second guard rejects after 84 approved crop
+hash checks. Native updates/checkpoints remain zero. Runtime deletion is
+confirmed at 252.836224 seconds; no active session remains. Charge all reserved
+300 seconds and preserve the consumed attempt, original 1,329.297540-second
+cumulative debit and 522 unchanged tested inputs. A corrected intervention must
+include realistic provisioning/transfer/export time and its own approval;
+no automatic retry follows. See
+[deployment closeout](PNG_BMP_COLAB_NATIVE_FIT_DEPLOYMENT_RESULTS_20261107.md).
+
+2026-11-07 next continuation: implement the prospective 2,700-second cumulative
+resource schema and exact fit proposal, retaining all previous charges.
+Add pinned consumed-profile metadata/source compatibility and a disabled
+fit-only notebook; preserve the unchanged recipe, controller and single-fit
+marker. Future setup/export/closing reserves 300 seconds and four MiB.
+The new command allows 1,370.702460 seconds /499,821,368 bytes, eligible with
+a narrow projection margin. All 260 focused checks pass; corrected notebook
+metadata checks pass 34 tests, Ruff /252-file mypy pass. The corrected full
+522-input gate passes 4,396 tests /two CUDA skips, 97.225442% coverage.
+Preserve the interrupted first launch, earlier failures and unavailable final
+QA MemoryPeak/independent kernel interval. The QA unit is inactive /PID zero.
+Separate explicit v2 fitting approval remains required.
+See [the cumulative amendment](PNG_BMP_COLAB_CUMULATIVE_AMENDMENT_20261107.md).
+
+2026-11-07 physical Colab continuation: independently verify the T4 profile,
+two generated numeric states and all closing/notebook bindings. Command debit
+is 79.297540 /240 seconds; zero native /six generated updates. The GPU runtime
+is deleted. Preserve the missed 600-second session target (actual 957.495231
+seconds). The complete fit estimate is 1,311.131131 seconds, but only 770.702460
+seconds remain after conservative cumulative charges. Keep the current budget
+ineligible. Next is a source-compatible cumulative resource amendment for the
+non-executable 2,700-second suggestion, then a reviewable fit proposal and later
+explicit approval; no profile retry or native fit follows from this result.
+See [measurement and budget](PNG_BMP_COLAB_PHYSICAL_PROFILE_RESULTS_20261107.md).
+
+2026-11-07: finish the Colab native training software and complete notebook flow.
+Add profile/debit-bound proposals, separate fit permission, epoch loss/development
+AUC, eight planned numeric states and independent ledger/state/AUC replay.
+Two-phase train/development transport keeps reserved pixels closed. All 226
+focused checks pass; Ruff /251-file mypy pass and affected modules exceed 95%.
+Preserve the prospectively interrupted first full launch and its strict-closing /
+live-rename inventory amendment. The final frozen 482-input full gate passes
+4,362 tests /two explicit CUDA skips, 97.220138% coverage. All hashes match;
+Ruff /251-file mypy and diff checks pass.
+No physical attempt or native fit is
+authorized by this preparation. See
+[the complete workflow](PNG_BMP_COLAB_TRAINING_PROTOCOL_20261107.md).
+
+2026-11-06 user-directed correction: remove the inherited eight-GiB host RAM
+ceiling from the prospective native Colab profile. Use provider-managed limits
+and observed ten-percent kernel-memory headroom, retaining command/output and
+Torch allocator bounds. The revised notebook and 149 focused tests pass;
+Ruff /249-file mypy pass. The fresh 478-input full gate passes 4,285 tests /
+two explicit CUDA skips, 97.205087% total coverage. Earlier
+fixed-memory results and their unanswered approval question are historical.
+See [the verification receipt](../benchmarks/png-bmp-colab-provider-memory-verification-20261106.json).
+
+2026-11-06 later continuation: implement the Colab RGB cost-profile adapter,
+zero-native-step view, independently replayed generated states, train-only
+transport and bounded evidence archive. All 134 focused software checks pass;
+Ruff /248-file mypy pass and new modules exceed 95% coverage. The source-bound
+full gate passes 4,270 tests /two CUDA skips, 97.21% coverage. The prospective T4/240-second command has
+no actual permission or physical result; hard cgroup RAM/zero-swap remains
+unavailable. See [the proposal](PNG_BMP_COLAB_NATIVE_PROFILE_PROTOCOL_20261106.md).
+
+Preserve the first full run's 4,267 passes /one disappearing-process observer
+failure and the source amendment; the repaired command is a separate full pass.
+The exact source-bound proposal is ready for explicit resource/data-transfer
+permission; no physical profile or native fit was started.
+
+2026-11-06 earlier v1 Colab process software: implement a source/environment-bound CPU
+worker, exclusive no-retry ledger, kernel process limits, deadline/parent-death
+termination and verified closing evidence. The generated-only notebook delivery
+roundtrip and 61 focused tests pass; new controller/CLI coverage exceeds 95%.
+The complete gate passes 4,197 tests /two CUDA skips, 97.19% total coverage;
+Ruff /245-file mypy pass, with a separately checked builder presentation repair. Native CUDA
+policy/adapter and Colab-specific optimizer/I/O cost remain missing. See
+[process preparation](PNG_BMP_COLAB_PROCESS_PREPARATION_20261106.md).
+
+2026-11-06 Colab readiness fix: independent safe resource/GPU observations,
+44 generated tests /100% new-module coverage and a CPU-default source-bound
+[portable notebook](PNG_BMP_COLAB_READINESS_FIX_20261106.md); fresh full QA passes
+4,136 tests /two CUDA skips, 97.19% coverage; Ruff /243-file mypy pass.
+
+2026-11-06 free Colab: one T4 allocation succeeds; strict resource acceptance
+remains unavailable. [Inventory results](PNG_BMP_COLAB_GPU_INVENTORY_RESULTS_20261106.md)
+and [portability dependencies](PNG_BMP_COLAB_RGB_PORTABILITY_20261106.md).
+
+2026-11-06 backend direction: the user selects Colab after EVREN early-access
+limits; see [Colab return preparation](PNG_BMP_COLAB_RETURN_20261106.md).
+Local GPU work stays deferred; consumed measurements remain preserved.
+
+2026-11-06 clarification: EVREN AI Workspace is limited to the 29-person
+early-access programme. Defer the unsent access request; custom SRNet compute
+there remains unavailable. Preserve the model recipe and no-local-GPU user
+preference while the next supported backend is undecided.
+
+2026-11-06, later user direction: select EVREN for future GPU compute because
+local GPU load prevents normal laptop use. Defer the local fit proposal and
+keep both local/WSL units stopped. The existing browser account still denies
+custom Workspace access. Prepare a [backend handoff](PNG_BMP_EVREN_PREPARATION_20261106.md),
+an unsent permission-request draft and a CPU-only environment notebook; local
+syntax/execution checks pass without importing Torch. A new EVREN contract
+and permission remain necessary; no upload, reservation or compute is started.
+
+2026-11-06: complete the separate [RGB cost profile](PNG_BMP_RGB_PILOT_CAPACITY_RESULTS_20261106.md)
+on the restored WSL RTX 5060. Both seeds pass finite-gradient, unchanged-native-
+parameter and generated-state restore checks: zero native /six generated updates,
+two independently parsed 503-array states. Charge 52.546351 seconds plus four
+seconds for independent review; cgroup peak 2.207798 GiB, allocator allocated /
+reserved 3.585053 /3.720703 GiB. Preserve the pre-launch missing-bus check and
+local staging-receipt collision; no attempt was retried. The new prospective
+640-update proposal projects 1,717.298493 seconds with only 26.155156 seconds
+of margin. Its exact reduced controller limits require later explicit approval.
+Keep the consumed profile stopped, old budgets unchanged and reserved pixels closed.
+
+2026-10-31: review [EVREN research-compute suitability](EVREN_PLATFORM_REVIEW_20261031.md)
+from public operator information: H200 /141-GB hardware, conditional notebook
+runtimes, advertised registration credits and a public single-GPU training
+tariff. Account access and backend compatibility remain unverified; preserve
+the WSL-bound pilot and do not infer remote execution from this review.
+
+2026-10-31: implement the separate [native RGB pilot](PNG_BMP_RGB_PILOT_PROTOCOL_20261028.md)
+preparation: exact known-ancestry 64/20/21 proposal across 38/12/19 groups,
+scoped FP32 optimizer/state adapter, train-only cost measurement and live
+kernel resource closeout. The thirteen L sources remain unassigned. Full QA passes 4,092 tests /two CUDA skips at 97.18% coverage; Ruff and
+242-file mypy pass. The absent WSL listener leaves current environment freeze
+and physical cost unavailable. Freeze source/environment before its single
+fresh physical profile; present its measured cumulative budget for later explicit
+native-fitting approval. Preserve all previous attempts and actual source roles.
+
+2026-10-28: restore the existing pinned-key WSL tunnel and verify the unchanged
+RTX 5060 /CUDA environment read-only. The [private handoff](PNG_BMP_WSL_HANDOFF_20261028.md)
+copies and independently checks all 119 existing native-cache files without
+regeneration, decoding or model construction. Keep the original unavailable
+final-memory acceptance, roles and every historical source/budget unchanged.
+
+2026-10-28: prepare the separate
+[native spatial data adapter](PNG_BMP_NATIVE_ADAPTER_PREPARATION_20261028.md)
+and independently replay known ancestry using snapshot metadata only. Native
+L/RGB remain 13/105 originals across 6/69 known groups; eighty RGB originals
+require at least 44 current groups, while the historical ten-group capacity is
+41. All actual roles remain unassigned. Generated full-alphabet PNG/BMP fixtures
+verify bounded uint8 caches, paired FP32 batches, scattered payloads, corrupt
+inputs, symlinks and output bounds: 37 focused tests /100% module coverage.
+The separate [local native cache](PNG_BMP_NATIVE_CACHE_RESULTS_20261028.md)
+then verifies 118 admitted crops /236 scalar controls /31 FP32 batches:
+21,591,572 bytes, zero optimizer/GPU/network use. Preserve the closing observer
+failure: final peak is unavailable; the independent journal window is 9.769115
+seconds /180. Never regenerate the consumed cache attempt. Full QA records
+4,044 passes /one README-length failure /two CUDA skips at 97.15% coverage;
+the README-only repair passes all fifteen related tests with unchanged code.
+Ruff and 238-file mypy pass. Integrated native fitting and its cost contract
+remain pending; no real fit or role assignment follows.
+
 2026-10-28: complete the separately frozen
 [local generated gray/RGB control](PNG_BMP_GENERATED_CONTROL_RESULTS_20261028.md)
 on the existing WSL RTX 5060. All four full cells pass their generated-only

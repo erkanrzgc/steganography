@@ -1,5 +1,124 @@
 # Architecture
 
+The [native checkpoint trajectory](PNG_BMP_NATIVE_CHECKPOINT_TRAJECTORY_20261108.md)
+reuses numeric/data/model services for CPU-only inference at all saved train
+endpoints. The independent score verifier imports no Torch or native pixels.
+The [next data/update study](PNG_BMP_NATIVE_DATA_UPDATE_STUDY_20261108.md)
+is a metadata-only proposal with exact nested whole-component subsets and order
+hashes. It adds no executable worker or application interface and does not
+weaken the old native plan's epoch bound. All 522 historical software inputs
+and numeric states remain unchanged.
+
+The follow-up [native RGB diagnosis](PNG_BMP_NATIVE_RGB_DIAGNOSIS_20261107.md)
+uses existing service loaders for read-only numeric/pixel inspection and CPU
+forward/backward probes, without creating an optimizer. Verified data and
+changed parameters exclude several pipeline failures; weak paired response is
+swamped by image-specific score offsets. The synthetic even-valued control is
+not representative of that native separation problem. All 522 software hashes
+and original numeric states stay unchanged; no new analysis logic enters an
+application interface or modifies the failed learning result.
+
+The corrected external deployment completes the unchanged native fitting
+program: both seeds /640 updates, eight numeric states and forty epoch records.
+Execution/integrity checks pass; the learning rule fails with train/development
+ranking near chance. Independent portable replay verifies 640 commits and 48
+AUC records without Torch/pixel access. Original source/optimizer/controller
+code and all 522 tested inputs remain unchanged. The GPU runtime is deleted;
+numeric models stay private, with no deployment or automatic next run. See
+[native results](PNG_BMP_COLAB_NATIVE_RGB_RESULTS_20261107.md).
+
+The approved first native deployment exercises source/permission transport and
+the train/development cache installers, then its second prelaunch age guard
+rejects before the native worker is entered. The unchanged 150-second setup
+reservation was underestimated; actual T4 provisioning and browser transfer
+cannot be excluded from the debit. The runtime is deleted and the attempt is
+consumed, with no source/model/optimizer change. See
+[deployment result](PNG_BMP_COLAB_NATIVE_FIT_DEPLOYMENT_RESULTS_20261107.md).
+
+`core.spatial_colab_budget` supplies a distinct 2,700-second cumulative fit
+schema, preserving all old session charges and reserving future setup/export.
+Pinned consumed-profile metadata avoids transporting generated models or
+relaunching the old profiler. Byte-level immutable-source comparison and
+protected-fit AST comparison retain the measured model/data/optimizer/audit
+implementation. Only resource/permission adapters and the thin CLI change;
+the controller, single-fit marker and old schemas remain unchanged. A v2
+permission explicitly acknowledges the new cumulative cap. Its disabled
+fit-only notebook reconstructs the proposal from CPU metadata and has no
+profile execution route. See
+[the resource amendment](PNG_BMP_COLAB_CUMULATIVE_AMENDMENT_20261107.md).
+
+The first physical execution of the complete Colab profile verifies its
+source/ledger/numeric path with zero native and six generated updates. The
+79.297540-second command meets its limit; the separate 600-second operator
+session target is missed and retained. External session debits make the
+unchanged 1,800-second cumulative fit allowance ineligible. Its initial
+2,700-second suggestion was non-executable; the later distinct v2 amendment
+above now freezes a proposal for explicit approval. The original contract
+and controller limits remain unchanged.
+See [physical results](PNG_BMP_COLAB_PHYSICAL_PROFILE_RESULTS_20261107.md).
+
+`core.spatial_colab_fit` completes the later Colab training workflow over the
+unchanged native SRNet/AdamW/numeric engine. It freezes a fit proposal from an
+accepted physical profile and explicit external debits, requires separate fit
+permission, records epoch loss/development AUC and replays ledgers/states/scores
+independently. The controller's `native_fit` kind retains the provider-managed
+RAM policy, larger bounded closing inventory and one-fit-per-profile marker.
+Development transport is permission-gated separately from train-only profiling;
+reserved pixels stay closed. The training report archive excludes numeric
+states, which remain individually verified. The thin training CLI/notebook
+contain no model or metric implementation. See
+[training preparation](PNG_BMP_COLAB_TRAINING_PROTOCOL_20261107.md).
+
+The current native Colab v2 contract delegates hard host RAM limits to the
+runtime. `core.colab_memory` observes kernel capacity/availability and stops at
+ten-percent headroom; it imposes no fixed DATA/RSS ceiling. Kernel capacity
+is not asserted to be a tenant limit. Historical generated-process contracts
+retain their original explicit limits; all prior receipts remain unchanged.
+
+The later `spatial_colab_profile` extension provides a scoped RGB cost-profile
+view over the unchanged native engine: train timing only, zero native optimizer
+steps, generated-only optimizer/checkpoint access and a distinct prospective
+Colab CUDA policy. `colab_execution` dispatches its new profile schema only with
+an external source/resource-bound permission; its parent replays numeric states,
+packs verified generated evidence and includes closing in the command debit.
+`spatial_colab_handoff` handles reviewed source and train-only cache transport,
+bounded ZIP reservation/verification without extraction or upload. The thin
+native CLI/notebook provide no fitting command or permission creation. See
+[the native-profile proposal](PNG_BMP_COLAB_NATIVE_PROFILE_PROTOCOL_20261106.md).
+
+The historical v1 `core.colab_execution` owns the separate generated-only process contract,
+exclusive workspace ledger, Linux process limits, parent/death/deadline
+termination and post-exit hash/resource audit. The notebook and
+`research_colab_execution` CLI dispatch this service; its only registered
+workload is generated CPU QA. RSS/output sampling and a hard DATA/AS limit
+are explicitly distinct from unavailable hard cgroup RAM/zero-swap enforcement.
+No native worker or fitting approval is provided by this slice. Reproducible
+minimal source delivery is built by `scripts/build-colab-process-notebook.py`.
+See [process preparation](PNG_BMP_COLAB_PROCESS_PREPARATION_20261106.md).
+
+`core.spatial_colab_readiness` owns read-only runtime metadata and immutable
+GPU/resource observations. It refuses parent-segment cgroup identities without
+preventing the independent bounded NVIDIA query. Observability never grants
+resource enforcement: unknown cgroup data remains unavailable and the service
+cannot allocate a runtime, create a model or start training. Its CPU-default
+portable notebook embeds hash-verified service/license sources; no installer,
+Drive mount or original-data transfer is involved. The WSL training supervisor
+and all consumed profiles remain unchanged. See
+[the readiness fix](PNG_BMP_COLAB_READINESS_FIX_20261106.md).
+
+`core.spatial_native_data` owns the separate native data adapter prototype:
+immutable unassigned provenance, globally merged known ancestry components,
+hypothetical proposal validation, bounded raw-uint8 caches and native-shaped
+FP32 cover/control batches. Hash/extent checks precede array construction;
+cache preparation verifies already cropped native covers and scattered payloads
+reuse the shared scalar decoder. This service has no network, optimizer or GPU
+entry point. Its software QA uses generated PNG/BMP fixtures. The separately
+bound [local cache](PNG_BMP_NATIVE_CACHE_RESULTS_20261028.md) verifies 118
+canonical covers /31 batches without optimization; its final memory peak and
+strict resource acceptance remain unavailable. Role binding and a native fit
+supervisor are still separate work.
+See [native preparation](PNG_BMP_NATIVE_ADAPTER_PREPARATION_20261028.md).
+
 `core.spatial_training_data` owns bounded generated gray/RGB pairs, the
 byte-rounded forty-percent scattered plane-0 candidate and its independent
 scalar decoder. `core.spatial_generated_training` reuses the unchanged
@@ -937,3 +1056,12 @@ Commons/Unicode acquisition, and `core.nonjpeg_unicode` builds pinned controls.
 The acquisition adapter contains no detection or extraction logic. None of
 these services runs training, modifies production analyzers or changes the
 frozen JPEG source closure. See `NONJPEG_EVENING_PROTOCOL.md`.
+
+The separate native RGB pilot uses `spatial_native_training` for immutable
+metadata-only grouped splits, scoped FP32 sessions and numeric continuation.
+`spatial_native_pilot` owns train-only profiling, conservative cost projection
+and later approval-bound fitting; `spatial_native_supervisor` owns exclusive
+attempts, live cgroup/output observation and independent kernel-time closeout.
+The CLI only dispatches those services. Proposal roles never rewrite cached
+source records, and the reserved partition has no scoring/training interface.
+See `PNG_BMP_RGB_PILOT_PROTOCOL_20261028.md` for its distinct source-bound contract.

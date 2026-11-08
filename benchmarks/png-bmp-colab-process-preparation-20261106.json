@@ -1,0 +1,42 @@
+{
+  "automatic_retry": false,
+  "base_commit": "2f41bfe2e95febcaab80f80ab4875c72073c3a32",
+  "component_status": {
+    "actual_colab_cpu_execution": "ready",
+    "colab_optimizer_evaluation_io_cost": "unavailable",
+    "cpu_notebook_and_delivery": "ready",
+    "generated_process_supervisor": "ready",
+    "hard_cgroup_resident_ram_and_zero_swap": "unavailable",
+    "linux_kernel_limit_and_interrupt_qa": "ready",
+    "native_colab_cuda_policy_and_profile_worker": "missing",
+    "native_fit_contract_and_approval": "missing"
+  },
+  "consumed_job_retry": false,
+  "cpu_validation": "benchmarks/png-bmp-colab-process-cpu-validation-20261106.json",
+  "execution_permission_created": false,
+  "fit_approval_created": false,
+  "gpu_operations": 0,
+  "historical_budget_reset": false,
+  "native_roles": "unchanged_unassigned",
+  "new_media_transfer_bytes": 0,
+  "no_implicit_runtime_allocation": true,
+  "optimizer_updates": 0,
+  "registered_workloads": [
+    "generated_qa"
+  ],
+  "reserved_rgb_and_l_pixels": "closed",
+  "schema": "colab-process-software-preparation-v1",
+  "scope": "software preparation; no GPU/native command is registered",
+  "source_overlay_sha256": {
+    "core/colab_artifacts.py": "c81f9d09873083490a80f9c21ac9e01618754c4054f7be0f18f1b47833d927df",
+    "core/colab_execution.py": "7b98435b564affab6a17b09dfbe89b4b9787053f5b44a2c875e8060ef6d8bc04",
+    "notebooks/png_bmp_colab_process_qa_20261106.ipynb": "bde6ab9a90d37a92008e569ccf15b8d1429a50a0ef32faecb4f9f8ec4acb9db9",
+    "notebooks/png_bmp_colab_process_qa_sources_20261106.json": "104fcbbc46f1fcee36ca83ca42e1e267e64eace9ed7616d5b0b767fe45fa7d92",
+    "scripts/build-colab-process-notebook.py": "b79f71951ee7e7efe5e00c0a176a6fe07ef48a7fddbaaa3a7a7d9b8a93d38af1",
+    "steganography/research_colab_execution.py": "02b98004ea2a046b7f77a782e5450f5389a56d7f1fab67cbb178a0d6531739ef",
+    "tests/test_colab_execution.py": "09f724f1c5812762c2d165a1ce8e3cfaf11091090e1e1744c1c244599deefca6"
+  },
+  "source_package_sha256": "104fcbbc46f1fcee36ca83ca42e1e267e64eace9ed7616d5b0b767fe45fa7d92",
+  "status": "prepared_generated_cpu_only",
+  "verification_receipt": "benchmarks/png-bmp-colab-process-verification-20261106.json"
+}

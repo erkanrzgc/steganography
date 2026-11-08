@@ -1,0 +1,127 @@
+{
+  "actual_pixels_opened_packaged_or_uploaded": false,
+  "all_478_source_hashes_match": true,
+  "custom_data_or_rss_ceiling_bytes": null,
+  "diff_check": "passed",
+  "evidence_sha256": {
+    "full-coverage.json": "b7feb8a998f662fdcc8fc50ada0b9bdba5359319f29879213ffbaddf51685beb",
+    "full-exit.json": "eea16012fad7309d39ed1d40ce0934739904798e88ef3f68c4a466fb5e7aa94d",
+    "full.log": "41f752445fc34e8bb3e1ccbfed552f1dd6bcb05e65f8c5c58054e4c262774142",
+    "mypy-final.log": "96a18ececf4b151b9885583436b5bdfaedad3581843143601d87a09e3be99668",
+    "ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "first_full_harness_attempt": {
+    "application_or_test_source_changed": false,
+    "exit_code": 2,
+    "first_log_preserved": true,
+    "not_a_code_pass": true,
+    "passed_before_interruption": 182,
+    "reason": "missing basetemp parent directory",
+    "setup_errors": 528,
+    "status": "unavailable_qa_harness",
+    "wrapper_seconds": 25.908348336997733
+  },
+  "focused": {
+    "log_sha256": "257ed216fc129518fb1a0d38c1222ef4a6163b2105bb5eff34b4ccbc1cce1ddc",
+    "passed": 149,
+    "seconds": 43.28
+  },
+  "full_pytest": {
+    "coverage_percent": 97.20508719823319,
+    "exit_code": 0,
+    "passed": 4285,
+    "pytest_seconds": 1390.04,
+    "skipped": 2,
+    "source_bound_inputs": 478,
+    "source_manifest_sha256": "3b381784e2423752c0046053e7aed74647122cb645812a35389587aa6ec42011",
+    "warnings": 32,
+    "wrapper_seconds": 1391.7023002360002
+  },
+  "headroom_fraction": 0.1,
+  "mypy": {
+    "source_files": 249,
+    "status": "passed"
+  },
+  "native_fit_or_deployment": false,
+  "native_profile_contract": {
+    "data_or_gpu_execution": false,
+    "permission_created": false,
+    "prospective_contract_sha256": "d791914942d070f37b03c9bb5c3710fa7ce5f539d977f909f5b98fe7c912a865",
+    "source_package_sha256": "77e3e8dc5e144c1d9cf94089d1ffccd945c9c0c90fb64271871c747d38ec8e90"
+  },
+  "new_module_statement_coverage": {
+    "core/colab_execution.py": {
+      "covered_lines": 350,
+      "excluded_lines": 0,
+      "missing_lines": 12,
+      "num_statements": 362,
+      "percent_covered": 96.68508287292818,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 96.68508287292818,
+      "percent_statements_covered_display": "97"
+    },
+    "core/colab_memory.py": {
+      "covered_lines": 25,
+      "excluded_lines": 0,
+      "missing_lines": 0,
+      "num_statements": 25,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "core/spatial_colab_handoff.py": {
+      "covered_lines": 172,
+      "excluded_lines": 0,
+      "missing_lines": 6,
+      "num_statements": 178,
+      "percent_covered": 96.62921348314607,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 96.62921348314607,
+      "percent_statements_covered_display": "97"
+    },
+    "core/spatial_colab_profile.py": {
+      "covered_lines": 270,
+      "excluded_lines": 0,
+      "missing_lines": 3,
+      "num_statements": 273,
+      "percent_covered": 98.9010989010989,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 98.9010989010989,
+      "percent_statements_covered_display": "99"
+    },
+    "steganography/research_colab_profile.py": {
+      "covered_lines": 50,
+      "excluded_lines": 0,
+      "missing_lines": 1,
+      "num_statements": 51,
+      "percent_covered": 98.03921568627452,
+      "percent_covered_display": "98",
+      "percent_statements_covered": 98.03921568627452,
+      "percent_statements_covered_display": "98"
+    }
+  },
+  "physical_gpu_attempt_consumed": false,
+  "policy": "provider-managed-ram-with-headroom-watch-v1",
+  "previous_4270_test_fixed_memory_result": "preserved_historical_not_relabelled",
+  "previous_466_sources_unchanged": true,
+  "previous_gpu_attempts_and_budgets": "unchanged",
+  "production_permission_created": false,
+  "qa_unit": {
+    "active": false,
+    "exit_us_raw": "0",
+    "final_memory_peak_raw": "[not set]",
+    "final_memory_peak_status": "unavailable",
+    "kernel_interval_status": "unavailable",
+    "observed_restarts": "0",
+    "pid": 0,
+    "restart_policy": "no",
+    "start_us_raw": "0",
+    "telemetry_not_reconstructed_by_rerun": true
+  },
+  "ruff": "passed",
+  "schema": "colab-provider-memory-software-verification-v1",
+  "source_amendment": "benchmarks/png-bmp-colab-provider-memory-amendment-20261106.json",
+  "status": "passed_software_only",
+  "tenant_limit_verified": false
+}

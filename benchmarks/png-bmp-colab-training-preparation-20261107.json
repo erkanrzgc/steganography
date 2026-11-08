@@ -1,0 +1,236 @@
+{
+  "actual_fit_contract_sha256": null,
+  "actual_fit_contract_status": "requires accepted physical Colab profile",
+  "actual_native_pixel_packet_created": false,
+  "actual_native_pixels_opened_or_uploaded": false,
+  "actual_native_roles": "unassigned",
+  "affected_module_statement_coverage": {
+    "core/colab_execution.py": {
+      "covered_lines": 397,
+      "excluded_lines": 0,
+      "missing_lines": 15,
+      "num_statements": 412,
+      "percent_covered": 96.35922330097087,
+      "percent_covered_display": "96",
+      "percent_statements_covered": 96.35922330097087,
+      "percent_statements_covered_display": "96"
+    },
+    "core/spatial_colab_fit.py": {
+      "covered_lines": 254,
+      "excluded_lines": 2,
+      "missing_lines": 2,
+      "num_statements": 256,
+      "percent_covered": 99.21875,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 99.21875,
+      "percent_statements_covered_display": "99"
+    },
+    "core/spatial_colab_handoff.py": {
+      "covered_lines": 213,
+      "excluded_lines": 0,
+      "missing_lines": 6,
+      "num_statements": 219,
+      "percent_covered": 97.26027397260275,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 97.26027397260275,
+      "percent_statements_covered_display": "97"
+    },
+    "steganography/research_colab_train.py": {
+      "covered_lines": 45,
+      "excluded_lines": 0,
+      "missing_lines": 2,
+      "num_statements": 47,
+      "percent_covered": 95.74468085106383,
+      "percent_covered_display": "96",
+      "percent_statements_covered": 95.74468085106383,
+      "percent_statements_covered_display": "96"
+    }
+  },
+  "all_previous_budgets_attempts_and_reserved_pixels_preserved": true,
+  "base_commit": "2f41bfe2e95febcaab80f80ab4875c72073c3a32",
+  "changed_existing_inputs": {
+    "core/colab_execution.py": {
+      "current_sha256": "265f65a604c1016aa860d99382185baf0a78eb8f6f731152068d4c14f80a1185",
+      "prior_sha256": "7a11498c5399b6ad0e7a47caa7d78c48d3379eca9cec3c2a7ec1943a59026374"
+    },
+    "core/spatial_colab_handoff.py": {
+      "current_sha256": "12dcb321566e04035584aba02ff338958a9b38f173f4d3614a1f8a82c3193bf3",
+      "prior_sha256": "31eeb997c3966b07b0a94b938b06e49cba7c8bf18ebd33acf3becbb0e2a96939"
+    }
+  },
+  "components": {
+    "independent_audit": "ready_software",
+    "native_accuracy": "unavailable_unmeasured",
+    "notebook_and_sources": "ready",
+    "numeric_continuation": "ready_generated_qa",
+    "physical_t4_profile": "unavailable_not_executed",
+    "profile_bound_fit_proposal_and_permissions": "ready_software",
+    "source_license_transfer_manifest": "ready_metadata_only",
+    "training_and_progress": "ready_software"
+  },
+  "date": "2026-11-07",
+  "first_focused_command": {
+    "failed": 2,
+    "log_sha256": "ea309eea0775ca4d9fe30eb9c926bf04ca843ff24ea686c6d25bb4ff317b308a",
+    "not_relabelled": true,
+    "passed": 216
+  },
+  "first_full_command": {
+    "confirmed_final_count": null,
+    "full_command_not_relabelled": true,
+    "gpu_attempt_consumed": false,
+    "log_sha256": "7eea962219a54e1bb4254ed928c456aa7d4b4e1fce54675e3eb2833bc9126db7",
+    "reason": "prospective live atomic-progress rename correction before a physical attempt",
+    "retained_teardown_failure": "pytest tmp_path stash KeyError following SIGINT",
+    "status": "unavailable_interrupted_software_qa",
+    "wrapper_exit_receipt": "unavailable_interruption_during_pytest_teardown"
+  },
+  "fit_budget": "accepted profile plus complete measured external debits subtracted first",
+  "focused": {
+    "log_sha256": "6ff56f89bc1857c464a440ff77f8652956fa3bf362fe753b53e6db21e0f42adb",
+    "module_statement_coverage": {
+      "core/colab_execution.py": {
+        "covered_lines": 397,
+        "excluded_lines": 0,
+        "missing_lines": 15,
+        "num_statements": 412,
+        "percent_covered": 96.35922330097087,
+        "percent_covered_display": "96",
+        "percent_statements_covered": 96.35922330097087,
+        "percent_statements_covered_display": "96"
+      },
+      "core/spatial_colab_fit.py": {
+        "covered_lines": 254,
+        "excluded_lines": 2,
+        "missing_lines": 2,
+        "num_statements": 256,
+        "percent_covered": 99.21875,
+        "percent_covered_display": "99",
+        "percent_statements_covered": 99.21875,
+        "percent_statements_covered_display": "99"
+      },
+      "core/spatial_colab_handoff.py": {
+        "covered_lines": 213,
+        "excluded_lines": 0,
+        "missing_lines": 6,
+        "num_statements": 219,
+        "percent_covered": 97.26027397260275,
+        "percent_covered_display": "97",
+        "percent_statements_covered": 97.26027397260275,
+        "percent_statements_covered_display": "97"
+      },
+      "steganography/research_colab_train.py": {
+        "covered_lines": 45,
+        "excluded_lines": 0,
+        "missing_lines": 2,
+        "num_statements": 47,
+        "percent_covered": 95.74468085106383,
+        "percent_covered_display": "96",
+        "percent_statements_covered": 95.74468085106383,
+        "percent_statements_covered_display": "96"
+      }
+    },
+    "passed": 226,
+    "seconds": 143.4
+  },
+  "full_gate": {
+    "coverage_percent": 97.2201380552221,
+    "exit_code": 0,
+    "passed": 4362,
+    "pytest_seconds": 2175.47,
+    "skipped": 2,
+    "source_bound_inputs": 482,
+    "source_manifest_sha256": "320b9d25c6342df7ec116462f36e87a4d104eaaa785e5c11e95a8c758f82c254",
+    "warnings": 32,
+    "wrapper_seconds": 2177.7583975629996
+  },
+  "full_gate_status": "passed_software_only",
+  "gpu_or_media_execution": false,
+  "gpu_runtime_allocated": false,
+  "host_policy": "provider-managed-ram-with-headroom-watch-v1",
+  "live_progress_source_amendment": {
+    "changed_inputs": {
+      "core/colab_execution.py": {
+        "current": "265f65a604c1016aa860d99382185baf0a78eb8f6f731152068d4c14f80a1185",
+        "prior": "2f1659d8f04f1e0063fab9501631d75d2f1be4e409f0f6997f9c5b331061c6fb"
+      },
+      "tests/test_spatial_colab_fit.py": {
+        "current": "bb7e5719c209b85e35c483d13874d26a71eab5de9dbaba34eddf7cdb0ef7b126",
+        "prior": "6f21fe18f4eda76181407c7d4d8190f0dcf68897223e64e6fe95821d5b176de8"
+      }
+    },
+    "first_full_observation": {
+      "confirmed_final_count": null,
+      "full_command_not_relabelled": true,
+      "gpu_attempt_consumed": false,
+      "log_sha256": "7eea962219a54e1bb4254ed928c456aa7d4b4e1fce54675e3eb2833bc9126db7",
+      "reason": "prospective live atomic-progress rename correction before a physical attempt",
+      "retained_teardown_failure": "pytest tmp_path stash KeyError following SIGINT",
+      "status": "unavailable_interrupted_software_qa",
+      "wrapper_exit_receipt": "unavailable_interruption_during_pytest_teardown"
+    },
+    "physical_gpu_attempt_consumed": false,
+    "reason": "live atomic-progress rename must not fail byte sampling; closing hash inventory remains strict"
+  },
+  "mypy": {
+    "source_files": 251,
+    "status": "passed"
+  },
+  "native_fit_or_deployment": false,
+  "new_source_files": {
+    "core/spatial_colab_fit.py": "be3bac40d21336f12cf436741bfa2ee2cbadc5d9a63b4fba7a691b8858390cf2",
+    "scripts/build-colab-training-notebook.py": "d5f38dc997cde149e7fa95889675532bb77e20f21d88f46977e274f3ddff66d1",
+    "steganography/research_colab_train.py": "0eba5bc3bce8685021975001ca59b344342e39e0db73b897c57e4970799bcba0",
+    "tests/test_spatial_colab_fit.py": "bb7e5719c209b85e35c483d13874d26a71eab5de9dbaba34eddf7cdb0ef7b126"
+  },
+  "nominal_cumulative_command_seconds": 1800,
+  "nominal_cumulative_output_bytes": 805306368,
+  "notebook": "notebooks/png_bmp_colab_native_training_20261107.ipynb",
+  "original_cache_regenerated": false,
+  "physical_profile_attempt_consumed": false,
+  "production_fit_permission_created": false,
+  "production_permission_created": false,
+  "profile_contract": "benchmarks/png-bmp-colab-training-profile-contract-20261107.json",
+  "prospective_profile_contract_sha256": "37d2f589a90ac29dcafea3fc238217022597acc3ea084d1b1f8eb6273a35a33b",
+  "ruff": "passed",
+  "runtime_expectations": {
+    "cuda": "12.8",
+    "driver": "580.82.07",
+    "gpu": "Tesla T4",
+    "numpy": "2.0.2",
+    "pillow": "11.3.0",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128"
+  },
+  "schema": "colab-native-training-preparation-v1",
+  "source_bound_inputs": 482,
+  "source_manifest_sha256": "320b9d25c6342df7ec116462f36e87a4d104eaaa785e5c11e95a8c758f82c254",
+  "source_package_sha256": "8677a46f3fb7840b01b46b2b1355a286c9d30296ccf271519fe54bc57d8e300a",
+  "source_packet_entries": 218,
+  "status": "software_ready_physical_profile_and_later_fit_permission_required",
+  "training_recipe": {
+    "amp": false,
+    "batch_images": 8,
+    "checkpoint_epochs": [
+      5,
+      10,
+      15,
+      20
+    ],
+    "development_auc": 0.7,
+    "development_every_epoch": true,
+    "epochs": 20,
+    "fit_updates": 640,
+    "last_loss_fraction": 0.8,
+    "payload_seed": 2026102805,
+    "precision": "float32-ieee",
+    "presentations": 5120,
+    "seeds": [
+      2026102301,
+      2026102302
+    ],
+    "tf32": false,
+    "train_auc": 0.85
+  },
+  "verification_receipt": "benchmarks/png-bmp-colab-training-verification-20261107.json"
+}

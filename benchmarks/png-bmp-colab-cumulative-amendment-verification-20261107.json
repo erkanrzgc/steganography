@@ -1,0 +1,95 @@
+{
+  "actual_roles": "unassigned",
+  "all_frozen_input_hashes_unchanged": true,
+  "compatibility": {
+    "added_resource_service": [
+      "core/spatial_colab_budget.py"
+    ],
+    "changed_adapters": [
+      "core/spatial_colab_fit.py",
+      "steganography/research_colab_train.py"
+    ],
+    "protected_fit_ast_unchanged": true,
+    "unchanged_source_files": 215
+  },
+  "corrected_metadata_checks_passed": 34,
+  "earlier_evidence_sha256": {
+    "first-focused.log": "17672f176d9669aa414a9f8f736d3a0a9f76244900d7289715634ff7cc9c7475",
+    "second-focused.log": "c9333af69f951a45b4bdafe8dc6e311252b8aa5fd6ab0170b951c850936801fe",
+    "verification-final/first-post-stop-unit-observation.json": "33ffb4c6d1fbffa73c7bfa12afa1b6a410100685793f62f267ccd9f0d6b34299",
+    "verification-final/focused.log": "9723fea67ecf4c63a46eb1766e960e468ff8693de9e7d893548ba4ad7a1e113c",
+    "verification-final/full.log": "f72aa25d4d44b9db39eaa9d8a955164b6dbe68bd279c3e76dda3a78c28d3568c",
+    "verification-final/ruff.log": "2bb6baddeac73b9624c0033804f7f20988a10e6dc1fcbbce09418ba51e9fb17b"
+  },
+  "evidence_sha256": {
+    "completed-unit-observation.json": "443b35178f24eec5c9e4c696c9ef42f3035195466677584f4a3633fe087c06fd",
+    "final-unit-observation.json": "378831936bb3cf2475be62a83b1924626d686a9160e1204d8812c85e9a0c4c9c",
+    "full-coverage.json": "0b11c748da473458782365e5b459682022f542e4c0dfbd6781a519daa9978107",
+    "full-exit.json": "219da83903a4d8bca2bb8d02e00b8bc06ed7114e8473fe845dc1f7d1f3ec300f",
+    "full-start.json": "900e9c332f14ae6a5284618dc45cc641465216f0af607852ce0c2462565e234f",
+    "full.log": "a2333cedae7c2f8b4ad021cd9b90ce69f3e32d141413099353174b4dda178171",
+    "kernel-memory-policy.json": "a2b48500c2bb15207f0c10942c6a68957386f4f14c48b7294e04cf9e19216cf0",
+    "mypy.log": "16113559ce257bb6e5a91b0aa64a7d1e22d37303e0cbfc5b3bb80f191155c18b",
+    "notebook-focused.log": "ed3e6254ca9af84002f201ff46a5d5dfbc60d9dc89640935b6605b294e962a1e",
+    "qa-source-bindings.json": "f0ef1ee438ac98cd41313e27885349c5488c93d1af6bf2639dac235d03d5fa62",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "static-audit.json": "9c90383989a631451c1156bda765ca4143b79d2371d64cbcc507f98911b54314",
+    "unit-observations.jsonl": "c2fe976541c16eb2f12093e73c5d2e917d4d5693ba9f6ca0bf5b981ae65799b3"
+  },
+  "final_future_external_reservation_seconds": 300,
+  "fit_contract_sha256": "7a45cab6774388e9eb156af90eb4c10c962f522a6a2ad6678853fb88e65d7b94",
+  "focused_passed": 260,
+  "frozen_qa_inputs": 522,
+  "full_failed_or_interrupted_run_relabelled": false,
+  "independent_unit_interval_seconds": null,
+  "module_statement_coverage": {
+    "core/colab_execution.py": 96.11650485436893,
+    "core/spatial_colab_budget.py": 100.0,
+    "core/spatial_colab_fit.py": 99.25650557620818,
+    "core/spatial_colab_handoff.py": 97.26027397260275,
+    "steganography/research_colab_train.py": 95.83333333333333
+  },
+  "mypy_files": 252,
+  "native_optimizer_updates": 0,
+  "native_ram_policy_unchanged": "provider-managed-ram-with-headroom-watch-v1",
+  "old_profile_operator_target_failure_preserved": true,
+  "passed": 4396,
+  "physical_gpu_allocation": false,
+  "preserved_first_focused_attempt": {
+    "cause": "mutable external-debit fixture alias; defensive payload copy added",
+    "failed": 10,
+    "passed": 22
+  },
+  "preserved_first_full_attempt": "unavailable_interrupted_for_notebook_lint; SIGINT absorbed then scoped unit killed; no final count",
+  "preserved_first_prospective_reservation_seconds": 180,
+  "preserved_second_focused_attempt": "34 passed; command exit one because whole-project focused coverage below 90 percent",
+  "previous_482_inputs_changed": [
+    "core/spatial_colab_fit.py",
+    "steganography/research_colab_train.py"
+  ],
+  "production_fit_permission_created": false,
+  "profile_metadata_sha256": "58d314622b77d7f79c674c3b947ea47895ab04693380a06d51a44b9ac548465e",
+  "pytest_seconds": 1400.59,
+  "qa_final_memory_peak_scope": "unavailable; preserve failed post-exit observer, no rerun",
+  "qa_final_memory_peak_status": "unavailable_after_empty_cgroup_release",
+  "qa_independent_kernel_interval_status": "unavailable_zero_live_unit_timestamps",
+  "qa_live_sample_is_not_final_peak": true,
+  "qa_maximum_retained_live_sample_bytes": 8589934592,
+  "qa_unit_inactive_now": true,
+  "qa_unit_kernel_peak_bytes": null,
+  "qa_unit_ram_limit_bytes": 8589934592,
+  "qa_unit_restarts": 0,
+  "qa_unit_swap_limit_bytes": 0,
+  "real_media_pixel_access": false,
+  "reserved_pixels_opened": false,
+  "ruff": "passed",
+  "schema": "colab-cumulative-amendment-verification-v1",
+  "skipped_explicit_kali_cuda": 2,
+  "source_binding_manifest_sha256": "f0ef1ee438ac98cd41313e27885349c5488c93d1af6bf2639dac235d03d5fa62",
+  "source_packet_sha256": "a465948b02d85321f802535143ddccb0a0d781f7bb8f029b8b99427013b951f1",
+  "status": "passed_software_only_pending_explicit_fit_approval",
+  "total_statement_coverage": 97.22544217178327,
+  "unchanged_previous_inputs": 480,
+  "warnings": 32,
+  "wrapper_seconds": 1402.0607532560007
+}

@@ -1,0 +1,156 @@
+{
+  "actual_gpu_or_native_job_started": false,
+  "base_commit": "2f41bfe2e95febcaab80f80ab4875c72073c3a32",
+  "contract_sha256": "d791914942d070f37b03c9bb5c3710fa7ce5f539d977f909f5b98fe7c912a865",
+  "cudnn_policy": "positive actual version frozen before model and replayed in numeric states",
+  "execution_permission_created": false,
+  "expected_environment": {
+    "cuda": "12.8",
+    "driver": "580.82.07",
+    "gpu": "Tesla T4",
+    "numpy": "2.0.2",
+    "pillow": "11.3.0",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128"
+  },
+  "fit_approval_created": false,
+  "focused_module_statement_coverage": {
+    "core/colab_execution.py": {
+      "covered_lines": 350,
+      "excluded_lines": 0,
+      "missing_lines": 12,
+      "num_statements": 362,
+      "percent_covered": 96.68508287292818,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 96.68508287292818,
+      "percent_statements_covered_display": "97"
+    },
+    "core/colab_memory.py": {
+      "covered_lines": 25,
+      "excluded_lines": 0,
+      "missing_lines": 0,
+      "num_statements": 25,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "core/spatial_colab_handoff.py": {
+      "covered_lines": 172,
+      "excluded_lines": 0,
+      "missing_lines": 6,
+      "num_statements": 178,
+      "percent_covered": 96.62921348314607,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 96.62921348314607,
+      "percent_statements_covered_display": "97"
+    },
+    "core/spatial_colab_profile.py": {
+      "covered_lines": 270,
+      "excluded_lines": 0,
+      "missing_lines": 3,
+      "num_statements": 273,
+      "percent_covered": 98.9010989010989,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 98.9010989010989,
+      "percent_statements_covered_display": "99"
+    },
+    "steganography/research_colab_profile.py": {
+      "covered_lines": 50,
+      "excluded_lines": 0,
+      "missing_lines": 1,
+      "num_statements": 51,
+      "percent_covered": 98.03921568627452,
+      "percent_covered_display": "98",
+      "percent_statements_covered": 98.03921568627452,
+      "percent_statements_covered_display": "98"
+    }
+  },
+  "focused_unique_tests_passed": 149,
+  "full_qa": {
+    "coverage_percent": 97.20508719823319,
+    "exit_code": 0,
+    "passed": 4285,
+    "pytest_seconds": 1390.04,
+    "skipped": 2,
+    "source_bound_inputs": 478,
+    "source_manifest_sha256": "3b381784e2423752c0046053e7aed74647122cb645812a35389587aa6ec42011",
+    "status": "passed_software_only",
+    "verification_receipt": "benchmarks/png-bmp-colab-provider-memory-verification-20261106.json",
+    "warnings": 32,
+    "wrapper_seconds": 1391.7023002360002
+  },
+  "full_qa_receipt": "benchmarks/png-bmp-colab-provider-memory-verification-20261106.json",
+  "gpu_attempt_consumed": false,
+  "historical_budgets_or_attempts_reset": false,
+  "input": {
+    "actual_cache_packet_created": false,
+    "actual_cache_uploaded": false,
+    "ancestry_counts": [
+      38,
+      12,
+      19,
+      6
+    ],
+    "manifest_sha256": "8da0ac4ac98b7b0e9e3613b02b58c3cb076adb9456c74ef29c90f6a70ee1dfd2",
+    "role_counts": [
+      64,
+      20,
+      21,
+      13
+    ],
+    "roles_rewritten": false,
+    "train_pixel_bytes": 12582912
+  },
+  "limits": {
+    "address_bytes": 0,
+    "closing_seconds": 10,
+    "data_bytes": 0,
+    "file_bytes": 134217728,
+    "output_bytes": 268435456,
+    "resident_watch_bytes": 0,
+    "seconds": 240
+  },
+  "native_fit_worker": "not_implemented",
+  "physical_gpu_validation": "unavailable_not_requested",
+  "production_qualification": false,
+  "real_media_opened_or_downloaded_by_preparation": false,
+  "recipe": {
+    "amp": false,
+    "batch_images": 8,
+    "generated_optimizer_updates": 6,
+    "input_shape": [
+      256,
+      256,
+      3
+    ],
+    "mode": "RGB",
+    "native_optimizer_updates": 0,
+    "numeric_restores": 2,
+    "passes_per_seed": 3,
+    "precision": "float32-ieee",
+    "seeds": [
+      2026102301,
+      2026102302
+    ],
+    "tf32": false
+  },
+  "resource_policy": {
+    "acknowledgement_required": "hard_cgroup_ram_and_swap_not_enforced",
+    "custom_host_data_or_rss_cap": null,
+    "hard_cgroup_ram": "unavailable",
+    "hard_zero_swap": "unavailable",
+    "kernel_capacity_is_verified_tenant_limit": false,
+    "kernel_headroom_fraction": 0.1,
+    "kernel_peak_includes_spawn": true,
+    "observed_swap": "nonzero stops worker",
+    "policy": "provider-managed-ram-with-headroom-watch-v1",
+    "provider_runtime_limits_inherited": true,
+    "whole_tree_peak": "unavailable"
+  },
+  "schema": "colab-native-profile-software-preparation-v2",
+  "source_amendment": "benchmarks/png-bmp-colab-provider-memory-amendment-20261106.json",
+  "source_package_sha256": "77e3e8dc5e144c1d9cf94089d1ffccd945c9c0c90fb64271871c747d38ec8e90",
+  "status": "software_ready_profile_permission_missing",
+  "torch_allocator_bytes": 4294967296
+}

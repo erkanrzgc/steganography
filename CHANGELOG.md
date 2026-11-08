@@ -1,5 +1,142 @@
 # Changelog
 
+- Replay eight existing native RGB checkpoints with train-only CPU inference;
+  verify 32,768 AUC comparisons and retain near-chance ranking at every saved
+  endpoint. Freeze a metadata-only nested 8/64-original, 320/1,280-update
+  comparison with independent ancestry/order/exposure replay. Preserve all
+  historical states/source hashes and mark new execution infrastructure and
+  measured cost explicitly missing; no optimizer/GPU operation or fitting
+  authority follows from preparation.
+
+- Diagnose the completed native RGB failure using existing checkpoints/scores
+  and train-only CPU probes with zero optimizer updates. Verify data/labels,
+  parameter changes and CPU/GPU score agreement; identify image-specific
+  offsets overwhelming weak paired sensitivity. Preserve the failed learning
+  rule, synthetic-only qualification, original outputs and all 522 source
+  hashes. Distinguish observed mechanism from unproven data/recipe causes.
+
+- Complete the user-authorized native RGB Colab fit with unchanged source and
+  recipe: two seeds /twenty epochs /640 updates /eight numeric states. Execution
+  and independent commit/state/AUC/hash replay pass; the native learning rule
+  fails with development AUC .5175 /.5275. Preserve all prior costs and the
+  original failed setup; retain private outputs and delete the T4 runtime.
+  Publish verified curves/results without qualification or deployment.
+
+- Record the separately approved native Colab deployment as unavailable at the
+  second prelaunch age guard. Preserve source/permission verification and 84
+  cache hash checks, zero native worker launches and the complete spent debit.
+  Delete the T4 runtime and confirm no active sessions. Retain all six notebook
+  AST matches and the initial literal comparison failure from Colab title
+  annotations. No retry, model/recipe change or budget reset follows.
+
+- Prepare a distinct 45-minute cumulative Colab fit schema with preserved
+  session charges and explicit future setup/export reservation. Reuse pinned
+  consumed-profile metadata with immutable-source/protected-fit AST checks;
+  retain model/optimizer/recipe, controller and one-fit marker. Deliver a
+  disabled fit-only notebook and a rejected-by-default v2 permission template.
+  Pass 4,396 tests /two explicit CUDA skips, 97.23% total /100% new-service
+  coverage, 260 focused checks and Ruff /252-file mypy. Preserve interrupted
+  earlier QA and unavailable final QA memory/kernel timing observations.
+  No GPU allocation, native pixel access or fitting follows from preparation.
+
+- Complete the separately authorized Colab T4 cost profile: independently verify
+  six generated commits, two numeric states and all source/closing bindings.
+  Charge 79.297540 command seconds with zero native updates. Retain the missed
+  operator session target and all external debits; delete the GPU runtime.
+  Project the fixed fit at 1,311.131131 seconds and mark the existing cumulative
+  time allowance ineligible. Record a non-executable resource suggestion;
+  preserve approval gates, prior attempts, closed pixels and unchanged software.
+
+- Complete the Colab RGB training workflow over the existing SRNet/AdamW engine.
+  Add measured-profile/debit-bound fit proposals and separate permission,
+  epoch loss/development AUC, numeric states and independent evidence replay.
+  Keep one fit per accepted profile and reserve bounded closing/report output;
+  transport development separately and retain closed reserved media.
+  Deliver a disabled-by-default complete notebook; pass 226 focused checks,
+  Ruff /251-file mypy and >95% affected-module coverage. Full QA passes 4,362
+  tests /two explicit CUDA skips, 97.22% coverage; all 482 frozen hashes match.
+  Tolerate disappearing atomic-progress entries only in live byte sampling;
+  retain strict closing hashes and preserve the interrupted first full command.
+
+- Remove the inherited eight-GiB DATA/RSS ceiling from the prospective native
+  Colab profile in response to the user's objection. Delegate hard host limits
+  to the runtime, observe kernel-memory headroom and retain time/output bounds.
+  Keep prior fixed-memory contracts and receipts; rebuild the native notebook.
+  Pass 149 focused /4,285 complete checks, two explicit CUDA skips and 97.21%
+  coverage, plus Ruff /249-file mypy. All 478 frozen input hashes match.
+
+- Add a distinct Colab native RGB profiling view over the unchanged SRNet,
+  data/AdamW/numeric engine. Forbid native steps/checkpoints and nontrain scoring;
+  profile six generated steps/two numeric restores only after exact permission.
+  Add independent numeric/consumption replay, source/train-only transport and
+  reserved-byte-aware, nonextracting evidence archive verification. Prepare a
+  CPU-default source notebook and prospective 240-second T4 contract with all
+  execution switches disabled. Pass 132 focused tests and >95% new coverage;
+  preserve unavailable hard cgroup RAM/swap and all historical GPU attempts.
+  Retain the first full run's proc-disappearance failure; handle ENOENT/ESRCH
+  while still reaping/charging the child, and require literal true permissions.
+  Repaired QA passes 134 focused /4,270 complete tests, two CUDA skips and
+  97.21% total coverage; Ruff /248-file mypy pass. Physical permission is missing.
+
+- Add a generated-only Colab process supervisor with source/environment binding,
+  hard process limits, observed RSS/output bounds, kernel wall/parent-death
+  termination and exclusive attempt/closing records. Independently audit
+  hashes and reject changed outputs or over-budget closing. Add a reproducible
+  CPU notebook and 61 focused tests; both new modules exceed 95% coverage.
+  Complete actual Colab CPU validation and full QA: 4,197 passes /two CUDA
+  skips, 97.19% total coverage, Ruff /245-file mypy pass.
+  Keep hard cgroup RAM/swap unavailable and native execution unregistered.
+
+- Separate Colab resource metadata from GPU visibility in a model-free shared
+  service. Keep inaccessible cgroup identities unavailable while completing
+  the bounded NVIDIA query; preserve symlink, extent, timeout and overwrite
+  checks. Add a self-contained CPU-default notebook and 44 generated tests
+  with 100% module coverage. The notebook completes a real CPU-only Colab
+  check; full QA passes 4,136 tests /two CUDA skips, 97.19% total coverage.
+  No consumed GPU job or native fit is restarted.
+
+- Honor the user’s selection of EVREN for future GPU compute; defer the local
+  fit proposal and close the local controller. Recheck the existing account’s
+  Workspace denial, prepare an unsent access request and a CPU-only metadata
+  notebook. Validate its syntax/execution without Torch import or GPU calls.
+  Preserve the completed local measurement and all unchanged application/test
+  sources; no cloud resources or media transfer are started.
+
+- Complete the source-bound RGB native cost profile on the existing WSL GPU,
+  after a prospective process-local user-bus deployment correction. Preserve
+  the original failed preflight and local staging-receipt collision. Both
+  seeds complete zero native /six generated updates and two verified numeric
+  states; independent replay checks 503 arrays per state and all step receipts.
+  Record live kernel RAM /allocator peaks, complete-command and audit debits,
+  measured output and the conservative 640-update fit proposal. Consume and
+  stop the profile; native fitting remains subject to exact later approval.
+
+- Prepare a distinct native RGB pilot with an exact metadata-only 64/20/21
+  known-ancestry proposal, scoped FP32 sessions and numeric continuation. Add
+  train-only zero-native-update cost measurement, generated optimizer/state
+  timing, live closing resource evidence and later profile-bound fit approval.
+  Keep reserved pixels, historical contracts and cached roles unchanged.
+  Full QA passes 4,092 tests /two CUDA skips, 97.18% coverage; all new modules
+  exceed 95%. Retain the interrupted server run and repaired optional-Torch
+  contract failure. Current WSL cost measurement remains unavailable while
+  its listener is absent. Review EVREN public notebook/credit capabilities
+  separately without account actions, data uploads or execution.
+
+- Restore the existing WSL connection and verify the private 119-file native
+  cache copy without regeneration. Preserve its original resource-telemetry
+  result, all unassigned roles, source bindings and historical budgets.
+
+- Add a native spatial data adapter prototype with immutable provenance,
+  transitive cross-mode ancestry/proposal checks, bounded hash-verified uint8
+  caches and full-alphabet paired FP32 scattered-LSB batches. Independently
+  replay existing metadata grouping; retain all actual roles and historical
+  budgets. Generated-only software QA passes 37 tests /100% module coverage.
+  Prepare the separate 118-original unassigned local cache; replay 236 scalar
+  payloads and 31 FP32 batches independently. Preserve unavailable final-memory
+  telemetry and its failed observer without relaunch. Retain the full run's
+  README-length failure and successful documentation-only replay. No fitting,
+  download, role assignment or GPU profile is executed.
+
 - Add a separately bound generated gray/RGB control: conservative optimizer,
   evaluation, transport and numeric-checkpoint profiling before four full fits.
   Independently replay AUCs, exact exposures, fresh initialization and immutable

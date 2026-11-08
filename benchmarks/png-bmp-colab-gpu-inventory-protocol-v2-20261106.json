@@ -1,0 +1,20 @@
+{
+  "schema": "colab-gpu-inventory-source-v2",
+  "purpose": "single_read_only_gpu_environment_inventory",
+  "cell_sha256": "26fdb8d0271d1e66822cf422217d0072f1cccd117794dc8ff7b89b1198f07bb1",
+  "notebook_sha256": "5a5fa2aaa4e07ddfa3236c098dbaa003481b5ff9af3005f1fa25eb5c9a9d33d9",
+  "runtime_version": "2026.07",
+  "max_cell_seconds": 60,
+  "nvidia_command_seconds": 10,
+  "nvidia_output_bytes": 8192,
+  "max_output_bytes": 65536,
+  "gpu_allocation_requests": 1,
+  "max_allocation_observation_seconds": 300,
+  "optimizer_updates": 0,
+  "models": 0,
+  "torch_import": false,
+  "native_uploads": 0,
+  "retry": false,
+  "supersedes_before_allocation": "png-bmp-colab-gpu-inventory-protocol-20261106.json",
+  "prelaunch_correction": "Use numeric own PID for /proc metadata; preserve symlink rejection."
+}

@@ -1,0 +1,167 @@
+{
+  "actual_native_pixels_opened_packaged_or_uploaded": false,
+  "affected_module_statement_coverage": {
+    "core/colab_execution.py": {
+      "covered_lines": 397,
+      "excluded_lines": 0,
+      "missing_lines": 15,
+      "num_statements": 412,
+      "percent_covered": 96.35922330097087,
+      "percent_covered_display": "96",
+      "percent_statements_covered": 96.35922330097087,
+      "percent_statements_covered_display": "96"
+    },
+    "core/spatial_colab_fit.py": {
+      "covered_lines": 254,
+      "excluded_lines": 2,
+      "missing_lines": 2,
+      "num_statements": 256,
+      "percent_covered": 99.21875,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 99.21875,
+      "percent_statements_covered_display": "99"
+    },
+    "core/spatial_colab_handoff.py": {
+      "covered_lines": 213,
+      "excluded_lines": 0,
+      "missing_lines": 6,
+      "num_statements": 219,
+      "percent_covered": 97.26027397260275,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 97.26027397260275,
+      "percent_statements_covered_display": "97"
+    },
+    "steganography/research_colab_train.py": {
+      "covered_lines": 45,
+      "excluded_lines": 0,
+      "missing_lines": 2,
+      "num_statements": 47,
+      "percent_covered": 95.74468085106383,
+      "percent_covered_display": "96",
+      "percent_statements_covered": 95.74468085106383,
+      "percent_statements_covered_display": "96"
+    }
+  },
+  "all_482_frozen_input_hashes_match": true,
+  "date": "2026-11-07",
+  "delivery": {
+    "gpu_or_media_execution": false,
+    "production_permission_created": false,
+    "prospective_profile_contract_sha256": "37d2f589a90ac29dcafea3fc238217022597acc3ea084d1b1f8eb6273a35a33b",
+    "source_package_sha256": "8677a46f3fb7840b01b46b2b1355a286c9d30296ccf271519fe54bc57d8e300a"
+  },
+  "diff_check": "passed",
+  "evidence_sha256": {
+    "focused.log": "6ff56f89bc1857c464a440ff77f8652956fa3bf362fe753b53e6db21e0f42adb",
+    "full-coverage.json": "361298047bcadb8beb6ecba931c993771f6f5e888b105ed7d48e3145c085e5a6",
+    "full-exit.json": "280f6dda94744d0f536fde2c086dc28533be3e0eca42e57ed03692b89f1d117c",
+    "full.log": "055da09a204fa2079ecb13f054c01df7b5dc265fd066568a4c28a40f27483768",
+    "mypy-final.log": "714f52c6d46fd75dd9756d1cff1a9a63dc15eb156878baa112ffb12ad665adb4",
+    "ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "source-amendment.json": "895b56053276ec56f85a3623e0cda81910f9bd5a06664ed536867b58b223aae6"
+  },
+  "first_focused_command": {
+    "failed": 2,
+    "log_sha256": "ea309eea0775ca4d9fe30eb9c926bf04ca843ff24ea686c6d25bb4ff317b308a",
+    "not_relabelled": true,
+    "passed": 216
+  },
+  "first_full_command": {
+    "confirmed_final_count": null,
+    "full_command_not_relabelled": true,
+    "gpu_attempt_consumed": false,
+    "log_sha256": "7eea962219a54e1bb4254ed928c456aa7d4b4e1fce54675e3eb2833bc9126db7",
+    "reason": "prospective live atomic-progress rename correction before a physical attempt",
+    "retained_teardown_failure": "pytest tmp_path stash KeyError following SIGINT",
+    "status": "unavailable_interrupted_software_qa",
+    "wrapper_exit_receipt": "unavailable_interruption_during_pytest_teardown"
+  },
+  "focused": {
+    "log_sha256": "6ff56f89bc1857c464a440ff77f8652956fa3bf362fe753b53e6db21e0f42adb",
+    "passed": 226,
+    "seconds": 143.4
+  },
+  "full_pytest": {
+    "coverage_percent": 97.2201380552221,
+    "exit_code": 0,
+    "passed": 4362,
+    "pytest_seconds": 2175.47,
+    "skipped": 2,
+    "source_bound_inputs": 482,
+    "source_manifest_sha256": "320b9d25c6342df7ec116462f36e87a4d104eaaa785e5c11e95a8c758f82c254",
+    "warnings": 32,
+    "wrapper_seconds": 2177.7583975629996
+  },
+  "generated_fixture_example": {
+    "actual_srnet_updates": 12,
+    "independent_auc_records": 20,
+    "numeric_states": 4,
+    "scope": "one reduced generated CPU plumbing fixture; not total QA updates or a full learning control",
+    "seeds": 2
+  },
+  "historical_budgets_attempts_or_reserved_data_changed": false,
+  "live_progress_source_amendment": {
+    "changed_inputs": {
+      "core/colab_execution.py": {
+        "current": "265f65a604c1016aa860d99382185baf0a78eb8f6f731152068d4c14f80a1185",
+        "prior": "2f1659d8f04f1e0063fab9501631d75d2f1be4e409f0f6997f9c5b331061c6fb"
+      },
+      "tests/test_spatial_colab_fit.py": {
+        "current": "bb7e5719c209b85e35c483d13874d26a71eab5de9dbaba34eddf7cdb0ef7b126",
+        "prior": "6f21fe18f4eda76181407c7d4d8190f0dcf68897223e64e6fe95821d5b176de8"
+      }
+    },
+    "first_full_observation": {
+      "confirmed_final_count": null,
+      "full_command_not_relabelled": true,
+      "gpu_attempt_consumed": false,
+      "log_sha256": "7eea962219a54e1bb4254ed928c456aa7d4b4e1fce54675e3eb2833bc9126db7",
+      "reason": "prospective live atomic-progress rename correction before a physical attempt",
+      "retained_teardown_failure": "pytest tmp_path stash KeyError following SIGINT",
+      "status": "unavailable_interrupted_software_qa",
+      "wrapper_exit_receipt": "unavailable_interruption_during_pytest_teardown"
+    },
+    "physical_gpu_attempt_consumed": false,
+    "reason": "live atomic-progress rename must not fail byte sampling; closing hash inventory remains strict"
+  },
+  "mypy": {
+    "source_files": 251,
+    "status": "passed"
+  },
+  "native_fit_or_deployment": false,
+  "original_466_inputs_unchanged": true,
+  "physical_gpu_attempt_consumed": false,
+  "production_permissions_created": false,
+  "qa_unit": {
+    "active": false,
+    "exit_us_raw": "0",
+    "final_memory_peak_raw": "[not set]",
+    "final_memory_peak_status": "unavailable",
+    "kernel_interval_status": "unavailable",
+    "observed_restarts": "0",
+    "pid": 0,
+    "restart_policy": "no",
+    "start_us_raw": "0",
+    "telemetry_not_reconstructed_by_rerun": true
+  },
+  "ruff": "passed",
+  "schema": "colab-native-training-software-verification-v1",
+  "static_delivery_audit": {
+    "actual_pixel_reads_or_downloads": false,
+    "all_source_hashes_match": true,
+    "exact_data_manifest_unchanged": true,
+    "packet_sha256": "8677a46f3fb7840b01b46b2b1355a286c9d30296ccf271519fe54bc57d8e300a",
+    "production_permission_created": false,
+    "profile_contract_sha256": "37d2f589a90ac29dcafea3fc238217022597acc3ea084d1b1f8eb6273a35a33b",
+    "source_count": 218,
+    "status": "passed_source_metadata_only",
+    "torch_imported": false,
+    "train_development_reserved_l_counts": [
+      64,
+      20,
+      21,
+      13
+    ]
+  },
+  "status": "passed_software_only"
+}

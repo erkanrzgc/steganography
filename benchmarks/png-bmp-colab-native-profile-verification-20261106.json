@@ -1,0 +1,128 @@
+{
+  "actual_media_opened_or_uploaded": false,
+  "all_476_source_hashes_match": true,
+  "diff_check": "passed",
+  "evidence_sha256": {
+    "full-coverage.json": "6172b13b57ac3aaf5137017045a449aad70a6fd446a205eab711e444f1f6c80c",
+    "full-exit.json": "a7b526aaae3c602323afe4cfb018cad40cfe0e86af97450585377aa60fbc6ac3",
+    "full.log": "246ce9048114fb3975cd41efdefd96dccfa0f365f99337d47d8796ddab042c70",
+    "mypy-final.log": "ee26b57771c02fc8fb7c96c47893cdd1ddf6a1ae7668c191065a26322dc85669",
+    "ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "source-amendment.json": "df0307a3db6d3ff14a618820c26b100083b60263515033e251c80f564838c0f0"
+  },
+  "execution_permission_created": false,
+  "first_fixture_and_lint_failures_retained": true,
+  "first_full_command": {
+    "failed": 1,
+    "log_sha256": "a8fe60ba204388d9a3ed9c876fa0043dc7def450c8a1f4b73c0e295c22ccd4cd",
+    "not_relabelled": true,
+    "passed": 4267,
+    "skipped": 2,
+    "status": "failed"
+  },
+  "focused": {
+    "log_sha256": "b6feb1bfa14dbd7b435a3fa4fdae7fd046e0495333b9caee7f734b7dfa6fdf92",
+    "unique_tests_passed": 134
+  },
+  "full_pytest": {
+    "coverage_percent": 97.21205186880245,
+    "exit_code": 0,
+    "passed": 4270,
+    "pytest_seconds": 1508.1,
+    "skipped": 2,
+    "source_bound_inputs": 476,
+    "source_manifest_sha256": "0ea2737eb8e27fe2ef60e00f93ae9be721ec50253f61e5bc3dd4b02465de9450",
+    "warnings": 32,
+    "wrapper_seconds": 1509.7020841589983
+  },
+  "generated_evidence_integration": "benchmarks/png-bmp-colab-generated-evidence-integration-20261106.json",
+  "historical_budget_reset_or_retry": false,
+  "mypy": {
+    "source_files": 248,
+    "status": "passed"
+  },
+  "native_fit_or_deployment": false,
+  "new_module_statement_coverage": {
+    "core/colab_execution.py": {
+      "covered_lines": 336,
+      "excluded_lines": 0,
+      "missing_lines": 9,
+      "num_statements": 345,
+      "percent_covered": 97.3913043478261,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 97.3913043478261,
+      "percent_statements_covered_display": "97"
+    },
+    "core/spatial_colab_handoff.py": {
+      "covered_lines": 172,
+      "excluded_lines": 0,
+      "missing_lines": 6,
+      "num_statements": 178,
+      "percent_covered": 96.62921348314607,
+      "percent_covered_display": "97",
+      "percent_statements_covered": 96.62921348314607,
+      "percent_statements_covered_display": "97"
+    },
+    "core/spatial_colab_profile.py": {
+      "covered_lines": 270,
+      "excluded_lines": 0,
+      "missing_lines": 3,
+      "num_statements": 273,
+      "percent_covered": 98.9010989010989,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 98.9010989010989,
+      "percent_statements_covered_display": "99"
+    },
+    "steganography/research_colab_profile.py": {
+      "covered_lines": 50,
+      "excluded_lines": 0,
+      "missing_lines": 1,
+      "num_statements": 51,
+      "percent_covered": 98.03921568627452,
+      "percent_covered_display": "98",
+      "percent_statements_covered": 98.03921568627452,
+      "percent_statements_covered_display": "98"
+    }
+  },
+  "physical_gpu_attempt_consumed": false,
+  "previous_466_sources_unchanged": true,
+  "previous_controller_v1_artifacts_preserved": true,
+  "prospective_profile": {
+    "data_or_gpu_execution": false,
+    "permission_created": false,
+    "prospective_contract_sha256": "cce2cdce2623db31d872867f9e9d79450620ec6816e57740dec579111650302b",
+    "source_package_sha256": "4d3fccc4d9893e1030452a1c855d766e76bcc98201fc846daff786c19d052fce"
+  },
+  "qa_unit": {
+    "active": false,
+    "exit_us_raw": "0",
+    "final_memory_peak_raw": "[not set]",
+    "final_memory_peak_status": "unavailable",
+    "kernel_interval_status": "unavailable",
+    "observed_restarts": "0",
+    "pid": 0,
+    "restart_policy": "no",
+    "start_us_raw": "0",
+    "telemetry_not_reconstructed_by_rerun": true
+  },
+  "ruff": "passed",
+  "schema": "colab-native-profile-software-verification-v1",
+  "source_amendment": {
+    "changed": [
+      "core/colab_execution.py",
+      "tests/test_colab_execution.py",
+      "tests/test_spatial_colab_profile.py"
+    ],
+    "first_full_log_sha256": "a8fe60ba204388d9a3ed9c876fa0043dc7def450c8a1f4b73c0e295c22ccd4cd",
+    "new_binding": {
+      "data_or_gpu_execution": false,
+      "permission_created": false,
+      "prospective_contract_sha256": "cce2cdce2623db31d872867f9e9d79450620ec6816e57740dec579111650302b",
+      "source_package_sha256": "4d3fccc4d9893e1030452a1c855d766e76bcc98201fc846daff786c19d052fce"
+    },
+    "old_contract_sha256": "7d5550729a9ba777ca8658fc0374e206967fdb0ca4e15856526198ac37d1aa0f",
+    "old_gpu_attempt_consumed": false,
+    "scope": "exiting-process ESRCH handling and strict boolean permission validation; no recipe/data/resource change"
+  },
+  "status": "passed_software_only"
+}

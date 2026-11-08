@@ -1,0 +1,116 @@
+{
+  "closed_receipt_sha256": "e2aaca3cf67b1e9273a8151e0c220958bd34930fdad7116bf097989198b24444",
+  "device": "cpu",
+  "environment_recovered_by_exact_contract_hash": {
+    "implementation": "CPython",
+    "platform": "linux",
+    "python": "3.12.13"
+  },
+  "gpu_operations": 0,
+  "hard_cgroup_ram_or_swap_acceptance": false,
+  "historical_relaunch": false,
+  "media_transfer": false,
+  "observed_session_seconds": 167.81415308600117,
+  "optimizer_updates": 0,
+  "replay": {
+    "closed_receipt_reencoded_sha256_matches": true,
+    "contract_environment_sha256_matches": true,
+    "every_preclosing_file_reconstructed_and_hash_verified": true,
+    "executed_code_cells_match_original_delivery": true,
+    "output_errors": 0,
+    "public_notebook_presentation_repair": {
+      "bootstrap_ast_identical": true,
+      "changed_qa_sources": [
+        "scripts/build-colab-process-notebook.py"
+      ],
+      "executed_notebook_retained": "notebook-delivery-final/png_bmp_colab_process_qa_20261106.ipynb",
+      "gpu_or_worker_changes": false,
+      "new_builder_sha256": "b79f71951ee7e7efe5e00c0a176a6fe07ef48a7fddbaaa3a7a7d9b8a93d38af1",
+      "old_builder_sha256": "2d814f855f46b52e49c3ea99d633027a89e06652b1febf95fe5134dd38938c58",
+      "public_notebook_formatted_sha256": "bde6ab9a90d37a92008e569ccf15b8d1429a50a0ef32faecb4f9f8ec4acb9db9",
+      "run_ast_identical_except_two_sorted_imports": true,
+      "schema": "colab-process-presentation-repair-v1",
+      "source_package_unchanged": true
+    },
+    "worker_result_sha256_matches": true
+  },
+  "result": {
+    "automatic_retry": false,
+    "charged_seconds": 1.4546321990000024,
+    "contract_sha256": "80b53147fcb150de8b93059cb2b70c467cdffd59e344d6de992dc906071a2b1d",
+    "failure": null,
+    "hard_resident_cgroup_limit": "not_enforced",
+    "hard_swap_cgroup_limit": "not_enforced",
+    "kernel_peak_includes_spawn": true,
+    "kernel_worker_cpu_seconds": 0.141653,
+    "kernel_worker_peak_resident_bytes": 107876352,
+    "kind": "generated_qa",
+    "limits": {
+      "address_bytes": 268435456,
+      "closing_seconds": 1,
+      "data_bytes": 134217728,
+      "file_bytes": 1048576,
+      "output_bytes": 8388608,
+      "resident_watch_bytes": 8589934592,
+      "seconds": 10
+    },
+    "live_observed_peak_bytes": 19877888,
+    "logical_output_bytes_before_closing": 1362,
+    "output_files": {
+      "contract.json": {
+        "bytes": 891,
+        "sha256": "80b53147fcb150de8b93059cb2b70c467cdffd59e344d6de992dc906071a2b1d"
+      },
+      "work/worker-result.json": {
+        "bytes": 471,
+        "sha256": "ce447fe5b552a291ebb12562abb69eb0938da93533fd78b937a88f06bcc2b3fe"
+      },
+      "worker.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "policy": "hard-data-limit-and-resident-watch-v1",
+    "resident_observer_gaps": 0,
+    "schema": "colab-process-closed-v1",
+    "status": "completed",
+    "worker": {
+      "action": "success",
+      "contract_sha256": "80b53147fcb150de8b93059cb2b70c467cdffd59e344d6de992dc906071a2b1d",
+      "generated_only": true,
+      "kernel_limits": {
+        "address": [
+          268435456,
+          268435456
+        ],
+        "core": [
+          0,
+          0
+        ],
+        "cpu": [
+          10,
+          10
+        ],
+        "data": [
+          134217728,
+          134217728
+        ],
+        "file": [
+          1048576,
+          1048576
+        ]
+      },
+      "optimizer_updates": 0,
+      "schema": "colab-generated-worker-v1"
+    },
+    "worker_exit": 0,
+    "worker_reaped": true
+  },
+  "runtime_disconnected_deleted": true,
+  "runtime_version_ui": "2026.07",
+  "schema": "colab-process-cpu-validation-v1",
+  "session_ceiling_seconds": 300,
+  "source_package_sha256": "104fcbbc46f1fcee36ca83ca42e1e267e64eace9ed7616d5b0b767fe45fa7d92",
+  "status": "completed_generated_cpu_qa",
+  "torch_import_by_delivered_sources": false
+}

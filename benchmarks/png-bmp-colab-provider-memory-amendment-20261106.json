@@ -1,0 +1,142 @@
+{
+  "actual_pixels_packaged_or_uploaded": false,
+  "added_inputs": {
+    "core/colab_memory.py": "082fda1a0e6936d49f81c6989950419f7ac4a57fa6d792a49dd32b6d7172f80b",
+    "tests/test_colab_memory.py": "2b1ebf598da3f0c8fafea42f44e3afafcc716da476e2b34b28d632064d05ff1d"
+  },
+  "cgroup_counters": "informational_only",
+  "changed_existing_inputs": {
+    "core/colab_execution.py": {
+      "current_sha256": "7a11498c5399b6ad0e7a47caa7d78c48d3379eca9cec3c2a7ec1943a59026374",
+      "prior_sha256": "de2b14a222196702c4fe12363adc845bdbb98c609761e42cfa861cb481d65dc0"
+    },
+    "core/spatial_colab_profile.py": {
+      "current_sha256": "03f1d42a7b62917b5b21190e63b314d91400307c3ee0ab72c5f24c29cdfcc3fc",
+      "prior_sha256": "c1331b6d3e4fccbd059a733517b875250cfe8bdd1f57df29523639be328e2161"
+    },
+    "scripts/build-colab-native-notebook.py": {
+      "current_sha256": "decccdf43f5aa5ec85863d7bad89e3ed83795850b92549cf6e61f42f563ac8b8",
+      "prior_sha256": "95688ffb7f3842ea6d952a1b219512a28261a7076d61a5ca79f2b7bc7e14913b"
+    },
+    "steganography/research_colab_profile.py": {
+      "current_sha256": "ac42bcea6309f38cee7063fe82fed7cdb7b6640a79c3b4608376c2df021d422a",
+      "prior_sha256": "89e8fb49ef95fcdedb92414272285a8e48f4202689fc2ca5cb1f85a3e5e5ace7"
+    },
+    "tests/test_spatial_colab_profile.py": {
+      "current_sha256": "f5165b85d606f608dff1dcffe099de014e2e8796a9e848962957fde0b3c005bb",
+      "prior_sha256": "5189055532983fdf38a63a44194c6a3880e58d317db7c2e91ec043ba6e98e432"
+    }
+  },
+  "current_contract_sha256": "d791914942d070f37b03c9bb5c3710fa7ce5f539d977f909f5b98fe7c912a865",
+  "custom_host_data_or_rss_cap": null,
+  "data_split_recipe_environment_unchanged": true,
+  "first_full_harness_attempt": {
+    "application_or_test_source_changed": false,
+    "exit_code": 2,
+    "first_log_preserved": true,
+    "not_a_code_pass": true,
+    "passed_before_interruption": 182,
+    "reason": "missing basetemp parent directory",
+    "setup_errors": 528,
+    "status": "unavailable_qa_harness",
+    "wrapper_seconds": 25.908348336997733
+  },
+  "focused": {
+    "first_command": {
+      "failed": 2,
+      "not_relabelled": true,
+      "passed": 147,
+      "reason": "legacy generated fixture expected fixed limits; fixture expectations repaired"
+    },
+    "module_statement_coverage": {
+      "core/colab_execution.py": {
+        "covered_lines": 350,
+        "excluded_lines": 0,
+        "missing_lines": 12,
+        "num_statements": 362,
+        "percent_covered": 96.68508287292818,
+        "percent_covered_display": "97",
+        "percent_statements_covered": 96.68508287292818,
+        "percent_statements_covered_display": "97"
+      },
+      "core/colab_memory.py": {
+        "covered_lines": 25,
+        "excluded_lines": 0,
+        "missing_lines": 0,
+        "num_statements": 25,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      },
+      "core/spatial_colab_handoff.py": {
+        "covered_lines": 172,
+        "excluded_lines": 0,
+        "missing_lines": 6,
+        "num_statements": 178,
+        "percent_covered": 96.62921348314607,
+        "percent_covered_display": "97",
+        "percent_statements_covered": 96.62921348314607,
+        "percent_statements_covered_display": "97"
+      },
+      "core/spatial_colab_profile.py": {
+        "covered_lines": 270,
+        "excluded_lines": 0,
+        "missing_lines": 3,
+        "num_statements": 273,
+        "percent_covered": 98.9010989010989,
+        "percent_covered_display": "99",
+        "percent_statements_covered": 98.9010989010989,
+        "percent_statements_covered_display": "99"
+      },
+      "steganography/research_colab_profile.py": {
+        "covered_lines": 50,
+        "excluded_lines": 0,
+        "missing_lines": 1,
+        "num_statements": 51,
+        "percent_covered": 98.03921568627452,
+        "percent_covered_display": "98",
+        "percent_statements_covered": 98.03921568627452,
+        "percent_statements_covered_display": "98"
+      }
+    },
+    "passed": 149,
+    "seconds": 43.28
+  },
+  "full_qa_receipt": "benchmarks/png-bmp-colab-provider-memory-verification-20261106.json",
+  "full_qa_status": "passed_software_only",
+  "gpu_runtime_allocated": false,
+  "historical_generated_cpu_contract_unchanged": true,
+  "kernel_headroom_fraction": 0.1,
+  "limits": {
+    "address_bytes": 0,
+    "closing_seconds": 10,
+    "data_bytes": 0,
+    "file_bytes": 134217728,
+    "output_bytes": 268435456,
+    "resident_watch_bytes": 0,
+    "seconds": 240
+  },
+  "mypy": {
+    "files": 249,
+    "status": "passed"
+  },
+  "native_fit_started": false,
+  "physical_gpu_attempt_consumed": false,
+  "policy": "provider-managed-ram-with-headroom-watch-v1",
+  "previous_resource_question": "obsolete_no_approval",
+  "prior_budgets_or_attempts_reset": false,
+  "prior_contract_sha256": "cce2cdce2623db31d872867f9e9d79450620ec6816e57740dec579111650302b",
+  "prior_proposal_snapshot": "benchmarks/png-bmp-colab-native-profile-preparation-v2-20261106.json",
+  "production_permission_created": false,
+  "provider_runtime_limits_inherited": true,
+  "reason": "user rejects inherited fixed eight-GiB host RAM ceiling",
+  "ruff": "passed",
+  "schema": "colab-native-provider-memory-amendment-v1",
+  "source_bound_inputs": 478,
+  "source_manifest_sha256": "3b381784e2423752c0046053e7aed74647122cb645812a35389587aa6ec42011",
+  "source_package_sha256": "77e3e8dc5e144c1d9cf94089d1ffccd945c9c0c90fb64271871c747d38ec8e90",
+  "status": "software_ready_profile_permission_missing",
+  "tenant_memory_limit_verified": false,
+  "torch_allocator_bytes": 4294967296
+}

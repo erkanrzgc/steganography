@@ -1,0 +1,437 @@
+{
+  "causal_limit": "The separate contributions of data size, optimizer schedule and representation are not identified by a fixed historical run. More data alone is not a demonstrated remedy.",
+  "checkpoint_checks": [
+    {
+      "changed_parameter_tensors_epoch5_to20": 105,
+      "front_and_head": [
+        {
+          "adam_first_moment_rms": 0.00020712100430737924,
+          "adam_second_moment_rms": 9.349900891160934e-07,
+          "changed_elements": 1728,
+          "delta_rms": 0.0010302836636587882,
+          "elements": 1728,
+          "epoch20_rms": 0.27782268698313856,
+          "epoch5_rms": 0.27784105639346984,
+          "name": "front.0.0.weight"
+        },
+        {
+          "adam_first_moment_rms": 0.0024499683766031795,
+          "adam_second_moment_rms": 1.5041267448340427e-05,
+          "changed_elements": 1024,
+          "delta_rms": 0.0006199453623955385,
+          "elements": 1024,
+          "epoch20_rms": 0.00921776191426171,
+          "epoch5_rms": 0.00949038818018341,
+          "name": "classifier.weight"
+        }
+      ],
+      "parameter_count": 4780768,
+      "parameter_tensors": 105,
+      "seed": 2026102301,
+      "states": [
+        {
+          "bn_counter_max": 80,
+          "bn_counter_min": 80,
+          "epoch": 5,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "ef1652a9dd361dd6bf0e5842ca1d24ec8de6db31e6ec31626f764b94bdb97bce",
+          "step_max": 80.0,
+          "step_min": 80.0,
+          "updates": 80
+        },
+        {
+          "bn_counter_max": 160,
+          "bn_counter_min": 160,
+          "epoch": 10,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "392268082681c4985a7f504ee44fbec86c1e8aacbbd9e4d4767abe893a6981d1",
+          "step_max": 160.0,
+          "step_min": 160.0,
+          "updates": 160
+        },
+        {
+          "bn_counter_max": 240,
+          "bn_counter_min": 240,
+          "epoch": 15,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "e93e5d8257c162fd1eeb639b4004eaf26e43127774d78ac93b8564086c22d499",
+          "step_max": 240.0,
+          "step_min": 240.0,
+          "updates": 240
+        },
+        {
+          "bn_counter_max": 320,
+          "bn_counter_min": 320,
+          "epoch": 20,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "a5739ae7c41f2225ccf752e8fd044a676b252c5dc4b1f3b9ffd665c61ae08a56",
+          "step_max": 320.0,
+          "step_min": 320.0,
+          "updates": 320
+        }
+      ]
+    },
+    {
+      "changed_parameter_tensors_epoch5_to20": 105,
+      "front_and_head": [
+        {
+          "adam_first_moment_rms": 0.0006467115746467823,
+          "adam_second_moment_rms": 2.5700420499986225e-06,
+          "changed_elements": 1728,
+          "delta_rms": 0.0014241761161979778,
+          "elements": 1728,
+          "epoch20_rms": 0.26925200304904534,
+          "epoch5_rms": 0.26926817126690467,
+          "name": "front.0.0.weight"
+        },
+        {
+          "adam_first_moment_rms": 0.001426009901981649,
+          "adam_second_moment_rms": 1.7664048760373396e-05,
+          "changed_elements": 1024,
+          "delta_rms": 0.0009085962004576856,
+          "elements": 1024,
+          "epoch20_rms": 0.009206044416950228,
+          "epoch5_rms": 0.009637941183278957,
+          "name": "classifier.weight"
+        }
+      ],
+      "parameter_count": 4780768,
+      "parameter_tensors": 105,
+      "seed": 2026102302,
+      "states": [
+        {
+          "bn_counter_max": 80,
+          "bn_counter_min": 80,
+          "epoch": 5,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "a825052c24d01a4edb5a4c792fa895f1fcc66c06b75fb6deae0f53a972684d52",
+          "step_max": 80.0,
+          "step_min": 80.0,
+          "updates": 80
+        },
+        {
+          "bn_counter_max": 160,
+          "bn_counter_min": 160,
+          "epoch": 10,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "fe09e58de7998f36f905aa1d2cd42bf82188c6ac47415bad29abb4026060a26a",
+          "step_max": 160.0,
+          "step_min": 160.0,
+          "updates": 160
+        },
+        {
+          "bn_counter_max": 240,
+          "bn_counter_min": 240,
+          "epoch": 15,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "9fb934584bf68270d76a28e3b0edebf04dd340560e92865bb653012e1be72d84",
+          "step_max": 240.0,
+          "step_min": 240.0,
+          "updates": 240
+        },
+        {
+          "bn_counter_max": 320,
+          "bn_counter_min": 320,
+          "epoch": 20,
+          "nonzero_second_moment_parameter_tensors": 105,
+          "parameters": 105,
+          "sha256": "daba5a83de5bd24c0d767b721b88a698a7553adb00fbc18a7b44a15923cadc90",
+          "step_max": 320.0,
+          "step_min": 320.0,
+          "updates": 320
+        }
+      ]
+    }
+  ],
+  "cpu_probe": {
+    "batchnorm_running_buffers_restored_before_every_batch_and_after_probes": true,
+    "cells": [
+      {
+        "all_gradients_present_and_finite": true,
+        "all_parameters_unchanged": true,
+        "batch_statistics_diagnostic": {
+          "cross_source_auc": 0.5071924603174603,
+          "global_auc": 0.512939453125,
+          "originals": 64,
+          "pair_delta_max": 0.014970004558563232,
+          "pair_delta_mean": 0.0012317653745412827,
+          "pair_delta_min": -0.00026869773864746094,
+          "pair_delta_rms": 0.0025654746636991628,
+          "paired_correct": 56,
+          "paired_ordering": 0.875,
+          "paired_ties": 0,
+          "score_max": 0.6201856732368469,
+          "score_min": 0.38114193081855774,
+          "source_midpoint_sd": 0.05398694915616953,
+          "source_sd_over_pair_delta_rms": 21.043649317637634
+        },
+        "batch_statistics_is_deployable": false,
+        "eval_max_abs_difference_from_saved_gpu_scores": 1.7881393432617188e-07,
+        "gradient_tensors": 105,
+        "nonzero_gradient_tensors": 105,
+        "seed": 2026102301,
+        "train_eval": {
+          "cross_source_auc": 0.5009920634920635,
+          "global_auc": 0.505615234375,
+          "originals": 64,
+          "pair_delta_max": 0.004200786352157593,
+          "pair_delta_mean": 0.00041248975321650505,
+          "pair_delta_min": -0.0008328557014465332,
+          "pair_delta_rms": 0.0009574510786790588,
+          "paired_correct": 51,
+          "paired_ordering": 0.796875,
+          "paired_ties": 0,
+          "score_max": 0.8895363807678223,
+          "score_min": 0.33200183510780334,
+          "source_midpoint_sd": 0.10099522183145057,
+          "source_sd_over_pair_delta_rms": 105.48342790608996
+        }
+      },
+      {
+        "all_gradients_present_and_finite": true,
+        "all_parameters_unchanged": true,
+        "batch_statistics_diagnostic": {
+          "cross_source_auc": 0.5314980158730159,
+          "global_auc": 0.538330078125,
+          "originals": 64,
+          "pair_delta_max": 0.028096675872802734,
+          "pair_delta_mean": 0.004161181394010782,
+          "pair_delta_min": -6.765127182006836e-05,
+          "pair_delta_rms": 0.007730980975698575,
+          "paired_correct": 62,
+          "paired_ordering": 0.96875,
+          "paired_ties": 0,
+          "score_max": 0.5772044658660889,
+          "score_min": 0.4237668812274933,
+          "source_midpoint_sd": 0.03199042600758417,
+          "source_sd_over_pair_delta_rms": 4.137951717659414
+        },
+        "batch_statistics_is_deployable": false,
+        "eval_max_abs_difference_from_saved_gpu_scores": 3.5762786865234375e-07,
+        "gradient_tensors": 105,
+        "nonzero_gradient_tensors": 105,
+        "seed": 2026102302,
+        "train_eval": {
+          "cross_source_auc": 0.5076884920634921,
+          "global_auc": 0.5146484375,
+          "originals": 64,
+          "pair_delta_max": 0.00648266077041626,
+          "pair_delta_mean": 0.0013492456637322903,
+          "pair_delta_min": -2.3663043975830078e-05,
+          "pair_delta_rms": 0.0019365620159539185,
+          "paired_correct": 61,
+          "paired_ordering": 0.953125,
+          "paired_ties": 0,
+          "score_max": 0.6212793588638306,
+          "score_min": 0.34361568093299866,
+          "source_midpoint_sd": 0.046045272790365764,
+          "source_sd_over_pair_delta_rms": 23.776812935001526
+        }
+      }
+    ],
+    "device": "cpu",
+    "gradient_only_batches": 2,
+    "gradient_only_rows": 16,
+    "is_original_environment_resume": false,
+    "new_inference_rows": 512,
+    "numpy": "2.4.6",
+    "python": "3.11.14",
+    "threads": 2,
+    "torch": "2.14.0+cpu"
+  },
+  "data_checks": {
+    "changed_fraction": {
+      "maximum": 0.20150248209635416,
+      "mean": 0.20003890991210938,
+      "minimum": 0.19827779134114584
+    },
+    "cover_lsb_ones": {
+      "maximum": 0.63958740234375,
+      "mean": 0.502920389175415,
+      "minimum": 0.3461354573567708
+    },
+    "dtype": "float32",
+    "paired_labels": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1
+    ],
+    "scalar_payload_checks": 64,
+    "stego_lsb_ones": {
+      "maximum": 0.5839945475260416,
+      "mean": 0.5018009344736735,
+      "minimum": 0.4085845947265625
+    },
+    "train_cache_exactly_matches_transferred_packet": true,
+    "unique_train_crop_hashes": 64,
+    "unique_values": {
+      "maximum": 256,
+      "mean": 210.671875,
+      "minimum": 58
+    },
+    "upper_seven_bits_preserved": true
+  },
+  "date": "2026-11-07",
+  "diagnostic_closed_sha256": "36828bc747c78e7be88fbfe38cdc6e1187fb1999ea31ce637bfc72d602f68741",
+  "diagnostic_script_sha256": "2b7fb93bdd9399230d3982bc279041d342010ba41c57d659ccada024ac9495be",
+  "finding": "source_score_variation_dominates_weak_paired_embedding_response",
+  "generated_control_comparison": {
+    "cover_lsb_ones": 0.0,
+    "note": "Generated covers force every low bit to zero. This permits a strong artificial class cue; the observation does not establish which feature the earlier models used.",
+    "recipe": "generated-even-spatial-scattered-40p0-v1",
+    "stego_lsb_ones_one_illustrative_generated_pair": 0.19945780436197916
+  },
+  "interpretation": {
+    "candidate_contributors": [
+      "64 heterogeneous training originals for 4780768 parameters",
+      "only 320 optimizer updates per seed from random initialization",
+      "insufficient content suppression in learned representation"
+    ],
+    "next_experiment_design_only": "Separate native tiny-subset memorization from generalization, then compare data size at equal update count with matched initialization/order and realistic positive/negative controls. No new fit is authorized by this report.",
+    "not_identified": [
+      "effect_of_more_data",
+      "effect_of_more_updates",
+      "best_optimizer_or_learning_rate",
+      "causal_feature_learned_by_generated_control"
+    ],
+    "supported": [
+      "Weak positive within-original response exists but is swamped by between-original score offsets.",
+      "No label inversion, missing optimizer updates, frozen parameters or broken payload is evidenced by these checks.",
+      "Changing only BatchNorm to current-batch statistics does not recover useful ranking in the measured train-only diagnostic.",
+      "The earlier even-valued synthetic positive control does not validate native learnability."
+    ]
+  },
+  "original_closed_sha256": "a8f3be7b1044c538b86f35ace0c539e313ead90a1b250a9b2ddcffcf91a0feb2",
+  "original_learning_status": "failed_learning_gate",
+  "private_evidence_sha256": {
+    "checkpoint-analysis.json": "24341bf5afa77d234fa9345b6b393dfce696480d36f27dc864324c8b45f74c8b",
+    "cpu-model-analysis.json": "2f0ae96474cdeb5239d76d84cb892918a3e46bda092f7e5648123d85290965c7",
+    "saved-score-analysis.json": "96a2b831bc4249b651e205ffa03cdb0e953af9c71eccdb95a3dd4d4ae16d0939",
+    "scope.json": "0fddf8e0390089ee7d8291491da499fc08520abb2fed2d635d9ca0461bab8864",
+    "train-data-analysis.json": "7e2a7d6732719348aa7e82c0d0e6a9dceda3f1653fd10744bd31b9d4864aa7a6"
+  },
+  "references": [
+    {
+      "title": "Original SRNet paper, architecture and training setup",
+      "url": "https://ws.binghamton.edu/fridrich/Research/SRNet.pdf"
+    },
+    {
+      "title": "PyTorch 2.11 BatchNorm2d, training/evaluation statistics",
+      "url": "https://docs.pytorch.org/docs/2.11/generated/torch.nn.BatchNorm2d.html"
+    }
+  ],
+  "resource_limits": {
+    "cpu_hang_guard_seconds": 600,
+    "data_segment_bytes": 8589934592,
+    "resident_ram_enforcement": "unavailable"
+  },
+  "resources": {
+    "cpu_seconds": 126.357731,
+    "elapsed_seconds": 72.48463982500016,
+    "kernel_peak_rss_bytes": 2036563968
+  },
+  "schema": "png-bmp-native-rgb-diagnosis-v1",
+  "scope": {
+    "GPU_requests": 0,
+    "L_pixel_reads": 0,
+    "checkpoint_writes": 0,
+    "development_pixel_reads": 0,
+    "development_saved_score_originals": 20,
+    "network_requests": 0,
+    "optimizer_creation": false,
+    "optimizer_updates": 0,
+    "reserved_pixel_reads": 0,
+    "train_originals": 64,
+    "unchanged_application_test_script_bindings": 522,
+    "unchanged_original_checkpoints": 8
+  },
+  "score_analysis": [
+    {
+      "final": {
+        "development": {
+          "cross_source_auc": 0.5052631578947369,
+          "global_auc": 0.5175,
+          "originals": 20,
+          "pair_delta_max": 0.0015645325183868408,
+          "pair_delta_mean": 0.0002787888050079346,
+          "pair_delta_min": -8.952617645263672e-05,
+          "pair_delta_rms": 0.0004851119785090082,
+          "paired_correct": 15,
+          "paired_ordering": 0.75,
+          "paired_ties": 0,
+          "score_max": 0.6302182078361511,
+          "score_min": 0.41680341958999634,
+          "source_midpoint_sd": 0.059873703229261305,
+          "source_sd_over_pair_delta_rms": 123.4224382858637
+        },
+        "train": {
+          "cross_source_auc": 0.5009920634920635,
+          "global_auc": 0.505615234375,
+          "originals": 64,
+          "pair_delta_max": 0.0042008161544799805,
+          "pair_delta_mean": 0.000412491150200367,
+          "pair_delta_min": -0.0008327960968017578,
+          "pair_delta_rms": 0.0009574543449904152,
+          "paired_correct": 51,
+          "paired_ordering": 0.796875,
+          "paired_ties": 0,
+          "score_max": 0.8895363807678223,
+          "score_min": 0.33200186491012573,
+          "source_midpoint_sd": 0.10099521446002932,
+          "source_sd_over_pair_delta_rms": 105.4830603552594
+        }
+      },
+      "seed": 2026102301
+    },
+    {
+      "final": {
+        "development": {
+          "cross_source_auc": 0.5026315789473684,
+          "global_auc": 0.5275,
+          "originals": 20,
+          "pair_delta_max": 0.004968374967575073,
+          "pair_delta_mean": 0.0009869128465652467,
+          "pair_delta_min": 5.4776668548583984e-05,
+          "pair_delta_rms": 0.001463855999043383,
+          "paired_correct": 20,
+          "paired_ordering": 1.0,
+          "paired_ties": 0,
+          "score_max": 0.6130520105361938,
+          "score_min": 0.31164678931236267,
+          "source_midpoint_sd": 0.06389633380822156,
+          "source_sd_over_pair_delta_rms": 43.649330159508345
+        },
+        "train": {
+          "cross_source_auc": 0.5076884920634921,
+          "global_auc": 0.5146484375,
+          "originals": 64,
+          "pair_delta_max": 0.006482601165771484,
+          "pair_delta_mean": 0.0013492447324097157,
+          "pair_delta_min": -2.3663043975830078e-05,
+          "pair_delta_rms": 0.00193655471681585,
+          "paired_correct": 61,
+          "paired_ordering": 0.953125,
+          "paired_ties": 0,
+          "score_max": 0.6212793588638306,
+          "score_min": 0.34361574053764343,
+          "source_midpoint_sd": 0.04604526439296827,
+          "source_sd_over_pair_delta_rms": 23.776898216786503
+        }
+      },
+      "seed": 2026102302
+    }
+  ],
+  "status": "completed_read_only_diagnosis"
+}

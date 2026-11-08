@@ -1,0 +1,73 @@
+{
+  "actual_roles": "unassigned",
+  "command_limits": {
+    "address_bytes": 0,
+    "closing_seconds": 20,
+    "data_bytes": 0,
+    "file_bytes": 134217728,
+    "output_bytes": 499821368,
+    "resident_watch_bytes": 0,
+    "seconds": 1370.7024599469999
+  },
+  "components": {
+    "consumed_profile_compatibility": "ready",
+    "explicit_fit_permission": "missing",
+    "future_GPU_allocation": "unavailable",
+    "generated_software_QA": "ready",
+    "reviewable_fit_contract": "ready",
+    "source_delivery": "ready"
+  },
+  "cumulative_output_bytes": 805306368,
+  "cumulative_seconds": 2700,
+  "fit_contract_sha256": "7a45cab6774388e9eb156af90eb4c10c962f522a6a2ad6678853fb88e65d7b94",
+  "fit_permission_created": false,
+  "fit_projection_seconds": 1311.131131086032,
+  "future_export_delete_limit_seconds": 150,
+  "future_external_seconds_reserved": 300,
+  "future_gpu_account_allocation": "unverified",
+  "future_prelaunch_limit_seconds": 150,
+  "initial_allocation_age_required": true,
+  "l_sources_closed": 13,
+  "margin_after_required_30_seconds": 29.571328860967924,
+  "native_hard_cgroup_ram_and_zero_swap": "unavailable",
+  "native_optimizer_updates": 0,
+  "new_profile_attempts": 0,
+  "old_1800_second_contract": "unchanged_ineligible",
+  "old_operator_session_target": "missed_preserved",
+  "output_margin_bytes": 15410664,
+  "preserved_external_seconds": 950,
+  "prior_and_reserved_output_bytes": 305485000,
+  "prior_and_reserved_seconds": 1329.2975400530001,
+  "profile_receipt_sha256": "326b09839a7c57b22652305d98fc24a998c256ff65c8239e38c2db1dbeb5c448",
+  "real_media_acquisition": false,
+  "real_media_pixel_access": false,
+  "recipe": {
+    "amp": false,
+    "batch_images": 8,
+    "checkpoint_epochs": [
+      5,
+      10,
+      15,
+      20
+    ],
+    "development_auc": 0.7,
+    "development_every_epoch": true,
+    "epochs": 20,
+    "fit_updates": 640,
+    "last_loss_fraction": 0.8,
+    "payload_seed": 2026102805,
+    "precision": "float32-ieee",
+    "presentations": 5120,
+    "seeds": [
+      2026102301,
+      2026102302
+    ],
+    "tf32": false,
+    "train_auc": 0.85
+  },
+  "reserved_rgb_closed": 21,
+  "schema": "colab-cumulative-amendment-preparation-v1",
+  "source_packet_sha256": "a465948b02d85321f802535143ddccb0a0d781f7bb8f029b8b99427013b951f1",
+  "status": "ready_for_explicit_fit_approval",
+  "verification": "benchmarks/png-bmp-colab-cumulative-amendment-verification-20261107.json"
+}

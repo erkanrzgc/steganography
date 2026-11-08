@@ -1,0 +1,165 @@
+{
+  "additional_read_only_audit_debit_seconds": 4,
+  "approval_granted": false,
+  "attempt_consumed": true,
+  "automatic_retry": false,
+  "checkpoints": [
+    {
+      "bytes": 57405636,
+      "name": "generated-0.numeric",
+      "numeric_arrays_verified": 503,
+      "order_replayed": true,
+      "sha256": "60197893c080524eb2e463d7ba5b2d1b13c7c7f38f82494543ce02385448a7b8",
+      "updates": 3
+    },
+    {
+      "bytes": 57405636,
+      "name": "generated-1.numeric",
+      "numeric_arrays_verified": 503,
+      "order_replayed": true,
+      "sha256": "f24a40519eb2c99eae6c5850c3ca4f99e1bb0d8ae1681c27804f553742599212",
+      "updates": 3
+    }
+  ],
+  "controller_kernel_execution_seconds": 48.680403,
+  "controller_unit": {
+    "ActiveState": "active",
+    "ExecMainExitTimestampMonotonic": "4291341208",
+    "ExecMainStartTimestampMonotonic": "4242660805",
+    "ExecMainStatus": "0",
+    "MainPID": "0",
+    "Restart": "no",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "cuda_peak": {
+    "allocated_bytes": 3849421824,
+    "reserved_bytes": 3995074560
+  },
+  "deployed_models": 0,
+  "environment": {
+    "cuda": "13.0",
+    "cudnn": 92400,
+    "driver": "617.42",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "numpy": "2.4.6",
+    "pillow": "12.3.0",
+    "python": "3.12.3",
+    "torch": "2.14.0+cu130"
+  },
+  "fit_projection_seconds": 1717.2984932069169,
+  "generated_optimizer_updates": 6,
+  "independent_per_seed_costs": [
+    {
+      "conservative_fit_seconds": 414.66152713646375,
+      "seed": 2026102301
+    },
+    {
+      "conservative_fit_seconds": 1302.6369660704531,
+      "seed": 2026102302
+    }
+  ],
+  "initial_missing_dbus_preflight_preserved": true,
+  "kernel_host_limit_bytes": 8589934592,
+  "kernel_peak_host_bytes": 2370605056,
+  "kernel_swap_limit_bytes": 0,
+  "native_accuracy_inferred": false,
+  "native_backward_presentations": 48,
+  "native_evaluation_presentations": 256,
+  "native_optimizer_updates": 0,
+  "native_parameters_unchanged": true,
+  "native_roles": "unassigned",
+  "per_seed": [
+    {
+      "checkpoint_bytes": 57405636,
+      "checkpoint_restore_seconds": 0.19919347399991238,
+      "checkpoint_sha256": "60197893c080524eb2e463d7ba5b2d1b13c7c7f38f82494543ce02385448a7b8",
+      "checkpoint_write_seconds": 0.41864422999969975,
+      "generated_initialization_seconds": 0.06174013299960279,
+      "generated_memory": {
+        "allocated_bytes": 3849421824,
+        "reserved_bytes": 3995074560
+      },
+      "generated_optimizer_updates": 3,
+      "generated_step_seconds": [
+        0.6172821470004237,
+        0.38837220200002776,
+        0.36708259099987117
+      ],
+      "native_forward_backward_seconds": [
+        2.6285080530001323,
+        0.356238342999859,
+        0.32248114399999395
+      ],
+      "native_initialization_seconds": 2.598570269999982,
+      "native_memory": {
+        "allocated_bytes": 3810477056,
+        "reserved_bytes": 3934257152
+      },
+      "native_optimizer_updates": 0,
+      "native_parameters_unchanged": true,
+      "native_train_evaluation": {
+        "max_pair_seconds": 0.07758322900008352,
+        "optimizer_updates": 0,
+        "originals": 64,
+        "role": "train",
+        "seconds": 3.6611614160010504
+      },
+      "seed": 2026102301
+    },
+    {
+      "checkpoint_bytes": 57405636,
+      "checkpoint_restore_seconds": 1.4060857720000968,
+      "checkpoint_sha256": "f24a40519eb2c99eae6c5850c3ca4f99e1bb0d8ae1681c27804f553742599212",
+      "checkpoint_write_seconds": 2.701938453999901,
+      "generated_initialization_seconds": 0.20575256800020725,
+      "generated_memory": {
+        "allocated_bytes": 3849421824,
+        "reserved_bytes": 3995074560
+      },
+      "generated_optimizer_updates": 3,
+      "generated_step_seconds": [
+        0.6066302790000009,
+        0.8155064580000726,
+        1.905971597000189
+      ],
+      "native_forward_backward_seconds": [
+        0.40813122299960014,
+        0.50483568799973,
+        0.3471340279998003
+      ],
+      "native_initialization_seconds": 0.05838542299989058,
+      "native_memory": {
+        "allocated_bytes": 3849421824,
+        "reserved_bytes": 3995074560
+      },
+      "native_optimizer_updates": 0,
+      "native_parameters_unchanged": true,
+      "native_train_evaluation": {
+        "max_pair_seconds": 0.3587504639999679,
+        "optimizer_updates": 0,
+        "originals": 64,
+        "role": "train",
+        "seconds": 10.559643308001341
+      },
+      "seed": 2026102302
+    }
+  ],
+  "private_package_files": 354,
+  "private_package_logical_bytes": 119847933,
+  "profile_charged_seconds": 52.546350842999345,
+  "profile_closed_sha256": "10451b458524bddc28f94c39ef8ac7e87f82ea479db1669d3f034262078dbc41",
+  "profile_plus_independent_audit_debit_seconds": 56.546350842999345,
+  "profile_unit": {
+    "ActiveState": "inactive",
+    "MainPID": "0",
+    "Restart": "no"
+  },
+  "protocol_sha256": "024f575186008867d66ab9e4760c858faa53f516d6fd85f4771e8ae20494a618",
+  "reserved_pixels_opened": 0,
+  "schema": "spatial-rgb-native-profile-closeout-v1",
+  "staging_receipt_collision_preserved": true,
+  "status": "profile_ready",
+  "worker_seconds": 34.51532625699974,
+  "wsl_kernel_execution_seconds": 42.777769
+}

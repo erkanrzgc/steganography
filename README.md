@@ -5,13 +5,11 @@
 [![Status](https://img.shields.io/badge/status-beta-64748B?style=flat-square)](docs/ROADMAP.md)
 [![License](https://img.shields.io/badge/license-MIT-0F766E?style=flat-square)](LICENSE)
 
-A local Python toolkit for steganography analysis, payload recovery, and digital
-forensics. Inspect suspicious files, investigate CTF challenges, and preserve
-findings with traceable evidence and portable reports.
+A local Python toolkit for steganography analysis, payload recovery, CTF
+investigation and digital forensics, with traceable evidence and portable reports.
 
-Use the CLI, guided terminal workbench, or optional browser/API. All interfaces
-share the same application services. Analysis runs locally, without cloud AI
-providers or cloud uploads.
+CLI, terminal workbench and optional browser/API share application services.
+Analysis runs locally, without cloud AI providers or uploads.
 
 [Getting started](docs/GETTING_STARTED.md) · [Documentation](docs/README.md) ·
 [Research status](docs/STATUS.md) · [Security](SECURITY.md)
@@ -43,9 +41,9 @@ steganography tui
 On Windows, activate with `.\.venv\Scripts\Activate.ps1`. The distribution is
 `steganography-dfir`; the command and import are `steganography`.
 
-The base installation requires no external analysis tools and includes no model
-weights or datasets. Optional tools and research dependencies have separate setup
-and licensing requirements. Model and dataset acquisition is explicit.
+The base installation includes no external tools, model weights or datasets.
+Optional tools and research dependencies have separate setup and licensing
+requirements. Model and dataset acquisition is explicit.
 
 For the optional browser workspace and API:
 
@@ -54,8 +52,8 @@ python -m pip install '.[api]'
 steganography ui
 ```
 
-Open `http://127.0.0.1:8000`. See
-[Getting started](docs/GETTING_STARTED.md) for authentication, Docker, and vault setup.
+Open `http://127.0.0.1:8000`; [setup](docs/GETTING_STARTED.md)
+covers authentication, Docker and vaults.
 
 ## Common workflows
 
@@ -78,8 +76,8 @@ steganography extract --in stego.png --out recovered.bin \
   --password-stdin --no-clobber
 ```
 
-Press `?` in the TUI for keyboard help. The [CLI reference](docs/CLI.md) covers
-profiles, limits, cases, optional tools, and research commands.
+Press `?` for TUI help. See the [CLI reference](docs/CLI.md) for profiles, limits,
+cases, tools and research commands.
 
 ## Format coverage
 
@@ -116,8 +114,8 @@ and [limitations](docs/LIMITATIONS.md).
 
 ## Training results
 
-Controlled development evaluations, **2026-10-14–23**. Balanced accuracy averages
-recall and specificity; these matched cells have equal cover/stego counts.
+Controlled development evaluations, **2026-10-14–11-07**. Balanced accuracy averages
+recall and specificity.
 **ROC-AUC measures ranking, not accuracy.** Ranges span both seeds and all
 reported arms/cells, not confidence intervals or expected real-world accuracy.
 
@@ -129,12 +127,14 @@ reported arms/cells, not confidence intervals or expected real-world accuracy.
 | JPEG refinement, all arms | BOWS2 | 50.00–71.09% | 0.502–0.787 |
 | PNG/BMP linear, all variants | BOWS2 | 50.00–100.00% | 0.609–1.000 |
 | PNG/BMP linear, all variants | DIV2K | 50.00–93.75% | 0.547–1.000 |
+| PNG/BMP RGB SRNet, native pilot | Commons | — | 0.518–0.528 |
 | WAV linear, parity/residual | ESC-50 | 50.00% | 0.484–0.547 |
 | WAV linear, parity/residual | FSDD | 50.00% | 0.359–0.656 |
 | WAV standardized pair head | AudioMNIST | 47.75–78.75% | 0.467–0.933 |
 
 Older non-JPEG pilots use eight development originals/source; JPEG uses
-64 pairs/source. AudioMNIST uses 200 development cuts grouped by ten speakers.
+64 pairs/source. Commons uses 20 originals in twelve groups; AudioMNIST uses
+200 development cuts grouped by ten speakers.
 No model is qualified or deployed.
 
 **Latest AudioMNIST pilot:** two seeds completed **2,280 total optimizer updates**.
@@ -156,17 +156,15 @@ Protocols, source bindings, failures, and per-seed evidence:
 [native linear pilots](docs/NONJPEG_PROCESS_PREFLIGHT_RESULTS.md),
 [generated comparison](docs/WAV_PAIR_COMPARISON_RESULTS_20261022.md).
 
-[PNG/BMP Colab](notebooks/png-bmp-colab/png_bmp_capacity.ipynb) ·
-[native preparation](docs/PNG_BMP_NATIVE_EXPANSION_RESULTS_20261023.md) ·
-[local generated SRNet control](docs/PNG_BMP_GENERATED_CONTROL_RESULTS_20261028.md).
-The four local gray/RGB cells pass their generated-only learning rule;
-native deep-model accuracy and a native fitting allowance remain unavailable.
+[PNG/BMP RGB Colab result](docs/PNG_BMP_COLAB_NATIVE_RGB_RESULTS_20261107.md):
+**640 native updates**; development AUC **0.518 /0.528**. The learning rule failed.
+[Curves](docs/assets/png-bmp-native-colab-20261107.svg); grayscale remains unavailable.
 
 ## Development and licensing
 
-Recorded CPU gate: **4,008 tests passed**, two explicit CUDA skips,
-**97.13% coverage**.
-[Verification evidence](benchmarks/png-bmp-generated-control-verification-20261028.json).
+Recorded CPU gate: **4,396 tests passed**, two explicit CUDA skips,
+**97.23% coverage**.
+[Verification evidence](benchmarks/png-bmp-colab-cumulative-amendment-verification-20261107.json).
 Setup, checks, and contribution rules: [CONTRIBUTING.md](CONTRIBUTING.md).
 Report vulnerabilities through [SECURITY.md](SECURITY.md).
 

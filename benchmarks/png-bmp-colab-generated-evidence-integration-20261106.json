@@ -1,0 +1,20 @@
+{
+  "actual_media_opened": false,
+  "archive_bytes": 115939468,
+  "archive_members": 25,
+  "archive_sha256": "d3c2a70a100edce8807b83641edc65679f744d0b49ab519a3272f4513f9dedca",
+  "arrays_verified": [
+    502,
+    502
+  ],
+  "commits_verified": 6,
+  "logical_output_bytes_before_closing": 231871115,
+  "numeric_checkpoints_verified": 2,
+  "optimizer_updates_performed_by_this_audit": 0,
+  "output_ceiling_bytes": 268435456,
+  "physical_cuda": false,
+  "schema": "colab-generated-cpu-evidence-integration-v1",
+  "seconds": 1.217172787997697,
+  "status": "verified_generated_only",
+  "torch_imported_by_auditor": false
+}

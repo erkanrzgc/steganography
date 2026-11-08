@@ -1,0 +1,40 @@
+{
+  "schema": "png-bmp-colab-return-readiness-v1",
+  "date": "2026-11-06",
+  "backend_selection": "Google Colab",
+  "status": "metadata_ready_only",
+  "observation_method": "ordinary_browser_ui",
+  "runtime_version": "2026.07",
+  "accelerator": "CPU",
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.0.2",
+    "Pillow": "11.3.0",
+    "torch": "2.11.0+cpu",
+    "onnx": "unavailable",
+    "onnxruntime": "unavailable"
+  },
+  "cgroup_metadata": "unavailable",
+  "resource_enforcement": "unavailable",
+  "pro_status": "no_active_entitlement_shown_in_subscription_ui",
+  "gpu_allocation": "not_requested",
+  "first_comparison": {
+    "status": "unavailable_pinned_environment",
+    "expected_torch": "2.11.0+cu128",
+    "observed_torch": "2.11.0+cpu",
+    "preserved_notebook_sha256": "4aed4699467b1c0fd76439b867266ec1104582c784bc9361a3cc1e0d82a19642"
+  },
+  "corrected_cpu_metadata": "passed",
+  "runtime_closed": true,
+  "gpu_profiles": 0,
+  "optimizer_updates": 0,
+  "native_uploads": 0,
+  "model_uploads": 0,
+  "package_installs": 0,
+  "historical_attempts_restarted": 0,
+  "source_files_checked": 464,
+  "source_files_changed": 0,
+  "new_full_suite": "not_run_unchanged_application_test_sources",
+  "evidence": "Account-bearing screenshots and first diagnostic record retained privately.",
+  "notebook_sha256": "c13bb967cb1342bfbf980ed7fcf32f80d15e646821d3739c736bf7e35796ed5b"
+}

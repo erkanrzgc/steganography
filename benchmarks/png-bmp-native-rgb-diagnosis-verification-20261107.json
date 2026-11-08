@@ -1,0 +1,17 @@
+{
+  "diagnostic_closed_sha256": "36828bc747c78e7be88fbfe38cdc6e1187fb1999ea31ce637bfc72d602f68741",
+  "elapsed_seconds": 0.28149435900013486,
+  "figure_sha256": "beb0f4ca326073edc662678526897b35e7540d060e54e4427904727a2078f1f4",
+  "final_score_arrays": 4,
+  "independent_scalar_auc_comparisons": 8992,
+  "model_execution": false,
+  "native_pixel_reads": 0,
+  "original_checkpoint_hashes": 8,
+  "original_trial_status": "failed_learning_gate",
+  "public_result_sha256": "4eb17d1a3d3cd2ae9d7482b6f383ef054188655a70a871f7cb224ca768d0753f",
+  "schema": "native-rgb-diagnosis-independent-verification-v1",
+  "script_sha256": "2ee871618ccd8f58bc026d9f942d22d30948f0a78c4a8cc31c1bdd5634a64029",
+  "status": "passed",
+  "torch_imports": 0,
+  "unchanged_software_bindings": 522
+}

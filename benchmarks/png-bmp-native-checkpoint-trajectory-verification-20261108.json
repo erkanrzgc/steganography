@@ -1,0 +1,15 @@
+{
+  "elapsed_seconds": 0.2859681650006678,
+  "independent_scalar_auc_comparisons": 32768,
+  "new_model_execution": false,
+  "original_checkpoint_hashes": 8,
+  "pixel_reads": 0,
+  "private_scores_sha256": "ddffcd8c07c321f671bb10b18ef6879c887821993099d303d72c499aae1ef3be",
+  "public_result_sha256": "5d79471a83f720bd3d1a8fb89e32834abcbe72df65d11cf731e95fe14696111b",
+  "schema": "native-rgb-checkpoint-trajectory-verification-v1",
+  "score_arrays": 8,
+  "script_sha256": "0e4e1b7d6fa48fc879b6f5e4fe171809738be39b5c093064725877d5aaac8c44",
+  "software_bindings": 522,
+  "status": "passed",
+  "torch_imports": 0
+}

@@ -1,0 +1,10 @@
+{
+  "contract_sha256": "7a45cab6774388e9eb156af90eb4c10c962f522a6a2ad6678853fb88e65d7b94",
+  "cumulative_seconds": 2700,
+  "kind": "native_fit",
+  "profile_receipt_sha256": "326b09839a7c57b22652305d98fc24a998c256ff65c8239e38c2db1dbeb5c448",
+  "resource_acknowledgement": "hard_cgroup_ram_and_swap_not_enforced",
+  "resource_amendment": "colab-rgb-cumulative-2700s-20261107-v1",
+  "schema": "colab-fit-permission-v2",
+  "user_approved": false
+}

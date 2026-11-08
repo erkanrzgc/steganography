@@ -1,0 +1,75 @@
+{
+  "schema": "png-bmp-colab-gpu-inventory-results-v1",
+  "date": "2026-11-06",
+  "status": "partial_gpu_metadata_ready_resource_unavailable",
+  "gpu_allocation_requests": 1,
+  "gpu_query_invocations": 1,
+  "initial_inventory": {
+    "failure_type": "ValueError",
+    "models_created": 0,
+    "optimizer_updates": 0,
+    "package_metadata_matches": true,
+    "packages": {
+      "Pillow": "11.3.0",
+      "numpy": "2.0.2",
+      "onnx": "unavailable",
+      "onnxruntime": "unavailable",
+      "torch": "2.11.0+cu128"
+    },
+    "profile_attempt_started": false,
+    "python": "3.12.13",
+    "resource_enforcement": "unverified",
+    "runtime_version_selected": "2026.07",
+    "schema": "colab-gpu-inventory-v1",
+    "seconds": 0.03511143399998673,
+    "status": "unavailable_inventory",
+    "tensor_operations": 0,
+    "torch_imported": false
+  },
+  "initial_inventory_sha256": "08017f769fdbb51ae41ef6475ea0f8ede8e4f254c6542ef7ee2bb40cb5cd5042",
+  "independent_same_allocation_closing": {
+    "cgroup_identity_flags": [
+      {
+        "absolute": true,
+        "parent_segment": true
+      }
+    ],
+    "gpu": {
+      "driver": "580.82.07",
+      "name": "Tesla T4",
+      "status": "visible_metadata_only",
+      "vram_mib": 15360
+    },
+    "initial_inventory_relaunched": false,
+    "models_created": 0,
+    "optimizer_updates": 0,
+    "original_result_sha256": "08017f769fdbb51ae41ef6475ea0f8ede8e4f254c6542ef7ee2bb40cb5cd5042",
+    "original_status": "unavailable_inventory",
+    "resource_enforcement": "unavailable",
+    "same_allocation": true,
+    "schema": "colab-gpu-inventory-closing-v1"
+  },
+  "closing_sha256": "b47b562ef3941a2d9786bfc71f78c0b376ae5e50f768882f7b32681da5f9a6e6",
+  "source_cells_exactly_verified": 2,
+  "receipt_hashes_verified": 2,
+  "request_to_disconnect_observed_seconds": 294.5368673639987,
+  "request_to_disconnect_limit_seconds": 300,
+  "runtime_disconnected_deleted": true,
+  "gpu_profiles": 0,
+  "tensor_operations": 0,
+  "optimizer_updates": 0,
+  "native_cache_model_uploads": 0,
+  "package_installs": 0,
+  "application_test_hashes_unchanged": 464,
+  "new_full_suite_run": false,
+  "cuda_kernel_execution": "not_attempted",
+  "memory_peak": "unavailable",
+  "resource_enforcement": "unavailable",
+  "historical_retry": false,
+  "remaining_work": [
+    "Colab-specific kernel/resource supervisor",
+    "source/environment/data handoff contract",
+    "independently measured optimizer/checkpoint/I/O cost",
+    "separate explicit native-fit approval"
+  ]
+}
