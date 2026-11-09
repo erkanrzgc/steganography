@@ -1230,6 +1230,13 @@ evaluation: both frozen states score AUC .868/.866 (20/21 pairs each) on the
 set is now consumed for this recipe; never re-evaluate tuned variants on it
 as unbiased evidence. All six CPU attempts are consumed. `modules/lsb_replacement.py`
 now feeds a heuristic `weighted_stego_payload` signal in `image_bitplane`.
+An LSB-matching fine-tune (`research/spatial_matching_probe.py`) lifts
+development matching 20%/10% AUC to .78/.74 and .66/.70 but misses its .80
+gate; 64 originals cap progress. On 2026-11-09 the user approved dataset
+expansion and downloads: DIV2K/BOSSbase are kept privately under
+`.benchmark/external-datasets-20261109`, and GPU training uses
+`research/external_rgb_training.py` with the DIV2K Colab notebook; see
+`docs/PNG_BMP_RGB_EXTERNAL_TRAINING_20261109.md`. Never redistribute them.
 The consumed Colab budget tests reject any added or changed `core/` or
 `steganography/` source (frozen closure). Put post-freeze experiments in the
 new `research/` package and analysis helpers in `modules/`; type-check with

@@ -1,5 +1,10 @@
 # Changelog
 
+- Add an LSB-matching fine-tune probe (curriculum, D4 augmentation): matching
+  20%/10% development AUC rises to .78/.74 and .66/.70; the .80 gate is missed.
+  Add `research/external_rgb_training.py` (crop banks, fresh mixed payloads,
+  AMP, resumable checkpoints) and a DIV2K Colab T4 notebook.
+
 - One pre-registered evaluation of the two frozen parity-input SRNet states
   on the 21 reserved RGB originals: AUC .868/.866 (20/21 pairs), passing the
   .70 rule; Weighted Stego scores 1.0 on the same pairs.

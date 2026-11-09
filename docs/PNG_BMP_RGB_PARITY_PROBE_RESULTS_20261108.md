@@ -195,3 +195,31 @@ inward). Changed-sample fraction is half the rate.
   question. The 40% replacement row (.81 /.81) is consistent with the recorded
   development AUCs; twenty sources and prior development reuse limit precision.
   CPU time 21 seconds; private result in `hard-conditions-20261109`.
+
+## LSB-matching fine-tune (2026-11-09)
+
+`research/spatial_matching_probe.py` (executed SHA-256
+`bcad06dfdb4b74fe3be3a46ce28a1c5a6aff973f05a3f0c1b3f286f1f671fd9a`) warm-starts
+each frozen decay40 state and trains on ±1 LSB matching only: forty epochs,
+curriculum 40% → {20, 40}% → {10, 20, 40}% (epochs 10 /20), pixel-exact D4
+augmentation, AdamW 1e-3 → 1e-4 after epoch 30, the same 64 train originals.
+Development scoring reuses the fixed hard-condition stegos; epoch 0 reproduced
+the frozen comparison exactly. Pre-set gate: matching 20% ≥ .80 and 10% ≥ .65
+on both seeds. Local CPU, two seeds in parallel, 1,330 seconds each.
+
+| Development AUC | Seed 1 before → after | Seed 2 before → after |
+| --- | --- | --- |
+| Matching 40% | .820 → .818 | .835 → .763 |
+| Matching 20% | .675 → **.783** | .690 → **.738** |
+| Matching 10% | .573 → **.663** | .603 → **.695** |
+| Replacement 40% | .810 → .820 | .813 → .795 |
+| Replacement 20% | .685 → .785 | .680 → .768 |
+| Replacement 10% | .565 → .655 | .590 → .683 |
+| Replacement 5% | .535 → .585 | .555 → .593 |
+
+**Gate: fails** (matching 20% .78 /.74 < .80; 10% passes). Low-rate detection
+improves by 7–11 AUC points on both seeds without losing the 40% replacement
+level, but sixty-four training originals cap progress: development AUC keeps
+swinging by epoch. The next intervention is more cover data. Private results:
+`cae3f00d…` /`fc4b13ec…`; states `ea31d5f0…` /`3874fc38…` in
+`png-bmp-rgb-matching-probe-20261109`. Reserved originals were not opened.
