@@ -166,3 +166,32 @@ intervals are wide; the lower bounds stay above .75. The reserved set is now
 consumed for this recipe: further changes evaluated on it would be biased.
 CPU scoring took 5.3 seconds. Private result SHA-256
 `63ae70cdf2cd672898f57353a40166953ecda2a9b338b1026f7af3d97bff6d9b`.
+
+## Harder embeddings: frozen CNN vs Weighted Stego (2026-11-09)
+
+The two frozen decay40 states (trained only on 40% LSB replacement) and WS
+were scored, with no training, on the twenty development originals under new
+random-position embeddings (fresh seeds from 2026110903). The reserved
+originals were not used. "Matching" is ±1 LSB matching (boundary values move
+inward). Changed-sample fraction is half the rate.
+
+| Embedding | Rate | WS AUC | CNN seed 1 | CNN seed 2 | CNN mean |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Replacement | 40% | **1.000** | .810 | .813 | .830 |
+| Replacement | 20% | **.953** | .685 | .680 | .688 |
+| Replacement | 10% | **.925** | .565 | .590 | .578 |
+| Replacement | 5% | **.908** | .535 | .555 | .545 |
+| Matching | 40% | .525 | .820 | .835 | **.845** |
+| Matching | 20% | .558 | .675 | .690 | **.680** |
+| Matching | 10% | .505 | .573 | .603 | **.570** |
+
+- For LSB replacement WS dominates at every rate; the CNN degrades quickly
+  below its 40% training rate.
+- WS fails on LSB matching (chance), as expected, while the CNN transfers
+  unchanged (.85 at 40%) although it never saw matching. It has learned a
+  general change-energy cue, not only the replacement parity asymmetry.
+- The CNN's value is therefore in matching-type embeddings, but it is weak at
+  low rates. Training on matching and lower rates is the next learning
+  question. The 40% replacement row (.81 /.81) is consistent with the recorded
+  development AUCs; twenty sources and prior development reuse limit precision.
+  CPU time 21 seconds; private result in `hard-conditions-20261109`.
