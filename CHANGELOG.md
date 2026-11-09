@@ -1,5 +1,9 @@
 # Changelog
 
+- One pre-registered evaluation of the two frozen parity-input SRNet states
+  on the 21 reserved RGB originals: AUC .868/.866 (20/21 pairs), passing the
+  .70 rule; Weighted Stego scores 1.0 on the same pairs.
+
 - Add a full Weighted Stego LSB-replacement estimator (`modules/lsb_replacement.py`)
   to the PNG/BMP bitplane analyzer as a heuristic signal; unpredictable covers
   are reported but never scored. Run one approved parity-input SRNet diagnosis

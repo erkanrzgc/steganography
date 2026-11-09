@@ -1,9 +1,11 @@
 # Native RGB: parity-input diagnosis — 2026-11-08
 
-**Result: the representation diagnosis is confirmed; the learning gate still
-fails, now on generalization.** Adding three LSB-parity input channels lets the
-unchanged SRNet recipe fit the training set (train AUC .51 → .98), but
-development AUC is only .62 and development pairs are ordered at chance.
+**Final result (2026-11-09): the native RGB gate passes on both seeds and on
+the closed reserved originals (AUC .87).** Root cause: raw-intensity SRNet
+cannot derive LSB parity. Three parity input channels fix fitting; fresh
+per-epoch payloads fix memorization; lr 1e-3 with a step decay fixes
+under-training. The sections below record each step in order; the first
+parity run alone still failed on generalization (development AUC .62).
 
 ## Question
 
@@ -138,3 +140,29 @@ Results (SHA-256): seed 1
 `8580dfdacd905adcb68bd21ba46c60f396e28a7f70f732661eb763946e849059`. An unbiased
 estimate needs one evaluation of these frozen states on the 21 closed reserved
 RGB originals; that one-time use requires an explicit user decision.
+
+## One-time reserved evaluation (2026-11-09)
+
+At the user's go-ahead, the two frozen decay40 states were scored once on the
+21 closed reserved RGB originals (cover vs 40% scattered plane-0 control,
+payload seed 2026102805), with no training, tuning or retry. Metrics and the
+pass rule (both seeds AUC ≥ .70) were frozen before scoring in a private
+preregistration (SHA-256
+`3d8104ecc8792554a0ef92f52ed7c30884b9b6d0cdd8946606522c4fbb39e945`). The
+script was first checked on the already-used development set, where it
+reproduced the recorded AUCs (.8175 /.8125) and WS (.9525) exactly.
+
+| Model (21 reserved pairs) | AUC | 95% bootstrap CI | Correct pairs | Accuracy @ .5 |
+| --- | ---: | --- | ---: | ---: |
+| SRNet + parity, seed 2026102301 | **0.8685** | .760–.968 | 20/21 | .810 |
+| SRNet + parity, seed 2026102302 | **0.8662** | .753–.971 | 20/21 | .810 |
+| Two-seed probability mean | 0.8776 | .773–.973 | 20/21 | .810 |
+| Weighted Stego (no fitted parameters) | 1.0000 | 1.000–1.000 | 21/21 | — |
+
+**The pre-registered rule passes: both seeds generalize to unseen originals
+(AUC .87), slightly above their development AUC (.82 /.81).** WS remains the
+stronger detector for this LSB-replacement setting. With 21 sources the
+intervals are wide; the lower bounds stay above .75. The reserved set is now
+consumed for this recipe: further changes evaluated on it would be biased.
+CPU scoring took 5.3 seconds. Private result SHA-256
+`63ae70cdf2cd672898f57353a40166953ecda2a9b338b1026f7af3d97bff6d9b`.
