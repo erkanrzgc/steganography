@@ -1,5 +1,12 @@
 # Changelog
 
+- Add a CPU rich-model RGB detector (`research/rich_color_detector.py`):
+  SRM-lite and colour residual co-occurrences with a ridge Fisher discriminant.
+  On fixed DIV2K validation stegos, 40%/20%/10% LSB matching rises from the
+  best CNN's AUC .76/.69/.63 (accuracy .68/.62/.60) to .99/.97/.90 (accuracy
+  .93/.91/.80), from two minutes of CPU training. Native development transfer
+  stays at about .70-.75 AUC (cover-source mismatch).
+
 - Add an LSB-matching fine-tune probe (curriculum, D4 augmentation): matching
   20%/10% development AUC rises to .78/.74 and .66/.70; the .80 gate is missed.
   Add `research/external_rgb_training.py` (crop banks, fresh mixed payloads,
