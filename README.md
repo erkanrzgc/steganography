@@ -114,7 +114,7 @@ and [limitations](docs/LIMITATIONS.md).
 
 ## Training results
 
-Controlled development evaluations, **2026-10-14–11-07**. Balanced accuracy averages
+Controlled development evaluations, **2026-10-14–11-11**. Balanced accuracy averages
 recall and specificity.
 **ROC-AUC measures ranking, not accuracy.** Ranges span both seeds and all
 reported arms/cells, not confidence intervals or expected real-world accuracy.
@@ -128,20 +128,22 @@ reported arms/cells, not confidence intervals or expected real-world accuracy.
 | PNG/BMP linear, all variants | BOWS2 | 50.00–100.00% | 0.609–1.000 |
 | PNG/BMP linear, all variants | DIV2K | 50.00–93.75% | 0.547–1.000 |
 | PNG/BMP RGB SRNet, native pilot | Commons | — | 0.518–0.528 |
+| PNG/BMP RGB rich-model detector | DIV2K | 61.25–93.00% | 0.781–0.990 |
+| PNG/BMP RGB rich-model detector | Commons | 57.50–72.50% | 0.630–0.755 |
 | WAV linear, parity/residual | ESC-50 | 50.00% | 0.484–0.547 |
 | WAV linear, parity/residual | FSDD | 50.00% | 0.359–0.656 |
 | WAV standardized pair head | AudioMNIST | 47.75–78.75% | 0.467–0.933 |
 
-Older non-JPEG pilots use eight development originals/source; JPEG uses
-64 pairs/source. Commons uses 20 originals in twelve groups; AudioMNIST uses
-200 development cuts grouped by ten speakers.
+Older non-JPEG pilots use eight originals/source; JPEG 64 pairs/source;
+Commons 20 originals; rich-detector DIV2K 200 crops; AudioMNIST 200 cuts.
 No model is qualified or deployed.
 
-**Latest AudioMNIST pilot:** two seeds completed **2,280 total optimizer updates**.
-The required 40%-plane-0 cells failed: AUC **0.467–0.487**, against **0.70**.
-Pooled development AUC was **0.617 /0.623**; false-positive rates were **42–55%**.
-The favorable plane-1 cells and successful generated control do not rescue
-this native-data failure. [Full results and intervals](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md).
+**Latest RGB detector:** colour residual co-occurrences raise DIV2K 40%
+LSB-matching accuracy from **68%** (SRNet) to **93%**; Commons transfer stays
+weak. [Details](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md).
+
+**AudioMNIST:** required cells failed (AUC **0.467–0.487** vs **0.70**).
+[Full results](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md).
 
 <details>
 <summary>Actual training curves and all development cells</summary>
