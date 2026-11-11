@@ -34,7 +34,8 @@ LAMBDAS = (0.03, 0.1, 0.3, 1.0)
 WITHIN = (("r1", 2, 4), ("r2", 2, 4), ("r3", 2, 3))
 CROSS = (("r1", 1), ("r2", 1), ("r2", 2), ("r3", 2))
 CROSS_T = 3
-DIMS = sum((2 * t + 1) ** k for _, t, k in WITHIN) + len(CROSS) * (2 * CROSS_T + 1) ** 3
+GRAY_DIMS = sum((2 * t + 1) ** k for _, t, k in WITHIN)
+DIMS = GRAY_DIMS + len(CROSS) * (2 * CROSS_T + 1) ** 3
 
 
 def _residuals(x: np.ndarray) -> dict[str, tuple[np.ndarray, np.ndarray]]:
@@ -57,19 +58,22 @@ def _cooccurrence(residual: np.ndarray, t: int, k: int) -> np.ndarray:
 
 
 def features(image: np.ndarray) -> np.ndarray:
-    """Normalised co-occurrence features of a uint8 HxWx3 RGB image."""
+    """Normalised co-occurrence features of a uint8 HxWx3 RGB or HxWx1 gray image.
+
+    Gray images yield the ``GRAY_DIMS`` within-channel block only.
+    """
     if not isinstance(image, np.ndarray) or image.dtype != np.uint8 or image.ndim != 3:
-        raise ValueError("uint8 HxWx3 image required")
+        raise ValueError("uint8 HxWxC image required")
     h, w, c = image.shape
-    if c != 3 or min(h, w) < MIN_SIDE or h * w > MAX_PIXELS:
-        raise ValueError("RGB image with bounded size required")
+    if c not in (1, 3) or min(h, w) < MIN_SIDE or h * w > MAX_PIXELS:
+        raise ValueError("RGB or gray image with bounded size required")
     x = image.astype(np.int32)
-    channels = [_residuals(x[:, :, i]) for i in range(3)]
+    channels = [_residuals(x[:, :, i]) for i in range(c)]
     parts = []
     for name, t, k in WITHIN:
         counts = np.sum([_cooccurrence(r, t, k) for ch in channels for r in ch[name]], axis=0)
         parts.append(counts / counts.sum())
-    for name, q in CROSS:
+    for name, q in CROSS if c == 3 else ():
         counts = np.zeros((2 * CROSS_T + 1) ** 3, np.int64)
         for d in range(2):
             rs = [np.clip(np.round(ch[name][d] / q), -CROSS_T, CROSS_T).astype(np.int32) + CROSS_T

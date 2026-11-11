@@ -30,11 +30,21 @@ def test_features_are_normalised_blocks_of_the_declared_width():
 @pytest.mark.parametrize(
     "image",
     [np.zeros((16, 16, 3), np.int16), np.zeros((16, 16), np.uint8), np.zeros((16, 16, 4), np.uint8),
+     np.zeros((16, 16, 2), np.uint8),
      np.zeros((4, 16, 3), np.uint8), [[0]]],
 )
 def test_features_reject_non_rgb_or_tiny_images(image):
     with pytest.raises(ValueError):
         rich.features(image)
+
+
+def test_gray_features_are_the_within_channel_block():
+    gray = smooth(3)[:, :, 1:2]
+    f = rich.features(gray)
+    assert f.shape == (rich.GRAY_DIMS,)
+    assert np.isclose(f[:625].sum(), 1.0, atol=1e-5)
+    stego = matching.embed(gray, "matching", 0.4, np.random.default_rng(1))
+    assert not np.array_equal(f, rich.features(stego))
 
 
 def test_features_bound_pixel_count(monkeypatch):
