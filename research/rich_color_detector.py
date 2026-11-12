@@ -142,17 +142,52 @@ class Detector:
                        float(stored["threshold"]), float(stored["ridge"]))
 
 
+def _fits(covers: np.ndarray, stegos: np.ndarray, ridges: Sequence[float]) -> list[Detector]:
+    """Fisher discriminants for several ridges sharing one standardisation and scatter."""
+    if covers.ndim != 2 or covers.shape != stegos.shape or len(covers) < 2:
+        raise ValueError("paired feature matrices required")
+    if not ridges or not all(r > 0 for r in ridges):
+        raise ValueError("positive ridge required")
+    # Chunked two-pass moments: never materialise float64 copies of all rows.
+    total = 2 * len(covers)
+    sums = [_column_sum(x, None) for x in (covers, stegos)]
+    mean = (sums[0] + sums[1]) / total
+    scale = np.sqrt((_column_sum(covers, mean) + _column_sum(stegos, mean)) / total) + 1e-12
+    cbar, sbar = (sums[0] / len(covers) - mean) / scale, (sums[1] / len(stegos) - mean) / scale
+    within = (_scatter(covers, mean, scale, cbar) + _scatter(stegos, mean, scale, sbar))
+    within /= total - 1
+    out = []
+    for ridge in ridges:
+        weights = np.linalg.solve(within + ridge * np.eye(len(within)), sbar - cbar)
+        threshold = 0.5 * float(cbar @ weights + sbar @ weights)
+        out.append(Detector(mean, scale, weights, threshold, float(ridge)))
+    return out
+
+
+_CHUNK = 4096
+
+
+def _column_sum(x: np.ndarray, centre: np.ndarray | None) -> np.ndarray:
+    """Column sums of ``x`` (or of squared deviations from ``centre``) in float64."""
+    out = np.zeros(x.shape[1])
+    for start in range(0, len(x), _CHUNK):
+        block = x[start : start + _CHUNK].astype(np.float64)
+        out += block.sum(0) if centre is None else ((block - centre) ** 2).sum(0)
+    return out
+
+
+def _scatter(x: np.ndarray, mean: np.ndarray, scale: np.ndarray, centre: np.ndarray) -> np.ndarray:
+    """Sum of outer products of standardised rows centred on ``centre``."""
+    out = np.zeros((x.shape[1], x.shape[1]))
+    for start in range(0, len(x), _CHUNK):
+        z = (x[start : start + _CHUNK].astype(np.float64) - mean) / scale - centre
+        out += z.T @ z
+    return out
+
+
 def fit(covers: np.ndarray, stegos: np.ndarray, ridge: float) -> Detector:
     """Fisher discriminant with ridge ``ridge`` on standardised features."""
-    if covers.ndim != 2 or covers.shape != stegos.shape or len(covers) < 2 or not ridge > 0:
-        raise ValueError("paired feature matrices and positive ridge required")
-    both = np.concatenate([covers, stegos]).astype(np.float64)
-    mean, scale = both.mean(0), both.std(0) + 1e-12
-    cz, sz = (covers - mean) / scale, (stegos - mean) / scale
-    within = np.cov(np.concatenate([cz - cz.mean(0), sz - sz.mean(0)]).T)
-    weights = np.linalg.solve(within + ridge * np.eye(len(within)), sz.mean(0) - cz.mean(0))
-    threshold = 0.5 * float((cz @ weights).mean() + (sz @ weights).mean())
-    return Detector(mean, scale, weights, threshold, float(ridge))
+    return _fits(covers, stegos, [ridge])[0]
 
 
 def auc(negative: np.ndarray, positive: np.ndarray) -> float:
@@ -173,8 +208,7 @@ def select_ridge(covers, stegos, groups, ridges=LAMBDAS) -> tuple[float, dict[st
     if hold.all() or not hold.any():
         raise ValueError("held-out and fitted groups required")
     scores = {}
-    for ridge in ridges:
-        model = fit(covers[~hold], stegos[~hold], ridge)
+    for ridge, model in zip(ridges, _fits(covers[~hold], stegos[~hold], ridges), strict=True):
         scores[str(ridge)] = auc(model.score(covers[hold]), model.score(stegos[hold]))
     best = max(ridges, key=lambda r: scores[str(r)])
     return float(best), scores
