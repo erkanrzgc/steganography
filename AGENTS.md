@@ -1245,3 +1245,12 @@ The consumed Colab budget tests reject any added or changed `core/` or
 `steganography/` source (frozen closure). Put post-freeze experiments in the
 new `research/` package and analysis helpers in `modules/`; type-check with
 `mypy research` as well. Retiring that live-tree freeze needs user approval.
+On 2026-11-12 the user's 80%-per-method goal produced
+`docs/DETECTION_EXPANSION_20261111.md`: SRM/DCTR/WAV research features, new
+analyzers (stegano recovery, container fields, invisible Unicode, network
+covert channels, video containers and lossless frames) and a zsteg
+false-positive fix. Report every miss with its payload. Private corpora live in
+`.benchmark/{boss-gray-rich,real-tools}-20261111` and
+`.benchmark/{wav-lsb,network,video,boss-academic}-20261112`. F5 (matthewgao
+build) and OpenStego 0.8.6 under `.benchmark/tools-20261111` may be run
+(user approval 2026-11-12).
