@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import subprocess
 import tempfile
@@ -85,7 +86,7 @@ class ZstegAdapter(_ExternalAnalyzer):
         return [self.executable, "--all", str(src)]
 
     def interpret(self, output: str, returncode: int) -> tuple[Signal, ...]:
-        lines = [line for line in output.splitlines() if ".. text:" in line or "file:" in line]
+        lines = [line for line in re.split(r"[\r\n]+", output) if _zsteg_candidate(line)]
         if not lines:
             return ()
         return (
@@ -97,6 +98,39 @@ class ZstegAdapter(_ExternalAnalyzer):
                 evidence="strong",
             ),
         )
+
+
+# zsteg prints short random "text" and libmagic guesses for every natural image,
+# and the high bit planes of smooth images read as long printable text. Only
+# low-plane (b1/b2) or appended-data results that look like real content count.
+_ZSTEG_ROW = re.compile(r"^\s*(?P<name>\S+)\s+\.\.\s+(?P<kind>text|file):\s*(?P<value>.*)$")
+_ZSTEG_LOW = re.compile(r"^(b[12],[a-z]+,(lsb|msb)(,[a-zA-Z]+)?|extradata:\d+)$")
+_ZSTEG_TEXT_ROWS = re.compile(r"^(chunk:\d+:\w+|meta\b.*)$")
+_ZSTEG_FLAG = re.compile(r"[A-Za-z0-9_]{2,}\{[^{}\s]{2,}\}")
+_ZSTEG_MIN_TEXT = 20
+_ZSTEG_MIN_DISTINCT = 8
+_ZSTEG_FILE_TYPES = ("zip", "gzip", "bzip2", "xz compressed", "7-zip", "rar archive",
+                     "png image", "jpeg image", "gif image", "pdf document", "elf ", "pe32")
+
+
+def _zsteg_candidate(line: str) -> bool:
+    row = _ZSTEG_ROW.match(line)
+    if not row:
+        return False
+    value = row["value"].strip()
+    low = bool(_ZSTEG_LOW.match(row["name"]))
+    if (low or _ZSTEG_TEXT_ROWS.match(row["name"])) and _ZSTEG_FLAG.search(value):
+        return True
+    if not low:
+        return False
+    if row["kind"] == "file":
+        return any(kind in value.lower() for kind in _ZSTEG_FILE_TYPES)
+    text = value[1:-1] if len(value) >= 2 and value[0] == value[-1] == '"' else ""
+    if "repeated" in value or len(text) < _ZSTEG_MIN_TEXT:
+        return False
+    # Smooth regions give long but repetitive runs such as "jUUUUUUU...".
+    common = max(text.count(c) for c in set(text))
+    return len(set(text)) >= _ZSTEG_MIN_DISTINCT and common <= len(text) / 2
 
 
 class StegseekAdapter(_ExternalAnalyzer):
