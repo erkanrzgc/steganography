@@ -10,7 +10,7 @@ from core.analyzer import Analyzer
 from core.context import AnalysisContext
 from core.payload import MAGIC
 from core.result import AnalysisResult, Signal
-from modules import lsb_replacement
+from modules import lsb_replacement, stegano_lsb
 
 
 class ImageBitplaneAnalyzer(Analyzer):
@@ -150,6 +150,18 @@ class ImageBitplaneAnalyzer(Analyzer):
                     "known_payload_marker",
                     98,
                     marker,
+                    category="known_marker",
+                    evidence="verified",
+                )
+            )
+        stegano = stegano_lsb.find_message(np.ascontiguousarray(rgb))
+        if stegano:
+            signals.append(
+                Signal(
+                    "stegano_lsb_message",
+                    98,
+                    f"stegano LSB message recovered: {stegano.length} bytes "
+                    f"{stegano.encoding}, pixels={stegano.order}, sha256={stegano.sha256}",
                     category="known_marker",
                     evidence="verified",
                 )
