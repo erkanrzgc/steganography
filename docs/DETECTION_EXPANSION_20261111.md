@@ -24,9 +24,14 @@ paired covers and stegos.
 | steghide 0.5.1 | JPEG q75 | 0.1 / 0.2 bpnzac | **82.7 / 93.8%** | .901 / .986 | DCTR + ensemble |
 | steghide 0.5.1 | RGB BMP | 0.1 bpp | **84.0%** | .908 | colour SRM, 4 crops per train image |
 | steghide 0.5.1 | RGB BMP | 0.4 bpp | **89.0%** | .931 | rich RGB |
+| F5 (Westfeld) | JPEG q75 | 0.05 bpnzac | **80.8%** | .891 | calibrated DCTR, 4 crops per train image |
+| F5 (Westfeld) | JPEG q75 | 0.1 / 0.2 bpnzac | **93.8 / 99.8%** | .986 / 1.000 | calibrated DCTR |
+| OpenStego 0.8.6 | RGB PNG | 0.1 bpp | 79.8% (miss) | .870 | colour SRM, 4 crops per train image |
+| OpenStego 0.8.6 | RGB PNG | 0.4 bpp | **88.5%** | .947 | colour SRM |
 
-WAV, F5/OpenStego, rule, network and video results follow in their sections.
-Academic adaptive methods (HILL, S-UNIWARD, WOW, MiPOD) are still running.
+WAV, rule, network and video results follow in their sections; FSDD WAV is a
+miss at every payload. Academic adaptive methods (HILL, S-UNIWARD, WOW, MiPOD)
+have not been run yet.
 
 ## Gray LSB on BOSSbase (`research/srm_features.py`)
 
@@ -98,26 +103,38 @@ comes from low recall (53%) at a threshold shared with the stronger payloads.
 
 | Test set | Replacement 5 / 10 / 20 / 40% | ±1 matching 5 / 10 / 20 / 40% |
 |---|---|---|
-| ESC-50 fold 5 | 73.9 / 77.0 / **85.6 / 89.1%** | 64.6 / 65.6 / 68.6 / 69.8% |
-| AudioMNIST dev | **83.7 / 95.2 / 99.2 / 99.8%** | 57.5 / 65.7 / 79.7 / **92.3%** |
+| ESC-50 fold 5 (v1) | 73.9 / 77.0 / **85.6 / 89.1%** | 64.6 / 65.6 / 68.6 / 69.8% |
+| ESC-50 fold 5 (v2) | 74.0 / 77.1 / **84.5 / 89.5%** | 64.0 / 65.6 / 66.2 / 69.8% |
+| AudioMNIST dev (v1) | **83.7 / 95.2 / 99.2 / 99.8%** | 57.5 / 65.7 / 79.7 / **92.3%** |
+| AudioMNIST dev (v2) | **84.0 / 95.5 / 99.2 / 99.8%** | 57.8 / 66.5 / **80.8 / 92.5%** |
 | FSDD theo/yweweler (v1) | 49.5–56.7% (chance) | 48.2–50.8% (chance) |
+| FSDD theo/yweweler (v2) | 49.5 / 50.9 / 52.1 / 58.0% | 49.2–51.6% (chance) |
 
 **Payload-specific results**:
 - AUC is .85–.97 (ESC-50 replacement) and .91–1.0 (AudioMNIST replacement).
 - The mixed detectors rank well (AudioMNIST AUC up to .999), but their 0.5
-  threshold is poorly placed: 57–77% accuracy.
+  threshold is poorly placed: 57–78% accuracy (v1 and v2).
 - **ESC-50 ±1 matching misses 80%.** About three quarters of these field
   recordings never fall to within a few LSB of silence, so ±1 changes are
   masked by recording noise.
+- AudioMNIST ±1 matching at 20% passes only in v2 (80.8%, AUC .905), by
+  0.8 points. v2 was designed after the v1 test result was seen, so treat
+  this row as borderline.
 
-**FSDD at chance was a feature gap, not a limit.**
-- Every FSDD sample is a multiple of 256 (8-bit audio up-scaled to 16 bits).
-  Clean files therefore never use the low byte, and any LSB embedding is
-  conspicuous.
-- The v1 features had no direct parity or low-bit measure.
+**v2 low-bit profile and the FSDD miss**:
 - v2 adds the fraction of samples whose lowest k bits are zero (k = 1..8). It
-  was added after seeing the v1 FSDD result, with splits and classifier
-  unchanged.
+  was added after the v1 FSDD result, with splits and classifier unchanged.
+- An earlier note in this file said every FSDD sample is a multiple of 256.
+  **That was wrong.** Only speaker nicolas (train) is 8-bit audio up-scaled to
+  16 bits. The other five speakers, including both test speakers, are genuine
+  16-bit PCM: about half of their samples are even.
+- FSDD stays near chance in v2, and **all FSDD rows miss 80%**. This looks like
+  a limit of the data, not a feature gap:
+  - The test clips are short: 2,950–3,240 samples at 8 kHz (median), against
+    28,000 for AudioMNIST cuts.
+  - Their quietest 256-sample frame still carries 4.9–8.0 LSB of noise
+    (median second-difference RMS / √6). AudioMNIST is at 1.1 LSB.
+  - A few thousand noisy samples carry too little LSB evidence.
 
 ## New structural rules (deterministic, no training)
 
@@ -276,6 +293,43 @@ Benchmark:
   - This also failed two existing accuracy tests.
   - Now only b1/b2 planes, appended data, or text-chunk flags count. Content
     must look real: long varied text, known file types, or `word{...}` flags.
+  - `zsteg --all` also walks bit planes 3–8, which the filter discards. On a
+    loaded machine it took 15–24 s per 512×512 image, over the adapter's 20 s
+    limit; six PNG/BMP samples of the full test run then failed as timeouts.
+  - The adapter now runs `zsteg FILE` (metadata, chunks, appended data) and
+    `zsteg --all --bits 1,2 FILE` (every order, prime and alignment variant of
+    the low planes). The rows the filter reads stay the same, and both runs
+    take about 5 s together.
+  - `meta <key>` rows (PNG text) never matched the row pattern, because the
+    name has a space. They now count when they carry a flag.
+
+**F5 and OpenStego** (Java tools, run with the user's approval):
+- **Tools**:
+  - F5: Westfeld's encoder (matthewgao build d08b5f8). It re-encodes the BMP
+    cover with its own JPEG encoder at q75. The cover is the same encoder with
+    no message, so both share the encoder and its COM marker. Rates are bits
+    per nonzero AC coefficient.
+  - OpenStego 0.8.6 RandomLSB on the PNG cover, at bits per pixel.
+  - Every stego was extracted again with its password and compared
+    byte-for-byte.
+- **v1/v2 recipe** (one train crop per DIV2K image): calibrated DCTR for F5,
+  colour SRM for OpenStego, classifier selected on the held-out fifth.
+
+| Tool | Payload | One crop (v2) | Four crops (v3) |
+|---|---|---:|---:|
+| F5 | 0.05 bpnzac | 77.8% (AUC .855) | **80.8%** (AUC .891) |
+| F5 | 0.1 / 0.2 bpnzac | **93.8 / 99.8%** (AUC .986 / 1.000) | — |
+| OpenStego | 0.1 bpp | 74.5% (AUC .826) | 79.8% (AUC .870), miss |
+| OpenStego | 0.4 bpp | **88.5%** (AUC .947) | — |
+
+- v3 adds three more train crops per DIV2K image, as for steghide BMP; 11 of
+  12,000 extra embeds failed on capacity. The held-out fifth is chosen by
+  source image.
+- Only the two rows that missed 80% were rerun, after their test results had
+  been seen. F5 at 0.05 passes by 0.8 points; OpenStego at 0.1 misses by
+  0.2 points.
+- The F5 encoder comment is also a deterministic tool fingerprint
+  (`image_jpeg`, see above).
 
 ## Evidence (private)
 
@@ -299,5 +353,7 @@ Benchmark:
 - `.benchmark/real-tools-20261111/`:
   - `make_java_tools.py`/`manifest-java.json`, `eval_java_tools.py` →
     `eval-java-result.json`
+  - `make_java_extra.py`/`manifest-java-extra.json`, `eval_java_v3.py` →
+    `eval-java3-result.json`
   - F5 and OpenStego binaries under `.benchmark/tools-20261111`
 - Datasets and derived detectors are not redistributed.
