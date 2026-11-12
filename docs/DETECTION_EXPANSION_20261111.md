@@ -331,6 +331,18 @@ Benchmark:
 - The F5 encoder comment is also a deterministic tool fingerprint
   (`image_jpeg`, see above).
 
+## Verification
+
+Full CPU gate on 2026-11-12, after the zsteg fix: **4,578 passed**, two
+explicit CUDA skips, **97.39%** total coverage, in 1,837 s. Ruff, mypy over
+268 files (including `research`) and `git diff --check` pass.
+
+- The first full run of the same day failed two benchmark tests (4,572
+  passed): `zsteg --all` exceeded the adapter's 20 s limit on six PNG/BMP
+  samples while other benchmarks loaded the machine. Its log is kept.
+- Logs: `.benchmark/full-pytest-20261112.log` (failed) and
+  `.benchmark/full-pytest-20261112b.log` (passed).
+
 ## Evidence (private)
 
 - `.benchmark/boss-gray-rich-20261111/`:
