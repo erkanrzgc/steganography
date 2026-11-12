@@ -13,6 +13,11 @@ from core.result import AnalysisResult, EmbedResult, Signal
 _JPEG_EOI = b"\xff\xd9"
 _APP_MAGIC = b"STEGAPP"
 _LEN_PREFIX = 4
+# COM text written by encoders that ship with steganography tools. The marker
+# shows the tool's encoder produced the file, not that a payload is present.
+_TOOL_COMMENTS = (
+    (b"JPEG Encoder Copyright 1998, James R. Weeks and BioElectroMech", "F5 (Westfeld)"),
+)
 
 
 class ImageJpeg(Carrier):
@@ -100,6 +105,22 @@ class ImageJpeg(Carrier):
                     evidence="heuristic" if all_ones else "informational",
                 )
             )
+        for segment in segments:
+            if segment["marker"] != 0xFE:
+                continue
+            text = data[segment["offset"] + 4 : segment["offset"] + 2 + segment["length"]]
+            tool = next((name for mark, name in _TOOL_COMMENTS if mark in text), None)
+            if tool:
+                signals.append(
+                    Signal(
+                        name="stego_tool_encoder_comment",
+                        score=70,
+                        detail=f"JPEG comment of the encoder bundled with {tool}",
+                        category="stego_tool_fingerprint",
+                        evidence="strong",
+                    )
+                )
+                break
         truncated = [segment for segment in segments if segment.get("truncated")]
         if truncated:
             signals.append(
