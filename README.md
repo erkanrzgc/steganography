@@ -126,18 +126,19 @@ reported arms/cells, not confidence intervals or expected real-world accuracy.
 | PNG/BMP RGB rich-model detector | Commons | 57.50–72.50% | 0.630–0.755 |
 | Gray LSB SRM, payload-specific | BOSSbase | 85.70–97.80% | 0.946–0.998 |
 | Gray LSB SRM, unknown payload | BOSSbase | 72.10–94.50% | 0.877–0.994 |
-| steghide, OutGuess, stegano, F5, OpenStego | DIV2K | 74.50–99.80% | 0.826–1.000 |
-| WAV LSB, boosted trees | ESC-50 | 64.60–89.10% | 0.749–0.969 |
-| WAV LSB, boosted trees | AudioMNIST | 57.50–99.80% | 0.629–1.000 |
+| steghide, OutGuess, stegano, F5, OpenStego | DIV2K | 79.75–99.75% | 0.870–1.000 |
+| WAV LSB trees | ESC-50 | 64.00–89.50% | 0.752–0.970 |
+| WAV LSB trees | AudioMNIST | 57.75–99.75% | 0.628–1.000 |
+| WAV LSB trees | FSDD | 49.20–58.00% | 0.496–0.603 |
 | WAV linear, parity/residual | ESC-50 | 50.00% | 0.484–0.547 |
 | WAV linear, parity/residual | FSDD | 50.00% | 0.359–0.656 |
 | WAV standardized pair head | AudioMNIST | 47.75–78.75% | 0.467–0.933 |
 
-Older pilots use 8–64 originals/source, newer rows 200–1,000 untouched test items.
+Older pilots use 8–64 originals/source; newer rows 200–1,000 test items.
 No model is qualified or deployed.
 
-**80% per method:** most tool/payload cells pass; misses are listed. New rules
-catch network tunnels and video container hiding without benchmark false alarms.
+**80% per method:** most cells pass; misses are listed.
+New rules catch network tunnels and video container hiding.
 [Details](docs/DETECTION_EXPANSION_20261111.md),
 [RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md).
 
@@ -152,9 +153,8 @@ development AUC **0.518 /0.528**; the learning rule failed.
 
 ## Development and licensing
 
-Recorded CPU gate: **4,396 tests passed**, two explicit CUDA skips,
-**97.23% coverage**.
-[Verification evidence](benchmarks/png-bmp-colab-cumulative-amendment-verification-20261107.json).
+Recorded CPU gate (2026-11-12): **4,578 tests passed**, two explicit CUDA skips,
+**97.39% coverage**. [Verification](docs/DETECTION_EXPANSION_20261111.md#verification).
 Setup, checks, and contribution rules: [CONTRIBUTING.md](CONTRIBUTING.md).
 Report vulnerabilities through [SECURITY.md](SECURITY.md).
 
