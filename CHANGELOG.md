@@ -1,5 +1,29 @@
 # Changelog
 
+- Detection expansion toward 80% per method (`docs/DETECTION_EXPANSION_20261111.md`):
+  - **New research features**:
+    - symmetrised SRM-style gray and colour co-occurrences
+    - calibrated DCTR for JPEG
+    - a random-subspace Fisher ensemble
+    - 16-bit PCM LSB features (quiet frames, digital silence, Weighted-Stego,
+      low-bit occupancy)
+  - **New analyzers**:
+    - stegano LSB message recovery and an F5 encoder fingerprint
+    - payloads in PNG chunks, JPEG APPn/COM, ZIP fields and MP4 boxes
+    - Unicode tag-character and variation-selector payloads
+    - DNS/ICMP tunnels and TCP/IP header channels in pcap/pcapng
+    - TCSteg-style unreferenced MP4 media data, MKV attachments/tags and AVI JUNK
+    - Weighted-Stego on lossless video frames
+  - **zsteg fix**: the adapter no longer flags every clean image now that zsteg
+    is installed.
+  - **Results**:
+    - Gray BOSSbase LSB: 85.7–97.8% (payload-specific, 1,000 untouched test
+      images).
+    - Real tools: steghide, OutGuess, stegano, F5 and OpenStego.
+    - WAV on ESC-50 and AudioMNIST.
+    - Network and video benchmarks.
+    - Misses are reported; see the document.
+
 - Add a CPU rich-model RGB detector (`research/rich_color_detector.py`):
   SRM-lite and colour residual co-occurrences with a ridge Fisher discriminant.
   On fixed DIV2K validation stegos, 40%/20%/10% LSB matching rises from the
