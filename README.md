@@ -41,9 +41,8 @@ steganography tui
 On Windows, activate with `.\.venv\Scripts\Activate.ps1`. The distribution is
 `steganography-dfir`; the command and import are `steganography`.
 
-The base installation includes no external tools, model weights or datasets.
-Optional tools and research dependencies have separate setup and licensing
-requirements. Model and dataset acquisition is explicit.
+The base install ships no external tools, weights or datasets; optional extras
+have separate setup and licenses, and downloads are explicit.
 
 For the optional browser workspace and API:
 
@@ -70,14 +69,9 @@ steganography scan --dir ./evidence --report sarif --out findings.sarif
 # Embed an encrypted v3 payload; read the password from stdin.
 steganography embed --in secret.bin --carrier cover.png --out stego.png \
   --payload-version 3 --password-stdin --no-clobber
-
-# Extract without overwriting an existing file.
-steganography extract --in stego.png --out recovered.bin \
-  --password-stdin --no-clobber
 ```
 
-Press `?` for TUI help. See the [CLI reference](docs/CLI.md) for profiles, limits,
-cases, tools and research commands.
+See the [CLI reference](docs/CLI.md); press `?` for TUI help.
 
 ## Format coverage
 
@@ -88,16 +82,16 @@ cases, tools and research commands.
 | WAV PCM16 | Sample LSB | Sample-plane indicators and markers |
 | TXT, MD | Whitespace and zero-width encoding | Whitespace and Unicode anomalies |
 | GIF, PDF | Checksummed trailer | Structure and trailers |
-| ZIP and supported archives | — | Bounded member and compression inspection |
+| ZIP and supported archives | — | Bounded member, comment and extra-field inspection |
+| MP4, MOV, MKV, AVI | — | Container fields, unreferenced media data, lossless-frame LSB |
+| PCAP, PCAPNG | — | DNS/ICMP tunnels and header covert channels |
 
-These are implemented capabilities, **not validated detection accuracy**.
-The [complete format inventory](docs/ALL_FORMAT_DATA_STATUS.md) covers all
-23 built-in suffixes, aliases, dataset states, and remaining gaps.
+These are implemented capabilities, **not validated detection accuracy**; see the
+[format inventory](docs/ALL_FORMAT_DATA_STATUS.md).
 
-Controlled research datasets exist for JPEG, PNG/BMP, and mono WAV. GIF preparation
-is incomplete; local PDF/TXT/MD/ZIP candidates have unassigned training roles.
-Other extensions have parser fixtures or optional-tool coverage, with representative
-datasets still unavailable. Format support does not establish benchmark coverage.
+Controlled research datasets exist for JPEG, PNG/BMP and mono WAV; other formats
+rely on fixtures, rules or optional tools. Format support does not establish
+benchmark coverage.
 
 ## Interpret results
 
@@ -114,7 +108,7 @@ and [limitations](docs/LIMITATIONS.md).
 
 ## Training results
 
-Controlled development evaluations, **2026-10-14–11-11**. Balanced accuracy averages
+Controlled development evaluations, **2026-10-14–11-12**. Balanced accuracy averages
 recall and specificity.
 **ROC-AUC measures ranking, not accuracy.** Ranges span both seeds and all
 reported arms/cells, not confidence intervals or expected real-world accuracy.
@@ -130,37 +124,31 @@ reported arms/cells, not confidence intervals or expected real-world accuracy.
 | PNG/BMP RGB SRNet, native pilot | Commons | — | 0.518–0.528 |
 | PNG/BMP RGB rich-model detector | DIV2K | 61.25–93.00% | 0.781–0.990 |
 | PNG/BMP RGB rich-model detector | Commons | 57.50–72.50% | 0.630–0.755 |
+| Gray LSB SRM, payload-specific | BOSSbase | 85.70–97.80% | 0.946–0.998 |
+| Gray LSB SRM, unknown payload | BOSSbase | 72.10–94.50% | 0.877–0.994 |
+| steghide, OutGuess, stegano, F5, OpenStego | DIV2K | 74.50–99.80% | 0.826–1.000 |
+| WAV LSB, boosted trees | ESC-50 | 64.60–89.10% | 0.749–0.969 |
+| WAV LSB, boosted trees | AudioMNIST | 57.50–99.80% | 0.629–1.000 |
 | WAV linear, parity/residual | ESC-50 | 50.00% | 0.484–0.547 |
 | WAV linear, parity/residual | FSDD | 50.00% | 0.359–0.656 |
 | WAV standardized pair head | AudioMNIST | 47.75–78.75% | 0.467–0.933 |
 
-Older non-JPEG pilots use eight originals/source; JPEG 64 pairs/source;
-Commons 20 originals; rich-detector DIV2K 200 crops; AudioMNIST 200 cuts.
+Older pilots use 8–64 originals/source, newer rows 200–1,000 untouched test items.
 No model is qualified or deployed.
 
-**Latest RGB detector:** colour residual co-occurrences raise DIV2K 40%
-LSB-matching accuracy from **68%** (SRNet) to **93%**; Commons transfer stays
-weak. [Details](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md).
+**80% per method:** most tool/payload cells pass; misses are listed. New rules
+catch network tunnels and video container hiding without benchmark false alarms.
+[Details](docs/DETECTION_EXPANSION_20261111.md),
+[RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md).
 
-**AudioMNIST:** required cells failed (AUC **0.467–0.487** vs **0.70**).
-[Full results](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md).
-
-<details>
-<summary>Actual training curves and all development cells</summary>
-
-![AudioMNIST training curves and development metrics](docs/assets/wav-pair-native-20261023.svg)
-
-</details>
-
-Protocols, source bindings, failures, and per-seed evidence:
+Evidence: [AudioMNIST pair head](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md),
 [JPEG controls](docs/JPEG_CONTROL_RESULTS.md),
 [refinement](docs/JPEG_REFINE_NUMERICS_RESULTS.md),
-[native linear pilots](docs/NONJPEG_PROCESS_PREFLIGHT_RESULTS.md),
-[generated comparison](docs/WAV_PAIR_COMPARISON_RESULTS_20261022.md).
+[linear pilots](docs/NONJPEG_PROCESS_PREFLIGHT_RESULTS.md),
+[WAV comparison](docs/WAV_PAIR_COMPARISON_RESULTS_20261022.md).
 
 [PNG/BMP RGB Colab result](docs/PNG_BMP_COLAB_NATIVE_RGB_RESULTS_20261107.md):
-**640 native updates**; development AUC **0.518 /0.528**. The learning rule failed.
-[Curves](docs/assets/png-bmp-native-colab-20261107.svg); grayscale remains unavailable.
+development AUC **0.518 /0.528**; the learning rule failed.
 
 ## Development and licensing
 
