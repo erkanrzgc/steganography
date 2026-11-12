@@ -128,7 +128,7 @@ def test_tool_runner_execution_and_redaction(tmp_path: Path) -> None:
 def test_external_tool_adapters(tmp_path: Path) -> None:
     # 1. ZstegAdapter
     zsteg = ZstegAdapter()
-    assert zsteg.command(Path("test.png")) == ["zsteg", "--all", "test.png"]
+    assert zsteg.command(Path("test.png")) == ["zsteg", "--all", "--bits", "1,2", "test.png"]
     sig_zsteg = zsteg.interpret("b1,rgb,lsb,xy .. text: 'flag{zsteg}'\nb2,r,lsb .. file: zip", 0)
     assert len(sig_zsteg) == 1
     assert sig_zsteg[0].name == "zsteg_candidate"
