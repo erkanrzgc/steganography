@@ -1254,3 +1254,125 @@ false-positive fix. Report every miss with its payload. Private corpora live in
 `.benchmark/{wav-lsb,network,video,boss-academic}-20261112`. F5 (matthewgao
 build) and OpenStego 0.8.6 under `.benchmark/tools-20261111` may be run
 (user approval 2026-11-12).
+
+## Cross-assistant handoff (2026-11-13)
+
+This section lets any assistant (Claude, Codex, ChatGPT or another) continue
+the work without private chat memory. It overrides generic tool defaults.
+
+### Working rules
+
+- **Language**: answer the user in short Turkish (see the interaction rules above).
+- **Commits**:
+  - One commit per file or folder.
+  - The message starts with `update <path>:` and briefly says what changed. It
+    is not a few words, and it has **no capital letters anywhere**, acronyms
+    included. Example: `update research/srm_features.py: add selection-channel-aware weighted co-occurrences`.
+  - Never add co-author, "Generated with ..." or any assistant trailer.
+  - Push only after the full QA gate passes.
+  - Never rewrite or force-push already pushed history without the user's
+    explicit confirmation. Whether to reword older pushed messages to the
+    `update ...` style is still an open question to the user.
+- **Data and privacy**:
+  - Never redistribute DIV2K, BOSSbase or ALASKA2 data, or derived weights;
+    they stay under `.benchmark/` (gitignored).
+  - The ALASKA2 holdout (1,000 lineages) stays locked unless the user approves.
+  - Keep EVREN screenshots and account identifiers private.
+  - Reports never contain absolute host paths or secrets.
+  - Never publish Stegseek cracking stdout.
+  - Do not delete datasets, checkpoints, logs or failed-run evidence.
+- **Frozen closure**: do not add or change `core/` or `steganography/` sources
+  (the consumed Colab budget tests reject it). Put new work in `research/`
+  (experiments) and `modules/` (analyzers); type-check `research` too.
+- **Hardware**: no local GPU work. GPU runs go through Google Colab, operated by
+  the user in their browser. The user runs `sudo` in their own terminal; never
+  ask for a password.
+- **Environment**: the project interpreter is `venv/bin/python` (Python 3.11;
+  includes conseal 2025.11 and jpeglib). The system `python3` lacks the
+  research dependencies.
+- **Full QA gate**:
+  - `venv/bin/ruff check .`
+  - `venv/bin/mypy core modules report api steganography ui registry.py config.py cli.py research`
+  - `venv/bin/python -m pytest -q -p no:cacheprovider --basetemp <fresh disk-backed dir>`,
+    with `TMPDIR` on disk too.
+  - The full run takes about 30 minutes. Keep the first failed log.
+  - The last pass (2026-11-12): 4,578 passed, two CUDA skips, 97.39% coverage.
+  - `tests/test_cloud_removal.py` keeps `README.md` between 400 and 900 words,
+    with four badges and resolvable local links.
+
+### Goal: at least 80% per stego method
+
+The user's goal is at least 80% balanced accuracy, on data never used in
+training, for every steganography method at a stated payload. Report every
+miss honestly; never inflate. Results, misses and evidence are in
+`docs/DETECTION_EXPANSION_20261111.md`.
+
+- **Passing**:
+  - gray LSB on BOSSbase (all payload-specific rows)
+  - stegano, OutGuess, steghide (JPEG and BMP)
+  - F5 at every payload (0.05 bpnzac: 80.8%)
+  - OpenStego at 0.4
+  - AudioMNIST WAV replacement
+  - network covert channels and video containers
+- **Missing**:
+  - unknown-payload gray LSB at 5% (72.1%)
+  - OpenStego at 0.1 (79.8%)
+  - ESC-50 WAV: replacement at 5/10%, and ±1 matching
+  - AudioMNIST matching at 5/10%
+  - FSDD at every payload
+  - academic spatial methods at 0.4 bpp (see below)
+- **zsteg on the DIV2K test split**: 1% false alarms on clean PNG/BMP and 100%
+  on stegano. It does not detect steghide BMP; that is expected.
+
+### Benchmarks in flight (private, under `.benchmark/`)
+
+The scripts cache features per method and skip methods already present in
+their result JSON. Rerunning the same command after an interruption resumes
+from the last finished method. A method interrupted midway restarts from
+scratch.
+
+1. `boss-academic-20261112/run_maxsrm.py` → `run_maxsrm.log`,
+   `result-maxsrm.json`:
+   - HILL, S-UNIWARD, WOW and MiPOD at 0.4 bpp.
+   - Features: SRM + selection-channel-aware weighted SRM (maxSRM-style).
+   - 5,497 train images; the feature set is chosen on the train holdout.
+   - This is an adaptive second look: v1 (`run.py`, `result.json`, plain SRM,
+     3,000 train) missed all four at 70.5/75.6/73.9/71.9%.
+   - v2 so far: HILL 76.4% (AUC .859), MiPOD 75.2% (.853); S-UNIWARD and WOW
+     were running.
+2. `boss-jpeg-academic-20261112/run.py` → `run.log`, `result.json`:
+   - J-UNIWARD 0.4, UERD 0.4 and nsF5 0.05/0.1/0.2 bpnzac.
+   - BOSSbase QF75; DCTR or calibrated DCTR, chosen on the train holdout.
+   - 3,000 train / 1,000 test.
+   - EBS is skipped: the conseal EBS simulator changes ~71% of the nonzero AC
+     coefficients at 0.4, so it is not a valid embedding.
+3. `boss-academic-20261112/run_rate.py 0.6 hill mipod` → `run_rate06.log`,
+   `result-rate0.6.json`:
+   - A stated higher payload for the 0.4 misses; the 0.4 rows stay reported.
+   - Its docstring says SRM + weighted won the holdout for every method at
+     0.4. Check that against `result-maxsrm.json` once S-UNIWARD and WOW finish.
+   - Add those two at 0.6 only if they miss at 0.4.
+
+### Unfinished work, in order
+
+1. When the runs finish:
+   - Fill the `<!-- academic-v2 -->` placeholder in
+     `docs/DETECTION_EXPANSION_20261111.md`: the v2 table with its adaptivity
+     note, the JPEG section and the 0.6 rows.
+   - Update the summary table and the "have not been run yet" sentence there.
+2. `README.md`:
+   - Add the academic rows. Old rows were merged (868 words now), which
+     leaves room under the 900 limit.
+   - Rerun `tests/test_cloud_removal.py`.
+3. Note the academic results in `CHANGELOG.md`.
+4. Run the full QA gate, commit per file in the style above, then push.
+   - Local commits not yet pushed: `ed4b127` and `9f31c4e` (weighted SRM
+     features and tests), `aa638b9` (ridge solve memory).
+   - Uncommitted: `docs/DETECTION_EXPANSION_20261111.md` (academic v1 section,
+     zsteg results), `README.md` (merged rows) and this section.
+5. Later:
+   - a stegseek benchmark for steghide
+   - SRNet on Colab for the academic methods at 0.4 bpp (CPU features plateau
+     there)
+   - optional extra formats (DICOM, HEIC/AVIF, PSD, fonts, PE/ELF, SQLite);
+     the user has not chosen yet
