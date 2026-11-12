@@ -15,12 +15,15 @@
     - TCSteg-style unreferenced MP4 media data, MKV attachments/tags and AVI JUNK
     - Weighted-Stego on lossless video frames
   - **zsteg fix**: the adapter no longer flags every clean image now that zsteg
-    is installed.
+    is installed. It runs the default checks plus `--all --bits 1,2` instead of
+    `--all` (same rows, about four times faster, no timeouts under load), and
+    PNG `meta` rows with flags now count.
   - **Results**:
     - Gray BOSSbase LSB: 85.7–97.8% (payload-specific, 1,000 untouched test
       images).
     - Real tools: steghide, OutGuess, stegano, F5 and OpenStego.
-    - WAV on ESC-50 and AudioMNIST.
+    - WAV on ESC-50 and AudioMNIST; FSDD misses at every payload (short, noisy
+      16-bit clips).
     - Network and video benchmarks.
     - Misses are reported; see the document.
 
