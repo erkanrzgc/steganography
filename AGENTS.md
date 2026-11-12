@@ -1352,6 +1352,12 @@ scratch.
    - Its docstring says SRM + weighted won the holdout for every method at
      0.4. Check that against `result-maxsrm.json` once S-UNIWARD and WOW finish.
    - Add those two at 0.6 only if they miss at 0.4.
+4. `boss-academic-20261112/run_v3.py hill mipod` → `run_v3.log`, `result-v3.json`:
+   - The 0.4 bpp rows again, with 9,000 train images: the split plus its 500
+     validation images and the 3,003 earlier-used BOSS images, pixel-checked
+     against test.
+   - The threshold is chosen by 5-fold out-of-fold balanced accuracy on train.
+   - Queued after item 3. Rerun it with `suniward wow` if those miss at 0.4.
 
 ### Unfinished work, in order
 
