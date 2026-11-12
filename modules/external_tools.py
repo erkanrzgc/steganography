@@ -26,6 +26,10 @@ class _ExternalAnalyzer(Analyzer):
     def command(self, src: Path) -> list[str]:
         raise NotImplementedError
 
+    def commands(self, src: Path) -> list[list[str]]:
+        """Argument vectors run in order; their bounded outputs are joined."""
+        return [self.command(src)]
+
     @abstractmethod
     def interpret(self, output: str, returncode: int) -> tuple[Signal, ...]:
         raise NotImplementedError
@@ -42,33 +46,20 @@ class _ExternalAnalyzer(Analyzer):
                 f"{self.executable} is not installed",
                 status="unavailable",
             )
-        command = self.command(src)
-        command[0] = executable
-        try:
-            with tempfile.TemporaryFile() as output_file:
-                completed = subprocess.run(  # noqa: S603 - fixed executable and argv only
-                    command,
-                    stdout=output_file,
-                    stderr=subprocess.STDOUT,
-                    check=False,
-                    timeout=_TIMEOUT_SECONDS,
-                    text=False,
-                    stdin=subprocess.DEVNULL,
-                    env={
-                        "PATH": os.environ.get("PATH", ""),
-                        "LANG": "C",
-                        "LC_ALL": "C",
-                    },
-                    preexec_fn=_limits if os.name == "posix" else None,
+        outputs: list[str] = []
+        returncode = 0
+        for command in self.commands(src):
+            command[0] = executable
+            try:
+                code, text = _run(command)
+            except subprocess.TimeoutExpired:
+                return AnalysisResult(
+                    self.name, 0, (), None, status="error", error="subprocess timeout"
                 )
-                output_file.seek(0)
-                output_bytes = output_file.read(_MAX_OUTPUT)
-        except subprocess.TimeoutExpired:
-            return AnalysisResult(
-                self.name, 0, (), None, status="error", error="subprocess timeout"
-            )
-        output = output_bytes.decode("utf-8", errors="replace")
-        signals = self.interpret(output, completed.returncode)
+            outputs.append(text)
+            returncode = returncode or code
+        output = "\n".join(outputs)
+        signals = self.interpret(output, returncode)
         return AnalysisResult(
             self.name,
             max((signal.score for signal in signals), default=0),
@@ -83,10 +74,19 @@ class ZstegAdapter(_ExternalAnalyzer):
     extensions = (".png", ".bmp")
 
     def command(self, src: Path) -> list[str]:
-        return [self.executable, "--all", str(src)]
+        # Every order, prime and alignment variant of the planes the filter reads. `--all`
+        # alone also walks bit planes 3-8, about four times slower, and is discarded anyway.
+        return [self.executable, "--all", "--bits", "1,2", str(src)]
+
+    def commands(self, src: Path) -> list[list[str]]:
+        # `--bits` switches off zsteg's metadata, chunk and appended-data checks, which the
+        # default mode still runs.
+        return [[self.executable, str(src)], self.command(src)]
 
     def interpret(self, output: str, returncode: int) -> tuple[Signal, ...]:
-        lines = [line for line in re.split(r"[\r\n]+", output) if _zsteg_candidate(line)]
+        lines = list(dict.fromkeys(
+            line.strip() for line in re.split(r"[\r\n]+", output) if _zsteg_candidate(line)
+        ))
         if not lines:
             return ()
         return (
@@ -103,8 +103,11 @@ class ZstegAdapter(_ExternalAnalyzer):
 # zsteg prints short random "text" and libmagic guesses for every natural image,
 # and the high bit planes of smooth images read as long printable text. Only
 # low-plane (b1/b2) or appended-data results that look like real content count.
-_ZSTEG_ROW = re.compile(r"^\s*(?P<name>\S+)\s+\.\.\s+(?P<kind>text|file):\s*(?P<value>.*)$")
-_ZSTEG_LOW = re.compile(r"^(b[12],[a-z]+,(lsb|msb)(,[a-zA-Z]+)?|extradata:\d+)$")
+_ZSTEG_ROW = re.compile(r"^\s*(?P<name>meta .+?|scanline extradata|\S+)\s+\.\.\s+"
+                        r"(?P<kind>text|file):\s*(?P<value>.*)$")
+_ZSTEG_LOW = re.compile(
+    r"^(b[12],[a-z]+,(lsb|msb)(,[a-zA-Z]+)?|extradata:\d+|scanline extradata)$"
+)
 _ZSTEG_TEXT_ROWS = re.compile(r"^(chunk:\d+:\w+|meta\b.*)$")
 _ZSTEG_FLAG = re.compile(r"[A-Za-z0-9_]{2,}\{[^{}\s]{2,}\}")
 _ZSTEG_MIN_TEXT = 20
@@ -188,6 +191,24 @@ class ExifToolAdapter(_ExternalAnalyzer):
                 evidence="heuristic",
             ),
         )
+
+
+def _run(command: list[str]) -> tuple[int, str]:
+    """Run one bounded child and return its exit code and first ``_MAX_OUTPUT`` bytes."""
+    with tempfile.TemporaryFile() as output_file:
+        completed = subprocess.run(  # noqa: S603 - fixed executable and argv only
+            command,
+            stdout=output_file,
+            stderr=subprocess.STDOUT,
+            check=False,
+            timeout=_TIMEOUT_SECONDS,
+            text=False,
+            stdin=subprocess.DEVNULL,
+            env={"PATH": os.environ.get("PATH", ""), "LANG": "C", "LC_ALL": "C"},
+            preexec_fn=_limits if os.name == "posix" else None,
+        )
+        output_file.seek(0)
+        return completed.returncode, output_file.read(_MAX_OUTPUT).decode("utf-8", "replace")
 
 
 def _limits() -> None:
