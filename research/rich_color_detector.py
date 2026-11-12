@@ -158,7 +158,9 @@ def _fits(covers: np.ndarray, stegos: np.ndarray, ridges: Sequence[float]) -> li
     within /= total - 1
     out = []
     for ridge in ridges:
-        weights = np.linalg.solve(within + ridge * np.eye(len(within)), sbar - cbar)
+        system = within.copy()  # ridge on the diagonal without a dense identity matrix
+        system[np.diag_indices_from(system)] += ridge
+        weights = np.linalg.solve(system, sbar - cbar)
         threshold = 0.5 * float(cbar @ weights + sbar @ weights)
         out.append(Detector(mean, scale, weights, threshold, float(ridge)))
     return out
