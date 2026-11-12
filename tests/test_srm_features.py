@@ -75,6 +75,57 @@ def test_features_separate_strong_matching():
     assert rich.auc(detector.score(cf[20:]), detector.score(sf[20:])) > 0.9
 
 
+def test_weighted_cooccurrence_adds_the_largest_weight_of_each_window():
+    r = np.array([[0, 1, -1, 2, 0]], float)
+    w = np.array([[0.1, 0.5, 0.2, 0.0, 0.9]])
+    counts = srm.cooccurrence(r, 1, w)
+    assert np.isclose(counts.sum(), 0.5 + 0.9)
+    with pytest.raises(ValueError):
+        srm.cooccurrence(r, 1, w[:, :4])
+
+
+def test_weighted_features_reduce_to_plain_features_and_stay_transpose_invariant():
+    img = texture(3)
+    assert np.allclose(srm.weighted_gray_features(img, np.ones(img.shape)),
+                       srm.gray_features(img), atol=1e-7)
+    w = np.random.default_rng(0).random(img.shape)
+    f = srm.weighted_gray_features(img, w)
+    assert f.shape == (srm.DIMS,) and f.dtype == np.float32
+    assert np.allclose(f, srm.weighted_gray_features(np.ascontiguousarray(img.T), w.T), atol=1e-6)
+    assert not np.allclose(f, srm.gray_features(img), atol=1e-4)
+    assert np.allclose(srm.weighted_gray_features(img[:, :, None], w), f)
+    assert not srm.weighted_gray_features(img, np.zeros(img.shape)).any()
+
+
+def test_weighted_features_follow_the_selection_channel():
+    img = texture(4)
+    w = np.zeros(img.shape)
+    w[:, :24] = 1.0
+    left = srm.weighted_gray_features(img, w)
+    assert np.allclose(left, srm.weighted_gray_features(img, 0.5 * w), atol=1e-7)
+    assert not np.allclose(left, srm.weighted_gray_features(img, w[:, ::-1]), atol=1e-4)
+
+
+@pytest.mark.parametrize(
+    ("image", "change"),
+    [(np.zeros((16, 16), np.int16), np.zeros((16, 16))),
+     (np.zeros((8, 64), np.uint8), np.zeros((8, 64))),
+     (np.zeros((16, 16), np.uint8), np.zeros((16, 15))),
+     (np.zeros((16, 16), np.uint8), np.full((16, 16), np.nan)),
+     (np.zeros((16, 16), np.uint8), np.full((16, 16), 1.5)),
+     (np.zeros((16, 16), np.uint8), np.full((16, 16), -0.1))],
+)
+def test_weighted_features_reject_bad_input(image, change):
+    with pytest.raises(ValueError):
+        srm.weighted_gray_features(image, change)
+
+
+def test_weighted_features_bound_pixel_count(monkeypatch):
+    monkeypatch.setattr(srm, "MAX_PIXELS", 100)
+    with pytest.raises(ValueError):
+        srm.weighted_gray_features(np.zeros((16, 16), np.uint8), np.zeros((16, 16)))
+
+
 def test_color_features_pool_channels_and_append_colour_block():
     gray = texture(7)
     rgb = np.stack([gray, np.roll(gray, 1, 0), np.roll(gray, 1, 1)], axis=2)
