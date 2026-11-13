@@ -1,10 +1,12 @@
-# Detection expansion toward 80% per method (CPU, 2026-11-11/12)
+# Detection expansion toward 80% per method (CPU, 2026-11-11–13)
 
 Goal set by the user: every steganography method should reach at least 80%
 balanced accuracy on data never used in training, at a stated payload.
-Accuracy below uses each detector's fixed zero threshold (not tuned on test).
-It is the mean of the true-positive rate and the true-negative rate over
-paired covers and stegos.
+Balanced accuracy is the mean of the true-positive and true-negative rates
+over paired covers and stegos. Statistical image rows use a zero threshold
+except spatial v3, which selects its threshold from out-of-fold training
+scores. Audio, video and rules use the operating points stated in their
+sections. Repeated test access is flagged below.
 
 ## Results against the 80% target
 
@@ -28,10 +30,26 @@ paired covers and stegos.
 | F5 (Westfeld) | JPEG q75 | 0.1 / 0.2 bpnzac | **93.8 / 99.8%** | .986 / 1.000 | calibrated DCTR |
 | OpenStego 0.8.6 | RGB PNG | 0.1 bpp | 79.8% (miss) | .870 | colour SRM, 4 crops per train image |
 | OpenStego 0.8.6 | RGB PNG | 0.4 bpp | **88.5%** | .947 | colour SRM |
+| HILL | gray BOSSbase | 0.4 bpp | 76.90% (miss) | .865 | SRM + weighted, v3; train OOF threshold |
+| S-UNIWARD | gray BOSSbase | 0.4 bpp | 79.95% (miss) | .892 | SRM + weighted, v3; train OOF threshold |
+| WOW | gray BOSSbase | 0.4 bpp | **80.30%** | .901 | SRM + weighted, v2 |
+| MiPOD | gray BOSSbase | 0.4 bpp | 76.00% (miss) | .858 | SRM + weighted, v3; train OOF threshold |
+| HILL | gray BOSSbase | 0.6 bpp | **83.20%** | .920 | SRM + weighted, zero threshold |
+| S-UNIWARD | gray BOSSbase | 0.6 bpp | **86.45%** | .948 | SRM + weighted, zero threshold |
+| MiPOD | gray BOSSbase | 0.6 bpp | **82.20%** | .915 | SRM + weighted, zero threshold |
+| J-UNIWARD | gray BOSSbase JPEG q75 | 0.4 bpnzac | **83.80%** | .900 | DCTR, train-selected |
+| UERD | gray BOSSbase JPEG q75 | 0.4 bpnzac | **82.65%** | .901 | DCTR, train-selected |
+| nsF5 | gray BOSSbase JPEG q75 | 0.05 bpnzac | 60.70% (miss) | .658 | DCTR, train-selected |
+| nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 75.15% (miss) | .834 | DCTR, train-selected |
+| nsF5 | gray BOSSbase JPEG q75 | 0.2 bpnzac | **94.25%** | .987 | DCTR, train-selected |
+| EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped |
 
 WAV, rule, network and video results follow in their sections; FSDD WAV is a
-miss at every payload. Academic adaptive methods (HILL, S-UNIWARD, WOW, MiPOD)
-have not been run yet.
+miss at every payload. Academic spatial results include three remaining
+0.4 bpp misses and separate 0.6 bpp passes; their reused test set limits
+independent confirmation of the target. JPEG nsF5 misses at 0.05 and
+0.1 bpnzac; EBS remains unavailable. The overall 80%-per-method goal is
+not met at all reported payloads.
 
 ## Gray LSB on BOSSbase (`research/srm_features.py`)
 
@@ -123,7 +141,108 @@ texture, where these residual statistics barely move.
 - The fixed zero threshold leaves 22–28% false alarms, so accuracy trails
   what the AUC allows.
 
-<!-- academic-v3 -->
+- **v3** (`run_v3.py`, HILL / S-UNIWARD / MiPOD at 0.4 bpp):
+  - Uses 9,000 train images: the original 5,497, the 500 former validation
+    images and 3,003 images used by earlier BOSS experiments. The extra
+    images were pixel-hash checked against the unchanged 1,000 test images;
+    train and test names are also disjoint. The 500 images are now training
+    data, not a validation set.
+  - Retains concatenated SRM + weighted features (9,464 dims), the original
+    simulators and the cached v2 stegos for the original train/test images.
+    Ridge selection uses a held-out fifth of training images.
+  - Five-fold out-of-fold training scores choose the threshold that maximizes
+    balanced accuracy; each cover/stego pair stays in one fold. The final
+    detector uses all 9,000 training pairs.
+  - **Adaptivity**: v3 was designed after v1 and v2 results. This is a third
+    look at the same test set, with no test-based threshold selection.
+    WOW was not rerun; its 80.30% result remains the v2 result.
+
+| Method (0.4 bpp) | v3 accuracy | Zero-threshold accuracy | AUC | TPR / FPR |
+|---|---:|---:|---:|---|
+| HILL | 76.90% (miss) | 77.05% | .865 | 80.6 / 26.8% |
+| S-UNIWARD | 79.95% (miss) | 79.80% | .892 | 85.5 / 25.6% |
+| MiPOD | 76.00% (miss) | 75.95% | .858 | 78.3 / 26.3% |
+
+All three v3 rows miss 80% at 0.4 bpp. S-UNIWARD has 1,599 correct decisions
+out of 2,000, one short of 80%; **79.95% is not rounded into a pass**.
+The 25.6–26.8% false-positive rates also remain substantial.
+
+**Higher payload, 0.6 bpp** (`run_rate.py`):
+
+- Runs only the three v3 misses, with 5,497 train / 1,000 test images and new
+  stego seeds. Features remain SRM + weighted; ridge is chosen on a held-out
+  fifth of training images, and the operating threshold is zero.
+- Weighted maps use the analysed image at the known method and payload.
+  These are method/payload-specific detectors.
+- This condition changes payload, training size and threshold policy from
+  v3. It does not isolate the causal effect of payload. The same test images
+  have already been viewed, and the choice to run 0.6 follows the 0.4 misses.
+
+| Method (0.6 bpp) | Accuracy | AUC | TPR / FPR | Pixels changed |
+|---|---:|---:|---|---:|
+| HILL | **83.20%** | .920 | 86.1 / 19.7% | 14.22% |
+| S-UNIWARD | **86.45%** | .948 | 88.1 / 15.2% | 12.32% |
+| MiPOD | **82.20%** | .915 | 85.4 / 21.0% | 14.69% |
+
+All three pass at the stated 0.6 bpp payload; their 0.4 bpp misses above
+remain reported. These adaptive results do not establish a qualified or
+deployed detector.
+
+## Academic JPEG methods (`.benchmark/boss-jpeg-academic-20261112`, private)
+
+The detached queue's first JPEG attempt is **unavailable**, exit 1: it fails
+during training-feature extraction on 15 empty or zero-filled derived JPEG
+caches dating from the earlier run. The completed audit finds 2,634 valid
+and 15 invalid cached covers, with no test covers or result JSON produced.
+All original covers, corrupt files, source code and the failed log are kept.
+
+An isolated cache repair uses `.benchmark/boss-jpeg-academic-repair-20261113`.
+It reuses the 2,634 bounded, fully decoded JPEGs by hard link and recreates
+missing/invalid derived covers from the unchanged BOSSbase originals. The
+worker's only AST change is its output directory; embedding methods, payloads,
+seeds, features, split and selection policy are unchanged. This separate
+completion exits 0. A closing hash audit verifies all 4,000 raw sources,
+2,649 old cached file contents, four source/split bindings and all five
+balanced-accuracy calculations. Hard linking changes inode link counts;
+no old media bytes are rewritten. The original failed attempt stays unavailable.
+
+- **Data**: first 3,000 train / all 1,000 test images from the gray split,
+  compressed with libjpeg through jpeglib at QF75. Each condition has 1,000
+  cover/stego test pairs; none of those sources is in this detector's training
+  set. The same BOSS test images have been used in the spatial experiments.
+- **Embedding**: conseal 2025.11 J-UNIWARD, UERD and nsF5 simulators, at bits
+  per nonzero AC coefficient (bpnzac). These are simulated coding results;
+  nsF5 here is distinct from the real F5 encoder evaluated on DIV2K above.
+- **Features/selection**: DCTR (8,000 dims) and Cartesian-calibrated DCTR
+  (16,000 dims) compete by AUC on a held-out fifth of training pairs. Plain
+  DCTR with ridge 0.01 wins all five cells. The final ridge Fisher detector
+  fits all 3,000 training pairs and uses a fixed zero threshold.
+- Methods, payloads, seeds and selection policy were fixed before the first
+  JPEG test result; the failed cache attempt produced no JPEG test metrics.
+
+| Method | Payload (bpnzac) | Accuracy | AUC | TPR / FPR |
+|---|---:|---:|---:|---|
+| J-UNIWARD | 0.4 | **83.80%** | .900 | 83.3 / 15.7% |
+| UERD | 0.4 | **82.65%** | .901 | 82.3 / 17.0% |
+| nsF5 | 0.05 | 60.70% (miss) | .658 | 60.1 / 38.7% |
+| nsF5 | 0.1 | 75.15% (miss) | .834 | 75.6 / 25.3% |
+| nsF5 | 0.2 | **94.25%** | .987 | 94.2 / 5.7% |
+
+**Remaining JPEG misses**: nsF5 at 0.05 and 0.1 bpnzac. Its mean changed-AC
+fractions are 0.56 /1.30 /3.12% at 0.05 /0.1 /0.2 bpnzac; J-UNIWARD and UERD
+at 0.4 change 8.36 /7.94%. These changed fractions are separate from payload.
+No further payload or threshold tuning follows from these test scores.
+
+**EBS is skipped/unavailable**: the recorded conseal 2025.11 simulator check
+changes about 71% of nonzero AC coefficients at 0.4 bpnzac, with a block-entropy
+division-by-zero problem. That embedding is invalid; no EBS accuracy or pass
+is claimed.
+
+The requested `.benchmark/boss-jpeg-academic-20261112/result.json` is a
+byte-identical copy of the isolated completion's `result.json`, SHA-256
+`6f0f7ec431249227ada47cf3d757b2d8e4a9dcdd0d75ed7a102c7738cf7adace`.
+The successful log and closing audit remain in the repair directory; the
+original `run.log` still records exit-1 evidence.
 
 ## WAV 16-bit LSB (`research/wav_lsb_features.py`)
 
@@ -387,6 +506,34 @@ Benchmark:
 
 ## Verification
 
+Fresh repaired CPU gate on **2026-11-14**: **4,588 passed**, two explicit
+CUDA skips, 32 warnings and **97.39%** total statement coverage, in 1,891.03 s.
+Ruff, mypy over 268 files (including `research`) and `git diff --check` pass.
+Both `research/srm_features.py` and `research/rich_color_detector.py` have
+100% statement coverage. The focused scanner regression passes one test and
+the README/cloud-removal checks pass all fifteen tests. All 570 bound input
+hashes match at full-gate close; wrapper time is 1,899.503044 s.
+
+All 4,590 collected cases use the unchanged 90% coverage gate. The run uses
+one BLAS/OpenMP thread, fresh disk-backed TMPDIR/basetemp and
+`-o tmp_path_retention_policy=failed` to clean only new passed-test temporary
+directories. Historical QA trees, datasets, checkpoints and failed logs remain
+untouched. Only the rebuildable pip package-download cache was purged for
+space; installed dependencies are unchanged. Complete commands, logs, input
+bindings and coverage JSON are in
+`.benchmark/academic-closeout-qa-20261114-q65ywhk3/`.
+
+The first new full gate (2026-11-13/14) records **4,588 passed**, two explicit
+CUDA skips, 32 warnings and **one teardown error**, with 97.39% coverage in
+1,803.54 s. It is a failed command, not a pass. The progress-rename unit
+test left its fake global `os.scandir` active during pytest's new passed-test
+temporary-directory cleanup. Its assertions passed; cleanup then encountered
+the fake directory entry. A focused run reproduced one pass /one error.
+The test now scopes that patch to its own assertions, restoring the real
+filesystem function before fixture cleanup. Application code is unchanged.
+The original full log, 570-file input binding, pre-fix test source and coverage
+data are retained in `.benchmark/academic-closeout-qa-20261113-ppi9ynip/`.
+
 Full CPU gate on 2026-11-12, after the zsteg fix: **4,578 passed**, two
 explicit CUDA skips, **97.39%** total coverage, in 1,837 s. Ruff, mypy over
 268 files (including `research`) and `git diff --check` pass.
@@ -412,6 +559,16 @@ explicit CUDA skips, **97.39%** total coverage, in 1,837 s. Ruff, mypy over
   - `eval_zsteg.py` → `zsteg-result.json`
 - `.benchmark/wav-lsb-20261112/`: `run.py` → `result.json` (v1); `run_v2.py` →
   `result-v2.json`
+- `.benchmark/boss-academic-20261112/`:
+  - `run.py` → `result.json` (v1); `run_maxsrm.py` → `result-maxsrm.json` (v2)
+  - `run_v3.py` / `run_v3.log` → `result-v3.json`
+  - `run_rate.py` / `run_rate06.log` → `result-rate0.6.json`
+- `.benchmark/queue-20261113.log`: v3 exit 0, JPEG exit 1, higher-payload exit 0
+- `.benchmark/boss-jpeg-academic-20261112/`: original `run.py`, derived covers
+  and failed `run.log`, preserved; `result.json` copies the isolated completion
+- `.benchmark/boss-jpeg-academic-repair-20261113/`: `staging.json`, original
+  source/log snapshots, output-only amended `run.py`, exclusive `attempt.json`,
+  successful `run.log`, `result.json`, `exit.json` and `closing-audit.json`
 - `.benchmark/network-20261112/`:
   - `benchmark.py`, `result-v1.json` (first ICMP rule) and `result.json`
   - `downloads/`: smallFlows.pcap (SHA-256 `77d06d3f…`), bigFlows.pcap (`2b630291…`)
@@ -424,3 +581,6 @@ explicit CUDA skips, **97.39%** total coverage, in 1,837 s. Ruff, mypy over
     `eval-java3-result.json`
   - F5 and OpenStego binaries under `.benchmark/tools-20261111`
 - Datasets and derived detectors are not redistributed.
+- Software verification: `.benchmark/academic-closeout-qa-20261113-ppi9ynip/`
+  (failed full gate, pre-fix source/coverage and focused reproduction), and
+  `.benchmark/academic-closeout-qa-20261114-q65ywhk3/` (clean complete gate).
