@@ -1380,3 +1380,57 @@ restarts from scratch.
      there)
    - optional extra formats (DICOM, HEIC/AVIF, PSD, fonts, PE/ELF, SQLite);
      the user has not chosen yet
+
+### Queue closeout and verification (2026-11-14)
+
+The detached queue above ended at 20:38:24 +03:00; do not restart it.
+V3 at 0.4 bpp is HILL 76.90%, S-UNIWARD 79.95% and MiPOD 76.00%, all misses.
+S-UNIWARD must not be rounded into an 80% pass. At the separate 0.6 bpp
+condition the three score 83.20 /86.45 /82.20%; all pass at that payload.
+
+The first academic JPEG stage exited 1 before test features or a result JSON:
+15 empty/zero-filled derived JPEG covers predate this queue. All 2,649 old
+covers (2,634 valid /15 invalid), original source and failed log are preserved.
+One isolated completion in `.benchmark/boss-jpeg-academic-repair-20261113`
+now exits 0 with no remaining process. Do not relaunch it or the old queue.
+The worker's sole AST change is its output directory; methods, payloads,
+seeds, features, split and selection are unchanged. The closing audit verifies
+4,000 raw sources, all 2,649 old cached contents (including the 15 invalid
+files), four source/split bindings and five metric calculations. Hard links
+change inode link counts; no old media bytes were rewritten. The requested
+old-directory `result.json` is a byte-identical copy of this completion, SHA
+`6f0f7ec431249227ada47cf3d757b2d8e4a9dcdd0d75ed7a102c7738cf7adace`.
+Keep both attempts' logs, snapshots, staging/exit receipts and closing audit.
+
+JPEG scores are J-UNIWARD /UERD 83.80 /82.65% at 0.4 bpnzac, and nsF5
+60.70 /75.15 /94.25% at 0.05 /0.1 /0.2 bpnzac. The two lower nsF5 payloads
+miss; EBS stays unavailable. All results and misses are now in the detection
+document, README and changelog. No GPU, download or deployment occurred.
+
+The first new full QA finishes with 4,588 passes /two CUDA skips /32 warnings
+and one teardown error, 97.39% coverage. Preserve that failed command and the
+focused one-pass/one-error reproduction in
+`.benchmark/academic-closeout-qa-20261113-ppi9ynip/`, including its original
+570-file binding, pre-fix test snapshot and `coverage.failed.data`.
+The progress-rename test's global fake `os.scandir` leaked into pytest's
+temporary-directory cleanup; a `monkeypatch.context()` now restores it before
+fixture teardown. This changes one test only, with no application-code change.
+
+The fresh full gate in `.benchmark/academic-closeout-qa-20261114-q65ywhk3/`
+now passes: 4,588 tests /two explicit CUDA skips /32 warnings, 97.39%
+statement coverage. Ruff /268-file mypy pass; SRM and rich-color research
+modules both have 100% coverage. All 570 bound inputs match at close. Pytest
+takes 1,891.03 seconds; the full wrapper takes 1,899.503044 seconds. The
+scanner regression and fifteen README/scope tests also pass.
+
+It uses one BLAS/OpenMP thread, disk-backed TMPDIR/basetemp and
+`tmp_path_retention_policy=failed`. Both historical 8.3-GiB QA trees, real
+datasets, checkpoints and all failed logs are preserved; only the rebuildable
+pip package-download cache was purged for space. Installed packages and
+application sources are unchanged. Keep both full-gate records distinct.
+
+Benchmarking, result documentation and the repaired software gate are complete;
+README has 888 words. No new GPU, download, fit, tuning or deployment follows.
+Use git tracking status to determine publication state and preserve the
+per-file lowercase commit rules above. Do not rerun completed jobs to republish
+them. Preserve the unrelated `nano.383070.save`.
