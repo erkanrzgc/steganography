@@ -115,10 +115,8 @@ reported arms/cells, not confidence intervals or expected real-world accuracy.
 
 | Experiment | Development source | Balanced accuracy | ROC-AUC |
 |---|---|---:|---:|
-| JPEG SRNet-style, initial arms | BOSSbase | 50.78–67.97% | 0.529–0.771 |
-| JPEG SRNet-style, initial arms | BOWS2 | 50.00–63.28% | 0.518–0.679 |
-| JPEG refinement, all arms | BOSSbase | 50.00–76.56% | 0.502–0.848 |
-| JPEG refinement, all arms | BOWS2 | 50.00–71.09% | 0.502–0.787 |
+| JPEG SRNet-style, initial arms | BOSSbase, BOWS2 | 50.00–67.97% | 0.518–0.771 |
+| JPEG refinement, all arms | BOSSbase, BOWS2 | 50.00–76.56% | 0.502–0.848 |
 | PNG/BMP linear, all variants | BOWS2 | 50.00–100.00% | 0.609–1.000 |
 | PNG/BMP linear, all variants | DIV2K | 50.00–93.75% | 0.547–1.000 |
 | PNG/BMP RGB SRNet, native pilot | Commons | — | 0.518–0.528 |
@@ -130,8 +128,7 @@ reported arms/cells, not confidence intervals or expected real-world accuracy.
 | WAV LSB trees | ESC-50 | 64.00–89.50% | 0.752–0.970 |
 | WAV LSB trees | AudioMNIST | 57.75–99.75% | 0.628–1.000 |
 | WAV LSB trees | FSDD | 49.20–58.00% | 0.496–0.603 |
-| WAV linear, parity/residual | ESC-50 | 50.00% | 0.484–0.547 |
-| WAV linear, parity/residual | FSDD | 50.00% | 0.359–0.656 |
+| WAV linear, parity/residual | ESC-50, FSDD | 50.00% | 0.359–0.656 |
 | WAV standardized pair head | AudioMNIST | 47.75–78.75% | 0.467–0.933 |
 
 Older pilots use 8–64 originals/source; newer rows 200–1,000 test items.
