@@ -669,11 +669,12 @@ def test_live_progress_rename_is_tolerated_but_closing_remains_strict(tmp_path, 
         raise FileNotFoundError("owned temporary progress entry was atomically renamed")
 
     entry = SimpleNamespace(path=str(tmp_path / "progress.next.json"), stat=disappeared)
-    monkeypatch.setattr(c.os, "scandir", lambda folder: nullcontext([entry]))
-    limits = c.Limits(2, 0, 0, 8 * a.MIB, a.MIB, closing_seconds=.1)
-    assert c.files(tmp_path, limits) == (0, {})
-    with pytest.raises(FileNotFoundError):
-        c.files(tmp_path, limits, hashes=True)
+    with monkeypatch.context() as scoped:
+        scoped.setattr(c.os, "scandir", lambda folder: nullcontext([entry]))
+        limits = c.Limits(2, 0, 0, 8 * a.MIB, a.MIB, closing_seconds=.1)
+        assert c.files(tmp_path, limits) == (0, {})
+        with pytest.raises(FileNotFoundError):
+            c.files(tmp_path, limits, hashes=True)
 
 
 def test_delivered_training_defaults_execute_without_models_or_media(tmp_path):
