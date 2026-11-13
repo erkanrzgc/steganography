@@ -1320,51 +1320,47 @@ miss honestly; never inflate. Results, misses and evidence are in
   - ESC-50 WAV: replacement at 5/10%, and ±1 matching
   - AudioMNIST matching at 5/10%
   - FSDD at every payload
-  - academic spatial methods at 0.4 bpp (see below)
+  - academic spatial methods at 0.4 bpp, except WOW (see below)
 - **zsteg on the DIV2K test split**: 1% false alarms on clean PNG/BMP and 100%
   on stegano. It does not detect steghide BMP; that is expected.
 
 ### Benchmarks in flight (private, under `.benchmark/`)
 
-The scripts cache features per method and skip methods already present in
-their result JSON. Rerunning the same command after an interruption resumes
-from the last finished method. A method interrupted midway restarts from
-scratch.
+The queue runs detached (`setsid nohup .benchmark/queue-20261113.sh`, log
+`.benchmark/queue-20261113.log`), so it survives the assistant session. The
+first chain, which was tied to the session, died with it on 2026-11-13.
+Every script caches features per method and skips methods already in its
+result JSON, so rerunning the queue resumes. A method interrupted midway
+restarts from scratch.
 
-1. `boss-academic-20261112/run_maxsrm.py` → `run_maxsrm.log`,
-   `result-maxsrm.json`:
-   - HILL, S-UNIWARD, WOW and MiPOD at 0.4 bpp.
-   - Features: SRM + selection-channel-aware weighted SRM (maxSRM-style).
-   - 5,497 train images; the feature set is chosen on the train holdout.
-   - This is an adaptive second look: v1 (`run.py`, `result.json`, plain SRM,
-     3,000 train) missed all four at 70.5/75.6/73.9/71.9%.
-   - v2 so far: HILL 76.4% (AUC .859), MiPOD 75.2% (.853); S-UNIWARD and WOW
-     were running.
-2. `boss-jpeg-academic-20261112/run.py` → `run.log`, `result.json`:
-   - J-UNIWARD 0.4, UERD 0.4 and nsF5 0.05/0.1/0.2 bpnzac.
-   - BOSSbase QF75; DCTR or calibrated DCTR, chosen on the train holdout.
-   - 3,000 train / 1,000 test.
-   - EBS is skipped: the conseal EBS simulator changes ~71% of the nonzero AC
-     coefficients at 0.4, so it is not a valid embedding.
-3. `boss-academic-20261112/run_rate.py 0.6 hill mipod` → `run_rate06.log`,
-   `result-rate0.6.json`:
-   - A stated higher payload for the 0.4 misses; the 0.4 rows stay reported.
-   - Its docstring says SRM + weighted won the holdout for every method at
-     0.4. Check that against `result-maxsrm.json` once S-UNIWARD and WOW finish.
-   - Add those two at 0.6 only if they miss at 0.4.
-4. `boss-academic-20261112/run_v3.py hill mipod` → `run_v3.log`, `result-v3.json`:
-   - The 0.4 bpp rows again, with 9,000 train images: the split plus its 500
-     validation images and the 3,003 earlier-used BOSS images, pixel-checked
-     against test.
-   - The threshold is chosen by 5-fold out-of-fold balanced accuracy on train.
-   - Queued after item 3. Rerun it with `suniward wow` if those miss at 0.4.
+- **Done, v2 at 0.4 bpp** (`boss-academic-20261112/run_maxsrm.py` →
+  `result-maxsrm.json`):
+  - Features: SRM + weighted (maxSRM-style); "both" won the train holdout
+    for every method. 5,497 train images.
+  - Results: HILL 76.4%, S-UNIWARD 78.9%, **WOW 80.3% (passes)**, MiPOD 75.2%.
+  - v1 (plain SRM, 3,000 train) gave 70.5/75.6/73.9/71.9%.
+- **Queue order**:
+  1. `run_v3.py hill suniward mipod` → `run_v3.log`, `result-v3.json`. The
+     0.4 bpp rows with 9,000 train images (the split plus its 500 validation
+     and 3,003 earlier-used BOSS images, pixel-checked against test) and a
+     5-fold out-of-fold train threshold.
+  2. `boss-jpeg-academic-20261112/run.py` → `run.log`, `result.json`:
+     - J-UNIWARD 0.4, UERD 0.4 and nsF5 0.05/0.1/0.2 bpnzac.
+     - BOSSbase QF75; DCTR or calibrated DCTR, chosen on the train holdout.
+     - 3,000 train / 1,000 test.
+     - EBS is skipped: the conseal EBS simulator changes ~71% of the nonzero
+       AC coefficients at 0.4, so it is not a valid embedding.
+  3. `run_rate.py 0.6 <methods still below 80% after v3>` → `run_rate06.log`,
+     `result-rate0.6.json`. A stated higher payload; the 0.4 rows stay
+     reported.
 
 ### Unfinished work, in order
 
 1. When the runs finish:
-   - Fill the `<!-- academic-v2 -->` placeholder in
-     `docs/DETECTION_EXPANSION_20261111.md`: the v2 table with its adaptivity
-     note, the JPEG section and the 0.6 rows.
+   - Fill the `<!-- academic-v3 -->` placeholder in
+     `docs/DETECTION_EXPANSION_20261111.md` (v1 and v2 are written): the v3
+     rows with a third-look adaptivity note, the JPEG section and the 0.6
+     rows.
    - Update the summary table and the "have not been run yet" sentence there.
 2. `README.md`:
    - Add the academic rows. Old rows were merged (868 words now), which
@@ -1374,8 +1370,8 @@ scratch.
 4. Run the full QA gate, commit per file in the style above, then push.
    - Local commits not yet pushed: `ed4b127` and `9f31c4e` (weighted SRM
      features and tests), `aa638b9` (ridge solve memory).
-   - Uncommitted: `docs/DETECTION_EXPANSION_20261111.md` (academic v1 section,
-     zsteg results), `README.md` (merged rows) and this section.
+   - Uncommitted: `docs/DETECTION_EXPANSION_20261111.md` (academic v1/v2
+     section, zsteg results) and `README.md` (merged rows).
 5. Later:
    - a stegseek benchmark for steghide
    - SRNet on Colab for the academic methods at 0.4 bpp (CPU features plateau
