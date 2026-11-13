@@ -77,6 +77,54 @@ have not been run yet.
 The mixed detector's false-positive rate is 9.1% at every payload. Its 5% miss
 comes from low recall (53%) at a threshold shared with the stronger payloads.
 
+## Academic adaptive spatial methods (`.benchmark/boss-academic-20261112`, private)
+
+- **Embedding**: conseal 2025.11 simulators (`simulate_single_channel`) of
+  HILL, S-UNIWARD, WOW and MiPOD at 0.4 bpp (payload-limited sender, optimal
+  coding simulated). They change 7.4–9.0% of the pixels.
+- **Data**: the gray BOSSbase split above; covers are the same images and the
+  cover SRM features are reused. One stego per cover and method.
+- **v1** (frozen before any academic result): plain SRM features, the first
+  3,000 train images, ridge chosen on a held-out fifth, one test score.
+
+| Method (0.4 bpp) | v1 accuracy | v1 AUC |
+|---|---:|---:|
+| HILL | 70.5% (miss) | .792 |
+| S-UNIWARD | 75.6% (miss) | .850 |
+| WOW | 73.9% (miss) | .825 |
+| MiPOD | 71.9% (miss) | .806 |
+
+All four miss 80% with v1. The features are a 4,732-dim subset of the
+34,671-dim spatial rich model, and adaptive methods put their changes in
+texture, where these residual statistics barely move.
+
+- **v2** (`run_maxsrm.py`, frozen before its results): adds a
+  selection-channel-aware block (`weighted_gray_features`, in the spirit of
+  maxSRM). Each co-occurrence adds the largest change probability of the four
+  pixels its residuals sit at, instead of one.
+  - The probability map is recomputed from the analysed image itself (cover or
+    stego) at the known method and payload, never from the stego's cover.
+  - All 5,497 train images are used. Plain SRM, weighted, and both
+    concatenated (9,464 dims) compete on the held-out fifth of train images;
+    "both" won for every method.
+  - Stegos are bit-identical to v1 (same seeds; checked).
+  - **Adaptivity**: v2 was designed after v1's test misses, so this is a
+    second look at the same test set.
+
+| Method (0.4 bpp) | Plain SRM | Weighted | **Both (selected)** | AUC | TPR / FPR |
+|---|---:|---:|---:|---:|---|
+| HILL | 72.4% | 74.5% | 76.4% (miss) | .859 | 80.0 / 27.2% |
+| S-UNIWARD | 76.7% | 76.4% | 78.9% (miss) | .888 | 81.0 / 23.2% |
+| WOW | 75.3% | 79.7% | **80.3%** | .901 | 83.1 / 22.5% |
+| MiPOD | 73.6% | 74.6% | 75.2% (miss) | .853 | 78.7 / 28.3% |
+
+- The extra train images alone lift plain SRM by 1.0–1.9 points over v1.
+  Adding the weighted block lifts it by a further 1.6–5.0 points.
+- The fixed zero threshold leaves 22–28% false alarms, so accuracy trails
+  what the AUC allows.
+
+<!-- academic-v3 -->
+
 ## WAV 16-bit LSB (`research/wav_lsb_features.py`)
 
 - **Features**:
@@ -302,6 +350,12 @@ Benchmark:
     take about 5 s together.
   - `meta <key>` rows (PNG text) never matched the row pattern, because the
     name has a space. They now count when they carry a flag.
+- **zsteg on the test split** (both adapter runs, then the adapter's filter):
+  - Clean covers: 2 of 200 PNG and 2 of 200 BMP flagged (1% false alarms).
+  - stegano 0.1 and 0.4 bpp: 200/200 and 200/200 flagged.
+  - steghide BMP 0.1 and 0.4 bpp: 3/200 and 0/200. steghide scatters its bits
+    with a password-seeded walk, which a sequential bit-plane reader cannot
+    see; the statistical detector above covers it.
 
 **F5 and OpenStego** (Java tools, run with the user's approval):
 - **Tools**:
@@ -355,6 +409,7 @@ explicit CUDA skips, **97.39%** total coverage, in 1,837 s. Ruff, mypy over
   - `eval_tools_v2.py` → `eval-v2-result.json`
   - `make_extra.py`/`manifest-extra.json`, `eval_tools_v3.py` → `eval-v3-result.json`
   - `stegano-rule-result.json`
+  - `eval_zsteg.py` → `zsteg-result.json`
 - `.benchmark/wav-lsb-20261112/`: `run.py` → `result.json` (v1); `run_v2.py` →
   `result-v2.json`
 - `.benchmark/network-20261112/`:
