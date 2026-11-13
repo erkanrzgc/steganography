@@ -1368,10 +1368,12 @@ restarts from scratch.
    - Rerun `tests/test_cloud_removal.py`.
 3. Note the academic results in `CHANGELOG.md`.
 4. Run the full QA gate, commit per file in the style above, then push.
-   - Local commits not yet pushed: `ed4b127` and `9f31c4e` (weighted SRM
-     features and tests), `aa638b9` (ridge solve memory).
-   - Uncommitted: `docs/DETECTION_EXPANSION_20261111.md` (academic v1/v2
-     section, zsteg results) and `README.md` (merged rows).
+   - Local commits not yet pushed (all of `origin/main..main`): weighted SRM
+     features and tests, the ridge memory fix, this handoff, the merged README
+     rows and the academic v1/v2 + zsteg doc update. Nothing is uncommitted
+     except the unrelated `nano.383070.save`, which must not be committed.
+   - Check the queue first: `pgrep -af queue-20261113` and
+     `.benchmark/queue-20261113.log`. Never start a second copy while it runs.
 5. Later:
    - a stegseek benchmark for steghide
    - SRNet on Colab for the academic methods at 0.4 bpp (CPU features plateau
