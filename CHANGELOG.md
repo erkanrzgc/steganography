@@ -3,6 +3,8 @@
 - Detection expansion toward 80% per method (`docs/DETECTION_EXPANSION_20261111.md`):
   - **New research features**:
     - symmetrised SRM-style gray and colour co-occurrences
+    - method-specific weighted spatial co-occurrences and an in-place ridge
+      diagonal update that avoids a second dense matrix
     - calibrated DCTR for JPEG
     - a random-subspace Fisher ensemble
     - 16-bit PCM LSB features (quiet frames, digital silence, Weighted-Stego,
@@ -18,10 +20,31 @@
     is installed. It runs the default checks plus `--all --bits 1,2` instead of
     `--all` (same rows, about four times faster, no timeouts under load), and
     PNG `meta` rows with flags now count.
+  - **QA fixture isolation**: scope the progress-rename test's fake
+    `os.scandir` to its assertions so pytest can clean new passed-test
+    temporary directories with the real filesystem function. Preserve the
+    first full run's teardown error and focused reproduction; application
+    behavior is unchanged.
+    The repaired full CPU gate passes 4,588 tests /two CUDA skips, 97.39%
+    coverage, Ruff and 268-file mypy; both SRM/rich-model research modules
+    have 100% statement coverage.
   - **Results**:
     - Gray BOSSbase LSB: 85.7–97.8% (payload-specific, 1,000 untouched test
       images).
     - Real tools: steghide, OutGuess, stegano, F5 and OpenStego.
+    - Academic spatial SRM + weighted features: WOW passes at 0.4 bpp
+      (80.30%, v2); v3 HILL / S-UNIWARD / MiPOD miss at 76.90 / 79.95 /
+      76.00%. S-UNIWARD's 79.95% remains a miss. All three pass at the separate
+      0.6 bpp condition (83.20 / 86.45 / 82.20%). Document the third-look
+      adaptivity, training-only OOF threshold and changed training size.
+    - Preserve the unavailable first academic JPEG attempt: 15 corrupt
+      derived cover caches predating the detached queue, with no test result.
+      An isolated output-directory-only repair completes the unchanged recipe;
+      all original source/cache contents and the failed log verify unchanged.
+    - Academic JPEG DCTR on BOSSbase q75: J-UNIWARD / UERD at 0.4 bpnzac
+      reach 83.80 /82.65%; nsF5 at 0.05 /0.1 /0.2 bpnzac reaches
+      60.70 /75.15 /94.25%. Both lower nsF5 payloads miss 80%; EBS is
+      unavailable because its simulator check is invalid.
     - WAV on ESC-50 and AudioMNIST; FSDD misses at every payload (short, noisy
       16-bit clips).
     - Network and video benchmarks.
