@@ -1550,3 +1550,60 @@ completion, boundary and final output stays below the shared 64-MiB cap.
 No unused time grants another test look, fit, guard relaxation or retry.
 Use git tracking status to determine publication; preserve the per-file
 lowercase commit rules and unrelated `nano.383070.save`.
+
+### User-requested storage cleanup and fresh continuation (2026-11-14)
+
+The user explicitly requests removing unnecessary steganography files, then
+continuing development. `docs/STORAGE_CLEANUP_20261114.md` records the completed
+cleanup: 27.859466552734375 GiB reclaimed, about 30 GiB available /85% used.
+Only six verified passed pytest generated-scratch trees and the unused
+`ci-minimal-env-20261010` environment are removed. Earlier statements about
+preserving those passed temporary copies are historical pre-cleanup records.
+Real datasets/features/scientific models, all QA logs/source receipts and
+failed/interrupted scratch remain. Compressed file/hash inventories, sparse
+extent metadata and CI package/configuration evidence are private under
+`.benchmark/qa-storage-cleanup-20261114-3k9p9lsx/`. All 570 source bindings and
+six predecessor/reference model hashes verify; active `venv` is intact.
+No consumed experiment is rerun to recreate disposable unit-test copies.
+
+The explicit continuation permits the fresh, bounded CPU sample-count study
+in `docs/RICH_MODEL_CPU_SAMPLE_COUNT_PROTOCOL_20261114.md`, using existing
+BOSS feature caches only. Keep 1,500 calibration pairs separate; the former
+5,999 fit plus consumed 1,501 audit pairs become 7,500 fit pairs. Fit one
+fixed C=100 /gamma=1/9,464 Gaussian model each for HILL/MiPOD; select against
+the old state using calibration only. The former audit is now training,
+not new held-out evidence. S-UNIWARD stays unchanged. Freeze choices before
+any optional one-time historical test access; preserve its further adaptivity.
+No new media, GPU, ALASKA2, native role change or old parent restart.
+The new study uses fresh exclusive markers, a new 1,200-second per-method
+operator cap, sampled 10-GiB RSS guard and at most eight MiB of disk output.
+Matrices stay in RAM. No retry/guard relaxation follows. Verify the already
+passed 4,646-test source closure; do not create another large QA tree when
+application/test code is unchanged. Record the new outcome before publishing.
+
+The fresh sample-count study is now closed in
+`.benchmark/rich-model-samplecount-20261114/`; see
+`docs/RICH_MODEL_CPU_SAMPLE_COUNT_RESULTS_20261114.md`. Both fresh C=100
+models converge on 7,500 fit sources, and calibration selects them before
+global choice/test freezes. One historical-test inference each gives HILL
+80.05% (1,601/2,000 correct) and MiPOD 77.90% (1,558/2,000) at 0.4 bpp.
+S-UNIWARD stays at 80.75%, without rerunning it. The former internal audit
+is training in this step; no new audit accuracy is claimed.
+
+Changes of +0.55 /+0.25 points versus the predecessor have exploratory 95%
+intervals -0.45 to +1.55 /-0.90 to +1.30. Both contain zero; this is not a
+statistically reliable gain or untouched external qualification. HILL passes
+by one decision only; MiPOD remains below 80%. No test-based adjustment.
+Independent calibration/count/AUC/bootstrap and 44 sampled state predictions
+verify, maximum discrepancy 9.195e-11. Original feature-cache hashes, versions,
+group separation and all 570 application/test source bindings match.
+
+Kernel wait4 peak RSS is about 4.44 GiB, and all matrices stay in RAM.
+Fit processes take about 50 seconds each, inference nine seconds each;
+conservative method debits with closing audits are 73.373759 /72.885059 of
+their new 1,200-second caps. Persistent output stays under two MiB, below
+the eight-MiB limit; guest space remains about 30 GiB free. No old allowance
+is reset, source/data download made or GPU used. All parents are closed;
+no automatic retry, new grid or test look follows. Application/test code is
+unchanged, so the prior passed 4,646-test gate is source-verified and reused,
+not relabelled as a new run. Documentation checks are recorded separately.
