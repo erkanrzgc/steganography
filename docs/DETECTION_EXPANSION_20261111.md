@@ -1,10 +1,10 @@
-# Detection expansion toward 80% per method (CPU, 2026-11-11–14)
+# Detection expansion toward 80% per method (CPU, 2026-11-11–15)
 
 Goal set by the user: every steganography method should reach at least 80%
 balanced accuracy on data never used in training, at a stated payload.
 Balanced accuracy is the mean of the true-positive and true-negative rates
 over paired covers and stegos. Statistical image rows use a zero threshold
-except spatial v3 (out-of-fold training scores) and the cached RBF follow-up
+except spatial v3 (out-of-fold training scores) and the cached kernel follow-ups
 (separate calibration scores). Audio, video and rules use the operating points stated in their
 sections. Repeated test access is flagged below.
 
@@ -39,6 +39,7 @@ sections. Repeated test access is flagged below.
 | MiPOD | gray BOSSbase | 0.4 bpp | 77.65% (miss) | 0.874 | cached RBF; 5,999 fit /1,500 calibration, further adaptive test |
 | HILL | gray BOSSbase | 0.4 bpp | **80.05%** | .891 | sample-count RBF; 7,500 fit /1,500 calibration, further adaptive |
 | MiPOD | gray BOSSbase | 0.4 bpp | 77.90% (miss) | .876 | sample-count RBF; 7,500 fit /1,500 calibration, further adaptive |
+| MiPOD | gray BOSSbase | 0.4 bpp | 78.75% (miss) | .886 | kernel ridge .03; 7,500 fit /1,500 calibration, further adaptive |
 | HILL | gray BOSSbase | 0.6 bpp | **83.20%** | .920 | SRM + weighted, zero threshold |
 | S-UNIWARD | gray BOSSbase | 0.6 bpp | **86.45%** | .948 | SRM + weighted, zero threshold |
 | MiPOD | gray BOSSbase | 0.6 bpp | **82.20%** | .915 | SRM + weighted, zero threshold |
@@ -50,8 +51,8 @@ sections. Repeated test access is flagged below.
 | EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped |
 
 WAV, rule, network and video results follow in their sections; FSDD WAV is a
-miss at every payload. The latest spatial RBF results still miss MiPOD at
-0.4 bpp (77.90%); HILL passes narrowly at 80.05% and S-UNIWARD at 80.75%. Earlier v3 misses and the
+miss at every payload. The latest spatial kernel results still miss MiPOD at
+0.4 bpp (78.75%); HILL passes narrowly at 80.05% and S-UNIWARD at 80.75%. Earlier v3 misses and the
 separate 0.6 bpp passes remain reported. Their reused test set limits
 independent confirmation of the target. JPEG nsF5 misses at 0.05 and
 0.1 bpnzac; EBS remains unavailable. The overall 80%-per-method goal is
@@ -256,6 +257,22 @@ both include zero. HILL is only one decision above the target, so no reliable
 generalization gain or qualification is claimed. Full independent replay and
 small in-RAM-only execution are in the
 [sample-count results](RICH_MODEL_CPU_SAMPLE_COUNT_RESULTS_20261114.md).
+
+**Fresh fixed kernel comparison (2026-11-15):** 34 new candidates compete
+against the 77.90% MiPOD predecessor on calibration only, keeping the same
+7,500 fit /1,500 calibration pairs. All four kernel-ridge and thirty
+additive-family SVC states are eligible. Calibration selects full square-root
+Gaussian ridge .03 before one selected historical-test inference.
+MiPOD at **0.4 bpp** reaches **78.75%** /AUC .885946, TPR /FPR **84.6 /27.1%**.
+Its 1,575/2,000 correct decisions are 17 more than the predecessor, still
+25 short of 80%. The exploratory paired 95% change interval is **-0.25 to
++1.90 points**, containing zero. Sensitivity improves with more false alarms;
+no reliable gain or untouched qualification is established. Other methods
+are unchanged. All 35 calibration records, metrics/bootstrap and 90 sampled
+numeric predictions replay independently. Matrices stay in RAM; the closed
+attempt uses about 401 seconds and four MiB of private output. See the
+[complete kernel results](MIPOD_KERNEL_RESULTS_20261115.md) and
+`benchmarks/mipod-kernel-20261115.json`.
 
 ## Academic JPEG methods (`.benchmark/boss-jpeg-academic-20261112`, private)
 
