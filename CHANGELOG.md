@@ -1,5 +1,21 @@
 # Changelog
 
+- Complete the fresh fixed MiPOD CPU kernel comparison at **0.4 bpp**:
+  - Four ridge and thirty additive-family SVC candidates are selected only
+    through the same separate 1,500 calibration pairs, after 7,500-source
+    fitting. Calibration selects square-root Gaussian kernel ridge .03.
+  - One further adaptive historical test gives **78.75%**, versus 77.90%:
+    17 more correct decisions, still 25 short of 80%. The exploratory 95%
+    change interval is -0.25 to +1.90 points; no reliable gain is established.
+    TPR rises to 84.6% while FPR rises to 27.1%; other methods are unchanged.
+  - All 35 calibration records, full test metrics/bootstrap and 90 numeric
+    predictions replay independently. About 401 seconds, 6.54-GiB wait4 peak
+    and four MiB of private output; no disk matrices or new media/GPU work.
+    All 570 unchanged source bindings verify against the passed 4,646-test
+    gate, without another full QA scratch tree. See
+    `docs/MIPOD_KERNEL_RESULTS_20261115.md` and the public numeric receipt
+    `benchmarks/mipod-kernel-20261115.json`.
+
 - Complete user-requested storage cleanup and a fresh CPU sample-count step:
   - Reclaim 27.859467 GiB from six verified passed generated-QA scratch trees
     and an unused one-off CI environment; retain inventories, all real
