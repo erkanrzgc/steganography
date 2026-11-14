@@ -27,12 +27,24 @@ class Ensemble:
     thresholds: np.ndarray  # (learners,)
     spreads: np.ndarray  # (learners,)
 
-    def score(self, feats: np.ndarray) -> np.ndarray:
-        if feats.ndim != 2 or feats.shape[1] != self.mean.size:
+    def score(self, feats: np.ndarray, *, batch_rows: int = 256) -> np.ndarray:
+        """Score bounded row batches without an N x learners x subspace tensor."""
+        if not isinstance(feats, np.ndarray) or feats.ndim != 2:
             raise ValueError("feature matrix width mismatch")
-        z = (feats - self.mean) / self.scale
-        proj = np.einsum("nld,ld->nl", z[:, self.columns], self.weights)
-        return np.tanh((proj - self.thresholds) / self.spreads).mean(1)
+        if feats.shape[1] != self.mean.size:
+            raise ValueError("feature matrix width mismatch")
+        if type(batch_rows) is not int or not 1 <= batch_rows <= 4096:
+            raise ValueError("batch_rows must be an integer from 1 to 4096")
+        scores = np.empty(len(feats), dtype=np.float64)
+        for start in range(0, len(feats), batch_rows):
+            z = (feats[start:start + batch_rows] - self.mean) / self.scale
+            votes = np.zeros(len(z))
+            for columns, weights, threshold, spread in zip(
+                self.columns, self.weights, self.thresholds, self.spreads, strict=True
+            ):
+                votes += np.tanh((z[:, columns] @ weights - threshold) / spread)
+            scores[start:start + len(z)] = votes / len(self.columns)
+        return scores
 
     def save(self, path: Path) -> None:
         with path.open("xb") as handle:
