@@ -1,0 +1,933 @@
+{
+  "date": "2026-11-15",
+  "status": "measured_historical_adaptive",
+  "method": "mipod",
+  "payload_bpp": 0.4,
+  "fit_sources": 7500,
+  "fit_groups": 7498,
+  "calibration_sources": 1500,
+  "calibration_groups": 1499,
+  "test_sources": 1000,
+  "previous_audit_now_training": true,
+  "historical_test_adaptive": true,
+  "untouched_qualification": false,
+  "deployed": false,
+  "candidate_order_and_calibration": [
+    {
+      "name": "old_7500",
+      "order": 0,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.798,
+        "auc": 0.8844671111111111,
+        "tpr": 0.8,
+        "fpr": 0.204,
+        "threshold": 0.03422993210695907,
+        "true_negative": 1194,
+        "true_positive": 1200,
+        "total_decisions": 3000
+      },
+      "model_sha256": "ed0ba7740b8e99536997f9301db5a9adff8b803ef50a1824583d3ea3d875efa8"
+    },
+    {
+      "name": "ridge-0.01",
+      "order": 1,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.8013333333333333,
+        "auc": 0.885276,
+        "tpr": 0.8446666666666667,
+        "fpr": 0.242,
+        "threshold": -0.09022398737579351,
+        "true_negative": 1137,
+        "true_positive": 1267,
+        "total_decisions": 3000
+      },
+      "model_sha256": "84b4b176c429a2fcd524445b30a422958b208b810dc77bb5a40fe13171977a0a",
+      "residual": 1.556625939258538e-10,
+      "solver_seconds": 19.3371937050033
+    },
+    {
+      "name": "ridge-0.03",
+      "order": 2,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.8026666666666666,
+        "auc": 0.8946791111111111,
+        "tpr": 0.8506666666666667,
+        "fpr": 0.24533333333333332,
+        "threshold": -0.05769335119293828,
+        "true_negative": 1132,
+        "true_positive": 1276,
+        "total_decisions": 3000
+      },
+      "model_sha256": "0f099338d1c63ba58508c0e803132a21561d2228f4d9068139c1b5771bb18e99",
+      "residual": 6.494316195926331e-11,
+      "solver_seconds": 19.260197444993537
+    },
+    {
+      "name": "ridge-0.1",
+      "order": 3,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7946666666666666,
+        "auc": 0.8937657777777778,
+        "tpr": 0.8033333333333333,
+        "fpr": 0.214,
+        "threshold": 0.004258639730096547,
+        "true_negative": 1179,
+        "true_positive": 1205,
+        "total_decisions": 3000
+      },
+      "model_sha256": "411c422d8aab530e533777b979184cc1b30217705b5e48b7e40f589dbaa502d4",
+      "residual": 2.2422952383749362e-11,
+      "solver_seconds": 19.28106681700592
+    },
+    {
+      "name": "ridge-0.3",
+      "order": 4,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.782,
+        "auc": 0.8835764444444445,
+        "tpr": 0.872,
+        "fpr": 0.308,
+        "threshold": -0.038558193363655846,
+        "true_negative": 1038,
+        "true_positive": 1308,
+        "total_decisions": 3000
+      },
+      "model_sha256": "8056df4a21e07fe5d55e14b744d5b24f4fc586e06442209c62953274d377adcf",
+      "residual": 7.068567953183447e-12,
+      "solver_seconds": 20.64092536100361
+    },
+    {
+      "name": "sqrt-plain0-c30",
+      "order": 5,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.779,
+        "auc": 0.868256,
+        "tpr": 0.8413333333333334,
+        "fpr": 0.2833333333333333,
+        "threshold": -0.10061948819694819,
+        "true_negative": 1075,
+        "true_positive": 1262,
+        "total_decisions": 3000
+      },
+      "model_sha256": "49b0ad749f08f06bd9318951c1cd924132b237e9f2e5168d3f5ffd231b1989a9",
+      "maximum_prediction_parity_error": 6.917755257518365e-10,
+      "fit_status": 0,
+      "iterations": [
+        31695
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 2.1436072529977537
+    },
+    {
+      "name": "sqrt-plain0-c100",
+      "order": 6,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7793333333333333,
+        "auc": 0.8684106666666667,
+        "tpr": 0.8606666666666667,
+        "fpr": 0.302,
+        "threshold": -0.2905673170984807,
+        "true_negative": 1047,
+        "true_positive": 1291,
+        "total_decisions": 3000
+      },
+      "model_sha256": "695e8695b0b797180e91f1eb08b950ceb4391ef730a69d0fe65859b04f34376f",
+      "maximum_prediction_parity_error": 1.989890918707715e-09,
+      "fit_status": 0,
+      "iterations": [
+        68606
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.241687945999729
+    },
+    {
+      "name": "sqrt-plain0-c300",
+      "order": 7,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.774,
+        "auc": 0.8595266666666667,
+        "tpr": 0.8006666666666666,
+        "fpr": 0.25266666666666665,
+        "threshold": -0.14402727486042743,
+        "true_negative": 1121,
+        "true_positive": 1201,
+        "total_decisions": 3000
+      },
+      "model_sha256": "5d4beaebede8483cf2116e00a0606409fa2b6039507f4efc9e059ae83fce6c1d",
+      "maximum_prediction_parity_error": 4.119655727663485e-09,
+      "fit_status": 0,
+      "iterations": [
+        131800
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 7.405563763000828
+    },
+    {
+      "name": "sqrt-plain0.25-c30",
+      "order": 8,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.794,
+        "auc": 0.8852675555555556,
+        "tpr": 0.798,
+        "fpr": 0.21,
+        "threshold": 0.062401697442702075,
+        "true_negative": 1185,
+        "true_positive": 1197,
+        "total_decisions": 3000
+      },
+      "model_sha256": "7ea702aaea31d0871b14751627bf48f5802c6294b97e5e83a65a5dd846153b63",
+      "maximum_prediction_parity_error": 5.502798217094096e-10,
+      "fit_status": 0,
+      "iterations": [
+        38610
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.8476059450040339
+    },
+    {
+      "name": "sqrt-plain0.25-c100",
+      "order": 9,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.796,
+        "auc": 0.8823075555555555,
+        "tpr": 0.824,
+        "fpr": 0.232,
+        "threshold": -0.06186194466531181,
+        "true_negative": 1152,
+        "true_positive": 1236,
+        "total_decisions": 3000
+      },
+      "model_sha256": "ddfc02eb7023b4ec7e0a8e5791334ea104d25450b8bb94556198cb77c72276d5",
+      "maximum_prediction_parity_error": 1.7401546870132734e-09,
+      "fit_status": 0,
+      "iterations": [
+        80872
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.8038847709976835
+    },
+    {
+      "name": "sqrt-plain0.25-c300",
+      "order": 10,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7903333333333333,
+        "auc": 0.8730755555555556,
+        "tpr": 0.8353333333333334,
+        "fpr": 0.25466666666666665,
+        "threshold": -0.2175121506904737,
+        "true_negative": 1118,
+        "true_positive": 1253,
+        "total_decisions": 3000
+      },
+      "model_sha256": "1831ed08aed32170e5a27ae350f15dbf90f2c51c6a61c79b9e872d8a3f0a55cf",
+      "maximum_prediction_parity_error": 3.789168090406747e-09,
+      "fit_status": 0,
+      "iterations": [
+        136783
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 7.572470784005418
+    },
+    {
+      "name": "sqrt-plain0.5-c30",
+      "order": 11,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.798,
+        "auc": 0.8849764444444445,
+        "tpr": 0.8566666666666667,
+        "fpr": 0.26066666666666666,
+        "threshold": -0.07808106242831325,
+        "true_negative": 1109,
+        "true_positive": 1285,
+        "total_decisions": 3000
+      },
+      "model_sha256": "dfab34bfb24945e9e87c22d7e7ea87325f41fe8a2bf4f985a47657d92d2278b1",
+      "maximum_prediction_parity_error": 5.911005018788273e-10,
+      "fit_status": 0,
+      "iterations": [
+        40391
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.8281473440001719
+    },
+    {
+      "name": "sqrt-plain0.5-c100",
+      "order": 12,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7943333333333333,
+        "auc": 0.8819995555555555,
+        "tpr": 0.868,
+        "fpr": 0.2793333333333333,
+        "threshold": -0.277046944492243,
+        "true_negative": 1081,
+        "true_positive": 1302,
+        "total_decisions": 3000
+      },
+      "model_sha256": "7b73dde8088092c956ff342fc1cf53e2b632c2c281ada76ea5c3b790cc6e855e",
+      "maximum_prediction_parity_error": 1.8606485241434711e-09,
+      "fit_status": 0,
+      "iterations": [
+        82126
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.482771564995346
+    },
+    {
+      "name": "sqrt-plain0.5-c300",
+      "order": 13,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7916666666666666,
+        "auc": 0.8728684444444444,
+        "tpr": 0.7973333333333333,
+        "fpr": 0.214,
+        "threshold": -0.03537949992211886,
+        "true_negative": 1179,
+        "true_positive": 1196,
+        "total_decisions": 3000
+      },
+      "model_sha256": "402a8f4466d6357936cc416c2d3c51700cc12972d23d53647509748ef47cf364",
+      "maximum_prediction_parity_error": 3.6133727121523407e-09,
+      "fit_status": 0,
+      "iterations": [
+        134711
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 7.509669456005213
+    },
+    {
+      "name": "sqrt-plain0.75-c30",
+      "order": 14,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7926666666666666,
+        "auc": 0.8814991111111111,
+        "tpr": 0.8453333333333334,
+        "fpr": 0.26,
+        "threshold": -0.04207387697115811,
+        "true_negative": 1110,
+        "true_positive": 1268,
+        "total_decisions": 3000
+      },
+      "model_sha256": "a529095765820d2b5fc6b19f413fcc05e2625dc5d0e0dfa1973e66e82fe16567",
+      "maximum_prediction_parity_error": 5.381401990689483e-10,
+      "fit_status": 0,
+      "iterations": [
+        41804
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.8058188290015096
+    },
+    {
+      "name": "sqrt-plain0.75-c100",
+      "order": 15,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.793,
+        "auc": 0.8806462222222222,
+        "tpr": 0.8266666666666667,
+        "fpr": 0.24066666666666667,
+        "threshold": -0.1075746101073819,
+        "true_negative": 1139,
+        "true_positive": 1240,
+        "total_decisions": 3000
+      },
+      "model_sha256": "d529429833d991a7213ce6d5b34e25a0ecb2f8261bf9281ed138131ff8847576",
+      "maximum_prediction_parity_error": 1.7388543938068324e-09,
+      "fit_status": 0,
+      "iterations": [
+        80510
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.4329545209984644
+    },
+    {
+      "name": "sqrt-plain0.75-c300",
+      "order": 16,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.79,
+        "auc": 0.8707142222222222,
+        "tpr": 0.8166666666666667,
+        "fpr": 0.23666666666666666,
+        "threshold": -0.12027712669821167,
+        "true_negative": 1145,
+        "true_positive": 1225,
+        "total_decisions": 3000
+      },
+      "model_sha256": "1f1489233ddad2d1d26e7850f449e87ac4b61ed1dae057f524db8e38632ba87f",
+      "maximum_prediction_parity_error": 4.3115804260196455e-09,
+      "fit_status": 0,
+      "iterations": [
+        150910
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 8.085926448002283
+    },
+    {
+      "name": "sqrt-plain1-c30",
+      "order": 17,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.77,
+        "auc": 0.8598528888888889,
+        "tpr": 0.7833333333333333,
+        "fpr": 0.24333333333333335,
+        "threshold": 0.07539646961110368,
+        "true_negative": 1135,
+        "true_positive": 1175,
+        "total_decisions": 3000
+      },
+      "model_sha256": "13676261d6bebb72cad69e4546b8887ca25ad90b0160d78f01f00a636437c19e",
+      "maximum_prediction_parity_error": 6.217817372089485e-10,
+      "fit_status": 0,
+      "iterations": [
+        40503
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.8494176980020711
+    },
+    {
+      "name": "sqrt-plain1-c100",
+      "order": 18,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7733333333333333,
+        "auc": 0.8604906666666666,
+        "tpr": 0.838,
+        "fpr": 0.29133333333333333,
+        "threshold": -0.18804626061719326,
+        "true_negative": 1063,
+        "true_positive": 1257,
+        "total_decisions": 3000
+      },
+      "model_sha256": "4db960a93e45313a8553a25bfa2461e0a7fa7caa04742a093bc0ffaef92c1ae2",
+      "maximum_prediction_parity_error": 1.989290510095998e-09,
+      "fit_status": 0,
+      "iterations": [
+        88845
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.7749829289969057
+    },
+    {
+      "name": "sqrt-plain1-c300",
+      "order": 19,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.764,
+        "auc": 0.8499497777777778,
+        "tpr": 0.846,
+        "fpr": 0.318,
+        "threshold": -0.333601972714014,
+        "true_negative": 1023,
+        "true_positive": 1269,
+        "total_decisions": 3000
+      },
+      "model_sha256": "096ba030cc10791c3578b5683fd6f4ba88507614be9dc767af9615a9d56ca360",
+      "maximum_prediction_parity_error": 4.0387249100604095e-09,
+      "fit_status": 0,
+      "iterations": [
+        151299
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 7.083036285999697
+    },
+    {
+      "name": "quarter-plain0-c30",
+      "order": 20,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7793333333333333,
+        "auc": 0.866968,
+        "tpr": 0.87,
+        "fpr": 0.31133333333333335,
+        "threshold": -0.1879990193390424,
+        "true_negative": 1033,
+        "true_positive": 1305,
+        "total_decisions": 3000
+      },
+      "model_sha256": "62302e307630dd92028faa2966700ec0234262a08baea85ba7b8aa744ba47e41",
+      "maximum_prediction_parity_error": 6.901359483890701e-10,
+      "fit_status": 0,
+      "iterations": [
+        30768
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.5358483649979462
+    },
+    {
+      "name": "quarter-plain0-c100",
+      "order": 21,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7806666666666666,
+        "auc": 0.865312,
+        "tpr": 0.796,
+        "fpr": 0.23466666666666666,
+        "threshold": -0.047492812164352916,
+        "true_negative": 1148,
+        "true_positive": 1194,
+        "total_decisions": 3000
+      },
+      "model_sha256": "9a59e46b2ebedbe989ed23fa57c385bfab6e2c029369a06a49075633518a2941",
+      "maximum_prediction_parity_error": 2.0110633158765268e-09,
+      "fit_status": 0,
+      "iterations": [
+        68620
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.1333437279972713
+    },
+    {
+      "name": "quarter-plain0-c300",
+      "order": 22,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7723333333333333,
+        "auc": 0.8569946666666667,
+        "tpr": 0.776,
+        "fpr": 0.23133333333333334,
+        "threshold": -0.08576522658381847,
+        "true_negative": 1153,
+        "true_positive": 1164,
+        "total_decisions": 3000
+      },
+      "model_sha256": "3a0dde67b96917cdfdb5ad7bcec7579c8e4efb77a2511348f98a53f6a19bb7f7",
+      "maximum_prediction_parity_error": 4.122483909796415e-09,
+      "fit_status": 0,
+      "iterations": [
+        140381
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 8.085136408000835
+    },
+    {
+      "name": "quarter-plain0.25-c30",
+      "order": 23,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7923333333333333,
+        "auc": 0.8827266666666667,
+        "tpr": 0.8293333333333334,
+        "fpr": 0.24466666666666667,
+        "threshold": -0.04608308364423941,
+        "true_negative": 1133,
+        "true_positive": 1244,
+        "total_decisions": 3000
+      },
+      "model_sha256": "434c3dbe705e5cd4584b9bd4dedde9b544c4a55292533c3a0c51aa66679afae5",
+      "maximum_prediction_parity_error": 5.881641840232987e-10,
+      "fit_status": 0,
+      "iterations": [
+        37820
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.6225178349995986
+    },
+    {
+      "name": "quarter-plain0.25-c100",
+      "order": 24,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.793,
+        "auc": 0.8795995555555556,
+        "tpr": 0.7913333333333333,
+        "fpr": 0.20533333333333334,
+        "threshold": 0.010437530258752936,
+        "true_negative": 1192,
+        "true_positive": 1187,
+        "total_decisions": 3000
+      },
+      "model_sha256": "15a5a77ce97dc2bde4cb1db8c006a1cbd1adf00ba2b878e479627edc21ed0dda",
+      "maximum_prediction_parity_error": 1.644574254555664e-09,
+      "fit_status": 0,
+      "iterations": [
+        77754
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.3212791580008343
+    },
+    {
+      "name": "quarter-plain0.25-c300",
+      "order": 25,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7916666666666666,
+        "auc": 0.8712586666666666,
+        "tpr": 0.8486666666666667,
+        "fpr": 0.2653333333333333,
+        "threshold": -0.3135096388622651,
+        "true_negative": 1102,
+        "true_positive": 1273,
+        "total_decisions": 3000
+      },
+      "model_sha256": "2842a037d37e6da43f965a82f854a13edce7f74a6ff70cbc86fd9c947336aefb",
+      "maximum_prediction_parity_error": 3.592292685539178e-09,
+      "fit_status": 0,
+      "iterations": [
+        142991
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 8.184470574997249
+    },
+    {
+      "name": "quarter-plain0.5-c30",
+      "order": 26,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.795,
+        "auc": 0.8834546666666667,
+        "tpr": 0.84,
+        "fpr": 0.25,
+        "threshold": -0.043628103176430934,
+        "true_negative": 1125,
+        "true_positive": 1260,
+        "total_decisions": 3000
+      },
+      "model_sha256": "f99c4f5180e9207b3e023fdaf60f1d0e9ef1a2d0fa480231579f937d64d14c08",
+      "maximum_prediction_parity_error": 5.816929160573636e-10,
+      "fit_status": 0,
+      "iterations": [
+        37844
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.6615756470055203
+    },
+    {
+      "name": "quarter-plain0.5-c100",
+      "order": 27,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7936666666666666,
+        "auc": 0.88046,
+        "tpr": 0.824,
+        "fpr": 0.23666666666666666,
+        "threshold": -0.09447392172557861,
+        "true_negative": 1145,
+        "true_positive": 1236,
+        "total_decisions": 3000
+      },
+      "model_sha256": "a04a20231d05a01ecb0f335709d120a9f9940a8707d8068656c2fb5117a59e84",
+      "maximum_prediction_parity_error": 1.629235413247443e-09,
+      "fit_status": 0,
+      "iterations": [
+        81136
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.4811589539967827
+    },
+    {
+      "name": "quarter-plain0.5-c300",
+      "order": 28,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7916666666666666,
+        "auc": 0.8721711111111111,
+        "tpr": 0.8246666666666667,
+        "fpr": 0.24133333333333334,
+        "threshold": -0.20373053457165052,
+        "true_negative": 1138,
+        "true_positive": 1237,
+        "total_decisions": 3000
+      },
+      "model_sha256": "89f67b35bb9e11a4946dab342963e5c9ab46dd2e2c2509d3cc81555e61ed12a6",
+      "maximum_prediction_parity_error": 4.089002914042794e-09,
+      "fit_status": 0,
+      "iterations": [
+        147325
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 8.785565376994782
+    },
+    {
+      "name": "quarter-plain0.75-c30",
+      "order": 29,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.793,
+        "auc": 0.8804777777777778,
+        "tpr": 0.8246666666666667,
+        "fpr": 0.23866666666666667,
+        "threshold": 0.01882545532829064,
+        "true_negative": 1142,
+        "true_positive": 1237,
+        "total_decisions": 3000
+      },
+      "model_sha256": "001604d6658e5907eb51b8a1c0695a73ca7cd8d96269296b21f3fe9bfa02021f",
+      "maximum_prediction_parity_error": 6.289795351221983e-10,
+      "fit_status": 0,
+      "iterations": [
+        37307
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.654060919994663
+    },
+    {
+      "name": "quarter-plain0.75-c100",
+      "order": 30,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.794,
+        "auc": 0.8795048888888889,
+        "tpr": 0.8546666666666667,
+        "fpr": 0.26666666666666666,
+        "threshold": -0.20772977231171108,
+        "true_negative": 1100,
+        "true_positive": 1282,
+        "total_decisions": 3000
+      },
+      "model_sha256": "09c62b81880954bc5e933ad283394a742a31bbff00a3bc2adc695e4ba135ec58",
+      "maximum_prediction_parity_error": 1.9995134437067463e-09,
+      "fit_status": 0,
+      "iterations": [
+        81505
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.394769851001911
+    },
+    {
+      "name": "quarter-plain0.75-c300",
+      "order": 31,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.793,
+        "auc": 0.8704071111111111,
+        "tpr": 0.848,
+        "fpr": 0.262,
+        "threshold": -0.2922237503646663,
+        "true_negative": 1107,
+        "true_positive": 1272,
+        "total_decisions": 3000
+      },
+      "model_sha256": "778d73bba1e86bf44c7fd730c76db9f05313a6f4e3be4c20acf21fffa8766697",
+      "maximum_prediction_parity_error": 3.6673704073564295e-09,
+      "fit_status": 0,
+      "iterations": [
+        144184
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 7.7917863149996265
+    },
+    {
+      "name": "quarter-plain1-c30",
+      "order": 32,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7693333333333333,
+        "auc": 0.8555884444444445,
+        "tpr": 0.7486666666666667,
+        "fpr": 0.21,
+        "threshold": 0.16847408552480803,
+        "true_negative": 1185,
+        "true_positive": 1123,
+        "total_decisions": 3000
+      },
+      "model_sha256": "b912e3988f0b3ba22573e52e7d592a8d076db46463028992e5be201cccd97fe3",
+      "maximum_prediction_parity_error": 7.01874114383827e-10,
+      "fit_status": 0,
+      "iterations": [
+        37450
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 1.677847856997687
+    },
+    {
+      "name": "quarter-plain1-c100",
+      "order": 33,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.77,
+        "auc": 0.8564293333333334,
+        "tpr": 0.828,
+        "fpr": 0.288,
+        "threshold": -0.15684949992975256,
+        "true_negative": 1068,
+        "true_positive": 1242,
+        "total_decisions": 3000
+      },
+      "model_sha256": "af03118d32e59c1017b88f535374e28d763833bc9f9f4dbec2327d325d424cd1",
+      "maximum_prediction_parity_error": 2.3264163928615744e-09,
+      "fit_status": 0,
+      "iterations": [
+        86316
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 3.288779363996582
+    },
+    {
+      "name": "quarter-plain1-c300",
+      "order": 34,
+      "eligible": true,
+      "calibration": {
+        "balanced_accuracy": 0.7606666666666667,
+        "auc": 0.8447844444444444,
+        "tpr": 0.8053333333333333,
+        "fpr": 0.284,
+        "threshold": -0.18255519495037165,
+        "true_negative": 1074,
+        "true_positive": 1208,
+        "total_decisions": 3000
+      },
+      "model_sha256": "2e533c353fa043d6bb6ad39fee9d2fe48c1538683d55ce89e30519ee2031cc4f",
+      "maximum_prediction_parity_error": 4.371891293430963e-09,
+      "fit_status": 0,
+      "iterations": [
+        151003
+      ],
+      "warnings": [
+        "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+      ],
+      "solver_seconds": 6.325829833003809
+    }
+  ],
+  "selected": "ridge-0.03",
+  "test_result": {
+    "method": "mipod",
+    "payload_bpp": 0.4,
+    "status": "measured_historical_adaptive",
+    "selected": "ridge-0.03",
+    "old": {
+      "balanced_accuracy": 0.779,
+      "auc": 0.876463,
+      "tpr": 0.777,
+      "fpr": 0.219,
+      "threshold": 0.03422993210695907,
+      "true_negative": 781,
+      "true_positive": 777,
+      "total_decisions": 2000
+    },
+    "new": {
+      "balanced_accuracy": 0.7875,
+      "auc": 0.885946,
+      "tpr": 0.846,
+      "fpr": 0.271,
+      "threshold": -0.05769335119293828,
+      "true_negative": 729,
+      "true_positive": 846,
+      "total_decisions": 2000
+    },
+    "gain": 0.008499999999999952,
+    "paired_95_gain": [
+      -0.0025,
+      0.019
+    ],
+    "passes_80_percent": false,
+    "fit_sources": 7500,
+    "calibration_sources": 1500,
+    "test_sources": 1000,
+    "adaptive_test": true,
+    "model_sha256": "0f099338d1c63ba58508c0e803132a21561d2228f4d9068139c1b5771bb18e99"
+  },
+  "verification": {
+    "status": "passed",
+    "calibration_count_auc_threshold_replays": 35,
+    "selected_order_replay": true,
+    "independent_direct_distance_predictions": 90,
+    "maximum_prediction_error": 2.1537500671797716e-09,
+    "all_570_source_hashes_verify": true,
+    "paired_bootstrap_replayed": true,
+    "elapsed_seconds": 19.17398974200478,
+    "completed_unix": 1794693010.1363726
+  },
+  "normalizers_bound_before_global_choice": true,
+  "reused_software_gate": {
+    "date": "2026-11-14",
+    "passed": 4646,
+    "cuda_skips": 2,
+    "total_statement_coverage": 97.4158046877721,
+    "source_bindings_verified": 570,
+    "fresh_full_run": false
+  },
+  "resources": {
+    "parent_seconds": 398.7270028950006,
+    "supplemental_hash_audit_seconds": 1.0534158790032961,
+    "conservative_cumulative_debit_seconds": 400.7270028950006,
+    "total_cap_seconds": 1200,
+    "peak_wait4_rss_bytes": 7014477824,
+    "output_bytes_at_parent_close": 4225368,
+    "output_cap_bytes": 8388608,
+    "kernel_matrices_persisted": false,
+    "strict_cgroup_ram_acceptance": false
+  },
+  "evidence_sha256": {
+    "freeze.json": "ec97771915188de21f74b0402874c46316f897270055dbe5e36f17446631b4ff",
+    "choice-freeze.json": "26e99fe4011d13b7efa3e37e59df2b3c7a7d5b1721254f4a4f1f80327a2f63ac",
+    "selection.json": "c1a4b2b7ead53afb90b053e8b50409cf47eef6edbf809fd4b6ae657220d5f480",
+    "closing.json": "f86ed97e0a4841aa84bc89e2eb9fabe881543a7af4140cb91f6c953cd5f822a0",
+    "independent-audit.json": "7f7716fb694ad6069cffbfdb884f5ec07e9c39ddafc9ddcc65c398854d99bb09",
+    "normalizer-sqrt-binding.json": "71c34074d5944fd2a3e642d1b9c668ed579fc404692283f73fa40488e3430072",
+    "normalizer-quarter-binding.json": "6b0b3f58136c49daa7bb86f631426fb3059e732f1594c71c95c15503ee048cfb"
+  }
+}
