@@ -6,12 +6,14 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 from abc import abstractmethod
 from pathlib import Path
 
 from core.analyzer import Analyzer
 from core.result import AnalysisResult, Signal
+from modules import external_tool_worker
 
 _TIMEOUT_SECONDS = 20
 _MAX_OUTPUT = 1024 * 1024
@@ -55,6 +57,10 @@ class _ExternalAnalyzer(Analyzer):
             except subprocess.TimeoutExpired:
                 return AnalysisResult(
                     self.name, 0, (), None, status="error", error="subprocess timeout"
+                )
+            except OSError:
+                return AnalysisResult(
+                    self.name, 0, (), None, status="error", error="subprocess unavailable"
                 )
             outputs.append(text)
             returncode = returncode or code
@@ -197,7 +203,7 @@ def _run(command: list[str]) -> tuple[int, str]:
     """Run one bounded child and return its exit code and first ``_MAX_OUTPUT`` bytes."""
     with tempfile.TemporaryFile() as output_file:
         completed = subprocess.run(  # noqa: S603 - fixed executable and argv only
-            command,
+            _bounded_command(command, posix=os.name == "posix"),
             stdout=output_file,
             stderr=subprocess.STDOUT,
             check=False,
@@ -205,17 +211,20 @@ def _run(command: list[str]) -> tuple[int, str]:
             text=False,
             stdin=subprocess.DEVNULL,
             env={"PATH": os.environ.get("PATH", ""), "LANG": "C", "LC_ALL": "C"},
-            preexec_fn=_limits if os.name == "posix" else None,
         )
+        if completed.returncode == 126:
+            raise OSError("external tool launcher unavailable")
         output_file.seek(0)
         return completed.returncode, output_file.read(_MAX_OUTPUT).decode("utf-8", "replace")
 
 
-def _limits() -> None:
-    """Apply limits in the child immediately before exec (POSIX only)."""
-    import resource
+def _bounded_command(command: list[str], *, posix: bool) -> list[str]:
+    if not posix:
+        return command
+    return [sys.executable, "-I", str(Path(external_tool_worker.__file__).resolve()),
+            str(_MEMORY_BYTES), str(_TIMEOUT_SECONDS), str(_MAX_OUTPUT), "--", *command]
 
-    resource.setrlimit(resource.RLIMIT_AS, (_MEMORY_BYTES, _MEMORY_BYTES))
-    resource.setrlimit(resource.RLIMIT_CPU, (_TIMEOUT_SECONDS, _TIMEOUT_SECONDS + 1))
-    resource.setrlimit(resource.RLIMIT_FSIZE, (_MAX_OUTPUT, _MAX_OUTPUT))
-    resource.setrlimit(resource.RLIMIT_NOFILE, (64, 64))
+
+def _limits() -> None:
+    """Apply the same policy directly for callers outside the subprocess path."""
+    external_tool_worker.apply_limits(_MEMORY_BYTES, _TIMEOUT_SECONDS, _MAX_OUTPUT)
