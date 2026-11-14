@@ -123,7 +123,7 @@ listed cells, not confidence intervals or expected real-world accuracy.
 | Gray LSB SRM, payload-specific | BOSSbase | 85.70–97.80% | 0.946–0.998 |
 | Gray LSB SRM, unknown payload | BOSSbase | 72.10–94.50% | 0.877–0.994 |
 | Academic spatial SRM v2/v3, 0.4 bpp | BOSSbase | 76.00–80.30% | 0.858–0.901 |
-| Academic spatial RBF, 0.4 bpp | BOSSbase, reused test | 77.65–80.75% | 0.874–0.898 |
+| Academic spatial RBF, 0.4 bpp | BOSSbase, reused test | 77.90–80.75% | 0.876–0.898 |
 | Academic spatial SRM, 0.6 bpp | BOSSbase | 82.20–86.45% | 0.915–0.948 |
 | Academic JPEG DCTR, 0.05–0.4 bpnzac | BOSSbase q75 | 60.70–94.25% | 0.658–0.987 |
 | steghide, OutGuess, stegano, F5, OpenStego | DIV2K | 79.75–99.75% | 0.870–1.000 |
@@ -135,11 +135,11 @@ listed cells, not confidence intervals or expected real-world accuracy.
 
 Evaluation sets contain 8–1,000 originals. No model is qualified or deployed.
 
-**80% per method:** HILL/MiPOD miss at 0.4 bpp. Other payload-specific misses
+**80% per method:** MiPOD misses at 0.4 bpp. Other payload-specific misses
 remain; spatial results reuse test.
 [Details](docs/DETECTION_EXPANSION_20261111.md),
 [RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md),
-[CPU comparison](docs/RICH_MODEL_CPU_IMPROVEMENT_RESULTS_20261114.md).
+[CPU comparison](docs/RICH_MODEL_CPU_SAMPLE_COUNT_RESULTS_20261114.md).
 
 Evidence: [AudioMNIST pair head](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md),
 [JPEG controls](docs/JPEG_CONTROL_RESULTS.md),
