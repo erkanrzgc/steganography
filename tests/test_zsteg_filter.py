@@ -62,7 +62,8 @@ def fake_runs(monkeypatch, outputs):
     calls = []
 
     def run(argv, **kwargs):
-        calls.append(argv)
+        calls.append(argv[argv.index("--") + 1:] if "--" in argv else argv)
+        assert "preexec_fn" not in kwargs
         result = outputs[len(calls) - 1]
         if isinstance(result, Exception):
             raise result
