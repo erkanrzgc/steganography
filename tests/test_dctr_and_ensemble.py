@@ -102,3 +102,31 @@ def test_calibrated_features_append_reference_difference(tmp_path):
     assert f.shape == (2 * dctr.DIMS,) and np.array_equal(f[: dctr.DIMS], own)
     assert np.allclose(f[dctr.DIMS :], own - dctr.from_coefficients(ref, jpeg.qt[0]))
     assert np.abs(f[dctr.DIMS :]).sum() > 0
+
+
+def test_ensemble_batches_match_scalar_vote_reference():
+    model = ens.Ensemble(
+        np.array([1., 2., 3.]), np.array([2., 1., .5]),
+        np.array([[0, 2], [1, 2]]), np.array([[.2, .3], [-.5, .4]]),
+        np.array([.1, -.2]), np.array([.5, .8]),
+    )
+    values = np.arange(51, dtype=float).reshape(17, 3) / 10
+    expected = []
+    for row in values:
+        z = (row - model.mean) / model.scale
+        expected.append(np.mean([
+            np.tanh((sum(z[col] * weight for col, weight in zip(cols, weights, strict=True))
+                     - threshold) / spread)
+            for cols, weights, threshold, spread in zip(
+                model.columns, model.weights, model.thresholds, model.spreads, strict=True
+            )
+        ]))
+    for batch in (1, 2, 7, 256):
+        assert np.allclose(model.score(values, batch_rows=batch), expected, atol=1e-14)
+    assert model.score(np.empty((0, 3))).shape == (0,)
+    for batch in (0, 4097, 1.5, True):
+        with pytest.raises(ValueError, match='batch_rows'):
+            model.score(values, batch_rows=batch)
+    for bad in ([[0, 1, 2]], np.zeros(3)):
+        with pytest.raises(ValueError, match='width'):
+            model.score(bad)
