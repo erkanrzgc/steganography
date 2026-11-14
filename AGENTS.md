@@ -1434,3 +1434,119 @@ README has 888 words. No new GPU, download, fit, tuning or deployment follows.
 Use git tracking status to determine publication state and preserve the
 per-file lowercase commit rules above. Do not rerun completed jobs to republish
 them. Preserve the unrelated `nano.383070.save`.
+
+### CPU rich-model improvement closeout (2026-11-14)
+
+The user's explicit continuation selects fresh CPU rich-model development.
+This step is complete. All older GPU, native Commons, transfer, holdout and
+frozen-source restrictions above remain binding. No download, local GPU,
+raw-media decode, native role change or ALASKA2 access occurred. Do not restart
+any completed/failed parent or automatically spend its unused allowance.
+
+Read `docs/RICH_MODEL_CPU_IMPROVEMENT_RESULTS_20261114.md` and its linked
+prospective linear, nonlinear, numeric-amendment, boundary and final-evaluation
+protocols. Existing SRM + weighted caches supply 9,000 historical training
+sources /8,997 exact-cover-feature groups. Source pairs and duplicate feature
+groups stay together: 5,999 fit /1,500 calibration /1,501 audit pairs. Earlier
+models fitted this cohort; its audit is held out for these fresh models,
+not untouched external qualification.
+
+The first twelve-candidate union selects square-root Gaussian SVC, gamma
+1/9,464 and C=100, for all three methods at 0.4 bpp. Audit BA improves from
+raw Fisher 75.5163 /79.0806 /74.3171% to 79.2805 /82.3784 /78.3811% for
+HILL /S-UNIWARD /MiPOD. Paired-group 95% intervals have positive lower
+bounds; HILL and MiPOD still miss 80%. All scores, counts, pairwise AUCs,
+2,000-resample bootstraps and 66 sampled predictions replay independently.
+Intervals are per method, without multiplicity adjustment.
+
+The separate fixed C=300/1,000 boundary step is calibration-only after that
+audit is consumed. Eight of twelve fresh candidates fail to converge at the
+fixed 100,000-iteration limit; keep them ineligible, with no retry or limit
+increase. Exact-count calibration over all sixteen candidates selects C=100 /
+300 /100 at gamma 1/9,464 for HILL /S-UNIWARD /MiPOD. The consumed audit is
+not rescored for these choices. Independent calibration/AUC/selection replay
+passes; all states remain private, source-bound numeric files without pickle.
+
+After the final complete software gate passes, a global recipe freeze binds
+all three states/thresholds before any historical test-feature access. One
+inference-only evaluation uses the unchanged 1,000 BOSS cover/stego pairs:
+
+- HILL, 0.4 bpp: 79.50% BA /AUC .888380, 1,590 of 2,000 correct; miss.
+- S-UNIWARD, 0.4 bpp: 80.75% /.897665, 1,615 correct; passes this cell.
+- MiPOD, 0.4 bpp: 77.65% /.874248, 1,553 correct; miss.
+
+The common-fit raw reference is 76.00 /78.95 /74.05%: gains are 3.50 /1.80 /
+3.60 points. Exploratory paired 95% gain intervals are +1.99875 to +5.15,
++0.29875 to +3.25 and +2.00 to +5.15 points. All counts/AUC/intervals and
+another 66 sampled predictions replay, largest prediction difference
+2.438e-10. This is a further adaptive look at the historical test, already
+viewed by v1/v2/v3 and higher-payload experiments. Preserve every old row;
+v3 trained 9,000 sources with a different threshold policy, so its values
+are not the controlled ablation reference. No qualification or deployment.
+The every-method target remains unmet at the stated misses.
+
+New public code is bounded signed-power Fisher fitting /exact-count threshold
+calibration in `research/power_fisher.py`, bounded row scoring in
+`research/fld_ensemble.py`, and the external-tool launcher below. The first
+float threshold helper breaks two optimal-count ties incorrectly; preserve
+both original helper/test snapshots under `rich-model-software-qa-20261114`.
+HILL's gamma=.1/D C=10 and MiPOD's linear C=.01 are affected. They are
+unselected in the twelve-candidate union, whose winners/reference thresholds
+are unchanged. The original six-candidate MiPOD choice used that threshold;
+retain its observed audit without claiming exact tie-rule compliance.
+
+Preserve the first nonlinear exit 1 after 48.043474 seconds, its completed
+C=1 state and failed strict 1e-10 guard before C=10 state persistence. Its
+exact real error magnitude is unavailable. Generated 12,000-row controls
+reproduce dual-sum roundoff; the separately frozen correction uses a 1e-7
+replay guard and records real errors. It reuses C=1 byte-for-byte and debits
+the old time, without resetting the 1,200-second per-method allowance. All
+boundary prediction checks pass, maximum error 2.557e-8. The first read-only
+auditor also used the wrong sklearn 1.9.1 statistic-casting order; preserve
+that failure and the later tie-audit failure, then the successful replay.
+
+The first complete software gate separately passes 4,624 tests /two CUDA
+skips /97.40% coverage. The post-tie-fix full attempt is unavailable after
+118 tests /797.375897 seconds: parallel benchmarking inherits the coverage
+collector lock in `external_tools._limits` before exec. A deliberate child
+SIGABRT retains its traceback; then the parent is stopped. Core dumps are
+disabled for that diagnostic. Original adapter/test snapshots match its
+input hashes; no failed/interrupted command is relabelled.
+
+`modules/external_tool_worker.py` now applies limits after startup in an
+isolated interpreter and execs the resolved optional tool, avoiding Python
+preexec callbacks in analysis threads. The same memory/CPU/output/FD policy
+and parent timeout remain, with core dumps disabled. Launch failures produce
+error coverage rather than a clean result. Frozen `core/` and `steganography/`
+sources are unchanged. Twenty-seven focused tests pass with 100% new-worker
+coverage, including twelve real parallel launches. Preserve the earlier
+42-pass /84.25%-combined-coverage failure and initial Ruff line-length failure.
+A model-free wheel verifies both launcher/adapter bytes without private data.
+
+The fresh final complete gate passes **4,646 tests /two explicit CUDA skips /
+32 warnings**, **97.4158046877721%** total statement coverage (27,971/28,713).
+Pytest takes 1,674.81 seconds; wrapper time is 1,680.578804 seconds. Ruff and
+270-file mypy, including research, pass. All 570 bound source inputs match
+at close. Power Fisher, ensemble and launcher have 100% coverage; the adapter
+has 98.35%. The unchanged complete gate is 90%; new analysis targets exceed
+95%. Disk-backed TMPDIR/basetemp use passed-test retention cleanup. Preserve
+all historical checkpoints/datasets/failed logs. Only the rebuildable npm
+package-download cache is purged (1,043,311,878 logical bytes); installed
+packages and npm logs stay intact. README has 896 words; all fifteen
+README/link/scope checks pass after document-only bookkeeping, with
+application/test inputs still matching the full gate.
+
+Private evidence directories under `.benchmark/` are:
+`rich-model-software-qa-20261114`, `rich-model-improvement-20261114`,
+`rich-model-nonlinear-20261114` (failed),
+`rich-model-nonlinear-completion-20261114`, `rich-model-boundary-20261114`,
+`rich-model-final-evaluation-20261114`, `rich-model-full-qa-20261114`,
+`rich-model-full-qa-tie-fix-20261114` (interrupted),
+`rich-model-launcher-qa-20261114`, and `rich-model-full-qa-final-20261114`.
+All parents/model workers are closed. Final inference, preparation and closing
+verification conservatively bring nonlinear debits to 194.567984 /142.542859 /
+170.848608 seconds of each 1,200-second allowance. Combined nonlinear,
+completion, boundary and final output stays below the shared 64-MiB cap.
+No unused time grants another test look, fit, guard relaxation or retry.
+Use git tracking status to determine publication; preserve the per-file
+lowercase commit rules and unrelated `nano.383070.save`.
