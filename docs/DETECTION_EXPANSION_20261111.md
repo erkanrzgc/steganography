@@ -37,6 +37,8 @@ sections. Repeated test access is flagged below.
 | HILL | gray BOSSbase | 0.4 bpp | 79.50% (miss) | 0.888 | cached RBF; 5,999 fit /1,500 calibration, further adaptive test |
 | S-UNIWARD | gray BOSSbase | 0.4 bpp | **80.75%** | 0.898 | cached RBF; 5,999 fit /1,500 calibration, further adaptive test |
 | MiPOD | gray BOSSbase | 0.4 bpp | 77.65% (miss) | 0.874 | cached RBF; 5,999 fit /1,500 calibration, further adaptive test |
+| HILL | gray BOSSbase | 0.4 bpp | **80.05%** | .891 | sample-count RBF; 7,500 fit /1,500 calibration, further adaptive |
+| MiPOD | gray BOSSbase | 0.4 bpp | 77.90% (miss) | .876 | sample-count RBF; 7,500 fit /1,500 calibration, further adaptive |
 | HILL | gray BOSSbase | 0.6 bpp | **83.20%** | .920 | SRM + weighted, zero threshold |
 | S-UNIWARD | gray BOSSbase | 0.6 bpp | **86.45%** | .948 | SRM + weighted, zero threshold |
 | MiPOD | gray BOSSbase | 0.6 bpp | **82.20%** | .915 | SRM + weighted, zero threshold |
@@ -48,8 +50,8 @@ sections. Repeated test access is flagged below.
 | EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped |
 
 WAV, rule, network and video results follow in their sections; FSDD WAV is a
-miss at every payload. The latest spatial RBF results still miss HILL and
-MiPOD at 0.4 bpp; S-UNIWARD now passes at 80.75%. Earlier v3 misses and the
+miss at every payload. The latest spatial RBF results still miss MiPOD at
+0.4 bpp (77.90%); HILL passes narrowly at 80.05% and S-UNIWARD at 80.75%. Earlier v3 misses and the
 separate 0.6 bpp passes remain reported. Their reused test set limits
 independent confirmation of the target. JPEG nsF5 misses at 0.05 and
 0.1 bpnzac; EBS remains unavailable. The overall 80%-per-method goal is
@@ -241,6 +243,19 @@ input/state hashes match at close. The linked report retains exploratory
 intervals, source-bound recipes, resource debits and every earlier failure.
 These repeated-test results remain research evidence, without qualification
 or deployment.
+
+**Later source-count continuation:** the user's cleanup/continuation request
+permits one fresh fit each for HILL/MiPOD on 7,500 sources, retaining 1,500
+calibration pairs. The old internal audit is now training, not new audit data.
+Calibrated choices are frozen before one inference on the same historical
+1,000 BOSS pairs. HILL reaches **80.05%** /AUC .890597 (1,601/2,000 correct),
+MiPOD **77.90%** /.876463 (1,558/2,000, still a miss) at **0.4 bpp**.
+S-UNIWARD's previous 80.75% is unchanged and is not rerun. Gains of +0.55 /
++0.25 points have exploratory 95% intervals -0.45 to +1.55 /-0.90 to +1.30:
+both include zero. HILL is only one decision above the target, so no reliable
+generalization gain or qualification is claimed. Full independent replay and
+small in-RAM-only execution are in the
+[sample-count results](RICH_MODEL_CPU_SAMPLE_COUNT_RESULTS_20261114.md).
 
 ## Academic JPEG methods (`.benchmark/boss-jpeg-academic-20261112`, private)
 
