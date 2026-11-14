@@ -1,5 +1,29 @@
 # Changelog
 
+- Improve cached CPU rich-model classifiers at 0.4 bpp; see
+  `docs/RICH_MODEL_CPU_IMPROVEMENT_RESULTS_20261114.md`:
+  - A frozen twelve-candidate comparison gains 3.76 /3.30 /4.06 audit points
+    over a common-fit Fisher reference for HILL /S-UNIWARD /MiPOD. This audit
+    is separate from the old test, within previously used training data.
+  - A fixed calibration-only boundary step selects Gaussian SVC C=100 /300 /
+    100 at gamma 1/9,464. Eight nonconverged candidates remain ineligible;
+    the earlier audit is consumed and is not rescored for new candidates.
+  - One source-frozen historical BOSS test gives **79.50 /80.75 /77.65%**:
+    S-UNIWARD passes 80%; HILL and MiPOD still miss. Gains against the same
+    5,999-source Fisher fit are 3.50 /1.80 /3.60 points. Keep the repeated-test
+    adaptivity, 1,500-source calibration and all prior v3/0.6 rows explicit.
+  - Add bounded signed-power Fisher fitting and exact-count threshold ties;
+    score Fisher ensembles in row batches. Preserve the initial strict
+    numeric-guard failure and independent-auditor corrections. All 132 sampled
+    audit/test predictions, full metrics, group bootstraps and choices replay.
+  - Fix the QA-exposed external-tool preexec deadlock with an isolated Python
+    launcher that applies resource limits after startup. Preserve the traced
+    lock/aborted verification; startup failures produce error coverage.
+    Frozen core sources and the base wheel's model-free scope stay intact.
+  - Final full QA: 4,646 passes /two CUDA skips /32 warnings, 97.42% coverage,
+    Ruff /270-file mypy and 570 unchanged source bindings. New numeric/launcher
+    modules and ensemble scoring have 100% coverage. No GPU or download.
+
 - Detection expansion toward 80% per method (`docs/DETECTION_EXPANSION_20261111.md`):
   - **New research features**:
     - symmetrised SRM-style gray and colour co-occurrences
