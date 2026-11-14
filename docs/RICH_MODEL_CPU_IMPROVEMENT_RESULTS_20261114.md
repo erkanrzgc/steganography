@@ -1,5 +1,11 @@
 # Cached rich-model CPU comparison (2026-11-14)
 
+A later user-requested [storage cleanup](STORAGE_CLEANUP_20261114.md) and
+[7,500-fit continuation](RICH_MODEL_CPU_SAMPLE_COUNT_RESULTS_20261114.md)
+measure HILL 80.05% and MiPOD 77.90% at 0.4 bpp. HILL crosses by one decision;
+the small gain intervals include zero. All tables below retain their original
+smaller-fit results and scopes; the later step does not relabel them.
+
 This fresh classifier study follows the user's CPU rich-model continuation,
 using the existing 0.4-bpp HILL, S-UNIWARD and MiPOD SRM + weighted caches.
 It does not rerun the old queue, change a payload or claim that the higher
