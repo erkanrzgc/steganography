@@ -1607,3 +1607,51 @@ is reset, source/data download made or GPU used. All parents are closed;
 no automatic retry, new grid or test look follows. Application/test code is
 unchanged, so the prior passed 4,646-test gate is source-verified and reused,
 not relabelled as a new run. Documentation checks are recorded separately.
+
+### Fresh MiPOD kernel continuation (2026-11-15)
+
+The user's latest explicit continuation permits the fresh CPU-only comparison
+in `docs/MIPOD_KERNEL_PROTOCOL_20261115.md`. It uses the same 7,500 fit /1,500
+calibration pairs, with no new data, GPU, native roles or ALASKA2 access.
+Four fixed kernel-ridge and thirty additive-family SVC candidates compete
+against the frozen 77.90% predecessor using calibration only. Choices must
+freeze before any optional single selected historical-test inference; that
+historical test remains adaptive, not independent qualification.
+
+The exclusive parent/evidence directory is
+`.benchmark/mipod-kernel-20261115/`. Check its `attempt.json`, `parent.log`,
+`closing.json` and live processes before any action. An existing attempt must
+never be duplicated or automatically relaunched. The fresh cumulative cap
+is 1,200 seconds, sampled RSS 10 GiB and disk output eight MiB. Matrices
+stay in RAM. Generated numeric checks and the unchanged 570-source software
+closure verify before fitting; the actual passed 4,646-test gate is reused,
+not relabelled as a fresh run. Record the actual closeout and every failure
+before publication. All old restrictions, consumed attempts and evidence stay
+binding; preserve the unrelated `nano.383070.save`.
+
+That fresh kernel comparison is now closed and verified. All 34 candidates
+are eligible; calibration selects full square-root Gaussian kernel ridge .03.
+One further historical test gives MiPOD **78.75%** /AUC .885946 at **0.4 bpp**,
+with TPR 84.6% /FPR 27.1%, 1,575/2,000 correct. Its +0.85-point change
+against 77.90% has exploratory 95% interval -0.25 to +1.90 points, containing
+zero. MiPOD remains 25 decisions below 80%; no reliable gain, qualification,
+deployment or test-based adjustment is claimed. HILL /S-UNIWARD /WOW retain
+their prior scores without reruns. All earlier misses and payloads stay.
+
+Independent replay verifies all 35 calibration records, global selection,
+full test counts/AUC/bootstrap and 90 direct-distance numeric predictions;
+maximum discrepancy is 2.154e-9. Separate read-only scaler hash bindings
+precede global choice and verify again at close. Original data hashes and
+all 570 source bindings match the passed 4,646-test software gate. No new
+application/test code or full-suite run; documentation checks are separate.
+Parent execution plus independent closing audit takes 398.727003 seconds;
+supplemental hash verification conservatively brings debit to 400.727003
+of the fresh 1,200-second cap. Wait4 peak is 7,014,477,824 bytes /6.54 GiB;
+this is observer evidence, not strict cgroup acceptance. Parent-close output
+is 4,225,621 bytes, with no persisted feature/Gram matrices. Learned states
+stay private. See `docs/MIPOD_KERNEL_RESULTS_20261115.md` and its public
+numeric receipt. Parents are closed; no automatic grid, retry, new test
+look, old allowance reuse, download or GPU action follows from this outcome.
+All fifteen documentation checks pass; README has 897 words. Determine
+publication from git tracking status and preserve the per-file lowercase
+commit rules; never rerun the experiment merely to publish its records.
