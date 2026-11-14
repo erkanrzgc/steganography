@@ -108,14 +108,13 @@ and [limitations](docs/LIMITATIONS.md).
 
 ## Training results
 
-Controlled research evaluations, **2026-10-14–11-13**. Balanced accuracy averages
+Controlled research evaluations, **2026-10-14–11-14**. Balanced accuracy averages
 recall and specificity. **ROC-AUC measures ranking, not accuracy.** Ranges cover
 listed cells, not confidence intervals or expected real-world accuracy.
 
 | Experiment | Evaluation source | Balanced accuracy | ROC-AUC |
 |---|---|---:|---:|
-| JPEG SRNet-style, initial arms | BOSSbase, BOWS2 | 50.00–67.97% | 0.518–0.771 |
-| JPEG refinement, all arms | BOSSbase, BOWS2 | 50.00–76.56% | 0.502–0.848 |
+| JPEG SRNet-style, initial/refinement | BOSSbase, BOWS2 | 50.00–76.56% | 0.502–0.848 |
 | PNG/BMP linear, all variants | BOWS2 | 50.00–100.00% | 0.609–1.000 |
 | PNG/BMP linear, all variants | DIV2K | 50.00–93.75% | 0.547–1.000 |
 | PNG/BMP RGB SRNet, native pilot | Commons | — | 0.518–0.528 |
@@ -123,7 +122,8 @@ listed cells, not confidence intervals or expected real-world accuracy.
 | PNG/BMP RGB rich-model detector | Commons | 57.50–72.50% | 0.630–0.755 |
 | Gray LSB SRM, payload-specific | BOSSbase | 85.70–97.80% | 0.946–0.998 |
 | Gray LSB SRM, unknown payload | BOSSbase | 72.10–94.50% | 0.877–0.994 |
-| Academic spatial SRM, 0.4 bpp (latest) | BOSSbase | 76.00–80.30% | 0.858–0.901 |
+| Academic spatial SRM v2/v3, 0.4 bpp | BOSSbase | 76.00–80.30% | 0.858–0.901 |
+| Academic spatial RBF, 0.4 bpp | BOSSbase, reused test | 77.65–80.75% | 0.874–0.898 |
 | Academic spatial SRM, 0.6 bpp | BOSSbase | 82.20–86.45% | 0.915–0.948 |
 | Academic JPEG DCTR, 0.05–0.4 bpnzac | BOSSbase q75 | 60.70–94.25% | 0.658–0.987 |
 | steghide, OutGuess, stegano, F5, OpenStego | DIV2K | 79.75–99.75% | 0.870–1.000 |
@@ -135,9 +135,11 @@ listed cells, not confidence intervals or expected real-world accuracy.
 
 Evaluation sets contain 8–1,000 originals. No model is qualified or deployed.
 
-**80% per method:** payload-specific misses remain. Academic spatial rows reuse test.
+**80% per method:** HILL/MiPOD miss at 0.4 bpp. Other payload-specific misses
+remain; spatial results reuse test.
 [Details](docs/DETECTION_EXPANSION_20261111.md),
-[RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md).
+[RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md),
+[CPU comparison](docs/RICH_MODEL_CPU_IMPROVEMENT_RESULTS_20261114.md).
 
 Evidence: [AudioMNIST pair head](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md),
 [JPEG controls](docs/JPEG_CONTROL_RESULTS.md),
@@ -150,8 +152,8 @@ development AUC **0.518 /0.528**; the learning rule failed.
 
 ## Development and licensing
 
-Recorded CPU gate (2026-11-14): **4,588 tests passed**, two explicit CUDA skips,
-**97.39% coverage**. [Verification](docs/DETECTION_EXPANSION_20261111.md#verification).
+Recorded CPU gate (2026-11-14): **4,646 tests passed**, two explicit CUDA skips,
+**97.42% coverage**. [Verification](docs/DETECTION_EXPANSION_20261111.md#verification).
 Setup, checks, and contribution rules: [CONTRIBUTING.md](CONTRIBUTING.md).
 Report vulnerabilities through [SECURITY.md](SECURITY.md).
 
