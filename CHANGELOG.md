@@ -1,5 +1,22 @@
 # Changelog
 
+- Complete user-requested storage cleanup and a fresh CPU sample-count step:
+  - Reclaim 27.859467 GiB from six verified passed generated-QA scratch trees
+    and an unused one-off CI environment; retain inventories, all real
+    datasets/models, source bindings, logs and failed/interrupted scratch.
+    Guest space rises to about 30 GiB free /85% used. Active `venv` is intact.
+    See `docs/STORAGE_CLEANUP_20261114.md`.
+  - Fixed C=100 HILL/MiPOD fits use 7,500 sources with the same separate 1,500
+    calibration pairs. Calibration selects the fresh states before one further
+    adaptive historical test: HILL **80.05%**, MiPOD **77.90%** at 0.4 bpp.
+    HILL passes by one decision; MiPOD still misses. S-UNIWARD stays 80.75%.
+    Small gains have intervals containing zero, with no qualification claim.
+  - Independent metrics/bootstrap and 44 numeric predictions replay. Matrices
+    stay in RAM, output stays under two MiB, and no media/GPU work occurs.
+    The unchanged 570-source closure reuses the passed 4,646-test gate without
+    another full QA run or temporary fixture tree. See
+    `docs/RICH_MODEL_CPU_SAMPLE_COUNT_RESULTS_20261114.md`.
+
 - Improve cached CPU rich-model classifiers at 0.4 bpp; see
   `docs/RICH_MODEL_CPU_IMPROVEMENT_RESULTS_20261114.md`:
   - A frozen twelve-candidate comparison gains 3.76 /3.30 /4.06 audit points
