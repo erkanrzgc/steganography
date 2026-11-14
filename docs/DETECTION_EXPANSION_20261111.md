@@ -1,11 +1,11 @@
-# Detection expansion toward 80% per method (CPU, 2026-11-11–13)
+# Detection expansion toward 80% per method (CPU, 2026-11-11–14)
 
 Goal set by the user: every steganography method should reach at least 80%
 balanced accuracy on data never used in training, at a stated payload.
 Balanced accuracy is the mean of the true-positive and true-negative rates
 over paired covers and stegos. Statistical image rows use a zero threshold
-except spatial v3, which selects its threshold from out-of-fold training
-scores. Audio, video and rules use the operating points stated in their
+except spatial v3 (out-of-fold training scores) and the cached RBF follow-up
+(separate calibration scores). Audio, video and rules use the operating points stated in their
 sections. Repeated test access is flagged below.
 
 ## Results against the 80% target
@@ -34,6 +34,9 @@ sections. Repeated test access is flagged below.
 | S-UNIWARD | gray BOSSbase | 0.4 bpp | 79.95% (miss) | .892 | SRM + weighted, v3; train OOF threshold |
 | WOW | gray BOSSbase | 0.4 bpp | **80.30%** | .901 | SRM + weighted, v2 |
 | MiPOD | gray BOSSbase | 0.4 bpp | 76.00% (miss) | .858 | SRM + weighted, v3; train OOF threshold |
+| HILL | gray BOSSbase | 0.4 bpp | 79.50% (miss) | 0.888 | cached RBF; 5,999 fit /1,500 calibration, further adaptive test |
+| S-UNIWARD | gray BOSSbase | 0.4 bpp | **80.75%** | 0.898 | cached RBF; 5,999 fit /1,500 calibration, further adaptive test |
+| MiPOD | gray BOSSbase | 0.4 bpp | 77.65% (miss) | 0.874 | cached RBF; 5,999 fit /1,500 calibration, further adaptive test |
 | HILL | gray BOSSbase | 0.6 bpp | **83.20%** | .920 | SRM + weighted, zero threshold |
 | S-UNIWARD | gray BOSSbase | 0.6 bpp | **86.45%** | .948 | SRM + weighted, zero threshold |
 | MiPOD | gray BOSSbase | 0.6 bpp | **82.20%** | .915 | SRM + weighted, zero threshold |
@@ -45,8 +48,9 @@ sections. Repeated test access is flagged below.
 | EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped |
 
 WAV, rule, network and video results follow in their sections; FSDD WAV is a
-miss at every payload. Academic spatial results include three remaining
-0.4 bpp misses and separate 0.6 bpp passes; their reused test set limits
+miss at every payload. The latest spatial RBF results still miss HILL and
+MiPOD at 0.4 bpp; S-UNIWARD now passes at 80.75%. Earlier v3 misses and the
+separate 0.6 bpp passes remain reported. Their reused test set limits
 independent confirmation of the target. JPEG nsF5 misses at 0.05 and
 0.1 bpnzac; EBS remains unavailable. The overall 80%-per-method goal is
 not met at all reported payloads.
@@ -187,6 +191,56 @@ The 25.6–26.8% false-positive rates also remain substantial.
 All three pass at the stated 0.6 bpp payload; their 0.4 bpp misses above
 remain reported. These adaptive results do not establish a qualified or
 deployed detector.
+
+**Fresh CPU classifier audit (2026-11-14)**: the
+[cached rich-model comparison](RICH_MODEL_CPU_IMPROVEMENT_RESULTS_20261114.md)
+uses the same 9,464 features at **0.4 bpp**, with no new media or GPU.
+The historical 9,000 training sources form 8,997 exact-cover-feature groups,
+split into 5,999 fit /1,500 calibration /1,501 audit pairs. Source pairs and
+duplicate feature groups stay together. This is a new-model audit inside
+previously used training data, a different cohort from the old test above.
+
+| Method, 0.4 bpp | Raw Fisher audit BA | Gaussian SVC audit BA | Gain | 95% paired group interval |
+|---|---:|---:|---:|---:|
+| HILL | 75.52% | 79.28% (miss) | +3.76 points | +2.43 to +5.06 points |
+| S-UNIWARD | 79.08% | **82.38%** | +3.30 points | +2.16 to +4.49 points |
+| MiPOD | 74.32% | 78.38% (miss) | +4.06 points | +2.77 to +5.33 points |
+
+These twelve-candidate winners use square-root features, fit-only scaling,
+gamma 1/9,464 and C=100; thresholds and choices use calibration only.
+Intervals use 2,000 source-group resamples and are not multiplicity adjusted.
+HILL and MiPOD still miss 80% in this audit. All scores, bootstraps and 66
+sampled predictions replay independently. An exact-count calibration fix
+corrects floating-point tie-breaking in two unselected candidates without
+changing these winners or reference thresholds.
+
+A later fixed calibration-only C=300/1,000 extension retains HILL/MiPOD
+C=100 and selects S-UNIWARD C=300. Eight of twelve fresh candidates do not
+converge and stay ineligible. The development audit is consumed and is not
+rescored for that extension; these numbers do not qualify the later S-UNIWARD
+state or replace the historical v3 test rows. See the linked report for the
+prospective protocols, preserved failures, exact selection and later evaluation.
+
+**Final cached-RBF historical test:** after the complete software gate,
+all three recipes and calibration thresholds are frozen before test-cache
+access. This is a further adaptive look at the same 1,000 BOSS pairs.
+The common-fit reference below uses the same 5,999 training sources; v3
+above used 9,000 and a different threshold policy. No new fitting or
+test-based threshold/model adjustment occurs.
+
+| Method, 0.4 bpp | Common-fit Fisher BA | Final RBF BA | AUC | TPR /FPR |
+|---|---:|---:|---:|---:|
+| HILL | 76.00% | 79.50% (miss) | 0.888 | 83.3 /24.3% |
+| S-UNIWARD | 78.95% | 80.75% (pass) | 0.898 | 85.7 /24.2% |
+| MiPOD | 74.05% | 77.65% (miss) | 0.874 | 83.0 /27.7% |
+
+HILL has 1,590/2,000 correct decisions and MiPOD 1,553/2,000: both miss
+80% at 0.4 bpp. S-UNIWARD has 1,615/2,000 and passes. Independent
+confusion/AUC/bootstrap and 66 sampled prediction replays verify; all
+input/state hashes match at close. The linked report retains exploratory
+intervals, source-bound recipes, resource debits and every earlier failure.
+These repeated-test results remain research evidence, without qualification
+or deployment.
 
 ## Academic JPEG methods (`.benchmark/boss-jpeg-academic-20261112`, private)
 
@@ -506,7 +560,26 @@ Benchmark:
 
 ## Verification
 
-Fresh repaired CPU gate on **2026-11-14**: **4,588 passed**, two explicit
+Final cached-classifier CPU gate on **2026-11-14**: **4,646 passed**, two
+explicit CUDA skips, 32 warnings, **97.42%** total coverage, 1,674.81 s.
+Ruff /270-file mypy (including research) /diff checks pass; all 570 source
+bindings match at close. New power-Fisher and launcher modules, plus ensemble
+scoring, have 100% coverage; the modified adapter has 98.35%. The complete
+90% gate is unchanged. Evidence: `.benchmark/rich-model-full-qa-final-20261114/`.
+
+Preserve the separate 4,624-pass pre-tie-fix gate and the interrupted
+118-test /797.375897-second post-tie-fix attempt. The latter deadlocks in a
+traced Python preexec callback during the parallel benchmark; its deliberately
+captured child traceback and stopped parent are unavailable verification.
+A fresh isolated launcher now applies the same resource policy after startup,
+avoiding that callback, and reports startup failures as error coverage.
+All data/checkpoints/failed logs remain; only rebuildable package-download
+caches are purged. Full details and the model-free wheel verification are in
+the [CPU comparison report](RICH_MODEL_CPU_IMPROVEMENT_RESULTS_20261114.md).
+
+
+
+Earlier queue-closeout repaired CPU gate on **2026-11-14**: **4,588 passed**, two explicit
 CUDA skips, 32 warnings and **97.39%** total statement coverage, in 1,891.03 s.
 Ruff, mypy over 268 files (including `research`) and `git diff --check` pass.
 Both `research/srm_features.py` and `research/rich_color_detector.py` have
