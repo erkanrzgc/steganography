@@ -1,5 +1,12 @@
 # Cached rich-model CPU comparison (2026-11-14)
 
+**Later source correction (2026-11-15):** the historical 1,000-source BOSS
+test includes one pixel duplicate of training content. Preserve the executed
+numbers below as historical records; they are not fully pixel-disjoint test
+qualification. Current selected clean-999 results and WOW aggregate bounds
+are in the [source-corrected report](REMAINING_FLOOR_RESULTS_20261115.md#source-role-corrections).
+No old fit or inference was rerun.
+
 A later user-requested [storage cleanup](STORAGE_CLEANUP_20261114.md) and
 [7,500-fit continuation](RICH_MODEL_CPU_SAMPLE_COUNT_RESULTS_20261114.md)
 measure HILL 80.05% and MiPOD 77.90% at 0.4 bpp. HILL crosses by one decision;
