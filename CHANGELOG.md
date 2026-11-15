@@ -1,5 +1,35 @@
 # Changelog
 
+- Continue the remaining 80%-floor research on existing private CPU data:
+  - Correct one BOSS training/test pixel duplicate without changing old
+    records. Clean 999-source score replay gives HILL 80.030030%, S-UNIWARD
+    80.730731%, MiPOD 80.680681%; WOW exact clean scores are unavailable,
+    with conservative 80.280280–80.380380% count bounds, not a confidence interval.
+  - A single calibration-selected median of three existing gray LSB states
+    reaches **85.4855–88.8388%** over all eight unknown-payload conditions,
+    without refitting. Shared false alarms rise to 22.0220%; retain the
+    high-payload accuracy regression against the historical mixed detector.
+  - Preserve negative fixed-kernel results: OpenStego .1 bpp stays 79.75%;
+    nsF5 .05/.1 bpnzac scores 59.35 /70.75%, below the earlier 60.70 /75.15%.
+  - A separate OpenStego .1-bpp neighbor/parity augmentation reaches
+    **87.75%**, AUC .954325, versus the frozen 79.75% kernel; fixed calibration
+    mixture, 100 test parents, TPR 88.0% /FPR 12.5%. The paired gain interval
+    is +3.75 to +12.00 points. Independent replay checks fifteen calibration
+    records, forty-two numeric predictions and two exact scalar feature oracles.
+    Preserve the pre-fit feature timeout and its cumulative 650-second debit;
+    the two-worker source completion closes within the original allowance.
+  - Correct ESC recording-group roles using the existing admitted receipt:
+    1,200/398/402 clips. Retain both pre-fit source failures and two timed-out
+    full-feature mixed models as unavailable; reuse eighty completed WAV
+    dedicated states byte-for-byte before the smaller fit-only feature family.
+    All sixteen dedicated WAV cells still miss, with every payload and mixed
+    false alarm reported. Independent replay checks 166 calibration records,
+    forty test cells and 726 numeric predictions. No data or payload change.
+  - No detector deployment, GPU, new media download or locked-holdout access.
+    All 570 application/test hashes match the passed 4,646-test full gate;
+    fresh Ruff /270-file mypy pass. See
+    `docs/REMAINING_FLOOR_RESULTS_20261115.md` and its numeric receipt.
+
 - Investigate MiPOD's remaining 0.4-bpp miss and reach **80.70%** on the
   adaptive historical BOSS test, 1,614/2,000 correct /AUC .900443:
   - Fit/calibration diagnosis identifies strong residual-content dependence;
