@@ -1655,3 +1655,141 @@ look, old allowance reuse, download or GPU action follows from this outcome.
 All fifteen documentation checks pass; README has 897 words. Determine
 publication from git tracking status and preserve the per-file lowercase
 commit rules; never rerun the experiment merely to publish its records.
+
+### MiPOD diagnosis and normalization continuation (2026-11-15)
+
+The user's new instruction explicitly requests investigating the MiPOD miss
+and attempting 80%, while asking whether the other methods all pass. They do
+not: retain every payload-specific miss. Current spatial point estimates at
+0.4 bpp are HILL 80.05%, S-UNIWARD 80.75%, WOW v2 80.30%, MiPOD 78.75%.
+None turns repeated historical testing into untouched qualification.
+
+The fresh CPU-only protocol is `docs/MIPOD_NORMALIZATION_PROTOCOL_20261115.md`.
+Its exclusive parent/evidence directory is
+`.benchmark/mipod-normalization-20261115/`; inspect existing attempt/status/logs
+and processes before any action. Never duplicate or automatically relaunch it.
+It diagnoses fit/calibration features only, then compares six fixed feature
+normalizations and four classifiers each against the old ridge .03. Same
+7,500 fit /1,500 calibration pairs; no test-driven selection, new media,
+raw decode, GPU, ALASKA2 or native Commons role change. Generated checks and
+all 570 bindings to the passed software gate precede fitting. Fresh cumulative
+limit is 1,500 seconds, sampled 10-GiB RSS and eight MiB output, with all Gram
+and CDF-reference matrices in RAM. Freeze states/scalers/choice before any
+optional single selected historical-test inference; preserve all failures.
+Record the actual outcome and independent closeout before publication.
+
+The fit-derived residual-activity quartiles show strong calibration error
+concentration for the old ridge: 96.16 /85.90 /74.75 /63.29% from lowest to
+highest activity, using the same frozen global threshold. This is an
+association, not causal proof. The 9,464-dimensional compact cache has 272
+constant cover bins; it is not a reproduction of the full published maxSRMd2.
+The original MiPOD paper itself reports .2038 error at 0.4 bpp for its
+medium-block version under a different protocol; this is context, not a
+performance ceiling. No threshold, data or payload is changed to force 80%.
+
+The normalization intervention is now independently closed: all 24 fresh
+states are eligible; calibration selects `rc8-sqrt-ridge0.03` at 80.5667%.
+Its one selected historical inference gives MiPOD **79.70%** /AUC .887769,
+TPR 81.4% /FPR 22.0%, 1,594/2,000 correct. It remains six decisions short
+of 80%. The +0.95-point change has exploratory paired 95% interval -0.10125
+to +2.00 points, including zero. All 25 calibration records, metrics/bootstrap
+and 70 direct-distance predictions replay, max discrepancy 8.055e-10.
+Parent plus independent closeout takes 842.469969 of 1,500 seconds, with
+5,420,617 bytes at parent close; no Gram/CDF-reference matrices persisted.
+Do not relaunch it or convert its unused allowance to another attempt.
+
+A later read-only installed-source audit confirms the existing conseal
+2025.11 generator uses 9x9 /degree-nine variance estimation, 7x7 Fisher
+smoothing and `MiPOD_FIX_WET`. The original paper's Table I .2038 error is
+its unsmoothed medium-block setting; Table II's smoothed setting reports
+.2243 at 0.4 bpp. Keep that distinction in research comparisons. No simulator
+setting, payload or cached media is changed to improve the headline.
+
+The same current user instruction also authorizes the distinct planned
+content-heterogeneity intervention in `docs/MIPOD_CONTENT_PROTOCOL_20261115.md`.
+Its fresh exclusive directory is `.benchmark/mipod-content-20261115/`;
+inspect its marker/logs/processes and never duplicate or retry it. Two/four
+fit-cover-quantile partitions define local paired experts; each query gate
+uses only that query's own features. Three fixed ridges per expert and
+local/global weights .5/1 yield twelve fresh system candidates plus the
+current global reference. Calibration alone selects the system/threshold,
+with artifact choice frozen before any optional one selected test inference.
+The fresh cumulative cap is 600 seconds /sampled 10-GiB RSS /eight-MiB output.
+This does not reuse the closed normalization allowance. All 570 source hashes
+and generated expert/gating checks pass before fitting. Record actual outcome
+and independent closeout, preserving every earlier result and failure.
+
+The content-expert intervention is now independently closed. All eighteen
+expert solves and twelve systems are eligible. Calibration selects two
+partitions /ridge .1 /.5 local-global mix at 80.60%, only one extra calibration
+decision versus the global reference. Its frozen historical test is worse:
+**78.40%**, AUC .885336, TPR 81.2% /FPR 24.4%, 1,568/2,000 correct. Gain
+versus the preceding 79.70% is -1.30 points, exploratory 95% interval -2.05
+to -0.54875 points. Preserve this negative finding; it does not validate the
+hypothesis or permit cherry-picking a different local model on test scores.
+All thirteen records, system/gate reconstructions, bootstrap and 58 numeric
+predictions verify, max discrepancy 5.403e-11. Debit is 99.080078 /600 seconds,
+3,220,932 bytes at close. No old allowance is reused or parent relaunched.
+
+The separate geometry comparison under the same current research instruction
+is `docs/MIPOD_HELLINGER_PROTOCOL_20261115.md`: unwhitened square-root /RC8
+histogram kernels, fit-cover-median bandwidth factors .25/1/4, three ridges
+and one SVC each, 24 fresh candidates plus both previous references. Keep
+selection calibration-only and preserve the negative content-reference row.
+The new total cap is 900 seconds /sampled 10-GiB RSS /eight-MiB output.
+The first preparation fails generated-only distance/median QA before any real
+fit or source-freeze completion. Keep `.benchmark/mipod-hellinger-20261115/`
+unchanged, its failed source/log/exit and read-only distance diagnosis.
+
+`docs/MIPOD_HELLINGER_NUMERIC_AMENDMENT_20261115.md` binds a source-corrected
+completion in `.benchmark/mipod-hellinger-completion-20261115/`. The small
+bandwidth sample now uses direct-difference SciPy pdist, avoiding positive
+dot-product cancellation for identical vectors. All recipe choices, <1e-12
+zero rule and numeric guards remain unchanged. Ten seconds conservatively
+debit the failed 2.504-second preparation plus .410-second read-only diagnosis
+and overhead, leaving 890 /900 seconds, not a fresh allowance reset. Check
+its exclusive marker/logs/processes and never duplicate or relaunch it.
+Record the actual corrected-source generated checks, real fits and independent
+closing outcome before publication. No new data, raw decode, GPU, holdout
+access, source role change or product deployment is authorized by these trials.
+
+The corrected Hellinger completion is now independently closed. Generated
+controls pass before the first real fit; all 24 fresh models are eligible.
+Calibration (BA 81.8667%) selects unwhitened RC8 square-root Gaussian kernel,
+gamma .006107876271462043 /ridge .01, threshold -.010646304581314325.
+One frozen selected historical inference gives MiPOD **80.70%** at **0.4 bpp**,
+AUC .900443, TPR 82.5% /FPR 21.1%, 1,614/2,000 correct: fourteen above the
+80% boundary. Its +1.00-point change versus the global RC8 reference has
+exploratory 95% interval -0.15 to +2.15 points, containing zero. Geometry,
+bandwidth and ridge change together, so no single-factor cause, reliable
+population gain, untouched qualification or deployment is claimed.
+
+All 26 calibration records, both sample bandwidths, exact test counts/AUC/
+bootstrap and 70 direct-distance predictions replay independently. Actual
+completion time is 485.513698 seconds, conservatively 495.513698 /900 after
+the ten-second old debit. Parent-close output is 4,391,195 bytes, below eight
+MiB. The two earlier successful studies and this completion total 64 metric
+records /198 sampled predictions and 1,437.063745 parent-debit seconds;
+combined parent-close output is 13,032,744 bytes (about 12.43 MiB). Check the
+public receipt for exact per-stage bytes; no feature/Gram/reference matrices
+were persisted. Models and raw data remain private; about 30 GiB stays free.
+
+At 0.4 bpp the four academic spatial historical point estimates now pass:
+HILL 80.05%, S-UNIWARD 80.75%, WOW v2 80.30%, MiPOD 80.70%. Other methods
+are not all passing across their payloads: retain nsF5 .05/.1 bpnzac,
+OpenStego .1 bpp, unknown-payload LSB at 5%, FSDD WAV and unavailable EBS.
+No earlier miss or negative content-expert row is removed. Results/diagnosis
+and public evidence are `docs/MIPOD_DIAGNOSIS_RESULTS_20261115.md` and
+`benchmarks/mipod-diagnosis-20261115.json`. All parents are closed; no old
+allowance/result grants a new grid, retry, download, GPU run or deployment.
+All 570 application/test inputs still match the passed 4,646-test software
+gate, with no fresh full-suite claim. Documentation checks and publication
+are recorded separately; keep per-file lowercase commits and the unrelated
+`nano.383070.save` intact.
+
+The final documentation gate passes all fifteen tests; README has 899 words,
+four badges and valid local links. Source/metric/link verification again
+matches all 570 full-gate bindings, 64 calibration records and 198 sampled
+predictions. No model worker remains active. Determine publication from git
+tracking status; the full software gate is reused with unchanged inputs,
+not relabelled as a fresh run.
