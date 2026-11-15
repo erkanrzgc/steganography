@@ -1,5 +1,12 @@
 # MiPOD diagnosis and CPU follow-up results (2026-11-15)
 
+**Later source correction (2026-11-15):** the historical 1,000-source BOSS
+test includes one pixel duplicate of training content. Preserve the executed
+numbers below as historical records; they are not fully pixel-disjoint test
+qualification. Current selected clean-999 results and WOW aggregate bounds
+are in the [source-corrected report](REMAINING_FLOOR_RESULTS_20261115.md#source-role-corrections).
+No old fit or inference was rerun.
+
 MiPOD reaches **80.70% balanced accuracy at 0.4 bpp**, 1,614/2,000 correct,
 on the reused historical BOSS test. The four academic spatial point estimates
 now pass 80%; other payload-specific misses remain. Three bounded CPU
