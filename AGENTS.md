@@ -2142,3 +2142,120 @@ publication and training-shortcut evidence is private in
 `.benchmark/low-signal-closeout-20261115/`. Determine publication from git;
 keep per-file lowercase commit messages, no trailers, and preserve the
 unrelated `nano.383070.save` unchanged.
+
+### Fresh cross-representation retry (2026-11-15)
+
+The user's explicit retry request permits the distinct family frozen in
+`docs/RETRY_FUSION_PROTOCOL_20261115.md`, not relaunch of any consumed parent.
+JPEG joins existing plain square-root DCTR/coefficient features in new paired-
+bootstrap Fisher ensembles and composite sum/product kernels; fifteen new
+models per unchanged .05/.1 payload, fixed calibration-only score systems.
+WAV compares seven fixed combinations of frozen old/new model scores per
+sixteen failing dedicated conditions, with no old classifier refit. Source
+roles, payloads, old results and all historical debits remain unchanged.
+
+The exclusive new parent/evidence directory is
+`.benchmark/retry-fusion-20261115/`; inspect marker/log/process and never
+duplicate it. The first generated control and parent fail before actual fit;
+see the source correction below. The intended total
+fresh cap 1,800 seconds including five source-preparation seconds, six-GiB
+summed sampled RSS /96-MiB output, inherited eight-MiB per-file guard and
+disk-backed TMPDIR. No Gram/raw-media persistence. All domain choices freeze
+globally before optional selected inference; calibration BA below 80% excludes
+new test, and a selected old reference reuses its retained result. Only fresh
+gated feature coverage may read existing test sources via unchanged bounded
+workers; <=100-source hashed chunks and <=four file workers, one BLAS thread.
+No download, GPU, ALASKA2/native role change or deployment follows. Independent
+closing and actual outcomes must precede publication; unused old allowances
+are not transferred or reset. All 570 application/test sources stay unchanged.
+
+The first generated fusion control incorrectly uses float32 kernel operands,
+while real candidates already use float64. Generated residual reaches
+3.268e-6, failing the unchanged 1e-6 guard; float64 gives <=8.483e-14.
+Preserve the twelve-case generated-only diagnosis. The original parent was
+incorrectly launched after failed preflight and fails on its missing success
+receipt after 1.503 seconds, with zero actual candidates fitted.
+`docs/RETRY_FUSION_NUMERIC_AMENDMENT_20261115.md` binds only the corrected
+generated dtype and strict preflight-before-launch control in
+`.benchmark/retry-fusion-completion-20261115/`. All generated and calibration-
+schema controls now pass before launch. Actual model/source/seed choices and
+all tolerances stay exact. Charge ten prior seconds inside the original
+1,800 cap, leaving 1,790; combined-output accounting includes both parents.
+Inspect its exclusive marker/log/process; never duplicate either parent.
+
+The fresh fusion completion is independently closed: nsF5 .1 reaches 77.85%
+(AUC .864762), still below 80%, versus 77.70%; the +.15-point paired interval
+contains zero. nsF5 .05 calibrates at 66.25% and remains gated. WAV selects
+the unchanged old ESC replacement-.1 reference (78.3582% old test), with all
+other fifteen new WAV conditions gated below .80. No new WAV test feature
+was constructed. The unused gated raw-worker branch was not exercised.
+Closing replays 152 calibration records and 114 predictions (max 4.762e-10),
+with one new selected test; cumulative 176.483623 /1,800 seconds including
+ten prior seconds, 7,258,804 combined parent-close bytes. Preserve both parents.
+
+The same user retry request now permits a separate fixed sample-count study
+in `docs/NSF5_SAMPLE_COUNT_PROTOCOL_20261115.md`, not use of closed time.
+Metadata-only review of the existing BOSS corpus leaves 8,996 unique non-test
+pixel groups, preserving the old first-3,000 order and 600 calibration roles.
+Only 3,003 previously excluded non-test PGM sources were pixel-decoded for
+missing hashes, not current test pixels. Fixed additional calibration yields
+7,496 fit /1,500 calibration groups; original roles and all old media stay.
+One new coefficient-only Gaussian ridge .01 fit at unchanged .1 bpnzac uses
+existing old features plus 5,996 added-source feature pairs, with bounded
+transient Q75 compression and no persisted JPEG/raw copy. Exact old raw-to-DCT
+and two old feature-vector replays plus generated numeric controls pass.
+No DCTR/new model family/grid, download, GPU or reserved-data access follows.
+The exclusive parent is `.benchmark/nsf5-sample-count-20261115/`; inspect
+marker/log/process and never duplicate it. Fresh cap 1,800 seconds including
+thirty conservatively charged metadata/control seconds; ten-GiB summed sampled
+RSS /256-MiB output /eight-MiB file guard, four file workers /one BLAS thread,
+disk TMPDIR and no Gram persistence. Preserve all failures, source/group
+checks and actual closing. New calibration BA below .80 prevents new test
+inference; otherwise one frozen historical test reuses existing verified
+features. No untouched qualification or deployment is claimed.
+
+The fresh sample-count intervention is now independently closed. All
+8,996 fit/calibration sources are pixel-unique and exact cover-feature hash
+intersections across fit/calibration/test are zero. First-3,000 cached .1
+pairs and roles stay unchanged, with 5,996 added-source pairs only. The
+single 7,496-fit coefficient Gaussian ridge .01 model calibrates at
+**75.333333%**, AUC .831252444, TPR 79.133333% /FPR 28.466667%, 2,260/3,000
+correct. It fails the predefined .80 gate; no new historical test inference
+occurs. Existing 77.85% test evidence is context, not its result or a pass.
+
+Read-only fixed-threshold retained calibration diagnostics give 76.833333%
+/AUC .848905556 on the preserved 600 and 74.333333% /.819381481 on the added
+900. Threshold -.0420271442453668 never changes. Source composition and
+repeated earlier model development on the old subset cannot be separated;
+this is not a proof of intrinsic source difficulty or a universal ceiling.
+Keep the metadata precheck's missing-hash failure in the retry closeout log;
+its complete source inventory and plan precede any actual model fit.
+
+Independent closing verifies the one calibration record, landmark median,
+22 direct predictions (max error 1.196e-10), eight sampled training equations
+(max residual 3.743e-11), two actual added calibration feature vectors and
+all 570 software hashes. Actual completion takes 235.421302 seconds,
+cumulative 265.421302 /1,800 including thirty prior metadata/control seconds;
+parent-close output 66,902,300 bytes. The fit's per-process wait4 peak is
+about 4.647 GiB, below its ten-GiB sampled observer cap. No RAM cgroup claim.
+All parents are closed; unused consumed time grants no old retry. Together
+with fusion, about 70.73 MiB logical evidence remains, no data/model/log
+cleanup and about thirty GiB free /85% used. No copied raw/JPEG corpus or
+Gram, download, local GPU, reserved-data access or deployment occurred.
+
+Current results/limitations are `docs/RETRY_FUSION_RESULTS_20261115.md` and
+`benchmarks/retry-fusion-20261115.json`. Keep both generated control/preflight
+failures and the unchanged actual recipes/numeric guards. nsF5 .1 is 77.85%
+with a +.15-point interval containing zero; other .05/WAV misses remain.
+The overall 80% floor is still unmet. Every historical result and gate keeps
+its original status; no test-selected fallback, raised payload or calibration
+score is presented as test accuracy. Scientific code/models stay private;
+all 570 application/test sources remain identical to the passed 4,646-test
+full gate. Final document QA and publication evidence is private under
+`.benchmark/retry-closeout-20261115/`; determine publication from git tracking,
+with per-file lowercase messages, no trailers and nano.383070.save preserved.
+
+Final retry software checks pass fresh Ruff, 270-file mypy including research
+and all fifteen disk-backed README/scope tests. README has 898 words and four
+badges. All 570 hashes match the actual passed full gate, with no new full-suite
+claim. Both successful parents are closed; preserve unrelated nano.383070.save.
