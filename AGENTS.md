@@ -1991,3 +1991,154 @@ Final publication verification checks 502 public metric records, all 570
 source hashes and 75 local links. All new research parents are closed.
 Private verification is `publication-verification.json` in the closeout
 directory; determine the final commit/push state from git tracking.
+
+### Low-signal diagnosis and calibrated relations (2026-11-15)
+
+The user's next explicit research/fix request permits fresh bounded CPU
+hypothesis studies on already-admitted data. `docs/LOW_SIGNAL_DIAGNOSIS_PROTOCOL_20261115.md`
+prospectively authorizes bounded raw fit/calibration JPEG/WAV reads, with
+no historical test decoding, new media, GPU or old fit restart. Its exclusive
+parent in `.benchmark/low-signal-diagnosis-20261115/` is closed verified:
+6.011487 seconds /240, 1.398-GiB wait4 peak, eleven exact old feature replays,
+all sampled nsF5 changes and all 570 software hashes match. Original bytes,
+source roles and payloads remain unchanged. Keep its source/freeze/logs.
+
+Among the fixed sampled fit/calibration clips, median first-difference
+saturation under the old quiet-frame quantizer is 93.5435% for ESC and
+89.2962% for FSDD, versus 5.4450% for AudioMNIST. These are selected-source
+diagnostics, not population statistics. Sampled nicolas training clips alone
+have all-even samples; other sampled FSDD speakers have about half even.
+This supports a quantizer information-loss/source-shortcut hypothesis, not
+an impossibility proof. The WAV paper's abstract must not be interpreted as
+a universal 80% guarantee: its one-second /10%-payload table entry is 62.25%.
+nsF5 at .05/.1 changes only about .56/1.30% of nonzero AC coefficients;
+optimal-coding nsF5 is not the real F5 encoder's same-change-count experiment.
+
+`docs/NSF5_CALIBRATED_RELATIONS_PROTOCOL_20261115.md` freezes a distinct compact
+coefficient-domain study using already-installed sealwatch 2024.12's JRM
+absolute subset, per-mode histograms, four-edge crop calibration and signed
+decrement estimates. No install or full-JRM reproduction is claimed. Same
+2,400 fit /600 calibration /1,000 test source roles; ten fixed new models
+per unchanged payload and fixed late mixtures choose only on calibration.
+Only selected calibration BA >=80% permits new test feature construction;
+otherwise preserve the measured old miss as context and mark the new test
+unavailable by its calibration gate. Global choice precedes any new test
+feature. The exclusive new evidence directory is
+`.benchmark/nsf5-calibrated-relations-20261115/`. Inspect marker/log/process
+before action; never duplicate it. Fresh total cap 2,400 seconds including
+five preparation seconds, <=six-GiB summed sampled RSS and 256-MiB output,
+four file workers /one BLAS thread each, disk-backed temporary calibration
+files and no copied raw media or Gram persistence. Record actual outcome,
+independent audit and closing debit before publication or later intervention.
+
+The original coefficient-study preparation exits 1 after 1.503 seconds:
+its reused JSON reader expects Path while the new caller supplies a string.
+No real feature or model exists in that failed attempt. Preserve it unchanged.
+`docs/NSF5_CALIBRATED_RELATIONS_SOURCE_AMENDMENT_20261115.md` binds the separate
+`.benchmark/nsf5-calibrated-relations-completion-20261115/` source correction,
+with ten conservative old-preparation/failure seconds and 2,390 /2,400 seconds
+remaining. A separate corrected-helper/generated-control preflight passes;
+all scientific choices and real-fit guards remain unchanged. Inspect the
+new exclusive marker/log/process and never duplicate or relaunch either.
+
+The separate `docs/WAV_MODULAR_CALIBRATION_PROTOCOL_20261115.md` now freezes
+a fresh unsaturated-modular/re-embedding hypothesis for the sixteen previously
+failing dedicated WAV conditions. Its generated scalar histogram/context,
+reference-determinism and numeric-export preflight passes. The new FSDD fit
+omits nicolas's 500 upscaled-eight-bit training clips as a declared experimental
+cohort overlay; no original role, file or historical result is changed or
+reassigned. George/jackson fit, lucas calibrates, theo/yweweler remain test.
+Source and feature changes are joint, not a single-factor causal experiment.
+ESC and AudioMNIST corrected roles stay unchanged. Choices use calibration
+only; calibration BA below 80% prevents new test feature construction/inference.
+The exclusive parent/evidence directory is
+`.benchmark/wav-modular-calibration-20261115/`; inspect marker/log/process,
+never duplicate it. Fresh cap 1,800 seconds including five preparation seconds,
+six-GiB summed sampled RSS /256-MiB output, at most two file workers /one BLAS
+thread each and disk-backed TMPDIR. Record actual failures/gates, independent
+audit and cumulative closing resources before publication. No raw media/Gram
+copy, payload change, download, GPU, reserved data or deployment follows.
+
+The second nsF5 source preparation succeeds, then training feature export
+fails after 254.107 seconds at the inherited eight-MiB hard per-file limit.
+No real classifier was fitted. Preserve its truncated archive as unavailable,
+never reuse an unverified prefix. The first modular WAV parent is explicitly
+stopped during data-only ESC preparation after 126.696 parent seconds for the
+same known source issue; its real -15 exit and explicit external-stop receipt
+remain separate from a watchdog result. An independent fit-only WAV feature
+cost probe takes .091548 seconds for 220,500 samples, with zero fits/test reads.
+
+`docs/LOW_SIGNAL_CHUNKED_CACHE_AMENDMENT_20261115.md` prospectively binds two
+separate chunked-cache completions, retaining the eight-MiB file guard and all
+feature bytes/model/source/seed/threshold definitions. At most 100 sources
+per compressed part, per-part hashes and exact ordered concatenation; generated
+scalar and chunk-manifest roundtrips pass before actual fitting. nsF5 now uses
+`.benchmark/nsf5-calibrated-relations-chunks-20261115/`, debit 280 /2,400 seconds,
+at most 2,120 remaining; combined output includes both earlier parents. WAV
+uses `.benchmark/wav-modular-calibration-chunks-20261115/`, debit 150 /1,800,
+at most 1,650 remaining; four independent-file workers replace two, within
+the unchanged six-GiB summed RSS and 256-MiB combined-output caps. Original
+files, partials, logs and roles remain. Inspect exclusive markers/logs/processes;
+never duplicate a parent or restart old work. Actual outcome/independent
+closing and every calibration-gate exclusion must precede publication.
+
+Both chunked-cache interventions are now independently closed. nsF5 .05
+selects a fixed 75% new /25% DCTR mixture with calibration BA 65.416667%;
+it fails the predefined gate, with no new .05 test features/inference. nsF5
+.1 selects 50/50 new plain-square-root coefficient kernel /frozen fair-fit
+DCTR, calibration 81.00%, threshold .7342438804846576. One selected historical
+test gives **77.70%**, AUC .853915, TPR 74.5% /FPR 19.1%, TN 809 /TP 745
+(1,554/2,000). Still a miss: 46 decisions short, BA 95% interval 76.15–79.15%.
+Paired gain versus its frozen 70.75% kernel is +6.95 points (95% +5.30 to
++8.65); against the best legacy 75.15% point it is only +2.55 points. No
+paired interval is invented for unavailable legacy score vectors. Historical
+evaluation remains adaptive, not untouched qualification or deployment.
+
+All sixteen new WAV calibration choices miss 80%, so all new WAV historical
+test features/inferences are excluded by the prospective gate. Keep these
+`not_evaluated_calibration_gate`, never a test pass. ESC replacement 5/10%
+is calibration 71.733668 /77.135678%; matching 5/10/20/40% is 61.934673 /
+64.572864 /66.080402 /65.452261%. AudioMNIST matching 5/10% calibrates at
+59.0 /70.0%. All eight FSDD calibration BAs are 51.6–52.3% after the matched-
+bit-depth overlay and modular/re-embedding features. This joint negative
+intervention does not support a single saturation/8-bit-shortcut explanation,
+and does not prove an irreducible data accuracy ceiling. All earlier measured
+test misses and the historical passing rows remain unchanged.
+
+Independent closing replays thirty nsF5 calibration records, one selected
+test cell, sixty-two direct predictions (max error 1.018e-10), three actual
+calibration feature vectors and all source bindings. WAV closing replays
+128 calibration records, all sixteen gate exclusions, 256 predictions
+(max error 2.602e-11) and three full real-source descriptor replays. Source
+and feature changes are joint; no single-factor or universal-floor claim.
+A separate fit-cache audit verifies all 500 nicolas covers have eight zero
+low bits; neither of the other 1,000 FSDD fit covers does. No test is read by
+that shortcut audit. Preserve its receipt in the low-signal closeout folder.
+
+nsF5 chunk completion takes 452.055094 seconds, cumulative 732.055094 /2,400
+including the 280-second prior debit. Combined parent-close output is
+140,801,014 bytes, including both earlier parents/truncated archive. WAV
+completion takes 461.113286 seconds, cumulative 611.113286 /1,800 including
+150 old seconds; combined output is 120,403,931 bytes including the stopped
+parent. Both respect original six-GiB summed sampled RSS /256-MiB combined
+output caps and the inherited eight-MiB per-file guard. All parents are
+closed; unused consumed time grants no old retry. Total retained logical
+evidence is about 249.10 MiB, with about thirty GiB free /85% used. No data,
+model, partial or failed log was deleted. Keep every source/failure/debit.
+
+The cause analysis, primary-paper context, calibration-only exclusions and
+actual test miss are public in `docs/LOW_SIGNAL_DIAGNOSIS_RESULTS_20261115.md`
+and `benchmarks/low-signal-diagnosis-20261115.json`. Main detection results,
+README, changelog and the previous remaining-floor report link the findings.
+Do not portray the .05 calibration gate or WAV exclusions as measured test
+results. The overall 80%-per-method goal remains unmet; no payload increase,
+new media/model download, GPU, reserved-data access or product deployment.
+
+Fresh Ruff /270-file mypy including research and all fifteen README/scope
+checks pass. README is 898 words with four badges; all 570 source hashes
+still match the actual passed 4,646-test /two-CUDA-skip /97.415805% full gate.
+This is source-identical reuse, not a fresh full-suite run. Final software,
+publication and training-shortcut evidence is private in
+`.benchmark/low-signal-closeout-20261115/`. Determine publication from git;
+keep per-file lowercase commit messages, no trailers, and preserve the
+unrelated `nano.383070.save` unchanged.
