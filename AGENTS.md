@@ -1793,3 +1793,201 @@ matches all 570 full-gate bindings, 64 calibration records and 198 sampled
 predictions. No model worker remains active. Determine publication from git
 tracking status; the full software gate is reused with unchanged inputs,
 not relabelled as a fresh run.
+
+### Remaining floor continuation and BOSS source correction (2026-11-15)
+
+The user's new explicit continuation requests work on the remaining sub-80%
+conditions. This permits fresh bounded CPU studies on existing caches, with
+unchanged payloads and no old attempt restart. Preserve every previous result,
+failure and resource ledger; no downloads, raw decoding, GPU, ALASKA2 access,
+native Commons role change or deployment follows. New protocols are
+`docs/FLOOR_MIXED_LSB_PROTOCOL_20261115.md`, its role amendment, and
+`docs/FLOOR_IMAGE_PROTOCOL_20261115.md`. All 570 software-gate sources remain
+unchanged; reuse the actual passed 4,646-test gate without claiming a new run.
+
+A newly added source-role guard catches a real legacy split error before any
+new mixed calibration/test scoring. The original BOSS split shuffles file
+names without grouping pixel hashes. Training row 3,044 and test row 503
+share pixel content; independent cached cover-feature equality verifies it.
+Train/calibration and calibration/test have no shared pixel hash. Preserve
+`.benchmark/floor-mixed-lsb-20261115/` as failed, with its source/freeze/log/
+exit. No model was refitted. The separate read-only audit is private under
+`.benchmark/floor-boss-role-audit-20261115/`, with public aggregate receipt
+`benchmarks/boss-pixel-role-audit-20261115.json`. Earlier statements claiming
+these original 1,000 test sources were all pixel-disjoint are superseded by
+this correction; historical scores themselves remain unchanged records.
+
+On the remaining 999 pixel-disjoint test sources, saved-score replay gives
+HILL 80.03003003%, S-UNIWARD 80.73073073%, MiPOD 80.68068068%, without any
+new model or threshold. WOW exact clean metrics are unavailable because its
+score vectors were not retained. Aggregate bounds are 80.28028028–80.38038038%,
+not a confidence interval; both exceed 80%. Do not rerun consumed WOW fitting
+to invent missing evidence. The JPEG 3,000-source cohort ends before row
+3,044 and is pixel-disjoint from its 1,000-source test; check each cohort.
+
+The mixed-LSB source-corrected completion is independently closed in
+`.benchmark/floor-mixed-lsb-completion-20261115/`, under the amendment.
+It reuses three numeric Fisher states, with no refitting. A single fixed
+median of standardized mixed/replacement-5%/matching-5% scores is selected
+on the 500-source calibration set to maximize minimum BA over all eight
+kind/rate conditions. No query class/payload or paired cover chooses a model.
+On the corrected 999-source test, all eight cells pass: BA ranges from
+85.48548549% to 88.83883884%. Replacement/matching at 5% score 85.48548549 /
+86.03603604%, with FPR 22.02202202%. High-payload scores regress relative to
+the older 0-threshold detector; retain those tradeoffs instead of hiding them.
+All seven/eight-cell calibration records, thresholds, AUCs, eight test cells
+and eighteen direct numeric scores verify. Completion takes 3.392694 seconds,
+13.392694 /120 after the ten-second old-failure/audit debit; output is below
+one MiB, with no feature matrix persisted. Do not duplicate or relaunch it.
+
+The image-floor parent/evidence directory is `.benchmark/floor-image-20261115/`.
+Inspect its marker/logs/processes before action and never duplicate it. It
+compares fixed source-grouped OpenStego .1 bpp and nsF5 .05/.1 bpnzac kernels,
+with one global choice freeze before any selected test inference. Fresh total
+cap is 1,800 seconds /sampled 10-GiB RSS /eight-MiB private output, one BLAS
+thread and all matrices in RAM. Source/QC hashes may bind combined caches;
+test rows never fit/calibrate models. Record its actual outcome and independent
+closeout before publication. Keep the unrelated `nano.383070.save` intact.
+
+The image-floor study is independently closed: all 72 kernel candidates are
+eligible, with 210 direct-distance prediction replays (max 6.888e-10), full
+calibration/test counts/AUC/intervals and unchanged 570 software hashes.
+OpenStego .1 remains 79.75% (319/400). nsF5 .05/.1 score 59.35 /70.75%, below
+both target and prior 60.70 /75.15% rows; keep these negative new results.
+No test-based replacement, rate increase or old-row removal is permitted.
+Exact resources/receipts are in `.benchmark/floor-image-20261115/closing.json`.
+
+The fresh WAV protocol is `docs/FLOOR_WAV_PROTOCOL_20261115.md`. Its original
+preparation in `.benchmark/floor-wav-20261115/` fails the ESC source-group
+check before any actual fit. The legacy v2 loader ignores the already-admitted
+`esc-original-group-max-fold-v1` source receipt. Four original recording IDs
+span filename folds; these are different waveform clips, not exact copies.
+The existing receipt assigns whole recording groups to their maximum fold:
+1,200 fit /398 calibration /402 test. Preserve legacy 400-test rows separately.
+The aggregate audit is `benchmarks/esc50-role-audit-20261115.json` and the
+first source amendment is `docs/FLOOR_WAV_ROLE_AMENDMENT_20261115.md`.
+
+The first corrected-source preparation in
+`.benchmark/floor-wav-completion-20261115/` also fails before any actual fit:
+its implementation mistakes constant `source_group='ESC-50'` for recording
+identity. Preserve its source/log/exit unchanged. The second source correction
+`docs/FLOOR_WAV_GROUP_KEY_CORRECTION_20261115.md` uses the actual `group_key`,
+matching upstream_recording_id. The exclusive actual-fit parent is
+`.benchmark/floor-wav-groupkey-20261115/`; inspect marker/log/process before
+any action and never duplicate it. Its metadata-only preflight verifies:
+ESC 1,200/398/402 clips across 919/295/310 recording groups; AudioMNIST
+300/100/200 clips across 15/5/10 speakers; FSDD 1,500/500/1,000 clips across
+3/1/2 speakers. The source/QC and generated numeric-tree controls now pass.
+
+WAV compares nine kernel plus one fixed numeric-tree candidate for each of
+sixteen previously failing dedicated cells, and one mixed tree per dataset.
+Choices freeze globally before test inference. Original total cap is 2,400
+seconds, with twenty-five seconds conservatively charged for both failed
+preparations and diagnosis, leaving 2,375. Sampled RSS cap ten GiB, output
+24 MiB, one BLAS/OpenMP thread, no raw decode or new media. Record the actual
+outcome/partial failure and resource debit before any further action; do not
+retry consumed candidates or reset this allowance. Public software remains
+unchanged, and every old experiment, model, failed log and source ledger stays.
+
+A distinct OpenStego augmentation is prospectively frozen in
+`docs/FLOOR_OPENSTEGO_WS_PROTOCOL_20261115.md`, under the user's same explicit
+remaining-floor request. It permits bounded reading of the existing .1-bpp
+RGB PNG corpus for 114 neighbor/parity/weighted-stego statistics, without
+password/key lookup or media modification. Same parent-separated fit/cal/test;
+ten fixed new classifiers and small fixed late score mixtures use calibration
+only. Its separate allowance is 1,500 seconds /sampled four-GiB RSS /eight-MiB
+private output, no Gram/raw-pixel persistence. Preparation is in progress at
+`.benchmark/floor-openstego-ws-20261115/`; no attempt marker or fit exists yet.
+Do not infer a launch from this preparation. Preserve all BOSS role corrections,
+source-clean score denominators and the unrelated `nano.383070.save`.
+
+The WAV sequence is now independently closed in
+`.benchmark/floor-wav-f256-20261115/`. The group-key-corrected parent completes
+all sixty ESC dedicated candidates, then its full-feature mixed tree hits the
+680-second phase limit. The first partial continuation reuses those exact
+states, completes twenty AudioMNIST dedicated candidates, then its full-feature
+mixed tree hits the 240-second phase limit. Preserve both failures as unavailable,
+not models evaluated or passing. The separate feature-selection continuation
+reuses all eighty completed states byte-identically, without refitting, and
+fits the unattempted FSDD families plus distinct 256-feature mixed alternatives.
+Columns are chosen only from fit-cover/stego Fisher scores, never test roles.
+The full-5,433-feature references remain unavailable; no old attempt is retried.
+
+All 166 WAV calibration records, forty measured test cells and 726 direct
+numeric predictions replay (maximum error 1.475e-10), with all 570 software
+bindings unchanged. None of the sixteen new dedicated cells passes 80%:
+corrected ESC replacement 5/10% is 73.1343 /78.3582%; matching 5/10/20/40%
+is 65.2985 /65.1741 /66.0448 /69.4030%. AudioMNIST matching 5/10% is
+56.50 /59.50%. FSDD replacement 5/10/20/40% is 50.00 /49.70 /49.95 /51.10%;
+matching is 50.35 /50.00 /49.45 /50.85%. All new mixed cells and false alarms
+must also remain visible, including FSDD's 99.50% FPR and AudioMNIST matching
+20% at 79.50% (a miss). Historical passing dedicated cells were not rerun;
+legacy ESC 400-test and corrected 402-test cohorts are different.
+
+The final WAV continuation takes 190.574979 seconds; conservative cumulative
+debit including both source failures and partial parents is 1,170.574979 /2,400
+seconds. Combined logical output is 18,379,294 bytes, counting retained hard
+links conservatively; the last directory alone is 10,058,670 bytes at closing.
+All parents are closed; unused time grants no consumed candidate retry or
+new grid. Preserve the 980-second prior debit, all states, failed logs and
+full-feature unavailability. Protocols/amendments are linked from
+`docs/REMAINING_FLOOR_RESULTS_20261115.md`.
+
+The first OpenStego WS parent subsequently launched and passed source/generated
+checks, then its data-only feature phase reached the 600-second watchdog
+(exit -9, 600.925 seconds) before any real classifier fit. Preserve the
+original freeze/source/logs and failed feature phase. The prospective
+`docs/FLOOR_OPENSTEGO_WS_EXECUTION_AMENDMENT_20261115.md` permits only a
+source-corrected completion in `.benchmark/floor-openstego-ws-completion-20261115/`.
+It uses two ordered independent-file workers with byte-identical descriptors;
+model candidates, original roles, payloads, scalar oracle and guards stay exact.
+Charge 650 seconds for old preparation/feature work and overhead; at most
+850 /1,500 seconds remain. The parent samples summed worker/descendant RSS
+under four GiB and combined old/new output under eight MiB. Inspect its
+exclusive marker/log/process before action; never duplicate it. Record its
+actual result, independent closing and cumulative debit before publication.
+
+The two-worker OpenStego WS completion is now independently closed:
+**87.75% BA** at unchanged **.1 bpp**, AUC .954325, TN 175 /TP 176 (351/400),
+TPR 88.0% /FPR 12.5%. Calibration selects the 15-leaf /l2=1 tree among ten
+new WS candidates, then a fixed 75% WS /25% SRM mixture among five systems.
+Threshold 1.061469973523839 is frozen before constructing test features;
+200 crop pairs represent 100 DIV2K validation parents. The paired +8.00-point
+gain over the frozen 79.75% kernel has exploratory 95% interval +3.75 to
++12.00 points; BA interval 84.5–91.0%. This reused historical cohort is not
+untouched cross-source qualification. No research model is deployed.
+
+All fifteen calibration records, test metrics/parent bootstraps and forty-two
+sampled numeric predictions replay (max error 1.464e-11); a separate scalar
+oracle exactly reproduces 114 features on both real calibration images.
+Completion wall time is 408.041839 seconds, cumulative 1,058.041839 /1,500
+including the unchanged 650-second old debit. Combined parent-close output
+is 6,655,173 bytes /eight-MiB cap. Feature preparation's summed sampled RSS
+peak is 496,332,800 bytes; wait4 metadata is per process, not an aggregate
+peak claim. The consumed parents are closed; no unused time grants a retry.
+
+All remaining-floor results and every payload-specific miss are now in
+`docs/REMAINING_FLOOR_RESULTS_20261115.md` and
+`benchmarks/remaining-floor-20261115.json`. The main detection table, README
+and changelog include the two solved gaps, new negative image/WAV results
+and BOSS/ESC role corrections. Four older CPU result reports carry explicit
+supersession notices while preserving executed numbers. Exact clean WOW
+metrics remain unavailable; keep its aggregate bounds distinct from a CI.
+The overall all-method/all-payload 80% goal remains unmet: low nsF5 and WAV
+misses plus unavailable EBS remain. New sources or hypotheses need their
+own prospectively frozen intervention, not a relaunch of these old parents.
+
+Fresh Ruff /270-file mypy including research and all fifteen disk-backed
+README/scope tests pass. README has 895 words, four badges and valid local
+links. Every one of the 570 unchanged sources still matches the actual
+passed 4,646-test /two-CUDA-skip /97.415805% full CPU gate; this is source-
+identical reuse, never a claim of a new full-suite run. QA and publication
+source/log evidence is private in `.benchmark/floor-closeout-20261115/`.
+About thirty GiB remains free /85% used; no data/model/log cleanup occurred.
+Inspect git tracking to determine publication; preserve per-file lowercase
+subjects, no trailers, and the unrelated `nano.383070.save` untouched.
+
+Final publication verification checks 502 public metric records, all 570
+source hashes and 75 local links. All new research parents are closed.
+Private verification is `publication-verification.json` in the closeout
+directory; determine the final commit/push state from git tracking.
