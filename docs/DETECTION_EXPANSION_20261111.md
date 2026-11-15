@@ -40,6 +40,9 @@ sections. Repeated test access is flagged below.
 | HILL | gray BOSSbase | 0.4 bpp | **80.05%** | .891 | sample-count RBF; 7,500 fit /1,500 calibration, further adaptive |
 | MiPOD | gray BOSSbase | 0.4 bpp | 77.90% (miss) | .876 | sample-count RBF; 7,500 fit /1,500 calibration, further adaptive |
 | MiPOD | gray BOSSbase | 0.4 bpp | 78.75% (miss) | .886 | kernel ridge .03; 7,500 fit /1,500 calibration, further adaptive |
+| MiPOD | gray BOSSbase | 0.4 bpp | 79.70% (miss) | .888 | RC8 normalization; 7,500 fit /1,500 calibration, further adaptive |
+| MiPOD | gray BOSSbase | 0.4 bpp | 78.40% (miss) | .885 | content-expert mix; negative finding, further adaptive |
+| MiPOD | gray BOSSbase | 0.4 bpp | **80.70%** | .900 | unwhitened RC8 Hellinger-type kernel; further adaptive |
 | HILL | gray BOSSbase | 0.6 bpp | **83.20%** | .920 | SRM + weighted, zero threshold |
 | S-UNIWARD | gray BOSSbase | 0.6 bpp | **86.45%** | .948 | SRM + weighted, zero threshold |
 | MiPOD | gray BOSSbase | 0.6 bpp | **82.20%** | .915 | SRM + weighted, zero threshold |
@@ -51,10 +54,11 @@ sections. Repeated test access is flagged below.
 | EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped |
 
 WAV, rule, network and video results follow in their sections; FSDD WAV is a
-miss at every payload. The latest spatial kernel results still miss MiPOD at
-0.4 bpp (78.75%); HILL passes narrowly at 80.05% and S-UNIWARD at 80.75%. Earlier v3 misses and the
-separate 0.6 bpp passes remain reported. Their reused test set limits
-independent confirmation of the target. JPEG nsF5 misses at 0.05 and
+miss at every payload. The four academic spatial point estimates now pass
+at 0.4 bpp: HILL 80.05%, S-UNIWARD 80.75%, WOW v2 80.30% and MiPOD
+80.70%. Earlier v3 and follow-up misses, including the negative local-expert
+finding, and the separate 0.6 bpp passes remain reported. Their reused test
+set limits independent confirmation of the target. JPEG nsF5 misses at 0.05 and
 0.1 bpnzac; EBS remains unavailable. The overall 80%-per-method goal is
 not met at all reported payloads.
 
@@ -273,6 +277,39 @@ numeric predictions replay independently. Matrices stay in RAM; the closed
 attempt uses about 401 seconds and four MiB of private output. See the
 [complete kernel results](MIPOD_KERNEL_RESULTS_20261115.md) and
 `benchmarks/mipod-kernel-20261115.json`.
+
+**Diagnosis-led continuation (2026-11-15):** the old ridge's calibration BA
+falls from 96.16% in the lowest residual-activity quartile to 63.29% in the
+highest. This is an association, not causal proof. The installed generator
+uses 7x7-smoothed MiPOD, distinct from the unsmoothed paper comparison.
+The compact 9,464-value representation is an SRM-style subset, not full
+published maxSRMd2. Fit/calibration changed-pixel rates are similar.
+
+Three separately frozen studies retain 7,500 fit /1,500 calibration pairs.
+Twenty-four normalization models select RC8 square-root ridge .03, reaching
+**79.70%** at **0.4 bpp** on the historical test. Twelve local/global expert
+systems then select a mix that falls to **78.40%**: the tiny calibration
+gain fails to generalize, and this negative finding stays reported.
+
+The final 24-model geometry study removes column whitening and estimates
+Gaussian bandwidth from 256 fixed fit covers. Calibration selects RC8
+square-root, gamma .006107876271462043 and ridge .01 before one inference.
+Historical test MiPOD reaches **80.70%** /AUC **.900443**, TPR /FPR
+**82.5 /21.1%**, **1,614/2,000** correct, fourteen above the 80% boundary.
+Its +1.00-point gain against the global RC8 reference has exploratory paired
+95% interval **-0.15 to +2.15 points**, including zero. Geometry, bandwidth
+and regularization change together, so no single-factor cause or reliable
+generalization gain is established. No model is qualified or deployed.
+
+The first geometry preparation fails generated-only median QA before real
+fitting; stable direct distances fix cancellation for identical vectors in
+a separately bound completion, retaining the failed source/log and a
+ten-second debit. All guards remain unchanged. Independent closing audits
+verify all 64 calibration records and 198 direct-distance predictions.
+Combined parent-close output is about 12.43 MiB, with no disk matrices;
+all 570 application/test bindings still match the passed full QA gate.
+See [diagnosis and full outcomes](MIPOD_DIAGNOSIS_RESULTS_20261115.md) and
+`benchmarks/mipod-diagnosis-20261115.json` for protocols, misses and receipts.
 
 ## Academic JPEG methods (`.benchmark/boss-jpeg-academic-20261112`, private)
 
