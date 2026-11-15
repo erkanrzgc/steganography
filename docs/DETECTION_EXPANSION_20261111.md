@@ -68,6 +68,7 @@ aggregate bounds only. See the [source audit and remaining-floor results](REMAIN
 | OpenStego 0.8.6 | RGB PNG, 100 test parents | 0.1 bpp | **87.75%** | .954325 | fixed 75% neighbor/parity-tree /25% SRM mix; further adaptive |
 | nsF5 | gray BOSSbase JPEG q75 | 0.05 bpnzac | 59.35% (miss) | .633729 | new plain-DCTR square-root kernel; regression retained |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 70.75% (miss) | .784427 | same new kernel family; regression retained |
+| nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 77.70% (miss) | .853915 | compact coefficient relations /DCTR fixed 1:1 score mixture; further adaptive |
 
 WAV, rule, network and video results follow in their sections. Four academic
 spatial methods retain above-80% point results/bounds at 0.4 bpp after the
@@ -394,6 +395,21 @@ byte-identical copy of the isolated completion's `result.json`, SHA-256
 The successful log and closing audit remain in the repair directory; the
 original `run.log` still records exit-1 evidence.
 
+### Later low-payload diagnosis and coefficient relations
+
+The [fit/calibration diagnosis and fresh interventions](LOW_SIGNAL_DIAGNOSIS_RESULTS_20261115.md)
+replay eleven original feature rows and all sampled change counts exactly.
+nsF5 .05/.1 changes only about .56/1.30% of nonzero AC coefficients; nominal
+payload is not the same as changed-coefficient fraction or real F5 efficiency.
+A fresh source-bound compact coefficient model plus a fixed 50% DCTR mixture
+reaches **77.70%**, AUC .853915, at unchanged .1 bpnzac: +2.55 points versus
+the best earlier legacy 75.15%, still a miss. Against its frozen fair-fit
+70.75% kernel reference, paired gain is +6.95 points (95% +5.30 to +8.65).
+BA interval is 76.15–79.15%; TPR/FPR is 74.5 /19.1%. Calibration was 81.00%,
+so it is not a test pass. The fresh .05 condition stops at calibration
+65.416667%, with no new test inference; both old .05 misses remain.
+Thirty calibration records and sixty-two direct predictions replay.
+
 ## WAV 16-bit LSB (`research/wav_lsb_features.py`)
 
 - **Features**:
@@ -478,6 +494,25 @@ FSDD mixed FPR is 99.50%, with BA near 50%. None of the sixteen dedicated
 misses is solved. Independent replay verifies 166 calibration records,
 40 test cells and 726 numeric predictions. See the
 [complete payload/false-alarm tables and retained failures](REMAINING_FLOOR_RESULTS_20261115.md#wav-the-failing-conditions-still-miss).
+
+### Later WAV signal diagnosis and modular calibration
+
+A fixed fit/calibration sample shows first-difference saturation under the
+old +/-3 quiet quantizer: medians 93.5435% ESC, 89.2962% FSDD and 5.4450%
+AudioMNIST. This is one descriptor family, not proof all features are constant.
+All 500 nicolas fit clips have zero lowest-eight-bit cover values; the other
+1,000 FSDD fit clips do not. This supports a source-shortcut hypothesis.
+
+The new fixed modular/re-embedding study excludes nicolas from its fit overlay
+and preserves all original source roles/files. Sixteen selected calibration
+BAs remain below .80: FSDD 51.6–52.3%, AudioMNIST matching 59.0 /70.0%,
+and ESC maximum 77.135678%. All new WAV test conditions therefore remain
+**not evaluated by the predefined calibration gate**, not passed. No new
+WAV test feature is constructed. Removing the two suspected limitations does
+not solve the current task; an irreducible data ceiling is not established.
+All 128 calibration records, 256 direct numeric scores and three complete
+real-source descriptor replays verify. See the [cause measurements, papers,
+all payloads and preserved source failures](LOW_SIGNAL_DIAGNOSIS_RESULTS_20261115.md).
 
 ## New structural rules (deterministic, no training)
 
@@ -689,7 +724,7 @@ See the [independent feature/metric audit](REMAINING_FLOOR_RESULTS_20261115.md#o
 
 ## Verification
 
-The 2026-11-15 remaining-floor studies change no application/test sources:
+The 2026-11-15 remaining-floor and low-signal studies change no application/test sources:
 all 570 hashes still match the actual passed 4,646-test gate below. Fresh
 Ruff /270-file mypy and fifteen disk-backed README/scope checks pass. This
 reuses source-identical full QA rather than claiming another full-suite run.
