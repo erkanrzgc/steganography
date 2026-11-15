@@ -1,0 +1,44 @@
+{
+  "status": "read_only_source_receipt_replay",
+  "legacy_loader_used_filename_folds": true,
+  "source_split_policy": "esc-original-group-max-fold-v1",
+  "corrected_fit": 1200,
+  "corrected_calibration": 398,
+  "corrected_test": 402,
+  "reassigned_rows": [
+    {
+      "row": 546,
+      "old_fold": 2,
+      "assigned_fold": 3,
+      "source_group": "ESC-50",
+      "recording_group_key": "ESC-50:131943"
+    },
+    {
+      "row": 551,
+      "old_fold": 2,
+      "assigned_fold": 3,
+      "source_group": "ESC-50",
+      "recording_group_key": "ESC-50:134049"
+    },
+    {
+      "row": 1543,
+      "old_fold": 4,
+      "assigned_fold": 5,
+      "source_group": "ESC-50",
+      "recording_group_key": "ESC-50:209698"
+    },
+    {
+      "row": 1575,
+      "old_fold": 4,
+      "assigned_fold": 5,
+      "source_group": "ESC-50",
+      "recording_group_key": "ESC-50:234879"
+    }
+  ],
+  "source_sha256": "64595a617ed7787cf39fe3b9f09ed02c7f0fb1bd6954f8b627c9a22a11900c16",
+  "upstream_metadata_sha256": "ca660da60191a97de289983a05821c9382d852a38a2ba8428980816b68cf6246",
+  "raw_files_or_caches_changed": false,
+  "exact_wave_duplicate_claim": false,
+  "interpretation": "source IDs cross filename folds; existing maximum-source-fold metadata must control the new roles",
+  "group_identity_note": "source_group is the constant dataset label; recording identity is group_key, matched to upstream_recording_id"
+}
