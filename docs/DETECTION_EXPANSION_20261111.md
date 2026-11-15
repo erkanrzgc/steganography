@@ -10,6 +10,12 @@ sections. Repeated test access is flagged below.
 
 ## Results against the 80% target
 
+**2026-11-15 source correction:** the historical 1,000-source BOSS split
+contains one pixel duplicate of training row 3,044. Those rows remain
+historical records, not source-clean qualification. New rows explicitly use
+999 pixel-disjoint sources; exact WOW scores are unavailable, with clean
+aggregate bounds only. See the [source audit and remaining-floor results](REMAINING_FLOOR_RESULTS_20261115.md).
+
 | Method | Carrier / data | Payload | Test accuracy | AUC | Detector |
 |---|---|---|---:|---:|---|
 | LSB replacement | gray BOSSbase | 5% | **85.7%** | .946 | SRM gray, payload-specific |
@@ -18,6 +24,8 @@ sections. Repeated test access is flagged below.
 | ±1 LSB matching | gray BOSSbase | 10/20/40% | **91.1 / 94.2 / 96.6%** | .976–.996 | SRM gray, payload-specific |
 | LSB, unknown payload | gray BOSSbase | 10/20/40% | **88.7–94.5%** | .961–.994 | SRM gray, one mixed detector |
 | LSB, unknown payload | gray BOSSbase | 5% | 72.1% (miss) | .877–.879 | SRM gray, one mixed detector |
+| LSB, unknown payload | gray BOSSbase, clean 999 | 5% replacement /matching | **85.4855 /86.0360%** | .945–.946 | one fixed median-score detector |
+| LSB, unknown payload | gray BOSSbase, clean 999 | 10/20/40% | **88.0380–88.8388%** | .978–.993 | same detector; FPR 22.0220%, high-rate regression retained |
 | stegano (Python) | RGB PNG | 0.1 / 0.4 bpp | **100%**, 0/2,000 false alarms | — | `modules/stegano_lsb.py` rule |
 | stegano | RGB PNG | 0.1 / 0.4 bpp | **84.8 / 98.0%** | .918 / .994 | rich RGB, statistical |
 | OutGuess 0.4 | JPEG q75 | 0.05 bpnzac | **95.5%** | .987 | calibrated DCTR |
@@ -52,15 +60,26 @@ sections. Repeated test access is flagged below.
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 75.15% (miss) | .834 | DCTR, train-selected |
 | nsF5 | gray BOSSbase JPEG q75 | 0.2 bpnzac | **94.25%** | .987 | DCTR, train-selected |
 | EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped |
+| HILL | gray BOSSbase, clean 999 | 0.4 bpp | **80.030030%** | .890384 | saved-score replay, unchanged state/threshold |
+| S-UNIWARD | gray BOSSbase, clean 999 | 0.4 bpp | **80.730731%** | .897463 | saved-score replay, unchanged state/threshold |
+| MiPOD | gray BOSSbase, clean 999 | 0.4 bpp | **80.680681%** | .900254 | saved-score replay, unchanged state/threshold |
+| WOW v2 | gray BOSSbase, clean 999 | 0.4 bpp | **80.280280–80.380380% bounds** | unavailable | aggregate count bounds, not a confidence interval |
+| OpenStego 0.8.6 | RGB PNG, 100 test parents | 0.1 bpp | 79.75% (miss) | .870475 | new kernel study, unchanged 319/400 decisions |
+| OpenStego 0.8.6 | RGB PNG, 100 test parents | 0.1 bpp | **87.75%** | .954325 | fixed 75% neighbor/parity-tree /25% SRM mix; further adaptive |
+| nsF5 | gray BOSSbase JPEG q75 | 0.05 bpnzac | 59.35% (miss) | .633729 | new plain-DCTR square-root kernel; regression retained |
+| nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 70.75% (miss) | .784427 | same new kernel family; regression retained |
 
-WAV, rule, network and video results follow in their sections; FSDD WAV is a
-miss at every payload. The four academic spatial point estimates now pass
-at 0.4 bpp: HILL 80.05%, S-UNIWARD 80.75%, WOW v2 80.30% and MiPOD
-80.70%. Earlier v3 and follow-up misses, including the negative local-expert
-finding, and the separate 0.6 bpp passes remain reported. Their reused test
-set limits independent confirmation of the target. JPEG nsF5 misses at 0.05 and
-0.1 bpnzac; EBS remains unavailable. The overall 80%-per-method goal is
-not met at all reported payloads.
+WAV, rule, network and video results follow in their sections. Four academic
+spatial methods retain above-80% point results/bounds at 0.4 bpp after the
+source correction: HILL 80.030030%, S-UNIWARD 80.730731%, MiPOD 80.680681%,
+and WOW's conservative 80.280280–80.380380% bounds. WOW's exact clean metric
+is unavailable. Unknown-payload gray LSB now passes all eight cells, with
+higher false alarms and stronger-payload regressions reported. OpenStego
+.1 bpp rises from 79.75 to **87.75%**, AUC .954325, on the same 100 test
+parents, with TPR 88.0% /FPR 12.5%. The new nsF5
+and WAV studies retain their misses and negative results. EBS remains
+unavailable. Repeated historical evaluation limits independent confirmation;
+**the overall 80%-per-method goal is not met at all reported payloads**.
 
 ## Gray LSB on BOSSbase (`research/srm_features.py`)
 
@@ -105,6 +124,14 @@ not met at all reported payloads.
 
 The mixed detector's false-positive rate is 9.1% at every payload. Its 5% miss
 comes from low recall (53%) at a threshold shared with the stronger payloads.
+
+**Later correction and continuation:** the preceding original split includes
+one training/test pixel duplicate. On the clean 999-source subset, one fixed
+calibration-selected median of three existing state scores reaches
+**85.4855–88.8388%** over all eight conditions. At 5%, replacement/matching
+reach 85.4855 /86.0360%, shared FPR 22.0220%. No refitting or query-payload
+selection occurs; higher-payload regression versus the old detector is
+retained. See the [complete eight-cell table](REMAINING_FLOOR_RESULTS_20261115.md#unknown-payload-gray-lsb-all-eight-cells-pass).
 
 ## Academic adaptive spatial methods (`.benchmark/boss-academic-20261112`, private)
 
@@ -384,9 +411,10 @@ original `run.log` still records exit-1 evidence.
   - Clips with digital silence (25%) were detected at ~99%. Noisy clips were
     near chance, because their quietest frames still vary by ≥6 LSB.
   - Trees combine both cues.
-- **Splits** (group-disjoint):
-  - ESC-50: folds 1–4 train, fold 5 test (400 clips; folds keep one source
-    recording together).
+- **Legacy splits** (ESC recording grouping corrected below):
+  - ESC-50: filename folds 1–4 train, fold 5 test (400 clips). The original
+    loader did not preserve four cross-fold recording IDs; the former blanket
+    source-disjoint claim is superseded.
   - AudioMNIST pilot: train speakers vs development speakers (200 cuts; no
     reserved speaker is stored locally).
   - FSDD: four speakers train, theo/yweweler test (1,000 clips).
@@ -418,13 +446,38 @@ original `run.log` still records exit-1 evidence.
   **That was wrong.** Only speaker nicolas (train) is 8-bit audio up-scaled to
   16 bits. The other five speakers, including both test speakers, are genuine
   16-bit PCM: about half of their samples are even.
-- FSDD stays near chance in v2, and **all FSDD rows miss 80%**. This looks like
-  a limit of the data, not a feature gap:
+- FSDD stays near chance in v2, and **all FSDD rows miss 80%**. These
+  observations motivate a weak-signal hypothesis; they do not prove that
+  different features or data cannot improve it:
   - The test clips are short: 2,950–3,240 samples at 8 kHz (median), against
     28,000 for AudioMNIST cuts.
   - Their quietest 256-sample frame still carries 4.9–8.0 LSB of noise
     (median second-difference RMS / √6). AudioMNIST is at 1.1 LSB.
-  - A few thousand noisy samples carry too little LSB evidence.
+  - A few thousand noisy samples may limit these statistical cues; this is
+    not an impossibility bound for another detector.
+
+### Later WAV kernel/tree continuation (2026-11-15)
+
+Corrected ESC recording groups use 1,200 fit /398 calibration /402 test
+clips; preserve the legacy 400-test rows separately. AudioMNIST uses
+15/5/10 fit/calibration/test speakers; FSDD uses three/one/two. Sixteen
+previously failing dedicated cells compare fixed kernels and numeric trees;
+new 256-feature mixed trees use fit-only feature selection. All choices
+freeze before selected inference. Two full-feature mixed trees time out
+and remain unavailable; completed states are reused without refitting.
+
+| Corrected/new dedicated cells | Replacement 5 /10 /20 /40% BA | Matching 5 /10 /20 /40% BA |
+|---|---|---|
+| ESC-50, 402 clips | 73.1343 /78.3582% (both miss); higher rates not rerun | 65.2985 /65.1741 /66.0448 /69.4030% (all miss) |
+| AudioMNIST | prior passes not rerun | 56.50 /59.50% (both miss); higher rates not rerun |
+| FSDD | 50.00 /49.70 /49.95 /51.10% (all miss) | 50.35 /50.00 /49.45 /50.85% (all miss) |
+
+All 24 new mixed cells are also reported, including AudioMNIST replacement
+10/20/40% and matching 40% passes; its matching 20% remains 79.50%, a miss.
+FSDD mixed FPR is 99.50%, with BA near 50%. None of the sixteen dedicated
+misses is solved. Independent replay verifies 166 calibration records,
+40 test cells and 726 numeric predictions. See the
+[complete payload/false-alarm tables and retained failures](REMAINING_FLOOR_RESULTS_20261115.md#wav-the-failing-conditions-still-miss).
 
 ## New structural rules (deterministic, no training)
 
@@ -627,7 +680,21 @@ Benchmark:
 - The F5 encoder comment is also a deterministic tool fingerprint
   (`image_jpeg`, see above).
 
+**Later OpenStego .1-bpp intervention:** a calibration-only fixed 75% WS
+neighbor/parity-tree /25% SRM score mixture reaches **87.75%**, AUC .954325,
+351/400 correct on the same 100 test parents. TPR /FPR is 88.0 /12.5%; the
+exploratory paired-parent gain versus the frozen 79.75% kernel is +8.00
+points (95% interval +3.75 to +12.00). No key lookup, new data or deployment.
+See the [independent feature/metric audit](REMAINING_FLOOR_RESULTS_20261115.md#openstego-neighborparity-augmentation).
+
 ## Verification
+
+The 2026-11-15 remaining-floor studies change no application/test sources:
+all 570 hashes still match the actual passed 4,646-test gate below. Fresh
+Ruff /270-file mypy and fifteen disk-backed README/scope checks pass. This
+reuses source-identical full QA rather than claiming another full-suite run.
+Independent experiment audits, all misses, source-role corrections and
+resource closeouts are in the [remaining-floor report](REMAINING_FLOOR_RESULTS_20261115.md).
 
 Final cached-classifier CPU gate on **2026-11-14**: **4,646 passed**, two
 explicit CUDA skips, 32 warnings, **97.42%** total coverage, 1,674.81 s.
