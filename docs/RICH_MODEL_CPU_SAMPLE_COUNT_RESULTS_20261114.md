@@ -1,5 +1,12 @@
 # CPU sample-count continuation results (2026-11-14)
 
+**Later source correction (2026-11-15):** the historical 1,000-source BOSS
+test includes one pixel duplicate of training content. Preserve the executed
+numbers below as historical records; they are not fully pixel-disjoint test
+qualification. Current selected clean-999 results and WOW aggregate bounds
+are in the [source-corrected report](REMAINING_FLOOR_RESULTS_20261115.md#source-role-corrections).
+No old fit or inference was rerun.
+
 The user's storage-cleanup/continuation request first leads to
 [27.859467 GiB of verified cleanup](STORAGE_CLEANUP_20261114.md), then the
 fresh [sample-count protocol](RICH_MODEL_CPU_SAMPLE_COUNT_PROTOCOL_20261114.md).
