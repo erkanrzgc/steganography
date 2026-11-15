@@ -14,6 +14,12 @@ of these historical evaluation sets is adaptive, not untouched qualification.
 Balanced accuracy (BA) averages specificity and sensitivity; intervals below
 are exploratory paired-source bootstraps, not certification of an 80% floor.
 
+A [later cause investigation](LOW_SIGNAL_DIAGNOSIS_RESULTS_20261115.md)
+adds measured quantizer/source diagnostics and fresh coefficient/modular
+features. nsF5 .1 bpnzac improves to 77.70%, still below 80%; seventeen
+other new conditions stop at their predefined calibration gate. Earlier
+metrics below remain unchanged historical records, not overwritten results.
+
 ## Source-role corrections
 
 A new preflight detects one real BOSSbase split error: training row 3,044 and
