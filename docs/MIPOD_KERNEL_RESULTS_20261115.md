@@ -1,5 +1,12 @@
 # MiPOD CPU kernel comparison results (2026-11-15)
 
+**Later source correction (2026-11-15):** the historical 1,000-source BOSS
+test includes one pixel duplicate of training content. Preserve the executed
+numbers below as historical records; they are not fully pixel-disjoint test
+qualification. Current selected clean-999 results and WOW aggregate bounds
+are in the [source-corrected report](REMAINING_FLOOR_RESULTS_20261115.md#source-role-corrections).
+No old fit or inference was rerun.
+
 The fresh [fixed protocol](MIPOD_KERNEL_PROTOCOL_20261115.md) completes. On
 **0.4 bpp MiPOD**, calibration selects kernel ridge with diagonal ridge .03.
 The selected model scores **78.75% balanced accuracy** on the repeatedly
