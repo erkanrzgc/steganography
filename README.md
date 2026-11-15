@@ -5,11 +5,10 @@
 [![Status](https://img.shields.io/badge/status-beta-64748B?style=flat-square)](docs/ROADMAP.md)
 [![License](https://img.shields.io/badge/license-MIT-0F766E?style=flat-square)](LICENSE)
 
-A local Python toolkit for steganography analysis, payload recovery, CTF
-investigation and digital forensics, with traceable evidence and portable reports.
+A local Python toolkit for steganography analysis, recovery, CTF investigation
+and digital forensics, with traceable evidence.
 
-CLI, terminal workbench and optional browser/API share application services.
-Analysis runs locally, without cloud AI providers or uploads.
+CLI, TUI and browser/API share local services, without cloud AI or uploads.
 
 [Getting started](docs/GETTING_STARTED.md) · [Documentation](docs/README.md) ·
 [Research status](docs/STATUS.md) · [Security](SECURITY.md)
@@ -38,11 +37,10 @@ python -m pip install .
 steganography tui
 ```
 
-On Windows, activate with `.\.venv\Scripts\Activate.ps1`. The distribution is
-`steganography-dfir`; the command and import are `steganography`.
+Windows activation: `.\.venv\Scripts\Activate.ps1`. Package: `steganography-dfir`;
+command/import: `steganography`.
 
-The base install ships no external tools, weights or datasets; optional extras
-have separate setup and licenses, and downloads are explicit.
+The base install ships no external tools, weights or datasets. Downloads are explicit.
 
 For the optional browser workspace and API:
 
@@ -86,12 +84,11 @@ See the [CLI reference](docs/CLI.md); press `?` for TUI help.
 | MP4, MOV, MKV, AVI | — | Container fields, unreferenced media data, lossless-frame LSB |
 | PCAP, PCAPNG | — | DNS/ICMP tunnels and header covert channels |
 
-These are implemented capabilities, **not validated detection accuracy**; see the
+Capabilities are **not validated detection accuracy**; see the
 [format inventory](docs/ALL_FORMAT_DATA_STATUS.md).
 
-Controlled research datasets exist for JPEG, PNG/BMP and mono WAV; other formats
-rely on fixtures, rules or optional tools. Format support does not establish
-benchmark coverage.
+Controlled datasets cover JPEG, PNG/BMP and mono WAV. Other formats rely on
+fixtures, rules or optional tools; format support does not establish accuracy.
 
 ## Interpret results
 
@@ -121,25 +118,27 @@ listed cells, not confidence intervals or expected real-world accuracy.
 | PNG/BMP RGB rich-model detector | DIV2K | 61.25–93.00% | 0.781–0.990 |
 | PNG/BMP RGB rich-model detector | Commons | 57.50–72.50% | 0.630–0.755 |
 | Gray LSB SRM, payload-specific | BOSSbase | 85.70–97.80% | 0.946–0.998 |
-| Gray LSB SRM, unknown payload | BOSSbase | 72.10–94.50% | 0.877–0.994 |
+| Gray LSB median, unknown payload | BOSSbase, clean 999 | 85.49–88.84% | 0.945–0.993 |
 | Academic spatial SRM v2/v3, 0.4 bpp | BOSSbase | 76.00–80.30% | 0.858–0.901 |
-| Academic spatial kernels, 0.4 bpp | BOSSbase, reused test | 80.05–80.75% | 0.891–0.900 |
+| Three academic kernels, 0.4 bpp | BOSSbase, clean 999 | 80.03–80.73% | 0.890–0.900 |
 | Academic spatial SRM, 0.6 bpp | BOSSbase | 82.20–86.45% | 0.915–0.948 |
-| Academic JPEG DCTR, 0.05–0.4 bpnzac | BOSSbase q75 | 60.70–94.25% | 0.658–0.987 |
+| Academic JPEG DCTR/kernels, 0.05–0.4 bpnzac | BOSSbase q75 | 59.35–94.25% | 0.634–0.987 |
 | steghide, OutGuess, stegano, F5, OpenStego | DIV2K | 79.75–99.75% | 0.870–1.000 |
-| WAV LSB trees | ESC-50 | 64.00–89.50% | 0.752–0.970 |
-| WAV LSB trees | AudioMNIST | 57.75–99.75% | 0.628–1.000 |
-| WAV LSB trees | FSDD | 49.20–58.00% | 0.496–0.603 |
+| WAV kernels/trees, failing cells | ESC-50, 402 clips | 65.17–78.36% | 0.757–0.891 |
+| WAV kernels/trees, failing cells | AudioMNIST | 56.50–59.50% | 0.626–0.741 |
+| WAV kernels/trees, failing cells | FSDD | 49.45–51.10% | 0.495–0.517 |
 | WAV linear, parity/residual | ESC-50, FSDD | 50.00% | 0.359–0.656 |
 | WAV standardized pair head | AudioMNIST | 47.75–78.75% | 0.467–0.933 |
 
-Evaluation sets contain 8–1,000 originals. No model is qualified or deployed.
+Evaluation sets contain 8–1,000 originals. Historical rows retain split limitations.
 
-**80% per method:** four academic spatial methods pass at 0.4 bpp.
-Other payload-specific misses remain; spatial results reuse test.
+**80% per method:** clean spatial results and WOW's 80.28–80.38% count bounds
+pass at 0.4 bpp; unknown-payload gray LSB passes. OpenStego .1 bpp reaches
+**87.75%**; nsF5/WAV misses remain.
+Historical tests are reused; no model is qualified or deployed.
 [Details](docs/DETECTION_EXPANSION_20261111.md),
 [RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md),
-[CPU comparison](docs/MIPOD_DIAGNOSIS_RESULTS_20261115.md).
+[source corrections and remaining cells](docs/REMAINING_FLOOR_RESULTS_20261115.md).
 
 Evidence: [AudioMNIST pair head](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md),
 [JPEG controls](docs/JPEG_CONTROL_RESULTS.md),
