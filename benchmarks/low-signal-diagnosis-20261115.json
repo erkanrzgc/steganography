@@ -1,0 +1,4327 @@
+{
+  "software_verification": {
+    "source_hashes": {
+      "status": "passed",
+      "unchanged_bound_inputs": 570,
+      "full_gate_status_sha256": "f368f491e0ee8ef12a0ee73dce49f53e0ea687c50cfd82ce61500f5327dbf713",
+      "full_gate_inputs_sha256": "d04e1dbe5d4ba6c6503e374867fd6675cf2b4da74b4a57e014371db0863f5413",
+      "new_full_suite_run": false
+    },
+    "fresh_ruff": {
+      "exit_code": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "fresh_mypy": {
+      "exit_code": 0,
+      "checked_source_files": 270,
+      "includes_research": true,
+      "log_sha256": "bbbd60d9dc74fd41bb8c1120d1791557a3ed1932f1caa64ed4cbd9de60fa8f70"
+    },
+    "fresh_documentation_tests": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.6546957430000475,
+      "expected_tests": 15,
+      "readme_words": 898,
+      "disk_backed_tmpdir": true,
+      "fresh_basetemp": true,
+      "new_full_suite_run": false
+    },
+    "fresh_documentation_test_log_sha256": "42741f7ed0e38cf1e505a56b792913fdce074f13de67a5716b43cb2da56f5f8b"
+  },
+  "status": "closed_research_no_universal_floor_claim",
+  "date": "2026-11-15",
+  "target_balanced_accuracy": 0.8,
+  "all_conditions_pass": false,
+  "diagnosis": {
+    "private_evidence": ".benchmark/low-signal-diagnosis-20261115",
+    "closing": {
+      "status": "closed_verified",
+      "total_elapsed_seconds": 6.011487195999507,
+      "total_cap_seconds": 240,
+      "output_bytes": 191447,
+      "closed_unix": 1794763841.4160728
+    },
+    "closing_sha256": "aa220a802a4a7709b3a2cbb23c2ade150fb7f4b4af286004db8537ec67112783",
+    "source_freeze_sha256": "c00d6080b178f3a1e6cd30173aa0eb591589ab67b164c9b9ee2614ac83f4a880",
+    "status": "closed_read_only_fit_calibration_diagnosis",
+    "datasets": {
+      "esc50": {
+        "frames": {
+          "minimum": 220500.0,
+          "median": 220500.0,
+          "maximum": 220500.0
+        },
+        "quiet_noise_lsb": {
+          "minimum": 0.0,
+          "median": 53.925900733556574,
+          "maximum": 501.58386575658784
+        },
+        "first_difference_saturation": {
+          "minimum": 0.0,
+          "median": 0.9354351311013249,
+          "maximum": 0.9981021171528072
+        },
+        "sampled_fit_calibration_sources": 16,
+        "sampled_roles": {
+          "fit": 8,
+          "calibration": 8
+        }
+      },
+      "audiomnist": {
+        "frames": {
+          "minimum": 23171.0,
+          "median": 31515.5,
+          "maximum": 38199.0
+        },
+        "quiet_noise_lsb": {
+          "minimum": 0.6495917837638789,
+          "median": 1.2688299264424248,
+          "maximum": 4.457612147327506
+        },
+        "first_difference_saturation": {
+          "minimum": 0.0004185851820845542,
+          "median": 0.054450006104260776,
+          "maximum": 0.10146500271296799
+        },
+        "sampled_fit_calibration_sources": 40,
+        "sampled_roles": {
+          "fit": 30,
+          "calibration": 10
+        }
+      },
+      "fsdd": {
+        "frames": {
+          "minimum": 2384.0,
+          "median": 4219.0,
+          "maximum": 5148.0
+        },
+        "quiet_noise_lsb": {
+          "minimum": 11.22042390418889,
+          "median": 113.17403009093758,
+          "maximum": 530.4761052476799
+        },
+        "first_difference_saturation": {
+          "minimum": 0.696969696969697,
+          "median": 0.8929618768328447,
+          "maximum": 0.9980449657869013
+        },
+        "sampled_fit_calibration_sources": 8,
+        "sampled_roles": {
+          "fit": 6,
+          "calibration": 2
+        }
+      },
+      "nsf5": {
+        "nonzero_ac": {
+          "minimum": 20728.0,
+          "median": 45936.0,
+          "maximum": 87740.0
+        },
+        "sampled_fit_calibration_sources": 24,
+        "changed_fractions": {
+          "0.05": {
+            "minimum": 0.005623894178111046,
+            "maximum": 0.005645946321791127,
+            "mean": 0.005634393973858177
+          },
+          "0.1": {
+            "minimum": 0.013004330977889219,
+            "maximum": 0.01303524614040198,
+            "mean": 0.013016104192103363
+          }
+        }
+      }
+    },
+    "exact_cached_feature_replays": 11,
+    "no_test_opened": true,
+    "no_classifier_fitted": true
+  },
+  "training_shortcut_audit": {
+    "status": "read_only_fit_cache_audit",
+    "no_test_read": true,
+    "groups": {
+      "george": {
+        "fit_clips": 500,
+        "all_low_eight_zero_clips": 0,
+        "median_even_cover": 0.49963825941085815,
+        "median_even_replacement_05": 0.4996492862701416,
+        "median_even_matching_05": 0.49956974387168884
+      },
+      "jackson": {
+        "fit_clips": 500,
+        "all_low_eight_zero_clips": 0,
+        "median_even_cover": 0.49989694356918335,
+        "median_even_replacement_05": 0.5002719163894653,
+        "median_even_matching_05": 0.49995458126068115
+      },
+      "nicolas": {
+        "fit_clips": 500,
+        "all_low_eight_zero_clips": 500,
+        "median_even_cover": 1.0,
+        "median_even_replacement_05": 0.9747641086578369,
+        "median_even_matching_05": 0.9749647974967957
+      }
+    }
+  },
+  "nsf5": {
+    "private_evidence": ".benchmark/nsf5-calibrated-relations-chunks-20261115",
+    "closing": {
+      "status": "closed_verified",
+      "total_elapsed_seconds": 452.0550939950008,
+      "prior_preparation_debit_seconds": 280,
+      "cumulative_seconds": 732.0550939950008,
+      "total_cap_seconds": 2400,
+      "output_bytes": 140801014,
+      "raw_media_or_gram_matrices_persisted": false,
+      "closed_unix": 1794765754.6423962
+    },
+    "closing_sha256": "847e4028cf58f847b5387f988721a8301deb28d3ec66d474058bad858575a43e",
+    "source_freeze_sha256": "38c1025f07d5527c133870def489f11d49f21e90ae3540650a9f02c39db8c41a",
+    "independent_audit": {
+      "status": "passed",
+      "calibration_records_replayed": 30,
+      "selected_test_cells_replayed": 1,
+      "calibration_gate_exclusions": [
+        "nsf5-0.05"
+      ],
+      "independent_predictions": 62,
+      "maximum_prediction_error": 1.0175860154504335e-10,
+      "real_calibration_feature_vectors_replayed": 3,
+      "all_570_source_hashes_verify": true,
+      "elapsed_seconds": 8.68301149599938
+    },
+    "choice_freeze_sha256": "27395de2b45db15eb44ee28ef090ba9b66e863e69ba21b769b3bbd93c7088eb7",
+    "cells": {
+      "nsf5-0.05": {
+        "selection": {
+          "records": [
+            {
+              "name": "fisher0.03",
+              "kind": "fisher",
+              "order": 0,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6266666666666667,
+                "auc": 0.6661138888888889,
+                "tpr": 0.555,
+                "fpr": 0.3016666666666667,
+                "threshold": 0.1386100638564102,
+                "true_negative": 419,
+                "true_positive": 333,
+                "total_decisions": 1200
+              },
+              "model_sha256": "c0d938cd8d57c9c159bf96d5e1f1b0935c0b3deaa167e3637d63c4d18969b9d7",
+              "ridge": 0.03
+            },
+            {
+              "name": "fisher0.3",
+              "kind": "fisher",
+              "order": 1,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6158333333333333,
+                "auc": 0.6433083333333334,
+                "tpr": 0.5583333333333333,
+                "fpr": 0.32666666666666666,
+                "threshold": 0.05028685632744062,
+                "true_negative": 404,
+                "true_positive": 335,
+                "total_decisions": 1200
+              },
+              "model_sha256": "1c19a2a47f6dda4e194fd89a719d20741289c11462063443a64163b3b9ec58f7",
+              "ridge": 0.3
+            },
+            {
+              "name": "fisher3.0",
+              "kind": "fisher",
+              "order": 2,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.5808333333333333,
+                "auc": 0.6057083333333333,
+                "tpr": 0.6416666666666667,
+                "fpr": 0.48,
+                "threshold": -0.00828582668063649,
+                "true_negative": 312,
+                "true_positive": 385,
+                "total_decisions": 1200
+              },
+              "model_sha256": "8e1c73298b645cdba6caa734ee18e05e8f68fbbf9eb0d5d5230913ce191f367f",
+              "ridge": 3.0
+            },
+            {
+              "name": "plain-kernel0.25",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6383333333333333,
+                "auc": 0.6718444444444445,
+                "tpr": 0.6466666666666666,
+                "fpr": 0.37,
+                "threshold": 0.017532185214804485,
+                "true_negative": 378,
+                "true_positive": 388,
+                "total_decisions": 1200
+              },
+              "model_sha256": "5b5cc604c6d9e974489a5c23ae9e2701b6758b006342d7b009c74a20a1b3037b",
+              "equation_residual": 2.2060797633116636e-10
+            },
+            {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 4,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.63,
+                "auc": 0.6650333333333334,
+                "tpr": 0.6333333333333333,
+                "fpr": 0.37333333333333335,
+                "threshold": 0.0537082327355165,
+                "true_negative": 376,
+                "true_positive": 380,
+                "total_decisions": 1200
+              },
+              "model_sha256": "f6e25dc05e1582e5e6caf3acda5362abab84652315a0ba539d126ca0d23ab380",
+              "equation_residual": 1.1813683364891858e-10
+            },
+            {
+              "name": "plain-kernel4",
+              "kind": "kernel",
+              "order": 5,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6116666666666667,
+                "auc": 0.6527361111111111,
+                "tpr": 0.59,
+                "fpr": 0.36666666666666664,
+                "threshold": 0.1640788981985679,
+                "true_negative": 380,
+                "true_positive": 354,
+                "total_decisions": 1200
+              },
+              "model_sha256": "99ee66d40d58c8b34b382aa708e8e2f1ce3ee80d0dcc254284c8175bb4c79ec9",
+              "equation_residual": 4.554601140682735e-11
+            },
+            {
+              "name": "calibrated-kernel0.25",
+              "kind": "kernel",
+              "order": 6,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6075,
+                "auc": 0.6437666666666667,
+                "tpr": 0.645,
+                "fpr": 0.43,
+                "threshold": -0.04066978924674913,
+                "true_negative": 342,
+                "true_positive": 387,
+                "total_decisions": 1200
+              },
+              "model_sha256": "9b2779e1235ce6afc4551cd1674a277cf8210b6856cce4be96d4ef012ddd5f6d",
+              "equation_residual": 1.4981704765659742e-10
+            },
+            {
+              "name": "calibrated-kernel1",
+              "kind": "kernel",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6233333333333333,
+                "auc": 0.6515277777777778,
+                "tpr": 0.6933333333333334,
+                "fpr": 0.44666666666666666,
+                "threshold": -0.20933776942365512,
+                "true_negative": 332,
+                "true_positive": 416,
+                "total_decisions": 1200
+              },
+              "model_sha256": "d7d55713bdd4e4947002b5040e32a17e78fe580617afb517cab9800fe17ae2b9",
+              "equation_residual": 2.8361979431679174e-11
+            },
+            {
+              "name": "calibrated-kernel4",
+              "kind": "kernel",
+              "order": 8,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6125,
+                "auc": 0.6355638888888889,
+                "tpr": 0.61,
+                "fpr": 0.385,
+                "threshold": 0.15794166733707726,
+                "true_negative": 369,
+                "true_positive": 366,
+                "total_decisions": 1200
+              },
+              "model_sha256": "21b28e63b4c71ed92c37b547fe6345aca2eeef9f4e28f8b4a59431d331e5622e",
+              "equation_residual": 2.3576696150939824e-12
+            },
+            {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 9,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.5591666666666667,
+                "auc": 0.5740666666666666,
+                "tpr": 0.48333333333333334,
+                "fpr": 0.365,
+                "threshold": 0.12813357456076063,
+                "true_negative": 381,
+                "true_positive": 290,
+                "total_decisions": 1200
+              },
+              "model_sha256": "f83ca739955244e02f614696f01f0f7d5279dbbbead44eaa9b132a17c34ead5b",
+              "probability_parity_error": 0.0
+            }
+          ],
+          "best": {
+            "name": "plain-kernel0.25",
+            "kind": "kernel",
+            "order": 3,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.6383333333333333,
+              "auc": 0.6718444444444445,
+              "tpr": 0.6466666666666666,
+              "fpr": 0.37,
+              "threshold": 0.017532185214804485,
+              "true_negative": 378,
+              "true_positive": 388,
+              "total_decisions": 1200
+            },
+            "model_sha256": "5b5cc604c6d9e974489a5c23ae9e2701b6758b006342d7b009c74a20a1b3037b",
+            "equation_residual": 2.2060797633116636e-10
+          },
+          "systems": [
+            {
+              "name": "reference",
+              "order": 0,
+              "calibration": {
+                "balanced_accuracy": 0.6383333333333333,
+                "auc": 0.6593083333333334,
+                "tpr": 0.5716666666666667,
+                "fpr": 0.295,
+                "threshold": 0.022162453664350323,
+                "true_negative": 423,
+                "true_positive": 343,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "new",
+              "order": 1,
+              "calibration": {
+                "balanced_accuracy": 0.6383333333333333,
+                "auc": 0.6718444444444445,
+                "tpr": 0.6466666666666666,
+                "fpr": 0.37,
+                "threshold": 0.017532185214804485,
+                "true_negative": 378,
+                "true_positive": 388,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "mix0.25",
+              "order": 2,
+              "new_weight": 0.25,
+              "calibration": {
+                "balanced_accuracy": 0.645,
+                "auc": 0.6885416666666667,
+                "tpr": 0.6966666666666667,
+                "fpr": 0.4066666666666667,
+                "threshold": 0.1887625978496722,
+                "true_negative": 356,
+                "true_positive": 418,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "mix0.5",
+              "order": 3,
+              "new_weight": 0.5,
+              "calibration": {
+                "balanced_accuracy": 0.6508333333333334,
+                "auc": 0.7025916666666666,
+                "tpr": 0.6283333333333333,
+                "fpr": 0.32666666666666666,
+                "threshold": 0.3888676320557837,
+                "true_negative": 404,
+                "true_positive": 377,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "mix0.75",
+              "order": 4,
+              "new_weight": 0.75,
+              "calibration": {
+                "balanced_accuracy": 0.6541666666666667,
+                "auc": 0.6949083333333334,
+                "tpr": 0.58,
+                "fpr": 0.27166666666666667,
+                "threshold": 0.500571121643279,
+                "true_negative": 437,
+                "true_positive": 348,
+                "total_decisions": 1200
+              }
+            }
+          ],
+          "selected": {
+            "name": "mix0.75",
+            "order": 4,
+            "new_weight": 0.75,
+            "calibration": {
+              "balanced_accuracy": 0.6541666666666667,
+              "auc": 0.6949083333333334,
+              "tpr": 0.58,
+              "fpr": 0.27166666666666667,
+              "threshold": 0.500571121643279,
+              "true_negative": 437,
+              "true_positive": 348,
+              "total_decisions": 1200
+            }
+          },
+          "anchors": {
+            "new_mean": -0.06669798500747978,
+            "new_scale": 0.2884732106720758,
+            "base_mean": -0.02404436206942895,
+            "base_scale": 0.10524145075646481
+          }
+        },
+        "result": {
+          "status": "not_evaluated_calibration_gate",
+          "new_test_inference": false,
+          "selected": {
+            "name": "mix0.75",
+            "order": 4,
+            "new_weight": 0.75,
+            "calibration": {
+              "balanced_accuracy": 0.6541666666666667,
+              "auc": 0.6949083333333334,
+              "tpr": 0.58,
+              "fpr": 0.27166666666666667,
+              "threshold": 0.500571121643279,
+              "true_negative": 437,
+              "true_positive": 348,
+              "total_decisions": 1200
+            }
+          },
+          "previous_measured_result": {
+            "status": "measured_historical_adaptive",
+            "cell": "nsf5-0.05",
+            "selected": "plain_sqrt-factor0.25-ridge0.01",
+            "metrics": {
+              "balanced_accuracy": 0.5935,
+              "auc": 0.633729,
+              "tpr": 0.527,
+              "fpr": 0.34,
+              "threshold": 0.022162453664350323,
+              "true_negative": 660,
+              "true_positive": 527,
+              "total_decisions": 2000
+            },
+            "passes_80_percent": false,
+            "paired_group_BA_95_interval": [
+              0.582,
+              0.606
+            ],
+            "fit_pairs": 2400,
+            "calibration_pairs": 600,
+            "test_pairs": 1000,
+            "test_source_groups": 1000,
+            "no_controlled_gain_claim": true
+          }
+        }
+      },
+      "nsf5-0.1": {
+        "selection": {
+          "records": [
+            {
+              "name": "fisher0.03",
+              "kind": "fisher",
+              "order": 0,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7575,
+                "auc": 0.8320444444444445,
+                "tpr": 0.7583333333333333,
+                "fpr": 0.24333333333333335,
+                "threshold": 0.08111164755198788,
+                "true_negative": 454,
+                "true_positive": 455,
+                "total_decisions": 1200
+              },
+              "model_sha256": "b24089c005641c7463c741806813488eba5c4bc8554005a76726eaaa47c29991",
+              "ridge": 0.03
+            },
+            {
+              "name": "fisher0.3",
+              "kind": "fisher",
+              "order": 1,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.735,
+                "auc": 0.7995972222222222,
+                "tpr": 0.755,
+                "fpr": 0.285,
+                "threshold": -0.0023706300966537808,
+                "true_negative": 429,
+                "true_positive": 453,
+                "total_decisions": 1200
+              },
+              "model_sha256": "b1c2c7e57c145f46fde8cab7949754ecb641aee6dbfc4b527e99687596c53bfb",
+              "ridge": 0.3
+            },
+            {
+              "name": "fisher3.0",
+              "kind": "fisher",
+              "order": 2,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6775,
+                "auc": 0.7316777777777778,
+                "tpr": 0.6916666666666667,
+                "fpr": 0.33666666666666667,
+                "threshold": -0.0017364313173412887,
+                "true_negative": 398,
+                "true_positive": 415,
+                "total_decisions": 1200
+              },
+              "model_sha256": "fba2cde8a5273fb666b303a0ccc33cd3451c1a008876fac468d4755fd8afe0ef",
+              "ridge": 3.0
+            },
+            {
+              "name": "plain-kernel0.25",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.77,
+                "auc": 0.8424444444444444,
+                "tpr": 0.74,
+                "fpr": 0.2,
+                "threshold": 0.08121053428476444,
+                "true_negative": 480,
+                "true_positive": 444,
+                "total_decisions": 1200
+              },
+              "model_sha256": "d6e46c78877df6776542d74af7f4afd73adeadd7d68c579234a7d49d6ecb0efd",
+              "equation_residual": 1.7676549113332385e-10
+            },
+            {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 4,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7708333333333334,
+                "auc": 0.8348083333333334,
+                "tpr": 0.8033333333333333,
+                "fpr": 0.26166666666666666,
+                "threshold": 0.02218039700164809,
+                "true_negative": 443,
+                "true_positive": 482,
+                "total_decisions": 1200
+              },
+              "model_sha256": "682b605194631d7a1356a52797c1eddd09fd603588ff123ae38e0ab41338f2e5",
+              "equation_residual": 8.353095992674753e-11
+            },
+            {
+              "name": "plain-kernel4",
+              "kind": "kernel",
+              "order": 5,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.745,
+                "auc": 0.8131555555555555,
+                "tpr": 0.7283333333333334,
+                "fpr": 0.23833333333333334,
+                "threshold": 0.1268676162032989,
+                "true_negative": 457,
+                "true_positive": 437,
+                "total_decisions": 1200
+              },
+              "model_sha256": "cd2563944caebe42d62c5d799c10aac96bf27e212eb84e34bb816d32ffd5de85",
+              "equation_residual": 1.6113776979409522e-11
+            },
+            {
+              "name": "calibrated-kernel0.25",
+              "kind": "kernel",
+              "order": 6,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7225,
+                "auc": 0.7980027777777777,
+                "tpr": 0.7316666666666667,
+                "fpr": 0.2866666666666667,
+                "threshold": 0.06817599552596221,
+                "true_negative": 428,
+                "true_positive": 439,
+                "total_decisions": 1200
+              },
+              "model_sha256": "b94fedc75ca032ab724e10128a4a25a26f4648e707edea48c933cf18ad6c1c46",
+              "equation_residual": 5.952249804153098e-11
+            },
+            {
+              "name": "calibrated-kernel1",
+              "kind": "kernel",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7483333333333333,
+                "auc": 0.8072277777777778,
+                "tpr": 0.7733333333333333,
+                "fpr": 0.27666666666666667,
+                "threshold": -0.02278709907841403,
+                "true_negative": 434,
+                "true_positive": 464,
+                "total_decisions": 1200
+              },
+              "model_sha256": "060dfb515be0c4c7144da12bf99b0a1322c04de7e1cc454d2a5e2965a66f708c",
+              "equation_residual": 9.170442183403793e-12
+            },
+            {
+              "name": "calibrated-kernel4",
+              "kind": "kernel",
+              "order": 8,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7308333333333333,
+                "auc": 0.7856555555555556,
+                "tpr": 0.7566666666666667,
+                "fpr": 0.295,
+                "threshold": 0.02997343521353546,
+                "true_negative": 423,
+                "true_positive": 454,
+                "total_decisions": 1200
+              },
+              "model_sha256": "db2c1fa61c21aad9c185904b1a8d10dadebde34397ce5ce1035473fdcf18f4f8",
+              "equation_residual": 5.566658245470535e-13
+            },
+            {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 9,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6783333333333333,
+                "auc": 0.7265972222222222,
+                "tpr": 0.715,
+                "fpr": 0.35833333333333334,
+                "threshold": 0.05762944716918158,
+                "true_negative": 385,
+                "true_positive": 429,
+                "total_decisions": 1200
+              },
+              "model_sha256": "d5b0899b8a195449a36ae9eb74b3b71b89799c0beb58cd80a2ea8dbc4618e64c",
+              "probability_parity_error": 0.0
+            }
+          ],
+          "best": {
+            "name": "plain-kernel1",
+            "kind": "kernel",
+            "order": 4,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7708333333333334,
+              "auc": 0.8348083333333334,
+              "tpr": 0.8033333333333333,
+              "fpr": 0.26166666666666666,
+              "threshold": 0.02218039700164809,
+              "true_negative": 443,
+              "true_positive": 482,
+              "total_decisions": 1200
+            },
+            "model_sha256": "682b605194631d7a1356a52797c1eddd09fd603588ff123ae38e0ab41338f2e5",
+            "equation_residual": 8.353095992674753e-11
+          },
+          "systems": [
+            {
+              "name": "reference",
+              "order": 0,
+              "calibration": {
+                "balanced_accuracy": 0.7583333333333333,
+                "auc": 0.8204388888888889,
+                "tpr": 0.7216666666666667,
+                "fpr": 0.205,
+                "threshold": 0.03946979297325015,
+                "true_negative": 477,
+                "true_positive": 433,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "new",
+              "order": 1,
+              "calibration": {
+                "balanced_accuracy": 0.7708333333333334,
+                "auc": 0.8348083333333334,
+                "tpr": 0.8033333333333333,
+                "fpr": 0.26166666666666666,
+                "threshold": 0.02218039700164809,
+                "true_negative": 443,
+                "true_positive": 482,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "mix0.25",
+              "order": 2,
+              "new_weight": 0.25,
+              "calibration": {
+                "balanced_accuracy": 0.7941666666666667,
+                "auc": 0.8630833333333333,
+                "tpr": 0.8,
+                "fpr": 0.21166666666666667,
+                "threshold": 0.6313816412992964,
+                "true_negative": 473,
+                "true_positive": 480,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "mix0.5",
+              "order": 3,
+              "new_weight": 0.5,
+              "calibration": {
+                "balanced_accuracy": 0.81,
+                "auc": 0.8815361111111111,
+                "tpr": 0.7683333333333333,
+                "fpr": 0.14833333333333334,
+                "threshold": 0.7342438804846576,
+                "true_negative": 511,
+                "true_positive": 461,
+                "total_decisions": 1200
+              }
+            },
+            {
+              "name": "mix0.75",
+              "order": 4,
+              "new_weight": 0.75,
+              "calibration": {
+                "balanced_accuracy": 0.8025,
+                "auc": 0.8689138888888889,
+                "tpr": 0.7833333333333333,
+                "fpr": 0.17833333333333334,
+                "threshold": 0.7254010982455572,
+                "true_negative": 493,
+                "true_positive": 470,
+                "total_decisions": 1200
+              }
+            }
+          ],
+          "selected": {
+            "name": "mix0.5",
+            "order": 3,
+            "new_weight": 0.5,
+            "calibration": {
+              "balanced_accuracy": 0.81,
+              "auc": 0.8815361111111111,
+              "tpr": 0.7683333333333333,
+              "fpr": 0.14833333333333334,
+              "threshold": 0.7342438804846576,
+              "true_negative": 511,
+              "true_positive": 461,
+              "total_decisions": 1200
+            }
+          },
+          "anchors": {
+            "new_mean": -0.4358313628083935,
+            "new_scale": 0.7397434753613544,
+            "base_mean": -0.12390364888454011,
+            "base_scale": 0.21641843282710502
+          }
+        },
+        "result": {
+          "status": "measured_historical_adaptive",
+          "selected": "mix0.5",
+          "best_new": "plain-kernel1",
+          "metrics": {
+            "balanced_accuracy": 0.777,
+            "auc": 0.853915,
+            "tpr": 0.745,
+            "fpr": 0.191,
+            "threshold": 0.7342438804846576,
+            "true_negative": 809,
+            "true_positive": 745,
+            "total_decisions": 2000
+          },
+          "passes_80_percent": false,
+          "paired_source_BA_95_interval": [
+            0.7615,
+            0.7915
+          ],
+          "gain": 0.0695,
+          "paired_source_gain_95_interval": [
+            0.053,
+            0.0865
+          ]
+        }
+      }
+    }
+  },
+  "wav": {
+    "private_evidence": ".benchmark/wav-modular-calibration-chunks-20261115",
+    "closing": {
+      "status": "closed_verified",
+      "total_elapsed_seconds": 461.11328635599784,
+      "prior_preparation_debit_seconds": 150,
+      "cumulative_seconds": 611.1132863559978,
+      "total_cap_seconds": 1800,
+      "output_bytes": 120403931,
+      "raw_media_or_gram_matrices_persisted": false,
+      "closed_unix": 1794765763.7053213
+    },
+    "closing_sha256": "b592ef6677a758ea6992642b6577134b3379a753eeab0c57b7cc9b5a74a4ae32",
+    "source_freeze_sha256": "17b3e2953ea281e78237228301cf07e8dc9bb09d130fa6bdf969ed4811610c5b",
+    "independent_audit": {
+      "status": "passed",
+      "calibration_records_replayed": 128,
+      "selected_test_cells_replayed": 0,
+      "calibration_gate_exclusions": [
+        "esc50/replacement-0.05",
+        "esc50/replacement-0.1",
+        "esc50/matching-0.05",
+        "esc50/matching-0.1",
+        "esc50/matching-0.2",
+        "esc50/matching-0.4",
+        "audiomnist/matching-0.05",
+        "audiomnist/matching-0.1",
+        "fsdd/replacement-0.05",
+        "fsdd/replacement-0.1",
+        "fsdd/replacement-0.2",
+        "fsdd/replacement-0.4",
+        "fsdd/matching-0.05",
+        "fsdd/matching-0.1",
+        "fsdd/matching-0.2",
+        "fsdd/matching-0.4"
+      ],
+      "independent_predictions": 256,
+      "maximum_prediction_error": 2.6012178522272222e-11,
+      "real_calibration_sources_replayed": 3,
+      "all_570_source_hashes_verify": true,
+      "elapsed_seconds": 6.384590251000191
+    },
+    "choice_freeze_sha256": "5b492f256c82aa5267868d3de2e221d70b226149754578ccc3a7574471694374",
+    "datasets": {
+      "esc50": {
+        "results": {
+          "replacement-0.05": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7173366834170855,
+                "auc": 0.8020315143556981,
+                "tpr": 0.6557788944723618,
+                "fpr": 0.22110552763819097,
+                "threshold": 0.14700056287802,
+                "true_negative": 310,
+                "true_positive": 261,
+                "total_decisions": 796
+              },
+              "model_sha256": "81d9021f0fa2157a547a5240ab3aa903d45aa41dcd0dea393cb1d6b36fad9d8e",
+              "equation_residual": 7.30056015640912e-11
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.7313432835820896,
+                "auc": 0.848128759189129,
+                "tpr": 0.7139303482587065,
+                "fpr": 0.2512437810945274,
+                "threshold": 0.011597933331487006,
+                "true_negative": 301,
+                "true_positive": 287,
+                "total_decisions": 804
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.701727621741766,
+                0.7628865979381443
+              ],
+              "test_groups": 310,
+              "test_sources": 402
+            }
+          },
+          "replacement-0.1": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7713567839195979,
+                "auc": 0.8498522764576653,
+                "tpr": 0.7060301507537688,
+                "fpr": 0.16331658291457288,
+                "threshold": 0.18196459891987615,
+                "true_negative": 333,
+                "true_positive": 281,
+                "total_decisions": 796
+              },
+              "model_sha256": "c3ba8c94c10efa44016ccb7d51a4225ff09c0d69888b78e4bb545c7ced583579",
+              "equation_residual": 5.457478913228897e-11
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.7835820895522388,
+                "auc": 0.8906153313036806,
+                "tpr": 0.7512437810945274,
+                "fpr": 0.18407960199004975,
+                "threshold": -0.006629837672077008,
+                "true_negative": 328,
+                "true_positive": 302,
+                "total_decisions": 804
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.7518140845940798,
+                0.8167941559943642
+              ],
+              "test_groups": 310,
+              "test_sources": 402
+            }
+          },
+          "matching-0.05": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6193467336683417,
+                "auc": 0.6895343551930507,
+                "tpr": 0.7587939698492462,
+                "fpr": 0.5201005025125628,
+                "threshold": -0.10661483820149442,
+                "true_negative": 191,
+                "true_positive": 302,
+                "total_decisions": 796
+              },
+              "model_sha256": "a3e125a30cd70170de958e30cfefc2f4f26d9005afc914436088ff547549a78a",
+              "equation_residual": 6.417644193845717e-11
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.6529850746268657,
+                "auc": 0.75716257023341,
+                "tpr": 0.8532338308457711,
+                "fpr": 0.5472636815920398,
+                "threshold": -0.26288754045173907,
+                "true_negative": 182,
+                "true_positive": 343,
+                "total_decisions": 804
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.6218230884187386,
+                0.6852741972991379
+              ],
+              "test_groups": 310,
+              "test_sources": 402
+            }
+          },
+          "matching-0.1": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6457286432160804,
+                "auc": 0.706206913966819,
+                "tpr": 0.7110552763819096,
+                "fpr": 0.41959798994974873,
+                "threshold": -0.04244738853958552,
+                "true_negative": 231,
+                "true_positive": 283,
+                "total_decisions": 796
+              },
+              "model_sha256": "1a4e342cd3588ed9e4b876101913c266d46b4d769c7b18923661c93c9249992e",
+              "equation_residual": 6.645395345117322e-11
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.6517412935323383,
+                "auc": 0.7603648424543947,
+                "tpr": 0.7587064676616916,
+                "fpr": 0.4552238805970149,
+                "threshold": -0.10583200547573958,
+                "true_negative": 219,
+                "true_positive": 305,
+                "total_decisions": 804
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.6184202240487869,
+                0.6890563374835666
+              ],
+              "test_groups": 310,
+              "test_sources": 402
+            }
+          },
+          "matching-0.2": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6608040201005025,
+                "auc": 0.7178606600843414,
+                "tpr": 0.8542713567839196,
+                "fpr": 0.5326633165829145,
+                "threshold": -0.20712070547051553,
+                "true_negative": 186,
+                "true_positive": 340,
+                "total_decisions": 796
+              },
+              "model_sha256": "11068aec84e1ef6ff739cb7b5ce5ea9d8ed1ba746947266291ad8586090b843b",
+              "equation_residual": 6.261169360755048e-11
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "factor0.25-svc100",
+              "metrics": {
+                "balanced_accuracy": 0.6604477611940298,
+                "auc": 0.76644142471721,
+                "tpr": 0.7039800995024875,
+                "fpr": 0.38308457711442784,
+                "threshold": -0.0027279690267530965,
+                "true_negative": 248,
+                "true_positive": 283,
+                "total_decisions": 804
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.6291986573198324,
+                0.6915927547409491
+              ],
+              "test_groups": 310,
+              "test_sources": 402
+            }
+          },
+          "matching-0.4": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6545226130653267,
+                "auc": 0.7147736168278579,
+                "tpr": 0.5979899497487438,
+                "fpr": 0.2889447236180904,
+                "threshold": 0.05500238403783442,
+                "true_negative": 283,
+                "true_positive": 238,
+                "total_decisions": 796
+              },
+              "model_sha256": "cfe29f7bc54b2fb426f22867d7d35df955ac9ec6c7369992a30cedcd0b8d1fc0",
+              "equation_residual": 5.950573367385914e-11
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "factor0.25-ridge0.01",
+              "metrics": {
+                "balanced_accuracy": 0.6940298507462687,
+                "auc": 0.8064033068488404,
+                "tpr": 0.753731343283582,
+                "fpr": 0.3656716417910448,
+                "threshold": -0.020668130406193086,
+                "true_negative": 255,
+                "true_positive": 303,
+                "total_decisions": 804
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.6583541147132169,
+                0.7291152426160338
+              ],
+              "test_groups": 310,
+              "test_sources": 402
+            }
+          }
+        },
+        "comparisons": {
+          "replacement-0.05": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.614321608040201,
+                  "auc": 0.685588747758895,
+                  "tpr": 0.7336683417085427,
+                  "fpr": 0.5050251256281407,
+                  "threshold": -0.11312389713483867,
+                  "true_negative": 197,
+                  "true_positive": 292,
+                  "total_decisions": 796
+                },
+                "model_sha256": "44378e184400d9c790242b20372947d7de3895cfc134af000845b01d402c2e49",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6155778894472361,
+                  "auc": 0.6822681245423096,
+                  "tpr": 0.4949748743718593,
+                  "fpr": 0.2638190954773869,
+                  "threshold": 0.060376037186427395,
+                  "true_negative": 293,
+                  "true_positive": 197,
+                  "total_decisions": 796
+                },
+                "model_sha256": "f4c5e6c312b8ead541d5f3eeb240090ff72146a7bfc44478b4ccbd5538d5c400",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6168341708542714,
+                  "auc": 0.6827668493219868,
+                  "tpr": 0.5778894472361809,
+                  "fpr": 0.3442211055276382,
+                  "threshold": 0.013719158471327726,
+                  "true_negative": 261,
+                  "true_positive": 230,
+                  "total_decisions": 796
+                },
+                "model_sha256": "050de586556cbcd8ce46100f00c9da6e023090d3b29f00d3c7c007d3681658ad",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.7173366834170855,
+                  "auc": 0.8020315143556981,
+                  "tpr": 0.6557788944723618,
+                  "fpr": 0.22110552763819097,
+                  "threshold": 0.14700056287802,
+                  "true_negative": 310,
+                  "true_positive": 261,
+                  "total_decisions": 796
+                },
+                "model_sha256": "81d9021f0fa2157a547a5240ab3aa903d45aa41dcd0dea393cb1d6b36fad9d8e",
+                "equation_residual": 7.30056015640912e-11
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.7097989949748744,
+                  "auc": 0.7545200878765688,
+                  "tpr": 0.7487437185929648,
+                  "fpr": 0.32914572864321606,
+                  "threshold": 0.029899837372424187,
+                  "true_negative": 267,
+                  "true_positive": 298,
+                  "total_decisions": 796
+                },
+                "model_sha256": "de7a57616dbb698e9bec572b8d17e6e75a2880d9419610cb66646a7de51396a7",
+                "equation_residual": 1.9688695118702526e-11
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6683417085427136,
+                  "auc": 0.6942943360016162,
+                  "tpr": 0.6231155778894473,
+                  "fpr": 0.2864321608040201,
+                  "threshold": 0.17151845460057302,
+                  "true_negative": 284,
+                  "true_positive": 248,
+                  "total_decisions": 796
+                },
+                "model_sha256": "bd134f934c8349116eb883b51f16c993a865e18caa52167c694c6b79afef0d07",
+                "equation_residual": 2.135847054773876e-11
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6419597989949749,
+                  "auc": 0.7058723264564026,
+                  "tpr": 0.4899497487437186,
+                  "fpr": 0.20603015075376885,
+                  "threshold": 0.31572233247700865,
+                  "true_negative": 316,
+                  "true_positive": 195,
+                  "total_decisions": 796
+                },
+                "model_sha256": "4f21407af32d30b82a8dafe5c63d0860334f5147d14cefe530bbb838d3d176a2",
+                "equation_residual": 7.640554855470327e-13
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.621859296482412,
+                  "auc": 0.6833097649049267,
+                  "tpr": 0.5603015075376885,
+                  "fpr": 0.3165829145728643,
+                  "threshold": 0.13370888323005906,
+                  "true_negative": 272,
+                  "true_positive": 223,
+                  "total_decisions": 796
+                },
+                "model_sha256": "ee313ec9cd49be7eb9f16f17f1509762fb4326da0d406d0e7f53e2888202680e",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7173366834170855,
+                "auc": 0.8020315143556981,
+                "tpr": 0.6557788944723618,
+                "fpr": 0.22110552763819097,
+                "threshold": 0.14700056287802,
+                "true_negative": 310,
+                "true_positive": 261,
+                "total_decisions": 796
+              },
+              "model_sha256": "81d9021f0fa2157a547a5240ab3aa903d45aa41dcd0dea393cb1d6b36fad9d8e",
+              "equation_residual": 7.30056015640912e-11
+            }
+          },
+          "replacement-0.1": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6206030150753769,
+                  "auc": 0.6892881492891594,
+                  "tpr": 0.9170854271356784,
+                  "fpr": 0.6758793969849246,
+                  "threshold": -0.394009649510416,
+                  "true_negative": 129,
+                  "true_positive": 365,
+                  "total_decisions": 796
+                },
+                "model_sha256": "01de1f08af7dc87b9abfd0f448c1862233376fadad48639ed3c410bbc9637a7e",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6206030150753769,
+                  "auc": 0.6907716976844019,
+                  "tpr": 0.8291457286432161,
+                  "fpr": 0.5879396984924623,
+                  "threshold": -0.14012728759457455,
+                  "true_negative": 164,
+                  "true_positive": 330,
+                  "total_decisions": 796
+                },
+                "model_sha256": "96fd90b5ed2749905eb1b32369b8fd397dfb3b5d99fb8e419d58607548976011",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6206030150753769,
+                  "auc": 0.6883285775611727,
+                  "tpr": 0.5125628140703518,
+                  "fpr": 0.271356783919598,
+                  "threshold": 0.022660236152961616,
+                  "true_negative": 290,
+                  "true_positive": 204,
+                  "total_decisions": 796
+                },
+                "model_sha256": "3ac72841973375da71bc8bda1fbd8c47ceecfa8774edc5e67a5f58f11238da68",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.7713567839195979,
+                  "auc": 0.8498522764576653,
+                  "tpr": 0.7060301507537688,
+                  "fpr": 0.16331658291457288,
+                  "threshold": 0.18196459891987615,
+                  "true_negative": 333,
+                  "true_positive": 281,
+                  "total_decisions": 796
+                },
+                "model_sha256": "c3ba8c94c10efa44016ccb7d51a4225ff09c0d69888b78e4bb545c7ced583579",
+                "equation_residual": 5.457478913228897e-11
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.7437185929648241,
+                  "auc": 0.7992853715815257,
+                  "tpr": 0.8190954773869347,
+                  "fpr": 0.3316582914572864,
+                  "threshold": -0.07471023714197145,
+                  "true_negative": 266,
+                  "true_positive": 326,
+                  "total_decisions": 796
+                },
+                "model_sha256": "eacb9abdc74870833f174655df22c634d4f628e9037a273b80fd926700cd127c",
+                "equation_residual": 1.594913090485761e-11
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.7060301507537688,
+                  "auc": 0.7489141688341203,
+                  "tpr": 0.6708542713567839,
+                  "fpr": 0.25879396984924624,
+                  "threshold": 0.06189973687764905,
+                  "true_negative": 295,
+                  "true_positive": 267,
+                  "total_decisions": 796
+                },
+                "model_sha256": "fd5fd9d84438eb0b5c1895d696833726f3cb67fffd26f932925cc74216dfad8a",
+                "equation_residual": 1.0977663222888623e-11
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6758793969849246,
+                  "auc": 0.7490846190752759,
+                  "tpr": 0.8015075376884422,
+                  "fpr": 0.44974874371859297,
+                  "threshold": -0.11700506107301578,
+                  "true_negative": 219,
+                  "true_positive": 319,
+                  "total_decisions": 796
+                },
+                "model_sha256": "12ae931467ca92ec0b54c69fedc883a89a9d2caf8c148d85e78078385b1f45e2",
+                "equation_residual": 5.203615316418109e-13
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6293969849246231,
+                  "auc": 0.7009987121537334,
+                  "tpr": 0.7512562814070352,
+                  "fpr": 0.49246231155778897,
+                  "threshold": -0.2237082971763865,
+                  "true_negative": 202,
+                  "true_positive": 299,
+                  "total_decisions": 796
+                },
+                "model_sha256": "e04631b23504701847c074c70d94c2e96816df45cb18630fd5c9f5a051ce074a",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7713567839195979,
+                "auc": 0.8498522764576653,
+                "tpr": 0.7060301507537688,
+                "fpr": 0.16331658291457288,
+                "threshold": 0.18196459891987615,
+                "true_negative": 333,
+                "true_positive": 281,
+                "total_decisions": 796
+              },
+              "model_sha256": "c3ba8c94c10efa44016ccb7d51a4225ff09c0d69888b78e4bb545c7ced583579",
+              "equation_residual": 5.457478913228897e-11
+            }
+          },
+          "matching-0.05": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6105527638190955,
+                  "auc": 0.6738339940910583,
+                  "tpr": 0.3065326633165829,
+                  "fpr": 0.08542713567839195,
+                  "threshold": 0.2962069155672561,
+                  "true_negative": 364,
+                  "true_positive": 122,
+                  "total_decisions": 796
+                },
+                "model_sha256": "b69be5751191bdcf87be7f6624a142a5b41b46e2eb16fafdf8d0e7aaf8aff1e4",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6155778894472361,
+                  "auc": 0.6772493118860635,
+                  "tpr": 0.5577889447236181,
+                  "fpr": 0.32663316582914576,
+                  "threshold": 0.05109342459203282,
+                  "true_negative": 268,
+                  "true_positive": 222,
+                  "total_decisions": 796
+                },
+                "model_sha256": "7d65a3285411edb6b7710dc4882ba377284fa2349b820543b63b11aa4bacc70d",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6130653266331658,
+                  "auc": 0.6733983990303275,
+                  "tpr": 0.8768844221105527,
+                  "fpr": 0.6507537688442211,
+                  "threshold": -0.054499106338310024,
+                  "true_negative": 139,
+                  "true_positive": 349,
+                  "total_decisions": 796
+                },
+                "model_sha256": "360ca0fcc1fe411109f8474d7bf5874131c5f355e4a73046f4956985bc656ec7",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6193467336683417,
+                  "auc": 0.6895343551930507,
+                  "tpr": 0.7587939698492462,
+                  "fpr": 0.5201005025125628,
+                  "threshold": -0.10661483820149442,
+                  "true_negative": 191,
+                  "true_positive": 302,
+                  "total_decisions": 796
+                },
+                "model_sha256": "a3e125a30cd70170de958e30cfefc2f4f26d9005afc914436088ff547549a78a",
+                "equation_residual": 6.417644193845717e-11
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.614321608040201,
+                  "auc": 0.6570667407388703,
+                  "tpr": 0.7035175879396985,
+                  "fpr": 0.4748743718592965,
+                  "threshold": -0.24273597548653925,
+                  "true_negative": 209,
+                  "true_positive": 280,
+                  "total_decisions": 796
+                },
+                "model_sha256": "a831d55edc0a6c505abcd276f9a81a0c8e1209de28abd83c7abf2df4a17b1534",
+                "equation_residual": 3.2865710153373584e-11
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.5979899497487438,
+                  "auc": 0.6134693568344234,
+                  "tpr": 0.5678391959798995,
+                  "fpr": 0.37185929648241206,
+                  "threshold": 0.13699699602966575,
+                  "true_negative": 250,
+                  "true_positive": 226,
+                  "total_decisions": 796
+                },
+                "model_sha256": "c71c675392c6b522ea4a3f87d459289a59c410753af7aeff8c2545e559aab832",
+                "equation_residual": 1.9908408255275845e-11
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6017587939698492,
+                  "auc": 0.6503686775586475,
+                  "tpr": 0.5226130653266332,
+                  "fpr": 0.31909547738693467,
+                  "threshold": 0.15201035095965665,
+                  "true_negative": 271,
+                  "true_positive": 208,
+                  "total_decisions": 796
+                },
+                "model_sha256": "a18f3bedbf994b5031d52c3bab7db746b39ee4455b255faf648b1747cd201052",
+                "equation_residual": 1.0552669849062113e-12
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6080402010050251,
+                  "auc": 0.6704313022398424,
+                  "tpr": 0.5778894472361809,
+                  "fpr": 0.36180904522613067,
+                  "threshold": 0.060670124617382436,
+                  "true_negative": 254,
+                  "true_positive": 230,
+                  "total_decisions": 796
+                },
+                "model_sha256": "9258acd2d3f8c5402cd53df3b6ca539ca4183a8d7f53fdffd64ab4c17b4d952d",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6193467336683417,
+                "auc": 0.6895343551930507,
+                "tpr": 0.7587939698492462,
+                "fpr": 0.5201005025125628,
+                "threshold": -0.10661483820149442,
+                "true_negative": 191,
+                "true_positive": 302,
+                "total_decisions": 796
+              },
+              "model_sha256": "a3e125a30cd70170de958e30cfefc2f4f26d9005afc914436088ff547549a78a",
+              "equation_residual": 6.417644193845717e-11
+            }
+          },
+          "matching-0.1": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6080402010050251,
+                  "auc": 0.6729880558571754,
+                  "tpr": 0.6582914572864321,
+                  "fpr": 0.44221105527638194,
+                  "threshold": -0.013467902701024267,
+                  "true_negative": 222,
+                  "true_positive": 262,
+                  "total_decisions": 796
+                },
+                "model_sha256": "d257d05bd19959fcae88f663a7a1fde693b14b6b944262450c4e3aa66622ccd3",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6130653266331658,
+                  "auc": 0.6721610565389763,
+                  "tpr": 0.7688442211055276,
+                  "fpr": 0.542713567839196,
+                  "threshold": -0.053012948788064035,
+                  "true_negative": 182,
+                  "true_positive": 306,
+                  "total_decisions": 796
+                },
+                "model_sha256": "ff05738a24373149207ebd922a5bded739ac5509a5dc181106afd3f11a35edca",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6105527638190955,
+                  "auc": 0.6729880558571754,
+                  "tpr": 0.9296482412060302,
+                  "fpr": 0.7085427135678392,
+                  "threshold": -0.05863847619342965,
+                  "true_negative": 116,
+                  "true_positive": 370,
+                  "total_decisions": 796
+                },
+                "model_sha256": "91a5386ce521bc91827a893cba5d588ad428a0c64c818a0387ff77d2a3eab90b",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6457286432160804,
+                  "auc": 0.706206913966819,
+                  "tpr": 0.7110552763819096,
+                  "fpr": 0.41959798994974873,
+                  "threshold": -0.04244738853958552,
+                  "true_negative": 231,
+                  "true_positive": 283,
+                  "total_decisions": 796
+                },
+                "model_sha256": "1a4e342cd3588ed9e4b876101913c266d46b4d769c7b18923661c93c9249992e",
+                "equation_residual": 6.645395345117322e-11
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6306532663316583,
+                  "auc": 0.6755826873058761,
+                  "tpr": 0.6030150753768844,
+                  "fpr": 0.3417085427135678,
+                  "threshold": 0.06185462173008993,
+                  "true_negative": 262,
+                  "true_positive": 240,
+                  "total_decisions": 796
+                },
+                "model_sha256": "919d57ed1f6c5d963c60a853407f86ae90cbb09941aad7a274a556252c2bf1fd",
+                "equation_residual": 2.5040636231210556e-11
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6193467336683417,
+                  "auc": 0.6377679856569278,
+                  "tpr": 0.7110552763819096,
+                  "fpr": 0.4723618090452261,
+                  "threshold": -0.26560878075770233,
+                  "true_negative": 210,
+                  "true_positive": 283,
+                  "total_decisions": 796
+                },
+                "model_sha256": "64c72e6b291ca74e940f953b05c54577407ab2441282ec096b4836b3237bf916",
+                "equation_residual": 1.1254330800625212e-11
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6105527638190955,
+                  "auc": 0.672148430595187,
+                  "tpr": 0.5452261306532663,
+                  "fpr": 0.3241206030150754,
+                  "threshold": 0.081117426558027,
+                  "true_negative": 269,
+                  "true_positive": 217,
+                  "total_decisions": 796
+                },
+                "model_sha256": "df9d749a7f78078065a22e84ad74a5a3edacd76e58c4b9a32424a0a96e85a947",
+                "equation_residual": 5.38902256153051e-13
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6193467336683417,
+                  "auc": 0.6869144718567713,
+                  "tpr": 0.9371859296482412,
+                  "fpr": 0.6984924623115578,
+                  "threshold": -0.6897751442926429,
+                  "true_negative": 120,
+                  "true_positive": 373,
+                  "total_decisions": 796
+                },
+                "model_sha256": "f3d86da68d72ddd9823bfdad61c28f7cb0f3cb5426f2e15088d8471aa91a40eb",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6457286432160804,
+                "auc": 0.706206913966819,
+                "tpr": 0.7110552763819096,
+                "fpr": 0.41959798994974873,
+                "threshold": -0.04244738853958552,
+                "true_negative": 231,
+                "true_positive": 283,
+                "total_decisions": 796
+              },
+              "model_sha256": "1a4e342cd3588ed9e4b876101913c266d46b4d769c7b18923661c93c9249992e",
+              "equation_residual": 6.645395345117322e-11
+            }
+          },
+          "matching-0.2": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6231155778894473,
+                  "auc": 0.6867882124188783,
+                  "tpr": 0.8919597989949749,
+                  "fpr": 0.6457286432160804,
+                  "threshold": -0.2763414953973106,
+                  "true_negative": 141,
+                  "true_positive": 355,
+                  "total_decisions": 796
+                },
+                "model_sha256": "5678c539d478b2cf0a5250b6a0de9ab0fbc1dc554f097dd5cf6f4a14c8c443c5",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.621859296482412,
+                  "auc": 0.6875836468776041,
+                  "tpr": 0.8844221105527639,
+                  "fpr": 0.6407035175879398,
+                  "threshold": -0.11892731518260309,
+                  "true_negative": 143,
+                  "true_positive": 352,
+                  "total_decisions": 796
+                },
+                "model_sha256": "f9bc1ff918f5bcab5ff57b5d923ec6171265de03ddf514c1b898c76fd704da28",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6231155778894473,
+                  "auc": 0.6897553092093635,
+                  "tpr": 0.8768844221105527,
+                  "fpr": 0.6306532663316583,
+                  "threshold": -0.03241825597785865,
+                  "true_negative": 147,
+                  "true_positive": 349,
+                  "total_decisions": 796
+                },
+                "model_sha256": "fc7799b17fbaccc556300313bfcd6e936b5899ccbe702b68759afe4873b4775b",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6608040201005025,
+                  "auc": 0.7178606600843414,
+                  "tpr": 0.8542713567839196,
+                  "fpr": 0.5326633165829145,
+                  "threshold": -0.20712070547051553,
+                  "true_negative": 186,
+                  "true_positive": 340,
+                  "total_decisions": 796
+                },
+                "model_sha256": "11068aec84e1ef6ff739cb7b5ce5ea9d8ed1ba746947266291ad8586090b843b",
+                "equation_residual": 6.261169360755048e-11
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6582914572864321,
+                  "auc": 0.6967816469281078,
+                  "tpr": 0.6658291457286433,
+                  "fpr": 0.3492462311557789,
+                  "threshold": -0.0019845954186621384,
+                  "true_negative": 259,
+                  "true_positive": 265,
+                  "total_decisions": 796
+                },
+                "model_sha256": "d36f08b2b845f7b408bc97ee8ce4262ce9e978fd59b143b02becb14e5a91e355",
+                "equation_residual": 1.8948398405882472e-11
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6293969849246231,
+                  "auc": 0.6710436605136234,
+                  "tpr": 0.6331658291457286,
+                  "fpr": 0.3743718592964824,
+                  "threshold": 0.06139740544722372,
+                  "true_negative": 249,
+                  "true_positive": 252,
+                  "total_decisions": 796
+                },
+                "model_sha256": "b6c6554446c9eb16e8b83390b804fa13e3974ad94075313cab8aa3263a96b585",
+                "equation_residual": 8.569589482476658e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6407035175879398,
+                  "auc": 0.690967399813136,
+                  "tpr": 0.5703517587939698,
+                  "fpr": 0.2889447236180904,
+                  "threshold": 0.10276991408930769,
+                  "true_negative": 283,
+                  "true_positive": 227,
+                  "total_decisions": 796
+                },
+                "model_sha256": "5da06909f429ab91aaa9a8b254f60d375de7c3378521aa12837b630946469ca2",
+                "equation_residual": 3.1885605267234496e-13
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6369346733668342,
+                  "auc": 0.7137761672685033,
+                  "tpr": 0.7286432160804021,
+                  "fpr": 0.4547738693467337,
+                  "threshold": -0.15577039507050283,
+                  "true_negative": 217,
+                  "true_positive": 290,
+                  "total_decisions": 796
+                },
+                "model_sha256": "3d28db125f8a393955fb3a3b74d2549e67dae10100814b24d745e7b0b9133d3e",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6608040201005025,
+                "auc": 0.7178606600843414,
+                "tpr": 0.8542713567839196,
+                "fpr": 0.5326633165829145,
+                "threshold": -0.20712070547051553,
+                "true_negative": 186,
+                "true_positive": 340,
+                "total_decisions": 796
+              },
+              "model_sha256": "11068aec84e1ef6ff739cb7b5ce5ea9d8ed1ba746947266291ad8586090b843b",
+              "equation_residual": 6.261169360755048e-11
+            }
+          },
+          "matching-0.4": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6331658291457286,
+                  "auc": 0.7003105982172168,
+                  "tpr": 0.6331658291457286,
+                  "fpr": 0.36683417085427134,
+                  "threshold": 0.028008048413174037,
+                  "true_negative": 252,
+                  "true_positive": 252,
+                  "total_decisions": 796
+                },
+                "model_sha256": "b07ef42516e5fb0502a0d4871424a785b3e67a85a21a9a7e767a134073ade2d3",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6432160804020101,
+                  "auc": 0.7075705158960632,
+                  "tpr": 0.7386934673366834,
+                  "fpr": 0.45226130653266333,
+                  "threshold": -0.03754850385220554,
+                  "true_negative": 218,
+                  "true_positive": 294,
+                  "total_decisions": 796
+                },
+                "model_sha256": "77ba7cdb1c1cf3da888f086afbdbfea25d95bd7045208366abcf96b45870b284",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6407035175879398,
+                  "auc": 0.710670185096336,
+                  "tpr": 0.5175879396984925,
+                  "fpr": 0.23618090452261306,
+                  "threshold": 0.032400383907781306,
+                  "true_negative": 304,
+                  "true_positive": 206,
+                  "total_decisions": 796
+                },
+                "model_sha256": "035bbbef98eb470a072b23ee6d12025686e0d8dde13e3c1d5caa27da27039d06",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6545226130653267,
+                  "auc": 0.7147736168278579,
+                  "tpr": 0.5979899497487438,
+                  "fpr": 0.2889447236180904,
+                  "threshold": 0.05500238403783442,
+                  "true_negative": 283,
+                  "true_positive": 238,
+                  "total_decisions": 796
+                },
+                "model_sha256": "cfe29f7bc54b2fb426f22867d7d35df955ac9ec6c7369992a30cedcd0b8d1fc0",
+                "equation_residual": 5.950573367385914e-11
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6381909547738693,
+                  "auc": 0.6707658897502589,
+                  "tpr": 0.7311557788944724,
+                  "fpr": 0.4547738693467337,
+                  "threshold": -0.21053205511657325,
+                  "true_negative": 217,
+                  "true_positive": 291,
+                  "total_decisions": 796
+                },
+                "model_sha256": "216bd66ef1a578f78c09d559c5b38cf0dba1ff0d089510e10be9febdc6f3134b",
+                "equation_residual": 1.691824458305291e-11
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6180904522613065,
+                  "auc": 0.6648506350849726,
+                  "tpr": 0.6231155778894473,
+                  "fpr": 0.3869346733668342,
+                  "threshold": -0.0006864923266221012,
+                  "true_negative": 244,
+                  "true_positive": 248,
+                  "total_decisions": 796
+                },
+                "model_sha256": "797b093fdb9a329c64b312699761973301d91cb52e6e306a4e8bd422bfc53d89",
+                "equation_residual": 5.061506769266089e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6243718592964824,
+                  "auc": 0.6844145349864902,
+                  "tpr": 0.6532663316582915,
+                  "fpr": 0.4045226130653266,
+                  "threshold": 0.004930412900819192,
+                  "true_negative": 237,
+                  "true_positive": 260,
+                  "total_decisions": 796
+                },
+                "model_sha256": "2b75e253c78c79a985c0d2f4b798318f20432ce2540d830b35389887564ec15b",
+                "equation_residual": 2.1005419625907962e-13
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.6482412060301508,
+                  "auc": 0.73344738769223,
+                  "tpr": 0.6683417085427136,
+                  "fpr": 0.37185929648241206,
+                  "threshold": 0.0053798991220443525,
+                  "true_negative": 250,
+                  "true_positive": 266,
+                  "total_decisions": 796
+                },
+                "model_sha256": "4fa5c9473df68c9950e88912a2376dadd8ecb9778231d15b4307733610fbcdbf",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "plain-kernel1",
+              "kind": "kernel",
+              "order": 3,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.6545226130653267,
+                "auc": 0.7147736168278579,
+                "tpr": 0.5979899497487438,
+                "fpr": 0.2889447236180904,
+                "threshold": 0.05500238403783442,
+                "true_negative": 283,
+                "true_positive": 238,
+                "total_decisions": 796
+              },
+              "model_sha256": "cfe29f7bc54b2fb426f22867d7d35df955ac9ec6c7369992a30cedcd0b8d1fc0",
+              "equation_residual": 5.950573367385914e-11
+            }
+          }
+        }
+      },
+      "audiomnist": {
+        "results": {
+          "matching-0.05": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.59,
+                "auc": 0.5792,
+                "tpr": 0.62,
+                "fpr": 0.44,
+                "threshold": 0.4171468776781073,
+                "true_negative": 56,
+                "true_positive": 62,
+                "total_decisions": 200
+              },
+              "model_sha256": "34f0e53e28461217476b22a3b43ff51cf797e224cdfe5965abd2c893553a4d04",
+              "probability_parity_error": 0.0
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.565,
+                "auc": 0.62565,
+                "tpr": 0.39,
+                "fpr": 0.26,
+                "threshold": 0.6945220023148174,
+                "true_negative": 148,
+                "true_positive": 78,
+                "total_decisions": 400
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.52,
+                0.6225
+              ],
+              "test_groups": 10,
+              "test_sources": 200
+            }
+          },
+          "matching-0.1": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7,
+                "auc": 0.7229,
+                "tpr": 0.68,
+                "fpr": 0.28,
+                "threshold": 0.9537585108050423,
+                "true_negative": 72,
+                "true_positive": 68,
+                "total_decisions": 200
+              },
+              "model_sha256": "5622fa384b969b7bc919bd8c232495f6a09f5f9e04834c623dd91abf5fd5fd96",
+              "probability_parity_error": 0.0
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "factor4-svc100",
+              "metrics": {
+                "balanced_accuracy": 0.595,
+                "auc": 0.74085,
+                "tpr": 0.26,
+                "fpr": 0.07,
+                "threshold": 0.5840038044099283,
+                "true_negative": 186,
+                "true_positive": 52,
+                "total_decisions": 400
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.5625,
+                0.6275
+              ],
+              "test_groups": 10,
+              "test_sources": 200
+            }
+          }
+        },
+        "comparisons": {
+          "matching-0.05": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.53,
+                  "auc": 0.506,
+                  "tpr": 0.83,
+                  "fpr": 0.77,
+                  "threshold": -1.4897725728364897,
+                  "true_negative": 23,
+                  "true_positive": 83,
+                  "total_decisions": 200
+                },
+                "model_sha256": "32123ec5eae09e001e0280fb7543b1c59b17e7530035bd1cecc1c0c10ca23b53",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.52,
+                  "auc": 0.4836,
+                  "tpr": 0.17,
+                  "fpr": 0.13,
+                  "threshold": 0.8020452769640717,
+                  "true_negative": 87,
+                  "true_positive": 17,
+                  "total_decisions": 200
+                },
+                "model_sha256": "178920e612ac3fb5986cca0d9ec6c3e64f8e29b65900abfed0f503dbfd8ab262",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.525,
+                  "auc": 0.4759,
+                  "tpr": 0.63,
+                  "fpr": 0.58,
+                  "threshold": 0.023111943903665784,
+                  "true_negative": 42,
+                  "true_positive": 63,
+                  "total_decisions": 200
+                },
+                "model_sha256": "0d223c11bdfcb61145be203c72d2121db45c29fa2dbff7a13af0f4969532796a",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.57,
+                  "auc": 0.5557,
+                  "tpr": 0.72,
+                  "fpr": 0.58,
+                  "threshold": 0.2608051926989816,
+                  "true_negative": 42,
+                  "true_positive": 72,
+                  "total_decisions": 200
+                },
+                "model_sha256": "da02d29395d7a833bd5d782a77b4931745ace454370f9270330cb76f3ecc4d6d",
+                "equation_residual": 3.292033312618514e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.575,
+                  "auc": 0.5649,
+                  "tpr": 0.6,
+                  "fpr": 0.45,
+                  "threshold": 0.36675828541206545,
+                  "true_negative": 55,
+                  "true_positive": 60,
+                  "total_decisions": 200
+                },
+                "model_sha256": "54d72cbd9733f0a94ca4a61e2999108bdd43a81ef117b1aba06dad24bb720b3d",
+                "equation_residual": 2.1960211427085596e-13
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.535,
+                  "auc": 0.5119,
+                  "tpr": 0.78,
+                  "fpr": 0.71,
+                  "threshold": -0.35799282240009145,
+                  "true_negative": 29,
+                  "true_positive": 78,
+                  "total_decisions": 200
+                },
+                "model_sha256": "2fc3319e59def428d7c0ca1d3b4871900c2111fc838cd7e84800e616ce2007ad",
+                "equation_residual": 1.0313971898767704e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.545,
+                  "auc": 0.5328,
+                  "tpr": 0.63,
+                  "fpr": 0.54,
+                  "threshold": 0.07557070480741163,
+                  "true_negative": 46,
+                  "true_positive": 63,
+                  "total_decisions": 200
+                },
+                "model_sha256": "f81ae7d9af84bc9e55c4075d9ba2dcfcecb04eaee4a56a8474c712f5d082cdcc",
+                "equation_residual": 5.762057497804562e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.59,
+                  "auc": 0.5792,
+                  "tpr": 0.62,
+                  "fpr": 0.44,
+                  "threshold": 0.4171468776781073,
+                  "true_negative": 56,
+                  "true_positive": 62,
+                  "total_decisions": 200
+                },
+                "model_sha256": "34f0e53e28461217476b22a3b43ff51cf797e224cdfe5965abd2c893553a4d04",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.59,
+                "auc": 0.5792,
+                "tpr": 0.62,
+                "fpr": 0.44,
+                "threshold": 0.4171468776781073,
+                "true_negative": 56,
+                "true_positive": 62,
+                "total_decisions": 200
+              },
+              "model_sha256": "34f0e53e28461217476b22a3b43ff51cf797e224cdfe5965abd2c893553a4d04",
+              "probability_parity_error": 0.0
+            }
+          },
+          "matching-0.1": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.555,
+                  "auc": 0.5226,
+                  "tpr": 0.33,
+                  "fpr": 0.22,
+                  "threshold": 1.386217627069602,
+                  "true_negative": 78,
+                  "true_positive": 33,
+                  "total_decisions": 200
+                },
+                "model_sha256": "a053323311db34b1b69619b6a39fdb8dd8e09cb6ac7900db53baad43a2c17713",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.53,
+                  "auc": 0.507,
+                  "tpr": 0.72,
+                  "fpr": 0.66,
+                  "threshold": -0.08291127785621916,
+                  "true_negative": 34,
+                  "true_positive": 72,
+                  "total_decisions": 200
+                },
+                "model_sha256": "b3473a59e8529324ea6d8455a63a2059a5333bee6ed71785aa9f3c64cdfd662d",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.52,
+                  "auc": 0.4855,
+                  "tpr": 0.27,
+                  "fpr": 0.23,
+                  "threshold": 0.18756702914664547,
+                  "true_negative": 77,
+                  "true_positive": 27,
+                  "total_decisions": 200
+                },
+                "model_sha256": "b2f6bcecf7222da6d3973aa6479321713bc1072e076a59da2a5471bc7b5ba25b",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.63,
+                  "auc": 0.6409,
+                  "tpr": 0.65,
+                  "fpr": 0.39,
+                  "threshold": 0.6576875942564229,
+                  "true_negative": 61,
+                  "true_positive": 65,
+                  "total_decisions": 200
+                },
+                "model_sha256": "40b3c07ad54c35cd8154263cbe8460ba37a4d16e37983e9dce16f23708e1df04",
+                "equation_residual": 1.4284129434827264e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.63,
+                  "auc": 0.6613,
+                  "tpr": 0.67,
+                  "fpr": 0.41,
+                  "threshold": 0.4123859403748602,
+                  "true_negative": 59,
+                  "true_positive": 67,
+                  "total_decisions": 200
+                },
+                "model_sha256": "1f1ffa7617fa53050bee71714c53d0ba08d0c8889b86be7a1f9d0a80f4df4db2",
+                "equation_residual": 1.2390088954816747e-13
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.605,
+                  "auc": 0.6084,
+                  "tpr": 0.76,
+                  "fpr": 0.55,
+                  "threshold": 0.2233561673665836,
+                  "true_negative": 45,
+                  "true_positive": 76,
+                  "total_decisions": 200
+                },
+                "model_sha256": "a0c3c50f0c143d16cf62e099660d2814f17443c634b45396ee2555d90fb6af9c",
+                "equation_residual": 7.398526236102043e-13
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.625,
+                  "auc": 0.6258,
+                  "tpr": 0.57,
+                  "fpr": 0.32,
+                  "threshold": 0.21535195590185788,
+                  "true_negative": 68,
+                  "true_positive": 57,
+                  "total_decisions": 200
+                },
+                "model_sha256": "6c25d912fa515df340498a3c89a1607e1344f3a57f3ef0920233930a1b25130e",
+                "equation_residual": 3.019806626980426e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.7,
+                  "auc": 0.7229,
+                  "tpr": 0.68,
+                  "fpr": 0.28,
+                  "threshold": 0.9537585108050423,
+                  "true_negative": 72,
+                  "true_positive": 68,
+                  "total_decisions": 200
+                },
+                "model_sha256": "5622fa384b969b7bc919bd8c232495f6a09f5f9e04834c623dd91abf5fd5fd96",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.7,
+                "auc": 0.7229,
+                "tpr": 0.68,
+                "fpr": 0.28,
+                "threshold": 0.9537585108050423,
+                "true_negative": 72,
+                "true_positive": 68,
+                "total_decisions": 200
+              },
+              "model_sha256": "5622fa384b969b7bc919bd8c232495f6a09f5f9e04834c623dd91abf5fd5fd96",
+              "probability_parity_error": 0.0
+            }
+          }
+        }
+      },
+      "fsdd": {
+        "results": {
+          "replacement-0.05": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "plain-kernel4",
+              "kind": "kernel",
+              "order": 4,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.521,
+                "auc": 0.51488,
+                "tpr": 0.476,
+                "fpr": 0.434,
+                "threshold": -1.169305849339052e-05,
+                "true_negative": 283,
+                "true_positive": 238,
+                "total_decisions": 1000
+              },
+              "model_sha256": "3ab748755a341d773a51db7cb73ec6f3c432c0925e0dd1520fadb248c051184c",
+              "equation_residual": 1.3011813848606835e-13
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "factor1-svc100",
+              "metrics": {
+                "balanced_accuracy": 0.5,
+                "auc": 0.502666,
+                "tpr": 0.682,
+                "fpr": 0.682,
+                "threshold": 0.40709832357286907,
+                "true_negative": 318,
+                "true_positive": 682,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.5,
+                0.5
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          },
+          "replacement-0.1": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "fisher0.03",
+              "kind": "fisher",
+              "order": 0,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.523,
+                "auc": 0.513272,
+                "tpr": 0.59,
+                "fpr": 0.544,
+                "threshold": 0.18087520548761055,
+                "true_negative": 228,
+                "true_positive": 295,
+                "total_decisions": 1000
+              },
+              "model_sha256": "38d5f7ca16effcef6154a381fbbc231ce192917a7bcfc76cbafa2f9abb4f565f",
+              "ridge": 0.03
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.497,
+                "auc": 0.495037,
+                "tpr": 0.819,
+                "fpr": 0.825,
+                "threshold": -0.00617444207701522,
+                "true_negative": 175,
+                "true_positive": 819,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.497,
+                0.497
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          },
+          "replacement-0.2": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "calibrated-kernel4",
+              "kind": "kernel",
+              "order": 6,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.516,
+                "auc": 0.500512,
+                "tpr": 0.472,
+                "fpr": 0.44,
+                "threshold": 8.426905670282939e-05,
+                "true_negative": 280,
+                "true_positive": 236,
+                "total_decisions": 1000
+              },
+              "model_sha256": "78e37f623fe6dcb8a54f0afe070926d9a2884a5ca70a2bb7eed63bfa68086e9e",
+              "equation_residual": 4.1522341120980855e-14
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "factor1-svc100",
+              "metrics": {
+                "balanced_accuracy": 0.4995,
+                "auc": 0.4978555,
+                "tpr": 0.921,
+                "fpr": 0.922,
+                "threshold": 0.08272179861651262,
+                "true_negative": 78,
+                "true_positive": 921,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.499,
+                0.5
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          },
+          "replacement-0.4": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "calibrated-kernel1",
+              "kind": "kernel",
+              "order": 5,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.521,
+                "auc": 0.507892,
+                "tpr": 0.564,
+                "fpr": 0.522,
+                "threshold": 4.3978382073734084e-14,
+                "true_negative": 239,
+                "true_positive": 282,
+                "total_decisions": 1000
+              },
+              "model_sha256": "6996494445fc6ce4d4904d3c33c3bd9c4c70a6d642d8466f915c67a7483875db",
+              "equation_residual": 1.9856338795420925e-12
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "factor0.25-ridge0.01",
+              "metrics": {
+                "balanced_accuracy": 0.511,
+                "auc": 0.517195,
+                "tpr": 0.371,
+                "fpr": 0.349,
+                "threshold": 0.008131289220159488,
+                "true_negative": 651,
+                "true_positive": 371,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.503,
+                0.519
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          },
+          "matching-0.05": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.517,
+                "auc": 0.503376,
+                "tpr": 0.474,
+                "fpr": 0.44,
+                "threshold": -0.014098754406858385,
+                "true_negative": 280,
+                "true_positive": 237,
+                "total_decisions": 1000
+              },
+              "model_sha256": "3e66c5e8f1c85196f70ed20165ff9267a03fbe3446630d9923b484bfee0fc622",
+              "probability_parity_error": 0.0
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.5035,
+                "auc": 0.4999075,
+                "tpr": 0.818,
+                "fpr": 0.811,
+                "threshold": -0.22584654467377763,
+                "true_negative": 189,
+                "true_positive": 818,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.498,
+                0.509
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          },
+          "matching-0.1": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "fisher0.3",
+              "kind": "fisher",
+              "order": 1,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.518,
+                "auc": 0.503744,
+                "tpr": 0.5,
+                "fpr": 0.464,
+                "threshold": -0.3785583110725448,
+                "true_negative": 268,
+                "true_positive": 250,
+                "total_decisions": 1000
+              },
+              "model_sha256": "ba75187b37004472f1fa2fb523dac5bd4564eb2c1f24853b9a24fc87124cb0d4",
+              "ridge": 0.3
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.5,
+                "auc": 0.5005945,
+                "tpr": 0.843,
+                "fpr": 0.843,
+                "threshold": -0.23043995720926141,
+                "true_negative": 157,
+                "true_positive": 843,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.499,
+                0.501
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          },
+          "matching-0.2": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "fisher3.0",
+              "kind": "fisher",
+              "order": 2,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.523,
+                "auc": 0.506644,
+                "tpr": 0.468,
+                "fpr": 0.422,
+                "threshold": 0.18368308982342524,
+                "true_negative": 289,
+                "true_positive": 234,
+                "total_decisions": 1000
+              },
+              "model_sha256": "91edc23fea46c2d88574a79246dc325f939f5bc012a7e8c7798a67b8d5430c4a",
+              "ridge": 3.0
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "hgb",
+              "metrics": {
+                "balanced_accuracy": 0.4945,
+                "auc": 0.4960395,
+                "tpr": 0.788,
+                "fpr": 0.799,
+                "threshold": 0.7238829220158453,
+                "true_negative": 201,
+                "true_positive": 788,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.487,
+                0.502
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          },
+          "matching-0.4": {
+            "status": "not_evaluated_calibration_gate",
+            "new_test_inference": false,
+            "selected": {
+              "name": "fisher0.03",
+              "kind": "fisher",
+              "order": 0,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.517,
+                "auc": 0.504592,
+                "tpr": 0.602,
+                "fpr": 0.568,
+                "threshold": 0.10431045686710472,
+                "true_negative": 216,
+                "true_positive": 301,
+                "total_decisions": 1000
+              },
+              "model_sha256": "2e3bc826c1e7675d498ac8daf47ac7ab2fde7b3ccd02ecdde61165f8e6b07614",
+              "ridge": 0.03
+            },
+            "previous_measured_result": {
+              "status": "measured_historical_adaptive",
+              "selected": "factor1-ridge0.1",
+              "metrics": {
+                "balanced_accuracy": 0.5085,
+                "auc": 0.507718,
+                "tpr": 0.521,
+                "fpr": 0.504,
+                "threshold": -1.3544053336920194e-16,
+                "true_negative": 496,
+                "true_positive": 521,
+                "total_decisions": 2000
+              },
+              "passes_80_percent": false,
+              "paired_group_BA_95_interval": [
+                0.507,
+                0.51
+              ],
+              "test_groups": 2,
+              "test_sources": 1000
+            }
+          }
+        },
+        "comparisons": {
+          "replacement-0.05": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.5009,
+                  "tpr": 0.636,
+                  "fpr": 0.61,
+                  "threshold": -0.7379570993388983,
+                  "true_negative": 195,
+                  "true_positive": 318,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "37741b888c267b8b0fb7a88d9f11496a34c64a6c330d5d993bd5c0f25a27a847",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.511,
+                  "auc": 0.500176,
+                  "tpr": 0.388,
+                  "fpr": 0.366,
+                  "threshold": -0.013120538944417847,
+                  "true_negative": 317,
+                  "true_positive": 194,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "f212d42070af8fd51de1949defc1f271d3ff2f5a208e1eb0d68922932eee28fc",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.514,
+                  "auc": 0.5004,
+                  "tpr": 0.364,
+                  "fpr": 0.336,
+                  "threshold": 0.02540748182747585,
+                  "true_negative": 332,
+                  "true_positive": 182,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "0dcb85689fd786b3b493002f4cd64a37ada593d3b471f42969ea3cbf6a621fe7",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.517,
+                  "auc": 0.506016,
+                  "tpr": 0.66,
+                  "fpr": 0.626,
+                  "threshold": -0.08642361614083427,
+                  "true_negative": 187,
+                  "true_positive": 330,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "bb39f058bc32c1a9de55fc8bc10b468f4ae7a83b2129cbae54141d92ce800a1e",
+                "equation_residual": 8.22808488010196e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.521,
+                  "auc": 0.51488,
+                  "tpr": 0.476,
+                  "fpr": 0.434,
+                  "threshold": -1.169305849339052e-05,
+                  "true_negative": 283,
+                  "true_positive": 238,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "3ab748755a341d773a51db7cb73ec6f3c432c0925e0dd1520fadb248c051184c",
+                "equation_residual": 1.3011813848606835e-13
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.511,
+                  "auc": 0.50064,
+                  "tpr": 0.074,
+                  "fpr": 0.052,
+                  "threshold": 0.8502112057070859,
+                  "true_negative": 474,
+                  "true_positive": 37,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "011ba96e2511b6fa7a2daa8ae419774271da7fd88dc0a35289af06462101a04a",
+                "equation_residual": 8.682388141778574e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.512,
+                  "auc": 0.49842,
+                  "tpr": 0.802,
+                  "fpr": 0.778,
+                  "threshold": -0.0015657118493400655,
+                  "true_negative": 111,
+                  "true_positive": 401,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "e38fac6fc03400612763193c72840a215498f7ee24c981338f4507a53aa957c6",
+                "equation_residual": 1.1257661469699087e-13
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.515,
+                  "auc": 0.504216,
+                  "tpr": 0.778,
+                  "fpr": 0.748,
+                  "threshold": -0.36446310200118537,
+                  "true_negative": 126,
+                  "true_positive": 389,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "19ebc2010dfb4ad3501dcc2c3e4273960c2cb259d71db5576c0025a1da4a4a12",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "plain-kernel4",
+              "kind": "kernel",
+              "order": 4,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.521,
+                "auc": 0.51488,
+                "tpr": 0.476,
+                "fpr": 0.434,
+                "threshold": -1.169305849339052e-05,
+                "true_negative": 283,
+                "true_positive": 238,
+                "total_decisions": 1000
+              },
+              "model_sha256": "3ab748755a341d773a51db7cb73ec6f3c432c0925e0dd1520fadb248c051184c",
+              "equation_residual": 1.3011813848606835e-13
+            }
+          },
+          "replacement-0.1": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.523,
+                  "auc": 0.513272,
+                  "tpr": 0.59,
+                  "fpr": 0.544,
+                  "threshold": 0.18087520548761055,
+                  "true_negative": 228,
+                  "true_positive": 295,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "38d5f7ca16effcef6154a381fbbc231ce192917a7bcfc76cbafa2f9abb4f565f",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.52,
+                  "auc": 0.514964,
+                  "tpr": 0.4,
+                  "fpr": 0.36,
+                  "threshold": 0.5959494879061193,
+                  "true_negative": 320,
+                  "true_positive": 200,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "c7b863cf14934ee332586c8bcb84e895ea51731cee84e0bea7315e30e272051b",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.522,
+                  "auc": 0.51644,
+                  "tpr": 0.592,
+                  "fpr": 0.548,
+                  "threshold": 0.005906452842641269,
+                  "true_negative": 226,
+                  "true_positive": 296,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "66954a79f9be79765e049d8b8b627b47dff3667f0550e668c0de4c8100dc994f",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.512,
+                  "auc": 0.489228,
+                  "tpr": 0.85,
+                  "fpr": 0.826,
+                  "threshold": -0.3242552489375241,
+                  "true_negative": 87,
+                  "true_positive": 425,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "b990c8dcc2da856340342240ab936504bd9495648f0d56d1f2dc1c6ce537c979",
+                "equation_residual": 5.136779890335674e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.509,
+                  "auc": 0.494552,
+                  "tpr": 0.62,
+                  "fpr": 0.602,
+                  "threshold": -0.002234939314028128,
+                  "true_negative": 199,
+                  "true_positive": 310,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "1aafe94faf123f68efe69d3208ada9ad005b2de3f33b270fd27bd2682bf1fbd4",
+                "equation_residual": 1.1812772982011666e-13
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.491832,
+                  "tpr": 0.806,
+                  "fpr": 0.79,
+                  "threshold": -0.17330841758537185,
+                  "true_negative": 105,
+                  "true_positive": 403,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "1d94f883ff00d71a3eb1115b65a870b98cc7802c55b622291bf8a39ca774948f",
+                "equation_residual": 3.68904906622447e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.492852,
+                  "tpr": 0.22,
+                  "fpr": 0.204,
+                  "threshold": 0.001260963285528524,
+                  "true_negative": 398,
+                  "true_positive": 110,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "3358f6cd9d3e659baa6561bd03c8f7095eb1bda24aca3668dc34a6bc36955466",
+                "equation_residual": 7.072120666862247e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.507,
+                  "auc": 0.485272,
+                  "tpr": 0.28,
+                  "fpr": 0.266,
+                  "threshold": 0.27980711046278284,
+                  "true_negative": 367,
+                  "true_positive": 140,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "da4d9b781ba6028183cd8d8db3cabcfb47eff95d5756589279bec613fd639592",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "fisher0.03",
+              "kind": "fisher",
+              "order": 0,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.523,
+                "auc": 0.513272,
+                "tpr": 0.59,
+                "fpr": 0.544,
+                "threshold": 0.18087520548761055,
+                "true_negative": 228,
+                "true_positive": 295,
+                "total_decisions": 1000
+              },
+              "model_sha256": "38d5f7ca16effcef6154a381fbbc231ce192917a7bcfc76cbafa2f9abb4f565f",
+              "ridge": 0.03
+            }
+          },
+          "replacement-0.2": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.49134,
+                  "tpr": 0.224,
+                  "fpr": 0.208,
+                  "threshold": 2.102552497368985,
+                  "true_negative": 396,
+                  "true_positive": 112,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "3b1e9c96d34bd6edfbb2584b53635647c491042d74d5ea76bd5ae2853f256a34",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.507,
+                  "auc": 0.488868,
+                  "tpr": 0.226,
+                  "fpr": 0.212,
+                  "threshold": 1.3426187708209256,
+                  "true_negative": 394,
+                  "true_positive": 113,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "de3c2f81c5a3615580c240f9760428379ec21a1be83df80df8cfb2a34a513e7f",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.506,
+                  "auc": 0.489264,
+                  "tpr": 0.966,
+                  "fpr": 0.954,
+                  "threshold": -0.7014076192303318,
+                  "true_negative": 23,
+                  "true_positive": 483,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "8c665428c0b3b056d4e849e868f5bdb1f2b22488ef69907f091173e473c6156b",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.509,
+                  "auc": 0.486264,
+                  "tpr": 0.728,
+                  "fpr": 0.71,
+                  "threshold": -0.03981132500800744,
+                  "true_negative": 145,
+                  "true_positive": 364,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "7535dc054fc5bd0d227575cb4edea117e7931c2851c655060e065fb81a22c27e",
+                "equation_residual": 3.1536995237502197e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.48934,
+                  "tpr": 0.098,
+                  "fpr": 0.082,
+                  "threshold": 0.03717593845888993,
+                  "true_negative": 459,
+                  "true_positive": 49,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "9631908c0af64516b0edc352cb0e1a36546ebb89c442f0cc9410eacfd7ac5712",
+                "equation_residual": 4.8183679268731794e-14
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.512,
+                  "auc": 0.496608,
+                  "tpr": 0.612,
+                  "fpr": 0.588,
+                  "threshold": 2.6026596702055827e-16,
+                  "true_negative": 206,
+                  "true_positive": 306,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "90ee298fd7037903d037cc35e12771d26782e63ef26833ba253a9604500ab78a",
+                "equation_residual": 2.915223618060736e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.516,
+                  "auc": 0.500512,
+                  "tpr": 0.472,
+                  "fpr": 0.44,
+                  "threshold": 8.426905670282939e-05,
+                  "true_negative": 280,
+                  "true_positive": 236,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "78e37f623fe6dcb8a54f0afe070926d9a2884a5ca70a2bb7eed63bfa68086e9e",
+                "equation_residual": 4.1522341120980855e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.503,
+                  "auc": 0.482628,
+                  "tpr": 0.814,
+                  "fpr": 0.808,
+                  "threshold": -0.518651832108189,
+                  "true_negative": 96,
+                  "true_positive": 407,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "852ec6f76739f78251683dfe80e673f2c07bb6d66e9fd23f1193ba1d2d4181c9",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "calibrated-kernel4",
+              "kind": "kernel",
+              "order": 6,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.516,
+                "auc": 0.500512,
+                "tpr": 0.472,
+                "fpr": 0.44,
+                "threshold": 8.426905670282939e-05,
+                "true_negative": 280,
+                "true_positive": 236,
+                "total_decisions": 1000
+              },
+              "model_sha256": "78e37f623fe6dcb8a54f0afe070926d9a2884a5ca70a2bb7eed63bfa68086e9e",
+              "equation_residual": 4.1522341120980855e-14
+            }
+          },
+          "replacement-0.4": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.51,
+                  "auc": 0.48184,
+                  "tpr": 0.954,
+                  "fpr": 0.934,
+                  "threshold": -3.0375829243430914,
+                  "true_negative": 33,
+                  "true_positive": 477,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "a2f43d0d2e94f7acfab5f9cce153b7ebb42c5c7b9da4510d3577147607c19aa8",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.51,
+                  "auc": 0.487868,
+                  "tpr": 0.84,
+                  "fpr": 0.82,
+                  "threshold": -0.9632522108979023,
+                  "true_negative": 90,
+                  "true_positive": 420,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "01377dea676d3fdb0e11821ea9546f544292ac84e1e969e3d53e11a652ca544e",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.515,
+                  "auc": 0.493524,
+                  "tpr": 0.084,
+                  "fpr": 0.054,
+                  "threshold": 0.7964346808779316,
+                  "true_negative": 473,
+                  "true_positive": 42,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "7caf1f00dd1399b91ada1faa6d6871aead79e5aef3f88039f6cc0ebc6daf2bad",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.517,
+                  "auc": 0.50064,
+                  "tpr": 0.282,
+                  "fpr": 0.248,
+                  "threshold": 0.21552317133704824,
+                  "true_negative": 376,
+                  "true_positive": 141,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "1bdd4dafed1963035c2413e3031b223750c7108ea732572ee2b32ed85f2b6536",
+                "equation_residual": 2.1327384303049257e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.493968,
+                  "tpr": 0.064,
+                  "fpr": 0.038,
+                  "threshold": 0.07607607151038781,
+                  "true_negative": 481,
+                  "true_positive": 32,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "64e58ce2171d71ad13f0827f1a514b551649855aa9fe7cc75f21f153bbaf06c3",
+                "equation_residual": 4.363176486776865e-14
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.521,
+                  "auc": 0.507892,
+                  "tpr": 0.564,
+                  "fpr": 0.522,
+                  "threshold": 4.3978382073734084e-14,
+                  "true_negative": 239,
+                  "true_positive": 282,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "6996494445fc6ce4d4904d3c33c3bd9c4c70a6d642d8466f915c67a7483875db",
+                "equation_residual": 1.9856338795420925e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.517,
+                  "auc": 0.500328,
+                  "tpr": 0.716,
+                  "fpr": 0.682,
+                  "threshold": -0.0005221869939692859,
+                  "true_negative": 159,
+                  "true_positive": 358,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "4291ec77c5bcfaabf5055b479bf9b786c9f3aac569dcff492f9d46c565597216",
+                "equation_residual": 3.064215547965432e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.511,
+                  "auc": 0.490916,
+                  "tpr": 0.632,
+                  "fpr": 0.61,
+                  "threshold": -0.17577059165343484,
+                  "true_negative": 195,
+                  "true_positive": 316,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "b1b6b14a65f137a8f94250893e5c185f94fd3a6e30f7eb16f3c4bb4c05791c91",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "calibrated-kernel1",
+              "kind": "kernel",
+              "order": 5,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.521,
+                "auc": 0.507892,
+                "tpr": 0.564,
+                "fpr": 0.522,
+                "threshold": 4.3978382073734084e-14,
+                "true_negative": 239,
+                "true_positive": 282,
+                "total_decisions": 1000
+              },
+              "model_sha256": "6996494445fc6ce4d4904d3c33c3bd9c4c70a6d642d8466f915c67a7483875db",
+              "equation_residual": 1.9856338795420925e-12
+            }
+          },
+          "matching-0.05": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.51,
+                  "auc": 0.49608,
+                  "tpr": 0.604,
+                  "fpr": 0.584,
+                  "threshold": -0.42940654427399755,
+                  "true_negative": 208,
+                  "true_positive": 302,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "67951acfe3c7c8e5e5a6213280253cd88745f6c2e5f168374698072daa0d181c",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.495876,
+                  "tpr": 0.622,
+                  "fpr": 0.606,
+                  "threshold": -0.3376201021582235,
+                  "true_negative": 197,
+                  "true_positive": 311,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "fb510c937682b358823b8bb0d71527ebbe7d15c40b7cb2d339c834be368a4579",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.506,
+                  "auc": 0.493316,
+                  "tpr": 0.368,
+                  "fpr": 0.356,
+                  "threshold": 0.03498845420251842,
+                  "true_negative": 322,
+                  "true_positive": 184,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "efbc27765f1d3a3115c8c7aeace81f1b889ea375df5d2048d491399a17c7d0fe",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.509,
+                  "auc": 0.492336,
+                  "tpr": 0.968,
+                  "fpr": 0.95,
+                  "threshold": -0.765654464095249,
+                  "true_negative": 25,
+                  "true_positive": 484,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "7363656b311859dc85ee1ae78b78ed23fcb4d5b75c26b522a2944051f9f514ee",
+                "equation_residual": 9.85789228025169e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.495756,
+                  "tpr": 0.864,
+                  "fpr": 0.848,
+                  "threshold": -0.01181945573647913,
+                  "true_negative": 76,
+                  "true_positive": 432,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "9a2e71c3ff225a2e91099262ee73b77f59bcd7ac8efc055b1c017d5bee39dff3",
+                "equation_residual": 1.4854784069484595e-13
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.493628,
+                  "tpr": 0.256,
+                  "fpr": 0.23,
+                  "threshold": 0.22597124294472481,
+                  "true_negative": 385,
+                  "true_positive": 128,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "76682838d33c19b286dee266524da2f64a4de1da098a20871e37cb35e9d0124b",
+                "equation_residual": 8.09041722504844e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.505,
+                  "auc": 0.487968,
+                  "tpr": 0.96,
+                  "fpr": 0.95,
+                  "threshold": -0.05230621357933375,
+                  "true_negative": 25,
+                  "true_positive": 480,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "41141103cc5b912d157e4eb2283a7655afe538df78c99a6cdb024f9e083ddb9d",
+                "equation_residual": 1.3955503419538218e-13
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.517,
+                  "auc": 0.503376,
+                  "tpr": 0.474,
+                  "fpr": 0.44,
+                  "threshold": -0.014098754406858385,
+                  "true_negative": 280,
+                  "true_positive": 237,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "3e66c5e8f1c85196f70ed20165ff9267a03fbe3446630d9923b484bfee0fc622",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "hgb256",
+              "kind": "hgb",
+              "order": 7,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.517,
+                "auc": 0.503376,
+                "tpr": 0.474,
+                "fpr": 0.44,
+                "threshold": -0.014098754406858385,
+                "true_negative": 280,
+                "true_positive": 237,
+                "total_decisions": 1000
+              },
+              "model_sha256": "3e66c5e8f1c85196f70ed20165ff9267a03fbe3446630d9923b484bfee0fc622",
+              "probability_parity_error": 0.0
+            }
+          },
+          "matching-0.1": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.516,
+                  "auc": 0.50516,
+                  "tpr": 0.33,
+                  "fpr": 0.298,
+                  "threshold": 0.16430837650028723,
+                  "true_negative": 351,
+                  "true_positive": 165,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "16c377766844efba2e80e83e0cdb089d7120388d6d166cdc09111623e7267b2b",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.518,
+                  "auc": 0.503744,
+                  "tpr": 0.5,
+                  "fpr": 0.464,
+                  "threshold": -0.3785583110725448,
+                  "true_negative": 268,
+                  "true_positive": 250,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "ba75187b37004472f1fa2fb523dac5bd4564eb2c1f24853b9a24fc87124cb0d4",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.509,
+                  "auc": 0.50164,
+                  "tpr": 0.418,
+                  "fpr": 0.4,
+                  "threshold": -0.03173852233002969,
+                  "true_negative": 300,
+                  "true_positive": 209,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "f01ca3045fae0582742266037f8cc2d691102dd2774ed10999b1acc937cc0dd0",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.49786,
+                  "tpr": 0.456,
+                  "fpr": 0.43,
+                  "threshold": 0.051908029232197395,
+                  "true_negative": 285,
+                  "true_positive": 228,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "122b5dbb92c1c8533c86c9f576d0057d674f6170146077d419f33accc628a8c4",
+                "equation_residual": 6.4185323722654175e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.511,
+                  "auc": 0.502712,
+                  "tpr": 0.48,
+                  "fpr": 0.458,
+                  "threshold": 1.209330709603913e-06,
+                  "true_negative": 271,
+                  "true_positive": 240,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "5bf66326a281901a2287bf59e47af22c30d015e012a627a1045478743739aca4",
+                "equation_residual": 8.126832540256146e-14
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.511,
+                  "auc": 0.493604,
+                  "tpr": 0.762,
+                  "fpr": 0.74,
+                  "threshold": -0.1937263938928399,
+                  "true_negative": 130,
+                  "true_positive": 381,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "609d42b8c977f5d0d45412e10f486e5ba419c13336e254728f327457bb8e367f",
+                "equation_residual": 5.112688050701308e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.512,
+                  "auc": 0.500232,
+                  "tpr": 0.9,
+                  "fpr": 0.876,
+                  "threshold": -0.013273759524961277,
+                  "true_negative": 62,
+                  "true_positive": 450,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "f2e8db996f72d5588f5c2fc731382b5b18f4636f11e5de313682ff7694b45a9b",
+                "equation_residual": 8.049116928532385e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.492188,
+                  "tpr": 0.406,
+                  "fpr": 0.38,
+                  "threshold": 0.19151306076938826,
+                  "true_negative": 310,
+                  "true_positive": 203,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "7a86e18146fad63b66d9c4baa2463a73e77fa1136d2b37d2dd4124e86cc54b53",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "fisher0.3",
+              "kind": "fisher",
+              "order": 1,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.518,
+                "auc": 0.503744,
+                "tpr": 0.5,
+                "fpr": 0.464,
+                "threshold": -0.3785583110725448,
+                "true_negative": 268,
+                "true_positive": 250,
+                "total_decisions": 1000
+              },
+              "model_sha256": "ba75187b37004472f1fa2fb523dac5bd4564eb2c1f24853b9a24fc87124cb0d4",
+              "ridge": 0.3
+            }
+          },
+          "matching-0.2": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.502304,
+                  "tpr": 0.962,
+                  "fpr": 0.936,
+                  "threshold": -2.2006573252952464,
+                  "true_negative": 32,
+                  "true_positive": 481,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "3d2d295e2ad5c6d2132c02f05442c9fab61ff423054af8ca6a22d522a77d9576",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.52,
+                  "auc": 0.505072,
+                  "tpr": 0.656,
+                  "fpr": 0.616,
+                  "threshold": -0.009263665237686569,
+                  "true_negative": 192,
+                  "true_positive": 328,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "01a27cfc836cf03a44b6445a259b598cc6ef5e4f601de4f4b439daa3c1552f6c",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.523,
+                  "auc": 0.506644,
+                  "tpr": 0.468,
+                  "fpr": 0.422,
+                  "threshold": 0.18368308982342524,
+                  "true_negative": 289,
+                  "true_positive": 234,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "91edc23fea46c2d88574a79246dc325f939f5bc012a7e8c7798a67b8d5430c4a",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.494572,
+                  "tpr": 0.242,
+                  "fpr": 0.216,
+                  "threshold": 0.23222352802345592,
+                  "true_negative": 392,
+                  "true_positive": 121,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "3125d89c2785b8b64e583b13168b38aef803fbe9c7dac7b1c1b46c1ebcb79ea9",
+                "equation_residual": 3.61621843580906e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.494212,
+                  "tpr": 0.61,
+                  "fpr": 0.584,
+                  "threshold": 0.00019951727412791288,
+                  "true_negative": 208,
+                  "true_positive": 305,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "70b38d4e1c798695931f6029d50db4eca2405fa7b3a8f3e20a77e48fa0e7786c",
+                "equation_residual": 5.972999872483342e-14
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.482864,
+                  "tpr": 0.98,
+                  "fpr": 0.964,
+                  "threshold": -0.5764837319856739,
+                  "true_negative": 18,
+                  "true_positive": 490,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "ac493267ded519cffd8c086000751226c3f38239a009313bb390c4398b7a439a",
+                "equation_residual": 2.532196674565057e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.513,
+                  "auc": 0.498112,
+                  "tpr": 0.794,
+                  "fpr": 0.768,
+                  "threshold": -0.0002696238676584365,
+                  "true_negative": 116,
+                  "true_positive": 397,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "f632114de0bebd76b29c47d85abed649e6f30595a8b74311afde52b6431e5bec",
+                "equation_residual": 4.884981308350689e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.522,
+                  "auc": 0.501144,
+                  "tpr": 0.876,
+                  "fpr": 0.832,
+                  "threshold": -0.6722354541040987,
+                  "true_negative": 84,
+                  "true_positive": 438,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "9caa75c07edfe3cdb01e80777394fc5d4deda1f910f5f6a14bc918c6245c32c2",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "fisher3.0",
+              "kind": "fisher",
+              "order": 2,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.523,
+                "auc": 0.506644,
+                "tpr": 0.468,
+                "fpr": 0.422,
+                "threshold": 0.18368308982342524,
+                "true_negative": 289,
+                "true_positive": 234,
+                "total_decisions": 1000
+              },
+              "model_sha256": "91edc23fea46c2d88574a79246dc325f939f5bc012a7e8c7798a67b8d5430c4a",
+              "ridge": 3.0
+            }
+          },
+          "matching-0.4": {
+            "records": [
+              {
+                "name": "fisher0.03",
+                "kind": "fisher",
+                "order": 0,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.517,
+                  "auc": 0.504592,
+                  "tpr": 0.602,
+                  "fpr": 0.568,
+                  "threshold": 0.10431045686710472,
+                  "true_negative": 216,
+                  "true_positive": 301,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "2e3bc826c1e7675d498ac8daf47ac7ab2fde7b3ccd02ecdde61165f8e6b07614",
+                "ridge": 0.03
+              },
+              {
+                "name": "fisher0.3",
+                "kind": "fisher",
+                "order": 1,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.514,
+                  "auc": 0.49814,
+                  "tpr": 0.9,
+                  "fpr": 0.872,
+                  "threshold": -1.0517221494099276,
+                  "true_negative": 64,
+                  "true_positive": 450,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "47d1af2fa2ab407039419bd7686672c4e8849745041736c10aec809990691526",
+                "ridge": 0.3
+              },
+              {
+                "name": "fisher3.0",
+                "kind": "fisher",
+                "order": 2,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.494776,
+                  "tpr": 0.91,
+                  "fpr": 0.894,
+                  "threshold": -0.48724881702563977,
+                  "true_negative": 53,
+                  "true_positive": 455,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "3694e5584ed48843ca52feae6730abc089a7745b6c1e335ec166a6ab725c932c",
+                "ridge": 3.0
+              },
+              {
+                "name": "plain-kernel1",
+                "kind": "kernel",
+                "order": 3,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.49336,
+                  "tpr": 0.558,
+                  "fpr": 0.542,
+                  "threshold": 0.003349600306056466,
+                  "true_negative": 229,
+                  "true_positive": 279,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "f10b56735c10b983da59241685241441ef04dcb1fbfeab20ef9ed19cef2874d8",
+                "equation_residual": 2.1550539130998914e-12
+              },
+              {
+                "name": "plain-kernel4",
+                "kind": "kernel",
+                "order": 4,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.505,
+                  "auc": 0.488088,
+                  "tpr": 0.312,
+                  "fpr": 0.302,
+                  "threshold": 0.007596906117366029,
+                  "true_negative": 349,
+                  "true_positive": 156,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "aa8e6a359d4726664286e298b4318cf23c7ff32f57808aeaef2dd598ca63a8c8",
+                "equation_residual": 4.1522341120980855e-14
+              },
+              {
+                "name": "calibrated-kernel1",
+                "kind": "kernel",
+                "order": 5,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.508,
+                  "auc": 0.491996,
+                  "tpr": 0.324,
+                  "fpr": 0.308,
+                  "threshold": 0.059539257383048716,
+                  "true_negative": 346,
+                  "true_positive": 162,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "957445ffff2578d157b16a46d696da43f09aacd473229e9d30157bec8bfee800",
+                "equation_residual": 2.222999562206951e-12
+              },
+              {
+                "name": "calibrated-kernel4",
+                "kind": "kernel",
+                "order": 6,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.507,
+                  "auc": 0.476796,
+                  "tpr": 0.97,
+                  "fpr": 0.956,
+                  "threshold": -0.05361496113715229,
+                  "true_negative": 22,
+                  "true_positive": 485,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "a86f8d49486b6ef42da66f6e05e40a2fe6dcab02437df5dc36098e5427270d2a",
+                "equation_residual": 2.9976021664879227e-14
+              },
+              {
+                "name": "hgb256",
+                "kind": "hgb",
+                "order": 7,
+                "eligible": true,
+                "calibration": {
+                  "balanced_accuracy": 0.509,
+                  "auc": 0.49678,
+                  "tpr": 0.55,
+                  "fpr": 0.532,
+                  "threshold": 0.021619452762384753,
+                  "true_negative": 234,
+                  "true_positive": 275,
+                  "total_decisions": 1000
+                },
+                "model_sha256": "e31f7c7a184173e689a43db66a1a243d84a492f35f0b67eef4a775153cd1086d",
+                "probability_parity_error": 0.0
+              }
+            ],
+            "selected": {
+              "name": "fisher0.03",
+              "kind": "fisher",
+              "order": 0,
+              "eligible": true,
+              "calibration": {
+                "balanced_accuracy": 0.517,
+                "auc": 0.504592,
+                "tpr": 0.602,
+                "fpr": 0.568,
+                "threshold": 0.10431045686710472,
+                "true_negative": 216,
+                "true_positive": 301,
+                "total_decisions": 1000
+              },
+              "model_sha256": "2e3bc826c1e7675d498ac8daf47ac7ab2fde7b3ccd02ecdde61165f8e6b07614",
+              "ridge": 0.03
+            }
+          }
+        }
+      }
+    }
+  },
+  "preserved_source_failures": {
+    "nsf5_path_preparation": {
+      "exit_code": 1,
+      "termination_reason": null,
+      "elapsed_seconds": 1.5025867609983834,
+      "watchdog_seconds": 90,
+      "sampled_peak_rss_bytes": 155140096,
+      "wait4_peak_rss_bytes": 251723776,
+      "completed_unix": 1794764439.5741518
+    },
+    "nsf5_export": {
+      "exit_code": 1,
+      "termination_reason": null,
+      "elapsed_seconds": 254.10746136099988,
+      "watchdog_seconds": 1200,
+      "sampled_peak_rss_bytes": 1163948032,
+      "wait4_peak_rss_bytes": 729780224,
+      "completed_unix": 1794764962.1857214
+    },
+    "wav_data_stop": {
+      "status": "explicit_source_correction_stop_before_fit",
+      "reason": "inherited_per_file_8_mib_guard_requires_chunked_cache",
+      "elapsed_since_parent_start_seconds": 126.69627499580383,
+      "no_actual_model_fitted": true,
+      "stop_signal": "sigterm",
+      "created_unix": 1794765152.5731301
+    },
+    "wav_actual_exit": {
+      "exit_code": -15,
+      "termination_reason": null,
+      "elapsed_seconds": 120.77481566200004,
+      "watchdog_seconds": 900,
+      "sampled_peak_rss_bytes": 569991168,
+      "wait4_peak_rss_bytes": 196505600,
+      "completed_unix": 1794765152.6646605
+    },
+    "truncated_cache": {
+      "status": "unavailable_unverified_archive_not_reused",
+      "bytes": 8388608,
+      "sha256": "b65ef15fe9e147d2977000f6f0654a96930e7b9affa2d4e29fb234cad59164b1"
+    }
+  },
+  "software_inputs_unchanged": 570,
+  "model_deployed": false,
+  "new_media_downloaded": false,
+  "new_gpu_work": false,
+  "limitations": [
+    "all prior reported test misses remain",
+    "calibration-gated cells have no new test result, not a pass",
+    "feature and source changes are not a single-factor causal experiment",
+    "historical evaluation reuse is adaptive, not untouched qualification",
+    "fsdd has only two historical test speakers"
+  ]
+}
