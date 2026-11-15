@@ -1,5 +1,29 @@
 # Changelog
 
+- Investigate the remaining low-payload WAV/nsF5 misses with unchanged sources:
+  - Eleven exact old feature replays and source-bound change counts verify.
+    Fixed fit/calibration samples show 93.54 /89.30% median first-difference
+    saturation for ESC/FSDD, versus 5.45% AudioMNIST. All 500 nicolas fit
+    covers have eight zero low bits; the other 1,000 FSDD fit covers do not.
+    These support feature-loss/source-shortcut hypotheses, not an accuracy ceiling.
+  - A fresh compact calibrated coefficient/DCTR mixture at nsF5 .1 bpnzac
+    reaches **77.70%**, AUC .853915: +2.55 points versus the legacy 75.15%,
+    still below 80%. Its paired gain against the fair-fit 70.75% kernel is
+    +6.95 points, 95% interval +5.30 to +8.65. The .05 condition stops at
+    calibration 65.416667%; no new test is inferred for that gate exclusion.
+  - A separate unsaturated modular/re-embedding family and matched-bit-depth
+    FSDD training overlay leave all sixteen WAV conditions below 80% on
+    calibration, including FSDD 51.6–52.3%. No new WAV test features/scores;
+    preserve all old measured misses. These changes do not solve the target.
+    Independent audits replay 158 calibration records and 318 predictions.
+  - Preserve the pre-fit Path-reader error, truncated eight-MiB feature export
+    and explicit pre-fit WAV stop. Separate hashed-chunk completions keep
+    the hard file guard and old cumulative debits, with no actual model retry.
+    About 249.10 MiB combined retained output; no media/model/log deletion,
+    download, GPU or deployment. All 570 software sources retain passed full
+    QA; new numeric and document checks are separate. See
+    `docs/LOW_SIGNAL_DIAGNOSIS_RESULTS_20261115.md` and its numeric receipt.
+
 - Continue the remaining 80%-floor research on existing private CPU data:
   - Correct one BOSS training/test pixel duplicate without changing old
     records. Clean 999-source score replay gives HILL 80.030030%, S-UNIWARD
