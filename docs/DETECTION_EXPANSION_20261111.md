@@ -69,6 +69,7 @@ aggregate bounds only. See the [source audit and remaining-floor results](REMAIN
 | nsF5 | gray BOSSbase JPEG q75 | 0.05 bpnzac | 59.35% (miss) | .633729 | new plain-DCTR square-root kernel; regression retained |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 70.75% (miss) | .784427 | same new kernel family; regression retained |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 77.70% (miss) | .853915 | compact coefficient relations /DCTR fixed 1:1 score mixture; further adaptive |
+| nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 77.85% (miss) | .864762 | fresh joint-kernel /prior 75:25 score mixture; further adaptive |
 
 WAV, rule, network and video results follow in their sections. Four academic
 spatial methods retain above-80% point results/bounds at 0.4 bpp after the
@@ -409,6 +410,26 @@ BA interval is 76.15–79.15%; TPR/FPR is 74.5 /19.1%. Calibration was 81.00%,
 so it is not a test pass. The fresh .05 condition stops at calibration
 65.416667%, with no new test inference; both old .05 misses remain.
 Thirty calibration records and sixty-two direct predictions replay.
+
+### Fresh fusion and larger-source retry
+
+The [new retry](RETRY_FUSION_RESULTS_20261115.md) fits thirty fresh joint-
+representation JPEG candidates and compares 112 frozen WAV score systems.
+nsF5 .1 reaches **77.85%**, AUC .864762, TPR/FPR 70.0 /14.3%, still 43
+correct decisions short of 80%. Its +.15-point paired interval versus 77.70%
+is -1.05125 to +1.45 points, containing zero; no reliable gain is established.
+nsF5 .05 calibration is 66.25%, with no new test. WAV retains the old ESC
+replacement-.1 reference and gates the other fifteen conditions; no new WAV
+test features or scores. Old measured misses stay unchanged.
+
+A separate source-grouped **7,496-fit /1,500-calibration** coefficient-only
+.1 model uses 5,996 added sources from existing BOSS data, with no downloads
+or current test pixel decoding. Calibration is **75.333333%**, AUC .831252444,
+so it receives no new test inference. Fixed-threshold old600/added900 cal
+subsets score 76.833333 /74.333333%; cohort composition and earlier adaptive
+development are not isolated causes. All old results, source/control failures
+and unused consumed allowances remain separate. Independent audits replay
+153 calibration records, 136 numeric predictions and eight training equations.
 
 ## WAV 16-bit LSB (`research/wav_lsb_features.py`)
 
