@@ -1,5 +1,26 @@
 # Changelog
 
+- Investigate MiPOD's remaining 0.4-bpp miss and reach **80.70%** on the
+  adaptive historical BOSS test, 1,614/2,000 correct /AUC .900443:
+  - Fit/calibration diagnosis identifies strong residual-content dependence;
+    installed-source inspection confirms smoothed MiPOD and preserves the
+    distinction from unsmoothed literature rows. No media or payload changes.
+  - A fixed 24-model normalization study reaches 79.70%; the separate
+    content-expert mix falls to 78.40%, preserving that negative result.
+    The final fixed geometry study selects unwhitened RC8 square-root ridge
+    .01 with fit-cover-median Gaussian bandwidth, using calibration only.
+  - HILL /S-UNIWARD /WOW retain 80.05 /80.75 /80.30% at 0.4 bpp. These four
+    point estimates pass; lower-payload and WAV misses remain. No untouched
+    qualification or deployment. The final +1.00-point change interval
+    against the global RC8 reference includes zero (-0.15 to +2.15 points).
+  - Preserve the generated-only distance/median failure before real fitting;
+    a separately sourced direct-distance correction retains all guards and
+    debits ten seconds without resetting the 900-second allowance.
+    Independent audits replay 64 calibration records and 198 predictions.
+    Combined output is about 12.43 MiB; matrices remain in RAM. All 570
+    unchanged sources verify against the passed 4,646-test gate. See
+    `docs/MIPOD_DIAGNOSIS_RESULTS_20261115.md` and its public numeric receipt.
+
 - Complete the fresh fixed MiPOD CPU kernel comparison at **0.4 bpp**:
   - Four ridge and thirty additive-family SVC candidates are selected only
     through the same separate 1,500 calibration pairs, after 7,500-source
