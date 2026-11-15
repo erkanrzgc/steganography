@@ -1,5 +1,27 @@
 # Changelog
 
+- Run the user's fresh retry on existing private data, preserving prior attempts:
+  - Thirty new joint DCTR/coefficient kernel/paired-bootstrap candidates and
+    112 frozen WAV score systems select only on calibration before global
+    choice freeze. nsF5 .1 reaches **77.85%**, AUC .864762, still below 80%;
+    +.15-point paired interval -1.05125 to +1.45 includes zero. nsF5 .05
+    stays gated at calibration 66.25%. WAV retains one old missed reference
+    and gates fifteen other conditions, with no new WAV test features/scores.
+  - A separate fixed coefficient fit expands existing BOSS coverage to
+    7,496 fit /1,500 calibration unique groups, adding 5,996 cached source
+    pairs without downloads or current test pixel decoding. Calibration
+    75.333333% fails its gate; no new test inference. Old600/added900 fixed-
+    threshold diagnostics remain calibration-only, not causal source claims.
+  - Preserve the generated float32-control failure and incorrectly launched
+    preflight parent; only the generated dtype changes to match actual float64
+    computation, with unchanged strict guards and ten prior seconds debited.
+    All actual candidates are fitted once. Both new parents close within
+    their separate caps; about 70.73 MiB combined output, no Gram/raw corpus.
+    Independent replay verifies 153 calibration records, 136 predictions and
+    eight training equations. All 570 software sources retain passed full QA.
+    No GPU, data deletion, reserved-data access, deployment or 80% floor claim.
+    See `docs/RETRY_FUSION_RESULTS_20261115.md` and its numeric receipt.
+
 - Investigate the remaining low-payload WAV/nsF5 misses with unchanged sources:
   - Eleven exact old feature replays and source-bound change counts verify.
     Fixed fit/calibration samples show 93.54 /89.30% median first-difference
