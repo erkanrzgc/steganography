@@ -14,6 +14,11 @@ closeouts. [Earlier results](REMAINING_FLOOR_RESULTS_20261115.md) remain intact.
 All work uses existing private media and CPU; no download, GPU, native-role
 assignment, locked ALASKA2 access or detector deployment occurs.
 
+A [later explicit retry](RETRY_FUSION_RESULTS_20261115.md) reaches nsF5 .1
+77.85%, a +.15-point change whose interval includes zero. Its separate
+7,496-source fit calibrates at 75.333333% and is not newly tested. WAV fusion
+also leaves the target unmet. The executed measurements below stay unchanged.
+
 ## What the local measurements establish
 
 The [prospective diagnosis](LOW_SIGNAL_DIAGNOSIS_PROTOCOL_20261115.md) opens
