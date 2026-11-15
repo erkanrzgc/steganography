@@ -1,0 +1,2142 @@
+{
+  "date": "2026-11-15",
+  "scope": "fresh_cached_cpu_research",
+  "payload_bpp": 0.4,
+  "fit_sources": 7500,
+  "fit_groups": 7498,
+  "calibration_sources": 1500,
+  "calibration_groups": 1499,
+  "test_sources": 1000,
+  "historical_tests_adaptive": true,
+  "untouched_qualification": false,
+  "deployed": false,
+  "diagnosis": {
+    "fit_sources": 7500,
+    "calibration_sources": 1500,
+    "no_test_access": true,
+    "feature_width": 9464,
+    "plain_width": 4732,
+    "histogram_blocks": 56,
+    "bins_per_block": 169,
+    "constant_fit_cover_bins": 272,
+    "zero_fraction_fit_covers": 0.03173981403212173,
+    "positive_bin_mean_quantiles": [
+      9.210519425323582e-06,
+      0.0009537220382583201,
+      0.002079316260942263,
+      0.004651589946109008,
+      0.3929312905071803
+    ],
+    "standardized_paired_mean_shift_quantiles": [
+      5.195014869163695e-06,
+      0.017673372403818707,
+      0.038256929374608575,
+      0.0673246061595766,
+      0.2816295936590087
+    ],
+    "content_activity_quartiles_from_fit": [
+      0.8292387872934341,
+      0.9105848073959351,
+      0.964951902627945
+    ],
+    "calibration_by_content_stratum": [
+      {
+        "stratum": 0,
+        "sources": 378,
+        "balanced_accuracy": 0.9616402116402116,
+        "auc": 0.9895719604714314,
+        "tpr": 0.9814814814814815,
+        "fpr": 0.0582010582010582,
+        "threshold": -0.05769335119293828,
+        "true_negative": 356,
+        "true_positive": 371,
+        "total_decisions": 756
+      },
+      {
+        "stratum": 1,
+        "sources": 376,
+        "balanced_accuracy": 0.8590425531914894,
+        "auc": 0.93837709370756,
+        "tpr": 0.901595744680851,
+        "fpr": 0.18351063829787234,
+        "threshold": -0.05769335119293828,
+        "true_negative": 307,
+        "true_positive": 339,
+        "total_decisions": 752
+      },
+      {
+        "stratum": 2,
+        "sources": 396,
+        "balanced_accuracy": 0.7474747474747475,
+        "auc": 0.8195847362514029,
+        "tpr": 0.7878787878787878,
+        "fpr": 0.29292929292929293,
+        "threshold": -0.05769335119293828,
+        "true_negative": 280,
+        "true_positive": 312,
+        "total_decisions": 792
+      },
+      {
+        "stratum": 3,
+        "sources": 350,
+        "balanced_accuracy": 0.6328571428571429,
+        "auc": 0.6950122448979592,
+        "tpr": 0.7257142857142858,
+        "fpr": 0.46,
+        "threshold": -0.05769335119293828,
+        "true_negative": 189,
+        "true_positive": 254,
+        "total_decisions": 700
+      }
+    ],
+    "changed_fraction_fit_mean": 0.08342664337158204,
+    "changed_fraction_calibration_mean": 0.08360848490397135,
+    "score_content_correlations": {
+      "cover_score_vs_activity": 0.42356790595042104,
+      "cover_score_vs_changed_fraction": -0.22312929704988246,
+      "stego_score_vs_activity": -0.4479154743158574,
+      "stego_score_vs_changed_fraction": 0.22271325764378946,
+      "pair_correct_vs_activity": -0.433093018972448,
+      "pair_correct_vs_changed_fraction": 0.24782796585862796
+    },
+    "interpretation": "content associations are not causal proof; compact normalized histograms may limit discrimination"
+  },
+  "installed_generator_audit": {
+    "created_unix": 1794747015.0941806,
+    "read_only": true,
+    "conseal_version": "2025.11",
+    "variance_block_size": 9,
+    "variance_degree": 9,
+    "fisher_averaging_kernel": [
+      7,
+      7
+    ],
+    "boundary_implementation": "MiPOD_FIX_WET",
+    "source_sha256": "3200cf6bb0b8bd7b8aa643eeccca45411dd24794a739ee788a2e8ea52d542f13",
+    "reference_paper": "https://ws2.binghamton.edu/fridrich/Research/MiPOD.pdf",
+    "table_i_medium_unsmoothed_error_at_0_4": 0.2038,
+    "table_ii_medium_smoothed_error_at_0_4": 0.2243,
+    "interpretation": "installed generator uses smoothing; table i is not the directly matching variant; neither paper row is a performance ceiling or a controlled comparison"
+  },
+  "stages": {
+    "normalization": {
+      "result": {
+        "method": "mipod",
+        "payload_bpp": 0.4,
+        "status": "measured_historical_adaptive",
+        "selected": "rc8-sqrt-ridge0.03",
+        "old": {
+          "balanced_accuracy": 0.7875,
+          "auc": 0.885946,
+          "tpr": 0.846,
+          "fpr": 0.271,
+          "threshold": -0.05769335119293828,
+          "true_negative": 729,
+          "true_positive": 846,
+          "total_decisions": 2000
+        },
+        "new": {
+          "balanced_accuracy": 0.797,
+          "auc": 0.887769,
+          "tpr": 0.814,
+          "fpr": 0.22,
+          "threshold": -0.017985440244956408,
+          "true_negative": 780,
+          "true_positive": 814,
+          "total_decisions": 2000
+        },
+        "gain": 0.009500000000000064,
+        "paired_95_gain": [
+          -0.0010124999999999993,
+          0.02
+        ],
+        "passes_80_percent": false,
+        "fit_sources": 7500,
+        "calibration_sources": 1500,
+        "test_sources": 1000,
+        "adaptive_test": true,
+        "model_sha256": "bead5f5619f5d266ed5dd29066a10689d2c79bb6ab668c2dbc13f7eb97335806"
+      },
+      "selection": {
+        "selected": {
+          "name": "rc8-sqrt-ridge0.03",
+          "order": 10,
+          "representation": "rc8-sqrt",
+          "classifier": "ridge0.03",
+          "eligible": true,
+          "calibration": {
+            "balanced_accuracy": 0.8056666666666666,
+            "auc": 0.8969546666666667,
+            "tpr": 0.8193333333333334,
+            "fpr": 0.208,
+            "threshold": -0.017985440244956408,
+            "true_negative": 1188,
+            "true_positive": 1229,
+            "total_decisions": 3000
+          },
+          "model_sha256": "bead5f5619f5d266ed5dd29066a10689d2c79bb6ab668c2dbc13f7eb97335806",
+          "normalizer_sha256": "02b26d45c5903eeeb282e98ed8f0477034c7869df60008af5c90079389053b89",
+          "solver_seconds": 18.614230270000007,
+          "ridge": 0.03,
+          "equation_residual": 4.9668713586470403e-11
+        },
+        "records": [
+          {
+            "name": "old_ridge003",
+            "order": 0,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8026666666666666,
+              "auc": 0.8946791111111111,
+              "tpr": 0.8506666666666667,
+              "fpr": 0.24533333333333332,
+              "threshold": -0.05769335119293828,
+              "true_negative": 1132,
+              "true_positive": 1276,
+              "total_decisions": 3000
+            },
+            "model_sha256": "0f099338d1c63ba58508c0e803132a21561d2228f4d9068139c1b5771bb18e99",
+            "residual": 6.494316195926331e-11,
+            "solver_seconds": 19.260197444993537
+          },
+          {
+            "name": "cdf-ridge0.01",
+            "order": 1,
+            "representation": "cdf",
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7926666666666666,
+              "auc": 0.8768924444444445,
+              "tpr": 0.844,
+              "fpr": 0.25866666666666666,
+              "threshold": -0.10285148526952526,
+              "true_negative": 1112,
+              "true_positive": 1266,
+              "total_decisions": 3000
+            },
+            "model_sha256": "4fb7e8d4c500ed599c1922ced0c981c08f0ba7608ed9c8bca80b81e90ad06e9e",
+            "normalizer_sha256": "785c70363dcba7ba3d89277ee2dc15ab41ac1dc947b01bd5d687939adbb043d9",
+            "solver_seconds": 23.354938275999984,
+            "ridge": 0.01,
+            "equation_residual": 9.440781489900019e-11
+          },
+          {
+            "name": "cdf-ridge0.03",
+            "order": 2,
+            "representation": "cdf",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7963333333333333,
+              "auc": 0.8885124444444444,
+              "tpr": 0.842,
+              "fpr": 0.24933333333333332,
+              "threshold": -0.055248296210265835,
+              "true_negative": 1126,
+              "true_positive": 1263,
+              "total_decisions": 3000
+            },
+            "model_sha256": "3d94576aaf93505daa08a3582dc4b6febef397eca9dad8950d38744826213190",
+            "normalizer_sha256": "785c70363dcba7ba3d89277ee2dc15ab41ac1dc947b01bd5d687939adbb043d9",
+            "solver_seconds": 20.592230367999946,
+            "ridge": 0.03,
+            "equation_residual": 4.4161563295119777e-11
+          },
+          {
+            "name": "cdf-ridge0.1",
+            "order": 3,
+            "representation": "cdf",
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7953333333333333,
+              "auc": 0.8915302222222222,
+              "tpr": 0.8053333333333333,
+              "fpr": 0.21466666666666667,
+              "threshold": 0.005749795884639752,
+              "true_negative": 1178,
+              "true_positive": 1208,
+              "total_decisions": 3000
+            },
+            "model_sha256": "dcc4390211e3ace40612f526c77c5466066837488c79b01d46f163cc96a89851",
+            "normalizer_sha256": "785c70363dcba7ba3d89277ee2dc15ab41ac1dc947b01bd5d687939adbb043d9",
+            "solver_seconds": 20.709316944999955,
+            "ridge": 0.1,
+            "equation_residual": 1.2965184481572578e-11
+          },
+          {
+            "name": "cdf-svc100",
+            "order": 4,
+            "representation": "cdf",
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7923333333333333,
+              "auc": 0.8765448888888889,
+              "tpr": 0.8233333333333334,
+              "fpr": 0.23866666666666667,
+              "threshold": -0.07255837851492858,
+              "true_negative": 1142,
+              "true_positive": 1235,
+              "total_decisions": 3000
+            },
+            "model_sha256": "2adc2efc250821b6b203a17a9004d77264e03ecf0fbd35efa18f23ab8564e746",
+            "normalizer_sha256": "785c70363dcba7ba3d89277ee2dc15ab41ac1dc947b01bd5d687939adbb043d9",
+            "solver_seconds": 4.670393331000014,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              77781
+            ],
+            "maximum_prediction_error": 1.1450207448859828e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "cdf-normal-ridge0.01",
+            "order": 5,
+            "representation": "cdf-normal",
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8036666666666666,
+              "auc": 0.8796031111111111,
+              "tpr": 0.794,
+              "fpr": 0.18666666666666668,
+              "threshold": 0.02624655766521755,
+              "true_negative": 1220,
+              "true_positive": 1191,
+              "total_decisions": 3000
+            },
+            "model_sha256": "2cf037f13253d74ff6a31deabfb767df3375e44b844ac65afffa393ddedfc49b",
+            "normalizer_sha256": "e14f0f522f1deeee5e65245b3ee4be88a32864943581976c099f99520e1f77ac",
+            "solver_seconds": 19.306437468000013,
+            "ridge": 0.01,
+            "equation_residual": 8.632827785959307e-11
+          },
+          {
+            "name": "cdf-normal-ridge0.03",
+            "order": 6,
+            "representation": "cdf-normal",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8046666666666666,
+              "auc": 0.8926551111111111,
+              "tpr": 0.796,
+              "fpr": 0.18666666666666668,
+              "threshold": 0.02438524498938932,
+              "true_negative": 1220,
+              "true_positive": 1194,
+              "total_decisions": 3000
+            },
+            "model_sha256": "2cd834e7d3af7caf2e655cc27089f7cb2451dba238ea35dba91a705767a1072e",
+            "normalizer_sha256": "e14f0f522f1deeee5e65245b3ee4be88a32864943581976c099f99520e1f77ac",
+            "solver_seconds": 18.77902064800014,
+            "ridge": 0.03,
+            "equation_residual": 4.36233271727815e-11
+          },
+          {
+            "name": "cdf-normal-ridge0.1",
+            "order": 7,
+            "representation": "cdf-normal",
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8023333333333333,
+              "auc": 0.8954368888888888,
+              "tpr": 0.8546666666666667,
+              "fpr": 0.25,
+              "threshold": -0.04280216044901408,
+              "true_negative": 1125,
+              "true_positive": 1282,
+              "total_decisions": 3000
+            },
+            "model_sha256": "424ca0f0887beeb4afe4b605fe7f6b83910d49bb33aa0ce58774e7c5a4c546f8",
+            "normalizer_sha256": "e14f0f522f1deeee5e65245b3ee4be88a32864943581976c099f99520e1f77ac",
+            "solver_seconds": 18.742923733999987,
+            "ridge": 0.1,
+            "equation_residual": 1.6157297721974828e-11
+          },
+          {
+            "name": "cdf-normal-svc100",
+            "order": 8,
+            "representation": "cdf-normal",
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8023333333333333,
+              "auc": 0.8817626666666667,
+              "tpr": 0.8113333333333334,
+              "fpr": 0.20666666666666667,
+              "threshold": -0.01222468225246788,
+              "true_negative": 1190,
+              "true_positive": 1217,
+              "total_decisions": 3000
+            },
+            "model_sha256": "b1dbf472838fb5cbae42f8744282efc585bc50b2723db84fba9932b8914deadb",
+            "normalizer_sha256": "e14f0f522f1deeee5e65245b3ee4be88a32864943581976c099f99520e1f77ac",
+            "solver_seconds": 4.809137481000107,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              87917
+            ],
+            "maximum_prediction_error": 1.1585044035200553e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "rc8-sqrt-ridge0.01",
+            "order": 9,
+            "representation": "rc8-sqrt",
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8036666666666666,
+              "auc": 0.8856711111111111,
+              "tpr": 0.8046666666666666,
+              "fpr": 0.19733333333333333,
+              "threshold": -0.013381737087001966,
+              "true_negative": 1204,
+              "true_positive": 1207,
+              "total_decisions": 3000
+            },
+            "model_sha256": "86db2bd42bd7ad6ddc0eb0cc82e46f151e33e3717fb5336953e7ff4b2c6d6492",
+            "normalizer_sha256": "02b26d45c5903eeeb282e98ed8f0477034c7869df60008af5c90079389053b89",
+            "solver_seconds": 18.659951924000097,
+            "ridge": 0.01,
+            "equation_residual": 1.2539747018536218e-10
+          },
+          {
+            "name": "rc8-sqrt-ridge0.03",
+            "order": 10,
+            "representation": "rc8-sqrt",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8056666666666666,
+              "auc": 0.8969546666666667,
+              "tpr": 0.8193333333333334,
+              "fpr": 0.208,
+              "threshold": -0.017985440244956408,
+              "true_negative": 1188,
+              "true_positive": 1229,
+              "total_decisions": 3000
+            },
+            "model_sha256": "bead5f5619f5d266ed5dd29066a10689d2c79bb6ab668c2dbc13f7eb97335806",
+            "normalizer_sha256": "02b26d45c5903eeeb282e98ed8f0477034c7869df60008af5c90079389053b89",
+            "solver_seconds": 18.614230270000007,
+            "ridge": 0.03,
+            "equation_residual": 4.9668713586470403e-11
+          },
+          {
+            "name": "rc8-sqrt-ridge0.1",
+            "order": 11,
+            "representation": "rc8-sqrt",
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8003333333333333,
+              "auc": 0.8977062222222222,
+              "tpr": 0.7973333333333333,
+              "fpr": 0.19666666666666666,
+              "threshold": 0.007810700965137585,
+              "true_negative": 1205,
+              "true_positive": 1196,
+              "total_decisions": 3000
+            },
+            "model_sha256": "b0933cd53bf647878982af59ca5da3f45d5cd0151cc31769bc155fe4d890644b",
+            "normalizer_sha256": "02b26d45c5903eeeb282e98ed8f0477034c7869df60008af5c90079389053b89",
+            "solver_seconds": 18.592458135000015,
+            "ridge": 0.1,
+            "equation_residual": 1.8551493674578978e-11
+          },
+          {
+            "name": "rc8-sqrt-svc100",
+            "order": 12,
+            "representation": "rc8-sqrt",
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8046666666666666,
+              "auc": 0.8847448888888889,
+              "tpr": 0.8213333333333334,
+              "fpr": 0.212,
+              "threshold": -0.06159432715884361,
+              "true_negative": 1182,
+              "true_positive": 1232,
+              "total_decisions": 3000
+            },
+            "model_sha256": "b3107bc0d6f98993714fad7689c6cb5e0a85f77e985f2a4adfab10971e00020a",
+            "normalizer_sha256": "02b26d45c5903eeeb282e98ed8f0477034c7869df60008af5c90079389053b89",
+            "solver_seconds": 3.752383355999882,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              81896
+            ],
+            "maximum_prediction_error": 1.5859535906770361e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "rc4-sqrt-ridge0.01",
+            "order": 13,
+            "representation": "rc4-sqrt",
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.799,
+              "auc": 0.878188,
+              "tpr": 0.758,
+              "fpr": 0.16,
+              "threshold": 0.0994773927350252,
+              "true_negative": 1260,
+              "true_positive": 1137,
+              "total_decisions": 3000
+            },
+            "model_sha256": "0b17c82e3ac69c2dcd3e1cd8d5177b3319194f275865a2b48a3eb64924d94c27",
+            "normalizer_sha256": "8c0bc4923846ac3e01a2aaf389f73e354200737b9aa43f727ac0fdf2fab21953",
+            "solver_seconds": 18.706697275000124,
+            "ridge": 0.01,
+            "equation_residual": 1.232012269980487e-10
+          },
+          {
+            "name": "rc4-sqrt-ridge0.03",
+            "order": 14,
+            "representation": "rc4-sqrt",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8056666666666666,
+              "auc": 0.8924137777777778,
+              "tpr": 0.7753333333333333,
+              "fpr": 0.164,
+              "threshold": 0.05569183336547212,
+              "true_negative": 1254,
+              "true_positive": 1163,
+              "total_decisions": 3000
+            },
+            "model_sha256": "31ba7e0058fdcbb242e977defb39a4993bb9e89a8752dd87a800b9aa26418ee1",
+            "normalizer_sha256": "8c0bc4923846ac3e01a2aaf389f73e354200737b9aa43f727ac0fdf2fab21953",
+            "solver_seconds": 18.582268382999928,
+            "ridge": 0.03,
+            "equation_residual": 5.3788973275459284e-11
+          },
+          {
+            "name": "rc4-sqrt-ridge0.1",
+            "order": 15,
+            "representation": "rc4-sqrt",
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8006666666666666,
+              "auc": 0.8958244444444444,
+              "tpr": 0.8626666666666667,
+              "fpr": 0.2613333333333333,
+              "threshold": -0.05826925093549562,
+              "true_negative": 1108,
+              "true_positive": 1294,
+              "total_decisions": 3000
+            },
+            "model_sha256": "4466170b4195de49124b613caea0acd320892d62739cd898e9b6eba1d2a90d11",
+            "normalizer_sha256": "8c0bc4923846ac3e01a2aaf389f73e354200737b9aa43f727ac0fdf2fab21953",
+            "solver_seconds": 18.54150746900018,
+            "ridge": 0.1,
+            "equation_residual": 1.8688495195817723e-11
+          },
+          {
+            "name": "rc4-sqrt-svc100",
+            "order": 16,
+            "representation": "rc4-sqrt",
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.803,
+              "auc": 0.8796497777777778,
+              "tpr": 0.8026666666666666,
+              "fpr": 0.19666666666666666,
+              "threshold": 0.002825892528091678,
+              "true_negative": 1205,
+              "true_positive": 1204,
+              "total_decisions": 3000
+            },
+            "model_sha256": "b2dcf92dc920bc4e8bc72f4bc52aeb48e57b472e5f867995614335c44c0dc3d7",
+            "normalizer_sha256": "8c0bc4923846ac3e01a2aaf389f73e354200737b9aa43f727ac0fdf2fab21953",
+            "solver_seconds": 4.1220628779999515,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              84119
+            ],
+            "maximum_prediction_error": 1.3020127198615228e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "rc8-cdf-ridge0.01",
+            "order": 17,
+            "representation": "rc8-cdf",
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7963333333333333,
+              "auc": 0.8786355555555555,
+              "tpr": 0.79,
+              "fpr": 0.19733333333333333,
+              "threshold": 0.02777872388060132,
+              "true_negative": 1204,
+              "true_positive": 1185,
+              "total_decisions": 3000
+            },
+            "model_sha256": "da44a6d351408a1b797823981c203113b286a30f1f859600d68aba5e300e336f",
+            "normalizer_sha256": "a9af14dbe335539ec39a977c1aaf1fedcf8660ea4b954a2dadeb718501d3eb25",
+            "solver_seconds": 19.302460521000057,
+            "ridge": 0.01,
+            "equation_residual": 6.916889283559158e-11
+          },
+          {
+            "name": "rc8-cdf-ridge0.03",
+            "order": 18,
+            "representation": "rc8-cdf",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8016666666666666,
+              "auc": 0.8919884444444445,
+              "tpr": 0.7826666666666666,
+              "fpr": 0.17933333333333334,
+              "threshold": 0.04596934960409271,
+              "true_negative": 1231,
+              "true_positive": 1174,
+              "total_decisions": 3000
+            },
+            "model_sha256": "90359c7245a99f150158f4c5a5229a0ae1912d6e4d9a1716207469205f758267",
+            "normalizer_sha256": "a9af14dbe335539ec39a977c1aaf1fedcf8660ea4b954a2dadeb718501d3eb25",
+            "solver_seconds": 18.75272775899998,
+            "ridge": 0.03,
+            "equation_residual": 4.2529535448920797e-11
+          },
+          {
+            "name": "rc8-cdf-ridge0.1",
+            "order": 19,
+            "representation": "rc8-cdf",
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7986666666666666,
+              "auc": 0.8958826666666667,
+              "tpr": 0.79,
+              "fpr": 0.19266666666666668,
+              "threshold": 0.024137378977115986,
+              "true_negative": 1211,
+              "true_positive": 1185,
+              "total_decisions": 3000
+            },
+            "model_sha256": "018d1c14bea1c32906b4227d0ee0c54b2e249b63aff4bb8285e3f9a6719f0e4d",
+            "normalizer_sha256": "a9af14dbe335539ec39a977c1aaf1fedcf8660ea4b954a2dadeb718501d3eb25",
+            "solver_seconds": 18.64584436700011,
+            "ridge": 0.1,
+            "equation_residual": 1.3751666472217039e-11
+          },
+          {
+            "name": "rc8-cdf-svc100",
+            "order": 20,
+            "representation": "rc8-cdf",
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7986666666666666,
+              "auc": 0.8794546666666667,
+              "tpr": 0.856,
+              "fpr": 0.25866666666666666,
+              "threshold": -0.21408017856152334,
+              "true_negative": 1112,
+              "true_positive": 1284,
+              "total_decisions": 3000
+            },
+            "model_sha256": "aaeda25f6cde9f20c7dc180d54c1b080514eb00125040d5a4dd5c760d40e1677",
+            "normalizer_sha256": "a9af14dbe335539ec39a977c1aaf1fedcf8660ea4b954a2dadeb718501d3eb25",
+            "solver_seconds": 4.771607115000052,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              76278
+            ],
+            "maximum_prediction_error": 1.2183245523544883e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "rc4-cdf-ridge0.01",
+            "order": 21,
+            "representation": "rc4-cdf",
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.799,
+              "auc": 0.8736613333333333,
+              "tpr": 0.8066666666666666,
+              "fpr": 0.20866666666666667,
+              "threshold": -0.014583689838218561,
+              "true_negative": 1187,
+              "true_positive": 1210,
+              "total_decisions": 3000
+            },
+            "model_sha256": "05eca3507ea5899b35eaf5b88add5cf033c9ce761a3f3ca39ea58e39a53f6390",
+            "normalizer_sha256": "8639106d5b94c624b3f909873eff02c1b351783560ef718f3bf84c93f138b9f7",
+            "solver_seconds": 18.48518866099994,
+            "ridge": 0.01,
+            "equation_residual": 6.995426460321141e-11
+          },
+          {
+            "name": "rc4-cdf-ridge0.03",
+            "order": 22,
+            "representation": "rc4-cdf",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8026666666666666,
+              "auc": 0.8890702222222222,
+              "tpr": 0.812,
+              "fpr": 0.20666666666666667,
+              "threshold": -0.004106872077272783,
+              "true_negative": 1190,
+              "true_positive": 1218,
+              "total_decisions": 3000
+            },
+            "model_sha256": "5e9f443c7acd1249c1a1acdf5c567eb4c7c83541203f3a24eb5aefe9ec95ea24",
+            "normalizer_sha256": "8639106d5b94c624b3f909873eff02c1b351783560ef718f3bf84c93f138b9f7",
+            "solver_seconds": 18.663935879999826,
+            "ridge": 0.03,
+            "equation_residual": 3.914069068855497e-11
+          },
+          {
+            "name": "rc4-cdf-ridge0.1",
+            "order": 23,
+            "representation": "rc4-cdf",
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8036666666666666,
+              "auc": 0.895576,
+              "tpr": 0.8006666666666666,
+              "fpr": 0.19333333333333333,
+              "threshold": 0.014489431167021394,
+              "true_negative": 1210,
+              "true_positive": 1201,
+              "total_decisions": 3000
+            },
+            "model_sha256": "b9e2c32288cea987581413464b4ffb2f42486ed8a06659b1d1d0340ce9f92937",
+            "normalizer_sha256": "8639106d5b94c624b3f909873eff02c1b351783560ef718f3bf84c93f138b9f7",
+            "solver_seconds": 18.612186422999912,
+            "ridge": 0.1,
+            "equation_residual": 1.349220735136214e-11
+          },
+          {
+            "name": "rc4-cdf-svc100",
+            "order": 24,
+            "representation": "rc4-cdf",
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.803,
+              "auc": 0.8759697777777777,
+              "tpr": 0.7766666666666666,
+              "fpr": 0.17066666666666666,
+              "threshold": 0.12009399771905138,
+              "true_negative": 1244,
+              "true_positive": 1165,
+              "total_decisions": 3000
+            },
+            "model_sha256": "912c8df8eb892b37bdd0d21e6a79b84cfcfa780325864386605575d09d48139b",
+            "normalizer_sha256": "8639106d5b94c624b3f909873eff02c1b351783560ef718f3bf84c93f138b9f7",
+            "solver_seconds": 5.4475990370001455,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              77989
+            ],
+            "maximum_prediction_error": 1.1867768989759497e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          }
+        ],
+        "test_features_not_opened": true
+      },
+      "independent_audit": {
+        "status": "passed",
+        "calibration_count_auc_threshold_replays": 25,
+        "selected_order_replay": true,
+        "independent_direct_distance_predictions": 70,
+        "maximum_prediction_error": 8.054732436590939e-10,
+        "cdf_reference_columns_independently_sorted": 16,
+        "all_570_source_hashes_verify": true,
+        "paired_bootstrap_replayed": true,
+        "elapsed_seconds": 81.03096666900001,
+        "completed_unix": 1794747665.9898984
+      },
+      "resources": {
+        "cumulative_seconds": 842.469969302,
+        "cap_seconds": 1500,
+        "output_bytes_at_parent_close": 5420617,
+        "peak_wait4_rss_bytes": 6423560192
+      },
+      "evidence_sha256": {
+        "freeze.json": "67d74aaef3a0214b67a0513c82181df9f60296f05b763ba7d030aec374b20af9",
+        "choice-freeze.json": "10d902e14d42b7f0331ab982446786077688be3329fb6caebf605d159b1e604b",
+        "selection.json": "47adb1a8307cf0a128483d60d361627870eb03cea2311dd264c63f7278ca74d8",
+        "closing.json": "6da3fdb642e846822661481ee3ef02df516f8b37473bf68332675b8fe38deb47",
+        "independent-audit.json": "92b21c9df54d5232c39a83231ae1e52494bc169a99194590394053155005929b"
+      }
+    },
+    "content": {
+      "result": {
+        "method": "mipod",
+        "payload_bpp": 0.4,
+        "status": "measured_historical_adaptive",
+        "selected": "p2-ridge0.1-local0.5",
+        "old": {
+          "balanced_accuracy": 0.797,
+          "auc": 0.887769,
+          "tpr": 0.814,
+          "fpr": 0.22,
+          "threshold": -0.017985440244956408,
+          "true_negative": 780,
+          "true_positive": 814,
+          "total_decisions": 2000
+        },
+        "new": {
+          "balanced_accuracy": 0.784,
+          "auc": 0.885336,
+          "tpr": 0.812,
+          "fpr": 0.244,
+          "threshold": -0.024295147346720114,
+          "true_negative": 756,
+          "true_positive": 812,
+          "total_decisions": 2000
+        },
+        "gain": -0.013000000000000012,
+        "paired_95_gain": [
+          -0.0205,
+          -0.005487500000000068
+        ],
+        "passes_80_percent": false,
+        "fit_sources": 7500,
+        "calibration_sources": 1500,
+        "test_sources": 1000,
+        "adaptive_test": true,
+        "per_query_gating": true
+      },
+      "selection": {
+        "selected": {
+          "name": "p2-ridge0.1-local0.5",
+          "order": 5,
+          "partitions": 2,
+          "ridge": 0.1,
+          "local_weight": 0.5,
+          "eligible": true,
+          "calibration": {
+            "balanced_accuracy": 0.806,
+            "auc": 0.8968111111111111,
+            "tpr": 0.8266666666666667,
+            "fpr": 0.21466666666666667,
+            "threshold": -0.024295147346720114,
+            "true_negative": 1178,
+            "true_positive": 1240,
+            "total_decisions": 3000
+          },
+          "artifact_hashes": {
+            "p2-b0-ridge0.1.npz": "c6d3a4e6ccde5046be90a2a84a7d94274df7b73d6d54e961fc7fb21550633e82",
+            "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+            "p2-b1-ridge0.1.npz": "03c6ed67cce620db194fb8690983cc979532a728799802b71637cb7d0c84b608",
+            "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+            "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+          }
+        },
+        "records": [
+          {
+            "name": "global_reference",
+            "order": 0,
+            "representation": "rc8-sqrt",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8056666666666666,
+              "auc": 0.8969546666666667,
+              "tpr": 0.8193333333333334,
+              "fpr": 0.208,
+              "threshold": -0.017985440244956408,
+              "true_negative": 1188,
+              "true_positive": 1229,
+              "total_decisions": 3000
+            },
+            "model_sha256": "bead5f5619f5d266ed5dd29066a10689d2c79bb6ab668c2dbc13f7eb97335806",
+            "normalizer_sha256": "02b26d45c5903eeeb282e98ed8f0477034c7869df60008af5c90079389053b89",
+            "solver_seconds": 18.614230270000007,
+            "ridge": 0.03,
+            "equation_residual": 4.9668713586470403e-11
+          },
+          {
+            "name": "p2-ridge0.01-local0.5",
+            "order": 1,
+            "partitions": 2,
+            "ridge": 0.01,
+            "local_weight": 0.5,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.803,
+              "auc": 0.8882471111111111,
+              "tpr": 0.814,
+              "fpr": 0.208,
+              "threshold": -0.02987725088451043,
+              "true_negative": 1188,
+              "true_positive": 1221,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p2-b0-ridge0.01.npz": "882e11c143a7a63cd61bf6499599a40de723dcce49137e1b534ee3062446e79e",
+              "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+              "p2-b1-ridge0.01.npz": "889c44f527ad472cbd4318c80a2bf1f9048dc88d49e231a7323cf34fc108cd26",
+              "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+              "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+            }
+          },
+          {
+            "name": "p2-ridge0.01-local1",
+            "order": 2,
+            "partitions": 2,
+            "ridge": 0.01,
+            "local_weight": 1.0,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.794,
+              "auc": 0.8724097777777777,
+              "tpr": 0.766,
+              "fpr": 0.178,
+              "threshold": 0.056104914325260324,
+              "true_negative": 1233,
+              "true_positive": 1149,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p2-b0-ridge0.01.npz": "882e11c143a7a63cd61bf6499599a40de723dcce49137e1b534ee3062446e79e",
+              "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+              "p2-b1-ridge0.01.npz": "889c44f527ad472cbd4318c80a2bf1f9048dc88d49e231a7323cf34fc108cd26",
+              "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+              "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+            }
+          },
+          {
+            "name": "p2-ridge0.03-local0.5",
+            "order": 3,
+            "partitions": 2,
+            "ridge": 0.03,
+            "local_weight": 0.5,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8056666666666666,
+              "auc": 0.8943995555555555,
+              "tpr": 0.828,
+              "fpr": 0.21666666666666667,
+              "threshold": -0.03625630108331279,
+              "true_negative": 1175,
+              "true_positive": 1242,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p2-b0-ridge0.03.npz": "2ff8c671ffbe8f3bf7889b3d7881534af7a74a37e11997cf1c082374dfb953b7",
+              "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+              "p2-b1-ridge0.03.npz": "6ad64bcbf969e755432698d5c13d309ca40e68a09e1fcc578a4267ce77b7e9cd",
+              "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+              "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+            }
+          },
+          {
+            "name": "p2-ridge0.03-local1",
+            "order": 4,
+            "partitions": 2,
+            "ridge": 0.03,
+            "local_weight": 1.0,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7956666666666666,
+              "auc": 0.885316,
+              "tpr": 0.7946666666666666,
+              "fpr": 0.20333333333333334,
+              "threshold": 0.0027756301569752395,
+              "true_negative": 1195,
+              "true_positive": 1192,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p2-b0-ridge0.03.npz": "2ff8c671ffbe8f3bf7889b3d7881534af7a74a37e11997cf1c082374dfb953b7",
+              "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+              "p2-b1-ridge0.03.npz": "6ad64bcbf969e755432698d5c13d309ca40e68a09e1fcc578a4267ce77b7e9cd",
+              "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+              "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+            }
+          },
+          {
+            "name": "p2-ridge0.1-local0.5",
+            "order": 5,
+            "partitions": 2,
+            "ridge": 0.1,
+            "local_weight": 0.5,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.806,
+              "auc": 0.8968111111111111,
+              "tpr": 0.8266666666666667,
+              "fpr": 0.21466666666666667,
+              "threshold": -0.024295147346720114,
+              "true_negative": 1178,
+              "true_positive": 1240,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p2-b0-ridge0.1.npz": "c6d3a4e6ccde5046be90a2a84a7d94274df7b73d6d54e961fc7fb21550633e82",
+              "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+              "p2-b1-ridge0.1.npz": "03c6ed67cce620db194fb8690983cc979532a728799802b71637cb7d0c84b608",
+              "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+              "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+            }
+          },
+          {
+            "name": "p2-ridge0.1-local1",
+            "order": 6,
+            "partitions": 2,
+            "ridge": 0.1,
+            "local_weight": 1.0,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7943333333333333,
+              "auc": 0.8873804444444444,
+              "tpr": 0.8073333333333333,
+              "fpr": 0.21866666666666668,
+              "threshold": -0.007743927113324389,
+              "true_negative": 1172,
+              "true_positive": 1211,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p2-b0-ridge0.1.npz": "c6d3a4e6ccde5046be90a2a84a7d94274df7b73d6d54e961fc7fb21550633e82",
+              "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+              "p2-b1-ridge0.1.npz": "03c6ed67cce620db194fb8690983cc979532a728799802b71637cb7d0c84b608",
+              "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+              "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+            }
+          },
+          {
+            "name": "p4-ridge0.01-local0.5",
+            "order": 7,
+            "partitions": 4,
+            "ridge": 0.01,
+            "local_weight": 0.5,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7963333333333333,
+              "auc": 0.8857906666666666,
+              "tpr": 0.87,
+              "fpr": 0.2773333333333333,
+              "threshold": -0.1503056273744905,
+              "true_negative": 1084,
+              "true_positive": 1305,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p4-b0-ridge0.01.npz": "4c652e8b70d47d0637f1e96aaf54dc78b7f5a03ba710dc319ca6c8d11818637a",
+              "p4-b0-normalizer.npz": "33dedee6863def12a0bed41cf9f268f3e557a7230b67780c26707d005be9ee61",
+              "p4-b1-ridge0.01.npz": "b3f5dd2d58019776838b938db974e9a1d38e98e9a3f01760f477c902c674065a",
+              "p4-b1-normalizer.npz": "e27981c20ce382a3d5a5ed5471330a6e6285867d61e954a0e14f208c62fc8d27",
+              "p4-b2-ridge0.01.npz": "b6b231d210bcae6a3e26bca9036aeaf61af32b20fd3efb199b306c017fab6e3d",
+              "p4-b2-normalizer.npz": "77f9bdc18d30369e8d76621a14157bd3d1490345457faae1c71cdc45f794d562",
+              "p4-b3-ridge0.01.npz": "9afd1d5476bcb2396dc6592113cdf78899dc94be6cd553183e3ebb323311636f",
+              "p4-b3-normalizer.npz": "8f99cc83cd7791bbfed53ae4b98d2f2463e1925d5d680848368f583fa390e4b7",
+              "p4-gates.npz": "2cdef1a9b87fe1e907035bd98c13274acd656e86db003d40536e3eda4a19f0a1"
+            }
+          },
+          {
+            "name": "p4-ridge0.01-local1",
+            "order": 8,
+            "partitions": 4,
+            "ridge": 0.01,
+            "local_weight": 1.0,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7793333333333333,
+              "auc": 0.8625435555555555,
+              "tpr": 0.83,
+              "fpr": 0.2713333333333333,
+              "threshold": -0.12665506493772938,
+              "true_negative": 1093,
+              "true_positive": 1245,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p4-b0-ridge0.01.npz": "4c652e8b70d47d0637f1e96aaf54dc78b7f5a03ba710dc319ca6c8d11818637a",
+              "p4-b0-normalizer.npz": "33dedee6863def12a0bed41cf9f268f3e557a7230b67780c26707d005be9ee61",
+              "p4-b1-ridge0.01.npz": "b3f5dd2d58019776838b938db974e9a1d38e98e9a3f01760f477c902c674065a",
+              "p4-b1-normalizer.npz": "e27981c20ce382a3d5a5ed5471330a6e6285867d61e954a0e14f208c62fc8d27",
+              "p4-b2-ridge0.01.npz": "b6b231d210bcae6a3e26bca9036aeaf61af32b20fd3efb199b306c017fab6e3d",
+              "p4-b2-normalizer.npz": "77f9bdc18d30369e8d76621a14157bd3d1490345457faae1c71cdc45f794d562",
+              "p4-b3-ridge0.01.npz": "9afd1d5476bcb2396dc6592113cdf78899dc94be6cd553183e3ebb323311636f",
+              "p4-b3-normalizer.npz": "8f99cc83cd7791bbfed53ae4b98d2f2463e1925d5d680848368f583fa390e4b7",
+              "p4-gates.npz": "2cdef1a9b87fe1e907035bd98c13274acd656e86db003d40536e3eda4a19f0a1"
+            }
+          },
+          {
+            "name": "p4-ridge0.03-local0.5",
+            "order": 9,
+            "partitions": 4,
+            "ridge": 0.03,
+            "local_weight": 0.5,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8006666666666666,
+              "auc": 0.8928995555555556,
+              "tpr": 0.8666666666666667,
+              "fpr": 0.2653333333333333,
+              "threshold": -0.10288653364993872,
+              "true_negative": 1102,
+              "true_positive": 1300,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p4-b0-ridge0.03.npz": "1dce5a8e504be4a848e48ce582e90fd1cbe711e58beb859ecf3e44fa30161fe8",
+              "p4-b0-normalizer.npz": "33dedee6863def12a0bed41cf9f268f3e557a7230b67780c26707d005be9ee61",
+              "p4-b1-ridge0.03.npz": "1051edebcb8b14a1f6104a908f3dd61707ad828cdd95824b6925e8f862fd274b",
+              "p4-b1-normalizer.npz": "e27981c20ce382a3d5a5ed5471330a6e6285867d61e954a0e14f208c62fc8d27",
+              "p4-b2-ridge0.03.npz": "c2135a8098d4304c32837b71341761e4cee240ceeb20e065900fbd999af9f129",
+              "p4-b2-normalizer.npz": "77f9bdc18d30369e8d76621a14157bd3d1490345457faae1c71cdc45f794d562",
+              "p4-b3-ridge0.03.npz": "742dd1170cb3e69dd9dcb6d345abe96de5d519fc8283f00c5af9ad9cf5673cda",
+              "p4-b3-normalizer.npz": "8f99cc83cd7791bbfed53ae4b98d2f2463e1925d5d680848368f583fa390e4b7",
+              "p4-gates.npz": "2cdef1a9b87fe1e907035bd98c13274acd656e86db003d40536e3eda4a19f0a1"
+            }
+          },
+          {
+            "name": "p4-ridge0.03-local1",
+            "order": 10,
+            "partitions": 4,
+            "ridge": 0.03,
+            "local_weight": 1.0,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7806666666666666,
+              "auc": 0.8751964444444444,
+              "tpr": 0.7853333333333333,
+              "fpr": 0.224,
+              "threshold": -0.006958792207864217,
+              "true_negative": 1164,
+              "true_positive": 1178,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p4-b0-ridge0.03.npz": "1dce5a8e504be4a848e48ce582e90fd1cbe711e58beb859ecf3e44fa30161fe8",
+              "p4-b0-normalizer.npz": "33dedee6863def12a0bed41cf9f268f3e557a7230b67780c26707d005be9ee61",
+              "p4-b1-ridge0.03.npz": "1051edebcb8b14a1f6104a908f3dd61707ad828cdd95824b6925e8f862fd274b",
+              "p4-b1-normalizer.npz": "e27981c20ce382a3d5a5ed5471330a6e6285867d61e954a0e14f208c62fc8d27",
+              "p4-b2-ridge0.03.npz": "c2135a8098d4304c32837b71341761e4cee240ceeb20e065900fbd999af9f129",
+              "p4-b2-normalizer.npz": "77f9bdc18d30369e8d76621a14157bd3d1490345457faae1c71cdc45f794d562",
+              "p4-b3-ridge0.03.npz": "742dd1170cb3e69dd9dcb6d345abe96de5d519fc8283f00c5af9ad9cf5673cda",
+              "p4-b3-normalizer.npz": "8f99cc83cd7791bbfed53ae4b98d2f2463e1925d5d680848368f583fa390e4b7",
+              "p4-gates.npz": "2cdef1a9b87fe1e907035bd98c13274acd656e86db003d40536e3eda4a19f0a1"
+            }
+          },
+          {
+            "name": "p4-ridge0.1-local0.5",
+            "order": 11,
+            "partitions": 4,
+            "ridge": 0.1,
+            "local_weight": 0.5,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8026666666666666,
+              "auc": 0.896276,
+              "tpr": 0.8173333333333334,
+              "fpr": 0.212,
+              "threshold": -0.009321073510862865,
+              "true_negative": 1182,
+              "true_positive": 1226,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p4-b0-ridge0.1.npz": "c15bf16682d00af1e957729af18539e7360e0027ea6b207b3ba25f7d87f98b91",
+              "p4-b0-normalizer.npz": "33dedee6863def12a0bed41cf9f268f3e557a7230b67780c26707d005be9ee61",
+              "p4-b1-ridge0.1.npz": "66055b810894014db8cbb9a35f5b3a31955180738c7b3e19559fd80752db4f05",
+              "p4-b1-normalizer.npz": "e27981c20ce382a3d5a5ed5471330a6e6285867d61e954a0e14f208c62fc8d27",
+              "p4-b2-ridge0.1.npz": "413110ebeec03fbbd559f54c29e0dd74066dce78dd302e3c7db39ca7c85be25a",
+              "p4-b2-normalizer.npz": "77f9bdc18d30369e8d76621a14157bd3d1490345457faae1c71cdc45f794d562",
+              "p4-b3-ridge0.1.npz": "3cecba90a1bfe81c1190c3cb23023cae3d9b621f5a1caad27753367c911bc440",
+              "p4-b3-normalizer.npz": "8f99cc83cd7791bbfed53ae4b98d2f2463e1925d5d680848368f583fa390e4b7",
+              "p4-gates.npz": "2cdef1a9b87fe1e907035bd98c13274acd656e86db003d40536e3eda4a19f0a1"
+            }
+          },
+          {
+            "name": "p4-ridge0.1-local1",
+            "order": 12,
+            "partitions": 4,
+            "ridge": 0.1,
+            "local_weight": 1.0,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7786666666666666,
+              "auc": 0.87684,
+              "tpr": 0.812,
+              "fpr": 0.25466666666666665,
+              "threshold": -0.022848716633180333,
+              "true_negative": 1118,
+              "true_positive": 1218,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p4-b0-ridge0.1.npz": "c15bf16682d00af1e957729af18539e7360e0027ea6b207b3ba25f7d87f98b91",
+              "p4-b0-normalizer.npz": "33dedee6863def12a0bed41cf9f268f3e557a7230b67780c26707d005be9ee61",
+              "p4-b1-ridge0.1.npz": "66055b810894014db8cbb9a35f5b3a31955180738c7b3e19559fd80752db4f05",
+              "p4-b1-normalizer.npz": "e27981c20ce382a3d5a5ed5471330a6e6285867d61e954a0e14f208c62fc8d27",
+              "p4-b2-ridge0.1.npz": "413110ebeec03fbbd559f54c29e0dd74066dce78dd302e3c7db39ca7c85be25a",
+              "p4-b2-normalizer.npz": "77f9bdc18d30369e8d76621a14157bd3d1490345457faae1c71cdc45f794d562",
+              "p4-b3-ridge0.1.npz": "3cecba90a1bfe81c1190c3cb23023cae3d9b621f5a1caad27753367c911bc440",
+              "p4-b3-normalizer.npz": "8f99cc83cd7791bbfed53ae4b98d2f2463e1925d5d680848368f583fa390e4b7",
+              "p4-gates.npz": "2cdef1a9b87fe1e907035bd98c13274acd656e86db003d40536e3eda4a19f0a1"
+            }
+          }
+        ],
+        "expert_equation_residuals": [
+          {
+            "model": "p2-b0-ridge0.01",
+            "residual": 3.363864742311762e-11,
+            "eligible": true,
+            "solver_seconds": 2.5597766480000246
+          },
+          {
+            "model": "p2-b0-ridge0.03",
+            "residual": 2.3604895815765303e-11,
+            "eligible": true,
+            "solver_seconds": 2.567186179000146
+          },
+          {
+            "model": "p2-b0-ridge0.1",
+            "residual": 9.417688850987815e-12,
+            "eligible": true,
+            "solver_seconds": 2.5418996159996823
+          },
+          {
+            "model": "p2-b1-ridge0.01",
+            "residual": 8.940292950398998e-11,
+            "eligible": true,
+            "solver_seconds": 2.5852822629999537
+          },
+          {
+            "model": "p2-b1-ridge0.03",
+            "residual": 3.203548537555889e-11,
+            "eligible": true,
+            "solver_seconds": 2.611832616999891
+          },
+          {
+            "model": "p2-b1-ridge0.1",
+            "residual": 2.3758550682373425e-11,
+            "eligible": true,
+            "solver_seconds": 2.5084468379995997
+          },
+          {
+            "model": "p4-b0-ridge0.01",
+            "residual": 8.746114943392058e-12,
+            "eligible": true,
+            "solver_seconds": 0.388320463999662
+          },
+          {
+            "model": "p4-b0-ridge0.03",
+            "residual": 5.268230296451293e-12,
+            "eligible": true,
+            "solver_seconds": 0.37357416100030605
+          },
+          {
+            "model": "p4-b0-ridge0.1",
+            "residual": 2.6343371928305714e-12,
+            "eligible": true,
+            "solver_seconds": 0.3973665560001791
+          },
+          {
+            "model": "p4-b1-ridge0.01",
+            "residual": 2.429723089392155e-11,
+            "eligible": true,
+            "solver_seconds": 0.3912569990002339
+          },
+          {
+            "model": "p4-b1-ridge0.03",
+            "residual": 1.4392598224333142e-11,
+            "eligible": true,
+            "solver_seconds": 0.3954312470000332
+          },
+          {
+            "model": "p4-b1-ridge0.1",
+            "residual": 6.341926983566282e-12,
+            "eligible": true,
+            "solver_seconds": 0.37689256400017257
+          },
+          {
+            "model": "p4-b2-ridge0.01",
+            "residual": 4.0188741223801117e-11,
+            "eligible": true,
+            "solver_seconds": 0.3839429699996799
+          },
+          {
+            "model": "p4-b2-ridge0.03",
+            "residual": 2.3673951687896988e-11,
+            "eligible": true,
+            "solver_seconds": 0.3916569670000172
+          },
+          {
+            "model": "p4-b2-ridge0.1",
+            "residual": 9.425793479067579e-12,
+            "eligible": true,
+            "solver_seconds": 0.3870334120001644
+          },
+          {
+            "model": "p4-b3-ridge0.01",
+            "residual": 6.488320991593355e-11,
+            "eligible": true,
+            "solver_seconds": 0.3886228729998038
+          },
+          {
+            "model": "p4-b3-ridge0.03",
+            "residual": 3.376454671411011e-11,
+            "eligible": true,
+            "solver_seconds": 0.3642992179998146
+          },
+          {
+            "model": "p4-b3-ridge0.1",
+            "residual": 1.0980549802752648e-11,
+            "eligible": true,
+            "solver_seconds": 0.376692570999694
+          }
+        ],
+        "test_features_not_opened": true
+      },
+      "independent_audit": {
+        "status": "passed",
+        "calibration_metric_replays": 13,
+        "all_system_calibration_scores_reconstructed": true,
+        "all_gate_memberships_replayed": true,
+        "independent_direct_distance_predictions": 58,
+        "maximum_prediction_error": 5.402095437645471e-11,
+        "all_570_source_hashes_verify": true,
+        "paired_bootstrap_replayed": true,
+        "elapsed_seconds": 17.231182340000032,
+        "completed_unix": 1794748001.5030663
+      },
+      "resources": {
+        "cumulative_seconds": 99.08007800199994,
+        "cap_seconds": 600,
+        "output_bytes_at_parent_close": 3220932,
+        "peak_wait4_rss_bytes": 2840088576
+      },
+      "evidence_sha256": {
+        "freeze.json": "a587a911a5679394cfdfa82da11974eecc54f8a1ef05b0503e8e00bf6723cefe",
+        "choice-freeze.json": "17f89bb40bc84f925ada87d794a80a0dc7a6392b18f61b86d24390157c5ae454",
+        "selection.json": "3d53cb468103a6764fd2b41979df5299947af4d6faa0e32544dd8fe64a5b76a9",
+        "closing.json": "ac90e99b7c4c42afab1afc87b3b6c5128b04e7ec37df64e143938e33cf8a2d64",
+        "independent-audit.json": "4f978d260e77134a28821fd545b93b7cdb8896603768664b10a3f700499626d0"
+      }
+    },
+    "hellinger": {
+      "result": {
+        "method": "mipod",
+        "payload_bpp": 0.4,
+        "status": "measured_historical_adaptive",
+        "selected": "rc8-sqrt-factor1-ridge0.01",
+        "old_global": {
+          "balanced_accuracy": 0.797,
+          "auc": 0.887769,
+          "tpr": 0.814,
+          "fpr": 0.22,
+          "threshold": -0.017985440244956408,
+          "true_negative": 780,
+          "true_positive": 814,
+          "total_decisions": 2000
+        },
+        "new": {
+          "balanced_accuracy": 0.807,
+          "auc": 0.900443,
+          "tpr": 0.825,
+          "fpr": 0.211,
+          "threshold": -0.010646304581314325,
+          "true_negative": 789,
+          "true_positive": 825,
+          "total_decisions": 2000
+        },
+        "gain": 0.010000000000000009,
+        "paired_95_gain": [
+          -0.0015,
+          0.0215
+        ],
+        "passes_80_percent": true,
+        "fit_sources": 7500,
+        "calibration_sources": 1500,
+        "test_sources": 1000,
+        "adaptive_test": true,
+        "model_sha256": "5cb56b2bbc20730bb4b3773a8fb9c7e2f8dc01e3854125c555033a13c42070c0"
+      },
+      "selection": {
+        "selected": {
+          "name": "rc8-sqrt-factor1-ridge0.01",
+          "order": 18,
+          "representation": "rc8-sqrt",
+          "bandwidth_factor": 1.0,
+          "gamma": 0.006107876271462043,
+          "classifier": "ridge0.01",
+          "eligible": true,
+          "calibration": {
+            "balanced_accuracy": 0.8186666666666667,
+            "auc": 0.9077688888888888,
+            "tpr": 0.8406666666666667,
+            "fpr": 0.20333333333333334,
+            "threshold": -0.010646304581314325,
+            "true_negative": 1195,
+            "true_positive": 1261,
+            "total_decisions": 3000
+          },
+          "model_sha256": "5cb56b2bbc20730bb4b3773a8fb9c7e2f8dc01e3854125c555033a13c42070c0",
+          "solver_seconds": 18.495161025000016,
+          "ridge": 0.01,
+          "equation_residual": 2.0876578243900212e-10
+        },
+        "records": [
+          {
+            "name": "global_reference",
+            "order": 0,
+            "representation": "rc8-sqrt",
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8056666666666666,
+              "auc": 0.8969546666666667,
+              "tpr": 0.8193333333333334,
+              "fpr": 0.208,
+              "threshold": -0.017985440244956408,
+              "true_negative": 1188,
+              "true_positive": 1229,
+              "total_decisions": 3000
+            },
+            "model_sha256": "bead5f5619f5d266ed5dd29066a10689d2c79bb6ab668c2dbc13f7eb97335806",
+            "normalizer_sha256": "02b26d45c5903eeeb282e98ed8f0477034c7869df60008af5c90079389053b89",
+            "solver_seconds": 18.614230270000007,
+            "ridge": 0.03,
+            "equation_residual": 4.9668713586470403e-11
+          },
+          {
+            "name": "content_reference",
+            "order": 1,
+            "partitions": 2,
+            "ridge": 0.1,
+            "local_weight": 0.5,
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.806,
+              "auc": 0.8968111111111111,
+              "tpr": 0.8266666666666667,
+              "fpr": 0.21466666666666667,
+              "threshold": -0.024295147346720114,
+              "true_negative": 1178,
+              "true_positive": 1240,
+              "total_decisions": 3000
+            },
+            "artifact_hashes": {
+              "p2-b0-ridge0.1.npz": "c6d3a4e6ccde5046be90a2a84a7d94274df7b73d6d54e961fc7fb21550633e82",
+              "p2-b0-normalizer.npz": "16d5d8fd117456b03e7253b0cf37cf4aa26e8c2f03723ef93690122956494777",
+              "p2-b1-ridge0.1.npz": "03c6ed67cce620db194fb8690983cc979532a728799802b71637cb7d0c84b608",
+              "p2-b1-normalizer.npz": "9808615c0f76decc30ade4f12a18261ee56419c15d393000f65669a1961f879d",
+              "p2-gates.npz": "dccb0ba3d8e1308ec382351c7a44e056b4ff2555878d59c276b30befdc6ac870"
+            }
+          },
+          {
+            "name": "sqrt-factor0.25-ridge0.01",
+            "order": 2,
+            "representation": "sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.022874952371413508,
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8076666666666666,
+              "auc": 0.8999466666666667,
+              "tpr": 0.7913333333333333,
+              "fpr": 0.176,
+              "threshold": 0.02938450716828811,
+              "true_negative": 1236,
+              "true_positive": 1187,
+              "total_decisions": 3000
+            },
+            "model_sha256": "2e6185da8ea56320978a38a85bbd47c92de029640ef598779b9c62b5568e82ef",
+            "solver_seconds": 18.306822110000212,
+            "ridge": 0.01,
+            "equation_residual": 3.984717000804494e-10
+          },
+          {
+            "name": "sqrt-factor0.25-ridge0.03",
+            "order": 3,
+            "representation": "sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.022874952371413508,
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.792,
+              "auc": 0.8861288888888889,
+              "tpr": 0.8513333333333334,
+              "fpr": 0.2673333333333333,
+              "threshold": -0.01714834392259945,
+              "true_negative": 1099,
+              "true_positive": 1277,
+              "total_decisions": 3000
+            },
+            "model_sha256": "71b7381383622af64adee506ae89a14f2b5654566a976f150469b52fbb5b64ff",
+            "solver_seconds": 18.241265257000123,
+            "ridge": 0.03,
+            "equation_residual": 1.525322090856207e-10
+          },
+          {
+            "name": "sqrt-factor0.25-ridge0.1",
+            "order": 4,
+            "representation": "sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.022874952371413508,
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7713333333333333,
+              "auc": 0.862324,
+              "tpr": 0.7993333333333333,
+              "fpr": 0.25666666666666665,
+              "threshold": 0.0023561161019642896,
+              "true_negative": 1115,
+              "true_positive": 1199,
+              "total_decisions": 3000
+            },
+            "model_sha256": "376e038ed97177b23b551604d074b606c3f99553efe31fc4aedbae49b077c94c",
+            "solver_seconds": 18.119650617999923,
+            "ridge": 0.1,
+            "equation_residual": 5.2321147414602365e-11
+          },
+          {
+            "name": "sqrt-factor0.25-svc100",
+            "order": 5,
+            "representation": "sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.022874952371413508,
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7876666666666666,
+              "auc": 0.8783755555555556,
+              "tpr": 0.8313333333333334,
+              "fpr": 0.256,
+              "threshold": 0.1447133896067676,
+              "true_negative": 1116,
+              "true_positive": 1247,
+              "total_decisions": 3000
+            },
+            "model_sha256": "39aea7854fc06dc6709c447763242c9392f1d51b52a48d0f603e54369a545a2c",
+            "solver_seconds": 1.312490447000073,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              32777
+            ],
+            "maximum_prediction_error": 5.048121920481208e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "sqrt-factor1-ridge0.01",
+            "order": 6,
+            "representation": "sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.09149980948565403,
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8183333333333334,
+              "auc": 0.9092106666666666,
+              "tpr": 0.8713333333333333,
+              "fpr": 0.23466666666666666,
+              "threshold": -0.0422480285524216,
+              "true_negative": 1148,
+              "true_positive": 1307,
+              "total_decisions": 3000
+            },
+            "model_sha256": "3340f0f46b34627c5281066417ce76c54338f23c461639d72d4c0987a76acb9e",
+            "solver_seconds": 18.429446166999696,
+            "ridge": 0.01,
+            "equation_residual": 2.575901714152451e-10
+          },
+          {
+            "name": "sqrt-factor1-ridge0.03",
+            "order": 7,
+            "representation": "sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.09149980948565403,
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8093333333333333,
+              "auc": 0.9041857777777778,
+              "tpr": 0.8073333333333333,
+              "fpr": 0.18866666666666668,
+              "threshold": 0.012791896745966369,
+              "true_negative": 1217,
+              "true_positive": 1211,
+              "total_decisions": 3000
+            },
+            "model_sha256": "af4112607c2ef412cce46b635244b0254b74b8eaa331a284d4b056ca5afaa81a",
+            "solver_seconds": 18.397820427999704,
+            "ridge": 0.03,
+            "equation_residual": 9.211376106321723e-11
+          },
+          {
+            "name": "sqrt-factor1-ridge0.1",
+            "order": 8,
+            "representation": "sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.09149980948565403,
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7943333333333333,
+              "auc": 0.8906813333333333,
+              "tpr": 0.8153333333333334,
+              "fpr": 0.22666666666666666,
+              "threshold": 0.0021749060151705635,
+              "true_negative": 1160,
+              "true_positive": 1223,
+              "total_decisions": 3000
+            },
+            "model_sha256": "c6325763699a5673ca20e59efdce899f411d5d2a9de3f7f003d2c2e0708e428e",
+            "solver_seconds": 18.483020441999997,
+            "ridge": 0.1,
+            "equation_residual": 2.965361289852808e-11
+          },
+          {
+            "name": "sqrt-factor1-svc100",
+            "order": 9,
+            "representation": "sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.09149980948565403,
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8056666666666666,
+              "auc": 0.8968302222222222,
+              "tpr": 0.8693333333333333,
+              "fpr": 0.258,
+              "threshold": 0.022303490625195765,
+              "true_negative": 1113,
+              "true_positive": 1304,
+              "total_decisions": 3000
+            },
+            "model_sha256": "4ea2916ed28345af5044695715206ebfa5aa3183bfdd3b563c94311108d0b69e",
+            "solver_seconds": 1.8104839050001829,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              71881
+            ],
+            "maximum_prediction_error": 2.3311557129090943e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "sqrt-factor4-ridge0.01",
+            "order": 10,
+            "representation": "sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.36599923794261613,
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.796,
+              "auc": 0.88796,
+              "tpr": 0.7413333333333333,
+              "fpr": 0.14933333333333335,
+              "threshold": 0.11325842277619813,
+              "true_negative": 1276,
+              "true_positive": 1112,
+              "total_decisions": 3000
+            },
+            "model_sha256": "9273083ce325fd9390b6f11f5b99af105755bc98a1c1462f976fa82008e0dcb1",
+            "solver_seconds": 18.278068775000065,
+            "ridge": 0.01,
+            "equation_residual": 7.477751751139294e-11
+          },
+          {
+            "name": "sqrt-factor4-ridge0.03",
+            "order": 11,
+            "representation": "sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.36599923794261613,
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7983333333333333,
+              "auc": 0.894488,
+              "tpr": 0.8506666666666667,
+              "fpr": 0.254,
+              "threshold": -0.0340402454330615,
+              "true_negative": 1119,
+              "true_positive": 1276,
+              "total_decisions": 3000
+            },
+            "model_sha256": "efc3f6c8fa4939a606a7664b5d0a63e5a7e67a0aba86eff701677c80b6a627a2",
+            "solver_seconds": 18.28287860699993,
+            "ridge": 0.03,
+            "equation_residual": 3.755595834320502e-11
+          },
+          {
+            "name": "sqrt-factor4-ridge0.1",
+            "order": 12,
+            "representation": "sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.36599923794261613,
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7906666666666666,
+              "auc": 0.8889244444444444,
+              "tpr": 0.8353333333333334,
+              "fpr": 0.254,
+              "threshold": -0.012109851536877159,
+              "true_negative": 1119,
+              "true_positive": 1253,
+              "total_decisions": 3000
+            },
+            "model_sha256": "eac47d7fe53421bd99d8e4b3fa2e51ff4a5fd9b15d6435d963e24df459368e2a",
+            "solver_seconds": 18.43448473799981,
+            "ridge": 0.1,
+            "equation_residual": 1.0288880858411176e-11
+          },
+          {
+            "name": "sqrt-factor4-svc100",
+            "order": 13,
+            "representation": "sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.36599923794261613,
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.795,
+              "auc": 0.8772968888888889,
+              "tpr": 0.8886666666666667,
+              "fpr": 0.2986666666666667,
+              "threshold": -0.2586858695714168,
+              "true_negative": 1052,
+              "true_positive": 1333,
+              "total_decisions": 3000
+            },
+            "model_sha256": "44f726f3f9b07edf49714e8046af3d7d78cff496b58232202654d54c1bb853ab",
+            "solver_seconds": 4.040328897999643,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              104940
+            ],
+            "maximum_prediction_error": 8.922018679413668e-10,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "rc8-sqrt-factor0.25-ridge0.01",
+            "order": 14,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.0015269690678655107,
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8173333333333334,
+              "auc": 0.9046946666666666,
+              "tpr": 0.8366666666666667,
+              "fpr": 0.202,
+              "threshold": -0.0023846550266171107,
+              "true_negative": 1197,
+              "true_positive": 1255,
+              "total_decisions": 3000
+            },
+            "model_sha256": "c218ad6a7f73c6cf15b97cb4822f3350c2dc34b75338f8d18f7c1074114d85d3",
+            "solver_seconds": 18.43796318900013,
+            "ridge": 0.01,
+            "equation_residual": 3.9807701579519517e-10
+          },
+          {
+            "name": "rc8-sqrt-factor0.25-ridge0.03",
+            "order": 15,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.0015269690678655107,
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.807,
+              "auc": 0.8957911111111111,
+              "tpr": 0.828,
+              "fpr": 0.214,
+              "threshold": 0.004002521383881685,
+              "true_negative": 1179,
+              "true_positive": 1242,
+              "total_decisions": 3000
+            },
+            "model_sha256": "5c6b9514d868230b45049afae75a0a98f5ea0036e71e56a6d346c6e6700a61ca",
+            "solver_seconds": 18.50625109199973,
+            "ridge": 0.03,
+            "equation_residual": 1.3008327748309512e-10
+          },
+          {
+            "name": "rc8-sqrt-factor0.25-ridge0.1",
+            "order": 16,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.0015269690678655107,
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7786666666666666,
+              "auc": 0.8760635555555556,
+              "tpr": 0.7686666666666667,
+              "fpr": 0.21133333333333335,
+              "threshold": 0.022749111580196768,
+              "true_negative": 1183,
+              "true_positive": 1153,
+              "total_decisions": 3000
+            },
+            "model_sha256": "a8220ceb12ce70b7cc3043a58429148939e40aa7fb8e660a49cf7cb9c1fcf32e",
+            "solver_seconds": 18.162802224999723,
+            "ridge": 0.1,
+            "equation_residual": 4.5608961052323593e-11
+          },
+          {
+            "name": "rc8-sqrt-factor0.25-svc100",
+            "order": 17,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 0.25,
+            "gamma": 0.0015269690678655107,
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.7993333333333333,
+              "auc": 0.8915342222222222,
+              "tpr": 0.84,
+              "fpr": 0.24133333333333334,
+              "threshold": 0.12386859933862304,
+              "true_negative": 1138,
+              "true_positive": 1260,
+              "total_decisions": 3000
+            },
+            "model_sha256": "7cd96dc389fa00f3b6318faa40bc12c45f6094932e75d8ace6abd5b979e16599",
+            "solver_seconds": 1.2911491619997832,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              31458
+            ],
+            "maximum_prediction_error": 4.650644314097008e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "rc8-sqrt-factor1-ridge0.01",
+            "order": 18,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.006107876271462043,
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8186666666666667,
+              "auc": 0.9077688888888888,
+              "tpr": 0.8406666666666667,
+              "fpr": 0.20333333333333334,
+              "threshold": -0.010646304581314325,
+              "true_negative": 1195,
+              "true_positive": 1261,
+              "total_decisions": 3000
+            },
+            "model_sha256": "5cb56b2bbc20730bb4b3773a8fb9c7e2f8dc01e3854125c555033a13c42070c0",
+            "solver_seconds": 18.495161025000016,
+            "ridge": 0.01,
+            "equation_residual": 2.0876578243900212e-10
+          },
+          {
+            "name": "rc8-sqrt-factor1-ridge0.03",
+            "order": 19,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.006107876271462043,
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8126666666666666,
+              "auc": 0.908056,
+              "tpr": 0.7866666666666666,
+              "fpr": 0.16133333333333333,
+              "threshold": 0.044736824057508784,
+              "true_negative": 1258,
+              "true_positive": 1180,
+              "total_decisions": 3000
+            },
+            "model_sha256": "094804d45f96fe183440ecf38b84ba6530894fd888bf326001caf1fe0f9b9979",
+            "solver_seconds": 18.406827251999857,
+            "ridge": 0.03,
+            "equation_residual": 7.678224722695859e-11
+          },
+          {
+            "name": "rc8-sqrt-factor1-ridge0.1",
+            "order": 20,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.006107876271462043,
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8033333333333333,
+              "auc": 0.8994955555555556,
+              "tpr": 0.854,
+              "fpr": 0.24733333333333332,
+              "threshold": -0.020696086614861997,
+              "true_negative": 1129,
+              "true_positive": 1281,
+              "total_decisions": 3000
+            },
+            "model_sha256": "ace8ae99c641797cac971e52b56746d82c005e177af1ba003b92a739a6b2a694",
+            "solver_seconds": 18.747608705999937,
+            "ridge": 0.1,
+            "equation_residual": 2.5379920387536004e-11
+          },
+          {
+            "name": "rc8-sqrt-factor1-svc100",
+            "order": 21,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 1.0,
+            "gamma": 0.006107876271462043,
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.811,
+              "auc": 0.9030462222222222,
+              "tpr": 0.8226666666666667,
+              "fpr": 0.20066666666666666,
+              "threshold": 0.09581156167181626,
+              "true_negative": 1199,
+              "true_positive": 1234,
+              "total_decisions": 3000
+            },
+            "model_sha256": "302f2aa8768e74c531a5b34362ecaaa89082e6bb569747c0cdeb3c70d2f5f997",
+            "solver_seconds": 1.9405760899999223,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              66069
+            ],
+            "maximum_prediction_error": 2.0804602485213763e-09,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          },
+          {
+            "name": "rc8-sqrt-factor4-ridge0.01",
+            "order": 22,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.02443150508584817,
+            "classifier": "ridge0.01",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8013333333333333,
+              "auc": 0.8852537777777778,
+              "tpr": 0.7993333333333333,
+              "fpr": 0.19666666666666666,
+              "threshold": 0.022312424969186395,
+              "true_negative": 1205,
+              "true_positive": 1199,
+              "total_decisions": 3000
+            },
+            "model_sha256": "609689ba8b35bcc8e53ef3a2ec421717b9882deb40ec6341fa038d87b2a911ec",
+            "solver_seconds": 18.46715990199982,
+            "ridge": 0.01,
+            "equation_residual": 6.045131062393239e-11
+          },
+          {
+            "name": "rc8-sqrt-factor4-ridge0.03",
+            "order": 23,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.02443150508584817,
+            "classifier": "ridge0.03",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8033333333333333,
+              "auc": 0.8964573333333333,
+              "tpr": 0.85,
+              "fpr": 0.24333333333333335,
+              "threshold": -0.045050173698882645,
+              "true_negative": 1135,
+              "true_positive": 1275,
+              "total_decisions": 3000
+            },
+            "model_sha256": "8aa723ec8ba103dbaf481e7c5c7be52f553e3c5c11238d3e1ac436580789c4e0",
+            "solver_seconds": 18.257197619999715,
+            "ridge": 0.03,
+            "equation_residual": 2.5764279598661233e-11
+          },
+          {
+            "name": "rc8-sqrt-factor4-ridge0.1",
+            "order": 24,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.02443150508584817,
+            "classifier": "ridge0.1",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8023333333333333,
+              "auc": 0.8960911111111111,
+              "tpr": 0.8626666666666667,
+              "fpr": 0.258,
+              "threshold": -0.036508445456092886,
+              "true_negative": 1113,
+              "true_positive": 1294,
+              "total_decisions": 3000
+            },
+            "model_sha256": "f3b83ca72b911009bae84fd346dbe062a50ff621ff0c94a915ab9c43c40d8b46",
+            "solver_seconds": 18.377943116000097,
+            "ridge": 0.1,
+            "equation_residual": 9.334755191048316e-12
+          },
+          {
+            "name": "rc8-sqrt-factor4-svc100",
+            "order": 25,
+            "representation": "rc8-sqrt",
+            "bandwidth_factor": 4.0,
+            "gamma": 0.02443150508584817,
+            "classifier": "svc100",
+            "eligible": true,
+            "calibration": {
+              "balanced_accuracy": 0.8026666666666666,
+              "auc": 0.8800511111111111,
+              "tpr": 0.8193333333333334,
+              "fpr": 0.214,
+              "threshold": -0.018272950064551458,
+              "true_negative": 1179,
+              "true_positive": 1229,
+              "total_decisions": 3000
+            },
+            "model_sha256": "ce8a9e13ac4ea3aea7dc2111a663be443719d8a6d8bc1f19220cef3ed17fdd38",
+            "solver_seconds": 5.145878760999949,
+            "C": 100,
+            "fit_status": 0,
+            "iterations": [
+              93080
+            ],
+            "maximum_prediction_error": 7.692317893770451e-10,
+            "warnings": [
+              "The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`"
+            ]
+          }
+        ],
+        "test_features_not_opened": true
+      },
+      "independent_audit": {
+        "status": "passed",
+        "calibration_metric_replays": 26,
+        "all_bandwidths_replayed": true,
+        "independent_direct_distance_predictions": 70,
+        "maximum_prediction_error": 1.6655663515052765e-09,
+        "all_570_source_hashes_verify": true,
+        "paired_bootstrap_replayed": true,
+        "elapsed_seconds": 19.848754569999983,
+        "completed_unix": 1794748954.87257
+      },
+      "resources": {
+        "cumulative_seconds": 495.51369788400007,
+        "cap_seconds": 900,
+        "output_bytes_at_parent_close": 4391195,
+        "peak_wait4_rss_bytes": 6416875520
+      },
+      "evidence_sha256": {
+        "freeze.json": "ff6a32787b3373770453451938e96271c4fe9d7ccd8a9c64840cd02ec9fb1079",
+        "choice-freeze.json": "18f7dcb03a4350ff95932b591d5917d0b366a48eaced214de60a526605ab2cce",
+        "selection.json": "1eec20674fbe76c14f1094268f774080dc98afa87dc6a18b80b6c0aecb489ce6",
+        "closing.json": "c49dd5bd7eb3313f62454a9022504f8698558852099833006aec7aeb155a5c69",
+        "independent-audit.json": "902c1c94f0c34b42044011a0fe769cd55fd981fb6f7d4f631e637364e13607ff"
+      }
+    }
+  },
+  "preserved_failed_preparation": {
+    "status": "failed_generated_only_before_real_fit",
+    "exit_code": 1,
+    "prior_debit_seconds": 10,
+    "diagnosis": {
+      "generated_only": true,
+      "real_fit_started": false,
+      "diagnosis": {
+        "sqrt": {
+          "identical_vector_dot_distance": 1.1937117960769683e-12,
+          "identical_vector_direct_distance": 0.0,
+          "dot_median": 11.617850619691705,
+          "direct_median": 11.618142843041843,
+          "dot_positive_pairs": 780,
+          "direct_positive_pairs": 779
+        },
+        "rc8-sqrt": {
+          "identical_vector_dot_distance": 3.092281986027956e-11,
+          "identical_vector_direct_distance": 0.0,
+          "dot_median": 230.48969007204403,
+          "direct_median": 230.5015499315149,
+          "dot_positive_pairs": 780,
+          "direct_positive_pairs": 779
+        }
+      },
+      "elapsed_seconds": 0.40999130900036107,
+      "old_source_sha256": {
+        "runner.py": "824adc39a41d157e6876bce08957bf2a1647ecff257f3d004b1a029f95c6f9b7",
+        "parent.py": "6f2657452a4f8a41ceef54c207fe65de3eff68bcda8af9d25afb3e49999508f2",
+        "audit.py": "b2455149f428ff104da3f20427f61eebcf7435479ecc02f515c9011423bb5ec9",
+        "prepare.log": "4f4ad21e00cc654384dcfbc9e5c893262e86ec8a3b9bbd73dccf8293d72d4ced",
+        "prepare-exit.json": "ef9429c4f6ec11a099c8739ad62ff6952b3dd707f5ef64aa49edadd9a4602dbe"
+      }
+    }
+  },
+  "source_verified_full_qa": {
+    "passed": 4646,
+    "cuda_skips": 2,
+    "coverage_percent": 97.4158046877721,
+    "source_bindings": 570,
+    "fresh_full_run": false
+  },
+  "total_parent_cumulative_seconds": 1437.063745188,
+  "supplemental_closing_seconds": 2.8537549280003986,
+  "total_output_bytes_at_parent_closes": 13032744,
+  "references": [
+    "https://ws2.binghamton.edu/fridrich/Research/MiPOD.pdf",
+    "https://dde.binghamton.edu/mehdi/pdf/nonlinear-feature-normalization.pdf"
+  ],
+  "documentation_verification": {
+    "exit_code": 0,
+    "passed": 15,
+    "elapsed_seconds": 0.9866879530000006,
+    "readme_words": 899,
+    "log_sha256": "bdb786f2d289eaeab4e53d0fdccb998525c217efaa778496cf7a97ccca9e1597"
+  },
+  "supplemental_closing_conservative_seconds": 3,
+  "total_conservative_seconds_including_supplemental_audit": 1440.063745188
+}
