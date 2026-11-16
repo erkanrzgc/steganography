@@ -2259,3 +2259,93 @@ Final retry software checks pass fresh Ruff, 270-file mypy including research
 and all fifteen disk-backed README/scope tests. README has 898 words and four
 badges. All 570 hashes match the actual passed full gate, with no new full-suite
 claim. Both successful parents are closed; preserve unrelated nano.383070.save.
+
+### Reference feature correction and full JPEG features (2026-11-16)
+
+The user's new fix request permits a fresh CPU reference-parity investigation
+and bounded full-feature intervention, with all earlier restrictions intact.
+The original read-only audit fails its repository import before any extraction;
+the separate completion preserves that failure and a missing optional psutil
+parent import. Its proc-based observer completes in 6.157195 seconds,
+11.157196 including five prior seconds, peak sampled RSS 315,359,232 bytes.
+Two existing fit covers differ from installed sealwatch DCTR in 213/209 bins;
+changing only nearest-even to reference half-away rounding removes all errors
+above 1e-6, maximum 2.972e-8. IDCT already agrees within 2.576e-13.
+
+Public `research/dctr_features.py` now defaults to reference rounding and
+retains explicit `rounding="legacy"` through all file/coefficient helpers.
+Historical caches/states require legacy arithmetic; never mix or rewrite them.
+Fourteen generated focused tests pass, including independent convolution/phase
+oracles. The fresh full QA now passes 4,651 tests /two explicit CUDA skips /
+32 warnings, 97.41688424717145% coverage; corrected DCTR is 100% covered.
+Ruff /270-file mypy including research and all 570 current source hashes pass.
+Pytest takes 2,325.52 seconds; wrapper time is 2,338.472293 seconds. Its user unit is
+`steganography-reference-feature-qa-20261116.service`, with evidence under
+`.benchmark/reference-feature-full-qa-20261116/`. The unit is exited /PID zero.
+Preserve unavailable final MemoryPeak and the separate retained live samples;
+the older 4,646-test pass does not cover these changes.
+No frozen core/steganography source changes or model deployment occur.
+
+The new protocol is `docs/JPEG_REFERENCE_FEATURES_PROTOCOL_20261116.md`:
+corrected 8,000 DCTR plus full 11,255 JRM, not the old absolute subset.
+Same 2,400 fit /600 calibration /1,000 pixel-disjoint historical test pairs,
+unchanged .05/.1 payloads/seeds. Eight fixed new candidates per payload use
+calibration only and require .80 before new test construction. Two actual
+file-worker controls verify exact old changed counts; generated numeric
+kernel/ridge/SVC/reference-ensemble exports pass. Original feature/model
+definitions and all prior misses remain unchanged historical records.
+
+The first data-only parent is explicitly stopped before any real classifier
+fit, with 480 complete feature rows in fifteen hashed chunks. Parent age upper
+bound is 656.911455 seconds, 676.911455 with preparation. Keep its unavailable
+final MemoryPeak/worker-exit evidence; systemd's post-stop success is not a
+successful scientific run. Its sources/partials/preparation failures remain in
+`.benchmark/jpeg-reference-features-20261116/`. An extra AST helper first
+expected a new build name despite an existing definition; the shell incorrectly
+started data preparation after that extra failure. A later relative-path reader
+also fails. Corrected independent AST integration passes before any actual fit;
+never erase either error or label the failed checks as successful preflight.
+
+The prospective execution amendment is
+`docs/JPEG_REFERENCE_FEATURES_COMPLETION_20261116.md`: a fresh
+exclusive completion in `.benchmark/jpeg-reference-features-completion-20261116/`
+references the stopped prefix without copying/recalculating it, replays its
+embedding fractions, and extracts only remaining feature rows. The new outer
+operator envelope is 7,200 cumulative seconds, 800 prior seconds charged,
+6,400 remaining; the old 4,200-second contract is preserved, not relabelled.
+Combined old/new output stays <=768 MiB /eight MiB per file; feature workers
+use <=three-GiB sampled summed RSS, fitting <=ten GiB, six single-thread file
+workers and disk TMPDIR. Actual fitting waits for the new full QA's pass and
+inactive/exited unit. Inspect both marker/log/processes and never duplicate,
+restart or relaunch either parent. That first completion fails preparation
+before any new features/actual fits: an incorrect document filename, retained
+in its source/log. `docs/JPEG_REFERENCE_FEATURES_PATH_CORRECTION_20261116.md`
+binds a separate `.benchmark/jpeg-reference-features-path-corrected-20261116/`
+completion. Only the document path and prior accounting change: 810 seconds
+charged, 6,390 remaining inside 7,200; output includes all parents. The full
+metadata/path/hash preparation passes with writing intercepted before launch.
+That path-corrected parent is now closed verified; do not relaunch it.
+A one-fit-cover bincount cost probe is private and not adopted; JRM library
+sources remain unchanged. No GPU, download, new media, locked data, native-role
+change or universal 80% claim follows from reference parity.
+
+The path-corrected completion closes at 4,219.138375 s, cumulative
+5,029.138375 /7,200 s with the 810-second prior debit; combined output across
+all three parents and the cost probe is 646,354,568 bytes /768 MiB. All sixteen
+candidates are eligible. nsF5 .05 selects joint ridge at calibration 65.75%
+and stays `not_evaluated_calibration_gate`. nsF5 .1 selects the d_sub-1,000
+51-learner FLD ensemble (calibration 82.50%, threshold 7/51); one frozen
+historical inference gives **80.85%**, AUC .894063, TPR 76.0% /FPR 14.3%,
+1,617/2,000 correct. Paired change versus 77.85% is +3.00 points (95% +1.50
+to +4.50); BA interval 79.35–82.40% crosses 80%. Features and classifier
+change together; the reused test is adaptive, not untouched qualification.
+Independent audit replays 16 calibration records and 118 predictions (max
+error 1.164e-10); a separate replay of retained scores matches exactly. See
+`docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md` and its public receipt.
+nsF5 .05, WAV misses and unavailable EBS keep the overall 80% goal unmet.
+
+WAV conditional-MoM preparation (`docs/WAV_CONDITIONAL_MOM_PROTOCOL_20261116.md`)
+is generated-only; no raw WAV feature bank, attempt marker or classifier fit
+exists in `.benchmark/wav-conditional-mom-20261116/`. Its private runner and
+auditor are unexecuted drafts and two generated audits are marked invalid;
+complete the numeric/source preflight and closing before any launch.
