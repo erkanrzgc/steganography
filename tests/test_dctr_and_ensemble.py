@@ -130,3 +130,54 @@ def test_ensemble_batches_match_scalar_vote_reference():
     for bad in ([[0, 1, 2]], np.zeros(3)):
         with pytest.raises(ValueError, match='width'):
             model.score(bad)
+
+
+def test_dctr_half_bins_and_legacy_rounding():
+    values = np.array([-.5, .5, 1.5, 2.5, 3.5, 4.5, .499999, .4999, 2.499999])
+    assert np.array_equal(dctr._quantize(values * 4, 4, "reference"),
+                          [1, 1, 2, 3, 4, 4, 1, 0, 3])
+    assert np.array_equal(dctr._quantize(values * 4, 4, "legacy"),
+                          [0, 0, 2, 2, 4, 4, 0, 0, 2])
+    with pytest.raises(ValueError, match="rounding"):
+        dctr.from_coefficients(np.zeros((2, 2, 8, 8)), dctr.ijg_table(75), rounding="unknown")
+
+
+@pytest.mark.parametrize("quality", [50, 75, 95])
+def test_dctr_matches_independent_convolution_and_phase_oracle(quality):
+    from scipy.signal import convolve2d
+
+    rng = np.random.default_rng(2026111601)
+    coefficients = rng.integers(-1, 2, (4, 5, 8, 8), dtype=np.int16)
+    table = dctr.ijg_table(quality)
+    plane = dctr.decompress(coefficients, table)
+    expected = []
+    # Enumerate merged phase coordinates instead of using the extractor's
+    # folded group map or its separable filter/quantizer implementation.
+    phases = [(0,), (1, 7), (2, 6), (3, 5), (4,)]
+    for u in range(8):
+        for v in range(8):
+            kernel = np.outer(dctr.BASIS[u], dctr.BASIS[v])
+            magnitude = np.abs(convolve2d(plane, kernel, mode="valid")) / dctr.step(quality)
+            lower = np.floor(magnitude)
+            near_half = np.isclose(magnitude - lower, .5)
+            bins = np.where(near_half, lower + 1, np.floor(magnitude + .5))
+            bins = np.minimum(bins, 4).astype(int)
+            for rows in phases:
+                for cols in phases:
+                    parts = [bins[r::8, c::8].ravel() for r in rows for c in cols]
+                    histogram = np.bincount(np.concatenate(parts), minlength=5)
+                    expected.extend(histogram / histogram.sum())
+    actual = dctr.from_coefficients(coefficients, table)
+    assert np.allclose(actual, expected, atol=3e-8, rtol=0)
+
+
+def test_dctr_legacy_file_helpers_propagate_rounding(tmp_path):
+    path = gray_jpeg(tmp_path, 12, quality=75)
+    jpeg = jpeglib.read_dct(str(path))
+    coefficients, table = np.asarray(jpeg.Y), np.asarray(jpeg.qt[jpeg.quant_tbl_no[0]])
+    own = dctr.from_coefficients(coefficients, table, rounding="legacy")
+    assert np.array_equal(own, dctr.features(path, rounding="legacy"))
+    calibrated = dctr.calibrated_features(path, rounding="legacy")
+    ref = dctr.from_coefficients(dctr.reference(coefficients, table), table, rounding="legacy")
+    assert np.array_equal(calibrated, np.r_[own, own - ref])
+    assert np.max(np.abs(dctr.features(path) - own)) > .001
