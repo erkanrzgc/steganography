@@ -1,5 +1,15 @@
 # Changelog
 
+- Run the conditional noise Markov WAV study on the sixteen failing cells:
+  - Masked small-noise pair/triple transitions on difference and lifting-
+    denoiser residuals (4,716 features), eight fixed candidates per cell.
+  - All sixteen calibration choices stay below .80 (ESC 63.19–68.22%,
+    AudioMNIST 59.00 /62.00%, FSDD 51.4–54.0%); no new test inference.
+  - The preserved drafts gained a matching auditor and parent, a generated
+    end-to-end rehearsal and a write-intercepted source dry run before launch.
+    Audit replays 128 records and 768 predictions; 438.74 /3,600 seconds.
+    See `docs/WAV_CONDITIONAL_MOM_RESULTS_20261117.md`.
+
 - Correct DCTR reference parity and fit full reference JPEG features:
   - `research/dctr_features.py` now uses sealwatch-matching half-away rounding
     by default; explicit `rounding="legacy"` reproduces historical caches.
