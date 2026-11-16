@@ -70,6 +70,7 @@ aggregate bounds only. See the [source audit and remaining-floor results](REMAIN
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 70.75% (miss) | .784427 | same new kernel family; regression retained |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 77.70% (miss) | .853915 | compact coefficient relations /DCTR fixed 1:1 score mixture; further adaptive |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 77.85% (miss) | .864762 | fresh joint-kernel /prior 75:25 score mixture; further adaptive |
+| nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | **80.85%** | .894063 | reference DCTR + full JRM, 51-learner FLD ensemble; further adaptive |
 
 WAV, rule, network and video results follow in their sections. Four academic
 spatial methods retain above-80% point results/bounds at 0.4 bpp after the
@@ -78,8 +79,9 @@ and WOW's conservative 80.280280–80.380380% bounds. WOW's exact clean metric
 is unavailable. Unknown-payload gray LSB now passes all eight cells, with
 higher false alarms and stronger-payload regressions reported. OpenStego
 .1 bpp rises from 79.75 to **87.75%**, AUC .954325, on the same 100 test
-parents, with TPR 88.0% /FPR 12.5%. The new nsF5
-and WAV studies retain their misses and negative results. EBS remains
+parents, with TPR 88.0% /FPR 12.5%. nsF5 .1 bpnzac reaches **80.85%**
+(95% 79.35–82.40%) with reference DCTR/JRM features; nsF5 .05 and the WAV
+studies retain their misses and negative results. EBS remains
 unavailable. Repeated historical evaluation limits independent confirmation;
 **the overall 80%-per-method goal is not met at all reported payloads**.
 
@@ -430,6 +432,17 @@ subsets score 76.833333 /74.333333%; cohort composition and earlier adaptive
 development are not isolated causes. All old results, source/control failures
 and unused consumed allowances remain separate. Independent audits replay
 153 calibration records, 136 numeric predictions and eight training equations.
+
+### Reference DCTR and full JRM features
+
+The [reference-feature study](JPEG_REFERENCE_FEATURES_RESULTS_20261116.md)
+first corrects DCTR rounding to match sealwatch (explicit legacy mode retained),
+then fits eight fixed candidates per payload on corrected DCTR plus all 11,255
+JRM features. At .1 bpnzac, calibration selects a 51-learner FLD ensemble
+(82.50%); one frozen historical inference gives **80.85%**, AUC .894063,
+TPR/FPR 76.0 /14.3%, 1,617/2,000 correct. Its paired change versus 77.85% is
++3.00 points (95% +1.50 to +4.50); the BA interval 79.35–82.40% still crosses
+80%. nsF5 .05 calibrates at 65.75% and receives no new test inference.
 
 ## WAV 16-bit LSB (`research/wav_lsb_features.py`)
 
