@@ -444,6 +444,15 @@ TPR/FPR 76.0 /14.3%, 1,617/2,000 correct. Its paired change versus 77.85% is
 +3.00 points (95% +1.50 to +4.50); the BA interval 79.35–82.40% still crosses
 80%. nsF5 .05 calibrates at 65.75% and receives no new test inference.
 
+### Conditional noise Markov WAV features
+
+The [conditional noise Markov study](WAV_CONDITIONAL_MOM_RESULTS_20261117.md)
+fits eight fixed candidates for each of the sixteen failing dedicated WAV
+conditions on masked small-noise pair/triple transitions (4,716 features).
+All sixteen stay below the .80 calibration gate (ESC 63.19–68.22%, AudioMNIST
+59.00 /62.00%, FSDD 51.4–54.0%), so no new test inference is made. Earlier
+measured WAV misses are unchanged.
+
 ## WAV 16-bit LSB (`research/wav_lsb_features.py`)
 
 - **Features**:
