@@ -2349,3 +2349,19 @@ is generated-only; no raw WAV feature bank, attempt marker or classifier fit
 exists in `.benchmark/wav-conditional-mom-20261116/`. Its private runner and
 auditor are unexecuted drafts and two generated audits are marked invalid;
 complete the numeric/source preflight and closing before any launch.
+
+On 2026-11-17 the drafts are preserved; new `runner.py` (draft plus a
+generated 300-vs-300 /d_sub-1,000 ensemble check), a matching `audit.py` and
+`parent.py` are written. Generated preflight passes; a scratchpad end-to-end
+rehearsal on generated WAVs passes both measured and calibration-gated paths
+(16 records, 118 predictions); a write-intercepted real-source `prepare` dry
+run verifies 5,670 input hashes and all roles. A private two-fit-clip size
+probe (`.benchmark/wav-conditional-mom-size-probe-20261117/`) projects ~39 MB
+train features; FSDD q1 first-difference valid-pair fraction is 0 on probed
+clips. The exclusive parent was then launched once and is now closed verified:
+408.74 s, 438.74 /3,600 s with 30 prior seconds, 116,304,461 bytes /512 MiB,
+largest summed sampled RSS 0.80 GiB. All sixteen calibration choices miss .80
+(ESC 63.19–68.22%, AudioMNIST 59.00 /62.00%, FSDD 51.4–54.0%), so every cell
+is `not_evaluated_calibration_gate` with no new test features. The audit
+replays 128 records, 768 predictions (max 4.366e-11) and three descriptors.
+See `docs/WAV_CONDITIONAL_MOM_RESULTS_20261117.md`; never relaunch it.
