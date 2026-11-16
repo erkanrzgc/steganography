@@ -1,5 +1,21 @@
 # Changelog
 
+- Correct DCTR reference parity and fit full reference JPEG features:
+  - `research/dctr_features.py` now uses sealwatch-matching half-away rounding
+    by default; explicit `rounding="legacy"` reproduces historical caches.
+    Two fit covers differed in 213 /209 bins; corrected maximum error is
+    2.972e-8. Fresh full QA passes 4,651 tests /two CUDA skips, 97.42%.
+  - Corrected DCTR plus all 11,255 JRM features feed eight fixed candidates
+    per payload, selected on calibration only. nsF5 .1 bpnzac reaches
+    **80.85%**, AUC .894063, with a 51-learner FLD ensemble: +3.00 points
+    versus 77.85% (95% +1.50 to +4.50); BA interval 79.35–82.40% on the
+    reused historical test. nsF5 .05 calibrates at 65.75% and is not tested.
+  - Preserve the stopped data-only parent and three preparation failures;
+    the completion reuses 480 verified rows and closes at 5,029.14 /7,200
+    seconds, 646 MB combined output. Independent audit replays 16 records
+    and 118 predictions. No GPU, download, deployment or 80% floor claim.
+    See `docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md`.
+
 - Run the user's fresh retry on existing private data, preserving prior attempts:
   - Thirty new joint DCTR/coefficient kernel/paired-bootstrap candidates and
     112 frozen WAV score systems select only on calibration before global
