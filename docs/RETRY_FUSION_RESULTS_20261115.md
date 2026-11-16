@@ -12,6 +12,9 @@ independent replays and resource closeouts. [Earlier cause measurements](LOW_SIG
 remain unchanged. These are private research models, with no deployment,
 download, GPU, native-role change or locked ALASKA2 access.
 
+A later [reference-feature study](JPEG_REFERENCE_FEATURES_RESULTS_20261116.md)
+reaches 80.85% at nsF5 .1; the results below are unchanged records.
+
 ## New JPEG models trained across both representations
 
 The [fusion protocol](RETRY_FUSION_PROTOCOL_20261115.md) joins cached square-root
