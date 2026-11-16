@@ -70,8 +70,31 @@ def _taps(weights: np.ndarray, shifted: list[np.ndarray]) -> np.ndarray:
     return out
 
 
-def from_coefficients(coefficients: np.ndarray, table: np.ndarray) -> np.ndarray:
-    """DCTR features of luminance DCT blocks quantised with ``table``."""
+def _quantize(values: np.ndarray, q: float, rounding: str) -> np.ndarray:
+    magnitude = np.abs(values) / q
+    if rounding == "legacy":
+        rounded = np.round(magnitude)
+    else:
+        # MATLAB rounds half away from zero. Near-half tolerance matches
+        # sealwatch 2024.12 and avoids platform-dependent filter roundoff.
+        lower = np.floor(magnitude)
+        fraction = magnitude - lower
+        upper = (fraction >= 0.5) | np.isclose(fraction, 0.5)
+        rounded = np.where(upper, np.ceil(magnitude), lower)
+    return np.minimum(rounded, T).astype(np.int64)
+
+
+def from_coefficients(
+    coefficients: np.ndarray, table: np.ndarray, *, rounding: str = "reference",
+) -> np.ndarray:
+    """DCTR features with reference half-away rounding.
+
+    ``rounding="legacy"`` preserves the former NumPy nearest-even features.
+    Historical feature caches/models require that explicit legacy setting;
+    changing feature arithmetic requires a freshly fitted model.
+    """
+    if rounding not in ("reference", "legacy"):
+        raise ValueError("rounding must be reference or legacy")
     if coefficients.ndim != 4 or coefficients.shape[0] * coefficients.shape[1] > MAX_BLOCKS:
         raise ValueError("bounded (rows, cols, 8, 8) coefficient blocks required")
     if min(coefficients.shape[:2]) < 2:
@@ -85,7 +108,7 @@ def from_coefficients(coefficients: np.ndarray, table: np.ndarray) -> np.ndarray
     out = np.zeros((8, 8, GROUPS, T + 1))
     for k in range(8):
         filtered = _taps(BASIS[k], [rows[:, t : h - 7 + t, :] for t in range(8)])
-        values = np.minimum(np.round(np.abs(filtered) / q), T).astype(np.int64)
+        values = _quantize(filtered, q, rounding)
         for n in range(8):
             out[k, n] = np.bincount((group * (T + 1) + values[n]).ravel(),
                                     minlength=GROUPS * (T + 1)).reshape(GROUPS, T + 1)
@@ -93,10 +116,11 @@ def from_coefficients(coefficients: np.ndarray, table: np.ndarray) -> np.ndarray
     return out.ravel().astype(np.float32)
 
 
-def features(path: Path | str) -> np.ndarray:
+def features(path: Path | str, *, rounding: str = "reference") -> np.ndarray:
     """DCTR features of a JPEG file's luminance component."""
     jpeg = jpeglib.read_dct(str(path))
-    return from_coefficients(np.asarray(jpeg.Y), np.asarray(jpeg.qt[jpeg.quant_tbl_no[0]]))
+    return from_coefficients(np.asarray(jpeg.Y), np.asarray(jpeg.qt[jpeg.quant_tbl_no[0]]),
+                             rounding=rounding)
 
 
 CALIBRATION_CROP = 4
@@ -116,10 +140,11 @@ def reference(coefficients: np.ndarray, table: np.ndarray) -> np.ndarray:
         return np.asarray(jpeglib.read_dct(str(path)).Y)
 
 
-def calibrated_features(path: Path | str) -> np.ndarray:
+def calibrated_features(path: Path | str, *, rounding: str = "reference") -> np.ndarray:
     """DCTR features followed by their difference from the calibration reference (16,000)."""
     jpeg = jpeglib.read_dct(str(path))
     coefficients = np.asarray(jpeg.Y)
     table = np.asarray(jpeg.qt[jpeg.quant_tbl_no[0]])
-    own = from_coefficients(coefficients, table)
-    return np.concatenate([own, own - from_coefficients(reference(coefficients, table), table)])
+    own = from_coefficients(coefficients, table, rounding=rounding)
+    ref = from_coefficients(reference(coefficients, table), table, rounding=rounding)
+    return np.concatenate([own, own - ref])
