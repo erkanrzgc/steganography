@@ -1,0 +1,514 @@
+{
+  "status": "closed_research_floor_not_met",
+  "date": "2026-11-17",
+  "target_balanced_accuracy": 0.8,
+  "all_conditions_pass": false,
+  "protocol": "docs/WAV_CONDITIONAL_MOM_PROTOCOL_20261116.md",
+  "private_evidence": ".benchmark/wav-conditional-mom-20261116",
+  "features": 4716,
+  "candidates_per_condition": 8,
+  "conditions": 16,
+  "selected": {
+    "esc50": {
+      "replacement-0.05": {
+        "name": "reference-ensemble500",
+        "calibration": {
+          "balanced_accuracy": 0.6444723618090452,
+          "auc": 0.7208403828186157,
+          "tpr": 0.6582914572864321,
+          "fpr": 0.3693467336683417,
+          "threshold": 0.0,
+          "true_negative": 251,
+          "true_positive": 262,
+          "total_decisions": 796
+        },
+        "model_sha256": "9dfaf8e7119eb2a750a6858cfbeabf47e2bfc893b8621e232a84233f22a644c4",
+        "eligible": true
+      },
+      "replacement-0.1": {
+        "name": "fisher0.03",
+        "calibration": {
+          "balanced_accuracy": 0.6469849246231156,
+          "auc": 0.7065983182242873,
+          "tpr": 0.550251256281407,
+          "fpr": 0.2562814070351759,
+          "threshold": 0.1680626066905857,
+          "true_negative": 296,
+          "true_positive": 219,
+          "total_decisions": 796
+        },
+        "model_sha256": "2b916b3fbebd27d9437114976313dc437ddc18eda717f20d1637868de75398f1",
+        "eligible": true
+      },
+      "matching-0.05": {
+        "name": "reference-ensemble500",
+        "calibration": {
+          "balanced_accuracy": 0.6319095477386935,
+          "auc": 0.707207520012121,
+          "tpr": 0.4623115577889447,
+          "fpr": 0.19849246231155782,
+          "threshold": 0.13725490196078433,
+          "true_negative": 319,
+          "true_positive": 184,
+          "total_decisions": 796
+        },
+        "model_sha256": "639c7c81c091aefb53783f39526d271c8fde8c8a64408ab4ff9fc7a75cd1866d",
+        "eligible": true
+      },
+      "matching-0.1": {
+        "name": "reference-ensemble500",
+        "calibration": {
+          "balanced_accuracy": 0.64321608040201,
+          "auc": 0.7200323224161006,
+          "tpr": 0.7336683417085427,
+          "fpr": 0.44723618090452266,
+          "threshold": -0.058823529411764705,
+          "true_negative": 220,
+          "true_positive": 292,
+          "total_decisions": 796
+        },
+        "model_sha256": "df3db4c8ad87abe8e8e2c2bc848b7d494b5916c989b9ad8fef242ff35eb97b36",
+        "eligible": true
+      },
+      "matching-0.2": {
+        "name": "reference-ensemble500",
+        "calibration": {
+          "balanced_accuracy": 0.6620603015075377,
+          "auc": 0.7477620514633468,
+          "tpr": 0.7211055276381909,
+          "fpr": 0.39698492462311563,
+          "threshold": -0.058823529411764705,
+          "true_negative": 240,
+          "true_positive": 287,
+          "total_decisions": 796
+        },
+        "model_sha256": "7dc7a608aec8b0a35de499842ed5e3446f067652439043615e04d705dc8eb4ca",
+        "eligible": true
+      },
+      "matching-0.4": {
+        "name": "reference-ensemble500",
+        "calibration": {
+          "balanced_accuracy": 0.6821608040201005,
+          "auc": 0.7679856569278554,
+          "tpr": 0.5804020100502513,
+          "fpr": 0.2160804020100503,
+          "threshold": 0.13725490196078433,
+          "true_negative": 312,
+          "true_positive": 231,
+          "total_decisions": 796
+        },
+        "model_sha256": "ba0b1d6fc5ff4a03bc625e499e023e8f85a8091843fffde904ded465ee9e288d",
+        "eligible": true
+      }
+    },
+    "audiomnist": {
+      "matching-0.05": {
+        "name": "standardized-svc",
+        "calibration": {
+          "balanced_accuracy": 0.5900000000000001,
+          "auc": 0.5626,
+          "tpr": 0.66,
+          "fpr": 0.48,
+          "threshold": 0.20668044021739618,
+          "true_negative": 52,
+          "true_positive": 66,
+          "total_decisions": 200
+        },
+        "model_sha256": "2b2e5a1faa369e7bb1c05df44b78be41ef469f5581b65cefd11061aa35608324",
+        "eligible": true
+      },
+      "matching-0.1": {
+        "name": "standardized-ridge",
+        "calibration": {
+          "balanced_accuracy": 0.62,
+          "auc": 0.6042,
+          "tpr": 0.58,
+          "fpr": 0.33999999999999997,
+          "threshold": 0.41359802171804994,
+          "true_negative": 66,
+          "true_positive": 58,
+          "total_decisions": 200
+        },
+        "model_sha256": "da36d468ccc3dd69fc388c87a59fa1bb40cf7e759bb0df82a1a7e59aefcad19e",
+        "eligible": true
+      }
+    },
+    "fsdd": {
+      "replacement-0.05": {
+        "name": "fisher0.03",
+        "calibration": {
+          "balanced_accuracy": 0.523,
+          "auc": 0.506786,
+          "tpr": 0.456,
+          "fpr": 0.41000000000000003,
+          "threshold": 0.20315404361235567,
+          "true_negative": 295,
+          "true_positive": 228,
+          "total_decisions": 1000
+        },
+        "model_sha256": "16c958d30189a782bd2d7969fe7dbade835d0ab6228faeb2640dcaaf4abd0d7f",
+        "eligible": true
+      },
+      "replacement-0.1": {
+        "name": "reference-ensemble1000",
+        "calibration": {
+          "balanced_accuracy": 0.523,
+          "auc": 0.509494,
+          "tpr": 0.796,
+          "fpr": 0.75,
+          "threshold": -0.13725490196078433,
+          "true_negative": 125,
+          "true_positive": 398,
+          "total_decisions": 1000
+        },
+        "model_sha256": "bc17a71c2e78760b5f548f054bbd97b7ac9669351d45dddc60c5d060c06a3d06",
+        "eligible": true
+      },
+      "replacement-0.2": {
+        "name": "reference-ensemble1000",
+        "calibration": {
+          "balanced_accuracy": 0.519,
+          "auc": 0.505488,
+          "tpr": 0.83,
+          "fpr": 0.792,
+          "threshold": -0.09803921568627451,
+          "true_negative": 104,
+          "true_positive": 415,
+          "total_decisions": 1000
+        },
+        "model_sha256": "2c2dc2b47d173901f9281babdc08719a761e674e7d0335b750df6840acf5aa00",
+        "eligible": true
+      },
+      "replacement-0.4": {
+        "name": "standardized-svc",
+        "calibration": {
+          "balanced_accuracy": 0.521,
+          "auc": 0.52181,
+          "tpr": 0.244,
+          "fpr": 0.20199999999999996,
+          "threshold": 0.008562974287334641,
+          "true_negative": 399,
+          "true_positive": 122,
+          "total_decisions": 1000
+        },
+        "model_sha256": "01e9a4b8b8ff919d244d035230801395226a984cfb04626b8f79fcf2bb478bb4",
+        "eligible": true
+      },
+      "matching-0.05": {
+        "name": "fisher0.3",
+        "calibration": {
+          "balanced_accuracy": 0.514,
+          "auc": 0.503802,
+          "tpr": 0.174,
+          "fpr": 0.14600000000000002,
+          "threshold": 1.446598208624461,
+          "true_negative": 427,
+          "true_positive": 87,
+          "total_decisions": 1000
+        },
+        "model_sha256": "84de21c6ff7419ee9bc4838fa29e8879bae3d5d60ada4f611aaff13518a3c3c2",
+        "eligible": true
+      },
+      "matching-0.1": {
+        "name": "plain-ridge",
+        "calibration": {
+          "balanced_accuracy": 0.53,
+          "auc": 0.51392,
+          "tpr": 0.492,
+          "fpr": 0.43200000000000005,
+          "threshold": 0.03763740765305412,
+          "true_negative": 284,
+          "true_positive": 246,
+          "total_decisions": 1000
+        },
+        "model_sha256": "6701791797d449c0a6274aef2150a2b9009aa93bb19062efffa320731760d410",
+        "eligible": true
+      },
+      "matching-0.2": {
+        "name": "fisher0.3",
+        "calibration": {
+          "balanced_accuracy": 0.53,
+          "auc": 0.507468,
+          "tpr": 0.342,
+          "fpr": 0.28200000000000003,
+          "threshold": 2.984987228651903,
+          "true_negative": 359,
+          "true_positive": 171,
+          "total_decisions": 1000
+        },
+        "model_sha256": "e867c6c73ee10ff0bf1ce1c30a57a69e49ccbd4338f2fc2770e34bd12059f845",
+        "eligible": true
+      },
+      "matching-0.4": {
+        "name": "reference-ensemble500",
+        "calibration": {
+          "balanced_accuracy": 0.54,
+          "auc": 0.535446,
+          "tpr": 0.35,
+          "fpr": 0.27,
+          "threshold": 0.17647058823529413,
+          "true_negative": 365,
+          "true_positive": 175,
+          "total_decisions": 1000
+        },
+        "model_sha256": "c43af22d9b1560c5f95aeeb09c4d35a6763ecf621116720c48596ddb00413150",
+        "eligible": true
+      }
+    }
+  },
+  "new_test_inference": false,
+  "preflight": {
+    "status": "passed",
+    "generated_features": {
+      "integer_lifting_roundtrip_odd_even": true,
+      "zero_threshold_exact": true,
+      "scalar_masked_joint_and_conditional_counts": true,
+      "outlier_and_empty_prefix_guards": true,
+      "finite_deterministic_complete_features": true
+    },
+    "numeric_classifier_exports": true,
+    "small_sample_high_dimension_ensemble": true,
+    "scaler_cast_order": true,
+    "no_actual_media_reads": true,
+    "no_actual_classifier_fits": true,
+    "versions": {
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.9.1",
+      "soundfile": "0.14.0",
+      "sealwatch": "2024.12"
+    }
+  },
+  "size_probe": {
+    "esc50": {
+      "seconds_per_source": 0.20654593300014312,
+      "compressed_bytes_per_source": 13244.0,
+      "projected_train_bytes": 21163912.0,
+      "projected_one_worker_seconds": 330.0604009342287,
+      "zero_fraction": 0.7997394886707864,
+      "raw_bytes_per_source": 132048,
+      "valid_pair_fraction_q1_diff": 0.9357771873474121
+    },
+    "audiomnist": {
+      "seconds_per_source": 0.009253515499949572,
+      "compressed_bytes_per_source": 34999.0,
+      "projected_train_bytes": 13999600.0,
+      "projected_one_worker_seconds": 3.7014061999798287,
+      "zero_fraction": 0.05908962397512016,
+      "raw_bytes_per_source": 56592,
+      "valid_pair_fraction_q1_diff": 0.4343867301940918
+    },
+    "fsdd": {
+      "seconds_per_source": 0.00603581700011091,
+      "compressed_bytes_per_source": 2232.0,
+      "projected_train_bytes": 3348000.0,
+      "projected_one_worker_seconds": 9.053725500166365,
+      "zero_fraction": 0.9692889454339836,
+      "raw_bytes_per_source": 169776,
+      "valid_pair_fraction_q1_diff": 0.0
+    },
+    "projected_total_train_bytes": 38511512.0,
+    "fit_clips_only": true,
+    "actual_classifier_fits": 0,
+    "test_reads": 0
+  },
+  "independent_audit": {
+    "status": "passed",
+    "calibration_records_replayed": 128,
+    "selected_test_cells_replayed": 0,
+    "calibration_gate_exclusions": [
+      "esc50/replacement-0.05",
+      "esc50/replacement-0.1",
+      "esc50/matching-0.05",
+      "esc50/matching-0.1",
+      "esc50/matching-0.2",
+      "esc50/matching-0.4",
+      "audiomnist/matching-0.05",
+      "audiomnist/matching-0.1",
+      "fsdd/replacement-0.05",
+      "fsdd/replacement-0.1",
+      "fsdd/replacement-0.2",
+      "fsdd/replacement-0.4",
+      "fsdd/matching-0.05",
+      "fsdd/matching-0.1",
+      "fsdd/matching-0.2",
+      "fsdd/matching-0.4"
+    ],
+    "independent_predictions": 768,
+    "maximum_prediction_error": 4.3655745685100555e-11,
+    "actual_calibration_descriptor_replays": [
+      "esc50/1200",
+      "audiomnist/400",
+      "fsdd/100"
+    ],
+    "all_570_source_hashes_verify": true,
+    "elapsed_seconds": 12.833398092000152
+  },
+  "stages": {
+    "compare-audiomnist": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 10.072798998000053,
+      "watchdog_seconds": 300,
+      "summed_sampled_rss_peak_bytes": 337354752,
+      "wait4_process_rss_peak_bytes": 337354752,
+      "completed_unix": 1794866478.1728318
+    },
+    "compare-esc50": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 68.37933247599995,
+      "watchdog_seconds": 1200,
+      "summed_sampled_rss_peak_bytes": 856891392,
+      "wait4_process_rss_peak_bytes": 859250688,
+      "completed_unix": 1794866468.0982296
+    },
+    "compare-fsdd": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 73.15455329399992,
+      "watchdog_seconds": 900,
+      "summed_sampled_rss_peak_bytes": 813158400,
+      "wait4_process_rss_peak_bytes": 841818112,
+      "completed_unix": 1794866551.3284686
+    },
+    "evaluate-audiomnist": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 2.021367045000261,
+      "watchdog_seconds": 120,
+      "summed_sampled_rss_peak_bytes": 200941568,
+      "wait4_process_rss_peak_bytes": 213135360,
+      "completed_unix": 1794866563.9620242
+    },
+    "evaluate-esc50": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 2.5242228540000724,
+      "watchdog_seconds": 120,
+      "summed_sampled_rss_peak_bytes": 373223424,
+      "wait4_process_rss_peak_bytes": 410054656,
+      "completed_unix": 1794866561.9394102
+    },
+    "evaluate-fsdd": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 2.525666875999832,
+      "watchdog_seconds": 120,
+      "summed_sampled_rss_peak_bytes": 222011392,
+      "wait4_process_rss_peak_bytes": 453582848,
+      "completed_unix": 1794866566.4886208
+    },
+    "freeze-choice": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 2.020559990000038,
+      "watchdog_seconds": 30,
+      "summed_sampled_rss_peak_bytes": 187428864,
+      "wait4_process_rss_peak_bytes": 187559936,
+      "completed_unix": 1794866553.350832
+    },
+    "independent-audit": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 14.162147734999962,
+      "watchdog_seconds": 600,
+      "summed_sampled_rss_peak_bytes": 596099072,
+      "wait4_process_rss_peak_bytes": 633737216,
+      "completed_unix": 1794866580.6521068
+    },
+    "prepare": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 4.010320450999643,
+      "watchdog_seconds": 120,
+      "summed_sampled_rss_peak_bytes": 191348736,
+      "wait4_process_rss_peak_bytes": 191348736,
+      "completed_unix": 1794866175.9190826
+    },
+    "test-features-audiomnist": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 2.019538723000096,
+      "watchdog_seconds": 120,
+      "summed_sampled_rss_peak_bytes": 187465728,
+      "wait4_process_rss_peak_bytes": 187465728,
+      "completed_unix": 1794866557.3921344
+    },
+    "test-features-esc50": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 2.0194864340001004,
+      "watchdog_seconds": 600,
+      "summed_sampled_rss_peak_bytes": 187355136,
+      "wait4_process_rss_peak_bytes": 187355136,
+      "completed_unix": 1794866555.371319
+    },
+    "test-features-fsdd": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 2.021136340999874,
+      "watchdog_seconds": 300,
+      "summed_sampled_rss_peak_bytes": 186957824,
+      "wait4_process_rss_peak_bytes": 186957824,
+      "completed_unix": 1794866559.4142802
+    },
+    "train-features-audiomnist": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 6.030882864999967,
+      "watchdog_seconds": 300,
+      "summed_sampled_rss_peak_bytes": 475873280,
+      "wait4_process_rss_peak_bytes": 195895296,
+      "completed_unix": 1794866388.6556332
+    },
+    "train-features-esc50": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 206.7016675140003,
+      "watchdog_seconds": 900,
+      "summed_sampled_rss_peak_bytes": 507191296,
+      "wait4_process_rss_peak_bytes": 210952192,
+      "completed_unix": 1794866382.6220326
+    },
+    "train-features-fsdd": {
+      "exit_code": 0,
+      "termination_reason": null,
+      "elapsed_seconds": 11.060551873999884,
+      "watchdog_seconds": 300,
+      "summed_sampled_rss_peak_bytes": 492544000,
+      "wait4_process_rss_peak_bytes": 216260608,
+      "completed_unix": 1794866399.7181075
+    }
+  },
+  "closing": {
+    "status": "closed_verified",
+    "elapsed_seconds": 408.74481779200005,
+    "prior_preparation_debit_seconds": 30,
+    "cumulative_seconds": 438.74481779200005,
+    "total_cap_seconds": 3600,
+    "output_bytes": 116304461,
+    "raw_media_or_gram_persisted": false,
+    "closed_unix": 1794866580.6605575
+  },
+  "closing_sha256": "aca0b3f903524dace9ec36b5dd1ac1ff927b8f18e46677c6e773dac8209fb9d0",
+  "source_freeze_sha256": "38e8dfa226c50e545e1c5cf48d1986a0da9a62758e10d79848368296fe44e9a2",
+  "choice_freeze_sha256": "61cf33e2597c98e7b59ba46f08f42147fafd8dc5f7e1c14c19592ac98f8bb117",
+  "software_gate": {
+    "tests_passed": 4651,
+    "explicit_cuda_skips": 2,
+    "coverage_percent": 97.41688424717145,
+    "unchanged_bound_inputs": 570,
+    "new_full_suite_run": false
+  },
+  "preserved_drafts": [
+    "runner.preparation-draft.py",
+    "audit.preparation-draft.py",
+    "audit-first-generated.invalid.txt",
+    "audit-second-generated.invalid.txt"
+  ],
+  "historical_test_adaptive": true,
+  "deployment": false,
+  "gpu": false,
+  "download": false
+}
