@@ -1,10 +1,9 @@
 # Conditional noise Markov intervention (2026-11-16)
 
-**Preparation only:** generated feature controls pass. No
-actual WAV feature bank, classifier fit or attempt marker exists.
-The private runner/auditor remain unexecuted drafts and
-are not approved launch sources. A complete numeric/source preflight
-and independent closing implementation are still required before launch.
+**Closed 2026-11-17:** all sixteen conditions stay below the .80
+calibration gate; no new test inference. See the
+[results](WAV_CONDITIONAL_MOM_RESULTS_20261117.md). The original drafts are
+preserved; the launched runner/auditor/parent were completed before launch.
 
 The user's current fix instruction permits a separate fresh CPU WAV hypothesis
 on existing admitted clips. Preparation is generated-only while the JPEG
