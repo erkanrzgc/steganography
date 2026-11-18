@@ -1,5 +1,14 @@
 # Changelog
 
+- Test AudioMNIST matching 5/10% with the full opened-speaker corpus (2026-11-18):
+  - The approved download of the pinned commit extracts only the 30 opened
+    speakers (15,000 clips); all 600 earlier files match by hash, and the 30
+    reserved speakers are not extracted or decoded.
+  - Three fixed candidates fit on 7,500 pairs. The best calibration BA is
+    63.88/75.54% (joint compact plus noise-Markov trees), and the learning curve is flat.
+    Both fail the .80 gate; no test features. The earlier data-limited
+    diagnosis is withdrawn. See `docs/AUDIOMNIST_FULL_RESULTS_20261118.md`.
+
 - Narrow the 80% target scope by user decision (2026-11-18): nsF5 is targeted at
   0.1 bpnzac (80.85%) and FSDD is excluded as cover-limited. A fit/calibration
   learning curve gives 60.1/64.6/66.2% at 600/1,200/2,400 nsF5 .05 pairs, about
