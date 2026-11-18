@@ -20,6 +20,8 @@ instructions so that implementation readiness is not mistaken for accuracy.
 - [Current research status](STATUS.md): completed experiments, unavailable checks, and deployment limits.
 - [Method/payload progress](DETECTION_EXPANSION_20261111.md): the 80% target,
   measured test points, source corrections and remaining misses.
+- [AudioMNIST full corpus](AUDIOMNIST_FULL_RESULTS_20261118.md): 7,500 fit pairs
+  leave matching 5/10% below the calibration gate; reserved speakers stay closed.
 - [Latest low-payload handoff](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md):
   closed JPEG calibration miss, stopped WAV test features and approval-gated resume.
 - [Native AudioMNIST results](WAV_PAIR_NATIVE_RESULTS_20261023.md): both seeds completed;
