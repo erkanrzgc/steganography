@@ -1,4 +1,4 @@
-# Detection expansion toward 80% per method (CPU, 2026-11-11–15)
+# Detection expansion toward 80% per method (CPU, 2026-11-11–17)
 
 Goal set by the user: every steganography method should reach at least 80%
 balanced accuracy on data never used in training, at a stated payload.
@@ -452,6 +452,33 @@ conditions on masked small-noise pair/triple transitions (4,716 features).
 All sixteen stay below the .80 calibration gate (ESC 63.19–68.22%, AudioMNIST
 59.00 /62.00%, FSDD 51.4–54.0%), so no new test inference is made. Earlier
 measured WAV misses are unchanged.
+
+### Low-payload CC-JRM and compact WAV continuation (2026-11-17)
+
+The [continuation closeout](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md)
+reuses interrupted JPEG checkpoints and completes a fixed five-candidate
+CC-JRM comparison at nsF5 .05 bpnzac. Its best calibration BA is **66.17%**,
+below .80; no new JPEG test inference occurred. The compact 16-feature WAV
+comparison freezes three candidates per failing cell: ESC's six calibration
+choices reach **83.42–96.86%**, AudioMNIST matching 5/10% reaches 64/73%, and
+FSDD stays at 51.4–64%. WAV stops at its 1,800-second cap while building ESC
+test features: 32/402 source rows by checkpoint metadata, no test scores.
+JPEG's numeric audit and WAV's calibration-only audit pass; the partial test
+binary and full WAV test audit remain unverified. **These are calibration
+outcomes, not additions to the test table or resolved historical misses.**
+Keep the stopped attempt intact; any missing-row-only WAV resume needs
+explicit approval and frozen model/threshold/seed reuse, not a fresh fit.
+
+### Approved ESC-50 test resume (2026-11-18)
+
+The approved [resume](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md#approved-esc-50-test-resume-2026-11-18)
+reuses the frozen compact-WAV choices, replays the partial checkpoint exactly
+and completes the 402-clip ESC test; the unchanged WAV auditor passes. On this
+historical (adaptive) test all six ESC cells pass: replacement 5/10%
+**95.27/96.77%**, matching 5/10/20/40% **82.59/83.83/87.31/88.68%** (AUC
+.936–.997; matching 5% interval 79.7–85.4% crosses 80). These replace the
+earlier ESC misses (73.13/78.36% and 65.17–69.40%), which stay recorded above.
+AudioMNIST matching 5/10% and FSDD remain calibration-gate exclusions.
 
 ## WAV 16-bit LSB (`research/wav_lsb_features.py`)
 
