@@ -8,6 +8,13 @@ except spatial v3 (out-of-fold training scores) and the cached kernel follow-ups
 (separate calibration scores). Audio, video and rules use the operating points stated in their
 sections. Repeated test access is flagged below.
 
+**Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac
+(80.85%), and FSDD is excluded from the 80% target. The nsF5 .05
+[learning curve](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md#nsf5-05-learning-curve-2026-11-18)
+predicts about 69% even with all BOSS fit sources. FSDD is cover-limited:
+loud, silence-trimmed 8 kHz speech whose noise floor is far above ±1 changes.
+Both stay reported below as out-of-scope misses; neither counts as a pass.
+
 ## Results against the 80% target
 
 **2026-11-15 source correction:** the historical 1,000-source BOSS split
@@ -83,7 +90,8 @@ parents, with TPR 88.0% /FPR 12.5%. nsF5 .1 bpnzac reaches **80.85%**
 (95% 79.35–82.40%) with reference DCTR/JRM features; nsF5 .05 and the WAV
 studies retain their misses and negative results. EBS remains
 unavailable. Repeated historical evaluation limits independent confirmation;
-**the overall 80%-per-method goal is not met at all reported payloads**.
+**the overall 80%-per-method goal is not met at all reported payloads**. Within
+the 2026-11-18 scope, AudioMNIST matching 5/10% and EBS remain the open gaps.
 
 ## Gray LSB on BOSSbase (`research/srm_features.py`)
 
