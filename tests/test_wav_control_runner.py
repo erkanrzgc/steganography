@@ -239,6 +239,8 @@ def test_cuda_runtime_enforces_fp32_determinism_and_allocator(monkeypatch):
     )
     monkeypatch.setitem(sys.modules, "torch", fake)
     monkeypatch.setenv("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+    # The frozen runner pins numpy 2.4.6; CI may resolve a newer numpy.
+    monkeypatch.setattr(runner.np, "__version__", "2.4.6")
     assert runner.cuda_runtime() is fake
     assert (0.5, 0) in calls and backend.cudnn.deterministic
     assert not backend.cuda.matmul.allow_tf32 and not backend.cudnn.allow_tf32
