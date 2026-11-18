@@ -17,6 +17,12 @@ historical.
 (80.85%) after the .05 learning curve predicted only about 69% with all BOSS
 fit sources. FSDD is excluded as cover-limited. Both remain reported misses
 outside the scope; the open in-scope gaps are AudioMNIST matching 5/10% and EBS.
+
+**AudioMNIST full corpus (2026-11-18):** 7,500 fit/2,500 calibration pairs from
+the 30 opened speakers lift matching 5/10% only to 63.88/75.54% calibration
+BA, below the .80 gate; no test features were built. See the
+[results](AUDIOMNIST_FULL_RESULTS_20261118.md). The cells are signal-limited
+for the current features; the 30 reserved speakers stay closed.
 The [method/payload progress table](DETECTION_EXPANSION_20261111.md) retains
 all historical misses, regressions and source/adaptive-test limitations.
 
