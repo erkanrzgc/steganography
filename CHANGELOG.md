@@ -1,5 +1,32 @@
 # Changelog
 
+- Complete the approved ESC-50 WAV test resume (2026-11-18):
+  - The stopped attempt spent its cap re-hashing 6,183 bound sources about
+    twelve times per test row. A private resume verifies once before and after,
+    replays the 32-row partial checkpoint exactly and adds the 370 missing rows
+    in 160.53 seconds without refitting; the stopped receipt is preserved.
+  - All six ESC cells pass on the historical adaptive test: replacement 5/10%
+    95.27/96.77%, matching 5/10/20/40% 82.59/83.83/87.31/88.68% (matching 5%
+    interval crosses 80). The unchanged WAV auditor passes (324 predictions).
+  - AudioMNIST matching 5/10%, all eight FSDD cells and nsF5 .05 still miss.
+
+- Close out the private low-payload continuation (2026-11-17):
+  - Recovered CC-JRM reuses seven verified checkpoints /224 source pairs and
+    completes 3,000 fit/calibration pairs. Five candidates select `all-1000`
+    at calibration BA 66.17%; the .80 gate prevents new JPEG test inference.
+  - Compact LPC/weighted-stego WAV freezes sixteen choices /48 candidates.
+    ESC's six calibration cells reach 83.42–96.86%, but the attempt stops at
+    1,800.507 seconds during test features (32/402 rows by metadata, no scores).
+    AudioMNIST matching 5/10% and all eight FSDD cells remain calibration misses.
+  - JPEG numeric audit and WAV calibration-only audit pass; the latter does
+    not validate the partial test binary or complete WAV's test audit. Preserve
+    interrupted/precheck/regression evidence, unknown earlier JPEG runtime and
+    13 strict private-script style findings. Recorded targeted checks: 38 passes.
+  - Update persistent memory, status, roadmap and progress links without
+    changing application sources, launching experiments, committing or pushing.
+    See `docs/LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md` and its receipt;
+    explicit approval is required before a separate bounded WAV resume.
+
 - Run the conditional noise Markov WAV study on the sixteen failing cells:
   - Masked small-noise pair/triple transitions on difference and lifting-
     denoiser residuals (4,716 features), eight fixed candidates per cell.
