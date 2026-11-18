@@ -147,10 +147,12 @@ Diagnosis of the remaining misses (fit covers, 2026-11-18):
 - AudioMNIST matching 5/10: data-limited. Only 600 clips exist locally
   (300 fit/100 calibration/200 test) of the 30,000-clip corpus; a 100-pair
   calibration BA varies by about ±6 points. Downloading more needs approval.
-- nsF5 .05: likely training-limited. DCTR+JRM fit/calibration uses 3,000 of
-  BOSS's 10,000 images for ~30k-dimensional features. More BOSS sources were
-  tried only with a coefficient-only .1 model (75.33% calibration, no gain);
-  rich features with the unused sources remain untested.
+- nsF5 .05: more BOSS data will not reach 80%. A fit/calibration learning
+  curve (2026-11-18) gives 60.1/64.6/66.2% at 600/1,200/2,400 pairs, about
+  +1.6 points per doubling, so all ~7,500 BOSS fit sources would give ~69%.
+  The rich-feature extraction was not launched. Options are to accept it as a
+  documented miss, set nsF5's target payload at .1 (80.85%), or try a
+  Colab-run CNN; the user decides.
 
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
