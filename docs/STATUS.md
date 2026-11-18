@@ -13,10 +13,18 @@ AudioMNIST matching 5/10% (data-limited), FSDD (cover-limited) and nsF5 .05
 remain misses. No detector deployment follows. The 2026-11-17 text below is
 historical.
 
+**EBS (2026-11-18):** the earlier "invalid simulator" record came from
+conseal sizing the EBS message by all DCT coefficients instead of nonzero AC.
+With the unchanged EBS cost and n = nzAC (8.46% of test nzAC changed), the
+calibration-selected DCTR ridge reaches **93.30%** test BA (95% 92.20–94.30%,
+AUC .979) on the first EBS look at the historical 1,000-pair test. See the
+[EBS results](EBS_RESULTS_20261118.md).
+
 **Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac
 (80.85%) after the .05 learning curve predicted only about 69% with all BOSS
 fit sources. FSDD is excluded as cover-limited. Both remain reported misses
-outside the scope; the open in-scope gaps are AudioMNIST matching 5/10% and EBS.
+outside the scope; after the EBS result the only open in-scope gap is
+AudioMNIST matching 5/10%.
 
 **AudioMNIST full corpus (2026-11-18):** 7,500 fit/2,500 calibration pairs from
 the 30 opened speakers lift matching 5/10% only to 63.88/75.54% calibration
