@@ -1,5 +1,11 @@
 # Changelog
 
+- Narrow the 80% target scope by user decision (2026-11-18): nsF5 is targeted at
+  0.1 bpnzac (80.85%) and FSDD is excluded as cover-limited. A fit/calibration
+  learning curve gives 60.1/64.6/66.2% at 600/1,200/2,400 nsF5 .05 pairs, about
+  69% extrapolated with all BOSS fit sources, so no larger extraction ran. Both
+  stay reported misses; AudioMNIST matching 5/10% and EBS remain open.
+
 - Complete the approved ESC-50 WAV test resume (2026-11-18):
   - The stopped attempt spent its cap re-hashing 6,183 bound sources about
     twelve times per test row. A private resume verifies once before and after,
