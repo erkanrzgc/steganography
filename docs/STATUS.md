@@ -1,4 +1,59 @@
-# Implementation status — 2026-10-23
+# Implementation status — 2026-11-18
+
+## Current handoff
+
+**The 80%-balanced-accuracy-per-method target is still unmet.** On 2026-11-18
+the approved ESC-50 resume completed (160.53 s) and passed the full WAV audit:
+all six ESC cells pass on the historical adaptive test, replacement 5/10%
+95.27/96.77% and matching 5/10/20/40% 82.59/83.83/87.31/88.68% (matching 5%
+interval 79.7–85.4% crosses 80). The original stop came from re-hashing 6,183
+bound sources about twelve times per test row; see the
+[resume section](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md#approved-esc-50-test-resume-2026-11-18).
+AudioMNIST matching 5/10% (data-limited), FSDD (cover-limited) and nsF5 .05
+remain misses. No detector deployment follows. The 2026-11-17 text below is
+historical.
+The [method/payload progress table](DETECTION_EXPANSION_20261111.md) retains
+all historical misses, regressions and source/adaptive-test limitations.
+
+| Latest work | Verified outcome | Where development stopped |
+|---|---|---|
+| Reference DCTR/full JRM | nsF5 .1 bpnzac: test BA 80.85%; historical/adaptive, interval crosses 80% | Completed; explicit legacy rounding preserves old caches |
+| Conditional noise Markov WAV | All sixteen selected calibration cells below .80 | Closed negative comparison; no new test inference |
+| Recovered nsF5 CC-JRM, .05 bpnzac | Best calibration BA 66.17%; five candidates and numeric audit verified | Closed at .80 gate; no JPEG test features or scores |
+| Compact LPC/weighted-stego WAV | ESC's six calibration cells 83.42–96.86%; AudioMNIST matching 5/10% 64/73%; FSDD 51.4–64% | Stopped at wall cap during ESC test-feature construction; no test scores |
+
+Latest continuation evidence:
+[results and remaining work](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md),
+[numeric receipt](../benchmarks/low-payload-continuation-20261117.json).
+Earlier [reference JPEG results](JPEG_REFERENCE_FEATURES_RESULTS_20261116.md)
+and [conditional WAV results](WAV_CONDITIONAL_MOM_RESULTS_20261117.md) remain
+separate studies; their calibration metrics must not be mixed with test BA.
+
+WAV's supervisor closed with `wall_cap`, exit -9, after 1,800.506770371 s.
+All sixteen choices are frozen. Only the metadata for one ESC checkpoint
+confirms 32/402 source rows; its binary content is not validated by the partial
+calibration audit. Six ESC conditions are eligible; the other ten conditions
+fail calibration. Full WAV test audit and per-cell result receipts are absent.
+No local study-script process was found during this documentation closeout.
+
+**Next action requires explicit approval**, not a blind restart: verify the
+partial binary checkpoint, reuse frozen choices/models/thresholds/seeds, keep
+the stopped receipt, and use a separately bounded missing-test-rows-only resume.
+The current WAV runner is fresh-only. JPEG needs no restart. The
+[roadmap](ROADMAP.md) records these priorities; `core/` and `steganography/`
+remain frozen, local GPU work and locked ALASKA2 access remain forbidden.
+
+Verification scope: the latest study records 38 targeted passes and repository
+Ruff success, but 13 existing strict private-script style findings. Last full
+gate: 2026-11-16, 4,651 passed /two CUDA skips, 97.42% coverage. The final
+documentation-only checks are recorded in the continuation handoff section;
+no full application gate or experiment is rerun for this closeout.
+Local documentation remains uncommitted; no commit or push was requested.
+
+## Historical implementation status — 2026-10-23
+
+All entries below describe their dated studies and original permissions,
+not current running processes or authorization to resume them.
 
 The **explicitly approved native AudioMNIST standardized pair pilot completed**:
 both full seeds, **2,280 real optimizer updates /144,000 presentations**. It
