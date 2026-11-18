@@ -1,0 +1,209 @@
+{
+  "study": "audiomnist-full-20261118",
+  "date": "2026-11-18",
+  "status": "closed_calibration_gate",
+  "approval": "user explicitly approved the AudioMNIST download on 2026-11-18",
+  "source": {
+    "name": "AudioMNIST",
+    "commit": "630d7dab4c040882834de6fa21baf9a60372accd",
+    "license": "MIT",
+    "archive_sha256": "f0420069d684baff1688658d1ba53316f9b3f742a7d0ab2963a064c591f9c573",
+    "archive_bytes": 996621372,
+    "opened_speaker_groups": [
+      "01",
+      "05",
+      "06",
+      "07",
+      "08",
+      "10",
+      "12",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "21",
+      "23",
+      "24",
+      "26",
+      "30",
+      "32",
+      "33",
+      "34",
+      "35",
+      "38",
+      "39",
+      "40",
+      "42",
+      "43",
+      "53",
+      "54",
+      "56",
+      "57"
+    ],
+    "files_extracted": 15000,
+    "pilot_files_hash_verified": 600,
+    "reserved_members_not_extracted": 15000,
+    "reserved_speakers_decoded_or_analysed": false,
+    "archive_crc_check_read_all_members": true
+  },
+  "roles": {
+    "fit": {
+      "speakers": 15,
+      "clips": 7500
+    },
+    "calibration": {
+      "speakers": 5,
+      "clips": 2500
+    },
+    "test": {
+      "speakers": 10,
+      "clips": 5000
+    },
+    "grouping": "speaker, unchanged modular layout"
+  },
+  "old_rows_exact_feature_replay": 400,
+  "candidates": [
+    "compact-hgb",
+    "mom-fld",
+    "joint-hgb"
+  ],
+  "selection": "calibration BA, then AUC, then declared order",
+  "calibration_records": {
+    "matching-0.05": [
+      {
+        "name": "compact-hgb",
+        "balanced_accuracy": 0.6268,
+        "auc": 0.67524224,
+        "threshold": 0.5716935014789961,
+        "true_negative": 1507,
+        "true_positive": 1627,
+        "covers": 2500,
+        "stegos": 2500
+      },
+      {
+        "name": "mom-fld",
+        "balanced_accuracy": 0.515,
+        "auc": 0.51727384,
+        "threshold": -0.0196078431372549,
+        "true_negative": 953,
+        "true_positive": 1622,
+        "covers": 2500,
+        "stegos": 2500
+      },
+      {
+        "name": "joint-hgb",
+        "balanced_accuracy": 0.6388,
+        "auc": 0.68565104,
+        "threshold": 0.5785854381015412,
+        "true_negative": 1459,
+        "true_positive": 1735,
+        "covers": 2500,
+        "stegos": 2500
+      }
+    ],
+    "matching-0.1": [
+      {
+        "name": "compact-hgb",
+        "balanced_accuracy": 0.7414000000000001,
+        "auc": 0.81675488,
+        "threshold": 0.6469722176738131,
+        "true_negative": 1840,
+        "true_positive": 1867,
+        "covers": 2500,
+        "stegos": 2500
+      },
+      {
+        "name": "mom-fld",
+        "balanced_accuracy": 0.5676,
+        "auc": 0.58596696,
+        "threshold": 0.058823529411764705,
+        "true_negative": 1172,
+        "true_positive": 1666,
+        "covers": 2500,
+        "stegos": 2500
+      },
+      {
+        "name": "joint-hgb",
+        "balanced_accuracy": 0.7554000000000001,
+        "auc": 0.82703088,
+        "threshold": 0.6972122632939822,
+        "true_negative": 1849,
+        "true_positive": 1928,
+        "covers": 2500,
+        "stegos": 2500
+      }
+    ]
+  },
+  "selected": {
+    "matching-0.05": "joint-hgb",
+    "matching-0.1": "joint-hgb"
+  },
+  "learning_curve": [
+    {
+      "cell": "matching-0.05",
+      "name": "joint-hgb",
+      "fit_pairs": 300,
+      "balanced_accuracy": 0.6104,
+      "auc": 0.64461232
+    },
+    {
+      "cell": "matching-0.05",
+      "name": "joint-hgb",
+      "fit_pairs": 1500,
+      "balanced_accuracy": 0.628,
+      "auc": 0.66914944
+    },
+    {
+      "cell": "matching-0.05",
+      "name": "joint-hgb",
+      "fit_pairs": 3750,
+      "balanced_accuracy": 0.631,
+      "auc": 0.67831632
+    },
+    {
+      "cell": "matching-0.1",
+      "name": "joint-hgb",
+      "fit_pairs": 300,
+      "balanced_accuracy": 0.7404,
+      "auc": 0.8095055999999999
+    },
+    {
+      "cell": "matching-0.1",
+      "name": "joint-hgb",
+      "fit_pairs": 1500,
+      "balanced_accuracy": 0.753,
+      "auc": 0.8214424
+    },
+    {
+      "cell": "matching-0.1",
+      "name": "joint-hgb",
+      "fit_pairs": 3750,
+      "balanced_accuracy": 0.7576,
+      "auc": 0.8303751999999999
+    }
+  ],
+  "calibration_gate": 0.8,
+  "test_features_constructed": false,
+  "new_test_metrics": null,
+  "historical_test_unchanged": {
+    "matching-0.05": 0.565,
+    "matching-0.1": 0.595
+  },
+  "diagnosis": "signal-limited for current features; the earlier data-limited diagnosis is withdrawn",
+  "resources": {
+    "feature_seconds": 119.27,
+    "candidate_fit_seconds": 856,
+    "workers": 6,
+    "gpu": false
+  },
+  "hashes": {
+    "study_py": "d146873ce1d0c5e3f4949ed2f0f862e246a5ab165044fb76ea74dca1a72e9cd9",
+    "extract_py": "0f765e1e931560c788bdc2fbe50b7588f9eb13587e5a24038379de341c909a68",
+    "manifest_json": "c05184ae886811e3a539b2afc572fc755536850362cf8fc529ccdba948e4ca8e"
+  },
+  "checks": {
+    "study_unit_tests_passed": 4,
+    "extraction_member_and_header_validation": "passed"
+  }
+}
