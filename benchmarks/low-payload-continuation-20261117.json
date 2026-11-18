@@ -1,0 +1,414 @@
+{
+  "study": "low-payload-continuation-20261117",
+  "date": "2026-11-17",
+  "status": "closed_esc_resume_completed",
+  "repository_base_commit": "809d9ed",
+  "overall_80_percent_goal_met": false,
+  "application_sources_changed": false,
+  "downloads": false,
+  "gpu": false,
+  "deployment": false,
+  "locked_holdout_access": false,
+  "prior_evidence_preserved": true,
+  "automatic_retry": false,
+  "new_test_metrics": "esc50_resume_20261118",
+  "jpeg": {
+    "status": "closed_calibration_gate",
+    "payload_bpnzac": 0.05,
+    "fit_sources": 2400,
+    "calibration_sources": 600,
+    "reused_checkpoint_source_pairs": 224,
+    "reused_checkpoint_parts": 7,
+    "completed_checkpoint_source_pairs": 3000,
+    "completed_checkpoint_parts": 94,
+    "source_freeze_sha256": "7153c7a9e22b815279c9fa4bc9b4c45fbcd347407e54d37b0d9b789d8a4a48e3",
+    "candidates": ["ccjrm-1000", "ccjrm-2000", "all-1000", "all-2000", "all-3000"],
+    "model_seed": 2026111701,
+    "learners": 51,
+    "workers": 4,
+    "calibration_gate": 0.8,
+    "selected": {
+      "name": "all-1000",
+      "calibration": {
+        "balanced_accuracy": 0.6616666666666666,
+        "auc": 0.7056166666666667,
+        "tpr": 0.625,
+        "fpr": 0.30166666666666664,
+        "threshold": 0.13725490196078433,
+        "true_negative": 419,
+        "true_positive": 375,
+        "total_decisions": 1200
+      }
+    },
+    "candidate_calibration_metric_order": ["balanced_accuracy", "auc", "threshold", "true_negative", "true_positive", "total_decisions"],
+    "candidate_calibration": {
+      "ccjrm-1000": [0.6433333333333333, 0.6830472222222223, 0.13725490196078433, 407, 365, 1200],
+      "ccjrm-2000": [0.6408333333333334, 0.6737722222222222, 0.09803921568627451, 398, 371, 1200],
+      "all-1000": [0.6616666666666666, 0.7056166666666667, 0.13725490196078433, 419, 375, 1200],
+      "all-2000": [0.6583333333333333, 0.7010625, 0.09803921568627451, 418, 372, 1200],
+      "all-3000": [0.6341666666666667, 0.6846638888888888, -0.0196078431372549, 334, 427, 1200]
+    },
+    "result_status": "not_evaluated_calibration_gate",
+    "new_test_inference": false,
+    "historical_test_features_constructed": false,
+    "independent_audit": {
+      "status": "passed",
+      "calibration_records": 5,
+      "direct_predictions": 30,
+      "maximum_prediction_error": 0.0,
+      "selected_test_cells": 0,
+      "calibration_gate_exclusions": ["nsf5-0.05"],
+      "actual_calibration_descriptor_replays": [0, 5],
+      "elapsed_seconds": 17.95968305999986,
+      "auditor_sha256": "9f329d23beaa3ac1e2f4188102f68a6b5eae2a7a3b7e516ee7ee1556ec3732a1",
+      "all_source_bindings_verified": true
+    },
+    "resource_closeout": {
+      "status": "completed",
+      "exit_code": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 2174.9200611059996,
+      "peak_summed_sampled_rss_bytes": 3319660544,
+      "rss_samples": 4316,
+      "new_output_bytes_including_interrupted_chunks": 225774640,
+      "largest_output_file_bytes": 2425056,
+      "interrupted_attempt_elapsed_seconds": null,
+      "cumulative_compute_time_known": false,
+      "automatic_retry": false
+    },
+    "prior_uncheckpointed_logged_rows": 1000,
+    "prior_uncheckpointed_elapsed_seconds": null,
+    "interrupted_attempt_elapsed_seconds": null,
+    "cumulative_compute_time_known": false,
+    "current_recovery_wall_cap_seconds": 5400,
+    "summed_sampled_rss_cap_bytes": 8589934592,
+    "new_output_cap_bytes": 536870912,
+    "per_file_cap_bytes": 8388608
+  },
+  "wav": {
+    "status": "stopped_wall_cap_test_features_incomplete",
+    "features": 16,
+    "candidates_per_cell": ["fisher-0.03", "fisher-0.3", "hgb-300-15"],
+    "workers": 2,
+    "original_embedding_seed": 2026111201,
+    "calibration_gate": 0.8,
+    "cells": {
+      "esc50": ["replacement-0.05", "replacement-0.1", "matching-0.05", "matching-0.1", "matching-0.2", "matching-0.4"],
+      "audiomnist": ["matching-0.05", "matching-0.1"],
+      "fsdd": ["replacement-0.05", "replacement-0.1", "replacement-0.2", "replacement-0.4", "matching-0.05", "matching-0.1", "matching-0.2", "matching-0.4"]
+    },
+    "fit_calibration_test_sources": {
+      "esc50": [1200, 398, 402],
+      "audiomnist": [300, 100, 200],
+      "fsdd": [1000, 500, 1000]
+    },
+    "selected": {
+      "esc50": {
+        "replacement-0.05": "hgb-300-15",
+        "replacement-0.1": "hgb-300-15",
+        "matching-0.05": "hgb-300-15",
+        "matching-0.1": "hgb-300-15",
+        "matching-0.2": "hgb-300-15",
+        "matching-0.4": "hgb-300-15"
+      },
+      "audiomnist": {"matching-0.05": "hgb-300-15", "matching-0.1": "hgb-300-15"},
+      "fsdd": {
+        "replacement-0.05": "fisher-0.03",
+        "replacement-0.1": "hgb-300-15",
+        "replacement-0.2": "hgb-300-15",
+        "replacement-0.4": "hgb-300-15",
+        "matching-0.05": "hgb-300-15",
+        "matching-0.1": "hgb-300-15",
+        "matching-0.2": "hgb-300-15",
+        "matching-0.4": "fisher-0.3"
+      }
+    },
+    "candidate_calibration_metric_order": ["balanced_accuracy", "auc", "threshold", "true_negative", "true_positive", "total_decisions"],
+    "candidate_calibration": {
+      "esc50": {
+        "replacement-0.05": {"fisher-0.03": [0.5879396984924623, 0.612055251130022, -0.02267509183203345, 206, 262, 796], "fisher-0.3": [0.5678391959798995, 0.5767152344637761, -0.03196308072459953, 158, 294, 796], "hgb-300-15": [0.9522613065326633, 0.9901075730410849, 0.19188316936903704, 379, 379, 796]},
+        "replacement-0.1": {"fisher-0.03": [0.6193467336683417, 0.6634807201838337, 0.01896466442716012, 261, 232, 796], "fisher-0.3": [0.614321608040201, 0.6367389712381001, -0.03881175894211488, 206, 283, 796], "hgb-300-15": [0.9685929648241206, 0.9966951592131512, -0.2191841091339134, 383, 388, 796]},
+        "matching-0.05": {"fisher-0.03": [0.5804020100502513, 0.6075667281129264, -0.02107671798522176, 207, 255, 796], "fisher-0.3": [0.5665829145728644, 0.5748592207267493, -0.03508058766570814, 147, 304, 796], "hgb-300-15": [0.8341708542713567, 0.9309550263882225, -0.675043782966839, 275, 389, 796]},
+        "matching-0.1": {"fisher-0.03": [0.6092964824120602, 0.6545289260372212, 0.0325321129137786, 270, 215, 796], "fisher-0.3": [0.6105527638190955, 0.631827479104063, -0.03796777857625771, 208, 278, 796], "hgb-300-15": [0.842964824120603, 0.9399888891694654, -0.30546985246649294, 308, 363, 796]},
+        "matching-0.2": {"fisher-0.03": [0.6344221105527639, 0.6888588672003232, 0.01775066657523175, 263, 242, 796], "fisher-0.3": [0.6369346733668342, 0.677905860963107, -0.06717865686535458, 210, 297, 796], "hgb-300-15": [0.8580402010050251, 0.9478296002626196, -0.6189052300520206, 304, 379, 796]},
+        "matching-0.4": {"fisher-0.03": [0.6633165829145728, 0.7211055276381909, -0.07136937906985347, 223, 305, 796], "fisher-0.3": [0.6670854271356784, 0.706080654528926, -0.11609245053437608, 201, 330, 796], "hgb-300-15": [0.8806532663316583, 0.9609858336910684, -0.3725870553123469, 325, 376, 796]}
+      },
+      "audiomnist": {
+        "matching-0.05": {"fisher-0.03": [0.575, 0.5904, 0.03318868754107171, 38, 77, 200], "fisher-0.3": [0.58, 0.5896, 0.10528560336593476, 81, 35, 200], "hgb-300-15": [0.64, 0.65005, 0.4608389947256148, 57, 71, 200]},
+        "matching-0.1": {"fisher-0.03": [0.645, 0.6732, 0.30691676989347993, 83, 46, 200], "fisher-0.3": [0.63, 0.6729, 0.08907721572112892, 41, 85, 200], "hgb-300-15": [0.73, 0.7868, 1.0832846620805274, 67, 79, 200]}
+      },
+      "fsdd": {
+        "replacement-0.05": {"fisher-0.03": [0.526, 0.50852, -0.011809221298730046, 249, 277, 1000], "fisher-0.3": [0.521, 0.511604, -0.0044112696525064, 261, 260, 1000], "hgb-300-15": [0.523, 0.508926, -0.06262562557110675, 302, 221, 1000]},
+        "replacement-0.1": {"fisher-0.03": [0.518, 0.506432, 0.017786994564802615, 210, 308, 1000], "fisher-0.3": [0.519, 0.508748, 0.0009589334637148919, 152, 367, 1000], "hgb-300-15": [0.523, 0.516132, 0.2426420985271253, 372, 151, 1000]},
+        "replacement-0.2": {"fisher-0.03": [0.527, 0.518592, 0.057954864233111386, 303, 224, 1000], "fisher-0.3": [0.533, 0.525608, 0.026384227458453403, 277, 256, 1000], "hgb-300-15": [0.567, 0.563754, -0.4977999527441071, 216, 351, 1000]},
+        "replacement-0.4": {"fisher-0.03": [0.54, 0.532624, 0.0386134944173263, 249, 291, 1000], "fisher-0.3": [0.551, 0.553548, 0.026593875711214597, 277, 274, 1000], "hgb-300-15": [0.64, 0.6663, -0.23987719538341948, 314, 326, 1000]},
+        "matching-0.05": {"fisher-0.03": [0.51, 0.49838, -0.00312139499057132, 73, 437, 1000], "fisher-0.3": [0.509, 0.497788, 0.003156338693633677, 88, 421, 1000], "hgb-300-15": [0.514, 0.4962, 0.4168380738174536, 456, 58, 1000]},
+        "matching-0.1": {"fisher-0.03": [0.518, 0.5038, 0.006619394678149864, 318, 200, 1000], "fisher-0.3": [0.512, 0.503132, 0.001728982815306, 308, 204, 1000], "hgb-300-15": [0.522, 0.507078, -0.8969935152504317, 62, 460, 1000]},
+        "matching-0.2": {"fisher-0.03": [0.513, 0.495476, 0.043568180360332054, 360, 153, 1000], "fisher-0.3": [0.508, 0.4944, -0.01296249791435393, 168, 340, 1000], "hgb-300-15": [0.514, 0.49646, -0.5646095580759606, 122, 392, 1000]},
+        "matching-0.4": {"fisher-0.03": [0.527, 0.522636, 0.005741741217852592, 290, 237, 1000], "fisher-0.3": [0.53, 0.524804, -0.01339708048027133, 324, 206, 1000], "hgb-300-15": [0.519, 0.500756, 0.11656956586022345, 398, 121, 1000]}
+      }
+    },
+    "evaluation_status": {
+      "esc50": "interrupted_test_features_no_scores",
+      "audiomnist": "not_evaluated_calibration_gate",
+      "fsdd": "not_evaluated_calibration_gate"
+    },
+    "per_cell_result_receipts_exist": false,
+    "new_test_metrics": null,
+    "historical_test_decoding_started_in_attempt": true,
+    "historical_test_decoded_in_closeout": false,
+    "completed_test_feature_binding": false,
+    "partial_test_checkpoint_metadata_rows": 32,
+    "partial_test_checkpoint_binary_verified_in_closeout": false,
+    "eligible_test_source_rows": 402,
+    "independent_audit": "full_lane_audit_not_run_stopped_attempt",
+    "partial_calibration_audit": {
+      "status": "passed_calibration_only",
+      "lane_completed": false,
+      "calibration_records": 48,
+      "direct_predictions": 288,
+      "maximum_prediction_error": 4.440892098500626e-16,
+      "selected_test_cells": 0,
+      "eligible_test_cells": ["esc50/replacement-0.05", "esc50/replacement-0.1", "esc50/matching-0.05", "esc50/matching-0.1", "esc50/matching-0.2", "esc50/matching-0.4"],
+      "calibration_gate_exclusions": ["audiomnist/matching-0.05", "audiomnist/matching-0.1", "fsdd/replacement-0.05", "fsdd/replacement-0.1", "fsdd/replacement-0.2", "fsdd/replacement-0.4", "fsdd/matching-0.05", "fsdd/matching-0.1", "fsdd/matching-0.2", "fsdd/matching-0.4"],
+      "actual_calibration_descriptor_replays": ["esc50", "audiomnist", "fsdd"],
+      "historical_test_descriptors_loaded": false,
+      "historical_test_media_decoded": false,
+      "partial_test_checkpoint_metadata_rows": 32,
+      "partial_test_checkpoint_binary_verified": false,
+      "all_source_bindings_verified": true,
+      "elapsed_seconds": 6.598893792000126,
+      "peak_self_rss_bytes": 282759168,
+      "auditor_sha256": "9f329d23beaa3ac1e2f4188102f68a6b5eae2a7a3b7e516ee7ee1556ec3732a1",
+      "source_freeze_sha256": "6763784d4a34df3c957d3ab1719f31fa7bb33b6ac2c1ad992214ba5187a479db",
+      "audit_scope": "existing calibration replay and three native calibration descriptors only; no fitting, test decoding or lane restart"
+    },
+    "resource_closeout": {
+      "status": "stopped",
+      "exit_code": -9,
+      "stop_reason": "wall_cap",
+      "elapsed_seconds": 1800.506770371,
+      "peak_summed_sampled_rss_bytes": 717574144,
+      "rss_samples": 3569,
+      "sampling_interval_seconds": 0.5,
+      "new_output_bytes": 6256691,
+      "largest_output_file_bytes": 784479,
+      "plan_sha256": "f7e6d442df15ee7eec8e4cf3b8fa03426b7ed31fc024580a407cf1afb36b4469",
+      "runner_sha256": "6349a8fb7d10e837a05a283f75c4b411c9ac1a54928e8756df88ab892c0251cd",
+      "automatic_retry": false
+    },
+    "current_attempt_wall_cap_seconds": 1800,
+    "summed_sampled_rss_cap_bytes": 2147483648,
+    "new_output_cap_bytes": 67108864,
+    "per_file_cap_bytes": 8388608
+  },
+  "diagnostics": {
+    "status": "measured",
+    "held_out_accuracy": false,
+    "historical_test_decoded": false,
+    "stats_sample_per_dataset": 200,
+    "stats_roles": ["fit", "calibration"],
+    "ws_and_floor_sample_per_dataset": 240,
+    "ws_and_floor_role": "fit",
+    "fsdd_fit_speakers": ["george", "jackson"],
+    "fsdd_calibration_speakers": ["lucas"],
+    "fsdd_nicolas_excluded": true,
+    "esc50": {
+      "median_samples": 220500.0,
+      "samplerate": 44100,
+      "median_residual_rms": 144.5698843281975,
+      "median_quiet_window_fraction": 0.0,
+      "sampled_covers_with_unused_low_bits": 0,
+      "weighted_stego_replacement_auc_5_10_20_40": [0.626, 0.6949, 0.7363, 0.8107],
+      "weighted_stego_cover_median_q25_q75": [0.00018856256222345402, -0.08071067054558953, 0.06389644946988285],
+      "weighted_stego_5_percent_median": 0.07820137258139777,
+      "spectral_floor_median": 0.1744909695555834,
+      "spectral_floor_q25_q75": [0.1616849484215818, 134.68583223834224],
+      "fraction_floor_below_0_2": 0.525,
+      "spectral_floor_replacement_auc_5_10_20_40": [0.606, 0.6283, 0.6556, 0.6695],
+      "spectral_floor_matching_auc_5_10_20_40": [0.6059, 0.6292, 0.656, 0.6698]
+    },
+    "audiomnist": {
+      "median_samples": 29017.5,
+      "samplerate": 48000,
+      "median_residual_rms": 4.840819449468656,
+      "median_quiet_window_fraction": 0.535930611436419,
+      "sampled_covers_with_unused_low_bits": 0,
+      "weighted_stego_replacement_auc_5_10_20_40": [0.8922, 0.9862, 1.0, 1.0],
+      "weighted_stego_cover_median_q25_q75": [-0.003254297527389853, -0.01875526280205642, 0.014543704350510762],
+      "weighted_stego_5_percent_median": 0.04887549350067906,
+      "spectral_floor_median": 1.9228532735872808,
+      "spectral_floor_q25_q75": [0.6950669320252222, 2.149991552083794],
+      "fraction_floor_below_0_2": 0.0,
+      "spectral_floor_replacement_auc_5_10_20_40": [0.5404, 0.5681, 0.615, 0.6754],
+      "spectral_floor_matching_auc_5_10_20_40": [0.539, 0.5649, 0.614, 0.6749]
+    },
+    "fsdd": {
+      "median_samples": 3997.0,
+      "samplerate": 8000,
+      "median_residual_rms": 597.781725584205,
+      "median_quiet_window_fraction": 0.0,
+      "sampled_covers_with_unused_low_bits": 0,
+      "weighted_stego_replacement_auc_5_10_20_40": [0.5049, 0.502, 0.5076, 0.4912],
+      "weighted_stego_cover_median_q25_q75": [0.5069436225030959, -4.702670711839987, 5.089839702996397],
+      "weighted_stego_5_percent_median": 0.7722233137477756,
+      "spectral_floor_median": 643.3053377561183,
+      "spectral_floor_q25_q75": [124.43345314663338, 9156.746193916013],
+      "fraction_floor_below_0_2": 0.0,
+      "spectral_floor_replacement_auc_5_10_20_40": [0.5, 0.5, 0.5003, 0.4997],
+      "spectral_floor_matching_auc_5_10_20_40": [0.5, 0.5005, 0.4999, 0.5002]
+    },
+    "interpretation": "supports estimator variance, clip length and feature-family mismatch; not an information-theoretic impossibility or a single-factor causal claim"
+  },
+  "verification": {
+    "generated_runner_and_recovery_tests_passed": 14,
+    "generated_independent_audit_oracle_tests_passed": 9,
+    "cloud_removal_document_tests_passed": 15,
+    "total_targeted_tests_passed": 38,
+    "pytest_warning_count": 1,
+    "pytest_warning": "sealwatch imports deprecated pkg_resources",
+    "diagnostic_receipt_field_groups_replayed": 39,
+    "repository_ruff": "passed",
+    "focused_private_audit_and_wav_runner_ruff": "passed",
+    "expanded_strict_private_script_ruff": {
+      "status": "failed_existing_frozen_source_style_findings",
+      "findings": {"E402": 2, "E501": 1, "S101": 10},
+      "files": ["jpeg/resume.py", "resume_supervise.py", "test_resume.py", "wav/test_runner.py"],
+      "source_modified": false,
+      "resolution": "retain frozen source bindings; handle style separately from experiment completion"
+    },
+    "public_candidate_calibration_records_replayed": 53,
+    "public_resource_and_audit_receipts_replayed": 4,
+    "git_diff_check": "passed",
+    "full_application_gate_rerun": false,
+    "reason": "no application, research-package or public test source changed; private study checks are separate"
+  },
+  "esc50_resume_20261118": {
+    "date": "2026-11-18",
+    "approval": "user explicitly approved the ESC-50 test resume",
+    "status": "completed_and_audited",
+    "label": "historical_adaptive_test",
+    "cause_of_original_stop": "frozen runner re-verified all 6,183 bound source digests about twelve times per test row",
+    "change": "verify bindings once before and once after; frozen runner, models, thresholds and seeds unchanged",
+    "partial_checkpoint_rows_numerically_replayed": 32,
+    "new_test_rows": 370,
+    "test_sources": 402,
+    "test_recording_groups": 310,
+    "fit_calibration_test_group_overlap": 0,
+    "cells": {
+      "replacement-0.05": {
+        "selected": "hgb-300-15",
+        "test_balanced_accuracy": 0.9527363184079602,
+        "auc": 0.9931684859285661,
+        "threshold": 0.19188316936903704,
+        "true_negative": 387,
+        "true_positive": 379,
+        "total_decisions": 804,
+        "paired_group_BA_95_interval": [
+          0.934564886222984,
+          0.9689845496646439
+        ],
+        "passes_80_percent": true
+      },
+      "replacement-0.1": {
+        "selected": "hgb-300-15",
+        "test_balanced_accuracy": 0.9676616915422885,
+        "auc": 0.9968131976931264,
+        "threshold": -0.2191841091339134,
+        "true_negative": 390,
+        "true_positive": 388,
+        "total_decisions": 804,
+        "paired_group_BA_95_interval": [
+          0.9550809950956263,
+          0.9791167588042589
+        ],
+        "passes_80_percent": true
+      },
+      "matching-0.05": {
+        "selected": "hgb-300-15",
+        "test_balanced_accuracy": 0.8258706467661692,
+        "auc": 0.9354842701913318,
+        "threshold": -0.675043782966839,
+        "true_negative": 274,
+        "true_positive": 390,
+        "total_decisions": 804,
+        "paired_group_BA_95_interval": [
+          0.7969876199118485,
+          0.8539603960396039
+        ],
+        "passes_80_percent": true
+      },
+      "matching-0.1": {
+        "selected": "hgb-300-15",
+        "test_balanced_accuracy": 0.8383084577114428,
+        "auc": 0.945063241008886,
+        "threshold": -0.30546985246649294,
+        "true_negative": 301,
+        "true_positive": 373,
+        "total_decisions": 804,
+        "paired_group_BA_95_interval": [
+          0.8082896684716974,
+          0.8672298644338118
+        ],
+        "passes_80_percent": true
+      },
+      "matching-0.2": {
+        "selected": "hgb-300-15",
+        "test_balanced_accuracy": 0.8731343283582089,
+        "auc": 0.9642273706096384,
+        "threshold": -0.6189052300520206,
+        "true_negative": 309,
+        "true_positive": 393,
+        "total_decisions": 804,
+        "paired_group_BA_95_interval": [
+          0.8469069778541428,
+          0.8995040224947278
+        ],
+        "passes_80_percent": true
+      },
+      "matching-0.4": {
+        "selected": "hgb-300-15",
+        "test_balanced_accuracy": 0.8868159203980099,
+        "auc": 0.9703936783742977,
+        "threshold": -0.3725870553123469,
+        "true_negative": 333,
+        "true_positive": 380,
+        "total_decisions": 804,
+        "paired_group_BA_95_interval": [
+          0.8591353451278989,
+          0.9126597272641181
+        ],
+        "passes_80_percent": true
+      }
+    },
+    "gated_conditions_written_as_not_evaluated": 10,
+    "resource_closeout": {
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 160.528291695,
+      "peak_summed_sampled_rss_bytes": 693637120,
+      "new_output_bytes": 297074,
+      "largest_output_file_bytes": 784479,
+      "cumulative_wav_elapsed_seconds": 1961.035063629
+    },
+    "wall_cap_seconds": 1800,
+    "full_wav_audit": {
+      "status": "passed",
+      "calibration_records": 48,
+      "direct_predictions": 324,
+      "maximum_prediction_error": 4.440892098500626e-16,
+      "selected_test_cells": 6,
+      "elapsed_seconds": 4.470570428999963,
+      "all_source_bindings_verified": true
+    },
+    "audit_adapter": "redirects only the completed-closeout read to resume-closing.json; original stopped receipt unchanged",
+    "original_stopped_closing_sha256": "96defa0c23529879065efa9802dcf2ce045412441f715a0897630d7e81768d06",
+    "resume_script_sha256": "3ca4d743ab0536d73f49b35e213d78665a58690815128f8ff8fc1d7a02be8aee",
+    "resume_tests_passed": 4
+  },
+  "remaining_closeout": [
+    "ESC-50 resume completed and audited on 2026-11-18; all six ESC cells pass on the historical adaptive test",
+    "AudioMNIST matching 5/10% and all eight FSDD cells remain calibration-gate exclusions",
+    "nsF5 0.05 JPEG remains closed below its calibration gate"
+  ]
+}
