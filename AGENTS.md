@@ -110,7 +110,7 @@ AudioMNIST matching 5/10.
 | Spatial adaptive, 0.4 bpp | HILL 80.03, S-UNIWARD 80.73, MiPOD 80.68 (clean 999); WOW 80.28–80.38 bounds | — (all marginal, adaptive test) |
 | Real tools (DIV2K) | steghide, OutGuess, stegano, F5 (all), OpenStego 0.4 and 0.1 (87.75) | — |
 | JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, EBS 93.30 (corrected nzAC payload, 2026-11-18), nsF5 0.2 94.25, nsF5 0.1 80.85 (target payload) | out of scope: nsF5 0.05 (best test 60.70; calibration 66.17%) |
-| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (56.5/59.5 test; 63.88/75.54 calibration with 7,500 fit pairs, signal-limited); out of scope: FSDD all eight (~50; cover-limited) |
+| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (Colab CNN 2026-11-18: 10% test 78.43%, calibration 83.36%; 5% calibration 69.52%, not tested; earlier 56.5/59.5 test); out of scope: FSDD all eight (~50; cover-limited) |
 | Network, video | covert channels, containers | — |
 
 Details: `docs/DETECTION_EXPANSION_20261111.md` (main table and sections),
@@ -165,12 +165,13 @@ Diagnosis of the remaining misses (fit covers, 2026-11-18):
   ~71% of nzAC. Private `.benchmark/ebs-20261118/` keeps the conseal cost and
   sets n = nzAC; test BA 93.30% (92.20–94.30%), first EBS test look.
 
-AudioMNIST matching 5/10 next step (2026-11-18): the user asked for a Colab
-CNN. `research/wav_cnn_audiomnist.py` and
-`notebooks/audiomnist_wav_cnn_20261118.ipynb` (pinned to commit `e441704`)
-train a masked residual-statistics CNN with a 40/20/10/5% curriculum on the
-same roles; 40% is a positive control, calibration picks per-target epochs,
-gate .80, test once. Awaiting the user's T4 run and results zip.
+AudioMNIST CNN (2026-11-18, `docs/AUDIOMNIST_CNN_RESULTS_20261118.md`): the
+Colab T4 run of `research/wav_cnn_audiomnist.py` (notebook pinned to
+`e441704`; Drive folder `steg-audiomnist-cnn`) passed its 40% control
+(99.26%). 10%: calibration 83.36%, single test look 78.43% (AUC .895; the
+frozen threshold shifts across speakers: TPR 64.8/FPR 7.9%). 5%: calibration
+69.52%, not tested. Next lever: speaker-robust score calibration chosen on
+fit/calibration only; any new test look is adaptive.
 
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
