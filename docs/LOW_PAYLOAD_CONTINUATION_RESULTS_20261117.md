@@ -330,3 +330,27 @@ Previous ESC test results on the same 402 clips were 73.13/78.36%
 used before, so these are **adaptive** estimates, although choices and thresholds were
 frozen on calibration only before any test row was built. AudioMNIST matching
 5/10% and FSDD stay excluded at the calibration gate.
+
+## nsF5 .05 learning curve (2026-11-18)
+
+Before extracting rich features for more BOSS sources, a fit/calibration-only
+learning curve tested whether training size limits nsF5 .05. Subsets of the
+2,400 fit pairs (three subset seeds below 2,400) train the frozen recipe
+(51-learner FLD ensemble, d_sub 1000, model seed unchanged) on the cached
+features; the 600 calibration pairs score them. No test image or feature was
+opened; 121 seconds. Private evidence: `.benchmark/nsf5-learning-curve-20261118/`.
+
+| Fit pairs | all-1000 calibration BA, % | AUC | ccjrm-1000 calibration BA, % | AUC |
+|---:|---:|---:|---:|---:|
+| 300 | 60.92 | .644 | 59.61 | .625 |
+| 600 | 60.08 | .638 | 59.03 | .620 |
+| 1,200 | 64.56 | .692 | 62.19 | .668 |
+| 2,400 | 66.17 | .706 | 64.33 | .683 |
+
+The 2,400-pair row reproduces the frozen `all-1000` calibration result
+exactly. Doubling from 1,200 to 2,400 pairs adds only 1.6–2.1 BA points. At
+that rate, the ~7,500 deduplicated BOSS fit sources would give roughly 69%,
+and 80% would need hundreds of thousands of pairs. The rich-feature
+extraction for more BOSS sources was therefore **not launched**. nsF5 .05
+stays a documented miss. This is an extrapolation from calibration data, not
+a proof of a ceiling.
