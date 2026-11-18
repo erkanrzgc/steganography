@@ -95,20 +95,25 @@ trustworthy and skip the bureaucracy:
    FSDD speaker nicolas is upscaled 8-bit; `research/dctr_features.py` needs
    `rounding="legacy"` to reproduce old caches.
 
-## Current status: at least 80% balanced accuracy per method
+## Current status against the 80% balanced-accuracy target
+
+The overall target is not met; calibration-only gains do not replace test misses.
 
 | Area | Passing | Still below 80% |
 |---|---|---|
 | Gray LSB (BOSS) | all payload-specific rows; unknown-payload mixed detector 85.5–88.8% | — |
 | Spatial adaptive, 0.4 bpp | HILL 80.03, S-UNIWARD 80.73, MiPOD 80.68 (clean 999); WOW 80.28–80.38 bounds | — (all marginal, adaptive test) |
 | Real tools (DIV2K) | steghide, OutGuess, stegano, F5 (all), OpenStego 0.4 and 0.1 (87.75) | — |
-| JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, nsF5 0.2 94.25, nsF5 0.1 80.85 | nsF5 0.05 (best test 60.70; calibration ≤66%); EBS unavailable |
-| WAV | AudioMNIST replacement and matching 20/40; ESC replacement 20/40 | ESC replacement 5/10 (73.1/78.4), ESC matching all (65–69), AudioMNIST matching 5/10 (56.5/59.5), FSDD all eight (~50) |
+| JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, nsF5 0.2 94.25, nsF5 0.1 80.85 | nsF5 0.05 (best test 60.70; latest calibration 66.17%); EBS unavailable |
+| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (56.5/59.5; data-limited, 600 local clips), FSDD all eight (~50; cover-limited: loud, short 8 kHz speech) |
 | Network, video | covert channels, containers | — |
 
 Details: `docs/DETECTION_EXPANSION_20261111.md` (main table and sections),
-latest studies `docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md` and
-`docs/WAV_CONDITIONAL_MOM_RESULTS_20261117.md`.
+`docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md`,
+`docs/WAV_CONDITIONAL_MOM_RESULTS_20261117.md` and
+`docs/LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md`. Current overview and
+next-step priorities: `docs/STATUS.md` and `docs/ROADMAP.md`; older entries
+there are historical, not permission to restart consumed studies.
 
 ## Private data locations (`.benchmark/`)
 
@@ -121,8 +126,43 @@ latest studies `docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md` and
 
 ## Active work
 
-The user asked (2026-11-17) to find why the remaining cells are stuck at
-50–70% and raise them, and to keep the process efficient. Next steps:
-diagnose WAV detectability per dataset (signal residual vs payload, clip
-length), try targeted detectors (e.g. weighted-stego estimators for
-replacement), and add calibrated JPEG features (CC-JRM) for nsF5 0.05.
+The user asked (2026-11-17) to diagnose and raise the remaining 50–70% cells.
+Private continuation: `.benchmark/low-payload-continuation-20261117/`.
+JPEG recovery completed and passed its numeric audit: best calibration BA
+66.17% at nsF5 .05; the .80 gate prevented test inference (closed).
+
+WAV stopped at its 1,800-second cap during ESC test features because the frozen
+runner re-hashed all 6,183 bound sources about twelve times per test row. On
+2026-11-18 the user approved a resume: `wav/resume.py` (verify once before and
+after, exact replay of the 32-row partial checkpoint, 370 new rows, no refit)
+completed in 160.53 s and the unchanged `audit.py wav` passed via
+`wav/resume_audit.py`. All six ESC cells now pass on the adaptive test (see the
+status table). The stopped `wav/closing.json` stays preserved; WAV is closed.
+
+Diagnosis of the remaining misses (fit covers, 2026-11-18):
+- FSDD: cover-limited, not model-limited. Loud, silence-trimmed 8 kHz speech
+  with ~4,000 samples; only 0.2% of samples have |x| ≤ 2. The noise floor
+  (~643) dwarfs ±1 changes (0.025, about −44 dB). More model capacity will not
+  reach 80%; changing the goal or evaluation needs the user's decision.
+- AudioMNIST matching 5/10: data-limited. Only 600 clips exist locally
+  (300 fit/100 calibration/200 test) of the 30,000-clip corpus; a 100-pair
+  calibration BA varies by about ±6 points. Downloading more needs approval.
+- nsF5 .05: likely training-limited. DCTR+JRM fit/calibration uses 3,000 of
+  BOSS's 10,000 images for ~30k-dimensional features. More BOSS sources were
+  tried only with a coefficient-only .1 model (75.33% calibration, no gain);
+  rich features with the unused sources remain untested.
+
+Strict private-script Ruff still has 13 recorded style findings; do not alter
+hash-frozen scripts to clear them.
+
+## Session handoff — 2026-11-17
+
+The final request is documentation-only: no new experiment/development, commit
+or push. At handoff `main` is at `809d9ed`, two commits ahead of the locally
+cached `origin/main` (no remote refresh). The continuation results document and
+`benchmarks/low-payload-continuation-20261117.json` were already untracked;
+`AGENTS.md` already had uncommitted continuation notes. Preserve those changes
+and unrelated `nano.383070.save`. This closeout updates documentation only;
+the recorded 38 study checks and 4,651-test full gate are earlier evidence,
+not newly rerun full-suite verification. See the results document's final
+handoff section for exact checks, private evidence and continuation boundaries.
