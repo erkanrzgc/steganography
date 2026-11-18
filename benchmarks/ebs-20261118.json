@@ -1,0 +1,75 @@
+{
+  "study": "ebs-20261118",
+  "date": "2026-11-18",
+  "status": "evaluated_once",
+  "method": "EBS",
+  "payload_bpnzac": 0.4,
+  "cover_source": "gray BOSSbase 1.01, libjpeg quality 75 (boss-jpeg-academic-repair-20261113)",
+  "defect_corrected": {
+    "earlier_record": "unavailable (invalid simulator), ~71% of nonzero AC changed at 0.4",
+    "cause": "conseal 2025.11 ebs.simulate_single_channel sizes the message as alpha x all DCT coefficients minus four wet modes per block, not alpha x nonzero AC coefficients",
+    "not_the_cause": "block-entropy division by zero; the infinite cost of all-zero blocks becomes the wet cost as intended",
+    "fix": "unchanged conseal EBS cost (EBS_ORIGINAL) and ternary simulator with n = number of nonzero AC coefficients",
+    "parity_check": "with n set to conseal's own count the corrected function is byte-identical to simulate_single_channel for the same seed",
+    "conseal_changes_per_nzac_on_five_training_covers": [0.714, 0.648, 0.672, 0.505, 0.565],
+    "corrected_changes_per_nzac_on_same_covers": [0.088, 0.083, 0.088, 0.088, 0.086]
+  },
+  "roles": {
+    "fit": {"rule": "train index mod 5 != 0", "pairs": 2400},
+    "calibration": {"rule": "train index mod 5 == 0", "pairs": 600},
+    "test": {"pairs": 1000},
+    "hash_disjoint": true
+  },
+  "embedding_seed": "[2026111206, 5, role == test, index]",
+  "features": {
+    "cover": "legacy-rounding calibrated DCTR cache of the academic JPEG study; two covers per role replay exactly",
+    "stego": "same legacy-rounding calibrated DCTR (16,000), DCTR = first 8,000"
+  },
+  "changes_per_nzac": {"fit_and_calibration": 0.08494, "test": 0.08458},
+  "reference_changes_per_nzac": {"juniward_0.4": 0.0836, "uerd_0.4": 0.0794},
+  "candidates": [
+    {"name": "ridge-dctr-0.01", "calibration_ba": 0.9325, "calibration_auc": 0.9805},
+    {"name": "ridge-dctr-0.03", "calibration_ba": 0.9225, "calibration_auc": 0.9785},
+    {"name": "ridge-dctr-0.1", "calibration_ba": 0.9058, "calibration_auc": 0.9674},
+    {"name": "ridge-dctr-0.3", "calibration_ba": 0.8858, "calibration_auc": 0.951},
+    {"name": "ridge-dctr-1.0", "calibration_ba": 0.8492, "calibration_auc": 0.9207},
+    {"name": "ridge-calibrated-0.01", "calibration_ba": 0.8292, "calibration_auc": 0.8961},
+    {"name": "ridge-calibrated-0.03", "calibration_ba": 0.8592, "calibration_auc": 0.921},
+    {"name": "ridge-calibrated-0.1", "calibration_ba": 0.88, "calibration_auc": 0.945},
+    {"name": "ridge-calibrated-0.3", "calibration_ba": 0.9017, "calibration_auc": 0.9621},
+    {"name": "ridge-calibrated-1.0", "calibration_ba": 0.9125, "calibration_auc": 0.9712},
+    {"name": "ensemble-1000", "calibration_ba": 0.9292, "calibration_auc": 0.9807}
+  ],
+  "selection_rule": "calibration BA with calibration threshold, then AUC, then declared order; gate 0.80",
+  "selected": {
+    "name": "ridge-dctr-0.01",
+    "calibration_ba": 0.9325,
+    "calibration_threshold": 0.3428815237805547,
+    "note": "smallest ridge of the fixed grid; no ridge added after the result"
+  },
+  "test": {
+    "balanced_accuracy": 0.933,
+    "paired_bootstrap_95": [0.922, 0.943],
+    "auc": 0.97892,
+    "tpr": 0.925,
+    "fpr": 0.059,
+    "looks": 1,
+    "evidence": "historical test covers reused by other JPEG studies; first and only EBS test look"
+  },
+  "resources": {
+    "train_stego_feature_seconds": 1295.1,
+    "test_stego_feature_seconds": 442.1,
+    "workers": 6,
+    "gpu": false
+  },
+  "versions": {"conseal": "2025.11", "sealwatch": "2024.12", "numpy": "2.4.6", "jpeglib": "1.0.2"},
+  "private_evidence_sha256": {
+    "study.py": "097e67f9209bef786412d540b9999673869ced236b4e56885104af1c947b2e25",
+    "test_study.py": "8fee3a787a201f30f1609966222d886c30a6a03f6f8b5e435617903fe91da81a",
+    "choice-freeze.json": "c1aa2e359150202ab71901dc1cbf0ad4869da9becf1cd6b76b5dfb85084af337",
+    "result.json": "a54a3d9a401d3d75e1dc193211a9604e003fdd33adede9f742e9941f7308a9e4",
+    "stego-train.npz": "cda23433366497a05545a49fa083faeafd0cac924bd321c971b87a8c49e25a7c",
+    "stego-test.npz": "ded45abfe139551beae9969a1d1c4365014051353523f7858e804f995e45ff3f"
+  },
+  "frozen_sources_changed": false
+}
