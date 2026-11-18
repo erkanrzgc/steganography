@@ -1,5 +1,14 @@
 # Changelog
 
+- Resolve EBS 0.4 bpnzac on BOSSbase Q75 (2026-11-18):
+  - The earlier "invalid simulator" record came from conseal 2025.11 sizing
+    the EBS message by all DCT coefficients instead of nonzero AC, which
+    changed ~71% of nzAC. The unchanged EBS cost with n = nzAC changes 8.46%.
+  - Eleven fixed candidates were chosen on 600 calibration pairs; the DCTR
+    ridge reaches 93.30% test BA (95% 92.20–94.30%) on the first EBS look.
+    AudioMNIST matching 5/10% is now the only in-scope gap. See
+    `docs/EBS_RESULTS_20261118.md`.
+
 - Test AudioMNIST matching 5/10% with the full opened-speaker corpus (2026-11-18):
   - The approved download of the pinned commit extracts only the 30 opened
     speakers (15,000 clips); all 600 earlier files match by hash, and the 30
