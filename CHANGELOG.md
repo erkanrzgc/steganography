@@ -1,5 +1,13 @@
 # Changelog
 
+- Add a Colab raw-waveform CNN for AudioMNIST matching 5/10% (2026-11-18):
+  `research/wav_cnn_audiomnist.py` and
+  `notebooks/audiomnist_wav_cnn_20261118.ipynb` extract only the 30 opened
+  speakers (hash-checked), reuse the earlier calibration stegos exactly
+  (digest-checked), train a 40/20/10/5% curriculum with a 40% positive
+  control and test once only for choices that pass .80 calibration BA.
+  No result yet.
+
 - Resolve EBS 0.4 bpnzac on BOSSbase Q75 (2026-11-18):
   - The earlier "invalid simulator" record came from conseal 2025.11 sizing
     the EBS message by all DCT coefficients instead of nonzero AC, which
