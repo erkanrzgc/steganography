@@ -406,9 +406,159 @@
     "resume_script_sha256": "3ca4d743ab0536d73f49b35e213d78665a58690815128f8ff8fc1d7a02be8aee",
     "resume_tests_passed": 4
   },
+  "nsf5_learning_curve_20261118": {
+    "date": "2026-11-18",
+    "scope": "fit/calibration only; no test image or feature opened",
+    "recipe": "51-learner FLD ensemble, d_sub 1000, frozen model seed; subset seeds 0-2 below 2400",
+    "rows": [
+      {
+        "view": "all-1000",
+        "fit_pairs": 300,
+        "subset_seed": 0,
+        "calibration_ba": 0.6158333333333333,
+        "calibration_auc": 0.6482374999999999
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 300,
+        "subset_seed": 1,
+        "calibration_ba": 0.61,
+        "calibration_auc": 0.6463416666666667
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 300,
+        "subset_seed": 2,
+        "calibration_ba": 0.6016666666666666,
+        "calibration_auc": 0.6370347222222221
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 600,
+        "subset_seed": 0,
+        "calibration_ba": 0.6066666666666667,
+        "calibration_auc": 0.6444305555555555
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 600,
+        "subset_seed": 1,
+        "calibration_ba": 0.5966666666666667,
+        "calibration_auc": 0.6321347222222222
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 600,
+        "subset_seed": 2,
+        "calibration_ba": 0.5991666666666666,
+        "calibration_auc": 0.6372222222222221
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 1200,
+        "subset_seed": 0,
+        "calibration_ba": 0.6308333333333334,
+        "calibration_auc": 0.6874291666666668
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 1200,
+        "subset_seed": 1,
+        "calibration_ba": 0.6525,
+        "calibration_auc": 0.6913041666666667
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 1200,
+        "subset_seed": 2,
+        "calibration_ba": 0.6533333333333333,
+        "calibration_auc": 0.6975236111111112
+      },
+      {
+        "view": "all-1000",
+        "fit_pairs": 2400,
+        "subset_seed": 0,
+        "calibration_ba": 0.6616666666666666,
+        "calibration_auc": 0.7056166666666667
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 300,
+        "subset_seed": 0,
+        "calibration_ba": 0.6016666666666667,
+        "calibration_auc": 0.6330652777777778
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 300,
+        "subset_seed": 1,
+        "calibration_ba": 0.5933333333333333,
+        "calibration_auc": 0.6230972222222221
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 300,
+        "subset_seed": 2,
+        "calibration_ba": 0.5933333333333334,
+        "calibration_auc": 0.6176930555555555
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 600,
+        "subset_seed": 0,
+        "calibration_ba": 0.5983333333333334,
+        "calibration_auc": 0.6256763888888889
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 600,
+        "subset_seed": 1,
+        "calibration_ba": 0.5833333333333333,
+        "calibration_auc": 0.6175541666666666
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 600,
+        "subset_seed": 2,
+        "calibration_ba": 0.5891666666666666,
+        "calibration_auc": 0.6160736111111111
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 1200,
+        "subset_seed": 0,
+        "calibration_ba": 0.6183333333333334,
+        "calibration_auc": 0.6655
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 1200,
+        "subset_seed": 1,
+        "calibration_ba": 0.6275,
+        "calibration_auc": 0.6714319444444445
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 1200,
+        "subset_seed": 2,
+        "calibration_ba": 0.62,
+        "calibration_auc": 0.6658444444444443
+      },
+      {
+        "view": "ccjrm-1000",
+        "fit_pairs": 2400,
+        "subset_seed": 0,
+        "calibration_ba": 0.6433333333333333,
+        "calibration_auc": 0.6830472222222221
+      }
+    ],
+    "elapsed_seconds": 121.05647742800011,
+    "reproduces_frozen_all_1000_calibration": true,
+    "decision": "rich-feature extraction for more BOSS sources not launched; ~69% extrapolated at ~7500 fit pairs"
+  },
   "remaining_closeout": [
     "ESC-50 resume completed and audited on 2026-11-18; all six ESC cells pass on the historical adaptive test",
     "AudioMNIST matching 5/10% and all eight FSDD cells remain calibration-gate exclusions",
-    "nsF5 0.05 JPEG remains closed below its calibration gate"
+    "nsF5 0.05 JPEG remains closed below its calibration gate; its learning curve predicts about 69% with all BOSS fit sources"
   ]
 }
