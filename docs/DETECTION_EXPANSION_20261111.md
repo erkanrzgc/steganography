@@ -96,6 +96,9 @@ coefficients ([EBS results](EBS_RESULTS_20261118.md)). Repeated historical evalu
 the 2026-11-18 scope, AudioMNIST matching 5/10% is the only open gap.
 The [full opened-speaker AudioMNIST study](AUDIOMNIST_FULL_RESULTS_20261118.md)
 reaches only 63.88/75.54% calibration BA with 7,500 fit pairs; no test inference.
+A [Colab raw-waveform CNN](AUDIOMNIST_CNN_RESULTS_20261118.md) reaches
+83.36% calibration and 78.43% test BA at matching 10% (miss); matching 5%
+calibrates at 69.52% and was not tested.
 
 ## Gray LSB on BOSSbase (`research/srm_features.py`)
 
