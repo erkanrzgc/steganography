@@ -1,0 +1,181 @@
+{
+ "study": "audiomnist-cnn-20261118",
+ "date": "2026-11-18",
+ "status": "evaluated",
+ "code": {
+  "module": "research/wav_cnn_audiomnist.py",
+  "notebook": "notebooks/audiomnist_wav_cnn_20261118.ipynb",
+  "layout": "notebooks/audiomnist_wav_cnn_layout_20261118.json",
+  "pinned_commit": "e441704997e9f121e0faf7e66a4dc05c4cdd6e6b"
+ },
+ "runtime": {
+  "provider": "Google Colab",
+  "gpu": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "numpy": "2.4.6",
+  "operated_by": "assistant via browser at user request"
+ },
+ "data": {
+  "opened_files_hash_checked": 15000,
+  "reserved_speakers_read": false,
+  "calibration_stego_digests_matched": true,
+  "roles": {
+   "fit": 7500,
+   "calibration": 2500,
+   "test": 5000
+  }
+ },
+ "stages": {
+  "0.4": {
+   "epochs": 12,
+   "seconds": 784.9384646059997,
+   "best": {
+    "epoch": 6,
+    "balanced_accuracy": 0.9925999999999999,
+    "auc": 0.99868016,
+    "tpr": 0.9968,
+    "fpr": 0.011600000000000055,
+    "threshold": -1.615822434425354
+   },
+   "last": {
+    "epoch": 11,
+    "balanced_accuracy": 0.9925999999999999,
+    "auc": 0.99864288,
+    "loss": 0.043380708775968634
+   }
+  },
+  "0.2": {
+   "epochs": 12,
+   "seconds": 797.8059820969993,
+   "best": {
+    "epoch": 11,
+    "balanced_accuracy": 0.95,
+    "auc": 0.98397968,
+    "tpr": 0.9524,
+    "fpr": 0.0524,
+    "threshold": 1.7405269145965576
+   },
+   "last": {
+    "epoch": 11,
+    "balanced_accuracy": 0.95,
+    "auc": 0.98397968,
+    "loss": 0.18177272111941606
+   }
+  },
+  "0.1": {
+   "epochs": 24,
+   "seconds": 1594.735448386999,
+   "best": {
+    "epoch": 18,
+    "balanced_accuracy": 0.8336,
+    "auc": 0.90448752,
+    "tpr": 0.8636,
+    "fpr": 0.19640000000000002,
+    "threshold": 0.26455557346343994
+   },
+   "last": {
+    "epoch": 23,
+    "balanced_accuracy": 0.8320000000000001,
+    "auc": 0.90411632,
+    "loss": 0.3512790712535891
+   }
+  },
+  "0.05": {
+   "epochs": 24,
+   "seconds": 1597.0986517469973,
+   "best": {
+    "epoch": 10,
+    "balanced_accuracy": 0.6952,
+    "auc": 0.74952784,
+    "tpr": 0.7696,
+    "fpr": 0.3792,
+    "threshold": -0.1479160487651825
+   },
+   "last": {
+    "epoch": 23,
+    "balanced_accuracy": 0.6861999999999999,
+    "auc": 0.74726384,
+    "loss": 0.4899814964359642
+   }
+  }
+ },
+ "freeze": {
+  "choices": {
+   "0.1": {
+    "rate": 0.1,
+    "epoch": 18,
+    "loss": 0.3598379477476462,
+    "calibration": {
+     "balanced_accuracy": 0.8336,
+     "auc": 0.90448752,
+     "tpr": 0.8636,
+     "fpr": 0.19640000000000002,
+     "threshold": 0.26455557346343994
+    },
+    "seconds": 66.45413559200006,
+    "model_sha256": "b9da70e1840ec4388ef5929ae6c637bff1a88f6dc7af7d8ccaf02c177beea390",
+    "passes_gate": true
+   },
+   "0.05": {
+    "rate": 0.05,
+    "epoch": 10,
+    "loss": 0.5160653203980535,
+    "calibration": {
+     "balanced_accuracy": 0.6952,
+     "auc": 0.74952784,
+     "tpr": 0.7696,
+     "fpr": 0.3792,
+     "threshold": -0.1479160487651825
+    },
+    "seconds": 66.4824411919999,
+    "model_sha256": "0b2eef36bd39f2f055c5939407d89cca85aee208023bbc85095b427f5d53a08b",
+    "passes_gate": false
+   }
+  },
+  "gate": 0.8,
+  "torch": "2.14.1+cu130",
+  "device": "Tesla T4",
+  "created_unix": 1795033774.4043074
+ },
+ "test": {
+  "0.05": {
+   "status": "not_evaluated_calibration_gate"
+  },
+  "0.1": {
+   "status": "evaluated_once",
+   "test": {
+    "balanced_accuracy": 0.7843,
+    "auc": 0.89540364,
+    "tpr": 0.6478,
+    "fpr": 0.07920000000000005,
+    "threshold": 0.26455557346343994
+   },
+   "intervals_95": {
+    "pairs": [
+     0.7777,
+     0.7913
+    ],
+    "speakers": [
+     0.7399924999999999,
+     0.8309099999999999
+    ]
+   },
+   "test_pairs": 5000
+  }
+ },
+ "control_failed": null,
+ "cpu_feature_baseline_calibration_ba": {
+  "0.1": 0.7554,
+  "0.05": 0.6388
+ },
+ "historical_test_ba": {
+  "0.1": 0.595,
+  "0.05": 0.565
+ },
+ "private_results_sha256": {
+  "history.json": "2b604e59bfe54624d3ecf5d5053c1cb53055ebc4350a975b4a671b36de365ff8",
+  "choice-freeze.json": "0949836155048c3b3eea69737b38d018f0008e09fb5002e4a661b7811d721453",
+  "test-result.json": "529e7377d5217838c926efb02d18c7de163ca78c02c13e2d3ef4997e1515269e"
+ },
+ "results_zip_sha256": "b95688f6254fda2a6c081f4bd83ba8b620b702e64a4f8fab88b39bc389a04d85"
+}
