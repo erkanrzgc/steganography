@@ -105,7 +105,7 @@ and [limitations](docs/LIMITATIONS.md).
 
 ## Training results
 
-Research evaluations, **2026-10-14–11-15**. Balanced accuracy averages
+Research evaluations, **2026-10-14–11-18**. Balanced accuracy averages
 recall and specificity. **ROC-AUC measures ranking, not accuracy.** Ranges cover
 listed cells, not confidence intervals or expected real-world accuracy.
 
@@ -124,7 +124,7 @@ listed cells, not confidence intervals or expected real-world accuracy.
 | Academic spatial SRM, 0.6 bpp | BOSSbase | 82.20–86.45% | 0.915–0.948 |
 | Academic JPEG DCTR/kernels, 0.05–0.4 bpnzac | BOSSbase q75 | 59.35–94.25% | 0.634–0.987 |
 | steghide, OutGuess, stegano, F5, OpenStego | DIV2K | 79.75–99.75% | 0.870–1.000 |
-| WAV kernels/trees, failing cells | ESC-50, 402 clips | 65.17–78.36% | 0.757–0.891 |
+| WAV compact trees | ESC-50, 402 clips | 82.59–96.77% | 0.936–0.997 |
 | WAV kernels/trees, failing cells | AudioMNIST | 56.50–59.50% | 0.626–0.741 |
 | WAV kernels/trees, failing cells | FSDD | 49.45–51.10% | 0.495–0.517 |
 | WAV linear, parity/residual | ESC-50, FSDD | 50.00% | 0.359–0.656 |
@@ -134,8 +134,8 @@ Evaluation sets contain 8–1,000 originals. Historical rows retain split limita
 
 **80% per method:** clean spatial results and WOW's 80.28–80.38% count bounds
 pass at 0.4 bpp; unknown-payload gray LSB passes. OpenStego .1 bpp reaches
-**87.75%**; nsF5 .1 bpnzac: **80.85%**. WAV/nsF5 .05 still miss.
-Historical tests are reused; no model is qualified or deployed.
+**87.75%**; nsF5 .1 bpnzac: **80.85%**; ESC-50 WAV: **82.59–96.77%**.
+Other WAV/nsF5 .05 cells miss. Historical tests are reused; nothing is deployed.
 [Details](docs/DETECTION_EXPANSION_20261111.md),
 [RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md),
 [remaining cells](docs/REMAINING_FLOOR_RESULTS_20261115.md) ·
