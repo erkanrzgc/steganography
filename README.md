@@ -134,13 +134,14 @@ Evaluation sets contain 8–1,000 originals. Historical rows retain split limita
 
 **80% per method:** clean spatial results and WOW's 80.28–80.38% count bounds
 pass at 0.4 bpp; unknown-payload gray LSB passes. OpenStego .1 bpp:
-**87.75%**; nsF5 .1 bpnzac: **80.85%**; ESC-50 WAV: **82.59–96.77%**.
-AudioMNIST matching 5/10% misses; FSDD/nsF5 .05 excluded.
+**87.75%**; nsF5 .1/EBS .4 bpnzac: **80.85/93.30%**; ESC-50 WAV:
+**82.59–96.77%**. AudioMNIST matching 5/10% misses; FSDD/nsF5 .05 excluded.
 Historical tests are reused; nothing is deployed.
 [Details](docs/DETECTION_EXPANSION_20261111.md),
 [RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md),
-[remaining cells](docs/REMAINING_FLOOR_RESULTS_20261115.md) ·
-[nsF5 features](docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md).
+[remaining cells](docs/REMAINING_FLOOR_RESULTS_20261115.md),
+[nsF5](docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md),
+[EBS](docs/EBS_RESULTS_20261118.md).
 
 Evidence: [AudioMNIST pair head](docs/WAV_PAIR_NATIVE_RESULTS_20261023.md),
 [JPEG controls](docs/JPEG_CONTROL_RESULTS.md),
