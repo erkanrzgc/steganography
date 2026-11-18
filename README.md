@@ -133,9 +133,10 @@ listed cells, not confidence intervals or expected real-world accuracy.
 Evaluation sets contain 8–1,000 originals. Historical rows retain split limitations.
 
 **80% per method:** clean spatial results and WOW's 80.28–80.38% count bounds
-pass at 0.4 bpp; unknown-payload gray LSB passes. OpenStego .1 bpp reaches
+pass at 0.4 bpp; unknown-payload gray LSB passes. OpenStego .1 bpp:
 **87.75%**; nsF5 .1 bpnzac: **80.85%**; ESC-50 WAV: **82.59–96.77%**.
-Other WAV/nsF5 .05 cells miss. Historical tests are reused; nothing is deployed.
+AudioMNIST matching 5/10% misses; FSDD/nsF5 .05 excluded.
+Historical tests are reused; nothing is deployed.
 [Details](docs/DETECTION_EXPANSION_20261111.md),
 [RGB rich model](docs/PNG_BMP_RGB_RICH_DETECTOR_20261111.md),
 [remaining cells](docs/REMAINING_FLOOR_RESULTS_20261115.md) ·
