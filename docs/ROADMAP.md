@@ -21,7 +21,9 @@ preserved; **the overall 80%-per-method target remains unmet**.
 3. **Keep unresolved conditions visible.** AudioMNIST matching 5/10% and all
    eight FSDD conditions still fail calibration in the compact WAV comparison.
    The prior conditional Markov WAV comparison also failed all sixteen cells.
-   JPEG .05, EBS availability and historical source/coverage limits remain open.
+   JPEG .05 and historical source/coverage limits remain open. EBS was
+   resolved on 2026-11-18 (corrected nzAC payload, 93.30%; see
+   [EBS results](EBS_RESULTS_20261118.md)).
    Any new feature family, candidate, dataset or budget needs a separate user
    decision; this handoff authorizes none of them.
 4. **Preserve frozen sources and evidence.** No `core/`/`steganography/` edits,
