@@ -22,6 +22,8 @@ instructions so that implementation readiness is not mistaken for accuracy.
   measured test points, source corrections and remaining misses.
 - [EBS corrected payload](EBS_RESULTS_20261118.md): conseal's EBS message size fixed
   to nonzero AC; 0.4 bpnzac reaches 93.30% on the first EBS test look.
+- [AudioMNIST CNN](AUDIOMNIST_CNN_RESULTS_20261118.md): Colab raw-waveform CNN; matching
+  10% reaches 78.43% test BA (miss), 5% stays below the calibration gate.
 - [AudioMNIST full corpus](AUDIOMNIST_FULL_RESULTS_20261118.md): 7,500 fit pairs
   leave matching 5/10% below the calibration gate; reserved speakers stay closed.
 - [Latest low-payload handoff](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md):
