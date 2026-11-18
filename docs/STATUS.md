@@ -20,6 +20,12 @@ calibration-selected DCTR ridge reaches **93.30%** test BA (95% 92.20–94.30%,
 AUC .979) on the first EBS look at the historical 1,000-pair test. See the
 [EBS results](EBS_RESULTS_20261118.md).
 
+**AudioMNIST CNN (2026-11-18):** a Colab raw-waveform CNN reaches 83.36%
+calibration BA at matching 10% and **78.43%** on its single test look
+(AUC .895, speaker interval 74.0–83.1%), up from 59.5% but still a miss; the
+frozen threshold shifts across speakers. Matching 5% calibrates at 69.52%
+and was not tested. See the [CNN results](AUDIOMNIST_CNN_RESULTS_20261118.md).
+
 **Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac
 (80.85%) after the .05 learning curve predicted only about 69% with all BOSS
 fit sources. FSDD is excluded as cover-limited. Both remain reported misses
