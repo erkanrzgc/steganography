@@ -1,5 +1,12 @@
 # Changelog
 
+- Run the AudioMNIST raw-waveform CNN on a Colab T4 (2026-11-18):
+  - The 40% positive control reaches 99.26% calibration BA. Matching 10%
+    calibrates at 83.36% (CPU features 75.54%) and scores 78.43% on its single
+    test look (AUC .895), up from 59.5% but below 80%.
+  - Matching 5% calibrates at 69.52% and is not tested. Both cells stay
+    in-scope misses. See `docs/AUDIOMNIST_CNN_RESULTS_20261118.md`.
+
 - Add a Colab raw-waveform CNN for AudioMNIST matching 5/10% (2026-11-18):
   `research/wav_cnn_audiomnist.py` and
   `notebooks/audiomnist_wav_cnn_20261118.ipynb` extract only the 30 opened
