@@ -18,6 +18,10 @@ instructions so that implementation readiness is not mistaken for accuracy.
 ## Evaluate the evidence
 
 - [Current research status](STATUS.md): completed experiments, unavailable checks, and deployment limits.
+- [Method/payload progress](DETECTION_EXPANSION_20261111.md): the 80% target,
+  measured test points, source corrections and remaining misses.
+- [Latest low-payload handoff](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md):
+  closed JPEG calibration miss, stopped WAV test features and approval-gated resume.
 - [Native AudioMNIST results](WAV_PAIR_NATIVE_RESULTS_20261023.md): both seeds completed;
   required LSB-plane-0 target failed, with every cell and speaker-cluster interval retained.
 - [Matched generated comparison](WAV_PAIR_COMPARISON_RESULTS_20261022.md): standardized
