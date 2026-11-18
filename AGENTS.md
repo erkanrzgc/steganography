@@ -110,7 +110,7 @@ matching 5/10 and EBS (unavailable).
 | Spatial adaptive, 0.4 bpp | HILL 80.03, S-UNIWARD 80.73, MiPOD 80.68 (clean 999); WOW 80.28–80.38 bounds | — (all marginal, adaptive test) |
 | Real tools (DIV2K) | steghide, OutGuess, stegano, F5 (all), OpenStego 0.4 and 0.1 (87.75) | — |
 | JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, nsF5 0.2 94.25, nsF5 0.1 80.85 (target payload) | EBS unavailable; out of scope: nsF5 0.05 (best test 60.70; calibration 66.17%) |
-| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (56.5/59.5; data-limited, 600 local clips); out of scope: FSDD all eight (~50; cover-limited) |
+| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (56.5/59.5 test; 63.88/75.54 calibration with 7,500 fit pairs, signal-limited); out of scope: FSDD all eight (~50; cover-limited) |
 | Network, video | covert channels, containers | — |
 
 Details: `docs/DETECTION_EXPANSION_20261111.md` (main table and sections),
@@ -149,9 +149,11 @@ Diagnosis of the remaining misses (fit covers, 2026-11-18):
   with ~4,000 samples; only 0.2% of samples have |x| ≤ 2. The noise floor
   (~643) dwarfs ±1 changes (0.025, about −44 dB). More model capacity will not
   reach 80%. The user excluded FSDD from the target on 2026-11-18.
-- AudioMNIST matching 5/10: data-limited. Only 600 clips exist locally
-  (300 fit/100 calibration/200 test) of the 30,000-clip corpus; a 100-pair
-  calibration BA varies by about ±6 points. Downloading more needs approval.
+- AudioMNIST matching 5/10: signal-limited, not data-limited. The approved
+  2026-11-18 download (`docs/AUDIOMNIST_FULL_RESULTS_20261118.md`) gives 7,500
+  fit/2,500 calibration pairs from the 30 opened speakers; the best calibration
+  is 63.88/75.54%, flat from 1,500 pairs on. No test features were built. The
+  30 reserved speakers stay closed (not extracted or decoded).
 - nsF5 .05: more BOSS data will not reach 80%. A fit/calibration learning
   curve (2026-11-18) gives 60.1/64.6/66.2% at 600/1,200/2,400 pairs, about
   +1.6 points per doubling, so all ~7,500 BOSS fit sources would give ~69%.
