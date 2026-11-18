@@ -289,12 +289,14 @@ def test_service_fail_closed_no_complete_index(setup, monkeypatch, fault):
         reserved.clear()
     if fault == "bad_reserved":
         reserved[0].write_text('{"samples":[]}')
+    # Pick a cover the study reads; directory order is filesystem-dependent and
+    # may yield an excluded JMiPOD file, which would leave the fault unexercised.
+    used = alaska / "a" / "0-None.jpg"
     if fault == "changed_jpeg":
-        next((alaska / "a").iterdir()).write_bytes(b"changed")
+        used.write_bytes(b"changed")
     if fault == "symlink":
-        p = next((alaska / "a").iterdir())
-        p.unlink()
-        p.symlink_to(alaska / "source.json")
+        used.unlink()
+        used.symlink_to(alaska / "source.json")
     if fault == "deadline":
         monkeypatch.setattr(scale, "MAX_SECONDS", -1)
     if fault == "budget":
