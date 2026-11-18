@@ -1,5 +1,43 @@
 # Roadmap and status
 
+## Current priorities — 2026-11-17
+
+The [current status](STATUS.md) and
+[low-payload continuation closeout](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md)
+supersede the old next-step/running observations below. Existing evidence is
+preserved; **the overall 80%-per-method target remains unmet**.
+
+1. **Keep the latest JPEG comparison closed.** CC-JRM at nsF5 .05 bpnzac
+   calibrates at 66.17%, below .80; no new test inference is justified. The
+   earlier reference-feature nsF5 .1 test point is 80.85%, not a fix for .05.
+2. **Await explicit approval for WAV completion.** Six ESC calibration choices
+   pass, but the 1,800-second attempt stopped with only 32/402 test source rows
+   in checkpoint metadata and no scores. Before any separately bounded resume,
+   verify the binary checkpoint and original source/code bindings, inherit all
+   frozen models/thresholds/seeds without refitting, preserve the stopped
+   receipt, and process only missing eligible rows. Do not rerun the fresh-only
+   runner. Then perform the full test audit and publish every miss with payload;
+   historical ESC test reuse must stay labeled adaptive.
+3. **Keep unresolved conditions visible.** AudioMNIST matching 5/10% and all
+   eight FSDD conditions still fail calibration in the compact WAV comparison.
+   The prior conditional Markov WAV comparison also failed all sixteen cells.
+   JPEG .05, EBS availability and historical source/coverage limits remain open.
+   Any new feature family, candidate, dataset or budget needs a separate user
+   decision; this handoff authorizes none of them.
+4. **Preserve frozen sources and evidence.** No `core/`/`steganography/` edits,
+   local GPU, locked ALASKA2 access or model deployment. Keep private code,
+   models, checkpoints, failed receipts and the 13 known strict private-script
+   style findings unchanged. Use one results document and one public numeric
+   receipt per study instead of reviving the retired amendment chain.
+
+The final session action is documentation-only, with no commit or push. See
+the continuation results' handoff section for working-tree state and checks.
+
+## Historical roadmap and dated observations
+
+These records retain original outcomes and proposals; they are not a live
+work queue or renewed approval for consumed experiments.
+
 2026-11-08: replay all eight native RGB states on fitted train data with zero
 backward/optimizer/GPU operations. Train AUC stays near chance at every saved
 endpoint; one seed's paired sensitivity improves while the other is unstable.
