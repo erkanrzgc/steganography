@@ -52,6 +52,11 @@ def test_worker_modes_bind_unchanged_sources(worker, tmp_path, mode):
     (f.old.srnet_cuda.CUDAUnavailable("bounded_cgroup_v2_required"), "bounded_cgroup_v2_required"),
 ])
 def test_failure_codes_never_echo_exception_text(worker, monkeypatch, tmp_path, error, reason):
+    if type(error) is RuntimeError:
+        # The frozen worker classifies a plain RuntimeError through torch's OOM type;
+        # this CUDA path only exists where torch is installed (the research CI job).
+        pytest.importorskip("torch")
+
     def fail():
         raise error
 
