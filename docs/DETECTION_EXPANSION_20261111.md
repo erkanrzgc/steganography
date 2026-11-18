@@ -66,7 +66,7 @@ aggregate bounds only. See the [source audit and remaining-floor results](REMAIN
 | nsF5 | gray BOSSbase JPEG q75 | 0.05 bpnzac | 60.70% (miss) | .658 | DCTR, train-selected |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 75.15% (miss) | .834 | DCTR, train-selected |
 | nsF5 | gray BOSSbase JPEG q75 | 0.2 bpnzac | **94.25%** | .987 | DCTR, train-selected |
-| EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped |
+| EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | unavailable (invalid simulator) | — | skipped; superseded below |
 | HILL | gray BOSSbase, clean 999 | 0.4 bpp | **80.030030%** | .890384 | saved-score replay, unchanged state/threshold |
 | S-UNIWARD | gray BOSSbase, clean 999 | 0.4 bpp | **80.730731%** | .897463 | saved-score replay, unchanged state/threshold |
 | MiPOD | gray BOSSbase, clean 999 | 0.4 bpp | **80.680681%** | .900254 | saved-score replay, unchanged state/threshold |
@@ -78,6 +78,7 @@ aggregate bounds only. See the [source audit and remaining-floor results](REMAIN
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 77.70% (miss) | .853915 | compact coefficient relations /DCTR fixed 1:1 score mixture; further adaptive |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | 77.85% (miss) | .864762 | fresh joint-kernel /prior 75:25 score mixture; further adaptive |
 | nsF5 | gray BOSSbase JPEG q75 | 0.1 bpnzac | **80.85%** | .894063 | reference DCTR + full JRM, 51-learner FLD ensemble; further adaptive |
+| EBS | gray BOSSbase JPEG q75 | 0.4 bpnzac | **93.30%** | .978920 | corrected nzAC payload; DCTR ridge, calibration-selected; first EBS test look |
 
 WAV, rule, network and video results follow in their sections. Four academic
 spatial methods retain above-80% point results/bounds at 0.4 bpp after the
@@ -88,10 +89,11 @@ higher false alarms and stronger-payload regressions reported. OpenStego
 .1 bpp rises from 79.75 to **87.75%**, AUC .954325, on the same 100 test
 parents, with TPR 88.0% /FPR 12.5%. nsF5 .1 bpnzac reaches **80.85%**
 (95% 79.35–82.40%) with reference DCTR/JRM features; nsF5 .05 and the WAV
-studies retain their misses and negative results. EBS remains
-unavailable. Repeated historical evaluation limits independent confirmation;
+studies retain their misses and negative results. EBS 0.4 bpnzac reaches
+**93.30%** (95% 92.20–94.30%) once its payload is sized by nonzero AC
+coefficients ([EBS results](EBS_RESULTS_20261118.md)). Repeated historical evaluation limits independent confirmation;
 **the overall 80%-per-method goal is not met at all reported payloads**. Within
-the 2026-11-18 scope, AudioMNIST matching 5/10% and EBS remain the open gaps.
+the 2026-11-18 scope, AudioMNIST matching 5/10% is the only open gap.
 The [full opened-speaker AudioMNIST study](AUDIOMNIST_FULL_RESULTS_20261118.md)
 reaches only 63.88/75.54% calibration BA with 7,500 fit pairs; no test inference.
 
@@ -397,10 +399,14 @@ fractions are 0.56 /1.30 /3.12% at 0.05 /0.1 /0.2 bpnzac; J-UNIWARD and UERD
 at 0.4 change 8.36 /7.94%. These changed fractions are separate from payload.
 No further payload or threshold tuning follows from these test scores.
 
-**EBS is skipped/unavailable**: the recorded conseal 2025.11 simulator check
+**EBS (superseded 2026-11-18)**: the recorded conseal 2025.11 simulator check
 changes about 71% of nonzero AC coefficients at 0.4 bpnzac, with a block-entropy
 division-by-zero problem. That embedding is invalid; no EBS accuracy or pass
-is claimed.
+is claimed for it. The cause was the message size: conseal's
+`ebs.simulate_single_channel` multiplies alpha by all DCT coefficients, not
+by nonzero AC. With the unchanged EBS cost and n = nzAC, 8.46% of test nzAC
+change and the calibration-selected DCTR ridge reaches 93.30% on the first
+EBS test look. See [EBS results](EBS_RESULTS_20261118.md).
 
 The requested `.benchmark/boss-jpeg-academic-20261112/result.json` is a
 byte-identical copy of the isolated completion's `result.json`, SHA-256
