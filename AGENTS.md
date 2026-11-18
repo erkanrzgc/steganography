@@ -99,13 +99,18 @@ trustworthy and skip the bureaucracy:
 
 The overall target is not met; calibration-only gains do not replace test misses.
 
+**Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac,
+and FSDD is excluded from the 80% target. Their results stay reported as
+out-of-scope misses, never as passes. Remaining in-scope gaps: AudioMNIST
+matching 5/10 and EBS (unavailable).
+
 | Area | Passing | Still below 80% |
 |---|---|---|
 | Gray LSB (BOSS) | all payload-specific rows; unknown-payload mixed detector 85.5–88.8% | — |
 | Spatial adaptive, 0.4 bpp | HILL 80.03, S-UNIWARD 80.73, MiPOD 80.68 (clean 999); WOW 80.28–80.38 bounds | — (all marginal, adaptive test) |
 | Real tools (DIV2K) | steghide, OutGuess, stegano, F5 (all), OpenStego 0.4 and 0.1 (87.75) | — |
-| JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, nsF5 0.2 94.25, nsF5 0.1 80.85 | nsF5 0.05 (best test 60.70; latest calibration 66.17%); EBS unavailable |
-| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (56.5/59.5; data-limited, 600 local clips), FSDD all eight (~50; cover-limited: loud, short 8 kHz speech) |
+| JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, nsF5 0.2 94.25, nsF5 0.1 80.85 (target payload) | EBS unavailable; out of scope: nsF5 0.05 (best test 60.70; calibration 66.17%) |
+| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (56.5/59.5; data-limited, 600 local clips); out of scope: FSDD all eight (~50; cover-limited) |
 | Network, video | covert channels, containers | — |
 
 Details: `docs/DETECTION_EXPANSION_20261111.md` (main table and sections),
@@ -143,16 +148,15 @@ Diagnosis of the remaining misses (fit covers, 2026-11-18):
 - FSDD: cover-limited, not model-limited. Loud, silence-trimmed 8 kHz speech
   with ~4,000 samples; only 0.2% of samples have |x| ≤ 2. The noise floor
   (~643) dwarfs ±1 changes (0.025, about −44 dB). More model capacity will not
-  reach 80%; changing the goal or evaluation needs the user's decision.
+  reach 80%. The user excluded FSDD from the target on 2026-11-18.
 - AudioMNIST matching 5/10: data-limited. Only 600 clips exist locally
   (300 fit/100 calibration/200 test) of the 30,000-clip corpus; a 100-pair
   calibration BA varies by about ±6 points. Downloading more needs approval.
 - nsF5 .05: more BOSS data will not reach 80%. A fit/calibration learning
   curve (2026-11-18) gives 60.1/64.6/66.2% at 600/1,200/2,400 pairs, about
   +1.6 points per doubling, so all ~7,500 BOSS fit sources would give ~69%.
-  The rich-feature extraction was not launched. Options are to accept it as a
-  documented miss, set nsF5's target payload at .1 (80.85%), or try a
-  Colab-run CNN; the user decides.
+  The rich-feature extraction was not launched. The user set nsF5's target
+  payload at .1 bpnzac (80.85%) on 2026-11-18; .05 stays a reported miss.
 
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
