@@ -92,6 +92,8 @@ studies retain their misses and negative results. EBS remains
 unavailable. Repeated historical evaluation limits independent confirmation;
 **the overall 80%-per-method goal is not met at all reported payloads**. Within
 the 2026-11-18 scope, AudioMNIST matching 5/10% and EBS remain the open gaps.
+The [full opened-speaker AudioMNIST study](AUDIOMNIST_FULL_RESULTS_20261118.md)
+reaches only 63.88/75.54% calibration BA with 7,500 fit pairs; no test inference.
 
 ## Gray LSB on BOSSbase (`research/srm_features.py`)
 
