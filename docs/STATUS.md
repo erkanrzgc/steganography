@@ -12,6 +12,11 @@ bound sources about twelve times per test row; see the
 AudioMNIST matching 5/10% (data-limited), FSDD (cover-limited) and nsF5 .05
 remain misses. No detector deployment follows. The 2026-11-17 text below is
 historical.
+
+**Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac
+(80.85%) after the .05 learning curve predicted only about 69% with all BOSS
+fit sources. FSDD is excluded as cover-limited. Both remain reported misses
+outside the scope; the open in-scope gaps are AudioMNIST matching 5/10% and EBS.
 The [method/payload progress table](DETECTION_EXPANSION_20261111.md) retains
 all historical misses, regressions and source/adaptive-test limitations.
 
