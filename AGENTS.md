@@ -101,22 +101,23 @@ The overall target is not met; calibration-only gains do not replace test misses
 
 **Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac,
 and FSDD is excluded from the 80% target. Their results stay reported as
-out-of-scope misses, never as passes. Remaining in-scope gaps: AudioMNIST
-matching 5/10 and EBS (unavailable).
+out-of-scope misses, never as passes. The only remaining in-scope gap is
+AudioMNIST matching 5/10.
 
 | Area | Passing | Still below 80% |
 |---|---|---|
 | Gray LSB (BOSS) | all payload-specific rows; unknown-payload mixed detector 85.5–88.8% | — |
 | Spatial adaptive, 0.4 bpp | HILL 80.03, S-UNIWARD 80.73, MiPOD 80.68 (clean 999); WOW 80.28–80.38 bounds | — (all marginal, adaptive test) |
 | Real tools (DIV2K) | steghide, OutGuess, stegano, F5 (all), OpenStego 0.4 and 0.1 (87.75) | — |
-| JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, nsF5 0.2 94.25, nsF5 0.1 80.85 (target payload) | EBS unavailable; out of scope: nsF5 0.05 (best test 60.70; calibration 66.17%) |
+| JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, EBS 93.30 (corrected nzAC payload, 2026-11-18), nsF5 0.2 94.25, nsF5 0.1 80.85 (target payload) | out of scope: nsF5 0.05 (best test 60.70; calibration 66.17%) |
 | WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (56.5/59.5 test; 63.88/75.54 calibration with 7,500 fit pairs, signal-limited); out of scope: FSDD all eight (~50; cover-limited) |
 | Network, video | covert channels, containers | — |
 
 Details: `docs/DETECTION_EXPANSION_20261111.md` (main table and sections),
 `docs/JPEG_REFERENCE_FEATURES_RESULTS_20261116.md`,
-`docs/WAV_CONDITIONAL_MOM_RESULTS_20261117.md` and
-`docs/LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md`. Current overview and
+`docs/WAV_CONDITIONAL_MOM_RESULTS_20261117.md`,
+`docs/LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md` and
+`docs/EBS_RESULTS_20261118.md`. Current overview and
 next-step priorities: `docs/STATUS.md` and `docs/ROADMAP.md`; older entries
 there are historical, not permission to restart consumed studies.
 
@@ -159,6 +160,10 @@ Diagnosis of the remaining misses (fit covers, 2026-11-18):
   +1.6 points per doubling, so all ~7,500 BOSS fit sources would give ~69%.
   The rich-feature extraction was not launched. The user set nsF5's target
   payload at .1 bpnzac (80.85%) on 2026-11-18; .05 stays a reported miss.
+- EBS (resolved 2026-11-18): conseal 2025.11 `ebs.simulate_single_channel`
+  sizes the message by all DCT coefficients, not nonzero AC, so "0.4" changed
+  ~71% of nzAC. Private `.benchmark/ebs-20261118/` keeps the conseal cost and
+  sets n = nzAC; test BA 93.30% (92.20–94.30%), first EBS test look.
 
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
