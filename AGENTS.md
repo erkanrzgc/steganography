@@ -165,6 +165,13 @@ Diagnosis of the remaining misses (fit covers, 2026-11-18):
   ~71% of nzAC. Private `.benchmark/ebs-20261118/` keeps the conseal cost and
   sets n = nzAC; test BA 93.30% (92.20–94.30%), first EBS test look.
 
+AudioMNIST matching 5/10 next step (2026-11-18): the user asked for a Colab
+CNN. `research/wav_cnn_audiomnist.py` and
+`notebooks/audiomnist_wav_cnn_20261118.ipynb` (pinned to commit `e441704`)
+train a masked residual-statistics CNN with a 40/20/10/5% curriculum on the
+same roles; 40% is a positive control, calibration picks per-target epochs,
+gate .80, test once. Awaiting the user's T4 run and results zip.
+
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
 
