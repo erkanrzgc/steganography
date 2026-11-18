@@ -20,6 +20,8 @@ instructions so that implementation readiness is not mistaken for accuracy.
 - [Current research status](STATUS.md): completed experiments, unavailable checks, and deployment limits.
 - [Method/payload progress](DETECTION_EXPANSION_20261111.md): the 80% target,
   measured test points, source corrections and remaining misses.
+- [EBS corrected payload](EBS_RESULTS_20261118.md): conseal's EBS message size fixed
+  to nonzero AC; 0.4 bpnzac reaches 93.30% on the first EBS test look.
 - [AudioMNIST full corpus](AUDIOMNIST_FULL_RESULTS_20261118.md): 7,500 fit pairs
   leave matching 5/10% below the calibration gate; reserved speakers stay closed.
 - [Latest low-payload handoff](LOW_PAYLOAD_CONTINUATION_RESULTS_20261117.md):
