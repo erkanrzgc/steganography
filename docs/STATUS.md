@@ -24,7 +24,9 @@ AUC .979) on the first EBS look at the historical 1,000-pair test. See the
 calibration BA at matching 10% and **78.43%** on its single test look
 (AUC .895, speaker interval 74.0–83.1%), up from 59.5% but still a miss; the
 frozen threshold shifts across speakers. Matching 5% calibrates at 69.52%
-and was not tested. See the [CNN results](AUDIOMNIST_CNN_RESULTS_20261118.md).
+and was not tested. A calibration-chosen speaker-robust threshold gave
+78.00% on a second, adaptive test look (2026-11-19). See the
+[CNN results](AUDIOMNIST_CNN_RESULTS_20261118.md).
 
 **Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac
 (80.85%) after the .05 learning curve predicted only about 69% with all BOSS
