@@ -11,7 +11,7 @@ import pytest
 
 from research import wav_cnn_audiomnist as cnn
 
-SPEAKERS = {"01": "fit", "02": "fit", "03": "calibration", "04": "test"}
+SPEAKERS = {"01": "fit", "02": "fit", "03": "calibration", "06": "calibration", "04": "test"}
 
 
 def wav_bytes(samples, channels=1):
@@ -85,7 +85,7 @@ def test_extract_never_reads_reserved_members(tmp_path, monkeypatch):
         return original(self, info, *args)
 
     monkeypatch.setattr(zipfile.ZipFile, "read", recorded)
-    assert cnn.extract(archive, tmp_path / "out", layout) == 16
+    assert cnn.extract(archive, tmp_path / "out", layout) == 20
     assert read and not any("/data/05/" in name for name in read)
     assert not (tmp_path / "out/data/05").exists()
 
@@ -118,7 +118,7 @@ def test_prepare_banks_roles_once(tmp_path, capsys):
     archive, layout = corpus(tmp_path)
     layout = with_digests(tmp_path, archive, layout)
     summary = cnn.prepare(archive, tmp_path / "data", layout)
-    assert summary["opened_files"] == 16 and "archive hash differs" in capsys.readouterr().out
+    assert summary["opened_files"] == 20 and "archive hash differs" in capsys.readouterr().out
     assert len(cnn.load_bank(tmp_path / "data/covers-fit.npz")["lengths"]) == 8
     assert cnn.prepare(archive, tmp_path / "data", layout) == summary
     bad = {**layout, "digests": {**layout["digests"], "calibration": {
@@ -190,10 +190,13 @@ def test_tiny_cpu_curriculum_freezes_then_tests_once(tmp_path, monkeypatch):
     layout = with_digests(tmp_path, archive, layout)
     cnn.prepare(archive, tmp_path / "data", layout)
     out = tmp_path / "out"
-    frozen = cnn.train(tmp_path / "data", out, "cpu")
+    speakers = [r["speaker"] for r in cnn.rows(layout, "calibration")]
+    frozen = cnn.train(tmp_path / "data", out, "cpu", speakers)
     assert set(frozen["choices"]) == {"0.1", "0.05"}
+    rule = frozen["choices"]["0.1"]["threshold_rule"]
+    assert len(rule["records"]) == 4 and frozen["choices"]["0.1"]["threshold"] == rule["threshold"]
     assert len(json.loads((out / "history.json").read_text())) == 4
-    assert cnn.train(tmp_path / "data", out, "cpu") == frozen  # resume is idempotent
+    assert cnn.train(tmp_path / "data", out, "cpu", speakers) == frozen  # idempotent resume
     result = cnn.evaluate(tmp_path / "data", out, layout, "cpu")
     assert result["0.1"]["status"] == "evaluated_once" and result["0.1"]["test_pairs"] == 4
     with pytest.raises(FileExistsError):
@@ -225,7 +228,7 @@ def test_gate_failures_are_not_evaluated(tmp_path, monkeypatch):
 
 def test_cli_dispatch(tmp_path, monkeypatch, capsys):
     layout = tmp_path / "layout.json"
-    layout.write_text("{}")
+    layout.write_text(json.dumps({"files": {}, "roles": {}}))
     calls = []
     monkeypatch.setattr(cnn, "prepare", lambda *a: calls.append("prepare") or {"ok": 1})
     monkeypatch.setattr(cnn, "train", lambda *a: calls.append("train") or {"ok": 2})
@@ -259,3 +262,16 @@ def test_interrupted_stage_resumes_with_its_optimizer(tmp_path, monkeypatch):
     history = json.loads((tmp_path / "out/history.json").read_text())
     assert [(h["rate"], h["epoch"]) for h in history][:2] == [(0.4, 0), (0.4, 1)]
     assert len(history) == 8 and set(frozen["choices"]) == {"0.1", "0.05"}
+
+
+def test_threshold_rule_uses_held_out_speakers():
+    rng = np.random.default_rng(4)
+    speakers = np.repeat(["a", "b", "c"], 50)
+    shift = np.repeat([0.0, 1.0, 2.0], 50)
+    covers, stegos = rng.normal(shift, 0.3), rng.normal(shift + 1.5, 0.3)
+    chosen = cnn.threshold_rule(covers, stegos, speakers)
+    names = [r["rule"] for r in chosen["records"]]
+    assert names == ["pooled-ba", "mean-speaker", "median-speaker", "median-midpoint"]
+    assert chosen["loso_ba"] == max(r["loso_ba"] for r in chosen["records"])
+    single = cnn.threshold_rule(covers, stegos, ["all"] * len(covers))
+    assert single["rule"] == "pooled-ba" and single["records"] == []
