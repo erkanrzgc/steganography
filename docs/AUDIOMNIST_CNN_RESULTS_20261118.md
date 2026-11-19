@@ -61,6 +61,28 @@ calibration gave 86.4% TPR at 19.6% FPR, and test gives 64.8% TPR at 7.9%
 FPR. The miss comes from a speaker-dependent shift of the score scale, not
 from lost ranking. The threshold is not re-tuned on the test.
 
+## Speaker-robust threshold (2026-11-19, adaptive second look)
+
+The frozen 10% model was rescored on CPU. The calibration BA (83.36%) and
+the first test BA (78.43%) replay exactly. Five threshold rules were
+compared by leave-one-calibration-speaker-out BA, using calibration data
+only:
+
+| Rule | LOSO BA | Worst speaker |
+|---|---:|---:|
+| pooled BA-optimal (original) | 82.76% | 80.10% |
+| **mean of per-speaker thresholds** | **83.26%** | 81.60% |
+| median of per-speaker thresholds | 83.20% | 81.40% |
+| minimax speaker BA | 82.78% | 79.90% |
+| midpoint of cover/stego medians | 83.02% | 81.40% |
+
+The selected rule raises the threshold from 0.265 to 0.315. The test
+speakers needed a lower threshold, so the second look gives **78.00%**
+(pair 95% 77.32–78.68%, speaker 73.31–82.89%; TPR 63.4 / FPR 7.4%). That
+is slightly worse than the first look. The five calibration speakers do not
+contain the test speakers' score shift. Threshold rules chosen on these
+speakers cannot fix it, and further test looks would only tune on the test.
+
 ## Limits and next steps
 
 - 200 of the 5,000 test clips were scored by earlier AudioMNIST studies.
