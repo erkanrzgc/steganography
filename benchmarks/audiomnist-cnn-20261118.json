@@ -177,5 +177,74 @@
   "choice-freeze.json": "0949836155048c3b3eea69737b38d018f0008e09fb5002e4a661b7811d721453",
   "test-result.json": "529e7377d5217838c926efb02d18c7de163ca78c02c13e2d3ef4997e1515269e"
  },
- "results_zip_sha256": "b95688f6254fda2a6c081f4bd83ba8b620b702e64a4f8fab88b39bc389a04d85"
+ "results_zip_sha256": "b95688f6254fda2a6c081f4bd83ba8b620b702e64a4f8fab88b39bc389a04d85",
+ "recalibration_20261119": {
+  "evidence": "second look at the test speakers; adaptive",
+  "cpu_replay": {
+   "calibration_ba": 0.8336,
+   "original_test_ba": 0.7843
+  },
+  "selection": "leave-one-calibration-speaker-out BA, then worst speaker, then order; calibration only",
+  "rules": [
+   {
+    "rule": "pooled-ba",
+    "order": 0,
+    "loso_ba": 0.8276,
+    "loso_worst": 0.8009999999999999,
+    "full_threshold": 0.26455914974212646
+   },
+   {
+    "rule": "mean-speaker",
+    "order": 1,
+    "loso_ba": 0.8325999999999999,
+    "loso_worst": 0.8160000000000001,
+    "full_threshold": 0.31518856436014175
+   },
+   {
+    "rule": "median-speaker",
+    "order": 2,
+    "loso_ba": 0.8320000000000001,
+    "loso_worst": 0.8140000000000001,
+    "full_threshold": 0.33950987458229065
+   },
+   {
+    "rule": "minimax-speaker",
+    "order": 3,
+    "loso_ba": 0.8278000000000001,
+    "loso_worst": 0.7989999999999999,
+    "full_threshold": 0.31192001700401306
+   },
+   {
+    "rule": "median-midpoint",
+    "order": 4,
+    "loso_ba": 0.8301999999999999,
+    "loso_worst": 0.8140000000000001,
+    "full_threshold": 0.3465239703655243
+   }
+  ],
+  "selected": {
+   "rule": "mean-speaker",
+   "order": 1,
+   "loso_ba": 0.8325999999999999,
+   "loso_worst": 0.8160000000000001,
+   "full_threshold": 0.31518856436014175
+  },
+  "test": {
+   "balanced_accuracy": 0.78,
+   "auc": 0.89540364,
+   "tpr": 0.6342,
+   "fpr": 0.07420000000000004,
+   "threshold": 0.31518856436014175
+  },
+  "intervals_95": {
+   "pairs": [
+    0.7732,
+    0.7868
+   ],
+   "speakers": [
+    0.7330949999999999,
+    0.8289
+   ]
+  }
+ }
 }
