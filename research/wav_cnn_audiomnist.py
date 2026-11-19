@@ -226,6 +226,46 @@ def calibrate(covers: np.ndarray, stegos_: np.ndarray) -> dict[str, float]:
     return metrics(covers, stegos_, power.calibration_threshold(covers, stegos_))
 
 
+def _speaker_rules() -> dict[str, Any]:
+    def per_speaker(c: np.ndarray, s: np.ndarray, g: np.ndarray) -> list[float]:
+        return [power.calibration_threshold(c[g == k], s[g == k]) for k in np.unique(g)]
+
+    return {
+        "pooled-ba": lambda c, s, g: power.calibration_threshold(c, s),
+        "mean-speaker": lambda c, s, g: float(np.mean(per_speaker(c, s, g))),
+        "median-speaker": lambda c, s, g: float(np.median(per_speaker(c, s, g))),
+        "median-midpoint": lambda c, s, g: float((np.median(c) + np.median(s)) / 2),
+    }
+
+
+def threshold_rule(covers: np.ndarray, stegos_: np.ndarray,
+                   speakers: Sequence[str]) -> dict[str, Any]:
+    """Pick a threshold rule by leave-one-calibration-speaker-out BA.
+
+    Ties prefer the higher worst-speaker BA, then the declared order. With
+    fewer than two speakers the pooled BA-optimal threshold is used.
+    """
+    g = np.asarray(speakers)
+    groups = np.unique(g)
+    rules = _speaker_rules()
+    if len(groups) < 2:
+        t = rules["pooled-ba"](covers, stegos_, g)
+        ba = metrics(covers, stegos_, t)["balanced_accuracy"]
+        return {"rule": "pooled-ba", "threshold": float(t), "loso_ba": ba, "records": []}
+    records: list[dict[str, Any]] = []
+    for order, (name, rule) in enumerate(rules.items()):
+        held = []
+        for k in groups:
+            keep = g != k
+            t = rule(covers[keep], stegos_[keep], g[keep])
+            held.append(metrics(covers[g == k], stegos_[g == k], t)["balanced_accuracy"])
+        records.append({"rule": name, "order": order, "loso_ba": float(np.mean(held)),
+                        "loso_worst": float(np.min(held))})
+    best = max(records, key=lambda r: (r["loso_ba"], r["loso_worst"], -r["order"]))
+    return {"rule": best["rule"], "threshold": float(rules[best["rule"]](covers, stegos_, g)),
+            "loso_ba": best["loso_ba"], "records": records}
+
+
 def better(new: dict[str, Any], old: dict[str, Any] | None) -> bool:
     """Higher calibration BA, then AUC; ties keep the earlier epoch."""
     if old is None:
@@ -381,7 +421,8 @@ def _control_failed(out: Path, state: dict[str, Any]) -> dict[str, Any] | None:
     return json.loads(path.read_text())
 
 
-def train(data: Path, out: Path, device: str = "cuda") -> dict[str, Any]:
+def train(data: Path, out: Path, device: str = "cuda",
+          speakers: Sequence[str] | None = None) -> dict[str, Any]:
     """Run or resume the curriculum; freeze the per-target choices at the end."""
     import torch
 
@@ -409,14 +450,14 @@ def train(data: Path, out: Path, device: str = "cuda") -> dict[str, Any]:
                                               len(fit["lengths"]) // BATCH)
         started = time.monotonic()
         loss = _epoch(torch, model, fit, rate, generator, optimizer, scheduler)
+        c, s = scores(model, covers, device), scores(model, fixed[rate], device)
         record = {"rate": rate, "epoch": state["epoch"], "loss": loss,
-                  "calibration": calibrate(scores(model, covers, device),
-                                           scores(model, fixed[rate], device)),
-                  "seconds": time.monotonic() - started}
+                  "calibration": calibrate(c, s), "seconds": time.monotonic() - started}
         state["history"].append(record)
         if better(record, state["best"].get(str(rate))):
             state["best"][str(rate)] = record
             save_atomic(torch, model.state_dict(), out / f"best-{rate}.pt")
+            save_atomic(torch, {"covers": c, "stegos": s}, out / f"best-{rate}-scores.pt")
         print(f"rate {rate} epoch {state['epoch']} loss {loss:.4f} "
               f"cal BA {record['calibration']['balanced_accuracy']:.4f} "
               f"AUC {record['calibration']['auc']:.4f} {record['seconds']:.0f}s", flush=True)
@@ -428,10 +469,14 @@ def train(data: Path, out: Path, device: str = "cuda") -> dict[str, Any]:
         save_atomic(torch, state, path)
         (out / "history.json").write_text(json.dumps(state["history"], indent=1))
     failed = _control_failed(out, state)
-    return failed if failed is not None else freeze(out, state["best"], torch)
+    if failed is not None:
+        return failed
+    return freeze(out, state["best"], torch, speakers)
 
 
-def freeze(out: Path, best: dict[str, Any], torch: Any) -> dict[str, Any]:
+def freeze(out: Path, best: dict[str, Any], torch: Any,
+           speakers: Sequence[str] | None = None) -> dict[str, Any]:
+    """Freeze per-target epochs and thresholds; the gate uses held-out speakers."""
     path = out / "choice-freeze.json"
     if path.exists():
         return json.loads(path.read_text())
@@ -439,8 +484,13 @@ def freeze(out: Path, best: dict[str, Any], torch: Any) -> dict[str, Any]:
     for rate in TARGETS:
         record = best[str(rate)]
         weights = (out / f"best-{rate}.pt").read_bytes()
+        saved = torch.load(out / f"best-{rate}-scores.pt", map_location="cpu",
+                           weights_only=False)
+        groups = list(speakers) if speakers is not None else ["all"] * len(saved["covers"])
+        rule = threshold_rule(saved["covers"], saved["stegos"], groups)
         choices[str(rate)] = {**record, "model_sha256": sha256(weights),
-                              "passes_gate": record["calibration"]["balanced_accuracy"] >= GATE}
+                              "threshold_rule": rule, "threshold": rule["threshold"],
+                              "passes_gate": rule["loso_ba"] >= GATE}
     frozen = {"choices": choices, "gate": GATE, "torch": torch.__version__,
               "device": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
               "created_unix": time.time()}
@@ -492,7 +542,7 @@ def evaluate(data: Path, out: Path, layout: dict[str, Any],
             model = network().to(device)
             model.load_state_dict(torch.load(weights, map_location=device, weights_only=False))
             c, s = scores(model, covers, device), scores(model, fixed, device)
-            threshold = choice["calibration"]["threshold"]
+            threshold = choice.get("threshold", choice["calibration"]["threshold"])
             result[str(rate)] = {
                 "status": "evaluated_once", "test": metrics(c, s, threshold),
                 "intervals_95": intervals(c, s, threshold, [r["speaker"] for r in clips]),
@@ -514,7 +564,8 @@ def main(argv: Sequence[str] | None = None) -> None:
     if args.command == "prepare":
         print(prepare(args.archive, args.data, layout))
     elif args.command == "train":
-        print(json.dumps(train(args.data, args.out, args.device), indent=1))
+        speakers = [r["speaker"] for r in rows(layout, "calibration")]
+        print(json.dumps(train(args.data, args.out, args.device, speakers), indent=1))
     else:
         print(json.dumps(evaluate(args.data, args.out, layout, args.device), indent=1))
 
