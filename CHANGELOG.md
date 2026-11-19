@@ -1,5 +1,9 @@
 # Changelog
 
+- Try a speaker-robust threshold for the AudioMNIST 10% CNN (2026-11-19):
+  the rule chosen by leave-one-calibration-speaker-out BA gives 78.00% on a
+  second, adaptive test look (first look 78.43%); the cell stays a miss.
+
 - Run the AudioMNIST raw-waveform CNN on a Colab T4 (2026-11-18):
   - The 40% positive control reaches 99.26% calibration BA. Matching 10%
     calibrates at 83.36% (CPU features 75.54%) and scores 78.43% on its single
