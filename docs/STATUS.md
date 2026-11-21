@@ -28,7 +28,10 @@ and was not tested. A calibration-chosen speaker-robust threshold gave
 78.00% on a second, adaptive test look (2026-11-19). A v2 run with eight
 calibration speakers (12 fit) gave 79.08% held-out-speaker calibration BA at
 10% and 66.05% at 5%, so both missed the gate and no test look was taken
-(2026-11-19). See the
+(2026-11-19). v3 opened all 60 speakers (34 fit / 16 calibration / 10 fresh
+test, user approval 2026-11-21): 10% passes the 83.49% LOSO gate but scores
+**79.51%** on its first, non-adaptive test look (pair 95% 78.86–80.21%), a
+miss by 0.49 points; 5% calibrates at 70.79% and is not tested. See the
 [CNN results](AUDIOMNIST_CNN_RESULTS_20261118.md).
 
 **Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac
