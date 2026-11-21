@@ -104,6 +104,30 @@ model itself generalises to new speakers at about 79%. Moving speakers out
 of fit (15 → 12) may also cost a little accuracy. Receipt:
 `benchmarks/audiomnist-cnn-20261118.json` (`v2_eight_calibration_speakers_20261119`).
 
+## Sixty speakers and a fresh test (v3, 2026-11-21)
+
+The user approved opening the 30 reserved speakers. A seeded permutation
+(seed 2026112101) gave 10 fresh test, 8 calibration and 12 fit speakers.
+The old test speakers, already looked at twice, moved to fit. Result: 34 fit
+/ 16 calibration / 10 fresh test speakers (17,000 / 8,000 / 5,000 clips;
+layout `notebooks/audiomnist_wav_cnn_layout_v3_20261121.json`, code
+`277b479`, module unchanged). The fresh test speakers' audio was only hashed
+before the single test run. Same model, curriculum and LOSO gate on a Colab
+T4 (151 s per epoch); the 40% control reached 99.68%.
+
+| Rate | Pooled calibration BA | AUC | Selected rule | LOSO BA | Worst speaker | Test BA (first look) |
+|---|---:|---:|---|---:|---:|---|
+| 10% | 83.54% | .916 | pooled BA-optimal | **83.49%** | 71.0% | **79.51%** (AUC .897) |
+| 5% | 71.07% | .790 | mean of per-speaker | 70.79% | 61.2% | not evaluated |
+
+The 10% test is a **miss by 0.49 points**: pair 95% interval 78.86–80.21%,
+speaker interval 72.28–86.89%; TPR 77.0% / FPR 18.0%. This is the first,
+non-adaptive look at speakers no earlier study used. More training speakers
+moved the 10% cell from ~78% to 79.5% and the 5% cell from 66% to 71%
+calibration, but neither reaches 80%. The calibration-to-test drop (83.5 →
+79.5) is smaller than v1's (83.4 → 78.4). Receipt:
+`benchmarks/audiomnist-cnn-v3-20261121.json`.
+
 ## Limits and next steps
 
 - 200 of the 5,000 test clips were scored by earlier AudioMNIST studies.
@@ -112,9 +136,8 @@ of fit (15 → 12) may also cost a little accuracy. Receipt:
 - Fresh training payloads use Bernoulli positions; calibration and test use
   the exact project embedding.
 - One seed and one architecture; there was no hyper-parameter search.
-- Threshold rules and more calibration speakers are both exhausted (v2:
-  ~79% held-out-speaker BA). The remaining lever is a model that generalises
-  better across speakers, for example more training speakers (only 30 of
-  60 are opened; the 30 reserved speakers need the user's approval) or
-  speaker-invariant inputs. It must be chosen on fit/calibration data only.
-  Any new test look would be adaptive evidence.
+- Threshold rules, more calibration speakers (v2) and all 60 speakers (v3)
+  are used. AudioMNIST has no further speakers, so a new attempt needs a
+  different model (for example speaker-invariant inputs or an ensemble),
+  chosen on fit/calibration data only. The v3 test speakers are now looked
+  at once; any further look at them is adaptive evidence.
