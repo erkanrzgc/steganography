@@ -1,5 +1,11 @@
 # Changelog
 
+- Open all 60 AudioMNIST speakers for the CNN (v3, 2026-11-21, user
+  approval): 34 fit / 16 calibration / 10 fresh test speakers. Matching 10%
+  passes the LOSO gate (83.49%) and scores 79.51% on its first test look at
+  the fresh speakers (pair 95% 78.86–80.21%), a 0.49-point miss. Matching 5%
+  calibrates at 70.79% and is not tested. Both cells stay in-scope misses.
+
 - Run the AudioMNIST CNN with eight calibration speakers (v2, 2026-11-19):
   12 fit / 8 calibration speakers give 79.08% held-out-speaker calibration
   BA at matching 10% and 66.05% at 5%. Both miss the .80 gate, so the test
