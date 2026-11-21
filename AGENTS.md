@@ -172,9 +172,13 @@ Colab T4 run of `research/wav_cnn_audiomnist.py` (notebook pinned to
 frozen threshold shifts across speakers: TPR 64.8/FPR 7.9%). 5%: calibration
 69.52%, not tested. 2026-11-19: a speaker-robust threshold rule chosen by
 leave-one-calibration-speaker-out gave 78.00% on a second (adaptive) test
-look; the 5 calibration speakers do not capture the shift. Do not take
-more test looks; a real fix needs more calibration speakers or a model
-whose scores are speaker-invariant.
+look; the 5 calibration speakers do not capture the shift. v2 (2026-11-19, 12 fit / 8
+calibration speakers, notebook `audiomnist_wav_cnn_v2_20261119.ipynb`, Drive
+`steg-audiomnist-cnn-v2`): held-out-speaker calibration BA 79.08% at 10%,
+66.05% at 5%; both below the gate, test not opened. More calibration
+speakers do not help; the model generalises at ~79%. Do not take more test
+looks; a real fix needs more training speakers (the reserved 30 need
+approval) or a speaker-invariant model.
 
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
