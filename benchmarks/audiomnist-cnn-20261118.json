@@ -246,5 +246,116 @@
     0.8289
    ]
   }
+ },
+ "v2_eight_calibration_speakers_20261119": {
+  "evidence": "calibration only; test not evaluated (both rates below the .80 held-out-speaker gate)",
+  "run_utc": "2026-11-19T14:07:52+00:00",
+  "code_commit": "ccaaff5ab917d6e7eab3af92aa6e608f4b7fa24d",
+  "notebook": "notebooks/audiomnist_wav_cnn_v2_20261119.ipynb",
+  "layout": "notebooks/audiomnist_wav_cnn_layout_v2_20261119.json",
+  "speakers": {
+   "fit": 12,
+   "calibration": 8,
+   "test": 10
+  },
+  "pairs": {
+   "fit": 6000,
+   "calibration": 4000
+  },
+  "device": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "gate": 0.8,
+  "positive_control": "passed (no control-failed.json)",
+  "choices": {
+   "0.1": {
+    "epoch": 17,
+    "loss": 0.3204478299554019,
+    "calibration": {
+     "balanced_accuracy": 0.797125,
+     "auc": 0.87363028125,
+     "tpr": 0.776,
+     "fpr": 0.18175,
+     "threshold": 0.11118859797716141
+    },
+    "model_sha256": "5dd117a1cb6d236e70ff889cab05fc7600c697c5a72a1364e5442a2e61b0f211",
+    "rules": [
+     {
+      "rule": "pooled-ba",
+      "order": 0,
+      "loso_ba": 0.79075,
+      "loso_worst": 0.671
+     },
+     {
+      "rule": "mean-speaker",
+      "order": 1,
+      "loso_ba": 0.7845,
+      "loso_worst": 0.669
+     },
+     {
+      "rule": "median-speaker",
+      "order": 2,
+      "loso_ba": 0.778125,
+      "loso_worst": 0.641
+     },
+     {
+      "rule": "median-midpoint",
+      "order": 3,
+      "loso_ba": 0.7855,
+      "loso_worst": 0.665
+     }
+    ],
+    "selected_rule": "pooled-ba",
+    "threshold": 0.11118859797716141,
+    "passes_gate": false,
+    "test": {
+     "status": "not_evaluated_calibration_gate"
+    }
+   },
+   "0.05": {
+    "epoch": 16,
+    "loss": 0.46365735875094,
+    "calibration": {
+     "balanced_accuracy": 0.668625,
+     "auc": 0.726672625,
+     "tpr": 0.7355,
+     "fpr": 0.39825,
+     "threshold": -0.32164448499679565
+    },
+    "model_sha256": "63b1e982dafa9f70c1ecc1ee352b166ba12451405e617448d2f47cef1dfcb4f9",
+    "rules": [
+     {
+      "rule": "pooled-ba",
+      "order": 0,
+      "loso_ba": 0.652,
+      "loso_worst": 0.568
+     },
+     {
+      "rule": "mean-speaker",
+      "order": 1,
+      "loso_ba": 0.659,
+      "loso_worst": 0.569
+     },
+     {
+      "rule": "median-speaker",
+      "order": 2,
+      "loso_ba": 0.6605,
+      "loso_worst": 0.559
+     },
+     {
+      "rule": "median-midpoint",
+      "order": 3,
+      "loso_ba": 0.659125,
+      "loso_worst": 0.572
+     }
+    ],
+    "selected_rule": "median-speaker",
+    "threshold": -0.06530849635601044,
+    "passes_gate": false,
+    "test": {
+     "status": "not_evaluated_calibration_gate"
+    }
+   }
+  },
+  "source": "choice-freeze.json and test-result.json in Drive folder steg-audiomnist-cnn-v2, read back from the Colab output on 2026-11-21; history.json not copied"
  }
 }
