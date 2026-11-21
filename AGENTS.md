@@ -56,7 +56,7 @@ put study details in a results document and keep this file short.
   venv/bin/python -m pytest -q -p no:cacheprovider --basetemp <fresh dir>
   ```
 
-  Last pass (2026-11-16): 4,651 passed, two CUDA skips, 97.42% coverage.
+  Last pass (2026-11-21): 4,672 passed, two CUDA skips, 97.45% coverage.
   Coverage gate is 90%; new analysis code targets 95%.
 - Doc-only changes: run `tests/test_cloud_removal.py` (README must stay
   400–900 words with four badges and valid local links), ruff and
@@ -184,6 +184,13 @@ LOSO 83.49% passed the gate, first fresh test look 79.51% (pair 95%
 speakers are now used and the v3 test speakers are looked at once; a new
 attempt needs a different model chosen on fit/calibration only, and any
 further test look is adaptive.
+v4 (ready, not run): `research/wav_cnn_audiomnist_ensemble.py` and
+`notebooks/audiomnist_wav_cnn_v4_20261121.ipynb` (pinned to `708e377`) add two
+10% members fine-tuned from the v3 20% checkpoint plus sign/time-flip TTA,
+chosen by LOSO calibration BA; output Drive `steg-audiomnist-cnn-v4`. Its test
+is the adaptive second look at the v3 test speakers (user asked to continue
+with a different model, 2026-11-21). Colab refused a GPU on 2026-11-21
+(free-tier limit); rerun the notebook when a T4 is available (~2 h 20 min).
 
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
