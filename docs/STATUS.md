@@ -25,7 +25,10 @@ calibration BA at matching 10% and **78.43%** on its single test look
 (AUC .895, speaker interval 74.0–83.1%), up from 59.5% but still a miss; the
 frozen threshold shifts across speakers. Matching 5% calibrates at 69.52%
 and was not tested. A calibration-chosen speaker-robust threshold gave
-78.00% on a second, adaptive test look (2026-11-19). See the
+78.00% on a second, adaptive test look (2026-11-19). A v2 run with eight
+calibration speakers (12 fit) gave 79.08% held-out-speaker calibration BA at
+10% and 66.05% at 5%, so both missed the gate and no test look was taken
+(2026-11-19). See the
 [CNN results](AUDIOMNIST_CNN_RESULTS_20261118.md).
 
 **Target scope (user decision, 2026-11-18):** nsF5 is targeted at 0.1 bpnzac
