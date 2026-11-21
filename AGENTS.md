@@ -110,7 +110,7 @@ AudioMNIST matching 5/10.
 | Spatial adaptive, 0.4 bpp | HILL 80.03, S-UNIWARD 80.73, MiPOD 80.68 (clean 999); WOW 80.28–80.38 bounds | — (all marginal, adaptive test) |
 | Real tools (DIV2K) | steghide, OutGuess, stegano, F5 (all), OpenStego 0.4 and 0.1 (87.75) | — |
 | JPEG (BOSS Q75) | J-UNIWARD 83.80, UERD 82.65, EBS 93.30 (corrected nzAC payload, 2026-11-18), nsF5 0.2 94.25, nsF5 0.1 80.85 (target payload) | out of scope: nsF5 0.05 (best test 60.70; calibration 66.17%) |
-| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (Colab CNN 2026-11-18: 10% test 78.43%, calibration 83.36%; 5% calibration 69.52%, not tested; earlier 56.5/59.5 test); out of scope: FSDD all eight (~50; cover-limited) |
+| WAV | AudioMNIST replacement and matching 20/40; ESC replacement all (5/10: 95.27/96.77) and ESC matching all (82.59–88.68; matching 5 interval crosses 80) — adaptive test, 2026-11-18 | AudioMNIST matching 5/10 (Colab CNN v3, all 60 speakers, 2026-11-21: 10% fresh test 79.51%, LOSO calibration 83.49%; 5% LOSO calibration 70.79%, not tested; earlier 78.43/56.5/59.5 test); out of scope: FSDD all eight (~50; cover-limited) |
 | Network, video | covert channels, containers | — |
 
 Details: `docs/DETECTION_EXPANSION_20261111.md` (main table and sections),
@@ -154,7 +154,7 @@ Diagnosis of the remaining misses (fit covers, 2026-11-18):
   2026-11-18 download (`docs/AUDIOMNIST_FULL_RESULTS_20261118.md`) gives 7,500
   fit/2,500 calibration pairs from the 30 opened speakers; the best calibration
   is 63.88/75.54%, flat from 1,500 pairs on. No test features were built. The
-  30 reserved speakers stay closed (not extracted or decoded).
+  user opened the 30 reserved speakers on 2026-11-21 (CNN v3, below).
 - nsF5 .05: more BOSS data will not reach 80%. A fit/calibration learning
   curve (2026-11-18) gives 60.1/64.6/66.2% at 600/1,200/2,400 pairs, about
   +1.6 points per doubling, so all ~7,500 BOSS fit sources would give ~69%.
@@ -176,9 +176,14 @@ look; the 5 calibration speakers do not capture the shift. v2 (2026-11-19, 12 fi
 calibration speakers, notebook `audiomnist_wav_cnn_v2_20261119.ipynb`, Drive
 `steg-audiomnist-cnn-v2`): held-out-speaker calibration BA 79.08% at 10%,
 66.05% at 5%; both below the gate, test not opened. More calibration
-speakers do not help; the model generalises at ~79%. Do not take more test
-looks; a real fix needs more training speakers (the reserved 30 need
-approval) or a speaker-invariant model.
+speakers do not help; the model generalises at ~79%. v3 (2026-11-21, user
+approved opening the reserved 30; 34 fit / 16 calibration / 10 fresh test
+speakers; layout commit `277b479`, Drive `steg-audiomnist-cnn-v3`): 10%
+LOSO 83.49% passed the gate, first fresh test look 79.51% (pair 95%
+78.86–80.21%), a 0.49-point miss; 5% LOSO 70.79%, not tested. All AudioMNIST
+speakers are now used and the v3 test speakers are looked at once; a new
+attempt needs a different model chosen on fit/calibration only, and any
+further test look is adaptive.
 
 Strict private-script Ruff still has 13 recorded style findings; do not alter
 hash-frozen scripts to clear them.
