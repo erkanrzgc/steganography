@@ -1,5 +1,11 @@
 # Changelog
 
+- Run the AudioMNIST CNN with eight calibration speakers (v2, 2026-11-19):
+  12 fit / 8 calibration speakers give 79.08% held-out-speaker calibration
+  BA at matching 10% and 66.05% at 5%. Both miss the .80 gate, so the test
+  was not opened. The earlier 83.36% five-speaker calibration was
+  optimistic; both cells stay in-scope misses.
+
 - Try a speaker-robust threshold for the AudioMNIST 10% CNN (2026-11-19):
   the rule chosen by leave-one-calibration-speaker-out BA gives 78.00% on a
   second, adaptive test look (first look 78.43%); the cell stays a miss.
