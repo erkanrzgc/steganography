@@ -83,6 +83,27 @@ is slightly worse than the first look. The five calibration speakers do not
 contain the test speakers' score shift. Threshold rules chosen on these
 speakers cannot fix it, and further test looks would only tune on the test.
 
+## Eight calibration speakers (v2, 2026-11-19, calibration only)
+
+To test whether the five calibration speakers were too few, three seeded fit
+speakers moved to calibration (12 fit / 8 calibration / 10 test; layout
+`notebooks/audiomnist_wav_cnn_layout_v2_20261119.json`, code `ccaaff5`).
+Same model and curriculum on a Colab T4; the 40% control passed. The
+threshold rule was chosen by leave-one-calibration-speaker-out (LOSO), and
+the .80 gate was applied to the LOSO BA.
+
+| Rate | Pooled calibration BA | AUC | Selected rule | LOSO BA | Worst speaker | Test |
+|---|---:|---:|---|---:|---:|---|
+| 10% | 79.71% | .874 | pooled BA-optimal | **79.08%** | 67.10% | not evaluated |
+| 5% | 66.86% | .727 | median of per-speaker | **66.05%** | 55.90% | not evaluated |
+
+Both rates miss the gate, so no test look was taken. With more calibration
+speakers the 10% estimate falls from 83.36% to about 79%, which matches the
+78.0–78.4% test looks: the five-speaker calibration was optimistic, and the
+model itself generalises to new speakers at about 79%. Moving speakers out
+of fit (15 → 12) may also cost a little accuracy. Receipt:
+`benchmarks/audiomnist-cnn-20261118.json` (`v2_eight_calibration_speakers_20261119`).
+
 ## Limits and next steps
 
 - 200 of the 5,000 test clips were scored by earlier AudioMNIST studies.
@@ -91,7 +112,9 @@ speakers cannot fix it, and further test looks would only tune on the test.
 - Fresh training payloads use Bernoulli positions; calibration and test use
   the exact project embedding.
 - One seed and one architecture; there was no hyper-parameter search.
-- The likely lever for 10% is score calibration that is robust across
-  speakers, for example per-clip normalisation or more calibration
-  speakers. It must be chosen on fit/calibration data only. Any new test
-  look would be adaptive evidence.
+- Threshold rules and more calibration speakers are both exhausted (v2:
+  ~79% held-out-speaker BA). The remaining lever is a model that generalises
+  better across speakers, for example more training speakers (only 30 of
+  60 are opened; the 30 reserved speakers need the user's approval) or
+  speaker-invariant inputs. It must be chosen on fit/calibration data only.
+  Any new test look would be adaptive evidence.
